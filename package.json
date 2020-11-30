@@ -14,7 +14,11 @@
     "layout-flex": "github:kequandian/layout-flex",
     "lodash": "^4.17.19",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "@bit/primefaces.primereact.tooltip": "file:./components/tooltip",
+    "@bit/primefaces.primereact.inputtext": "file:./components/inputtext",
+    "@bit/primefaces.primereact.button": "file:./components/button",
+    "@bit/primefaces.primereact.internal.stylelinks": "file:./components/internal/stylelinks"
   },
   "devDependencies": {
     "@umijs/preset-react": "^1.5.12",
@@ -33,5 +37,10 @@
     "react-test-renderer": "^16.9.0",
     "rimraf": "^2.7.1",
     "umi": "^3.2.6"
+  },
+  "bit": {
+    "env": {},
+    "componentsDefaultDirectory": "components/{name}",
+    "packageManager": "npm"
   }
 }

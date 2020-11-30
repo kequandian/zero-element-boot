@@ -1,0 +1,22 @@
+{
+  "name": "@bit/primefaces.primereact.internal.stylelinks",
+  "version": "3.1.8",
+  "homepage": "https://bit.dev/primefaces/primereact/internal/stylelinks",
+  "main": "dist/StyleLinks.js",
+  "componentId": {
+    "scope": "primefaces.primereact",
+    "name": "internal/stylelinks",
+    "version": "3.1.8"
+  },
+  "dependencies": {
+    "react": "^16.6.3"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "license": "SEE LICENSE IN LICENSE",
+  "bit": {
+    "env": {
+      "compiler": "bit.envs/compilers/react@1.0.2"
+    }
+  }
+}

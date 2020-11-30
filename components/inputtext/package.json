@@ -1,0 +1,29 @@
+{
+  "name": "@bit/primefaces.primereact.inputtext",
+  "version": "4.2.0",
+  "homepage": "https://bit.dev/primefaces/primereact/inputtext",
+  "main": "dist/inputtext/InputText.js",
+  "componentId": {
+    "scope": "primefaces.primereact",
+    "name": "inputtext",
+    "version": "4.2.0"
+  },
+  "dependencies": {
+    "react": "^16.6.3",
+    "prop-types": "^15.6.2",
+    "@bit/primefaces.primereact.tooltip": "file:../tooltip",
+    "@bit/primefaces.primereact.keyfilter": "4.2.0",
+    "@bit/primefaces.primereact.utils.dom-handler": "4.2.0",
+    "@bit/primefaces.primereact.utils.object-utils": "4.2.0"
+  },
+  "devDependencies": {},
+  "peerDependencies": {
+    "classnames": "^2.2.6"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "bit": {
+    "env": {
+      "compiler": "bit.envs/compilers/react@1.0.16"
+    }
+  }
+}
