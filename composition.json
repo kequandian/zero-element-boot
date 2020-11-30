@@ -1,0 +1,51 @@
+{
+    "props": 
+    {
+        "items": [],
+        "tabs": {}
+    },
+    "layout": 
+    {
+        "name": "Grid",
+        "props":
+        {
+           "cols": 4
+        }
+    },
+    "children": [
+        {
+            "name": "NamedList",
+            "span": 1,
+            "gateway": 
+            {
+                "name": "Gateway",
+                "props": 
+                {
+                    "field": "items",
+                    "converter":
+                    {
+                        "name": "title",
+                        "sex": "gender"
+                    }
+                }
+            }
+        },
+        {
+            "name": " Tab",
+            "span": 1,
+            "gateway":
+             {
+                "name": "Gateway",
+                "props":
+                {
+                   "field": "items"
+                }
+            }
+        },
+        {
+            "name": " Tab",
+            "span": 1,
+            "gateway": "MyDefinedGateway"
+        }
+    ]
+}

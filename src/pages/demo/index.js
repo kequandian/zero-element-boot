@@ -2,8 +2,8 @@ import React from 'react';
 import GetField from '@/components/GetField';
 import AutoCombination from '@/components/AutoCombination';
 import NamedList from '@/components/NamedList';
-import APIContainer from '@/components/APIContainer';
-import CombinationDemo01 from '../demo/CombinationDemo01';
+
+import AutoComponent from '@/AutoComponent';
 
 export default function Demo(props) {
 
@@ -12,28 +12,58 @@ export default function Demo(props) {
   //   <NamedLayout name="Align" props={{ align: 'rightAndLastCenter' }}>
   //     <GetField dataField="data">
   //       <Test />
-  //       <DemoText />
+
   //     </GetField>
   //   </NamedLayout>
   // </NamedList>
-
-  // return <APIContainer API="/api/adm/stat/meta/template/table" queryData={{}}>
-  //   <AutoCombination>
-  //     <GetField dataField="data">
-  //       <CombinationDemo01 />
-  //     </GetField>
-  //   </AutoCombination>
-  // </APIContainer>
-
-  return <CombinationDemo01 />
+  return <AutoComponent config={demoConfig} />
 }
 
-function DemoText(props) {
-  console.log('props = ', props);
-  return <h2 style={{ width: 200, border: '1px solid', margin: 8 }}>DemoText</h2>
-}
+const demoConfig = {
+  items: [
+    { test: 123 },
+    { test: 456 },
+  ],
+  tabs: {},
+  layout: {
+    name: 'Grid',
+    props: {
+      col: 4
+    }
+  },
+  children: [
+    {
+      name: 'NamedList',
+      span: 1,
+      gateway: {
+        name: 'Gateway',
+        props: {
+          field: 'items',
+          converter: {
+            key: 'name',
+            value: 'option'
+          }
+        }
+      }
+    },
+    {
+      name: 'Tab',
+      span: 1,
+      gateway: {
+        name: 'Gateway',
+        props: {
+          field: 'items'
+        }
+      }
+    },
+    {
+      name: "Tab",
+      span: 1,
+      gateway: "MyDefinedGateway"
+    }
+  ]
+};
 
-function Test(props) {
-  console.log('props1111 = ', props);
-  return <h2 style={{ width: 200, border: '1px solid', margin: 8 }}>Text</h2>
+function Test() {
+  return <h2 style={{ width: 200, border: '1px solid', margin: 8 }}>Demo</h2>
 }
