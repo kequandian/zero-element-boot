@@ -8,8 +8,8 @@ export default function useLayout() {
     if (init === false) {
       setInit(true);
     }
+  }, [layoutRef.current]);
 
-  }, [layoutRef.current])
   function getClassName() {
     if (layoutRef.current && layoutRef.current.getClassName) {
       return layoutRef.current.getClassName();
