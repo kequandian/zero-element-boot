@@ -1,22 +1,26 @@
-import React from 'react';
-import NamedLayout from '@/components/NamedLayout';
-import * as presenter from '@/components/presenter';
-import useLayout from '@/utils/useLayout';
-import GateWay from '@/components/GateWay';
+const React = require('react');
+const NamedLayout = require('@/components/NamedLayout');
+const presenter = require('@/components/presenter');
+const useLayout = require('@/utils/useLayout');
+const GateWay = require('@/components/GateWay');
+const requireConfig = require('@/utils/requireConfig');
 
 const allComponents = {
   ...presenter,
 };
 
-export default function AutoComponent(props) {
-  const { config } = props;
-  const { layout, children, ...restCfg } = config;
+module.exports = function AutoComponent(props) {
+  const parent = module.parents[0];
+
+  const { config = requireConfig(parent) } = props;
+  const { layout, ...restCfg } = config;
+  const { children, ...restLayout } = layout;
   const [layoutRef, { getClassName }] = useLayout();
 
   return <div
     className={getClassName()}
   >
-    <NamedLayout {...layout} ref={layoutRef}>
+    <NamedLayout {...restLayout} ref={layoutRef}>
       {children.map((child, i) => {
         const { name, span, gateway } = child;
         const C = allComponents[name] || tips(name);

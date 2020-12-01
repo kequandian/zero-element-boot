@@ -1,6 +1,6 @@
-import React from 'react';
+const React = require('react');
 
-export default function Gateway({ children, field, filter = field, converter = {}, ...rest }) {
+module.exports = function Gateway({ children, field, filter = field, converter = {}, ...rest }) {
 
   let data = { ...rest };
 
