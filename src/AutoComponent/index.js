@@ -10,13 +10,14 @@ const allComponents = {
 
 export default function AutoComponent(props) {
   const { config } = props;
-  const { layout, children, ...restCfg } = config;
+  const { layout, ...restCfg } = config;
+  const { children, ...restLayout } = layout;
   const [layoutRef, { getClassName }] = useLayout();
 
   return <div
     className={getClassName()}
   >
-    <NamedLayout {...layout} ref={layoutRef}>
+    <NamedLayout {...restLayout} ref={layoutRef}>
       {children.map((child, i) => {
         const { name, span, gateway } = child;
         const C = allComponents[name] || tips(name);
