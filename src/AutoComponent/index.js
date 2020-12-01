@@ -2,6 +2,7 @@ import React from 'react';
 import NamedLayout from '@/components/NamedLayout';
 import * as presenter from '@/components/presenter';
 import useLayout from '@/utils/useLayout';
+import GateWay from '@/components/GateWay';
 
 const allComponents = {
   ...presenter,
@@ -9,7 +10,7 @@ const allComponents = {
 
 export default function AutoComponent(props) {
   const { config } = props;
-  const { layout, items, children } = config;
+  const { layout, children, ...restCfg } = config;
   const [layoutRef, { getClassName }] = useLayout();
 
   return <div
@@ -19,8 +20,14 @@ export default function AutoComponent(props) {
       {children.map((child, i) => {
         const { name, span, gateway } = child;
         const C = allComponents[name] || tips(name);
-        const data = items[i] || {};
-        return <C key={i} name={name} span={span} {...data} />
+        let gatewayProps = { ...restCfg };
+        if (gateway && typeof gateway === 'object' && gateway.props) {
+          gatewayProps = { ...gatewayProps, ...gateway.props }
+        }
+
+        return <GateWay key={i} {...gatewayProps} span={span}>
+          <C name={name} />
+        </GateWay>
       })}
     </NamedLayout>
   </div>;
