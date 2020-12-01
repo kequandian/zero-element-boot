@@ -1,9 +1,10 @@
-import React, { useImperativeHandle, forwardRef } from 'react';
-import * as LayoutSet from './export';
-import useLayout from '@/utils/useLayout';
-import './index.less';
+const React = require('react');
+const { useImperativeHandle, forwardRef } = require('react');
+const useLayout = require('@/utils/useLayout');
+const LayoutSet = require('./export');
+require('./index.less');
 
-export default forwardRef(function NamedLayout({ name, props, layout, children, ...rest }, ref) {
+module.exports = forwardRef(function NamedLayout({ name, props, layout, children, ...rest }, ref) {
   const [layoutRef, { getClassName }] = useLayout();
 
   useImperativeHandle(ref, () => ({

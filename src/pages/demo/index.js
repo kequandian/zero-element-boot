@@ -2,7 +2,7 @@ import React from 'react';
 import GetField from '@/components/GetField';
 import NamedLayout from '@/components/NamedLayout';
 import NamedList from '@/components/NamedList';
-import AutoComponent from '@/AutoComponent';
+const AutoComponent = require('@/AutoComponent');
 
 export default function Demo(props) {
 
@@ -14,53 +14,8 @@ export default function Demo(props) {
   //     </GetField>
   //   </NamedLayout>
   // </NamedList>
-  return <AutoComponent config={demoConfig} />
+  return <AutoComponent />
 }
-
-const demoConfig = {
-  items: [
-    { test: 123 },
-    { test: 456 },
-  ],
-  tabs: {},
-  layout: {
-    name: 'Grid',
-    props: {
-      col: 4
-    },
-    children: [
-      {
-        name: 'NamedList',
-        span: 1,
-        gateway: {
-          name: 'Gateway',
-          props: {
-            field: 'items',
-            converter: {
-              key: 'name',
-              value: 'option'
-            }
-          }
-        }
-      },
-      {
-        name: 'Tab',
-        span: 1,
-        gateway: {
-          name: 'Gateway',
-          props: {
-            field: 'items'
-          }
-        }
-      },
-      {
-        name: "Tab",
-        span: 1,
-        gateway: "MyDefinedGateway"
-      }
-    ]
-  },
-};
 
 function Test() {
   return <h2 style={{ width: 200, border: '1px solid', margin: 8 }}>Demo</h2>

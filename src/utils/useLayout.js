@@ -1,6 +1,6 @@
-import { useRef, useEffect, useState } from 'react';
+const { useRef, useEffect, useState } = require('react');
 
-export default function useLayout() {
+module.exports = function useLayout() {
   const layoutRef = useRef();
   const [init, setInit] = useState(false);
 
