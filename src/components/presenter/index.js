@@ -1,9 +1,9 @@
 import Tab from './Tab';
 
 //Demo
-import DiffCompose from '../../pages/demo/DiffCompose';
+import DatabaseComparison from '../Composition/DatabaseComparison';
 
 export {
   Tab,
-  DiffCompose
+  DatabaseComparison
 }

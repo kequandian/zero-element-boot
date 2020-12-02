@@ -17,6 +17,8 @@ module.exports = function AutoComponent(props) {
   const { children, ...restLayout } = layout;
   const [layoutRef, { getClassName }] = useLayout();
 
+  console.log('config = ', config);
+  console.log('layout = ', layout);
   return <div
     className={getClassName()}
   >

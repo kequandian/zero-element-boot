@@ -4,6 +4,10 @@ import NamedLayout from '../NamedLayout';
 
 export default function AutoChart(props) {
   const { layout, children } = props;
+  
+  console.log('layout = ', layout);
+  console.log('children = ', children);
+  console.log('props = ', props);
 
   if (!Array.isArray(children)) {
     console.warn('未传入 children 或传入的 children 非数组. props: ', props);
