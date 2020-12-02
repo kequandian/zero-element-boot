@@ -1,5 +1,5 @@
 
-export default function promiseAjax(url, data = {}, options = {}) {
+module.exports =  function promiseAjax(url, data = {}, options = {}) {
   const { method = 'GET', async = true, token } = options;
 
   let param;

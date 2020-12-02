@@ -1,5 +1,6 @@
 
-export default function formatData(props) {
+
+module.exports = function formatData(props) {
   const { children } = props;
 
   return children.map(child => {

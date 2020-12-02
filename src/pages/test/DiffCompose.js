@@ -1,5 +1,5 @@
 import React from 'react';
-import AutoComponent from '@/components/AutoCombination';
+const AutoComponent = require('@/AutoComponent');
 
 export default function DiffCompose(props) {
 
@@ -10,32 +10,14 @@ export default function DiffCompose(props) {
     layout: {
       name: 'Grid',
       props: {
-        col: 1
+        col: 4,
       },
       children: [
         {
           name: 'DatabaseComparison',
-          span: 1,
-          gateway: {
-            name: 'Gateway',
-            props: {
-              field: 'item1',
-              converter: {
-              }
-            }
-          }
         },
         {
           name: 'DatabaseComparison',
-          span: 1,
-          gateway: {
-            name: 'Gateway',
-            props: {
-              field: 'item2',
-              converter: {
-              }
-            }
-          }
         }
         // ,{
         //   items:{},

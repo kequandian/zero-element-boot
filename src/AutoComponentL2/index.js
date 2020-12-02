@@ -1,15 +1,17 @@
 const React = require('react');
 const NamedLayout = require('@/components/NamedLayout');
 const presenter = require('@/components/presenter');
+const composition = require('@/components/Composition');
 const useLayout = require('@/utils/useLayout');
 const GateWay = require('@/components/GateWay');
 const requireConfig = require('@/utils/requireConfig');
 
 const allComponents = {
   ...presenter,
+  ...composition
 };
 
-module.exports = function AutoComponent(props) {
+module.exports = function AutoComponentL2(props) {
   const parent = module.parents[0];
 
   const { config = requireConfig(parent) } = props;
