@@ -15,8 +15,33 @@ export default function Demo(props) {
   //     </GetField>
   //   </NamedLayout>
   // </NamedList>
-  return <AutoComponent />
+  return <AutoComponent config={config} />
 }
+
+const config = {
+  items: { test: 456 },
+  tabs: {},
+  layout: {
+    name: 'Grid',
+    props: {
+      col: 1
+    },
+    children: [
+      {
+        name: 'DiffCompose',
+        span: 1,
+        gateway: {
+          name: 'Gateway',
+          props: {
+            field: 'items',
+            converter: {
+            }
+          }
+        }
+      },
+    ]
+  },
+};
 
 function Test() {
   return <h2 style={{ width: 200, border: '1px solid', margin: 8 }}>Demo</h2>

@@ -14,7 +14,6 @@ import React from 'react';
  */
 export default function GetField({ children, dataField, itemIndex = 0, ...rest }) {
   let data = rest[dataField] || {};
-  console.log('rest = ', rest)
   if (Array.isArray(data)) {
     data = data[itemIndex];
   }
