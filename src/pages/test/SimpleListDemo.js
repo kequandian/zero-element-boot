@@ -3,39 +3,28 @@ import React from 'react';
 import NamedList from '@/components/NamedList';
 import NamedLayout from '@/components/NamedLayout';
 
+const { CartItem } = require('@/components/Composition')
+
 export default function SimpleListDemo(props){
 
+
+
     const config = {
-        layout: {
-            size: 500,
-            props: {
-                col: 4,
-            },
-        },
-        data: [
-            {
-              name: 'CartItem11',
-              span: 1,
-            },
-            {
-              name: 'CartItem22',
-              span: 1,
-            },
-            {
-              name: 'CartItem33',
-              span: 1,
-            },
-          ]
-      };
+      items:[
+        {icon:'',  title:'title111',  subTitle:'subTitle111',},
+        {icon:'',  title:'title222',  subTitle:'subTitle222',}
+      ],
+      layout: {
+          props: {
+            justify: 'start', //start | end | center | space-around | space-between
+            column: 0, //可选
+          },
+      },
+    };
 
     return (
         <NamedList name='SimpleList' props={config} >
-            <Test />
+            <CartItem />
         </NamedList>
     )
 }
-
-function Test(props) {
-
-    return <h2 key={props.name} style={{ width: 200, border: '1px solid', margin: 8 }}>{props.name + props.span}</h2>
-  }

@@ -4,8 +4,6 @@ module.exports = function Gateway({ children, field, filter, converter = {}, ...
 
   let data = { ...rest };
 
-  console.log('data = ', data);
-
   if (filter) {
     if (Array.isArray(data[filter])) {
       data[filter] = data[filter].map(item => execMap(item, converter));

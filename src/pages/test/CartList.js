@@ -7,7 +7,7 @@ export default function CartList(props) {
     layout: {
       name: 'Grid',
       props: {
-        col: 4,
+        col: 3,
       },
       children: [
         {
