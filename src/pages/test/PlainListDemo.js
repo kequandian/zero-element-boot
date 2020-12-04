@@ -2,7 +2,7 @@ import React from 'react';
 
 import PlainList from '@/components/NamedList/PlainList';
 import NamedLayout from '@/components/NamedLayout';
-import NamedContainer from '@/components/NamedContainer';
+import NamedCart from '@/components/NamedCart';
 
 const { CartItem } = require('@/components/Composition')
 
@@ -38,9 +38,9 @@ export default function PlainListDemo(props){
     return (
         <PlainList {...config} >
             <NamedLayout>
-                <NamedContainer>
+                <NamedCart>
                     <CartItem />
-                </NamedContainer>
+                </NamedCart>
             </NamedLayout>
         </PlainList>
     )
