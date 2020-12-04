@@ -10,7 +10,7 @@ export default function Demo(props) {
 
   // AutoLoadList
   return <NamedList name="LoadMoreList" API="/api/adm/stat/meta/template/table">
-    <NamedLayout name="Align" props={{ align: 'rightAndLastCenter' }}>
+    <NamedLayout name="Align" props={{ align: 'leftAndLastRight' }}>
       <GetField dataField="data">
         <Test />
       </GetField>

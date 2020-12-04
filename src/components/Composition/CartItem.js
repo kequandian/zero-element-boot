@@ -3,7 +3,7 @@ const AutoComponent = require('@/AutoComponent');
 import { Layout } from 'antd';
 const { Content } = Layout;
 
-const requireConfig = require('@/components/Composition/CartItemConfig');
+const requireConfig = require('@/components/Composition/layoutConfig/CartItemLayoutConfig');
 
 export default function CartItem(props) {
 
@@ -56,8 +56,8 @@ export default function CartItem(props) {
     config.layout = requireConfig.layout;
   }
 
-  return  <Content style={{margin: '10px 16px', padding: '20px', background: '#FFFFFF', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
+  return  <div style={{ minWidth: '300px', margin: '10px 16px', padding: '20px', background: '#FFFFFF', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
       <AutoComponent config={config} />
-  </Content> 
+  </div> 
 
 }

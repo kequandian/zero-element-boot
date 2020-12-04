@@ -7,8 +7,6 @@ const { CartItem } = require('@/components/Composition')
 
 export default function SimpleListDemo(props){
 
-
-
     const config = {
       items:[
         {icon:'',  title:'title111',  subTitle:'subTitle111',},

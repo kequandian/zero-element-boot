@@ -2,7 +2,6 @@ const React = require('react');
 const { useImperativeHandle, forwardRef } = require('react');
 const useLayout = require('@/utils/useLayout');
 const LayoutSet = require('./export');
-require('./index.less');
 
 module.exports = forwardRef(function NamedLayout({ name, props, layout, children, ...rest }, ref) {
   const [layoutRef, { getClassName }] = useLayout();
