@@ -24,8 +24,11 @@ module.exports = function Gateway({ children, field, filter, converter = {}, ...
 
 function execFieldMap(data = {}, field, converter) {
 
-  var result = { ...data, ...data[field] };
-
+  var result = { ...data };
+  if(typeof data[field] === Object){
+    result = { ...data[field] };
+  }
+  
   Object.keys(converter).forEach(key => {
     result[converter[key]] = result[key];
     delete result[key];

@@ -15,10 +15,10 @@ export default function SimpleListDemo(props){
         {icon:'',  title:'title222',  subTitle:'subTitle222',}
       ],
       layout: {
-          props: {
-            justify: 'start', //start | end | center | space-around | space-between
-            column: 0, //可选
-          },
+        props: {
+          justify: 'start', //start | end | center | space-around | space-between
+          column: 0, //可选
+        },
       },
     };
 

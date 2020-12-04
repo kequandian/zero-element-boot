@@ -7,8 +7,6 @@ const requireConfig = require('@/components/Composition/CartItemConfig');
 
 export default function CartItem(props) {
 
-  const { icon, title, subTitle } = props;
-
   const config = {
     layout: {
       name: 'Grid',
