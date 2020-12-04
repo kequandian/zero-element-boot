@@ -4,7 +4,7 @@ import useLayout from '@/utils/useLayout';
 import ContainerContext from '@/utils/ContainerContext';
 
 export default function PlainList(props) {
-  const { children, items, layout } = props;
+  const { children, items, layout, cart } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -24,6 +24,8 @@ export default function PlainList(props) {
             React.cloneElement(Child, {
                 ...item,
                 ...layout,
+                layout:layout,
+                cart:cart,
                 key: i,
                 ref: layoutRef,
             })

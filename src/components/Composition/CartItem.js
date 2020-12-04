@@ -41,7 +41,7 @@ export default function CartItem(props) {
             name: 'Gateway',
             props: {
               field: 'subTitle',
-              converter:{
+              converter: {
                 subTitle: 'text'
               }
             }
@@ -52,12 +52,18 @@ export default function CartItem(props) {
     ...props,
   };
 
-  if(!config.layout){
+  if (!config.layout) {
     config.layout = requireConfig.layout;
   }
 
-  return  <div style={{ minWidth: '300px', margin: '10px 16px', padding: '20px', background: '#FFFFFF', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
+  // <div style={{ minWidth: '300px', margin: '5px', padding: '20px', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
+
+  return (
+
+
+    <div style={{ minWidth: '300px', padding: '20px',  }}>
       <AutoComponent config={config} />
-  </div> 
+    </div>
+  )
 
 }

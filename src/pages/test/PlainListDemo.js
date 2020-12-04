@@ -2,6 +2,7 @@ import React from 'react';
 
 import PlainList from '@/components/NamedList/PlainList';
 import NamedLayout from '@/components/NamedLayout';
+import NamedContainer from '@/components/NamedContainer';
 
 const { CartItem } = require('@/components/Composition')
 
@@ -19,18 +20,28 @@ export default function PlainListDemo(props){
             name:'Box',
             props: {
                 align: 'start-with-last-end', 
-                direction: 'row-reverse'
+                direction: 'row-reverse',
             },
         },
+        cart:{
+            name:'Shape',
+            props: {
+                corner: '30px', 
+                fill:'#F1F3F4',
+                stroke:'red',
+                lineWidth:'3px',
+            },
+        }
+
     };
 
     return (
-        <div style={{}}>
         <PlainList {...config} >
             <NamedLayout>
-                <CartItem />
+                <NamedContainer>
+                    <CartItem />
+                </NamedContainer>
             </NamedLayout>
         </PlainList>
-        </div>
     )
 }
