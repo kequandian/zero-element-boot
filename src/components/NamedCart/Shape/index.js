@@ -11,7 +11,7 @@ export default forwardRef(function Shape(props, ref) {
    * lineWidth  线框粗
    */
 
-  const { children, corner = '5px', fill = '#F1F3F4', stroke = '', lineWidth = '1px' } = props;
+  const { children, corner = '5px', fill = '#F1F3F4', stroke = '#cccccc', lineWidth = '1px' } = props;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
