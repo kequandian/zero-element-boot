@@ -31,7 +31,7 @@ export default function UserListDemo(props) {
       }, []);
 
     const config = {
-        items: userList,
+        items: userList.length > 0 ? userList : listData.data, 
         layout: {
             name: 'Box',
             props: {
