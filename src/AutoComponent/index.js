@@ -21,8 +21,14 @@ module.exports = function AutoComponent(props) {
   const [layoutRef, { getClassName }] = useLayout();
 
   useEffect(_ => {
+    const reg = /.\/src\/pages\/([\w\/]+)\/[\w.]+$/.exec(parent);
+    let parentPath
+    if (reg) {
+      parentPath = reg[1];
+    }
+
     if (cfg === undefined) {
-      promiseAjax('/test.json', {
+      promiseAjax(`/${parentPath}.json`, {
         _t: new Date().getTime(),
       })
         .then(data => {
