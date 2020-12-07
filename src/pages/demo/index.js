@@ -9,14 +9,14 @@ const AutoComponent = require('@/AutoComponent');
 export default function Demo(props) {
 
   // AutoLoadList
-  return <NamedList name="LoadMoreList" API="/api/adm/stat/meta/template/table">
-    <NamedLayout name="Align" props={{ align: 'leftAndLastRight' }}>
-      <GetField dataField="data">
-        <Test />
-      </GetField>
-    </NamedLayout>
-  </NamedList>
-  // return <AutoComponent />
+  // return <NamedList name="LoadMoreList" API="/api/adm/stat/meta/template/table">
+  //   <NamedLayout name="Align" props={{ align: 'leftAndLastRight' }}>
+  //     <GetField dataField="data">
+  //       <Test />
+  //     </GetField>
+  //   </NamedLayout>
+  // </NamedList>
+  return <AutoComponent />
 }
 
 
