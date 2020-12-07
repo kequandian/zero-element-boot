@@ -35,5 +35,5 @@ module.exports = forwardRef(function NamedContainer({ cart, children, ...rest },
 })
 
 function tips(name) {
-  return _ => `Container ${name} 未定义`;
+  return _ => `Cart ${name} 未定义`;
 }

@@ -3,12 +3,15 @@ import React, { useImperativeHandle, forwardRef } from 'react';
 require('./index.less');
 
 export default forwardRef(function Shape(props, ref) {
-  const { children, corner = '0px', fill = '#F1F3F4', stroke = '', lineWidth = '', hover = {}, pressed = {} } = props;
 
-  console.log('corner = ', corner)
-  console.log('fill = ', fill)
-  console.log('stroke = ', stroke)
-  console.log('lineWidth = ', lineWidth)
+  /**
+   * corner     圆角半径
+   * fill       背景色
+   * stroke     线框色
+   * lineWidth  线框粗
+   */
+
+  const { children, corner = '5px', fill = '#F1F3F4', stroke = '', lineWidth = '1px' } = props;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {

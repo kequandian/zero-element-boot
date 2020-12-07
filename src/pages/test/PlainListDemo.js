@@ -24,12 +24,17 @@ export default function PlainListDemo(props){
             },
         },
         cart:{
-            name:'Shape',
+            // name:'Shape',
+            // props: {
+            //     corner: '30px', 
+            //     fill:'#F1F3F4',
+            //     stroke:'#cccccc',
+            //     lineWidth:'3px',
+            // },
+
+            name:'Cart',
             props: {
-                corner: '30px', 
-                fill:'#F1F3F4',
-                stroke:'red',
-                lineWidth:'3px',
+                highlight:'#3370FF'
             },
         }
 
