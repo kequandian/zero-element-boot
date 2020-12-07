@@ -12,7 +12,7 @@ export default forwardRef(function Rectangle(props, ref) {
    * outline    边界线类型
    */
 
-  const { children, corner = '0px', fill = '#ffffff', stroke = '#ccc', lineWidth = '1px', outline= 'solid' } = props;
+  const { children, corner = '0px', fill = '#1ab3f1', stroke = '#7e2df0', lineWidth = '2', outline= 'solid' } = props;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
@@ -21,7 +21,7 @@ export default forwardRef(function Rectangle(props, ref) {
   }));
 
   return React.Children.map(children, child => {
-    return <div style={{ borderStyle:`${outline}`, borderRadius: `${corner}`, background: `${fill}`, borderColor:`${stroke}`, borderWidth:`${lineWidth}` }}>
+    return <div style={{ borderStyle:`${outline}`, borderRadius: `${corner}`, background: `${fill}`, borderColor:`${stroke}`, borderWidth:`${lineWidth}px` }}>
       {child}
     </div>
   })

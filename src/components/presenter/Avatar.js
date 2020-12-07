@@ -1,9 +1,14 @@
-import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 export default function (props) {
 
-    const { icon } = props;
+    const { avatarIcon } = props;
 
-    return <Avatar size={64} icon={ icon? icon : <UserOutlined />} />
+    let url = 'http://192.168.3.236:8888'
+    if(avatarIcon){
+        return <img src={url + avatarIcon}  style={{width:'64px', height:'64px', borderRadius:'32px'}} />;
+    }else {
+        return <img src=''  style={{width:'64px', height:'64px', borderRadius:'32px', backgroundColor:'#cccccc'}} />;
+    }
+
 }

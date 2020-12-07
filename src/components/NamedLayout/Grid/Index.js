@@ -1,6 +1,8 @@
 import React, { useImperativeHandle, forwardRef, useRef } from 'react';
 import { Col } from 'antd';
 
+require('./index.less');
+
 export default forwardRef(function Grid(props, ref) {
   const { children, col } = props;
 

@@ -29,7 +29,7 @@ export default function PlainList(props) {
                 key: i,
                 ref: layoutRef,
             })
-            : <Child key={i} {...item } {...layout} ref={layoutRef} />)}
+            : <Child key={i} {...item } {...layout} layout={layout} cart={layout} ref={layoutRef} />)}
     </ContainerContext.Provider>
   </div>
 }

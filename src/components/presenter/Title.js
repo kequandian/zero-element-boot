@@ -3,7 +3,7 @@ const { Title } = Typography;
 
 export default function (props) {
 
-    const { title } = props;
+    const { TitleText } = props;
 
-    return <Title level={3}>{title}</Title>
+    return <Title level={3}>{TitleText}</Title>
 }

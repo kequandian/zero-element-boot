@@ -11,7 +11,7 @@ export default forwardRef(function Shape(props, ref) {
    * lineWidth  线框粗
    */
 
-  const { children, corner = '5px', fill = '#F1F3F4', stroke = '#cccccc', lineWidth = '1px' } = props;
+  const { children, corner = '8px', fill = '#1ee', stroke = '#9bd', lineWidth = '2' } = props;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
@@ -20,7 +20,7 @@ export default forwardRef(function Shape(props, ref) {
   }));
 
   return React.Children.map(children, child => {
-    return <div style={{ borderStyle:`solid`, borderRadius: `${corner}`, background: `${fill}`, borderColor:`${stroke}`, borderWidth:`${lineWidth}` }}>
+    return <div style={{ borderStyle:`solid`, borderRadius: `${corner}`, background: `${fill}`, borderColor:`${stroke}`, borderWidth:`${lineWidth}px` }}>
       {child}
     </div>
   })
