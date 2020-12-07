@@ -32,9 +32,8 @@ export default function PlainListDemo(props){
             //     lineWidth:'3px',
             // },
 
-            name:'Cart',
+            name:'Rectangle',
             props: {
-                highlight:'#3370FF'
             },
         }
 
