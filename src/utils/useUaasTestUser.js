@@ -5,8 +5,6 @@ module.exports = function useUaasTestUser({endpoint, accountToken}, callBack) {
 
     const [users, setUsers] = useState([]);
     const [userId, setUserId] = useState('');
-    const [token, setToken] = useState('');
-    const [permissions, setPermissions] = useState([]);
 
     //获取用户列表
     useEffect(() => {
@@ -25,18 +23,19 @@ module.exports = function useUaasTestUser({endpoint, accountToken}, callBack) {
             }
             promiseAjax(API, {}, queryData)
                 .then(responseData => {
-                    console.log('userInfo request rst: ', responseData);
     
                     if (responseData && responseData.code === 200) {
-                        setToken(responseData.accessToken);
-                        setPermissions(responseData.perms);
-                        callBack(responseData.accessToken)
+
+                        // setToken(responseData.accessToken);
+                        // setPermissions(responseData.perms);
+                        
+                        callBack({token:responseData.data.accessToken, permissions: responseData.data.perms })
                     }
                 })
         }else{
             promiseAjax(API, {}, queryData)
             .then(responseData => {
-                console.log('request rst: ', responseData);
+                // console.log('request rst: ', responseData);
 
                 if (responseData && responseData.code === 200) {
                     setUsers(responseData.data)
@@ -49,9 +48,8 @@ module.exports = function useUaasTestUser({endpoint, accountToken}, callBack) {
     }, [userId]);
 
     function changeUser (userId) {
-        console.log('userId = ', userId)
         setUserId(userId)
     }
 
-    return [users, token, permissions, changeUser];
+    return [users, changeUser];
 }
