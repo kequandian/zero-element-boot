@@ -4,7 +4,7 @@ import useLayout from '@/utils/useLayout';
 import ContainerContext from '@/utils/ContainerContext';
 
 export default function PlainList(props) {
-  const { children, items, layout, cart } = props;
+  const { children, items, layout, cart, onItemClick } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -28,8 +28,9 @@ export default function PlainList(props) {
                 cart:cart,
                 key: i,
                 ref: layoutRef,
+                onItemClick:onItemClick
             })
-            : <Child key={i} {...item } {...layout} layout={layout} cart={layout} ref={layoutRef} />)}
+            : <Child key={i} {...item } {...layout} layout={layout} cart={layout} ref={layoutRef} onItemClick={onItemClick} />)}
     </ContainerContext.Provider>
   </div>
 }
