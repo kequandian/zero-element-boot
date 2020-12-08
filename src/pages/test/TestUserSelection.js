@@ -17,14 +17,14 @@ export default function UserListDemo(props) {
 
     ///
     const [users, token, permissions, changeUser] = useUaasTestUser({ endpoint, accountToken });
-
     const [nToken, setToken] = useState('');
     const [nPermissions, setPermissions] = useState([]);
 
     useEffect(() => {
 
-        console.log('demo token = ', token)
-        console.log('demo permissions = ', permissions)
+        console.log(token)
+        console.log(permissions)
+
 
     }, [token, permissions]);
 
