@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import PlainList from '@/components/NamedList/PlainList';
-import NamedLayout from '@/components/NamedLayout';
-import NamedCart from '@/components/NamedCart';
+// import PlainList from '@/components/NamedList/PlainList';
+// import NamedLayout from '@/components/NamedLayout';
+// import NamedCart from '@/components/NamedCart';
 
 const { UserItem } = require('@/components/Composition');
+
+import { PlainList, NamedLayout, NamedCart } from "@/export";
 
 import listData from './data/UserListData';
 

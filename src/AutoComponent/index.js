@@ -1,20 +1,20 @@
 const React = require('react');
 const { useState, useEffect } = require('react');
 const NamedLayout = require('@/components/NamedLayout');
-const presenter = require('@/components/presenter');
+// const presenter = require('@/components/presenter');
 const useLayout = require('@/utils/useLayout');
 const GateWay = require('@/components/GateWay');
 const requireConfig = require('@/utils/requireConfig');
 const promiseAjax = require('@/utils/request');
 
-const allComponents = {
-  ...presenter,
-};
+// const allComponents = {
+//   ...presenter,
+// };
 
 module.exports = function AutoComponent(props) {
   const parent = module.parents[0];
 
-  const { config = requireConfig(parent) } = props;
+  const { config = requireConfig(parent), allComponents={} } = props;
   const [cfg, setCfg] = useState(config);
   const { layout, ...restCfg } = cfg || {};
   const { children, ...restLayout } = layout || {};

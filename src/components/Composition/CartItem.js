@@ -11,7 +11,7 @@ export default function CartItem(props) {
     layout: {
       name: 'Grid',
       props: {
-        col: 4,
+        col: 1,
       },
       children: [
         {

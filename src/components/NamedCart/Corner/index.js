@@ -15,7 +15,7 @@ export default forwardRef(function Corner(props, ref) {
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `C-Shape`;
+      return `C-Corner`;
     }
   }));
 

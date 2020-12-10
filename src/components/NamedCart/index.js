@@ -1,15 +1,17 @@
 const React = require('react');
-const { useImperativeHandle, forwardRef } = require('react');
+const { useImperativeHandle, forwardRef,  } = require('react');
 const useLayout = require('@/utils/useLayout');
 const CartSet = require('./export');
 
-module.exports = forwardRef(function NamedContainer({ cart, children, ...rest }, ref) {
+export default forwardRef(function NamedContainer({ cart, children, ...rest }, ref) {
+
   const [CartRef, { getClassName }] = useLayout();
 
 
   useImperativeHandle(ref, () => ({
     getClassName: getClassName,
   }));
+
 
   let CartConfig = { ...cart, ...cart.props };
 
@@ -22,16 +24,19 @@ module.exports = forwardRef(function NamedContainer({ cart, children, ...rest },
   //   CartConfig = { ...Cart };
   // }
 
-  
+
   const Cart = CartSet[CartConfig.name] || tips(CartConfig.name);
 
-  return <Cart {...CartConfig} ref={CartRef}>
-    {React.Children.toArray(children).map(child => {
-      return React.cloneElement(child, {
-        ...rest
-      })
-    })}
-  </Cart>
+  return (
+      <Cart {...CartConfig} ref={CartRef}>
+        {React.Children.toArray(children).map(child => {
+          return React.cloneElement(child, {
+            ...rest
+          })
+        })}
+      </Cart>
+  )
+
 })
 
 function tips(name) {

@@ -6,6 +6,7 @@ const useLayout = require('@/utils/useLayout');
 const GateWay = require('@/components/GateWay');
 const requireConfig = require('@/utils/requireConfig');
 
+//TODO 参照 /AutoComponent/index.js
 const allComponents = {
   ...presenter,
   ...composition

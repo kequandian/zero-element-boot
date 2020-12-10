@@ -32,7 +32,7 @@ export default function PlainListDemo(props){
             //     lineWidth:'3px',
             // },
 
-            name:'Shape',
+            name:'Round',
             props: {
             },
         }

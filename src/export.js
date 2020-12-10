@@ -1,5 +1,13 @@
-import NamedList from './components/NamedList';
+import NamedLayout from '@/components/NamedLayout';
+import NamedCart from '@/components/NamedCart';
+import PlainList from '@/components/NamedList/PlainList';
+import AutoComponent from '@/AutoComponent';
+import AutoComponentL2 from '@/AutoComponentL2';
 
 export {
-    NamedList
+    NamedLayout,
+    NamedCart,
+    PlainList,
+    AutoComponent,
+    AutoComponentL2
 };

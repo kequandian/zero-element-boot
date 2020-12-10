@@ -1,13 +1,15 @@
 import React from 'react';
 const AutoComponent = require('@/AutoComponent');
 
+const presenter = require('@/components/presenter');
+
 export default function UserItem(props) {
 
   const config = {
     layout: {
       name: 'Grid',
       props: {
-        col: 1,
+        col: 2,
       },
       children: [
         {
@@ -56,7 +58,7 @@ export default function UserItem(props) {
 
   return (
     <div style={{ minWidth: '300px' }}>
-      <AutoComponent config={config} />
+      <AutoComponent config={config} allComponents={presenter}/>
     </div>
   )
 
