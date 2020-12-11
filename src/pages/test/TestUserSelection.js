@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 
 const { UserItem } = require('@/components/Composition');
 
-import { PlainList, NamedLayout, NamedCart } from "@/export";
+import { PlainList, NamedLayout, NamedCart } from "@/core";
 
 import listData from './data/UserListData';
 
