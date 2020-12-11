@@ -1,7 +1,5 @@
 import React from 'react';
 const AutoComponent = require('@/AutoComponent');
-import { Layout } from 'antd';
-const { Content } = Layout;
 
 const requireConfig = require('@/components/Composition/layoutConfig/CartItemLayoutConfig');
 

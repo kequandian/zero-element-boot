@@ -9,12 +9,13 @@ export default function UserItem(props) {
     layout: {
       name: 'Grid',
       props: {
-        col: 2,
+        col: 3,
       },
       children: [
         {
           name: 'Avatar',
-          span: 2,
+          align: 'center',
+          span: 1,
           gateway: {
             name: 'Gateway',
             props: {
@@ -27,7 +28,20 @@ export default function UserItem(props) {
         },
         {
           name: 'Title',
-          span: 2,
+          span: 1,
+          gateway: {
+            name: 'Gateway',
+            props: {
+              field: 'account',
+              converter: {
+                account: 'TitleText'
+              }
+            }
+          }
+        },
+        {
+          name: 'Title',
+          span: 1,
           gateway: {
             name: 'Gateway',
             props: {
@@ -57,7 +71,7 @@ export default function UserItem(props) {
   };
 
   return (
-    <div style={{ minWidth: '300px' }}>
+    <div style={{ minWidth: '500px' }}>
       <AutoComponent config={config} allComponents={presenter}/>
     </div>
   )

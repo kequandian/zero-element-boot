@@ -1,3 +1,21 @@
-// .l-Grid{
-    // display: flex;
-// }
+.l-Grid{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.l-grid-item{
+    display: flex;
+    
+    &.start {
+        justify-content: flex-start;
+    }
+
+    &.center {
+        justify-content: center;
+    }
+
+    &.end {
+        justify-content: flex-end;
+    }
+
+}

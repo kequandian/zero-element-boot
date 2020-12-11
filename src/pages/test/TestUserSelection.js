@@ -40,7 +40,7 @@ export default function TestUserSelection(props) {
             name: 'Box',
             props: {
                 align: 'start',
-                direction: 'column',
+                direction: 'row',
             },
         },
         cart: {
