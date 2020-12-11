@@ -2,6 +2,7 @@
   "name": "zero-element-boot",
   "version": "1.0.0",
   "description": "",
+  "main": "src/core.js",
   "scripts": {
     "start": "umi dev",
     "clean": "rimraf lib/",
