@@ -7,5 +7,5 @@ import UserListDemo from '@/pages/test/UserListDemo';
 
 export default function Index(props) {
 
-  return <Demo/>
+  return <UserListDemo/>
 }
