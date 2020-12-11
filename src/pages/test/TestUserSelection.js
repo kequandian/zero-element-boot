@@ -12,6 +12,9 @@ import listData from './data/UserListData';
 
 const useUaasTestUser = require('@/utils/useUaasTestUser');
 
+
+const promiseAjax = require('@/utils/request');
+
 /**
  * hook callback 参考
  * https://stackoverflow.com/questions/54954091/how-to-use-callback-with-usestate-hook-in-react
@@ -34,8 +37,26 @@ export default function TestUserSelection(props) {
     ///
     const [users, changeUser] = useUaasTestUser({ endpoint, accountToken }, callBack);
 
+    const [ userList, setUserList ] = useState([]);
+
+    function handleQuery(API, queryData) {
+        return promiseAjax(API, queryData).then(response => {
+        //   return formatData(response.data);
+        if (response && response.code === 200) {
+            console.log('response.data = ', response.data)
+            setUserList(response.data);
+          }
+        });
+      }
+
+      useEffect(_ => {
+          handleQuery('/api/adm/users/testUserList');
+      }, []);
+
+      console.log('userList = ', userList)
+
     const config = {
-        items: users.length > 0 ? users : listData.data,
+        items: userList.length > 0 ? userList : [],
         layout: {
             name: 'Flexbox',
             props: {
