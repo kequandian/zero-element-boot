@@ -30,7 +30,7 @@ export default function PlainList(props) {
                 ref: layoutRef,
                 onItemClick:onItemClick
             })
-            : <Child key={i} {...item } {...layout} layout={layout} cart={layout} ref={layoutRef} onItemClick={onItemClick} />)}
+            : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef} onItemClick={onItemClick} />)}
     </ContainerContext.Provider>
   </div>
 }
