@@ -1,5 +1,5 @@
 import React from 'react';
-import * as componentSet from '@/core';
+import * as componentSet from '@/export';
 import NamedLayout from '../NamedLayout';
 
 export default function AutoChart(props) {
