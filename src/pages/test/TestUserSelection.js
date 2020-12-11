@@ -37,10 +37,10 @@ export default function TestUserSelection(props) {
     const config = {
         items: users.length > 0 ? users : listData.data,
         layout: {
-            name: 'Box',
+            name: 'Flexbox',
             props: {
                 align: 'start',
-                direction: 'row',
+                direction: 'column',
             },
         },
         cart: {

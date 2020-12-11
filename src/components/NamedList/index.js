@@ -3,7 +3,7 @@ const promiseAjax = require('@/utils/request');
 const NamedListSet = require('./export');
 const formatData = require('./formatData');
 
-export default function NamedList({ name, API, props, children }) {
+export default function NamedList({ name, API, props, children, spin = '' }) {
   const NamedList = NamedListSet[name] || tips(name);
 
   function handleQuery(queryData) {
@@ -12,7 +12,7 @@ export default function NamedList({ name, API, props, children }) {
     });
   }
 
-  return <NamedList {...props} onQuery={handleQuery}>
+  return <NamedList {...props} onQuery={handleQuery} spin={spin}>
     {children}
   </NamedList>
 

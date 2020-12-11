@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useInViewport } from 'ahooks';
-import { Spin } from 'antd';
 import { useSize } from 'ahooks';
 import useLayout from '@/utils/useLayout';
 import ContainerContext from '@/utils/ContainerContext';
 
 export default function AutoLoadList(props) {
-  const { onQuery, children } = props;
+  const { onQuery, children, spin = '' } = props;
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [layoutRef, { getClassName }] = useLayout();
@@ -15,6 +14,10 @@ export default function AutoLoadList(props) {
 
   const probeRef = useRef(null);
   const inViewPort = useInViewport(probeRef);
+
+  //antd spin 组件
+  const Spin = spin;
+
   useEffect(_ => {
     if (!loading && inViewPort) {
       handleQuery();

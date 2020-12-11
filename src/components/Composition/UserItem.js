@@ -7,15 +7,14 @@ export default function UserItem(props) {
 
   const config = {
     layout: {
-      name: 'Grid',
+      name: 'Flexbox',
       props: {
-        col: 3,
+        align: 'start',
+        direction: 'row',
       },
       children: [
         {
           name: 'Avatar',
-          align: 'center',
-          span: 1,
           gateway: {
             name: 'Gateway',
             props: {
@@ -28,20 +27,6 @@ export default function UserItem(props) {
         },
         {
           name: 'Title',
-          span: 1,
-          gateway: {
-            name: 'Gateway',
-            props: {
-              field: 'account',
-              converter: {
-                account: 'TitleText'
-              }
-            }
-          }
-        },
-        {
-          name: 'Title',
-          span: 1,
           gateway: {
             name: 'Gateway',
             props: {
@@ -71,7 +56,7 @@ export default function UserItem(props) {
   };
 
   return (
-    <div style={{ minWidth: '500px' }}>
+    <div style={{ minWidth: '300px' }}>
       <AutoComponent config={config} allComponents={presenter}/>
     </div>
   )

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Spin } from 'antd';
 import GetField from '@/components/GetField';
 import AutoCombination from '@/components/AutoCombination';
 import NamedList from '@/components/NamedList';
@@ -8,14 +9,14 @@ const AutoComponent = require('@/AutoComponent');
 
 export default function Demo(props) {
 
-  // AutoLoadList
-  // return <NamedList name="LoadMoreList" API="/api/adm/stat/meta/template/table">
-  //   <NamedLayout name="Align" props={{ align: 'leftAndLastRight' }}>
-  //     <GetField dataField="data">
-  //       <Test />
-  //     </GetField>
-  //   </NamedLayout>
-  // </NamedList>
+  // AutoLoadList && LoadMoreList
+  return <NamedList name="AutoLoadList" API="/api/adm/stat/meta/template/table" spin={Spin}>
+    <NamedLayout name="Align" props={{ align: 'leftAndLastRight' }}>
+      <GetField dataField="data">
+        <Test />
+      </GetField>
+    </NamedLayout>
+  </NamedList>
   return <AutoComponent />
 }
 

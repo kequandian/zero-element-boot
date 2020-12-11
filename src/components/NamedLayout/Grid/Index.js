@@ -1,5 +1,4 @@
 import React, { useImperativeHandle, forwardRef, useRef } from 'react';
-// import { Col } from 'antd';
 
 require('./index.less');
 
@@ -13,28 +12,27 @@ export default forwardRef(function Grid(props, ref) {
   }));
 
   /**
-   * antd 组件
+   * 使用 flex 样式
+   * 参数 (可选)
+   * span 控制列宽比例， 数值越大 宽度越小
+   * align 内容位置(左、中、右)
    */
-  // return React.Children.map(children, child => {
-  //   return <Col span={computeSpan(col, child.props)}>
-  //     {child}
-  //   </Col>
-  // })
-
   return React.Children.map(children, child => {
-    const align = child.props.span || child.props.data && child.props.data.align || 'start';
-    return <div style={{width:`${computeWidth(col)}%`}} className={`l-grid-item ${align}`}>
-      {child}
-    </div>
+    const align = child.props.align || child.props.data && child.props.data.align || 'start';
+    return (
+        <div style={{ width: `${computeWidth(col, child.props)}%` }} className={`l-grid-item ${align}`}>
+          {child}
+        </div>
+    )
+
+
   })
 })
 
-function computeWidth(col) {
-  return ~~(100 / col) || 100;
-}
-
-//适用于于antd -> col 组件 span 参数
-function computeSpan(col, props) {
+function computeWidth(col, props) {
   const span = props.span || props.data && props.data.span || 0;
-  return ~~(24 / col) * span || 24;
+  if (span) {
+    return ~~((100 / col) / span);
+  }
+  return ~~(100 / col) || 100;
 }
