@@ -37,23 +37,19 @@ export default function TestUserSelection(props) {
     ///
     const [users, changeUser] = useUaasTestUser({ endpoint, accountToken }, callBack);
 
-    const [ userList, setUserList ] = useState([]);
+    const [userList, setUserList] = useState([]);
 
     function handleQuery(API, queryData) {
         return promiseAjax(API, queryData).then(response => {
-        //   return formatData(response.data);
-        if (response && response.code === 200) {
-            console.log('response.data = ', response.data)
-            setUserList(response.data);
-          }
+            if (response && response.code === 200) {
+                setUserList(response.data);
+            }
         });
-      }
+    }
 
-      useEffect(_ => {
-          handleQuery('/api/adm/users/testUserList');
-      }, []);
-
-      console.log('userList = ', userList)
+    useEffect(_ => {
+        handleQuery('/api/adm/users/testUserList');
+    }, []);
 
     const config = {
         items: userList.length > 0 ? userList : [],
