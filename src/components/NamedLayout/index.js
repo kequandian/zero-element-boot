@@ -3,7 +3,7 @@ const { useImperativeHandle, forwardRef } = require('react');
 const useLayout = require('@/utils/useLayout');
 const LayoutSet = require('./export');
 
-module.exports = forwardRef(function NamedLayout({ name, props, layout, cart={}, children, ...rest }, ref) {
+module.exports = forwardRef(function NamedLayout({ name, props, layout, cart={}, isValidLine=true, children, ...rest }, ref) {
   const [layoutRef, { getClassName }] = useLayout();
 
   useImperativeHandle(ref, () => ({
@@ -16,9 +16,10 @@ module.exports = forwardRef(function NamedLayout({ name, props, layout, cart={},
     layoutConfig = {
       ...layout,
       name: props,
+      isValidLine
     };
   } else {
-    layoutConfig = { name, ...props, ...layout };
+    layoutConfig = { name, ...props, ...layout, isValidLine };
   }
 
   const Layout = LayoutSet[layoutConfig.name] || tips(layoutConfig.name);

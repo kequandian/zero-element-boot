@@ -12,8 +12,9 @@ import listData from './data/UserListData';
 
 const useUaasTestUser = require('@/utils/useUaasTestUser');
 
-
 const promiseAjax = require('@/utils/request');
+
+const { Seperator } = require('@/components/presenter')
 
 /**
  * hook callback 参考
@@ -35,7 +36,7 @@ export default function TestUserSelection(props) {
     }
 
     ///
-    const [users, changeUser] = useUaasTestUser({ endpoint, accountToken }, callBack);
+    // const [users, changeUser] = useUaasTestUser({ endpoint, accountToken }, callBack);
 
     const [userList, setUserList] = useState([]);
 
@@ -58,6 +59,12 @@ export default function TestUserSelection(props) {
             props: {
                 align: 'start',
                 direction: 'column',
+                line: {
+                    Seperator: Seperator,
+                    props:{
+                        lineType:'solid'
+                    }
+                }
             },
         },
         cart: {
@@ -69,7 +76,8 @@ export default function TestUserSelection(props) {
     };
 
     const onClick = (item) => {
-        changeUser(item.id)
+        // changeUser(item.id)
+        console.log(item)
         onItemClickHandle();
     }
 

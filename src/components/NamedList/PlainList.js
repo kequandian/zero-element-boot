@@ -3,6 +3,7 @@ import { useSize } from 'ahooks';
 import useLayout from '@/utils/useLayout';
 import ContainerContext from '@/utils/ContainerContext';
 
+
 export default function PlainList(props) {
   const { children, items, layout, cart, onItemClick } = props;
   const [layoutRef, { getClassName }] = useLayout();
@@ -28,7 +29,8 @@ export default function PlainList(props) {
                 cart:cart,
                 key: i,
                 ref: layoutRef,
-                onItemClick:onItemClick
+                onItemClick:onItemClick,
+                isValidLine: items.length == (i+1) ? false : true,
             })
             : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef} onItemClick={onItemClick} />)}
     </ContainerContext.Provider>

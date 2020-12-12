@@ -12,7 +12,7 @@ export default forwardRef(function Cart(props, ref) {
    * pressed      下压 -> 未完成
    */
 
-  const { children, margin = '6px', padding = '10px', shadow = '0 2px 8px rgba(0, 0, 0, 0.15)', highlight = "#e0dede", pressed = '' } = props;
+  const { children, margin = '6px', padding = '10px', shadow = '0 2px 8px rgba(0, 0, 0, 0.15)', highlight = "#ffffff", pressed = '' } = props;
 
   const [onHover, setOnHover] = useState(false);
 
