@@ -70,7 +70,6 @@ export default function TestUserSelection(props) {
         cart: {
             name: 'Cart',
             props: {
-                margin: '0px'
             },
         },
     };

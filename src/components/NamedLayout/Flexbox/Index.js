@@ -24,8 +24,6 @@ export default forwardRef(function Box(props, ref) {
   //分割线
   const Seperator = line.Seperator;
 
-  console.log('isValidLine = ', isValidLine)
-
   return React.Children.map(children, child => {
     return (
       <>
