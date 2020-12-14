@@ -8,5 +8,5 @@ import PresenterDemo from '@/pages/test/PresenterDemo';
 
 export default function Index(props) {
 
-  return <PresenterDemo/>
+  return <UserListDemo/>
 }

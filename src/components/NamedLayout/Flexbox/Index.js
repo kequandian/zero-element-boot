@@ -13,7 +13,10 @@ require('./index.less');
 
 export default forwardRef(function Box(props, ref) {
 
-  const { children, align = 'start', direction = 'row', line = {}, isValidLine } = props;
+  const { children, align = 'start', direction = 'row', itemStyle={}, line = {}, isValidLine } = props;
+
+  // itemStyle 控制 child 样式
+  const { itemWidth='', itemAlign='' } = itemStyle;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
@@ -27,7 +30,7 @@ export default forwardRef(function Box(props, ref) {
   return React.Children.map(children, child => {
     return (
       <>
-        <div className="l-BoxItem" onClick={() => child.props.onItemClick(child.props)}>
+        <div className={`l-BoxItem ${itemWidth} ${itemAlign}`} onClick={() => child.props.onItemClick(child.props)}>
           {child}
         </div>
         {Seperator && isValidLine ? <Seperator {...line.props} /> : null}

@@ -2,7 +2,7 @@ import React, { useImperativeHandle, forwardRef, useState } from 'react';
 
 require('./index.less');
 
-export default forwardRef(function Cart(props, ref) {
+export default forwardRef(function HightlightCart(props, ref) {
 
   /**
    * fill         背景
@@ -23,7 +23,7 @@ export default forwardRef(function Cart(props, ref) {
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `c-Cart`;
+      return `c-HightlightCart`;
     }
   }));
 

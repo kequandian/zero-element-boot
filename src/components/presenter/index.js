@@ -4,8 +4,8 @@ import Avatar from './Avatar';
 import Title from './Title';
 import Seperator from './Seperator';
 
-import Clean from './Clean';
-import Butter from './Butter';
+import Clean from './Clean/Index';
+import Butter from './Butter/Index';
 
 export {
   Tab,

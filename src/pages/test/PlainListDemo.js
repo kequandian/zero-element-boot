@@ -17,22 +17,14 @@ export default function PlainListDemo(props){
             {icon:'',  title:'title444',  subTitle:'subTitle444',},
           ],
         layout: {
-            name:'Box',
+            name:'Flexbox',
             props: {
                 align: 'start-with-last-end', 
                 direction: 'row-reverse',
             },
         },
         cart:{
-            // name:'Shape',
-            // props: {
-            //     corner: '30px', 
-            //     fill:'#F1F3F4',
-            //     stroke:'#cccccc',
-            //     lineWidth:'3px',
-            // },
-
-            name:'Round',
+            name: 'Cart',
             props: {
             },
         }

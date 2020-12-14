@@ -20,7 +20,7 @@ export default forwardRef(function Round(props, ref) {
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `C-Round`;
+      return `c-Round`;
     }
   }));
 

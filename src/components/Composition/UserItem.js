@@ -11,6 +11,9 @@ export default function UserItem(props) {
       props: {
         align: 'start',
         direction: 'row',
+        itemStyle:{
+          itemAlign:'v-center'
+        }
       },
       children: [
         {
@@ -56,7 +59,7 @@ export default function UserItem(props) {
   };
 
   return (
-    <div style={{ minWidth: '300px' }}>
+    <div>
       <AutoComponent config={config} allComponents={presenter}/>
     </div>
   )

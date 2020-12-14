@@ -35,7 +35,6 @@ export default function TestUserSelection(props) {
         console.log('permissions = ', data.permissions)
     }
 
-    ///
     // const [users, changeUser] = useUaasTestUser({ endpoint, accountToken }, callBack);
 
     const [userList, setUserList] = useState([]);
@@ -64,12 +63,17 @@ export default function TestUserSelection(props) {
                     props:{
                         lineType:'solid'
                     }
+                },
+                itemStyle:{
+                    itemWidth:'width-100'
                 }
             },
         },
         cart: {
             name: 'Cart',
             props: {
+                margin:'',
+                stroke:''
             },
         },
     };

@@ -15,7 +15,7 @@ export default forwardRef(function Shape(props, ref) {
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `C-Shape`;
+      return `c-Shape`;
     }
   }));
 

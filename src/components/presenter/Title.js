@@ -4,5 +4,5 @@ export default function (props) {
 
     const { TitleText } = props;
 
-    return <div>{TitleText}</div>
+    return <div style={{marginLeft:'6px'}}>{TitleText}</div>
 }

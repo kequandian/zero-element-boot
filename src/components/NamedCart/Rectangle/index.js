@@ -16,7 +16,7 @@ export default forwardRef(function Rectangle(props, ref) {
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `C-Rectangle`;
+      return `c-Rectangle`;
     }
   }));
 
