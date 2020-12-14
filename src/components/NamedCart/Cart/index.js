@@ -40,7 +40,7 @@ export default forwardRef(function Cart(props, ref) {
   }
 
   return React.Children.map(children, child => {
-    return <div style={{
+    return <div className='' style={{
       margin: `${margin}`,
       padding: `${padding}`,
       borderRadius: `${corner}`,
