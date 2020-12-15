@@ -8,6 +8,11 @@ const { CartItem } = require('@/components/Composition')
 
 export default function PlainListDemo(props){
 
+    /**
+     * cart 
+     * name: '', ( Cart, HoverShadowCart)
+     */
+
 
     const config = {
         items:[
@@ -19,12 +24,12 @@ export default function PlainListDemo(props){
         layout: {
             name:'Flexbox',
             props: {
-                align: 'start-with-last-end', 
-                direction: 'row-reverse',
+                align: 'start', 
+                direction: 'row',
             },
         },
         cart:{
-            name: 'Cart',
+            name: 'HoverShadowCart',
             props: {
             },
         }

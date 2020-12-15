@@ -13,13 +13,18 @@ require('./index.less');
 
 export default forwardRef(function Box(props, ref) {
 
-  const { children, align = 'start', direction = 'row', itemStyle={}, line = {}, isValidLine } = props;
+  const { children, align = '', direction = '', itemStyle={}, line = {}, isValidLine } = props;
+
+  // console.log('align = ', align)
+  
+  // console.log('direction = ', direction)
 
   // itemStyle 控制 child 样式
   const { itemWidth='', itemAlign='' } = itemStyle;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
+      // console.log( "l-Box ${align} ${direction} = ", `l-Box ${align} ${direction}`)
       return `l-Box ${align} ${direction}`;
     }
   }));

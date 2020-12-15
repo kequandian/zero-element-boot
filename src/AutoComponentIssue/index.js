@@ -27,8 +27,7 @@ module.exports = function AutoComponent(props) {
       parentPath = reg[1];
     }
 
-
-    console.log('parent = ', parent)
+    // console.log('parent = ', parent)
 
     if (cfg === undefined) {
       promiseAjax(`/${parentPath}.json`, {

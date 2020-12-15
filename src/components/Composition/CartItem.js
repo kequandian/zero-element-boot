@@ -1,5 +1,6 @@
 import React from 'react';
-const AutoComponent = require('@/AutoComponent');
+const AutoComponent = require('@/AutoComponentIssue');
+const presenter = require('@/components/presenter');
 
 const requireConfig = require('@/components/Composition/layoutConfig/CartItemLayoutConfig');
 
@@ -19,28 +20,34 @@ export default function CartItem(props) {
             name: 'Gateway',
             props: {
               field: 'icon',
+              converter: {
+                icon: 'avatarIcon'
+              }
             }
           }
         },
         {
           name: 'Title',
-          span: 4,
+          span: 1,
           gateway: {
             name: 'Gateway',
             props: {
               field: 'title',
+              converter: {
+                title: 'TitleText'
+              }
             }
           }
         },
         {
-          name: 'Detailed',
-          span: 4,
+          name: 'Title',
+          span: 1,
           gateway: {
             name: 'Gateway',
             props: {
-              field: 'subTitle',
+              field: 'title',
               converter: {
-                subTitle: 'text'
+                title: 'TitleText'
               }
             }
           }
@@ -59,8 +66,8 @@ export default function CartItem(props) {
   return (
 
 
-    <div style={{ minWidth: '300px', padding: '20px',  }}>
-      <AutoComponent config={config} />
+    <div style={{ minWidth: '300px', padding: '20px',  }} >
+      <AutoComponent config={config} allComponents={presenter}/>
     </div>
   )
 

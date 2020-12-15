@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const AutoComponent = require('@/AutoComponent');
+// const AutoComponent = require('@/AutoComponent');
+const AutoX = require('@/AutoX');
 const presenter = require('@/components/presenter');
 
 /**
@@ -49,10 +50,20 @@ export default function PresenterDemo(props) {
         },
         ...props,
       };
+
+      /**
+       * <div>
+          <AutoX config={config}  allComponents={presenter}/>
+        </div>
+       *
+       <div>
+          <AutoX {...props}  allComponents={presenter}/>
+        </div>
+       */
     
       return (
         <div>
-          <AutoComponent {...props}  allComponents={presenter}/>
+          <AutoX config={config}  allComponents={presenter}/>
         </div>
       )
 

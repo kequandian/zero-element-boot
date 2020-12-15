@@ -1,5 +1,5 @@
 import React from 'react';
-const AutoComponent = require('@/AutoComponent');
+const AutoComponent = require('@/AutoComponentIssue');
 
 const presenter = require('@/components/presenter');
 
@@ -45,15 +45,6 @@ export default function UserItem(props) {
     ...props,
   };
 
-  /**
-   * <div>
-      <AutoComponent config={config} allComponents={presenter}/>
-    </div>
-    <div>
-      <AutoComponent {...props} allComponents={presenter}/>
-    </div>
-
-   */
   return (
     <div>
       <AutoComponent config={config} allComponents={presenter}/>

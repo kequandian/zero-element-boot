@@ -4,7 +4,7 @@ import GetField from '@/components/GetField';
 import AutoCombination from '@/components/AutoCombination';
 import NamedList from '@/components/NamedList';
 import NamedLayout from '@/components/NamedLayout';
-const AutoComponent = require('@/AutoComponent');
+const AutoComponent = require('@/AutoComponentIssue');
 
 
 const presenter = require('@/components/presenter');
@@ -20,7 +20,7 @@ export default function Demo(props) {
   //   </NamedLayout>
   // </NamedList>
 
-  return <AutoComponent allComponents={presenter} />
+  return <AutoComponent/>
 }
 
 
