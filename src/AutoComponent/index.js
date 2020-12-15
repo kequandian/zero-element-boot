@@ -11,40 +11,37 @@ const promiseAjax = require('@/utils/request');
 //   ...presenter,
 // };
 
-module.exports = function AutoX(props) {
+module.exports = function AutoComponent(props) {
   const parent = module.parents[0];
 
   const { config = requireConfig(parent), allComponents={} } = props;
-  const [cfg, setCfg] = useState(config);
+
+  //获取 /public 配置文件所需代码
+  //start
+  const { cfgLayout={} } = config;
+  const { path='' } = cfgLayout;
+  const [restartRender, setRestartRender] = useState(0);
+  //end
+
+  const cfgData = path?undefined:config;
+
+  const [cfg, setCfg] = useState(cfgData);
   const { layout, ...restCfg } = cfg || {};
   const { children, ...restLayout } = layout || {};
   const [layoutRef, { getClassName }] = useLayout();
 
   useEffect(_ => {
-    const reg = /.\/src\/pages\/([\w\/]+)\/[\w.]+$/.exec(parent);
-    let parentPath
-    if (reg) {
-      parentPath = reg[1];
-    }
-
-    
-    console.log('parent111 = ', parent)
-    console.log('reg111 = ', reg)
-    console.log('parentPath111 = ', parentPath)
 
     if (cfg === undefined) {
-      promiseAjax(`/${parentPath}/layout.json`, {
+      promiseAjax(`/x/${path}/layout.json`, {
         _t: new Date().getTime(),
       })
         .then(data => {
           setCfg(data);
+          setRestartRender(restartRender + 1)
         })
     }
   }, []);
-  
-  // console.log('cfg = ', cfg)
-
-  // console.log('getClassName = ', getClassName())
 
   return <div
     className={getClassName()}

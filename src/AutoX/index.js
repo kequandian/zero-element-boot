@@ -27,11 +27,6 @@ module.exports = function AutoX(props) {
       parentPath = reg[1];
     }
 
-    
-    console.log('parent = ', parent)
-    console.log('reg = ', reg)
-    console.log('parentPath = ', parentPath)
-
     if (cfg === undefined) {
       promiseAjax(`/${parentPath}/layout.json`, {
         _t: new Date().getTime(),
@@ -43,8 +38,6 @@ module.exports = function AutoX(props) {
   }, []);
   
   // console.log('cfg = ', cfg)
-
-  // console.log('getClassName = ', getClassName())
 
   return <div
     className={getClassName()}

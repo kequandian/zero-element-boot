@@ -15,8 +15,8 @@ export default forwardRef(function HoverShadowCart(props, ref) {
    * shadow       0 2px 8px rgba(0, 0, 0, 0.15)
    */
 
-  const { 
-    children, fill = '#ffffff', corner = '4px', stroke = 'solid', linewidth = '1px', 
+  const {
+    children, fill = '#ffffff', corner = '4px', stroke = 'solid', linewidth = '1px',
     margin = '6px', padding = '10px', shadow = '0 2px 8px rgba(0, 0, 0, 0.15)', lineColor = '#d0cdcd' } = props;
 
   const [onHover, setOnHover] = useState(false);
@@ -44,19 +44,27 @@ export default forwardRef(function HoverShadowCart(props, ref) {
   }
 
   return React.Children.map(children, child => {
-    return <div className='c-hoverShadowCart-item' style={{
-      margin: `${margin}`,
-      padding: `${padding}`,
-      borderRadius: `${corner}`,
-      background: `${bgColor}`,
-      borderStyle: `${stroke}`,
-      boxShadow: `${showShadow}`,
-      borderWidth: `${linewidth}`,
-      borderColor: `${lineColor}`
-    }}
-      onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
-    >
-      {child}
+    // return <div className='c-hoverShadowCart-item' style={{
+    //   margin: `${margin}`,
+    //   padding: `${padding}`,
+    //   borderRadius: `${corner}`,
+    //   background: `${bgColor}`,
+    //   borderStyle: `${stroke}`,
+    //   boxShadow: `${showShadow}`,
+    //   borderWidth: `${linewidth}`,
+    //   borderColor: `${lineColor}`
+    // }}
+    //   onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
+    // >
+    //   {child}
+    // </div>
+    return <div align="center" style={{position: 'relative'}}>
+      <div className="contener">
+        <div className="txt_init">
+          LOW POLY BACKGROUND</div>
+        <div className="opac">
+          Download</div>
+      </div>
     </div>
   })
 })

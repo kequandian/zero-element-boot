@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const AutoX = require('@/AutoX');
+// const AutoX = require('@/AutoX');
+const AutoComponent = require('@/AutoComponent');
 const presenter = require('@/components/presenter');
 
 /**
@@ -10,9 +11,15 @@ const presenter = require('@/components/presenter');
 
 export default function PresenterDemo(props) {
 
+  const config = {
+    cfgLayout:{
+      path:'PublicLayoutDemo'
+    }
+  }
+
       return (
         <div>
-          <AutoX  allComponents={presenter}/>
+          <AutoComponent config={config}   allComponents={presenter}/>
         </div>
       )
 
