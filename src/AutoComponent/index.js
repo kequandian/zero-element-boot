@@ -36,7 +36,7 @@ module.exports = function AutoComponent(props) {
         })
     }
   }, []);
-
+  
   return <div
     className={getClassName()}
   >

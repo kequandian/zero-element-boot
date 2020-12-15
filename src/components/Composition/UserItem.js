@@ -40,27 +40,23 @@ export default function UserItem(props) {
             }
           }
         },
-        // {
-        //   name: 'Detailed',
-        //   span: 4,
-        //   gateway: {
-        //     name: 'Gateway',
-        //     props: {
-        //       field: 'subTitle',
-        //       converter: {
-        //         subTitle: 'text'
-        //       }
-        //     }
-        //   }
-        // },
       ]
     },
     ...props,
   };
 
+  /**
+   * <div>
+      <AutoComponent config={config} allComponents={presenter}/>
+    </div>
+    <div>
+      <AutoComponent {...props} allComponents={presenter}/>
+    </div>
+
+   */
   return (
     <div>
-      <AutoComponent config={config} allComponents={presenter}/>
+      <AutoComponent {...props} allComponents={presenter}/>
     </div>
   )
 
