@@ -2,11 +2,9 @@ import React, { useImperativeHandle, forwardRef, useState } from 'react';
 
 require('./index.less');
 
-export default forwardRef(function HightlightCart(props, ref) {
+export default forwardRef(function HoverShadowCart(props, ref) {
 
   /**
-   * TODO
-   * 
    * fill         背景
    * corner       圆角
    * stroke       边框
@@ -19,13 +17,14 @@ export default forwardRef(function HightlightCart(props, ref) {
 
   const { 
     children, fill = '#ffffff', corner = '4px', stroke = 'solid', linewidth = '1px', 
-    margin = '6px', padding = '10px', shadow = '', lineColor = '#d0cdcd' } = props;
+    margin = '6px', padding = '10px', shadow = '0 2px 8px rgba(0, 0, 0, 0.15)', lineColor = '#d0cdcd' } = props;
 
   const [onHover, setOnHover] = useState(false);
+  const [onShadow, setShadow] = useState(false);
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `c-HightlightCart`;
+      return `c-HoverShadowCart`;
     }
   }));
 
@@ -35,20 +34,23 @@ export default forwardRef(function HightlightCart(props, ref) {
   }
 
   let bgColor = `${fill}ff`;
+  let showShadow = '';
   if (onHover) {
     bgColor = `${fill}80`;
+    showShadow = shadow;
   } else {
     bgColor = `${fill}ff`;
+    showShadow = '';
   }
 
   return React.Children.map(children, child => {
-    return <div style={{
+    return <div className='c-hoverShadowCart-item' style={{
       margin: `${margin}`,
       padding: `${padding}`,
       borderRadius: `${corner}`,
       background: `${bgColor}`,
       borderStyle: `${stroke}`,
-      boxShadow: `${shadow}`,
+      boxShadow: `${showShadow}`,
       borderWidth: `${linewidth}`,
       borderColor: `${lineColor}`
     }}

@@ -56,7 +56,7 @@ export default function UserItem(props) {
    */
   return (
     <div>
-      <AutoComponent {...props} allComponents={presenter}/>
+      <AutoComponent config={config} allComponents={presenter}/>
     </div>
   )
 

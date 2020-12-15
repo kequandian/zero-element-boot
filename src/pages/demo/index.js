@@ -7,17 +7,20 @@ import NamedLayout from '@/components/NamedLayout';
 const AutoComponent = require('@/AutoComponent');
 
 
+const presenter = require('@/components/presenter');
+
 export default function Demo(props) {
 
   // AutoLoadList && LoadMoreList
-  return <NamedList name="AutoLoadList" API="/api/adm/stat/meta/template/table" spin={Spin}>
-    <NamedLayout name="Align" props={{ align: 'leftAndLastRight' }}>
-      <GetField dataField="data">
-        <Test />
-      </GetField>
-    </NamedLayout>
-  </NamedList>
-  return <AutoComponent />
+  // return <NamedList name="AutoLoadList" API="/api/adm/stat/meta/template/table" spin={Spin}>
+  //   <NamedLayout name="Align" props={{ align: 'leftAndLastRight' }}>
+  //     <GetField dataField="data">
+  //       <Test />
+  //     </GetField>
+  //   </NamedLayout>
+  // </NamedList>
+
+  return <AutoComponent allComponents={presenter} />
 }
 
 

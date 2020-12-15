@@ -10,7 +10,7 @@
       },
       "children": [
         {
-          "name": "Avatar",
+          "name": "Clean",
           "gateway": {
             "name": "Gateway",
             "props": {
@@ -22,7 +22,7 @@
           }
         },
         {
-          "name": "Title",
+          "name": "Butter",
           "gateway": {
             "name": "Gateway",
             "props": {
@@ -35,4 +35,4 @@
         }
       ]
     }
-  }
+}

@@ -51,13 +51,14 @@ export default function TestUserSelection(props) {
         handleQuery('/api/adm/users/testUserList');
     }, []);
 
+    //Cart HoverShadowCart
     const config = {
         items: userList.length > 0 ? userList : [],
         layout: {
             name: 'Flexbox',
             props: {
                 align: 'start',
-                direction: 'column',
+                direction: 'row',
                 line: {
                     Seperator: Seperator,
                     props:{
@@ -65,15 +66,13 @@ export default function TestUserSelection(props) {
                     }
                 },
                 itemStyle:{
-                    itemWidth:'width-100'
+                    itemWidth:'width-25'
                 }
             },
         },
         cart: {
-            name: 'Cart',
+            name: 'HoverShadowCart',
             props: {
-                margin:'',
-                stroke:''
             },
         },
     };
