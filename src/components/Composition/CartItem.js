@@ -1,5 +1,5 @@
 import React from 'react';
-const AutoComponent = require('@/AutoComponentIssue');
+const AutoComponent = require('@/AutoComponent');
 const presenter = require('@/components/presenter');
 
 const requireConfig = require('@/components/Composition/layoutConfig/CartItemLayoutConfig');

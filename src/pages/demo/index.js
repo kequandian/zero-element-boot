@@ -4,7 +4,7 @@ import GetField from '@/components/GetField';
 import AutoCombination from '@/components/AutoCombination';
 import NamedList from '@/components/NamedList';
 import NamedLayout from '@/components/NamedLayout';
-const AutoComponent = require('@/AutoComponentIssue');
+const AutoComponent = require('@/AutoComponent');
 
 
 const presenter = require('@/components/presenter');

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const AutoComponent = require('@/AutoComponentIssue');
+const AutoComponent = require('@/AutoComponent');
 const presenter = require('@/components/presenter');
 
 // const { Clean } = require('@/components/presenter')

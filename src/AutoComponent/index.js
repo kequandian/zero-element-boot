@@ -11,7 +11,7 @@ const promiseAjax = require('@/utils/request');
 //   ...presenter,
 // };
 
-module.exports = function AutoComponent(props) {
+module.exports = function AutoX(props) {
   const parent = module.parents[0];
 
   const { config = requireConfig(parent), allComponents={} } = props;
@@ -27,10 +27,13 @@ module.exports = function AutoComponent(props) {
       parentPath = reg[1];
     }
 
-    // console.log('parent = ', parent)
+    
+    console.log('parent111 = ', parent)
+    console.log('reg111 = ', reg)
+    console.log('parentPath111 = ', parentPath)
 
     if (cfg === undefined) {
-      promiseAjax(`/${parentPath}.json`, {
+      promiseAjax(`/${parentPath}/layout.json`, {
         _t: new Date().getTime(),
       })
         .then(data => {
@@ -39,6 +42,10 @@ module.exports = function AutoComponent(props) {
     }
   }, []);
   
+  // console.log('cfg = ', cfg)
+
+  // console.log('getClassName = ', getClassName())
+
   return <div
     className={getClassName()}
   >
@@ -63,4 +70,4 @@ module.exports = function AutoComponent(props) {
 
 function tips(name) {
   return _ => `${name} 未定义`;
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+}
