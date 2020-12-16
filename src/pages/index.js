@@ -8,5 +8,5 @@ import PublicLayoutDemo from '@/pages/PublicLayoutDemo';
 
 export default function Index(props) {
 
-  return <PublicLayoutDemo/>
+  return <PlainListDemo/>
 }
