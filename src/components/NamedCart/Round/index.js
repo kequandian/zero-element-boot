@@ -24,14 +24,39 @@ export default forwardRef(function Round(props, ref) {
     }
   }));
 
+  //获取height并计算圆角的值
   const radiusSize = parseInt(size.height/2);
-  
-  return React.Children.map(children, child => {
-    return <div 
-      style={{ borderStyle:`solid`, borderRadius: `${radiusSize}px`, background: `${fill}`, borderColor:`${stroke}`, borderWidth:`${lineWidth}px` }}
+
+  /**
+   * <div 
+      style={{ 
+        borderStyle:`solid`, borderRadius: `${radiusSize}px`, background: `${fill}`, borderColor:`${stroke}`, borderWidth:`${lineWidth}px`,
+        fontSize: '16px' }}
       ref={containerRef}
       >
       {child}
     </div>
+
+    <svg ref={containerRef}>
+        <rect x="5" y="5" rx={radiusSize} ry={radiusSize} width={size.width} height={size} style="fill:red;stroke:black;stroke-width:5;opacity:0.5">
+         {child}
+        </rect>
+      </svg>
+   */
+  
+  return React.Children.map(children, child => {
+    return (
+      <>
+        <div 
+          style={{ 
+            borderStyle:`solid`, borderRadius: `${radiusSize}px`, background: `${fill}`, borderColor:`${stroke}`, borderWidth:`${lineWidth}px`,
+            fontSize: '16px' }}
+          ref={containerRef}
+          >
+          {child}
+        </div>
+      </>
+    )
+    
   })
 })

@@ -14,8 +14,6 @@ const useUaasTestUser = require('@/utils/useUaasTestUser');
 
 const promiseAjax = require('@/utils/request');
 
-const { Seperator } = require('@/components/presenter')
-
 /**
  * hook callback 参考
  * https://stackoverflow.com/questions/54954091/how-to-use-callback-with-usestate-hook-in-react

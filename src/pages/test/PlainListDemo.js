@@ -10,7 +10,7 @@ export default function PlainListDemo(props){
 
     /**
      * cart 
-     * name: '', ( Cart, HoverShadowCart)
+     * name: '', ( Cart, HoverShadowCart, HightlightCart)
      */
 
 
@@ -29,7 +29,7 @@ export default function PlainListDemo(props){
             },
         },
         cart:{
-            name: 'HoverShadowCart',
+            name: 'HightlightCart',
             props: {
             },
         }

@@ -6,7 +6,7 @@ export default function (props) {
     //
     const { imgUrl } = props;
 
-    return <div className="image-scaling">
+    return <div className="image-animation">
         <img src={imgUrl} alt="Image" />
     </div>
 

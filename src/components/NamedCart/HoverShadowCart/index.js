@@ -17,7 +17,7 @@ export default forwardRef(function HoverShadowCart(props, ref) {
 
   const {
     children, fill = '#ffffff', corner = '4px', stroke = 'solid', linewidth = '1px',
-    margin = '6px', padding = '10px', shadow = '0 0px 10px rgba(0, 0, 0, 0.15)', lineColor = '#d0cdcd' } = props;
+    margin = '6px', padding = '10px', shadow = '0 0px 10px rgba(0, 0, 0, 0.15)', lineColor = '#DFE1E5' } = props;
 
   const [onHover, setOnHover] = useState(false);
 
