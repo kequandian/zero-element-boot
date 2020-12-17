@@ -9,5 +9,5 @@ import ImageAnimationDemo from '@/pages/test/ImageAnimationDemo';
 
 export default function Index(props) {
 
-  return <PlainListDemo/>
+  return <ImageAnimationDemo/>
 }

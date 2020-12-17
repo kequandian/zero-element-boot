@@ -5,21 +5,14 @@ require('./index.less');
 export default forwardRef(function HightlightCart(props, ref) {
 
   /**
-   * TODO
    * 
    * fill         背景
-   * corner       圆角
-   * stroke       边框
-   * linewidth    边框线框
    * margin       边距
    * padding      内距
    * 
-   * shadow       0 2px 8px rgba(0, 0, 0, 0.15)
    */
 
-  const { 
-    children, fill = '#ffffff', corner = '4px', stroke = 'solid', linewidth = '1px', 
-    margin = '6px', padding = '10px', shadow = '', lineColor = '#d0cdcd' } = props;
+  const {  children, fill = '#ffffff',  margin = '6px', padding = '10px' } = props;
 
   const [onHover, setOnHover] = useState(false);
 
@@ -36,7 +29,7 @@ export default forwardRef(function HightlightCart(props, ref) {
 
   let bgColor = `${fill}ff`;
   if (onHover) {
-    bgColor = `${fill}80`;
+    bgColor = `${fill}8C`;
   } else {
     bgColor = `${fill}ff`;
   }
@@ -45,12 +38,7 @@ export default forwardRef(function HightlightCart(props, ref) {
     return <div style={{
       margin: `${margin}`,
       padding: `${padding}`,
-      borderRadius: `${corner}`,
       background: `${bgColor}`,
-      borderStyle: `${stroke}`,
-      boxShadow: `${shadow}`,
-      borderWidth: `${linewidth}`,
-      borderColor: `${lineColor}`
     }}
       onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
     >

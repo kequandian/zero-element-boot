@@ -5,11 +5,9 @@ require('./index.less');
 
 export default forwardRef(function Round(props, ref) {
 
-  
   const containerRef = useRef();
   const size = useSize(containerRef);
   
-
   /**
    * fill       背景色
    * stroke     线框色

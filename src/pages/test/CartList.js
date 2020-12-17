@@ -1,8 +1,6 @@
 import React from 'react';
 const AutoComponentL2 = require('@/AutoComponentL2');
 
-const requireConfig = require('@/components/Composition/layoutConfig/CartItemLayoutConfig');
-
 export default function CartList(props) {
 
   const config = {
@@ -27,10 +25,6 @@ export default function CartList(props) {
       ]
     },
   };
-
-  if(!config.layout){
-    config.layout = requireConfig.layout;
-  }
 
   return  <AutoComponentL2 config={config} />
 

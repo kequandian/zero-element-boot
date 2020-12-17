@@ -4,6 +4,7 @@ import Rectangle from './Rectangle';
 import Corner from './Corner';
 import Round from './Round';
 import HoverShadowCart from './HoverShadowCart';
+import HightlightCart from './HightlightCart';
 
 export {
     Shape,
@@ -11,4 +12,5 @@ export {
     Rectangle,
     Round,
     HoverShadowCart,
+    HightlightCart,
 }

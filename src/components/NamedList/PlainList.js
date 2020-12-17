@@ -5,7 +5,7 @@ import ContainerContext from '@/utils/ContainerContext';
 
 
 export default function PlainList(props) {
-  const { children, items, layout, cart, onItemClick } = props;
+  const { children, items, layout, cart, onItemClick= () => {console.log('未设置onItemClick点击时间')} } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
   const size = useSize(containerRef);

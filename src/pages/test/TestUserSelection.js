@@ -58,7 +58,7 @@ export default function TestUserSelection(props) {
             name: 'Flexbox',
             props: {
                 align: 'start',
-                direction: 'row',
+                direction: 'column',
                 line: {
                     Seperator: Seperator,
                     props:{

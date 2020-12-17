@@ -46,9 +46,9 @@ export default function UserItem(props) {
   };
 
   return (
-    <div>
+    <>
       <AutoComponent config={config} allComponents={presenter}/>
-    </div>
+    </>
   )
 
 }

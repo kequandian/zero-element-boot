@@ -2,8 +2,6 @@ import React from 'react';
 const AutoComponent = require('@/AutoComponent');
 const presenter = require('@/components/presenter');
 
-const requireConfig = require('@/components/Composition/layoutConfig/CartItemLayoutConfig');
-
 export default function CartItem(props) {
 
   const config = {
@@ -56,10 +54,6 @@ export default function CartItem(props) {
     },
     ...props,
   };
-
-  if (!config.layout) {
-    config.layout = requireConfig.layout;
-  }
 
   // <div style={{ minWidth: '300px', margin: '5px', padding: '20px', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
 

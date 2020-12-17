@@ -29,7 +29,7 @@ export default function PlainListDemo(props){
             },
         },
         cart:{
-            name: 'HightlightCart',
+            name: 'HoverShadowCart',
             props: {
             },
         }

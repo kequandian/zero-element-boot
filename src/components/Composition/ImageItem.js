@@ -34,9 +34,9 @@ export default function ImageItem(props) {
   };
 
   return (
-    <div>
+    <>
       <AutoComponent config={config} allComponents={presenter}/>
-    </div>
+    </>
   )
 
 }
