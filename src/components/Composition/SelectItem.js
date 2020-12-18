@@ -4,6 +4,8 @@ const presenter = require('@/components/presenter');
 
 export default function SelectItem(props) {
 
+  const { item_index, curr_index } = props;
+
   const config = {
     layout: {
       name: 'Grid',
@@ -28,8 +30,6 @@ export default function SelectItem(props) {
     },
     ...props,
   };
-
-  // <div style={{ minWidth: '300px', margin: '5px', padding: '20px', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
 
   return (
     <div style={{ minWidth: '200px'}} >

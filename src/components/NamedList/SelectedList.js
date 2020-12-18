@@ -15,7 +15,6 @@ export default function SelectedList(props) {
   const [curr_index, setCurrIndex] = useState(0)
 
   function onSelected (index) {
-    console.log('当前 = ', index)
     setCurrIndex(index)
   }
 

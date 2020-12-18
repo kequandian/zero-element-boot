@@ -13,7 +13,7 @@ require('./index.less');
 
 export default forwardRef(function SelectBox(props, ref) {
 
-  const { children, align = '', direction = '', itemStyle={}, line = {}, isValidLine, item_index, curr_index } = props;
+  const { children, align = '', direction = '', itemStyle={}, line = {}, isValidLine} = props;
 
   // itemStyle 控制 child 样式
   const { itemWidth='', itemAlign='' } = itemStyle;
@@ -34,10 +34,7 @@ export default forwardRef(function SelectBox(props, ref) {
     props.onItemClick(props)
   }
 
-  
   const [onHover, setOnHover] = useState(false);
-
-
 
   return React.Children.map(children, child => {
     const childProps = child.props;
