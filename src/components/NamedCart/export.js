@@ -5,6 +5,7 @@ import Corner from './Corner';
 import Round from './Round';
 import HoverShadowCart from './HoverShadowCart';
 import HightlightCart from './HightlightCart';
+import SelectCart from './SelectCart';
 
 export {
     Shape,
@@ -13,4 +14,5 @@ export {
     Round,
     HoverShadowCart,
     HightlightCart,
+    SelectCart,
 }

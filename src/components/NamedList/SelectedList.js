@@ -1,16 +1,23 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSize } from 'ahooks';
 import useLayout from '@/utils/useLayout';
 import ContainerContext from '@/utils/ContainerContext';
 
 
-export default function PlainList(props) {
+export default function SelectedList(props) {
   const { children, items, layout, cart, onItemClick= () => {console.log('未设置onItemClick点击事件')} } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
   const size = useSize(containerRef);
 
   const Child = React.Children.only(children);
+
+  const [curr_index, setCurrIndex] = useState(0)
+
+  function onSelected (index) {
+    console.log('当前 = ', index)
+    setCurrIndex(index)
+  }
 
   return <div
     style={{
@@ -29,10 +36,17 @@ export default function PlainList(props) {
                 cart:cart,
                 key: i,
                 ref: layoutRef,
-                onItemClick:onItemClick,
+                onItemClick: onItemClick,
                 isValidLine: items.length == (i+1) ? false : true,
+                onSelected: onSelected,
+                item_index: i,
+                curr_index : curr_index
             })
-            : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef} onItemClick={onItemClick} />)}
+            : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef} onItemClick={onItemClick} 
+            onSelected={onSelected}
+            item_index= {i}
+            curr_index= {curr_index}
+            />)}
     </ContainerContext.Provider>
   </div>
 }

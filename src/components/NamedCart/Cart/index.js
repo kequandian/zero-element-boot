@@ -17,7 +17,7 @@ export default forwardRef(function Cart(props, ref) {
 
   const { 
     children, fill = '#ffffff', corner = '4px', stroke = 'solid', linewidth = '1px', 
-    margin = '6px', padding = '10px', shadow = '', lineColor = '#d0cdcd' } = props;
+    margin = '6px', padding = '10px', shadow = '', lineColor = '#7e2df0' } = props;
 
   const [onHover, setOnHover] = useState(false);
 
