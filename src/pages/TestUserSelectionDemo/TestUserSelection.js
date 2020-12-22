@@ -64,13 +64,16 @@ export default function TestUserSelection(props) {
                     }
                 },
                 itemStyle:{
-                    itemWidth:'width-25'
+                    itemWidth:'width-100'
                 }
             },
         },
         cart: {
-            name: 'HoverShadowCart',
+            name: 'Cart',
             props: {
+                corner:'',
+                margin:'',
+                stroke:''
             },
         },
     };
