@@ -1,7 +1,7 @@
 const React = require('react');
 const promiseAjax = require('@/utils/request');
-const NamedListSet = require('./export');
-const formatData = require('./formatData');
+const NamedListSet = require('../../core');
+const formatData = require('../../components/list/formatData');
 
 export default function NamedList({ name, API, props, children, spin = '' }) {
   const NamedList = NamedListSet[name] || tips(name);

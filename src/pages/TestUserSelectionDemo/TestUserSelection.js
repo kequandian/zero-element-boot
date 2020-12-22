@@ -6,7 +6,10 @@ import React, { useState, useEffect } from 'react';
 
 const { UserItem } = require('@/components/composition/Demo');
 
-import { PlainList, NamedLayout, NamedCart } from "@/export";
+import { NamedLayout, NamedCart } from "@/core";
+
+import { PlainList } from "@/components/list";
+
 
 const useUaasTestUser = require('@/pages/TestUserSelectionDemo/hooks/useUaasTestUser');
 
