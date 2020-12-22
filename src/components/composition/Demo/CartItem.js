@@ -1,8 +1,14 @@
 import React from 'react';
 const AutoComponent = require('@/core/AutoComponent');
-const presenter = require('@/components/presenter/default');
+
+const { Avatar, Title } = require('@/components/presenter/demo');
 
 export default function CartItem(props) {
+
+  const allComponents = {
+    Avatar,
+    Title
+  }
 
   const config = {
     layout: {
@@ -61,7 +67,7 @@ export default function CartItem(props) {
 
 
     <div style={{ minWidth: '300px', padding: '20px',  }} >
-      <AutoComponent config={config} allComponents={presenter}/>
+      <AutoComponent config={config} allComponents={allComponents}/>
     </div>
   )
 

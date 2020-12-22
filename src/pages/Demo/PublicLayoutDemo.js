@@ -9,7 +9,7 @@ const presenter = require('@/components/presenter/default');
  * https://codepen.io/dianachoi/pen/NaqebB 
  */
 
-export default function PresenterDemo(props) {
+export default function PublicLayoutDemo(props) {
 
   const config = {
     cfgLayout:{

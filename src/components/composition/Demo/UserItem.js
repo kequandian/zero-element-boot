@@ -1,9 +1,15 @@
 import React from 'react';
 const AutoComponent = require('@/core/AutoComponent');
 
-const presenter = require('@/components/presenter/default');
+const { Avatar, Title } = require('@/components/presenter/demo');
 
 export default function UserItem(props) {
+
+
+  const allComponents = {
+    Avatar,
+    Title
+  }
 
   const config = {
     layout: {
@@ -11,8 +17,8 @@ export default function UserItem(props) {
       props: {
         align: 'start',
         direction: 'row',
-        itemStyle:{
-          itemAlign:'v-center'
+        itemStyle: {
+          itemAlign: 'v-center'
         }
       },
       children: [
@@ -47,7 +53,7 @@ export default function UserItem(props) {
 
   return (
     <>
-      <AutoComponent config={config} allComponents={presenter}/>
+      <AutoComponent config={config} allComponents={allComponents} />
     </>
   )
 

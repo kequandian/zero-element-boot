@@ -8,7 +8,6 @@ import HightlightCart from './HightlightCart';
 import SelectCart from './SelectCart';
 
 export {
-    NamedCart,
     Shape,
     Cart,
     Rectangle,

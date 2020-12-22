@@ -1,5 +1,5 @@
 
-import Seperator from './seperator';
+import { Seperator } from './seperator';
 
 export {
   Seperator

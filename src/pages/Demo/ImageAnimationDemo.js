@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 
 const { ImageItem } = require('@/components/composition/Demo');
 
-import { PlainList, NamedLayout, NamedCart } from "@/";
+import { PlainList, NamedLayout, NamedCart } from "@/export";
 
 import listData from '../../../mock/data/UserListData';
 

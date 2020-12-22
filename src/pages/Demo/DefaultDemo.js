@@ -1,6 +1,6 @@
 import React from 'react';
 import { Spin } from 'antd';
-import GetField from '@/components/GetField';
+import GetField from '@/components/gateway/GetField';
 import AutoCombination from '@/core/AutoCombination';
 import NamedList from '@/components/list';
 import NamedLayout from '@/core/NamedLayout';

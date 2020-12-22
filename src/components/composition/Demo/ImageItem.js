@@ -1,9 +1,13 @@
 import React from 'react';
 const AutoComponent = require('@/core/AutoComponent');
 
-const presenter = require('@/components/presenter/default');
+const { ImageAnimation } = require('@/components/presenter/demo');
 
 export default function ImageItem(props) {
+
+  const allComponents = {
+    ImageAnimation
+  }
 
   const config = {
     layout: {
@@ -11,8 +15,8 @@ export default function ImageItem(props) {
       props: {
         align: 'start',
         direction: 'row',
-        itemStyle:{
-          itemAlign:'v-center'
+        itemStyle: {
+          itemAlign: 'v-center'
         }
       },
       children: [
@@ -35,7 +39,7 @@ export default function ImageItem(props) {
 
   return (
     <>
-      <AutoComponent config={config} allComponents={presenter}/>
+      <AutoComponent config={config} allComponents={allComponents} />
     </>
   )
 

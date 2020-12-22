@@ -3,7 +3,7 @@ const NamedLayout = require('@/core/NamedLayout');
 const presenter = require('@/components/presenter/default');
 const composition = require('@/components/composition/Demo');
 const useLayout = require('@/hooks/useLayout');
-const GateWay = require('@/components/GateWay');
+const GateWay = require('@/components/gateway/GateWay');
 const requireConfig = require('@/utils/requireConfig');
 
 //TODO 参照 /AutoComponent/index.js

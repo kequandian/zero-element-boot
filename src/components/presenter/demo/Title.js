@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function (props) {
 
-    const { title } = props;
+    const { TitleText } = props;
 
-    return <div style={{marginLeft:'6px'}}>{title}</div>
+    return <div style={{marginLeft:'6px'}}>{TitleText}</div>
 }
