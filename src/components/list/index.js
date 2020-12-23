@@ -5,5 +5,5 @@ import PlainList from './PlainList';
 export {
   AutoLoadList,
   LoadMoreList,
-  PlainList,
+  PlainList
 }

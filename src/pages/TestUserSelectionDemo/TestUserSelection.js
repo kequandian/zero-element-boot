@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react';
 // import NamedLayout from '@/components/NamedLayout';
 // import NamedCart from '@/components/NamedCart';
 
-const { UserItem } = require('@/components/composition/Demo');
+const { UserItem } = require('@/composition/Demo');
 
-import { NamedLayout, NamedCart } from "@/core";
+import { NamedLayout, NamedCart } from "@/components";
 
 import { PlainList } from "@/components/list";
 
@@ -15,7 +15,7 @@ const useUaasTestUser = require('@/pages/TestUserSelectionDemo/hooks/useUaasTest
 
 const promiseAjax = require('@/utils/request');
 
-const { Seperator } = require('@/components/presenter')
+const { Seperator } = require('@/presenter')
 
 /**
  * hook callback 参考

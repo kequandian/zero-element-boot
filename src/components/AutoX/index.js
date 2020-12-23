@@ -1,10 +1,10 @@
 const React = require('react');
 const { useState, useEffect } = require('react');
-const NamedLayout = require('@/core/NamedLayout');
+const NamedLayout = require('@/components/NamedLayout');
 // const presenter = require('@/components/presenter');
 const useLayout = require('@/hooks/useLayout');
 const GateWay = require('@/components/GateWay');
-const requireConfig = require('@/utils/requireConfig');
+const requireConfig = require('@/components/AutoX/requireConfig');
 const promiseAjax = require('@/utils/request');
 
 // const allComponents = {

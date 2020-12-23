@@ -1,7 +1,7 @@
 import React from 'react';
-const AutoComponent = require('@/core/AutoComponent');
+const AutoComponent = require('@/components/AutoComponentL2');
 
-const { Avatar, Title } = require('@/components/presenter/demo');
+const { Avatar, Title } = require('@/presenter/demo');
 
 export default function CartItem(props) {
 

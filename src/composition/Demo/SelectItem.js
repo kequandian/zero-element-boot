@@ -1,6 +1,6 @@
 import React from 'react';
-const AutoComponent = require('@/core/AutoComponent');
-const presenter = require('@/components/presenter/default');
+const AutoComponent = require('@/components/AutoComponentL2');
+const presenter = require('@/presenter/default');
 
 export default function SelectItem(props) {
 

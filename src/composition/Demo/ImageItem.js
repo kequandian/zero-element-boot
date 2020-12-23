@@ -1,14 +1,12 @@
 import React from 'react';
-const AutoComponent = require('@/core/AutoComponent');
+const AutoComponent = require('@/components/AutoComponentL2');
 
-const { Avatar, Title } = require('@/components/presenter/demo');
+const { ImageAnimation } = require('@/presenter/demo');
 
-export default function UserItem(props) {
-
+export default function ImageItem(props) {
 
   const allComponents = {
-    Avatar,
-    Title
+    ImageAnimation
   }
 
   const config = {
@@ -23,25 +21,13 @@ export default function UserItem(props) {
       },
       children: [
         {
-          name: 'Avatar',
+          name: 'ImageAnimation',
           gateway: {
             name: 'Gateway',
             props: {
               field: 'avatar',
               converter: {
-                avatar: 'avatarIcon'
-              }
-            }
-          }
-        },
-        {
-          name: 'Title',
-          gateway: {
-            name: 'Gateway',
-            props: {
-              field: 'account',
-              converter: {
-                account: 'TitleText'
+                avatar: 'imgUrl'
               }
             }
           }

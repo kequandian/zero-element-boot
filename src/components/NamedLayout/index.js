@@ -1,7 +1,7 @@
 const React = require('react');
 const { useImperativeHandle, forwardRef } = require('react');
 const useLayout = require('@/hooks/useLayout');
-const LayoutSet = require('../../components/layout');
+const LayoutSet = require('../layout');
 
 module.exports = forwardRef(function NamedLayout({ name, props, layout, cart={}, isValidLine=true, children, ...rest }, ref) {
   const [layoutRef, { getClassName }] = useLayout();

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useSize } from 'ahooks';
 import useLayout from '@/hooks/useLayout';
-import ContainerContext from '@/utils/ContainerContext';
+import ContainerContext from '@/components/NamedList/ContainerContext';
 
 
 export default function SelectedList(props) {

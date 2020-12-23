@@ -1,17 +1,17 @@
 const React = require('react');
 const { useState, useEffect } = require('react');
-const NamedLayout = require('@/core/NamedLayout');
-// const presenter = require('@/components/presenter');
-const useLayout = require('@/hooks/useLayout');
+const NamedLayout = require('@/components/NamedLayout');
 const GateWay = require('@/components/gateway/GateWay');
-const requireConfig = require('@/utils/requireConfig');
+const useLayout = require('@/hooks/useLayout');
+const requireConfig = require('@/components/AutoX/requireConfig');
 const promiseAjax = require('@/utils/request');
 
+// const presenter = require('@/components/presenter');
 // const allComponents = {
 //   ...presenter,
 // };
 
-module.exports = function AutoComponent(props) {
+module.exports = function (props) {
   const parent = module.parents[0];
 
   const { config = requireConfig(parent), allComponents={} } = props;

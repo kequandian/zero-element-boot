@@ -1,10 +1,10 @@
 import React from 'react';
 
 import PlainList from '@/components/list/PlainList';
-import NamedLayout from '@/core/NamedLayout';
-import NamedCart from '@/core/NamedCart';
+import NamedLayout from '@/components/NamedLayout';
+import NamedCart from '@/components/NamedCart';
 
-const { CartItem } = require('@/components/composition/Demo')
+const { CartItem } = require('@/composition/Demo')
 
 export default function PlainListDemo(props){
 

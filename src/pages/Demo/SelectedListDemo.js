@@ -1,10 +1,10 @@
 import React from 'react';
 
 import SelectedList from '@/components/list/SelectedList';
-import NamedLayout from '@/core/NamedLayout';
-import NamedCart from '@/core/NamedCart';
+import NamedLayout from '@/components/NamedLayout';
+import NamedCart from '@/components/NamedCart';
 
-const { SelectItem } = require('@/components/composition/Demo')
+const { SelectItem } = require('@/composition/Demo')
 
 export default function SelectedListDemo(props){
 
