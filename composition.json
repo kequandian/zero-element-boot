@@ -1,51 +1,57 @@
 {
-    "props": 
-    {
-        "items": [],
-        "tabs": {}
-    },
+    "items": [
+     {"sex":"Male","name":"Title#1"},       
+     {"sex":"Female","name":"Title#2"}
+    ],
+    "data":{},
     "layout": 
-    {
-        "name": "Grid",
-        "props":
-        {
-           "cols": 4
-        }
-    },
-    "children": [
-        {
-            "name": "NamedList",
-            "span": 1,
-            "gateway": 
-            {
-                "name": "Gateway",
-                "props": 
-                {
-                    "field": "items",
-                    "converter":
-                    {
-                        "name": "title",
-                        "sex": "gender"
-                    }
-                }
-            }
-        },
-        {
-            "name": " Tab",
-            "span": 1,
-            "gateway":
+     {
+         "name": "Grid",
+         "props":{"cols": 4},
+         "children":[
              {
-                "name": "Gateway",
-                "props":
-                {
-                   "field": "items"
-                }
-            }
-        },
-        {
-            "name": " Tab",
-            "span": 1,
-            "gateway": "MyDefinedGateway"
-        }
-    ]
-}
+                 "name": "List",
+                 "span": 1,
+                 "width": "400px",
+                 "seperator": "Divider",
+                 "cart":
+                 {
+                    "name": "Cart",
+                    "props": 
+                    {
+                       "fill": "#1fe"
+                    }
+                 },
+                 "gateway": 
+                 {
+                     "name": "Gateway",
+                     "props": 
+                     {
+                         "field": "items",
+                         "filter":
+                         {
+                             "name": "title",
+                             "sex": "gender"
+                         }
+                     }
+                 }
+             },
+             {
+                 "name": " Tab",
+                 "span": 1,
+                 "cart": "NamedCart",
+                 "gateway":
+                 {
+                     "name": "Gateway",
+                     "props": {"field": "data"}
+                 }
+             },
+             {
+                 "name": " Tab",
+                 "span": 1,
+                 "cart": "NamedCart",
+                 "gateway": "MyDefinedGateway"
+             }
+         ]
+     }
+ }

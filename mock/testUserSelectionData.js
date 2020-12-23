@@ -31,7 +31,7 @@ export default {
       },
       {
         "account": "inspector",
-        "avatar": "https://media.geeksforgeeks.org/wp-content/uploads/20200403151026/adblur_gfg.png",
+        "avatar": "https://avatars1.githubusercontent.com/u/5188650?s=460&u=91bfbfeaa3ed601f2060af7a84e29c0859ca5e8e&v=4",
         "bUserType": "SYSTEM",
         "birthday": "1997-05-05 00:00:00",
         "createtime": "2020-10-08 16:17:37",
@@ -58,7 +58,7 @@ export default {
       },
       {
         "account": "13660456789",
-        "avatar": null,
+        "avatar": "https://avatars1.githubusercontent.com/u/35095695?s=460&v=4",
         "bUserType": "USER",
         "birthday": null,
         "createtime": "2020-10-08 16:18:18",
@@ -85,7 +85,7 @@ export default {
       },
       {
         "account": "13560126665",
-        "avatar": null,
+        "avatar": "https://avatars1.githubusercontent.com/u/37545?s=460&v=4",
         "bUserType": "SYSTEM",
         "birthday": null,
         "createtime": "2020-10-08 16:33:43",
