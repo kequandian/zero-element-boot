@@ -7,9 +7,7 @@ import React from 'react';
  * const demo = { test: 123, foo: 456 }
  * 
  * <GetField dataField="data" data={demo}>
- * 
  *   <Child /> // get props test = 123 foo = 456
- * 
  * </GetField>
  */
 export default function GetField({ children, dataField, itemIndex = 0, ...rest }) {

@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-// import PlainList from '@/components/NamedList/PlainList';
-// import NamedLayout from '@/components/NamedLayout';
-// import NamedCart from '@/components/NamedCart';
-
-const { UserItem } = require('@/composition/Demo');
-
 import { NamedLayout, NamedCart } from "@/components";
 
 import { PlainList } from "@/components/list";
+import { GateWay, GetField } from '@/components/gateway';
 
+
+const { UserItem } = require('@/composition/Demo');
+const { Seperator } = require('@/presenter')
 
 const useUaasTestUser = require('@/pages/TestUserSelectionDemo/hooks/useUaasTestUser');
-
 const promiseAjax = require('@/utils/request');
 
-const { Seperator } = require('@/presenter')
 
 /**
  * hook callback 参考
@@ -90,9 +86,11 @@ export default function TestUserSelection(props) {
     return (
         <PlainList {...config} onItemClick={onClick}>
             <NamedLayout>
-                <NamedCart>
-                    <UserItem />
-                </NamedCart>
+                <GetField dataField="cart">
+                    <NamedCart> 
+                        <UserItem />
+                    </NamedCart>
+                </GetField>
             </NamedLayout>
         </PlainList>
     )

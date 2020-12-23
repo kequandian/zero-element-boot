@@ -1,7 +1,9 @@
 const React = require('react');
 const { useState, useEffect } = require('react');
-const NamedLayout = require('@/components/NamedLayout');
-const GateWay = require('@/components/gateway/GateWay');
+const {NamedLayout, NamedGateway, NamedCart} = require('@/components');
+const {Gateway} = require('@/components/gateway');
+
+
 const useLayout = require('@/hooks/useLayout');
 const requireConfig = require('@/components/AutoX/requireConfig');
 const promiseAjax = require('@/utils/request');
@@ -12,9 +14,10 @@ const promiseAjax = require('@/utils/request');
 // };
 
 module.exports = function (props) {
-  const parent = module.parents[0];
+  const parent = module.parents[0]; //get module name
 
   const { config = requireConfig(parent), allComponents={} } = props;
+
 
   //获取 /public 配置文件所需代码
   //start
@@ -31,7 +34,6 @@ module.exports = function (props) {
   const [layoutRef, { getClassName }] = useLayout();
 
   useEffect(_ => {
-
     if (cfg === undefined) {
       promiseAjax(`/x/${path}/layout.json`, {
         _t: new Date().getTime(),
@@ -51,14 +53,16 @@ module.exports = function (props) {
         {children.map((child, i) => {
           const { name, span, gateway } = child;
           const C = allComponents[name] || tips(name);
+          
           let gatewayProps = { ...restCfg };
           if (gateway && typeof gateway === 'object' && gateway.props) {
             gatewayProps = { ...gatewayProps, ...gateway.props }
           }
 
-          return <GateWay key={i} {...gatewayProps} span={span}>
-            <C name={name} />
-          </GateWay>
+          // each item has its Named Gateway
+          return <Gateway key={i} {...gatewayProps} span={span}>
+               <C name={name} />
+          </Gateway>
         })}
       </NamedLayout>
     ) : ''}

@@ -2,7 +2,7 @@ const React = require('react');
 const { useState, useEffect } = require('react');
 const NamedLayout = require('@/components/NamedLayout');
 const useLayout = require('@/hooks/useLayout');
-const GateWay = require('@/components/gateway/GateWay');
+const Gateway = require('@/components/gateway/Gateway');
 const requireConfig = require('@/components/AutoX/requireConfig');
 const promiseAjax = require('@/utils/request');
 
@@ -56,9 +56,9 @@ module.exports = function (props) {
             gatewayProps = { ...gatewayProps, ...gateway.props }
           }
 
-          return <GateWay key={i} {...gatewayProps} span={span}>
+          return <Gateway key={i} {...gatewayProps} span={span}>
             <C name={name} />
-          </GateWay>
+          </Gateway>
         })}
       </NamedLayout>
     ) : ''}
