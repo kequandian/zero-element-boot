@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useInViewport } from 'ahooks';
 import { useSize } from 'ahooks';
 import useLayout from '@/hooks/useLayout';
-import ContainerContext from '@/components/container/ContainerContext';
+import ContainerContext from '@/components/NamedList/ContainerContext';
 
 export default function AutoLoadList(props) {
   const { onQuery, children, spin = '' } = props;

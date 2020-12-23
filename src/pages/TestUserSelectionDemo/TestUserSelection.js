@@ -4,6 +4,7 @@ import { NamedLayout, NamedCart } from "@/components";
 
 import { PlainList } from "@/components/list";
 import { GateWay, GetField } from '@/components/gateway';
+import { Divider } from '@/components/seperator';
 
 
 const { UserItem } = require('@/composition/Demo');
@@ -57,7 +58,7 @@ export default function TestUserSelection(props) {
                 align: 'start',
                 direction: 'column',
                 line: {
-                    Seperator: Seperator,
+                    Seperator: Divider,
                     props:{
                         lineType:'solid'
                     }

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useSize } from 'ahooks';
 import useLayout from '@/hooks/useLayout';
-import ContainerContext from '@/components/container/ContainerContext';
+import ContainerContext from '@/components/NamedList/ContainerContext';
 
 
 export default function PlainList(props) {

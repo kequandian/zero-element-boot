@@ -1,5 +1,5 @@
 import React, { useImperativeHandle, forwardRef, useContext, useRef } from 'react';
-import ContainerContext from '@/components/container/ContainerContext';
+import ContainerContext from '@/components/NamedList/ContainerContext';
 
 export default forwardRef(function WrappedGrid({ children, col = 3 }, ref) {
   const size = useContext(ContainerContext);

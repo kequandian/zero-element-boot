@@ -1,6 +1,6 @@
 
-import Seperator from './Seperator';
+import Divider from './Divider';
 
 export {
-  Seperator
+  Divider
 }
