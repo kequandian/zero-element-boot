@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import { NamedLayout, NamedCart } from "@/components";
+import { NamedList, NamedLayout, NamedCart } from "@/components";
 
-import { PlainList } from "@/components/list";
-import { GateWay, GetField } from '@/components/gateway';
 import { Divider } from '@/components/seperator';
 
-
 const { UserItem } = require('@/composition/Demo');
-const { Seperator } = require('@/presenter')
 
-const useUaasTestUser = require('@/pages/TestUserSelectionDemo/hooks/useUaasTestUser');
+// const useUaasTestUser = require('@/pages/TestUserSelectionDemo/hooks/useUaasTestUser');
 const promiseAjax = require('@/utils/request');
 
 
@@ -27,12 +23,12 @@ export default function TestUserSelection(props) {
 
     // const endpoint = 'http://192.168.3.236:8888';
     // const accountToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEwMDAwMDAwMDAwMDAwMDAxMCIsInVzZXJJZCI6Ijg3NjcwODA4MjQzNzE5NzgzMCIsInVzZXJUeXBlIjoxMDEsImJVc2VyVHlwZSI6IlNZU1RFTSIsInRlbmFudE9yZ0lkIjoxMDAwMDAwMDAwMDAwMDAwMTAsImFjY291bnQiOiJhZG1pbiIsImV4dHJhVXNlclR5cGUiOjAsImlhdCI6MTYwNzMwNjU3MywianRpIjoiODc2NzA4MDgyNDM3MTk3ODMwIiwic3ViIjoiYWRtaW4iLCJleHAiOjE2MDc1NjU3NzN9.6J1ozLxN4PO6TpbGPb1-Y77-AyLxWbGY4kmheDiWkksI0w7SyotNSc7rD358bRk9I7pbpCizyBlVbUDbzcIxwQ';
+    const api = '/api/adm/users/testUserList'
 
-    const callBack = (data) => {
-        console.log('token = ', data.token)
-        console.log('permissions = ', data.permissions)
-    }
-
+    // const callBack = (data) => {
+    //     console.log('token = ', data.token)
+    //     console.log('permissions = ', data.permissions)
+    // }
     // const [users, changeUser] = useUaasTestUser({ endpoint, accountToken }, callBack);
 
     const [userList, setUserList] = useState([]);
@@ -46,7 +42,7 @@ export default function TestUserSelection(props) {
     }
 
     useEffect(_ => {
-        handleQuery('/api/adm/users/testUserList');
+        handleQuery(api);
     }, []);
 
     //Cart HoverShadowCart
@@ -85,15 +81,12 @@ export default function TestUserSelection(props) {
     }
 
     return (
-        <PlainList {...config} onItemClick={onClick}>
+        <NamedList name='PlainList' {...config} onItemClick={onClick}>
             <NamedLayout>
-                <GetField dataField="cart">
-                    <NamedCart> 
-                        <UserItem />
-                    </NamedCart>
-                </GetField>
+                <NamedCart name='ItemCart' props={{padding: '12px'}}> 
+                    <UserItem />
+                </NamedCart>
             </NamedLayout>
-        </PlainList>
+        </NamedList>
     )
-
 }

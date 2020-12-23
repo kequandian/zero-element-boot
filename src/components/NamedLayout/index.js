@@ -3,7 +3,7 @@ const { useImperativeHandle, forwardRef } = require('react');
 const useLayout = require('@/hooks/useLayout');
 const LayoutSet = require('../layout');
 
-module.exports = forwardRef(function NamedLayout({ name, props, layout, cart={}, isValidLine=true, children, ...rest }, ref) {
+module.exports = forwardRef(function NamedLayout({ name, props, layout, isValidLine=true, children, ...rest }, ref) {
   const [layoutRef, { getClassName }] = useLayout();
 
   useImperativeHandle(ref, () => ({
@@ -27,7 +27,6 @@ module.exports = forwardRef(function NamedLayout({ name, props, layout, cart={},
     {React.Children.toArray(children).map(child => {
       return React.cloneElement(child, {
         ...rest,
-        cart,
       })
     })}
   </Layout>

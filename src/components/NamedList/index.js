@@ -2,7 +2,7 @@ const React = require('react');
 const NamedListSet = require('../list');
 
 //export default function NamedList({ name, API, props, children, spin = '' }) {
-export default function NamedList({ name, props, children}) {
+export default function NamedList({ name, props, children, ...rest}) {
   const NamedList = NamedListSet[name] || tips(name);
 
   // function handleQuery(queryData) {
@@ -12,7 +12,7 @@ export default function NamedList({ name, props, children}) {
   // }
 
   //return <NamedList {...props} onQuery={handleQuery} spin={spin}>
-  return <NamedList {...props}>
+  return <NamedList {...props} {...rest}>
     {children}
   </NamedList>
 }

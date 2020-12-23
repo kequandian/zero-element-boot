@@ -7,21 +7,9 @@ export default forwardRef(function NamedCart({ name, props, children, ...rest },
 
   const [CartRef, { getClassName }] = useLayout();
 
-
   useImperativeHandle(ref, () => ({
     getClassName: getClassName,
   }));
-
-
-  // if (typeof props === 'string') {
-  //   CartConfig = {
-  //     ...Cart,
-  //     name: props,
-  //   };
-  // } else {
-  //   CartConfig = { ...Cart };
-  // }
-
 
   const NamedCart = CartSet[name] || tips(name);
 
