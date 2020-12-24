@@ -1,6 +1,8 @@
 import React from 'react';
 
 import TestUserSelection from './TestUserSelectionDemo/TestUserSelection';
+import PlainListDemo from './Demo/PlainListDemo';
+import RoundListDemo from './Demo/RoundListDemo';
 
 import { Cart } from "@/components/cart";
 
@@ -13,13 +15,14 @@ export default function index(props) {
   const config = {
     corner:'8px',
     margin:'20px',
-    padding:''
+    padding:'',
+    isOnHover:false
   }
 
   return (
     
     <Cart {...config} >      
-      <TestUserSelection onItemClickHandle={onItemClickHandle} />
+      <RoundListDemo onItemClickHandle={onItemClickHandle} />
     </Cart>
   )
 

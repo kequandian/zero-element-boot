@@ -11,7 +11,9 @@ export default forwardRef(function NamedCart({ name, props, children, ...rest },
     getClassName: getClassName,
   }));
 
-  const NamedCart = CartSet[name] || tips(name);
+  const nameValue = name || rest.cart.name
+
+  const NamedCart = CartSet[nameValue] || tips(nameValue);
 
   return (
       <NamedCart {...props} ref={CartRef}>
