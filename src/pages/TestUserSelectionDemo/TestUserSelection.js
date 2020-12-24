@@ -54,9 +54,7 @@ export default function TestUserSelection(props) {
                 props: {
                     align: 'start',
                     direction: 'column',
-                    line: {
-                        Seperator: Divider
-                    },
+                    seperator: 'Divider',
                     itemStyle:{
                         itemWidth:'width-100'
                     }
@@ -68,11 +66,10 @@ export default function TestUserSelection(props) {
                 props: {
                     padding: '20px'
                 }
-            }
+            }, 
+            gateway: 'Gateway'
         }
     };
-
-    const {template, ...rest} = {...config}
 
     const onClick = (item) => {
         // changeUser(item.id)
@@ -81,7 +78,7 @@ export default function TestUserSelection(props) {
     }
 
     return (
-        <NamedList name='PlainList' {...rest} {...template} onItemClick={onClick}>
+        <NamedList name='PlainList' {...config} onItemClick={onClick}>
             <NamedLayout>
                 <NamedCart name='ItemCart' props={{padding: '12px'}}> 
                     <UserItem />

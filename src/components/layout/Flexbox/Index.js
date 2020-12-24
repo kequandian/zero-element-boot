@@ -14,7 +14,9 @@ require('./index.less');
 
 export default forwardRef(function Flexbox(props, ref) {
 
-  const { children, align = '', direction = '', itemStyle={}, line = {}, isValidLine } = props;
+  const { children, align='', direction='', itemStyle={}, seperator={}, isValidLine } = props;
+
+  console.log('Flexbox:props=', props)
 
   // itemStyle 控制 child 样式
   const { itemWidth='', itemAlign='' } = itemStyle;
@@ -25,8 +27,11 @@ export default forwardRef(function Flexbox(props, ref) {
     }
   }));
 
-  //分割线
-  const Seperator = line.Seperator;
+  // get named seperator
+  var defaultSeperator = 'Divider'
+  if (typeof seperator === 'string'){
+    defaultSeperator = seperator
+  }
 
   return React.Children.map(children, child => {
     return (
@@ -34,9 +39,8 @@ export default forwardRef(function Flexbox(props, ref) {
         <div className={`l-BoxItem ${itemWidth} ${itemAlign}`} onClick={() => child.props.onItemClick(child.props)}>
           {child}
         </div>
-        {Seperator && isValidLine ? <NamedSeperator name='Divider' /> : null}
+        {isValidLine ? <NamedSeperator name={defaultSeperator} /> : null}
       </>
-
     )
   })
 })

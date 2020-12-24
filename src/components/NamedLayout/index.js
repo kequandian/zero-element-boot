@@ -3,31 +3,31 @@ const { useImperativeHandle, forwardRef } = require('react');
 const useLayout = require('@/hooks/useLayout');
 const LayoutSet = require('../layout');
 
-module.exports = forwardRef(function NamedLayout({ name, props, layout, isValidLine=true, children, ...rest }, ref) {
+module.exports = forwardRef(function NamedLayout({children, name, props, layout={name, props}, isValidLine, ...rest }, ref) {
   const [layoutRef, { getClassName }] = useLayout();
+  // console.log('layoutConfig=', layoutConfig, '...layout=', layout)
 
   useImperativeHandle(ref, () => ({
     getClassName: getClassName,
   }));
 
-  let layoutConfig = { ...layout };
+  // if (typeof props === 'string') {
+  //   layoutConfig = { ...layout, isValidLine };
+  // } else {
+  //   layoutConfig = { name, ...props, ...layout, isValidLine };
+  // }
 
-  if (typeof props === 'string') {
-    layoutConfig = {
-      ...layout,
-      isValidLine
-    };
-  } else {
-    layoutConfig = { name, ...props, ...layout, isValidLine };
-  }
+  // retrieve isValidLine for layout
+  const isValidLineConfig = {isValidLine: isValidLine}
 
-  const Layout = LayoutSet[layoutConfig.name] || tips(layoutConfig.name);
+  const Layout = LayoutSet[layout.name] || tips(layout.name);
 
-  return <Layout {...layoutConfig} ref={layoutRef}>
+  return <Layout {...layout.props} {...isValidLineConfig} ref={layoutRef}>
     {React.Children.toArray(children).map(child => {
-      return React.cloneElement(child, {
+      let element = React.cloneElement(child, {
         ...rest,
       })
+      return element;
     })}
   </Layout>
 })
