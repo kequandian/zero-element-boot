@@ -1,4 +1,5 @@
 import React, { useImperativeHandle, forwardRef } from 'react';
+import NamedSeperator from '@/components/NamedSeperator';
 
 require('./index.less');
 
@@ -33,7 +34,7 @@ export default forwardRef(function Flexbox(props, ref) {
         <div className={`l-BoxItem ${itemWidth} ${itemAlign}`} onClick={() => child.props.onItemClick(child.props)}>
           {child}
         </div>
-        {Seperator && isValidLine ? <Seperator {...line.props} /> : null}
+        {Seperator && isValidLine ? <NamedSeperator name='Divider' /> : null}
       </>
 
     )

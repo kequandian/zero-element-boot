@@ -4,7 +4,7 @@ import { NamedList, NamedLayout, NamedCart } from "@/components";
 
 import { Divider } from '@/components/seperator';
 
-const { UserItem } = require('@/composition/Demo');
+const { UserItem } = require('@/presenter/composition');
 
 // const useUaasTestUser = require('@/pages/TestUserSelectionDemo/hooks/useUaasTestUser');
 const promiseAjax = require('@/utils/request');
@@ -48,31 +48,31 @@ export default function TestUserSelection(props) {
     //Cart HoverShadowCart
     const config = {
         items: userList.length > 0 ? userList : [],
-        layout: {
-            name: 'Flexbox',
-            props: {
-                align: 'start',
-                direction: 'column',
-                line: {
-                    Seperator: Divider,
-                    props:{
-                        lineType:'solid'
+        template: {
+            layout: {
+                name: 'Flexbox',
+                props: {
+                    align: 'start',
+                    direction: 'column',
+                    line: {
+                        Seperator: Divider
+                    },
+                    itemStyle:{
+                        itemWidth:'width-100'
                     }
-                },
-                itemStyle:{
-                    itemWidth:'width-100'
                 }
             },
-        },
-        cart: {
-            name: 'Cart',
-            props: {
-                corner:'',
-                margin:'',
-                stroke:''
-            },
-        },
+            seperator: 'Divider',
+            cart:{
+                name: 'ItemCart',
+                props: {
+                    padding: '20px'
+                }
+            }
+        }
     };
+
+    const {template, ...rest} = {...config}
 
     const onClick = (item) => {
         // changeUser(item.id)
@@ -81,7 +81,7 @@ export default function TestUserSelection(props) {
     }
 
     return (
-        <NamedList name='PlainList' {...config} onItemClick={onClick}>
+        <NamedList name='PlainList' {...rest} {...template} onItemClick={onClick}>
             <NamedLayout>
                 <NamedCart name='ItemCart' props={{padding: '12px'}}> 
                     <UserItem />
