@@ -1,9 +1,5 @@
 {
-    "items": [
-     {"sex":"Male","name":"Title#1"},       
-     {"sex":"Female","name":"Title#2"}
-    ],
-    "data":{},
+    "data":{"avatar":"http://url", "gender":"Male","name":"admin#1"},
     "layout": 
      {
          "name": "Grid",
