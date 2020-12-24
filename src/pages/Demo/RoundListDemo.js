@@ -4,7 +4,7 @@ import PlainList from '@/components/list/PlainList';
 import NamedLayout from '@/components/NamedLayout';
 import NamedCart from '@/components/NamedCart';
 
-const { RoundItem } = require('@/composition/Demo')
+const { RoundItem } = require('@/presenter/composition')
 
 export default function RoundListDemo(props){
 

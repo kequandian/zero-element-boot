@@ -22,7 +22,7 @@ export default function index(props) {
   return (
     
     <Cart {...config} >      
-      <RoundListDemo onItemClickHandle={onItemClickHandle} />
+      <TestUserSelection onItemClickHandle={onItemClickHandle} />
     </Cart>
   )
   

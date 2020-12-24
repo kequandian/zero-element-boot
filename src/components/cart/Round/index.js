@@ -14,7 +14,7 @@ export default forwardRef(function Round(props, ref) {
    * lineWidth  线框粗
    */
 
-  const { children, fill = '#1ee', stroke = '#9bd', lineWidth = '2' } = props;
+  const { children } = props;
 
 
   useImperativeHandle(ref, () => ({
@@ -29,7 +29,7 @@ export default forwardRef(function Round(props, ref) {
 
   return React.Children.map(children, child => {
     
-    const { fill = '#1ee', stroke = '#9bd', lineWidth = '2' } = child.props.cart.props;
+    const { fill = '#1ee', stroke = '#9bd', lineWidth = '2' } = props.fill ? props : child.props.cart.props;
 
     const config = {
       corner: radiusSize ? `${radiusSize}px` : '',
