@@ -29,7 +29,7 @@ export default forwardRef(function Round(props, ref) {
 
   return React.Children.map(children, child => {
     
-    const { fill = '#1ee', stroke = '#9bd', lineWidth = '2' } = props.fill ? props : child.props.cart.props;
+    const { fill = '#1ee', stroke = '#9bd', lineWidth = '2' } = props.fill || props.stroke || props.lineWidth ? props : child.props.cart.props;
 
     const config = {
       corner: radiusSize ? `${radiusSize}px` : '',
