@@ -1,11 +1,5 @@
 import React from 'react';
-import { Spin } from 'antd';
-import GetField from '@/components/gateway/GetField';
-import AutoCombination from '@/composition/AutoCombination';
-import NamedList from '@/components/list';
-import NamedLayout from '@/components/NamedLayout';
-const AutoComponent = require('@/components/AutoComponentL2');
-
+const AutoComponent = require('@/components/AutoComponent');
 
 const presenter = require('@/presenter/default');
 

@@ -4,7 +4,7 @@ import { NamedList, NamedLayout, NamedCart } from "@/components";
 
 import { Divider } from '@/components/seperator';
 
-const { UserItem } = require('@/composition/Demo');
+const { UserItem } = require('@/presenter/composition');
 
 // const useUaasTestUser = require('@/pages/TestUserSelectionDemo/hooks/useUaasTestUser');
 const promiseAjax = require('@/utils/request');
@@ -62,16 +62,8 @@ export default function TestUserSelection(props) {
                 itemStyle:{
                     itemWidth:'width-100'
                 }
-            },
-        },
-        cart: {
-            name: 'Cart',
-            props: {
-                corner:'',
-                margin:'',
-                stroke:''
-            },
-        },
+            }
+        }
     };
 
     const onClick = (item) => {

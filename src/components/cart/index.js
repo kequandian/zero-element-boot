@@ -1,6 +1,7 @@
 import Shape from './Shape';
 import Cart from './Cart';
 import ItemCart from './ItemCart';
+import OffsetCart from './OffsetCart';
 import Rectangle from './Rectangle';
 import Corner from './Corner';
 import Round from './Round';
@@ -12,6 +13,7 @@ export {
     Shape,
     Cart,
     ItemCart,
+    OffsetCart,
     Rectangle,
     Round,
     Corner,

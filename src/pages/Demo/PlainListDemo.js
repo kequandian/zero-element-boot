@@ -4,7 +4,7 @@ import PlainList from '@/components/list/PlainList';
 import NamedLayout from '@/components/NamedLayout';
 import NamedCart from '@/components/NamedCart';
 
-const { CartItem } = require('@/composition/Demo')
+const { CartItem } = require('@/presenter/composition')
 
 export default function PlainListDemo(props){
 
