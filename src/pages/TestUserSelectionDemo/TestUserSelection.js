@@ -64,7 +64,7 @@ export default function TestUserSelection(props) {
             cart:{
                 name: 'ItemCart',
                 props: {
-                    padding: '20px'
+                    padding: '20px',
                 }
             }, 
             gateway: 'Gateway'

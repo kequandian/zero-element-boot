@@ -1,14 +1,29 @@
 import React from 'react';
 
-//Demo
-import TestUserSelectionDemo from './TestUserSelectionDemo';
-//Test
-// import IsValidElementTest from './Test/IsValidElementTest';
+import TestUserSelection from './TestUserSelectionDemo/TestUserSelection';
+import PlainListDemo from './Demo/PlainListDemo';
+import RoundListDemo from './Demo/RoundListDemo';
+
+import { Cart } from "@/components/cart";
 
 export default function index(props) {
 
+  const onItemClickHandle = () => {
+      console.log('event to dismiss the component')
+  }
+
+  const config = {
+    corner:'8px',
+    margin:'20px',
+    padding:'',
+    isOnHover:false
+  }
+
   return (
-    <TestUserSelectionDemo />      
+    
+    <Cart {...config} >      
+      <TestUserSelection onItemClickHandle={onItemClickHandle} />
+    </Cart>
   )
   
 }
