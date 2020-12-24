@@ -1,6 +1,6 @@
 const React = require('react');
 
-module.exports = function Gateway({ children, field, filter, converter = {}, ...rest }) {
+module.exports = function Gateway({ children, field, filter, converter, ...rest }) {
 
   let data = { ...rest };
 
@@ -12,10 +12,9 @@ module.exports = function Gateway({ children, field, filter, converter = {}, ...
     }
   } else if(field){
     data = execFieldMap(data, field, converter);
-  } else {
+  } else if(converter) {
     data = execMap(data, converter);
   }
-
   
   return React.cloneElement(children, {
     ...data,
