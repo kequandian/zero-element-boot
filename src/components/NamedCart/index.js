@@ -3,20 +3,25 @@ const { useImperativeHandle, forwardRef,  } = require('react');
 const useLayout = require('@/hooks/useLayout');
 const CartSet = require('../cart');
 
-export default forwardRef(function NamedCart({ name, props, children, ...rest }, ref) {
-
-  const [CartRef, { getClassName }] = useLayout();
+/**
+ * NamedCart负责处理数据传递，具体的Cart[ItemCart, OffsetCart, ...] 不负责处理数据传递
+ */
+export default forwardRef(function NamedCart({children, name, props, cart={name, props}, ...rest }, ref) {
+  const [cartRef, { getClassName }] = useLayout();
 
   useImperativeHandle(ref, () => ({
     getClassName: getClassName,
   }));
 
-  const nameValue = name || rest.cart.name
+  const cartName = (typeof cart === 'string') ? cart : cart.name
 
-  const NamedCart = CartSet[nameValue] || tips(nameValue);
+  const NamedCart = CartSet[cartName] || tips(cartName);
+
+  // ensure only child
+  const Child = React.Children.only(children)
 
   return (
-      <NamedCart {...props} ref={CartRef}>
+      <NamedCart {...cart.props} ref={cartRef}>
         {React.Children.toArray(children).map(child => {
           return React.cloneElement(child, {
             ...rest

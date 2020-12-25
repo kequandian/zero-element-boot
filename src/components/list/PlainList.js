@@ -16,6 +16,7 @@ export default function PlainList(props) {
   const containerRef = useRef();
   const size = useSize(containerRef);
 
+  // ensure only child
   const Child = React.Children.only(children);
 
   return <div

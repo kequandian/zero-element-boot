@@ -1,7 +1,13 @@
 const React = require('react');
 
+/**
+ * 
+ * @param {转换数据域名称,值不变 (如把sex:Male 转换为 gentle:Male) } converter 
+ * @param {仅对指定数据域进行 converter 转换} filter 
+ */
 module.exports = function Gateway({ children, field, filter, converter, ...rest }) {
 
+  // handle data
   let data = { ...rest };
 
   if (filter) {
@@ -12,6 +18,7 @@ module.exports = function Gateway({ children, field, filter, converter, ...rest 
     }
   } else if(field){
     data = execFieldMap(data, field, converter);
+
   } else if(converter) {
     data = execMap(data, converter);
   }
@@ -21,6 +28,12 @@ module.exports = function Gateway({ children, field, filter, converter, ...rest 
   })
 }
 
+/**
+ * 
+ * @param {} data 
+ * @param {*} field 
+ * @param {*} converter 
+ */
 function execFieldMap(data = {}, field, converter) {
 
   var result = { ...data, ...data[field] };
@@ -32,6 +45,10 @@ function execFieldMap(data = {}, field, converter) {
   return result;
 }
 
+
+/*
+ * 转换数据域名称
+*/
 function execMap(data = {}, converter) {
   Object.keys(converter).forEach(key => {
     data[converter[key]] = data[key];

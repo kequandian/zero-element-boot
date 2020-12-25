@@ -16,9 +16,7 @@ export default function UserItem(props) {
       props: {
         align: 'start',
         direction: 'row',
-        itemStyle: {
-          itemAlign: 'v-center'
-        }
+        justify: 'center'
       },
       children: [
         {

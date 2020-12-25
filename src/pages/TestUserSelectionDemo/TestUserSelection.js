@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import { NamedList, NamedLayout, NamedCart } from "@/components";
 
-import { Divider } from '@/components/seperator';
-
 const { UserItem } = require('@/presenter/composition');
 
 // const useUaasTestUser = require('@/pages/TestUserSelectionDemo/hooks/useUaasTestUser');
@@ -54,10 +52,8 @@ export default function TestUserSelection(props) {
                 props: {
                     align: 'start',
                     direction: 'column',
+                    justify: 'full',
                     seperator: 'Divider',
-                    itemStyle:{
-                        itemWidth:'width-100'
-                    }
                 }
             },
             seperator: 'Divider',

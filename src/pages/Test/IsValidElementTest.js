@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash';
 import React from 'react'
 
 const Foo = () => <div>foo</div>;
@@ -13,6 +14,13 @@ class Bar extends React.Component {
 const Gone = () => 0
 
 export default function IsValidElementTest(props) {
+
+    const sep={}
+    console.log('sep?=', sep)
+
+    if(sep.name){
+        console.log('sep...')
+    }
 
     const content = 'string'
 

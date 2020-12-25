@@ -3,6 +3,7 @@ const NamedListSet = require('../list');
 
 //export default function NamedList({ name, API, props, children, spin = '' }) {
 export default function NamedList({ name, props, children, ...rest}) {
+
   const NamedList = NamedListSet[name] || tips(name);
 
   // function handleQuery(queryData) {

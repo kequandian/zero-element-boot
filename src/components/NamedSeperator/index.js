@@ -1,16 +1,13 @@
 const React = require('react');
 const SeperatorSet = require('../seperator');
 
-export default function NamedSeperator({name, props, ...data}) {
-  // get name and props from props
-  if (typeof data === 'string') {
-    name = data
-  }
-  // console.log('name=', name)
+export default function NamedSeperator({name, props, seperator={name, props}}) {
 
-  const Seperator = SeperatorSet[name] || tips(name);
+  const seperatorName = (typeof seperator === 'string') ? seperator : seperator.name
 
-  return <Seperator {...props}/>
+  const Seperator = SeperatorSet[seperatorName] || tips(seperatorName);
+
+  return <Seperator {...seperator.props}/>
 }
 
 function tips(name) {

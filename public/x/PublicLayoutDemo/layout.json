@@ -4,9 +4,7 @@
       "props": {
         "align": "start",
         "direction": "row",
-        "itemStyle":{
-          "itemAlign":"v-center"
-        }
+        "itemAlign":"center"
       },
       "children": [
         {

@@ -3,7 +3,7 @@ const { useImperativeHandle, forwardRef,  } = require('react');
 const useLayout = require('@/hooks/useLayout');
 const ContainerSet = require('../container');
 
-export default forwardRef(function NamedContainer({ name, props, children, ...rest }, ref) {
+export default forwardRef(function NamedContainer({children, name, props, container={name, props}, ...rest }, ref) {
 
   // ref
   const [CartRef, { getClassName }] = useLayout();
@@ -12,11 +12,12 @@ export default forwardRef(function NamedContainer({ name, props, children, ...re
     getClassName: getClassName,
   }));
 
-  // NamedContainerSet
-  const NamedContainer = ContainerSet[name] || tips(name);
+  const containerName = (typeof container === 'string') ? container : container.name
+
+  const NamedContainer = ContainerSet[containerName] || tips(containerName);
 
   return (
-      <NamedContainer {...props} ref={CartRef}>
+      <NamedContainer {...container.props} ref={CartRef}>
         {React.Children.toArray(children).map(child => {
           return React.cloneElement(child, {
             ...rest
