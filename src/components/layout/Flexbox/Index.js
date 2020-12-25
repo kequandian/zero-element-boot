@@ -23,7 +23,7 @@ export default forwardRef(function Flexbox(props, ref) {
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `l-Box ${align} ${direction}`;
+      return `l-FlexBox ${align} ${direction}`;
     }
   }));
 
@@ -36,7 +36,7 @@ export default forwardRef(function Flexbox(props, ref) {
   return React.Children.map(children, child => {
     return (
       <>
-        <div className={`l-BoxItem ${itemWidth} ${itemAlign}`} onClick={() => child.props.onItemClick(child.props)}>
+        <div className={`l-FlexBoxItem ${itemWidth} ${itemAlign}`} onClick={() => child.props.onItemClick(child.props)}>
           {child}
         </div>
         {isValidLine ? <NamedSeperator name={defaultSeperator} /> : null}

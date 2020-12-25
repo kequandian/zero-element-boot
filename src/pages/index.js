@@ -3,6 +3,7 @@ import React from 'react';
 import TestUserSelection from './TestUserSelectionDemo/TestUserSelection';
 import PlainListDemo from './Demo/PlainListDemo';
 import RoundListDemo from './Demo/RoundListDemo';
+import RectangleListDemo from './Demo/RectangleListDemo';
 
 import { Cart } from "@/components/cart";
 
@@ -16,7 +17,6 @@ export default function index(props) {
     corner:'8px',
     margin:'20px',
     padding:'',
-    isOnHover:false
   }
 
   return (
