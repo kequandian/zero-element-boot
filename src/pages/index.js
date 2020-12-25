@@ -4,6 +4,7 @@ import TestUserSelection from './TestUserSelectionDemo/TestUserSelection';
 import PlainListDemo from './Demo/PlainListDemo';
 import RoundListDemo from './Demo/RoundListDemo';
 import RectangleListDemo from './Demo/RectangleListDemo';
+import CircleListDemo from './Demo/CircleListDemo';
 
 import { Cart } from "@/components/cart";
 
@@ -19,11 +20,14 @@ export default function index(props) {
     padding:'',
   }
 
-  return (
-    
-    <Cart {...config} >      
+  /**
+   * <Cart {...config} >      
       <TestUserSelection onItemClickHandle={onItemClickHandle} />
     </Cart>
+   */
+
+  return (
+      <CircleListDemo onItemClickHandle={onItemClickHandle} />
   )
   
 }

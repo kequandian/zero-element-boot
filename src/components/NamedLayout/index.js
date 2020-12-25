@@ -22,6 +22,8 @@ module.exports = forwardRef(function NamedLayout({children, name, props, layout=
 
   const Layout = LayoutSet[layout.name] || tips(layout.name);
 
+  console.log('layout = ', layout);
+
   return <Layout {...layout.props} {...isValidLineConfig} ref={layoutRef}>
     {React.Children.toArray(children).map(child => {
       let element = React.cloneElement(child, {

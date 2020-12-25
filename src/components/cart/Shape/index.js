@@ -21,7 +21,7 @@ export default forwardRef(function Shape(props, ref) {
   }));
 
   return React.Children.map(children, child => {
-    return <div style={{ borderStyle:`solid`, borderRadius: `${corner}`, background: `${fill}`, borderColor:`${stroke}`, borderWidth:`${lineWidth}px` }} >
+    return <div style={{ borderStyle:`${outline}`, borderRadius: `${corner}`, background: `${fill}`, borderColor:`${stroke}`, borderWidth:`${lineWidth}px` }} >
       {child}
     </div>
   })

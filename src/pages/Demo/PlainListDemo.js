@@ -16,10 +16,10 @@ export default function PlainListDemo(props){
 
     const config = {
         items:[
-            {icon:'',  title:'title111',  subTitle:'subTitle111',},
-            {icon:'',  title:'title222',  subTitle:'subTitle222',},
-            {icon:'',  title:'title333',  subTitle:'subTitle333',},
-            {icon:'',  title:'title444',  subTitle:'subTitle444',},
+            {icon:'https://media.geeksforgeeks.org/wp-content/uploads/20200403151026/adblur_gfg.png',  title:'title111',  subTitle:'subTitle111',},
+            {icon:'https://media.geeksforgeeks.org/wp-content/uploads/20200403151026/adblur_gfg.png',  title:'title222',  subTitle:'subTitle222',},
+            {icon:'https://media.geeksforgeeks.org/wp-content/uploads/20200403151026/adblur_gfg.png',  title:'title333',  subTitle:'subTitle333',},
+            {icon:'https://media.geeksforgeeks.org/wp-content/uploads/20200403151026/adblur_gfg.png',  title:'title444',  subTitle:'subTitle444',},
           ],
         layout: {
             name:'Flexbox',
