@@ -4,7 +4,7 @@ import Shape from '../Shape'
 
 require('./index.less');
 
-export default forwardRef(function Corner(props, ref) {
+export default forwardRef(function Circle(props, ref) {
 
   /**
    * corner     圆角
@@ -18,7 +18,7 @@ export default forwardRef(function Corner(props, ref) {
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `c-Corner`;
+      return `c-Circle`;
     }
   }));
 

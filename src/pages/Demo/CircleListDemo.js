@@ -2,15 +2,14 @@ import React from 'react';
 
 import { NamedList, NamedLayout, NamedCart } from "@/components";
 
-const { CartItem } = require('@/presenter/composition')
+const { CircleItem } = require('@/presenter/composition')
 
-export default function PlainListDemo(props) {
+export default function CircleListDemo(props) {
 
     /**
      * cart 
      * name: '', ( Cart, HoverShadowCart, HightlightCart)
      */
-
 
     const config = {
         items: [
@@ -25,26 +24,34 @@ export default function PlainListDemo(props) {
                 props: {
                     align: 'start',
                     direction: 'row',
+                    itemStyle: {
+                        width: 'width-100'
+                    }
                 },
             },
             cart: {
-                name: 'HoverShadowCart',
+                name: 'Circle',
                 props: {
+                    fill:'',
+                    outline:''
                 },
             }
         }
 
-
     };
 
+    const onClick = (item) => {
+        // changeUser(item.id)
+        console.log(item)
+    }
+
     return (
-        <NamedList name='PlainList' {...config} >
+        <NamedList name='PlainList' {...config} onItemClick={onClick}>
             <NamedLayout>
                 <NamedCart>
-                    <CartItem />
+                    <CircleItem />
                 </NamedCart>
             </NamedLayout>
         </NamedList>
-
     )
 }
