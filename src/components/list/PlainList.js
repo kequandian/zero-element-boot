@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useSize } from 'ahooks';
 import useLayout from '@/hooks/useLayout';
-import ContainerContext from '@/components/NamedList/ContainerContext';
+import ContainerContext from '@/components/AutoX/ContainerContext';
 
 /**
  * 列表属性{template}包括 [布局, Cart, 分隔线, 数据转换 [,子组件] ]
@@ -9,8 +9,8 @@ import ContainerContext from '@/components/NamedList/ContainerContext';
  * @param {*} props 
  */
 export default function PlainList(props) {
-  const { children, items, dataSource=items, template, onItemClick= () => {console.log('未设置onItemClick点击事件')} } = props;
-  const {layout, cart, seperator, gateway} = {...template}
+  const { children, items, dataSource=items, template, onItemClick= () => {console.log('未设置onItemClick点击事件')}, ...rest } = props;
+  const {layout} = {...template}
 
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
@@ -32,15 +32,12 @@ export default function PlainList(props) {
             React.cloneElement(Child, {
                 ...item,
                 layout:layout,
-                cart:cart,
-                seperator:seperator,
-                gateway:gateway,
                 key: i,
                 ref: layoutRef,
                 onItemClick:onItemClick,
                 isValidLine: items.length == (i+1) ? false : true,
             })
-            : <Child key={i} {...item } layout={layout} cart={cart} seperator={seperator} ref={layoutRef} onItemClick={onItemClick} />)}
+            : <Child key={i} {...item } layout={layout} ref={layoutRef} onItemClick={onItemClick} />)}
     </ContainerContext.Provider>
   </div>
 }

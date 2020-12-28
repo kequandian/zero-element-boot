@@ -56,7 +56,6 @@ export default function TestUserSelection(props) {
                     seperator: 'Divider',
                 }
             },
-            seperator: 'Divider',
             cart:{
                 name: 'ItemCart',
                 props: {

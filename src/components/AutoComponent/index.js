@@ -4,6 +4,13 @@ const {NamedLayout, NamedGateway, NamedCart, NamedSeperator} = require('@/compon
 const useLayout = require('@/hooks/useLayout');
 const requireConfig = require('@/components/AutoX/requireConfig');
 
+//change history
+//CR.2020-12-26 add cart for child
+//  commit: 97c238df65da2381aa2e14ffd31ba2621028402e
+//
+//TODO, add seperator next
+//TODO, support both named presenter and inner children
+
 // const presenter = require('@/components/presenter');
 // const allComponents = {
 //   ...presenter,
@@ -18,9 +25,6 @@ module.exports = function (props) {
   const { layout, ...rest } = config || {}; 
   const { children, ...restLayout } = layout || {};
 
-  //CR.2020-12-26 add cart for child
-  //TODO, add seperator next
-
   // restLayout means layout props
   // child iterator from children contains: [name, span, width, gateway, cart, [,seperator]]
   return <div
@@ -28,7 +32,7 @@ module.exports = function (props) {
   >
       <NamedLayout {...restLayout} ref={layoutRef}>
         {children.map((child, i) => {
-          const { name, span, width, gateway, cart } = child;
+          const { name, span, gateway, cart } = child;
           const C = allComponents[name] || tips(name);
 
           //get gateway name
