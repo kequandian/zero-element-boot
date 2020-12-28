@@ -4,6 +4,7 @@ import TestUserSelectionDemo from './TestUserSelectionDemo';
 import NamedCartTest from './Test/NamedCartTest'
 import IsValidElementTest from './Test/IsValidElementTest'
 import AutoLayoutDemo from './AutoLayoutDemo'
+import UserItemDemo from './Demo/UserItemDemo'
 
 export default function index(props) {
 
