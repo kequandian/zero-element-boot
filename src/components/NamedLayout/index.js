@@ -1,4 +1,4 @@
-const React = require('react');
+import React, { forwardRef } from 'react';
 const DefaultLayoutSet = require('../layout');
 
 // change history
@@ -11,7 +11,7 @@ const DefaultLayoutSet = require('../layout');
  * @param {命名组件自定义属性} props
  * @param {命名组件的 [name, props] 通过 layout 传递 } layout
  */
-module.exports = function NamedLayout({children, xname, props, layout={xname, props}, isLastItem, layoutSet, ...rest}) {
+export default forwardRef(function NamedLayout({children, xname, props, layout={xname, props}, isLastItem, layoutSet, ...rest}, ref) {
 
   // custom layoutSet first
   const LayoutSet = layoutSet || DefaultLayoutSet
@@ -22,7 +22,8 @@ module.exports = function NamedLayout({children, xname, props, layout={xname, pr
   const layoutName = (typeof layout === 'string') ? layout : layout.xname
   const Layout = LayoutSet[layoutName] || tips(layoutName);
 
-  return <Layout {...layout.props} {...isLastItemConfig}>
+  // just forward ref to the specified layout (e.g. Flexbox)
+  return <Layout {...layout.props} {...isLastItemConfig} ref={ref}>
     {React.Children.toArray(children).map(child => {
       let element = React.cloneElement(child, {
         ...rest,
@@ -30,7 +31,7 @@ module.exports = function NamedLayout({children, xname, props, layout={xname, pr
       return element;
     })}
   </Layout>
-}
+})
 
 function tips(name) {
   return _ => `Layout ${name} 未定义`;
