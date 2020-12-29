@@ -15,11 +15,11 @@ require('./index.less');
           lineType:'solid' 分割线类型
       }
    }
-   @param {是否划线} isValidLine
+   @param {是否划线} isLastItem
  */
 export default forwardRef(function Flexbox(props, ref) {
 
-  const { children, align='', direction='', justify={}, seperator={}, isValidLine } = props;
+  const { children, align='', direction='', justify={}, seperator={}, isLastItem } = props;
   console.log('align=', align, 'direction=', direction, 'justify=', justify)
 
   useImperativeHandle(ref, () => ({
@@ -37,7 +37,7 @@ export default forwardRef(function Flexbox(props, ref) {
         <div className={`l-FlexBoxItem ${direction} ${justify}`} onClick={() => child.props.onItemClick(child.props)}>
           {child}
         </div>
-        {defaultSeperator && isValidLine ? <NamedSeperator name={defaultSeperator} /> : null}
+        {defaultSeperator && (!isLastItem) ? <NamedSeperator name={defaultSeperator} /> : null}
       </>
     )
   })

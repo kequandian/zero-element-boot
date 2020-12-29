@@ -13,7 +13,7 @@ require('./index.less');
 
 export default forwardRef(function SelectBox(props, ref) {
 
-  const { children, align = '', direction = '', justify='', line = {}, isValidLine} = props;
+  const { children, align = '', direction = '', justify='', line = {}, isLastItem} = props;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
@@ -85,7 +85,7 @@ export default forwardRef(function SelectBox(props, ref) {
 
           {child}
         </div>
-        {Seperator && isValidLine ? <Seperator {...line.props} /> : null}
+        {Seperator && (!isLastItem) ? <Seperator {...line.props} /> : null}
       </>
 
     )

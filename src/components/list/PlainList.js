@@ -37,7 +37,7 @@ export default function PlainList(props) {
                 key: i,
                 ref: layoutRef,
                 onItemClick:onItemClick,
-                isValidLine: items.length == (i+1) ? false : true,
+                isLastItem: items.length == (i+1) ? true : false,
             })
             : <Child key={i} {...item } {...rest} layout={layout} ref={layoutRef} onItemClick={onItemClick} />)}
     </ContainerContext.Provider>

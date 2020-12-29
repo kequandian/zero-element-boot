@@ -36,7 +36,7 @@ export default function SelectedList(props) {
                 key: i,
                 ref: layoutRef,
                 onItemClick: onItemClick,
-                isValidLine: items.length == (i+1) ? false : true,
+                isLastItem: items.length == (i+1) ? true : false,
                 onSelected: onSelected,
                 item_index: i,
                 curr_index : curr_index
