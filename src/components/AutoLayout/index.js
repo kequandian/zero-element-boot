@@ -1,8 +1,7 @@
 const React = require('react');
 const {NamedContainer, NamedLayout, NamedGateway, NamedCart} = require('@/components');
 const useLayout = require('@/hooks/useLayout');
-// const requireConfig = require('@/components/AutoX/requireConfig');
-// requreTemplate
+// const requreTemplate = require('@/components/AutoX/requireTemplate');
 const Container = require('@/components/container/Container')
 
 // change history
@@ -16,40 +15,41 @@ const Container = require('@/components/container/Container')
  * @param {分隔} seperator
  * @param {数据传递与绑定} gateway
  */
-module.exports = function AutoLayout(props) {
+module.exports = function AutoLayout(config) {
   const [layoutRef, { getClassName }] = useLayout();
 
-  // get template first
-  const {template, items, children, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, ...data } = props;
+  const {children, layout, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, items, ...data } = config;
 
-  // handle template
-  const {container, item, layout, cart, gateway, ...childrenData } = template || {};
+  // handle layout, childrenData for children in {layout
+  const {name, props, container, cart, gateway, presenter, ...childrenData} = layout || {};
   const _Container = container ? NamedContainer : Container
+  const containerProps = (container && (typeof container === 'string'? {name: container} : container) ) || {}
   const _cart = cart
   const _gateway = gateway
-  // console.log('AutoLayout:_Container=', _Container)
-  const containerProps = (container && (typeof container === 'string'? {name: container} : container) ) || {}
 
-  
-  // if template contains childrenData, means this is for auto component
-  const hasChildrenData = childrenData && Array.isArray(childrenData) && Array.hasChildren(childrenData)
-  const ListChild = hasChildrenData? null : (item? allComponents[item]  : React.Children.only(children) )
 
-  // get children for auto component or get data for list
-  const _children = hasChildrenData? childrenData : {...data}
-  console.log('AutoLayout:_children=', _children)
+  /// check childrenData for layout or item data for each child
+  //  layout children first
+  const hasChildrenData = childrenData && childrenData.children && Array.isArray(childrenData.children) && (childrenData.children.length>0)
+  const _children = hasChildrenData? childrenData.children : items
+  // console.log('AutoLayout items=',items)
+
+
+  // if layout contains childrenData, means this is for auto component
+  const Presenter = (hasChildrenData && presenter && (allComponents[presenter] || tips(presenter))) || React.Children.only(children)
+  // console.log('allComponents=',allComponents,'Presenter=',Presenter )
 
 
   // restLayout means layout props
   // child iterator from children contains: [name, span, width, gateway, cart, [,seperator]]
-  return <_Container {...containerProps}>
+  return <_Container {...containerProps} items={items} onItemClick={onItemClick}>
     <div 
        className={getClassName()}
     >
-        <NamedLayout {...layout} ref={layoutRef}>
-          {items.map((child, i) => {
+        <NamedLayout name={name} props={props} ref={layoutRef}>
+          {_children.map((child, i) => {
             const { name, span, gateway, cart } = child;
-            const C = allComponents[name] || ListChild || tips(name);
+            const C = allComponents[name] || Presenter || tips(name);
 
             //get gateway name, use default gateway if child has no gateway defined
             const __gateway = gateway ? gateway : _gateway

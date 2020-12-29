@@ -46,15 +46,13 @@ export default function TestUserSelection(props) {
     //Cart HoverShadowCart
     const config = {
         items: userList.length > 0 ? userList : [],
-        template: {
-            layout: {
-                name: 'Flexbox',
-                props: {
-                    align: 'start',
-                    direction: 'column',
-                    justify: 'full',
-                    seperator: 'Divider',
-                }
+        layout: {
+            name: 'Flexbox',
+            props: {
+                align: 'start',
+                direction: 'column',
+                justify: 'full',
+                seperator: 'Divider',
             },
             cart:{
                 name: 'ItemCart',

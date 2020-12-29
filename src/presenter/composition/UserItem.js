@@ -20,7 +20,7 @@ export default function UserItem(props) {
       },
       children: [
         {
-          name: 'Avatar',
+          presenter: 'Avatar',
           gateway: {
             name: 'Gateway',
             props: {
@@ -32,7 +32,7 @@ export default function UserItem(props) {
           }
         },
         {
-          name: 'Title',
+          presenter: 'Title',
           gateway: {
             name: 'Gateway',
             props: {
@@ -50,7 +50,7 @@ export default function UserItem(props) {
 
   return (
     <>
-      <AutoComponent config={config} allComponents={allComponents} />
+      <AutoComponent {...config} allComponents={allComponents} />
     </>
   )
 

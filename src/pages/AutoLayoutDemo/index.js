@@ -39,29 +39,31 @@ export default function index(props) {
 
   //Cart HoverShadowCart
   const config = {
-      items: userList.length > 0 ? userList : [],
-      template: {
-          container: 'PlainList',
-          layout: {
-              name: 'Flexbox',
-              props: {
-                  align: 'start',
-                  direction: 'column',
-                  justify: 'full',
-                  seperator: 'Divider',
-              }
-          },
-          children: [],
-          cart:{
-              name: 'ItemCart',
-              props: {
-                  padding: '20px',
-              }
-          }, 
-          gateway: 'Gateway',
-          item: 'UserItem'
-      }
+    items: userList.length > 0 ? userList : [],
+    layout: {
+        name: 'Flexbox',
+        props: {
+            align: 'start',
+            direction: 'column',
+            justify: 'full',
+            seperator: 'Divider',
+        }, 
+        children: [{name:'Alice'}, {name:'Bob'}],
+        cart:{
+            name: 'ItemCart',
+            props: {
+                padding: '20px',
+            }
+        }, 
+        gateway: 'Gateway',
+        container: 'PlainList',
+        presenter: 'UserItem', 
+    }
   };
+
+  const allComponents={
+     UserItem,
+  }
 
   const onClick = (item) => {
       // changeUser(item.id)
@@ -77,7 +79,7 @@ export default function index(props) {
     //           </NamedCart>
     //       </NamedLayout>
     //   </AutoLayout>
-    <AutoLayout {...config} onItemClick={onClick}>
+    <AutoLayout {...config} onItemClick={onClick} allComponents={allComponents}>
         <UserItem />
     </AutoLayout>
   )
