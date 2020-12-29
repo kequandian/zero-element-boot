@@ -11,7 +11,7 @@ const DefaultLayoutSet = require('../layout');
  * @param {命名组件自定义属性} props
  * @param {命名组件的 [name, props] 通过 layout 传递 } layout
  */
-module.exports = function NamedLayout({children, name, props, layout={name, props}, isLastItem, layoutSet, ...rest}) {
+module.exports = function NamedLayout({children, xname, props, layout={xname, props}, isLastItem, layoutSet, ...rest}) {
 
   // custom layoutSet first
   const LayoutSet = layoutSet || DefaultLayoutSet
@@ -19,7 +19,7 @@ module.exports = function NamedLayout({children, name, props, layout={name, prop
   // retrieve isLastItem for layout
   const isLastItemConfig = {isLastItem: isLastItem}
 
-  const layoutName = (typeof layout === 'string') ? layout : layout.name
+  const layoutName = (typeof layout === 'string') ? layout : layout.xname
   const Layout = LayoutSet[layoutName] || tips(layoutName);
 
   return <Layout {...layout.props} {...isLastItemConfig}>

@@ -11,13 +11,13 @@ module.exports = function ({layout, allComponents={}, onItemClick= () => {consol
   //const [layoutRef, { getClassName }] = useLayout();
 
   // handle layout, for children in {layout
-  const {name, props, cart, gateway, presenter, container={}} = layout || {};
-  const _cart = (typeof cart==='string') ? {name: cart} : cart
-  const _gateway = (typeof gateway==='string') ? {name: gateway} : gateway
+  const {xname, props, cart, gateway, presenter, container={}} = layout || {};
+  const _cart = (typeof cart==='string') ? {xname: cart} : cart
+  const _gateway = (typeof gateway==='string') ? {xname: gateway} : gateway
 
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
-  const _container = ( (typeof container === 'string')? {name: container} : container ) || {}
+  const _container = ( (typeof container === 'string')? {xname: container} : container ) || {}
 
   // if layout contains childrenData, means this is for auto component
   const Presenter = allComponents[presenter] || tips(presenter)
@@ -33,8 +33,8 @@ module.exports = function ({layout, allComponents={}, onItemClick= () => {consol
   //         </NamedGateway>
   //     </NamedLayout>
   // </NamedList>
-  return <Container {..._container}  items={items} onItemClick={onItemClick}>
-        <NamedLayout name={name} props={props} >
+  return <Container {..._container}  items={items} {...data} onItemClick={onItemClick}>
+        <NamedLayout xname={xname} props={props} >
             <NamedGateway {..._gateway}>
                 <NamedCart {..._cart} >
                   <Presenter />

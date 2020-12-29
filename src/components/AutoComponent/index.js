@@ -27,7 +27,7 @@ module.exports = function ({layout = requireConfig(parent), allComponents={}, ..
   const parent = module.parents[0]; //get module name
   const [layoutRef, { getClassName }] = useLayout();
 
-  const {name, props, container, children, cart, gateway} = layout || {};
+  const {xname, props, container, children, cart, gateway} = layout || {};
 
 
   // restLayout means layout props
@@ -35,23 +35,23 @@ module.exports = function ({layout = requireConfig(parent), allComponents={}, ..
   return <div
     className={getClassName()}
   >
-      <NamedLayout name={name} props={props} ref={layoutRef}>
+      <NamedLayout xname={xname} props={props} ref={layoutRef}>
         {children.map((child, i) => {
           const { presenter, span, gateway, cart } = child;
           const Presenter = allComponents[presenter] || tips(presenter);
 
           //get gateway name
-          const gatewayName = gateway ? (typeof gateway === 'string' ? gateway : gateway.name) : 'Gateway' 
+          const gatewayName = gateway ? (typeof gateway === 'string' ? gateway : gateway.xname) : 'Gateway' 
           const gatewayProps = gateway.props || {} 
 
           //get cart name
-          const cartName = cart ? (typeof cart === 'string' ? cart : cart.name) : '' 
+          const cartName = cart ? (typeof cart === 'string' ? cart : cart.xname) : '' 
           const cartProps = cart? (cart.props || {}) : {}
 
           // each item has its Named Gateway
-          return <NamedGateway key={i} name={gatewayName} {...gatewayProps} {...data} span={span}>
+          return <NamedGateway key={i} xname={gatewayName} {...gatewayProps} {...data} span={span}>
             {cart?
-              <NamedCart key={i} name={cartName} {...cartProps} >
+              <NamedCart key={i} xname={cartName} {...cartProps} >
                 <Presenter />
               </NamedCart>
             :

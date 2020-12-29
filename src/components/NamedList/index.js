@@ -2,9 +2,9 @@ const React = require('react');
 const NamedListSet = require('../list');
 
 //export default function NamedList({ name, API, props, children, spin = '' }) {
-export default function NamedList({ name, props, children, ...data}) {
+export default function NamedList({ xname, props, children, ...data}) {
 
-  const NamedList = NamedListSet[name] || tips(name);
+  const NamedList = NamedListSet[xname] || tips(xname);
 
   // function handleQuery(queryData) {
   //   return promiseAjax(API, queryData).then(response => {

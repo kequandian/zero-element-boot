@@ -12,7 +12,7 @@ export default function UserItem(props) {
 
   const config = {
     layout: {
-      name: 'Flexbox',
+      xname: 'Flexbox',
       props: {
         align: 'start',
         direction: 'row',
@@ -22,7 +22,7 @@ export default function UserItem(props) {
         {
           presenter: 'Avatar',
           gateway: {
-            name: 'Gateway',
+            xname: 'Gateway',
             props: {
               field: 'avatar',
               converter: {
@@ -34,7 +34,7 @@ export default function UserItem(props) {
         {
           presenter: 'Title',
           gateway: {
-            name: 'Gateway',
+            xname: 'Gateway',
             props: {
               field: 'account',
               converter: {

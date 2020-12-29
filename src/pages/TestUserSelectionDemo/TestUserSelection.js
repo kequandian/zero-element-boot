@@ -51,7 +51,7 @@ export default function TestUserSelection(props) {
     const config = {
         items: userList.length > 0 ? userList : [],
         layout: {
-            name: 'Flexbox',
+            xname: 'Flexbox',
             props: {
                 align: 'start',
                 direction: 'column',
@@ -60,7 +60,7 @@ export default function TestUserSelection(props) {
             },
             gateway: 'Gateway',
             cart:{
-                name: 'ItemCart',
+                xname: 'ItemCart',
                 props: {
                     padding: '10px',
                 }
