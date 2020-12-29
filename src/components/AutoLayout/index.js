@@ -2,6 +2,8 @@ const React = require('react');
 const {NamedContainer, NamedLayout, NamedGateway, NamedCart} = require('@/components');
 const DefaultContainer = require('@/components/container/Container')
 
+const AutoComponent = require('@/components/AutoComponent')
+
 // change history
 //CR.2020-12-26 init
 

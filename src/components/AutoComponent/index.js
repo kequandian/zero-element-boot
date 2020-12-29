@@ -29,9 +29,10 @@ module.exports = function ({layout = requireConfig(parent), allComponents={}, ..
   const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
 
-  const {xname, props, container, children, gateway, cart } = layout || {};
+  const {xname, props, container, children, gateway, cart, presenter } = layout || {};
   const defaultGateway = gateway
   const defaultCart = cart
+  const defaultPresenter = presenter
 
   //handle container
   const _Container = container ? NamedContainer : Container
@@ -48,7 +49,8 @@ module.exports = function ({layout = requireConfig(parent), allComponents={}, ..
       <NamedLayout xname={xname} props={props} >
           {children.map((child, i) => {
             const { presenter, span, gateway, cart } = child;
-            const Presenter = presenter ? allComponents[presenter] || tips(presenter) : null;
+            const _presenter = presenter ? presenter : defaultPresenter
+            const Presenter = _presenter ? allComponents[_presenter] || tips(_presenter) : null;
 
             const _gateway = gateway ? ((typeof gateway === 'string')? {xname: gateway} : gateway) : defaultGateway
             const _cart = cart? ((typeof cart === 'string')? {xname: cart} : cart) : defaultCart
