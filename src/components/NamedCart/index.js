@@ -4,7 +4,8 @@ const useLayout = require('@/hooks/useLayout');
 const DefaultCartSet = require('../cart');
 
 /**
- * NamedCart负责处理数据传递，具体的Cart[ItemCart, OffsetCart, ...] 不负责处理数据传递
+ * NamedCart [,NamedLayout] 负责处理数据传递，具体的Cart[ItemCart, OffsetCart, ...] 不负责处理数据传递
+ * 区别于 NamedGateway 数据传递由具体的 Gateway 处理
  */
 export default forwardRef(function NamedCart({children, name, props, cart={name, props}, cartSet, ...rest }, ref) {
   const [cartRef, { getClassName }] = useLayout();

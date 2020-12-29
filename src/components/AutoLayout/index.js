@@ -1,11 +1,50 @@
 const React = require('react');
 const {NamedContainer, NamedLayout, NamedGateway, NamedCart} = require('@/components');
 const useLayout = require('@/hooks/useLayout');
-// const requreTemplate = require('@/components/AutoX/requireTemplate');
-const Container = require('@/components/container/Container')
+const DefaultContainer = require('@/components/container/Container')
 
 // change history
 //CR.2020-12-26 init
+
+
+module.exports = function ({layout, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, items={}, ...data }) {
+  //const [layoutRef, { getClassName }] = useLayout();
+
+  // handle layout, for children in {layout
+  const {name, props, cart, gateway, presenter, container={}} = layout || {};
+  const _cart = (typeof cart==='string') ? {name: cart} : cart
+  const _gateway = (typeof gateway==='string') ? {name: gateway} : gateway
+
+  // handle container
+  const Container = container ? NamedContainer : DefaultContainer
+  const _container = ( (typeof container === 'string')? {name: container} : container ) || {}
+
+  // if layout contains childrenData, means this is for auto component
+  const Presenter = allComponents[presenter] || tips(presenter)
+
+  // restLayout means layout props
+  // child iterator from children contains: [name, span, width, gateway, cart, [,seperator]]
+  // <NamedList name='PlainList' {...config} onItemClick={onClick}>
+  //     <NamedLayout>
+  //         <NamedGateway name='Gateway'>
+  //             <NamedCart name='ItemCart' props={{padding: '12px'}}> 
+  //                 <UserItem />
+  //             </NamedCart>
+  //         </NamedGateway>
+  //     </NamedLayout>
+  // </NamedList>
+  return <Container {..._container}  items={items} onItemClick={onItemClick}>
+        <NamedLayout name={name} props={props} >
+            <NamedGateway {..._gateway}>
+                <NamedCart {..._cart} >
+                  <Presenter />
+                </NamedCart>
+            </NamedGateway>
+        </NamedLayout> 
+  </Container>
+}
+
+
 
 /**
  * 自动布局复合组件，自定义抽象参数如下说明
@@ -15,7 +54,7 @@ const Container = require('@/components/container/Container')
  * @param {分隔} seperator
  * @param {数据传递与绑定} gateway
  */
-module.exports = function AutoLayout(config) {
+function AutoLayout(config) {
   const [layoutRef, { getClassName }] = useLayout();
 
   const {children, layout, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, items, ...data } = config;

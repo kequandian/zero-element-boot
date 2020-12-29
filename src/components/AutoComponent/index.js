@@ -5,7 +5,7 @@ const useLayout = require('@/hooks/useLayout');
 const requireConfig = require('@/components/AutoX/requireConfig');
 
 //change history
-//CR.2020-12-29  handle AutoComponent children
+//CR.2020-12-29  handle AutoComponent
 
 //CR.2020-12-26 add cart for child
 //  commit: 97c238df65da2381aa2e14ffd31ba2621028402e
@@ -19,7 +19,7 @@ const requireConfig = require('@/components/AutoX/requireConfig');
 // };
 
 /**
- * 
+ * 自动构建，没有Children
  * @param {布局} layout 
  * @param {绑定数据} data
  */

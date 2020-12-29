@@ -1,7 +1,7 @@
-import Gateway from './Gateway';
 import GetField from './GetField';
+import Gateway from './Gateway';
 
 export {
-    Gateway,
     GetField,
+    Gateway,
 }

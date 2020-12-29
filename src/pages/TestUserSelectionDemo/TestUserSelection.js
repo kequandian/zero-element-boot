@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 import { NamedList, NamedLayout, NamedCart } from "@/components";
+import AutoLayout from '@/components/AutoLayout'
+import { Gateway } from '@/components/gateway';
 
 const { UserItem } = require('@/presenter/composition');
+const NamedGateway = require('@/components/NamedGateway');
+
 
 // const useUaasTestUser = require('@/pages/TestUserSelectionDemo/hooks/useUaasTestUser');
 const promiseAjax = require('@/utils/request');
@@ -54,13 +58,15 @@ export default function TestUserSelection(props) {
                 justify: 'full',
                 seperator: 'Divider',
             },
+            gateway: 'Gateway',
             cart:{
                 name: 'ItemCart',
                 props: {
-                    padding: '20px',
+                    padding: '10px',
                 }
             }, 
-            gateway: 'Gateway'
+            presenter: 'UserItem',
+            container: 'PlainList'
         }
     };
 
@@ -70,13 +76,23 @@ export default function TestUserSelection(props) {
         onItemClickHandle();
     }
 
+    const allComponents = {
+        UserItem
+    }
+
     return (
-        <NamedList name='PlainList' {...config} onItemClick={onClick}>
-            <NamedLayout>
-                <NamedCart name='ItemCart' props={{padding: '12px'}}> 
-                    <UserItem />
-                </NamedCart>
-            </NamedLayout>
-        </NamedList>
+        <AutoLayout {...config} onItemClick={onClick} allComponents={allComponents} />
     )
+
+    // return (
+    //     <NamedList name='PlainList' items={config.items} onItemClick={onClick}>
+    //         <NamedLayout name='Flexbox' props={config.layout.props}>
+    //             <NamedGateway name='Gateway'>
+    //                 <NamedCart name='ItemCart' props={{padding: '12px'}}> 
+    //                     <UserItem />
+    //                 </NamedCart>
+    //             </NamedGateway>
+    //         </NamedLayout>
+    //     </NamedList>
+    // )
 }

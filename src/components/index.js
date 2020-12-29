@@ -21,5 +21,5 @@ export {
 
     // AutoComponent
     AutoComponent,
-    AutoComponentL2
+    AutoComponentL2, 
 };
