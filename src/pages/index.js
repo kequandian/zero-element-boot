@@ -5,6 +5,7 @@ import PlainListDemo from './Demo/PlainListDemo';
 import RoundListDemo from './Demo/RoundListDemo';
 import RectangleListDemo from './Demo/RectangleListDemo';
 import CircleListDemo from './Demo/CircleListDemo';
+import AdListDemo from './Demo/AdListDemo';
 
 import { Cart } from "@/components/cart";
 
@@ -27,7 +28,7 @@ export default function index(props) {
    */
 
   return (
-      <CircleListDemo onItemClickHandle={onItemClickHandle} />
+      <AdListDemo onItemClickHandle={onItemClickHandle} />
   )
   
 }

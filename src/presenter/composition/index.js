@@ -6,6 +6,7 @@ import SelectItem from './SelectItem';
 import RoundItem from './RoundItem';
 import RectangleItem from './RectangleItem';
 import CircleItem from './CircleItem';
+import AdItem from './AdItem';
 
 export {
     CartItem,
@@ -15,4 +16,5 @@ export {
     RoundItem,
     RectangleItem,
     CircleItem,
+    AdItem,
 }
