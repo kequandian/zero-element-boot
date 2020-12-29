@@ -58,7 +58,16 @@ export default function TestUserSelection(props) {
                 justify: 'full',
                 seperator: 'Divider',
             },
-            gateway: 'Gateway',
+            gateway: {
+                xname: 'Binding',
+                props: {
+                    binding: {
+                       avatar: 'avatar',
+                       account: 'title',
+                       name: 'subtitle'
+                    }
+                }
+            },
             cart:{
                 xname: 'ItemCart',
                 props: {

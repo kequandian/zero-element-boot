@@ -3,6 +3,12 @@ const AutoComponent = require('@/components/AutoComponent');
 
 const { Avatar, Title } = require('@/presenter/demo');
 
+/**
+ * 
+ * @param {} avatar 头像
+ * @param {} title  头衔, 账户
+ * @param {} subtitle 副标题，显示名称
+ */
 export default function UserItem(props) {
 
   const allComponents = {
@@ -36,7 +42,7 @@ export default function UserItem(props) {
             xname: 'Binding',
             props: {
               binding: {
-                account: 'TitleText'
+                title: 'TitleText'
               }
             }
           }
