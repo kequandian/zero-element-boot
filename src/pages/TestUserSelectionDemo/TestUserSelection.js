@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import { NamedList, NamedLayout, NamedCart } from "@/components";
+import { NamedGateway, NamedList, NamedLayout, NamedCart } from "@/components";
 import AutoLayout from '@/components/AutoLayout'
-import { Gateway } from '@/components/gateway';
 
 const { UserItem } = require('@/presenter/composition');
-const NamedGateway = require('@/components/NamedGateway');
-
 
 // const useUaasTestUser = require('@/pages/TestUserSelectionDemo/hooks/useUaasTestUser');
 const promiseAjax = require('@/utils/request');
@@ -90,7 +87,8 @@ export default function TestUserSelection(props) {
     }
 
     return (
-        <AutoLayout {...config} onItemClick={onClick} allComponents={allComponents} />
+        <AutoLayout {...config} onItemClick={onClick} allComponents={allComponents} >
+        </AutoLayout>
     )
 
     // return (

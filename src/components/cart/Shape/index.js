@@ -1,8 +1,6 @@
-import React, { useImperativeHandle, forwardRef } from 'react';
+import React from 'react';
 
-require('./index.less');
-
-export default forwardRef(function Shape(props, ref) {
+export default function Shape(props) {
 
   /**
    * outline    线类型
@@ -14,15 +12,9 @@ export default forwardRef(function Shape(props, ref) {
 
   const { children, outline = 'solid', corner = '8px', fill = '#1ee', stroke = '#9bd', lineWidth = '2' } = props;
 
-  useImperativeHandle(ref, () => ({
-    getClassName: () => {
-      return `c-Shape`;
-    }
-  }));
-
   return React.Children.map(children, child => {
     return <div style={{ borderStyle:`${outline}`, borderRadius: `${corner}`, background: `${fill}`, borderColor:`${stroke}`, borderWidth:`${lineWidth}px` }} >
       {child}
     </div>
   })
-})
+}

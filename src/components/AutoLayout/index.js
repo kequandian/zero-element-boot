@@ -7,8 +7,9 @@ const DefaultContainer = require('@/components/container/Container')
 //CR.2020-12-26 init
 
 
-module.exports = function ({layout, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, items={}, ...data }) {
+module.exports = function ({children, layout, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, items={}, ...data }) {
   //const [layoutRef, { getClassName }] = useLayout();
+  console.log('children=', children)
 
   // handle layout, for children in {layout
   const {xname, props, cart, gateway, presenter, container={}} = layout || {};
@@ -20,7 +21,7 @@ module.exports = function ({layout, allComponents={}, onItemClick= () => {consol
   const _container = ( (typeof container === 'string')? {xname: container} : container ) || {}
 
   // if layout contains childrenData, means this is for auto component
-  const Presenter = allComponents[presenter] || tips(presenter)
+  const Presenter = presenter ? (allComponents[presenter] || tips(presenter)) : null
 
   // restLayout means layout props
   // child iterator from children contains: [name, span, width, gateway, cart, [,seperator]]
@@ -37,7 +38,11 @@ module.exports = function ({layout, allComponents={}, onItemClick= () => {consol
         <NamedLayout xname={xname} props={props} >
             <NamedGateway {..._gateway}>
                 <NamedCart {..._cart} >
-                  <Presenter />
+                  {presenter? 
+                    <Presenter />
+                    :
+                    {children}
+                  }
                 </NamedCart>
             </NamedGateway>
         </NamedLayout> 
