@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { NamedGateway, NamedList, NamedLayout, NamedCart } from "@/components";
+import {NamedContainer, NamedGateway, NamedList, NamedLayout, NamedCart } from "@/components";
 import AutoLayout from '@/components/AutoLayout'
 
 const { UserItem } = require('@/presenter/composition');
@@ -55,6 +55,7 @@ export default function TestUserSelection(props) {
                 justify: 'full',
                 seperator: 'Divider',
             },
+            //children:[],
             gateway: {
                 xname: 'Binding',
                 props: {
@@ -71,7 +72,7 @@ export default function TestUserSelection(props) {
                     padding: '10px',
                 }
             }, 
-            presenter: 'UserItem',
+            // presenter: 'UserItem',
             container: 'PlainList'
         }
     };
@@ -83,11 +84,15 @@ export default function TestUserSelection(props) {
     }
 
     const allComponents = {
-        UserItem
+        UserItem, 
     }
 
+    // return (
+    //     <AutoLayout {...config} onItemClick={onClick} allComponents={allComponents} />
+    // )
     return (
-        <AutoLayout {...config} onItemClick={onClick} allComponents={allComponents} >
+        <AutoLayout {...config} onItemClick={onClick}>
+            <UserItem />
         </AutoLayout>
     )
 

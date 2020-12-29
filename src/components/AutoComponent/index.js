@@ -1,11 +1,13 @@
 const React = require('react');
-const { useState, useEffect } = require('react');
-const {NamedLayout, NamedGateway, NamedCart, NamedSeperator} = require('@/components');
-const useLayout = require('@/hooks/useLayout');
+// const { useState, useEffect } = require('react');
+const {NamedContainer, NamedLayout, NamedGateway, NamedCart} = require('@/components');
+// const useLayout = require('@/hooks/useLayout');
 const requireConfig = require('@/components/AutoX/requireConfig');
 
+const {Container} = require('@/components/container');
+
 //change history
-//CR.2020-12-29  handle AutoComponent
+//CR.2020-12-29  handle AutoComponent, add Container
 
 //CR.2020-12-26 add cart for child
 //  commit: 97c238df65da2381aa2e14ffd31ba2621028402e
@@ -25,41 +27,55 @@ const requireConfig = require('@/components/AutoX/requireConfig');
  */
 module.exports = function ({layout = requireConfig(parent), allComponents={}, ...data}) {
   const parent = module.parents[0]; //get module name
-  const [layoutRef, { getClassName }] = useLayout();
+  // const [layoutRef, { getClassName }] = useLayout();
 
-  const {xname, props, container, children, cart, gateway} = layout || {};
+  const {xname, props, container, children, gateway, cart } = layout || {};
+  const defaultGateway = gateway
+  const defaultCart = cart
 
+  //handle container
+  const _Container = container ? NamedContainer : Container
+  const _container = ( (typeof container === 'string')? {xname: container} : container ) || {}
 
   // restLayout means layout props
   // child iterator from children contains: [name, span, cart, gateway]
-  return <div
-    className={getClassName()}
-  >
-      <NamedLayout xname={xname} props={props} ref={layoutRef}>
-        {children.map((child, i) => {
-          const { presenter, span, gateway, cart } = child;
-          const Presenter = allComponents[presenter] || tips(presenter);
+  // return <div
+  //   className={getClassName()}
+  // >
+  // <NamedLayout xname={xname} props={props} ref={layoutRef}>
+  return <_Container {..._container} {...data}>
 
-          //get gateway name
-          const gatewayName = gateway ? (typeof gateway === 'string' ? gateway : gateway.xname) : 'Gateway' 
-          const gatewayProps = gateway.props || {} 
+      <NamedLayout xname={xname} props={props} >
+          {children.map((child, i) => {
+            const { presenter, span, gateway, cart } = child;
+            const Presenter = presenter ? allComponents[presenter] || tips(presenter) : null;
 
-          //get cart name
-          const cartName = cart ? (typeof cart === 'string' ? cart : cart.xname) : '' 
-          const cartProps = cart? (cart.props || {}) : {}
+            const _gateway = gateway ? ((typeof gateway === 'string')? {xname: gateway} : gateway) : defaultGateway
+            const _cart = cart? ((typeof cart === 'string')? {xname: cart} : cart) : defaultCart
 
-          // each item has its Named Gateway
-          return <NamedGateway key={i} xname={gatewayName} {...gatewayProps} {...data} span={span}>
-            {cart?
-              <NamedCart key={i} xname={cartName} {...cartProps} >
+            // each item has its Named Gateway
+            return <NamedGateway {..._gateway} key={i} span={span} >
+              {cart?
+                <NamedCart key={i} {..._cart} >
+                  {presenter?
+                    <Presenter />
+                    :
+                    React.Children.toArray(children)
+                  }
+                </NamedCart>
+              :
+               ( presenter?
                 <Presenter />
-              </NamedCart>
-            :
-              <Presenter /> }
-          </NamedGateway>
-        })}
-      </NamedLayout>
-  </div>;
+                :
+                React.Children.toArray(children)
+               )
+            }
+            </NamedGateway>
+
+          })}
+        </NamedLayout>
+    </_Container>
+  // </div>;
 }
 
 function tips(name) {

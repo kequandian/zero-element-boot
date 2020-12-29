@@ -14,9 +14,11 @@ export default function PlainList(props) {
   const { children, layout, items, dataSource=items, onItemClick= () => {console.log('未设置onItemClick点击事件')}, ...rest } = props;
 
   const [layoutRef, { getClassName }] = useLayout();
+
   const containerRef = useRef();
   const size = useSize(containerRef);
 
+  
   // ensure only child [NamedLayout, Presenter ...]
   const Child = React.Children.only(children);
 

@@ -4,7 +4,7 @@ const NamedListSet = require('../list');
 //export default function NamedList({ name, API, props, children, spin = '' }) {
 export default function NamedList({ xname, props, children, ...data}) {
 
-  const NamedList = NamedListSet[xname] || tips(xname);
+  const _List = NamedListSet[xname] || tips(xname);
 
   // function handleQuery(queryData) {
   //   return promiseAjax(API, queryData).then(response => {
@@ -13,9 +13,9 @@ export default function NamedList({ xname, props, children, ...data}) {
   // }
 
   //return <NamedList {...props} onQuery={handleQuery} spin={spin}>
-  return <NamedList {...props} {...data}>
+  return <_List {...props} {...data}>
     {children}
-  </NamedList>
+  </_List>
 }
 
 function tips(name) {

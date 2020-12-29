@@ -1,20 +1,20 @@
 const React = require('react');
 const {NamedContainer, NamedLayout, NamedGateway, NamedCart} = require('@/components');
-const useLayout = require('@/hooks/useLayout');
 const DefaultContainer = require('@/components/container/Container')
 
 // change history
 //CR.2020-12-26 init
 
+//CR.2020-12-29 add Container
 
-module.exports = function ({children, layout, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, items={}, ...data }) {
-  //const [layoutRef, { getClassName }] = useLayout();
-  console.log('children=', children)
+
+module.exports = function ({children, layout, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, ...data }) {
 
   // handle layout, for children in {layout
-  const {xname, props, cart, gateway, presenter, container={}} = layout || {};
-  const _cart = (typeof cart==='string') ? {xname: cart} : cart
-  const _gateway = (typeof gateway==='string') ? {xname: gateway} : gateway
+  const {xname, props, container, gateway, cart, presenter } = layout || {};
+
+  const _cart = (cart && typeof cart==='string') ? {xname: cart} : cart
+  const _gateway = (gateway && typeof gateway==='string') ? {xname: gateway} : gateway
 
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
@@ -34,21 +34,31 @@ module.exports = function ({children, layout, allComponents={}, onItemClick= () 
   //         </NamedGateway>
   //     </NamedLayout>
   // </NamedList>
-  return <Container {..._container}  items={items} {...data} onItemClick={onItemClick}>
-        <NamedLayout xname={xname} props={props} >
+  return <Container {..._container} {...data} onItemClick={onItemClick} >
+
+        <NamedLayout xname={xname} props={props}>
+
             <NamedGateway {..._gateway}>
+              {cart?
                 <NamedCart {..._cart} >
                   {presenter? 
                     <Presenter />
                     :
-                    {children}
+                    React.Children.toArray(children)
                   }
                 </NamedCart>
+              :
+                (presenter?
+                  <Presenter />
+                  :
+                  React.Children.toArray(children)
+                )
+              }
             </NamedGateway>
+
         </NamedLayout> 
   </Container>
 }
-
 
 
 /**
@@ -60,8 +70,6 @@ module.exports = function ({children, layout, allComponents={}, onItemClick= () 
  * @param {数据传递与绑定} gateway
  */
 function AutoLayout(config) {
-  const [layoutRef, { getClassName }] = useLayout();
-
   const {children, layout, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, items, ...data } = config;
 
   // handle layout, childrenData for children in {layout
@@ -87,10 +95,7 @@ function AutoLayout(config) {
   // restLayout means layout props
   // child iterator from children contains: [name, span, width, gateway, cart, [,seperator]]
   return <_Container {...containerProps} items={items} onItemClick={onItemClick}>
-    <div 
-       className={getClassName()}
-    >
-        <NamedLayout name={name} props={props} ref={layoutRef}>
+        <NamedLayout name={name} props={props} >
           {_children.map((child, i) => {
             const { name, span, gateway, cart } = child;
             const C = allComponents[name] || Presenter || tips(name);
@@ -117,7 +122,6 @@ function AutoLayout(config) {
             </NamedGateway>
           })}
         </NamedLayout> 
-    </div>
   </_Container>
 }
 
