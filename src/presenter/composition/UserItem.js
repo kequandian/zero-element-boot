@@ -22,10 +22,9 @@ export default function UserItem(props) {
         {
           presenter: 'Avatar',
           gateway: {
-            xname: 'Gateway',
+            xname: 'Binding',
             props: {
-              field: 'avatar',
-              converter: {
+              binding: {
                 avatar: 'avatarIcon'
               }
             }
@@ -34,10 +33,9 @@ export default function UserItem(props) {
         {
           presenter: 'Title',
           gateway: {
-            xname: 'Gateway',
+            xname: 'Binding',
             props: {
-              field: 'account',
-              converter: {
+              binding: {
                 account: 'TitleText'
               }
             }
