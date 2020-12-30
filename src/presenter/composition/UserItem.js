@@ -3,6 +3,12 @@ const AutoComponent = require('@/components/AutoComponent');
 
 const { Avatar, Title } = require('@/presenter/demo');
 
+/**
+ * 
+ * @param {} avatar 头像
+ * @param {} title  头衔, 账户
+ * @param {} subtitle 副标题，显示名称
+ */
 export default function UserItem(props) {
 
   const allComponents = {
@@ -12,35 +18,31 @@ export default function UserItem(props) {
 
   const config = {
     layout: {
-      name: 'Flexbox',
+      xname: 'Flexbox',
       props: {
         align: 'start',
         direction: 'row',
-        itemStyle: {
-          itemAlign: 'v-center'
-        }
+        justify: 'center'
       },
       children: [
         {
-          name: 'Avatar',
+          presenter: 'Avatar',
           gateway: {
-            name: 'Gateway',
+            xname: 'Binding',
             props: {
-              field: 'avatar',
-              converter: {
+              binding: {
                 avatar: 'avatarIcon'
               }
             }
           }
         },
         {
-          name: 'Title',
+          presenter: 'Title',
           gateway: {
-            name: 'Gateway',
+            xname: 'Binding',
             props: {
-              field: 'account',
-              converter: {
-                account: 'TitleText'
+              binding: {
+                title: 'TitleText'
               }
             }
           }
@@ -52,7 +54,7 @@ export default function UserItem(props) {
 
   return (
     <>
-      <AutoComponent config={config} allComponents={allComponents} />
+      <AutoComponent {...config} allComponents={allComponents} />
     </>
   )
 

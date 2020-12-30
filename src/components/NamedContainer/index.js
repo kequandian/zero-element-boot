@@ -1,31 +1,19 @@
 const React = require('react');
-const { useImperativeHandle, forwardRef,  } = require('react');
-const useLayout = require('@/hooks/useLayout');
-const ContainerSet = require('../container');
+const DefaultContainerSet = require('../container');
 
-export default forwardRef(function NamedContainer({ name, props, children, ...rest }, ref) {
+export default function NamedContainer({children, xname, props, container={xname, props}, containerSet,  ...data}) {
 
-  // ref
-  const [CartRef, { getClassName }] = useLayout();
+  const _ContainerSet = containerSet ? containerSet: DefaultContainerSet
 
-  useImperativeHandle(ref, () => ({
-    getClassName: getClassName,
-  }));
-
-  // NamedContainerSet
-  const NamedContainer = ContainerSet[name] || tips(name);
+  const containerName = (typeof container === 'string') ? container : container.xname
+  const NamedContainer = _ContainerSet[containerName] || tips(containerName);
 
   return (
-      <NamedContainer {...props} ref={CartRef}>
-        {React.Children.toArray(children).map(child => {
-          return React.cloneElement(child, {
-            ...rest
-          })
-        })}
+      <NamedContainer {...container.props} {...data} >
+         {children}
       </NamedContainer>
   )
-
-})
+}
 
 function tips(name) {
   return _ => `NamedContainer ${name} 未定义`;

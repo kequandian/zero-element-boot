@@ -13,10 +13,7 @@ require('./index.less');
 
 export default forwardRef(function SelectBox(props, ref) {
 
-  const { children, align = '', direction = '', itemStyle={}, line = {}, isValidLine} = props;
-
-  // itemStyle 控制 child 样式
-  const { itemWidth='', itemAlign='' } = itemStyle;
+  const { children, align = '', direction = '', justify='', line = {}, isLastItem} = props;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
@@ -67,7 +64,7 @@ export default forwardRef(function SelectBox(props, ref) {
 
     return (
       <>
-        <div className={`l-SelectBoxItem ${itemWidth} ${itemAlign}`} onClick={() => clickItem(childProps)}
+        <div className={`l-SelectBoxItem ${direction} ${itemAlign}`} onClick={() => clickItem(childProps)}
           style={{
             position: 'relative',
             margin: `${margin}`,
@@ -88,7 +85,7 @@ export default forwardRef(function SelectBox(props, ref) {
 
           {child}
         </div>
-        {Seperator && isValidLine ? <Seperator {...line.props} /> : null}
+        {Seperator && (!isLastItem) ? <Seperator {...line.props} /> : null}
       </>
 
     )

@@ -14,8 +14,11 @@ const Gone = () => 0
 
 export default function IsValidElementTest(props) {
 
-    const content = 'string'
+    let layoutSet={};
+    console.log(Object.keys(layoutSet).length?'layoutSet? true':'layoutSet? false')
+    console.log(layoutSet?'layoutSet? true':'layoutSet? false')
 
+    const content = 'string'
     console.log('<Foo/>:', React.isValidElement(<Foo />));
     console.log('Bar:', React.isValidElement(Bar));
     console.log('<Ba/>:', React.isValidElement(<Bar />));

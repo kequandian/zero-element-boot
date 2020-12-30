@@ -1,31 +1,29 @@
 const React = require('react');
-const { useImperativeHandle, forwardRef,  } = require('react');
+const { forwardRef } = require('react');
 const useLayout = require('@/hooks/useLayout');
-const CartSet = require('../cart');
+const DefaultCartSet = require('../cart');
 
-export default forwardRef(function NamedCart({ name, props, children, ...rest }, ref) {
+/**
+ * NamedCart [,NamedLayout] 负责处理数据传递，具体的Cart[ItemCart, OffsetCart, ...] 不负责处理数据传递
+ * 区别于 NamedGateway 数据传递由具体的 Gateway 处理
+ */
+export default function NamedCart({children, xname, props, cart={xname, props}, cartSet, ...rest }) {
 
-  const [CartRef, { getClassName }] = useLayout();
+  const _CartSet = cartSet ? cartSet : DefaultCartSet
 
-  useImperativeHandle(ref, () => ({
-    getClassName: getClassName,
-  }));
-
-  const nameValue = name || rest.cart.name
-
-  const NamedCart = CartSet[nameValue] || tips(nameValue);
+  const cartName = (typeof cart === 'string') ? cart : cart.xname
+  const _Cart = _CartSet[cartName] || tips(cartName);
 
   return (
-      <NamedCart {...props} ref={CartRef}>
+      <_Cart {...cart.props}>
         {React.Children.toArray(children).map(child => {
           return React.cloneElement(child, {
             ...rest
           })
         })}
-      </NamedCart>
+      </_Cart>
   )
-
-})
+}
 
 function tips(name) {
   return _ => `NamedCart ${name} 未定义`;

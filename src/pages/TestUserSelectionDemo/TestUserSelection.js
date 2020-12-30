@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import { NamedList, NamedLayout, NamedCart } from "@/components";
-
-import { Divider } from '@/components/seperator';
+import {NamedContainer, NamedGateway, NamedList, NamedLayout, NamedCart } from "@/components";
+import AutoLayout from '@/components/AutoLayout'
 
 const { UserItem } = require('@/presenter/composition');
 
@@ -48,26 +47,33 @@ export default function TestUserSelection(props) {
     //Cart HoverShadowCart
     const config = {
         items: userList.length > 0 ? userList : [],
-        template: {
-            layout: {
-                name: 'Flexbox',
+        layout: {
+            xname: 'Flexbox',
+            props: {
+                align: 'start',
+                direction: 'column',
+                justify: 'full',
+                seperator: 'Divider',
+            },
+            //children:[],
+            gateway: {
+                xname: 'Binding',
                 props: {
-                    align: 'start',
-                    direction: 'column',
-                    seperator: 'Divider',
-                    itemStyle:{
-                        itemWidth:'width-100'
+                    binding: {
+                       avatar: 'avatar',
+                       account: 'title',
+                       name: 'subtitle'
                     }
                 }
             },
-            seperator: 'Divider',
             cart:{
-                name: 'ItemCart',
+                xname: 'ItemCart',
                 props: {
-                    padding: '20px',
+                    padding: '10px',
                 }
             }, 
-            gateway: 'Gateway'
+            // presenter: 'UserItem',
+            container: 'PlainList'
         }
     };
 
@@ -77,13 +83,28 @@ export default function TestUserSelection(props) {
         onItemClickHandle();
     }
 
+    const allComponents = {
+        UserItem, 
+    }
+
+    // return (
+    //     <AutoLayout {...config} onItemClick={onClick} allComponents={allComponents} />
+    // )
     return (
-        <NamedList name='PlainList' {...config} onItemClick={onClick}>
-            <NamedLayout>
-                <NamedCart name='ItemCart' props={{padding: '12px'}}> 
-                    <UserItem />
-                </NamedCart>
-            </NamedLayout>
-        </NamedList>
+        <AutoLayout {...config} onItemClick={onClick}>
+            <UserItem />
+        </AutoLayout>
     )
+
+    // return (
+    //     <NamedList name='PlainList' items={config.items} onItemClick={onClick}>
+    //         <NamedLayout name='Flexbox' props={config.layout.props}>
+    //             <NamedGateway name='Gateway'>
+    //                 <NamedCart name='ItemCart' props={{padding: '12px'}}> 
+    //                     <UserItem />
+    //                 </NamedCart>
+    //             </NamedGateway>
+    //         </NamedLayout>
+    //     </NamedList>
+    // )
 }

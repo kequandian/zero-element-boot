@@ -17,13 +17,11 @@ export default function AdItem(props) {
 
   const config = {
     layout: {
-      name: 'Flexbox',
+      xname: 'Flexbox',
       props: {
         align: 'start',
         direction: 'row',
-        itemStyle: {
-          itemAlign: 'h-start'
-        }
+        justify: 'center'
       },
       children: [
         {
@@ -39,10 +37,10 @@ export default function AdItem(props) {
             }
           }
         },
-        {
-          name: 'TextContext',
-          span: 1,
-        },
+        // {
+        //   name: 'TextContext',
+        //   span: 1,
+        // },
         // {
         //   name: 'FootContent',
         //   span: 1,

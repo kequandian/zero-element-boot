@@ -6,7 +6,7 @@ import NamedSeperator from './NamedSeperator';
 import NamedGateway from './NamedGateway';
 
 // AutoComponent
-import AutoComponent from './AutoComponentL2';
+import AutoComponent from './AutoComponent';
 import AutoComponentL2 from './AutoComponentL2';
 
 
@@ -21,5 +21,5 @@ export {
 
     // AutoComponent
     AutoComponent,
-    AutoComponentL2
+    AutoComponentL2, 
 };

@@ -2,7 +2,7 @@ import React, { useImperativeHandle, forwardRef, useState } from 'react';
 
 require('./index.less');
 
-export default forwardRef(function Cart(props, ref) {
+export default function Cart(props) {
 
   /**
    * fill         背景
@@ -21,11 +21,11 @@ export default forwardRef(function Cart(props, ref) {
 
   const [onHover, setOnHover] = useState(false);
 
-  useImperativeHandle(ref, () => ({
-    getClassName: () => {
-      return `c-Cart`;
-    }
-  }));
+  // useImperativeHandle(ref, () => ({
+  //   getClassName: () => {
+  //     return `c-Cart`;
+  //   }
+  // }));
 
   const toggleHover = () => {
     if(!isOnHover){
@@ -58,4 +58,4 @@ export default forwardRef(function Cart(props, ref) {
       {child}
     </div>
   })
-})
+}

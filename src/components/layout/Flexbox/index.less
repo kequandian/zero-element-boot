@@ -92,39 +92,40 @@
 
   display: flex;
   
-  &.width-100{
+  &.full {
     width: 100%;
   }
 
-  &.width-50{
+  &.half{
     width: 50%;
   }
 
-  &.width-25{
+  &.quad{
     width: 25%;
   }
 
-  &.h-start {
+  &.start.column {
     justify-content: flex-start;
   }
 
-  &.h-center {
+  &.center.column {
     justify-content: center;
   }
 
-  &.h-end {
+  &.end.column {
     justify-content: flex-end;
   }
 
-  &.v-start{
+  // for column direction
+  &.start.row{
     align-items: flex-start
   }
 
-  &.v-center{
+  &.center.row{
     align-items: center
   }
 
-  &.v-end{
+  &.end.row{
     align-items: flex-end
   }
 

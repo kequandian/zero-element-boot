@@ -1,7 +1,9 @@
 import Gateway from './Gateway';
 import GetField from './GetField';
+import Binding from './Binding';
 
 export {
-    Gateway,
     GetField,
+    Gateway,
+    Binding,
 }

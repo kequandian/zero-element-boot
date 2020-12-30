@@ -4,22 +4,23 @@ import NamedSeperator from '@/components/NamedSeperator';
 require('./index.less');
 
 /**
- * line 分割线
- * 参数
- * Seperator: Seperator, 组件名
-   props:{
-      lineType:'solid' 分割线类型
+ * @param {对齐方式: [start, center, end, around, between, start-with-last-end] } align
+ * @param {对齐方向: [row, column, row-reverse, column-reverse] } direction
+ * @param {子项对齐方式: start, center, end, [full, half, quad]: for item width } justify
+ * @param {*} Seperator
+ * Seperator: 'Divider', 组件名
+ * {
+      name: 'Divider',
+      props:{
+          lineType:'solid' 分割线类型
+      }
    }
+   @param {是否划线} isLastItem
  */
-
 export default forwardRef(function Flexbox(props, ref) {
 
-  const { children, align='', direction='', itemStyle={}, seperator={}, isValidLine } = props;
-
-  console.log('Flexbox:props=', props)
-
-  // itemStyle 控制 child 样式
-  const { itemWidth='', itemAlign='' } = itemStyle;
+  const { children, align='', direction='', justify={}, seperator={}, isLastItem } = props;
+  console.log('align=', align, 'direction=', direction, 'justify=', justify)
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
@@ -28,18 +29,15 @@ export default forwardRef(function Flexbox(props, ref) {
   }));
 
   // get named seperator
-  var defaultSeperator = 'Divider'
-  if (typeof seperator === 'string'){
-    defaultSeperator = seperator
-  }
+  const defaultSeperator = (typeof seperator === 'string') ? seperator : seperator.name
 
   return React.Children.map(children, child => {
     return (
       <>
-        <div className={`l-FlexBoxItem ${itemWidth} ${itemAlign}`} onClick={() => child.props.onItemClick(child.props)}>
+        <div className={`l-FlexBoxItem ${direction} ${justify}`} onClick={() => child.props.onItemClick(child.props)}>
           {child}
         </div>
-        {isValidLine ? <NamedSeperator name={defaultSeperator} /> : null}
+        {defaultSeperator && (!isLastItem) ? <NamedSeperator name={defaultSeperator} /> : null}
       </>
     )
   })

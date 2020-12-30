@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useSize } from 'ahooks';
 import useLayout from '@/hooks/useLayout';
-import ContainerContext from '@/components/NamedList/ContainerContext';
+import ContainerContext from '@/components/AutoX/ContainerContext';
 
 
 export default function SelectedList(props) {
@@ -36,7 +36,7 @@ export default function SelectedList(props) {
                 key: i,
                 ref: layoutRef,
                 onItemClick: onItemClick,
-                isValidLine: items.length == (i+1) ? false : true,
+                isLastItem: items.length == (i+1) ? true : false,
                 onSelected: onSelected,
                 item_index: i,
                 curr_index : curr_index

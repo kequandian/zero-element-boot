@@ -1,6 +1,5 @@
 import React from 'react';
 
-import TestUserSelection from './TestUserSelectionDemo/TestUserSelection';
 import PlainListDemo from './Demo/PlainListDemo';
 import RoundListDemo from './Demo/RoundListDemo';
 import RectangleListDemo from './Demo/RectangleListDemo';
@@ -9,26 +8,21 @@ import AdListDemo from './Demo/AdListDemo';
 
 import { Cart } from "@/components/cart";
 
+import TestUserSelectionDemo from './TestUserSelectionDemo';
+import NamedCartTest from './Test/NamedCartTest'
+import IsValidElementTest from './Test/IsValidElementTest'
+import ContainerTest from './Test/ContainerTest'
+import AutoLayoutDemo from './AutoLayoutDemo'
+import UserItemDemo from './Demo/UserItemDemo'
+
 export default function index(props) {
 
-  const onItemClickHandle = () => {
-      console.log('event to dismiss the component')
+  function onItemClickHandle () {
+    // console.log('//')
   }
 
-  const config = {
-    corner:'8px',
-    margin:'20px',
-    padding:'',
-  }
-
-  /**
-   * <Cart {...config} >      
-      <TestUserSelection onItemClickHandle={onItemClickHandle} />
-    </Cart>
-   */
-
+  //<TestUserSelectionDemo />
   return (
       <AdListDemo onItemClickHandle={onItemClickHandle} />
   )
-  
 }

@@ -1,30 +1,29 @@
-const React = require('react');
-const { useImperativeHandle, forwardRef } = require('react');
-const useLayout = require('@/hooks/useLayout');
-const LayoutSet = require('../layout');
+import React, { forwardRef } from 'react';
+const DefaultLayoutSet = require('../layout');
 
-module.exports = forwardRef(function NamedLayout({children, name, props, layout={name, props}, isValidLine, ...rest }, ref) {
-  const [layoutRef, { getClassName }] = useLayout();
-  // console.log('layoutConfig=', layoutConfig, '...layout=', layout)
+// change history
+// CR.2020-12-26 custom LayoutSet
 
-  useImperativeHandle(ref, () => ({
-    getClassName: getClassName,
-  }));
+/**
+ * NameLayout [,NamedCart] 负责处理数据传递，具体的 Layout[Flexbox,...] 不负责处理数据传递
+ * 区别于 NamedGateway 数据传递由具体的 Gateway 处理
+ * @param {命名组件名称} name 
+ * @param {命名组件自定义属性} props
+ * @param {命名组件的 [name, props] 通过 layout 传递 } layout
+ */
+export default forwardRef(function NamedLayout({children, xname, props, layout={xname, props}, isLastItem, layoutSet, ...rest}, ref) {
 
-  // if (typeof props === 'string') {
-  //   layoutConfig = { ...layout, isValidLine };
-  // } else {
-  //   layoutConfig = { name, ...props, ...layout, isValidLine };
-  // }
+  // custom layoutSet first
+  const LayoutSet = layoutSet || DefaultLayoutSet
 
-  // retrieve isValidLine for layout
-  const isValidLineConfig = {isValidLine: isValidLine}
+  // retrieve isLastItem for layout
+  const isLastItemConfig = {isLastItem: isLastItem}
 
-  const Layout = LayoutSet[layout.name] || tips(layout.name);
+  const layoutName = (typeof layout === 'string') ? layout : layout.xname
+  const Layout = LayoutSet[layoutName] || tips(layoutName);
 
-  console.log('layout = ', layout);
-
-  return <Layout {...layout.props} {...isValidLineConfig} ref={layoutRef}>
+  // just forward ref to the specified layout (e.g. Flexbox)
+  return <Layout {...layout.props} {...isLastItemConfig} ref={ref}>
     {React.Children.toArray(children).map(child => {
       let element = React.cloneElement(child, {
         ...rest,

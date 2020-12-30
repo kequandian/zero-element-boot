@@ -1,12 +1,21 @@
 const React = require('react');
-const GatewaySet = require('../gateway');
+const DefaultGatewaySet = require('../gateway');
 
-export default function NamedGateway({ name, props, children, ...rest }) {
-  const NamedGateway = GatewaySet[name] || tips(name);
+/**
+ * @param {可能是一个字符串名称} gateway
+ * @param {field, filter, converter} props 
+ */
+module.exports = function NamedGateway({children, xname, props, gateway={xname, props}, gatewaySet, ...rest }) {
 
-  return <NamedGateway {...props} {...rest} >
+  const GatewaySet = gatewaySet || DefaultGatewaySet
+
+  const gatewayName = (typeof gateway === 'string')? gateway : gateway.xname
+  const Gateway =  GatewaySet[gatewayName] || tips(gatewayName);
+
+  // let Gateway, ... to handle data, not by NamedGateway
+  return <Gateway {...gateway.props} {...rest} >
     {children}
-  </NamedGateway>
+  </Gateway>
 }
 
 function tips(name) {

@@ -1,9 +1,17 @@
 {
-    "data":{"avatar":"http://url", "gender":"Male","name":"admin#1"},
-    "layout": 
+    "data": {"avatar":"http://url", "gender":"Male","name":"admin#1"},
+    "items": [
+        {"avatar":"http://url", "gender":"Male","name":"admin#1"},
+        {"avatar":"http://url", "gender":"Male","name":"admin#1"}
+    ],
+    "template": 
      {
-         "name": "Grid",
-         "props":{"cols": 4},
+         "layout": {
+            "name": "Grid",
+            "props":{
+                "cols": 4
+            }
+         },
          "children":[
              {
                  "name": "List",
@@ -34,6 +42,7 @@
              {
                  "name": " Tab",
                  "span": 1,
+                 "seperator": "Divider",
                  "cart": "NamedCart",
                  "gateway":
                  {
@@ -44,9 +53,18 @@
              {
                  "name": " Tab",
                  "span": 1,
+                 "seperator": "Divider",
                  "cart": "NamedCart",
                  "gateway": "MyDefinedGateway"
              }
-         ]
+         ], 
+         "seperator": "Divider",
+         "cart":{
+             "name": "ItemCart",
+             "props": {
+                 "padding": "20px",
+             }
+         }, 
+         "gateway": "Gateway"
      }
  }
