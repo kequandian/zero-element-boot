@@ -12,7 +12,7 @@ export default function AdItem(props) {
   const allComponents = {
     ImageAnimation,
     TextContext,
-    FootContent
+    FootContent,
   }
 
   const config = {
@@ -25,22 +25,28 @@ export default function AdItem(props) {
       },
       children: [
         {
-          name: 'ImageAnimation',
-          span: 1,
+          presenter: 'ImageAnimation',
           gateway: {
-            name: 'Gateway',
+            xname: 'Binding',
             props: {
-              field: 'icon',
-              converter: {
-                icon: 'avatarIcon'
+              binding: {
+                url: 'imgUrl'
               }
             }
           }
         },
-        // {
-        //   name: 'TextContext',
-        //   span: 1,
-        // },
+        {
+          presenter: 'TextContext',
+          gateway: {
+            xname: 'Binding',
+            props: {
+              binding: {
+                title: 'title',
+                describe: 'describe'
+              }
+            }
+          }
+        },
         // {
         //   name: 'FootContent',
         //   span: 1,
@@ -50,14 +56,10 @@ export default function AdItem(props) {
     ...props,
   };
 
-  // <div style={{ minWidth: '300px', margin: '5px', padding: '20px', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
-
   return (
-
-
-    <div style={{ minWidth: '300px', padding: '20px',  }} >
-      <AutoComponent config={config} allComponents={allComponents}/>
-    </div>
+    <>
+      <AutoComponent {...config} allComponents={allComponents}/>
+    </>
   )
 
 }

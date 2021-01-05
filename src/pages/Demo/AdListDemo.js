@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { NamedList, NamedLayout, NamedCart } from "@/components";
+import AutoLayout from '@/components/AutoLayout'
 
 const { AdItem } = require('@/presenter/composition');
 
@@ -38,25 +39,30 @@ export default function AdListDemo(props) {
     //Cart HoverShadowCart
     const config = {
         items: adList.length > 0 ? adList : [],
-        template: {
-            layout: {
-                name: 'Flexbox',
+        layout: {
+            xname: 'Flexbox',
+            props: {
+                align: 'start',
+                direction: 'row',
+            },
+            gateway: {
+                xname: 'Binding',
                 props: {
-                    align: 'start',
-                    direction: 'row',
-                    itemStyle:{
-                        itemWidth:'width-50'
+                    binding: {
+                        url: 'url',
+                        title: 'title',
+                        describe: 'describe'
                     }
                 }
             },
-            cart:{
-                name: 'Cart',
+            cart: {
+                xname: 'ItemCart',
                 props: {
                     padding: '20px',
                 }
-            }, 
-            gateway: 'Gateway'
-        }
+            },
+            container: 'PlainList'
+        },
     };
 
     const onClick = (item) => {
@@ -65,13 +71,19 @@ export default function AdListDemo(props) {
         onItemClickHandle();
     }
 
+    // return (
+    //     <NamedList name='PlainList' {...config} onItemClick={onClick}>
+    //         <NamedLayout>
+    //             <NamedCart>
+    //                 
+    //             </NamedCart>
+    //         </NamedLayout>
+    //     </NamedList>
+    // )
+
     return (
-        <NamedList name='PlainList' {...config} onItemClick={onClick}>
-            <NamedLayout>
-                <NamedCart> 
-                    <AdItem />
-                </NamedCart>
-            </NamedLayout>
-        </NamedList>
+        <AutoLayout {...config} onItemClick={onClick} >
+            <AdItem />
+        </AutoLayout>
     )
 }

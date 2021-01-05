@@ -11,37 +11,30 @@ export default function TextContent(props) {
 
   const config = {
     layout: {
-      name: 'Flexbox',
+      xname: 'Flexbox',
       props: {
         align: 'start',
         direction: 'column',
-        itemStyle: {
-          itemAlign: 'v-center'
-        }
       },
       children: [
         {
-          name: 'Title',
-          span: 1,
+          presenter: 'Title',
           gateway: {
-            name: 'Gateway',
+            xname: 'Binding',
             props: {
-              field: 'title',
-              converter: {
+              binding: {
                 title: 'TitleText'
               }
             }
           }
         },
         {
-          name: 'Title',
-          span: 1,
+          presenter: 'Title',
           gateway: {
-            name: 'Gateway',
+            xname: 'Binding',
             props: {
-              field: 'title',
-              converter: {
-                title: 'TitleText'
+              binding: {
+                describe: 'TitleText'
               }
             }
           }
@@ -51,14 +44,10 @@ export default function TextContent(props) {
     ...props,
   };
 
-  // <div style={{ minWidth: '300px', margin: '5px', padding: '20px', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
-
   return (
-
-
-    <div style={{ minWidth: '300px', padding: '20px',  }} >
-      <AutoComponent config={config} allComponents={allComponents}/>
-    </div>
+    <>
+      <AutoComponent {...config} allComponents={allComponents}/>
+    </>
   )
 
 }
