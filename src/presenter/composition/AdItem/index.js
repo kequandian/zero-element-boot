@@ -3,15 +3,13 @@ const AutoComponent = require('@/components/AutoComponent');
 
 const { ImageAnimation } = require('@/presenter/demo');
 
-const TextContext = require('./components/textContent');
-
-const FootContent = require('./components/FootContent');
+const { TextContent, FootContent } = require('./components');
 
 export default function AdItem(props) {
 
   const allComponents = {
     ImageAnimation,
-    TextContext,
+    TextContent,
     FootContent,
   }
 
@@ -36,7 +34,7 @@ export default function AdItem(props) {
           }
         },
         {
-          presenter: 'TextContext',
+          presenter: 'TextContent',
           gateway: {
             xname: 'Binding',
             props: {
@@ -47,10 +45,18 @@ export default function AdItem(props) {
             }
           }
         },
-        // {
-        //   name: 'FootContent',
-        //   span: 1,
-        // },
+        {
+          presenter: 'FootContent',
+          gateway: {
+            xname: 'Binding',
+            props: {
+              binding: {
+                adType: 'adType',
+                createTime: 'createTime'
+              }
+            }
+          }
+        },
       ]
     },
     ...props,

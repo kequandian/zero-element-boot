@@ -11,37 +11,30 @@ export default function FootContent(props) {
 
   const config = {
     layout: {
-      name: 'Flexbox',
+      xname: 'Flexbox',
       props: {
         align: 'between',
         direction: 'row',
-        itemStyle: {
-          // itemAlign: 'v-center'
-        }
       },
       children: [
         {
-          name: 'Title',
-          span: 1,
+          presenter: 'Title',
           gateway: {
-            name: 'Gateway',
+            xname: 'Binding',
             props: {
-              field: 'title',
-              converter: {
-                title: 'TitleText'
+              binding: {
+                adType: 'TitleText'
               }
             }
           }
         },
         {
-          name: 'Title',
-          span: 1,
+          presenter: 'Title',
           gateway: {
-            name: 'Gateway',
+            xname: 'Binding',
             props: {
-              field: 'title',
-              converter: {
-                title: 'TitleText'
+              binding: {
+                createTime: 'TitleText'
               }
             }
           }
@@ -51,14 +44,10 @@ export default function FootContent(props) {
     ...props,
   };
 
-  // <div style={{ minWidth: '300px', margin: '5px', padding: '20px', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
-
   return (
-
-
-    <div style={{ minWidth: '300px', padding: '20px',  }} >
-      <AutoComponent config={config} allComponents={allComponents}/>
-    </div>
+    <>
+      <AutoComponent {...config} allComponents={allComponents}/>
+    </>
   )
 
 }
