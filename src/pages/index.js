@@ -5,6 +5,7 @@ import RoundListDemo from './Demo/RoundListDemo';
 import RectangleListDemo from './Demo/RectangleListDemo';
 import CircleListDemo from './Demo/CircleListDemo';
 import AdListDemo from './Demo/AdListDemo';
+import AdItemDemo from './Demo/AdItemDemo';
 
 import { Cart } from "@/components/cart";
 
@@ -22,7 +23,8 @@ export default function index(props) {
   }
 
   //<TestUserSelectionDemo />
+  // <AdListDemo onItemClickHandle={onItemClickHandle} />
   return (
-      <AdListDemo onItemClickHandle={onItemClickHandle} />
+      <AdItemDemo/>
   )
 }
