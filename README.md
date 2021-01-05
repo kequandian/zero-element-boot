@@ -31,3 +31,8 @@ https://www.showmebug.com/
 
 ## 物理库
 https://magnum.graphics/
+
+## SSO Authing
+> 界与流程参考
+https://authing.co/
+
