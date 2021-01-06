@@ -24,7 +24,9 @@ export default function index(props) {
 
   //<TestUserSelectionDemo />
   // <AdListDemo onItemClickHandle={onItemClickHandle} />
+  //<AdItemDemo/>
+  
   return (
-      <AdItemDemo/>
+    <TestUserSelectionDemo onItemClickHandle={onItemClickHandle} />
   )
 }

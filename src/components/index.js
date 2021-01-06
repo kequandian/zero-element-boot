@@ -9,7 +9,6 @@ import NamedGateway from './NamedGateway';
 import AutoComponent from './AutoComponent';
 import AutoComponentL2 from './AutoComponentL2';
 
-
 // default to export core components
 export {
     NamedLayout,
@@ -21,5 +20,5 @@ export {
 
     // AutoComponent
     AutoComponent,
-    AutoComponentL2, 
+    AutoComponentL2,
 };

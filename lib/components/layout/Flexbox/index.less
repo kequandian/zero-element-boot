@@ -1,11 +1,11 @@
-.l-Box {
+.l-FlexBox {
   display  : flex;
   flex-flow: row wrap;
   width    : 100%;
   align-content: center;
 }
 
-.l-Box {
+.l-FlexBox {
   
   &.start {
     justify-content: flex-start;
@@ -22,7 +22,7 @@
   &.around {
     justify-content: space-around;
 
-    // .l-BoxItem {
+    // .l-FlexBoxItem {
     //   flex: 1;
     // }
   }
@@ -30,7 +30,7 @@
   &.between {
     justify-content: space-between;
 
-    // .l-BoxItem {
+    // .l-FlexBoxItem {
     //   flex: 1;
     // }
   }
@@ -39,7 +39,7 @@
     
     justify-content: flex-start;
 
-    .l-BoxItem:last-child {
+    .l-FlexBoxItem:last-child {
       // width             : 100%;
       flex           :  1;
       display           : flex;
@@ -51,7 +51,7 @@
     
     justify-content: flex-start;
 
-    .l-BoxItem:last-child {
+    .l-FlexBoxItem:last-child {
       // width             : 100%;
       flex           :  1;
       display           : flex;
@@ -62,7 +62,7 @@
   // &.start-with-last-center  {
   //   justify-content: flex-start;
 
-  //   .l-BoxItem:last-child {
+  //   .l-FlexBoxItem:last-child {
   //     // width             : 100%;
   //     flex           : 1;
   //     display           : flex;
@@ -88,43 +88,44 @@
 
 }
 
-.l-BoxItem{
+.l-FlexBoxItem{
 
   display: flex;
   
-  &.width-100{
+  &.full {
     width: 100%;
   }
 
-  &.width-50{
+  &.half{
     width: 50%;
   }
 
-  &.width-25{
+  &.quad{
     width: 25%;
   }
 
-  &.h-start {
+  &.start.column {
     justify-content: flex-start;
   }
 
-  &.h-center {
+  &.center.column {
     justify-content: center;
   }
 
-  &.h-end {
+  &.end.column {
     justify-content: flex-end;
   }
 
-  &.v-start{
+  // for column direction
+  &.start.row{
     align-items: flex-start
   }
 
-  &.v-center{
+  &.center.row{
     align-items: center
   }
 
-  &.v-end{
+  &.end.row{
     align-items: flex-end
   }
 

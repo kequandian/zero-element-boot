@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import {NamedContainer, NamedGateway, NamedList, NamedLayout, NamedCart } from "@/components";
-import AutoLayout from '@/components/AutoLayout'
+// import AutoLayout from '@/components/AutoLayout'
+import { AutoLayout } from '@/export';
 
 const { UserItem } = require('@/presenter/composition');
 

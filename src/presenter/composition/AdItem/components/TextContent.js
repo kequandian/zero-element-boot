@@ -1,12 +1,13 @@
 import React from 'react';
 const AutoComponent = require('@/components/AutoComponent');
 
-const { Title } = require('@/presenter/demo');
+const { Title, Description } = require('@/presenter/demo');
 
 export default function TextContent(props) {
 
   const allComponents = {
-    Title
+    Title,
+    Description
   }
 
   const config = {
@@ -14,7 +15,8 @@ export default function TextContent(props) {
       xname: 'Flexbox',
       props: {
         align: 'start',
-        direction: 'column',
+        direction: 'column', 
+        justify: 'full'
       },
       children: [
         {
@@ -29,12 +31,12 @@ export default function TextContent(props) {
           }
         },
         {
-          presenter: 'Title',
+          presenter: 'Description',
           gateway: {
             xname: 'Binding',
             props: {
               binding: {
-                describe: 'TitleText'
+                describe: 'TextValue'
               }
             }
           }

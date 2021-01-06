@@ -4,11 +4,15 @@ import Avatar from './Avatar';
 import Title from './Title';
 import Subtitle from './Subtitle';
 import ImageAnimation from './ImageAnimation';
+import Description from './Description';
+import Author from './Author';
 
 export {
   Default,
   Avatar,
   Title,
   Subtitle,
-  ImageAnimation
+  ImageAnimation,
+  Description,
+  Author,
 }

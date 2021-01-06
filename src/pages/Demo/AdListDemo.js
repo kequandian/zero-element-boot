@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import { NamedList, NamedLayout, NamedCart } from "@/components";
-import AutoLayout from '@/components/AutoLayout'
+// import AutoLayout from '@/components/AutoLayout';
+import { AutoLayout } from '@/export';
 
 const { AdItem } = require('@/presenter/composition');
 
@@ -51,14 +52,16 @@ export default function AdListDemo(props) {
                     binding: {
                         url: 'url',
                         title: 'title',
-                        describe: 'describe'
+                        describe: 'describe',
+                        adType:'adType',
+                        createTime:'createTime'
                     }
                 }
             },
             cart: {
-                xname: 'ItemCart',
+                xname: 'HoverShadowCart',
                 props: {
-                    padding: '20px',
+                    padding: '16px',
                 }
             },
             container: 'PlainList'

@@ -18,7 +18,7 @@ export default function AdItem(props) {
       xname: 'Flexbox',
       props: {
         align: 'start',
-        direction: 'row',
+        direction: 'column',
         justify: 'center'
       },
       children: [
