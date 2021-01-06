@@ -38,3 +38,7 @@ https://authing.co/
 
 ## Babylonjs WebGL
 https://www.babylonjs.com/
+
+
+## EditorX vs AutoX LayoutX
+https://editorx.com
