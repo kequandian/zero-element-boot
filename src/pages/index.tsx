@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import PlainListDemo from './Demo/PlainListDemo';
 import RoundListDemo from './Demo/RoundListDemo';
@@ -7,7 +7,7 @@ import CircleListDemo from './Demo/CircleListDemo';
 import AdListDemo from './Demo/AdListDemo';
 import AdItemDemo from './Demo/AdItemDemo';
 
-import { Cart } from "@/components/cart";
+// import { Cart } from "@/components/cart";
 
 import TestUserSelectionDemo from './TestUserSelectionDemo';
 import NamedCartTest from './Test/NamedCartTest'
@@ -15,6 +15,9 @@ import IsValidElementTest from './Test/IsValidElementTest'
 import ContainerTest from './Test/ContainerTest'
 import AutoLayoutDemo from './AutoLayoutDemo'
 import UserItemDemo from './Demo/UserItemDemo'
+
+//tsc 测试
+import TsxCart from './TsxDemo/Demo01';
 
 export default function index(props) {
 
@@ -26,7 +29,5 @@ export default function index(props) {
   // <AdListDemo onItemClickHandle={onItemClickHandle} />
   //<AdItemDemo/>
   
-  return (
-    <TestUserSelectionDemo onItemClickHandle={onItemClickHandle} />
-  )
+  return <TsxCart title="Welcome!" paragraph="To this example"/>;
 }
