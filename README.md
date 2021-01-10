@@ -42,3 +42,8 @@ https://www.babylonjs.com/
 
 ## EditorX vs AutoX LayoutX
 https://editorx.com
+
+## Konvajs 基于canvas的图形编辑库
+https://konvajs.org/
+
+
