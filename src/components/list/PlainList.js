@@ -7,8 +7,8 @@ import ContainerContext from '@/components/AutoX/ContainerContext';
  * 列表属性{template}包括 [布局, Cart, 分隔线, 数据转换 [,子组件] ]
  * 简单列表仅向子组件传递数据源以及 子组件属性
  * @param {*} props 
- * @param {布局} layout
- * @param {数据}} items,dataSource
+ * @param {object} layout  布局
+ * @param {array}} items,dataSource
  */
 export default function PlainList(props) {
   const { children, layout, items, dataSource=items, onItemClick= () => {console.log('未设置onItemClick点击事件')}, ...rest } = props;
@@ -18,9 +18,13 @@ export default function PlainList(props) {
   const containerRef = useRef();
   const size = useSize(containerRef);
 
-  
   // ensure only child [NamedLayout, Presenter ...]
   const Child = React.Children.only(children);
+
+  // 检查数据是否有效
+  if(!(dataSource && Array.isArray(dataSource))){
+     return tips(dataSource)
+  }
 
   return <div
     style={{
@@ -39,9 +43,13 @@ export default function PlainList(props) {
                 key: i,
                 ref: layoutRef,
                 onItemClick:onItemClick,
-                isLastItem: items.length == (i+1) ? true : false,
+                isLastItem: dataSource.length == (i+1) ? true : false,
             })
             : <Child key={i} {...item } {...rest} layout={layout} ref={layoutRef} onItemClick={onItemClick} />)}
     </ContainerContext.Provider>
   </div>
+}
+
+function tips(dataSource) {
+  return <div>PlainList 数据无效</div>;
 }

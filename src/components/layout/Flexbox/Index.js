@@ -20,7 +20,7 @@ require('./index.less');
 export default forwardRef(function Flexbox(props, ref) {
 
   const { children, align='', direction='', justify={}, seperator={}, isLastItem } = props;
-  console.log('align=', align, 'direction=', direction, 'justify=', justify)
+  // console.log('align=', align, 'direction=', direction, 'justify=', justify)
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {

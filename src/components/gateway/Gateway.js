@@ -2,8 +2,8 @@ const React = require('react');
 
 /**
  * 
- * @param {转换数据域名称,值不变 (如把sex:Male 转换为 gentle:Male) } converter 
- * @param {仅对指定数据域进行 converter 转换} filter 
+ * @param {object} converter  转换数据域名称,值不变 (如把sex:Male 转换为 gentle:Male) 
+ * @param {object} filter  仅对指定数据域进行 converter 转换
  */
 module.exports = function Gateway({ children, field, filter, converter, ...rest }) {
 
