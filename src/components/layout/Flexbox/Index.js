@@ -1,5 +1,7 @@
 import React, { useImperativeHandle, forwardRef } from 'react';
-import NamedSeperator from '@/components/NamedSeperator';
+
+//CR. 2021-01-13 do not dependens NamedSeperator with layout
+//import NamedSeperator from '@/components/NamedSeperator';
 
 require('./index.less');
 
@@ -7,7 +9,7 @@ require('./index.less');
  * @param {对齐方式: [start, center, end, around, between, start-with-last-end] } align
  * @param {对齐方向: [row, column, row-reverse, column-reverse] } direction
  * @param {子项对齐方式: start, center, end, [full, half, quad]: for item width } justify
- * @param {*} Seperator
+ * @param {ReactElement} Seperator 直接转入的分隔线组件（不引入NamedSeperator依赖）
  * Seperator: 'Divider', 组件名
  * {
       name: 'Divider',
@@ -19,7 +21,7 @@ require('./index.less');
  */
 export default forwardRef(function Flexbox(props, ref) {
 
-  const { children, align='', direction='', justify={}, seperator={}, isLastItem } = props;
+  const { children, align='', direction='', justify={}, isLastItem, Seperator } = props;
   // console.log('align=', align, 'direction=', direction, 'justify=', justify)
 
   useImperativeHandle(ref, () => ({
@@ -29,7 +31,7 @@ export default forwardRef(function Flexbox(props, ref) {
   }));
 
   // get named seperator
-  const defaultSeperator = (typeof seperator === 'string') ? seperator : seperator.name
+  //const defaultSeperator = (typeof seperator === 'string') ? seperator : seperator.name
 
   return React.Children.map(children, child => {
     return (
@@ -37,7 +39,8 @@ export default forwardRef(function Flexbox(props, ref) {
         <div className={`l-FlexBoxItem ${direction} ${justify}`} onClick={() => child.props.onItemClick(child.props)}>
           {child}
         </div>
-        {defaultSeperator && (!isLastItem) ? <NamedSeperator name={defaultSeperator} /> : null}
+        {/* {defaultSeperator && (!isLastItem) ? <NamedSeperator name={defaultSeperator} /> : null} */}
+        {Seperator}
       </>
     )
   })

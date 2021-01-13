@@ -1,4 +1,6 @@
 import React, { forwardRef } from 'react';
+import NamedSeperator from '@/components/NamedSeperator';
+
 const DefaultLayoutSet = require('../layout');
 
 // change history
@@ -22,8 +24,11 @@ export default forwardRef(function NamedLayout({children, xname, props, layout={
   const layoutName = (typeof layout === 'string') ? layout : layout.xname
   const Layout = LayoutSet[layoutName] || tips(layoutName);
 
+  const seperatorName = (layout.props.seperator && typeof layout.props.seperator === 'object') ? layout.props.seperator.name : layout.props.seperator
+  const Seperator = seperatorName ? NamedSeperator({name: seperatorName}) : null
+
   // just forward ref to the specified layout (e.g. Flexbox)
-  return <Layout {...layout.props} {...isLastItemConfig} ref={ref}>
+  return <Layout {...layout.props} {...isLastItemConfig} Seperator={Seperator} ref={ref}>
     {React.Children.toArray(children).map(child => {
       let element = React.cloneElement(child, {
         ...rest,
