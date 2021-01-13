@@ -10,7 +10,16 @@ const AutoComponent = require('@/components/AutoComponent')
 //CR.2020-12-29 add Container
 
 
-module.exports = function ({children, layout, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, ...data }) {
+//CR.2021-01-13 merge AutoComponent and AutoLayout
+export default function (props){
+   if(props.layout.children){
+      return AutoComponent(props)
+   }
+   return AutoLayout(props)
+}
+
+
+function AutoLayout({children, layout, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, ...data }) {
 
   // handle layout, for children in {layout
   const {xname, props, container, gateway, cart, presenter } = layout || {};
@@ -71,7 +80,7 @@ module.exports = function ({children, layout, allComponents={}, onItemClick= () 
  * @param {分隔} seperator
  * @param {数据传递与绑定} gateway
  */
-function AutoLayout(config) {
+function _AutoLayout(config) {
   const {children, layout, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, items, ...data } = config;
 
   // handle layout, childrenData for children in {layout
