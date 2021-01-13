@@ -1,5 +1,5 @@
 import React from 'react';
-const AutoComponent = require('@/components/AutoComponentL2');
+const AutoComponent = require('@/components/AutoComponent');
 
 const { ImageAnimation } = require('@/presenter/demo');
 

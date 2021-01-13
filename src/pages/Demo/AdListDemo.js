@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
-import { NamedList, NamedLayout, NamedCart } from "@/components";
-// import AutoLayout from '@/components/AutoLayout';
 import { AutoLayout } from '@/export';
 
 const { AdItem } = require('@/presenter/composition');

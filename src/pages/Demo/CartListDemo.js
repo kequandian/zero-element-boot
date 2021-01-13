@@ -1,5 +1,5 @@
 import React from 'react';
-const AutoComponentL2 = require('@/components/AutoComponentL2');
+const AutoComponent = require('@/components/AutoComponent');
 
 export default function CartList(props) {
 
@@ -26,6 +26,6 @@ export default function CartList(props) {
     },
   };
 
-  return  <AutoComponentL2 config={config} />
+  return  <AutoComponent config={config} />
 
 }

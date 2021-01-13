@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // const AutoX = require('@/AutoX');
-const AutoComponent = require('@/components/AutoComponentL2');
+const AutoComponent = require('@/components/AutoComponent');
 const presenter = require('@/presenter/default');
 
 /**

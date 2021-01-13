@@ -1,5 +1,5 @@
 import React from 'react';
-const AutoComponent = require('@/components/AutoComponentL2');
+const AutoComponent = require('@/components/AutoComponent');
 const presenter = require('@/presenter/default');
 
 export default function SelectItem(props) {

@@ -6,19 +6,18 @@ import NamedSeperator from './NamedSeperator';
 import NamedGateway from './NamedGateway';
 
 // AutoComponent
+import AutoLayout from './AutoLayout';
 import AutoComponent from './AutoComponent';
-import AutoComponentL2 from './AutoComponentL2';
 
 // default to export core components
 export {
+        AutoLayout,
+        AutoComponent,
+
     NamedLayout,
     NamedList,
     NamedCart,
     NamedContainer,
     NamedSeperator,
     NamedGateway,
-
-    // AutoComponent
-    AutoComponent,
-    AutoComponentL2,
 };
