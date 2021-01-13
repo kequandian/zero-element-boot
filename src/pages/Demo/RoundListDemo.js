@@ -2,7 +2,7 @@ import React from 'react';
 
 import { NamedList, NamedLayout, NamedCart } from "@/components";
 
-const { RoundItem } = require('@/presenter/composition')
+const { RoundItem } = require('@/composition')
 
 export default function RoundListDemo(props){
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import UserItem from '@/presenter/composition/UserItem';
+import UserItem from '@/composition/UserItem';
 import Cart  from '@/components/cart/Cart'
 
 export default function Demo(props) {

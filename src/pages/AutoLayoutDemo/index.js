@@ -2,7 +2,7 @@ import React from 'react';
 const { useState, useEffect } = require('react');
 import AutoLayout from "@/components/AutoLayout";
 
-const { UserItem } = require('@/presenter/composition');
+const { UserItem } = require('@/composition');
 const promiseAjax = require('@/utils/request');
 
 

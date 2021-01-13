@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // const AutoX = require('@/AutoX');
 const AutoComponent = require('@/components/AutoComponent');
-const presenter = require('@/presenter/default');
+const presenter = require('@/components/presenter/default');
 
 /**
  * 样式参考

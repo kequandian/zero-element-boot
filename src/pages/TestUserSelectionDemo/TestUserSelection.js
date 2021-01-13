@@ -4,7 +4,7 @@ import {NamedContainer, NamedGateway, NamedList, NamedLayout, NamedCart } from "
 // import AutoLayout from '@/components/AutoLayout'
 import { AutoLayout } from '@/export';
 
-const { UserItem } = require('@/presenter/composition');
+const { UserItem } = require('@/composition');
 
 // const useUaasTestUser = require('@/pages/TestUserSelectionDemo/hooks/useUaasTestUser');
 const promiseAjax = require('@/utils/request');

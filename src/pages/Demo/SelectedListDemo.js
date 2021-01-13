@@ -4,7 +4,7 @@ import SelectedList from '@/components/list/SelectedList';
 import NamedLayout from '@/components/NamedLayout';
 import NamedCart from '@/components/NamedCart';
 
-const { SelectItem } = require('@/presenter/composition')
+const { SelectItem } = require('@/composition')
 
 export default function SelectedListDemo(props){
 

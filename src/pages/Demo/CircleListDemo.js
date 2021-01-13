@@ -2,7 +2,7 @@ import React from 'react';
 
 import { NamedList, NamedLayout, NamedCart } from "@/components";
 
-const { CircleItem } = require('@/presenter/composition')
+const { CircleItem } = require('@/composition')
 
 export default function CircleListDemo(props) {
 

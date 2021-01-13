@@ -2,7 +2,7 @@ import React from 'react';
 
 import { NamedList, NamedLayout, NamedCart } from "@/components";
 
-const { CartItem } = require('@/presenter/composition')
+const { CartItem } = require('@/composition')
 
 export default function PlainListDemo(props) {
 

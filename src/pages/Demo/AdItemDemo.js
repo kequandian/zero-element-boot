@@ -1,5 +1,5 @@
 import React from 'react';
-import AdItem from '@/presenter/composition/AdItem';
+import AdItem from '@/composition/AdItem';
 import Cart from '@/components/cart/Cart'
 
 export default function AdItemDemo(props) {

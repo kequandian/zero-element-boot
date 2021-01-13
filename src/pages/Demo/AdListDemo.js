@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AutoLayout } from '@/export';
 
-const { AdItem } = require('@/presenter/composition');
+const { AdItem } = require('@/composition');
 
 const promiseAjax = require('@/utils/request');
 

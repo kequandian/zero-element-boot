@@ -2,7 +2,7 @@ import React from 'react';
 
 import { NamedList, NamedLayout, NamedCart } from "@/components";
 
-const { RectangleItem } = require('@/presenter/composition')
+const { RectangleItem } = require('@/composition')
 
 export default function RectangleListDemo(props){
 

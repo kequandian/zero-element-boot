@@ -4,7 +4,7 @@ import { NamedLayout, NamedCart } from "@/components";
 
 import { PlainList } from '@/components/list';
 
-const { ImageItem } = require('@/presenter/composition');
+const { ImageItem } = require('@/composition');
 
 const promiseAjax = require('@/utils/request');
 

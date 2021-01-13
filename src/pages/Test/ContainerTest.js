@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Container from '@/components/container/Container';
-import UserItem from '@/presenter/composition/UserItem';
+import UserItem from '@/composition/UserItem';
 
 export default function NamedCartTest(props){
 
