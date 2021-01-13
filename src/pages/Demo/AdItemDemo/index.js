@@ -2,7 +2,7 @@ import React from 'react';
 import AdItem from '@/composition/AdItem';
 import Cart from '@/components/cart/Cart'
 
-export default function AdItemDemo(props) {
+export default function Index(props) {
 
     const config = {
         "title": "不要对地产股心存幻想#36氪未来君#",
