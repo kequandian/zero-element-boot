@@ -1,17 +1,4 @@
-import React from 'react';
-const AutoComponent = require('@/components/AutoComponent');
-
-const { Avatar, Title } = require('@/presenter/demo');
-
-export default function CartItem(props) {
-
-  const allComponents = {
-    Avatar,
-    Title
-  }
-
-  const config = {
-    layout: {
+const layout = {
       name: 'Grid',
       props: {
         col: 1,
@@ -56,19 +43,6 @@ export default function CartItem(props) {
             }
           }
         },
-      ]
-    },
-    ...props,
+      ], 
+      container: 'Cart'
   };
-
-  // <div style={{ minWidth: '300px', margin: '5px', padding: '20px', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
-
-  return (
-
-
-    <div style={{ minWidth: '300px', padding: '20px',  }} >
-      <AutoComponent config={config} allComponents={allComponents}/>
-    </div>
-  )
-
-}
