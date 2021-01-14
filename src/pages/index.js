@@ -17,6 +17,7 @@ import UserItemDemo from './Demo/UserItemDemo'
 
 
 import AdListDemo from '@/composition/AdList/Sandbox';
+import ComponentListDemo from '@/pages/ComponentListDemo';
 
 export default function index(props) {
 
@@ -28,5 +29,5 @@ export default function index(props) {
   // <AdListDemo onItemClickHandle={onItemClickHandle} />
   //<AdItemDemo/>
   
-  return <AdListDemo onItemClickHandle={onItemClickHandle} />;
+  return <ComponentListDemo onItemClickHandle={onItemClickHandle} />;
 }

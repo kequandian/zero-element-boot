@@ -64,7 +64,7 @@ export default forwardRef(function SelectBox(props, ref) {
 
     return (
       <>
-        <div className={`l-SelectBoxItem ${direction} ${itemAlign}`} onClick={() => clickItem(childProps)}
+        <div className={`l-SelectBoxItem ${direction} ${align}`} onClick={() => clickItem(childProps)}
           style={{
             position: 'relative',
             margin: `${margin}`,
