@@ -9,4 +9,8 @@ module.exports = {
       '@': require('path').resolve(__dirname, 'src'),
     },
   },
+  rules: [{
+    test: /\.yaml$/,
+    use: 'js-yaml-loader',
+  }]
 };

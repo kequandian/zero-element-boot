@@ -1,7 +1,11 @@
 import React from 'react';
 import { AutoLayout } from '@/export';
 
-import layout from './layout';
+// import layout from './layout';
+
+//加载yml文件
+import layoutOfYML from 'js-yaml-loader!./layout.yml';
+
 const { AdItem } = require('@/composition');
 
 export default function Index(props) {
@@ -11,7 +15,7 @@ export default function Index(props) {
     //Cart HoverShadowCart
     const config = {
         items: data.length > 0 ? data : [],
-        layout,
+        layout: layoutOfYML,
     };
 
     const onClick = (item) => {
@@ -19,6 +23,8 @@ export default function Index(props) {
         onItemClickHandle();
     }
 
+    // console.log("解释 layout.yml = ", JSON.stringify(layoutOfYML, null, 2));
+    
     return (
         <AutoLayout {...config} onItemClick={onClick} >
             <AdItem />
