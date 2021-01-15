@@ -5,6 +5,8 @@ const { ImageAnimation, Title } = require('@/presenter/demo');
 
 export default function ListItem(props) {
 
+  const { onItemClick } = props;
+
   const allComponents = {
     ImageAnimation,
     Title
@@ -16,7 +18,8 @@ export default function ListItem(props) {
         props: {
           align: 'start',
           direction: 'column',
-          justify: 'center'
+          justify: 'center',
+          onItemClick
         },
         children: [
           {

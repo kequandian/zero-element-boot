@@ -1,7 +1,10 @@
 import React from 'react';
 import { AutoLayout } from '@/export';
 
+import layout from './layout';
 import ListItem from './ListItem';
+
+require('./index.less');
 
 export default function Index(props) {
 
@@ -10,45 +13,33 @@ export default function Index(props) {
     //Cart HoverShadowCart
     const config = {
         items: records.length > 0 ? records : [],
-        layout: {
-            xname: 'Flexbox',
-            props: {
-                align: 'start',
-                direction: 'row',
-            },
-            gateway: {
-                xname: 'Binding',
-                props: {
-                    binding: {
-                        name: 'name',
-                        pathUrl: 'pathUrl',
-                        imageUrl: 'imageUrl',
-                    }
-                }
-            },
-            cart: {
-                xname: 'Cart',
-                props: {
-                    padding: '16px',
-                    isOnHover: false
-                }
-            },
-            container: 'PlainList'
-        },
+        layout,
     };
 
     const onClick = (item) => {
-        console.log(item)
+    }
+
+    const onChildItemClick = (item) => {
+        console.log(' III onChildItemClick name = ', item.name)
+        console.log(' III onChildItemClick pathUrl = ', item.pathUrl)
+        console.log(' III onChildItemClick imageUrl = ', item.imageUrl)
+    }
+
+    function onChange(componentName){
+        console.log("componentName = ", componentName)
     }
 
     return (
-        <div style={{display: 'flex', flexFlow: 'column'}}>
-            <div style={{ width: '100%', height: '45px', lineHeight: '45px', fontSize: '18px' }}>
+        <div className="content">
+            <div className="title">
                 {componentName}
             </div>
-            <AutoLayout {...config} >
-                <ListItem />
+            <AutoLayout {...config} onItemClick={onClick} >
+                <ListItem onItemClick={onChildItemClick}/>
             </AutoLayout>
+            <div className="footer">
+                <div className="bt" onClick={() => onChange(componentName)}>切换</div>
+            </div>
         </div>
     )
 }

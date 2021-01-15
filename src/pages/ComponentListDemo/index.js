@@ -3,6 +3,7 @@ import { AutoLayout } from '@/export';
 
 const promiseAjax = require('@/utils/request');
 
+import layout from './layout';
 import ListItem from './ListItem';
 
 export default function Index(props) {
@@ -28,40 +29,20 @@ export default function Index(props) {
     //Cart HoverShadowCart
     const config = {
         items: data.length > 0 ? data : [],
-        layout: {
-            xname: 'SelectBox',
-            props: {
-              align: 'start',
-              direction: 'columm',
-            },
-            gateway: {
-              xname: 'Binding',
-              props: {
-                binding: {
-                  componentName: 'componentName',
-                  records: 'records'
-                }
-              }
-            },
-            cart: {
-              xname: 'Cart',
-              props: {
-                padding: '16px',
-                isOnHover: false
-              }
-            },
-            container: 'SelectedList'
-          },
+        layout,
     };
 
     const onClick = (item) => {
-        console.log(item)
-        onItemClickHandle();
+    }
+
+    const onChildItemClick = (item) => {
     }
 
     return (
-        <AutoLayout {...config} onItemClick={onClick} >
-            <ListItem />
+      <div style={{width: '800px'}}>
+        <AutoLayout {...config} onItemClick={onClick}>
+            <ListItem onItemClick={onChildItemClick} />
         </AutoLayout>
+      </div>
     )
 }

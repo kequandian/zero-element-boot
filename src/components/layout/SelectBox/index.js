@@ -21,7 +21,6 @@ export default forwardRef(function SelectBox(props, ref) {
     }
   }));
 
-
   //分割线
   const Seperator = line.Seperator;
 
@@ -44,9 +43,10 @@ export default forwardRef(function SelectBox(props, ref) {
     }
   
     const fill = '#ffffff';
-    const margin = '0px';
+    const margin = '6px';
     const padding = '10px'
     let linewidth = '';
+    let activeLeftLine = line.activeLeftLine ? line.activeLeftLine : '3px';
     const hoverColor = '#EAEAEA';
     const activeColor = hoverColor;
     const lineColor = '#4285F4';
@@ -59,7 +59,7 @@ export default forwardRef(function SelectBox(props, ref) {
 
     if(item_index == curr_index){
       bgColor = activeColor;
-      linewidth = '3px';
+      linewidth = activeLeftLine;
     }
 
     return (
