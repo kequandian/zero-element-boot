@@ -19,6 +19,9 @@ import UserItemDemo from './Demo/UserItemDemo'
 import AdListDemo from '@/composition/AdList/Sandbox';
 import ComponentListDemo from '@/pages/ComponentListDemo';
 
+//复选框测试
+import CheckBoxDemo from '@/pages/Demo/CheckboxDemo';
+
 export default function index(props) {
 
   function onItemClickHandle () {
@@ -29,5 +32,5 @@ export default function index(props) {
   // <AdListDemo onItemClickHandle={onItemClickHandle} />
   //<AdItemDemo/>
   
-  return <ComponentListDemo onItemClickHandle={onItemClickHandle} />;
+  return <CheckBoxDemo onItemClickHandle={onItemClickHandle} />;
 }

@@ -11,13 +11,13 @@ require('./index.less');
    }
  */
 
-export default forwardRef(function SelectBox(props, ref) {
+export default forwardRef(function SelectCheckBox(props, ref) {
 
   const { children, align = '', direction = '', justify='', line = {}, isLastItem} = props;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `l-SelectBox ${align} ${direction}`;
+      return `l-SelectCheckBox ${align} ${direction}`;
     }
   }));
 
@@ -25,8 +25,7 @@ export default forwardRef(function SelectBox(props, ref) {
   const Seperator = line.Seperator;
 
   function clickItem (props) {
-    const { item_index } = props;
-    props.onSelected(item_index)
+    props.onSelected(props)
     props.onItemClick(props)
   }
 
@@ -35,7 +34,7 @@ export default forwardRef(function SelectBox(props, ref) {
   return React.Children.map(children, child => {
     const childProps = child.props;
 
-    const { item_index, curr_index } = childProps;
+    const { checked } = childProps;
 
     const toggleHover = () => {
       const result = !onHover;
@@ -45,8 +44,6 @@ export default forwardRef(function SelectBox(props, ref) {
     const fill = '#ffffff';
     const margin = '6px';
     const padding = '10px'
-    let linewidth = '';
-    let activeLeftLine = line.activeLeftLine ? line.activeLeftLine : '3px';
     const hoverColor = '#EAEAEA';
     const activeColor = hoverColor;
     const lineColor = '#4285F4';
@@ -57,14 +54,13 @@ export default forwardRef(function SelectBox(props, ref) {
       bgColor = `${fill}ff`;
     }
 
-    if(item_index == curr_index){
+    if(checked){
       bgColor = activeColor;
-      linewidth = activeLeftLine;
     }
 
     return (
       <>
-        <div className={`l-SelectBoxItem ${direction} ${align}`} onClick={() => clickItem(childProps)}
+        <div className={`l-SelectCheckBoxItem ${direction} ${align}`} onClick={() => clickItem(childProps)}
           style={{
             position: 'relative',
             margin: `${margin}`,
@@ -73,16 +69,6 @@ export default forwardRef(function SelectBox(props, ref) {
           }}
           onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
         >
-          {linewidth ? (
-            <div style={{position:'absolute', 
-            height: '100%',
-            left: 0,
-            top: 0,
-            borderStyle: `solid`,
-            borderWidth: `0 0 0 ${linewidth}`,
-            borderColor: `${lineColor}`}}></div>
-          ): null}
-
           {child}
         </div>
         {Seperator && (!isLastItem) ? <Seperator {...line.props} /> : null}
