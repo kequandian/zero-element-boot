@@ -32,5 +32,5 @@ export default function index(props) {
   // <AdListDemo onItemClickHandle={onItemClickHandle} />
   //<AdItemDemo/>
   
-  return <CheckBoxDemo onItemClickHandle={onItemClickHandle} />;
+  return <AdListDemo onItemClickHandle={onItemClickHandle} />;
 }

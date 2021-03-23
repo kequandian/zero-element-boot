@@ -1,8 +1,13 @@
+import { useSize } from 'ahooks';
+
 const React = require('react');
+import {useState, useEffect} from 'react';
 const {NamedContainer, NamedLayout, NamedGateway, NamedCart} = require('@/components');
 const DefaultContainer = require('@/components/container/Container')
 
-const AutoComponent = require('@/components/AutoComponent')
+const AutoComponent = require('@/components/AutoComponent');
+
+import fetchLayout from '@/utils/fetchLayout';
 
 // change history
 //CR.2020-12-26 init
@@ -12,6 +17,17 @@ const AutoComponent = require('@/components/AutoComponent')
 
 //CR.2021-01-13 merge AutoComponent and AutoLayout
 export default function (props){
+  const [ layoutJson, setLayoutJson ] = useState('');
+  const [ firstRequest, setFirstRequest ] = useState(0);
+  useEffect(()=>{
+    if(firstRequest == 0){
+      fetchLayout('x/PublicLayoutDemo/layout.json', setLayoutJson);
+      setFirstRequest(1);
+    }
+  },[layoutJson])
+
+  console.log('props = ', props)
+
    if(props.layout.children){
       return AutoComponent(props)
    }
