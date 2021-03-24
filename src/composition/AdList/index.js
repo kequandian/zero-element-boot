@@ -12,10 +12,12 @@ export default function Index(props) {
 
     const { onItemClickHandle, data } = props;
 
+    const layoutJsonPath = 'x/PublicLayoutDemo/layout.json';
     //Cart HoverShadowCart
     const config = {
         items: data.length > 0 ? data : [],
         layout: layoutOfYML,
+        localLayoutJsonPath:layoutJsonPath,
     };
 
     const onClick = (item) => {
@@ -24,6 +26,7 @@ export default function Index(props) {
     }
 
     // console.log("解释 layout.yml = ", JSON.stringify(layoutOfYML, null, 2));
+    console.log('layoutOfYML = ', layoutOfYML)
     
     return (
         <AutoLayout {...config} onItemClick={onClick} >

@@ -6,7 +6,7 @@ const promiseAjax = require('@/utils/request');
 
 export default function(props){
 
-    const api = '/api/adList'
+    const api = '/api/adList';
 
     const [data, setData] = useState([]);
 
@@ -22,5 +22,5 @@ export default function(props){
         handleQuery(api);
     }, []);
 
-    return <AdList data={data} {...props} />;
+    return <AdList data={data} {...props } />;
 }
