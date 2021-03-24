@@ -1,10 +1,10 @@
 import React from 'react';
 import { AutoLayout } from '@/export';
 
-// import layout from './layout';
+import layout from './layout';
 
 //加载yml文件
-import layoutOfYML from 'js-yaml-loader!./layout.yml';
+// import layoutOfYML from 'js-yaml-loader!./layout.yml';
 
 const { AdItem } = require('@/composition');
 
@@ -15,7 +15,7 @@ export default function Index(props) {
     //Cart HoverShadowCart
     const config = {
         items: data.length > 0 ? data : [],
-        layout: layoutOfYML,
+        layout: layout,
     };
 
     const onClick = (item) => {
