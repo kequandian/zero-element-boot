@@ -39,13 +39,20 @@ export default function (props){
 }
 
 
+// AutoLayout update history
+// CR.增加处理选中的 (Cart=> indicator)
+// when: 2021-03-24
+
 function AutoLayout({children, layout, allComponents={}, onItemClick= () => {console.log('未设置onItemClick点击事件')}, ...data }) {
 
   // handle layout, for children in {layout
-  const {xname, props, container, gateway, cart, presenter } = layout || {};
+  const {xname, props, container, gateway, cart, indicator, presenter } = layout || {};
 
   const _cart = (cart && typeof cart==='string') ? {xname: cart} : cart
   const _gateway = (gateway && typeof gateway==='string') ? {xname: gateway} : gateway
+  //  when: 2021-03-24
+  const _indicator = (indicator && typeof indicator==='string') ? {xname: indicator} : indicator
+
 
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
@@ -70,24 +77,44 @@ function AutoLayout({children, layout, allComponents={}, onItemClick= () => {con
         <NamedLayout xname={xname} props={props}>
 
             <NamedGateway {..._gateway}>
-              {cart?
-                <NamedCart {..._cart} >
-                  {presenter? 
+            {indicator?
+              <NamedCart {..._indicator}>
+                {cart?
+                  <NamedCart {..._cart} >
+                    {presenter? 
+                      <Presenter />
+                      :
+                      React.Children.toArray(children)
+                    }
+                  </NamedCart>
+                :
+                  (presenter?
                     <Presenter />
                     :
                     React.Children.toArray(children)
-                  }
-                </NamedCart>
+                  )
+                }
+              </NamedCart> // end indicator
               :
+              (cart? 
+                <NamedCart {..._cart} >
+                    {presenter? 
+                      <Presenter />
+                      :
+                      React.Children.toArray(children)
+                    }
+                </NamedCart>
+                : 
                 (presenter?
                   <Presenter />
                   :
                   React.Children.toArray(children)
                 )
-              }
+              )//cart?
+            }
             </NamedGateway>
 
-        </NamedLayout> 
+        </NamedLayout>
   </Container>
 }
 
