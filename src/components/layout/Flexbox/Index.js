@@ -21,7 +21,7 @@ require('./index.less');
  */
 export default forwardRef(function Flexbox(props, ref) {
 
-  const { children, align='', direction='', justify={}, isLastItem, Seperator } = props;
+  const { children, align='', direction='', justify={}, isLastItem, Seperator, onItemClick } = props;
   // console.log('align=', align, 'direction=', direction, 'justify=', justify)
 
   useImperativeHandle(ref, () => ({
@@ -30,13 +30,19 @@ export default forwardRef(function Flexbox(props, ref) {
     }
   }));
 
+  function itemClick(props){
+    if(onItemClick){
+      onItemClick(props)
+    }
+  }
+
   // get named seperator
   //const defaultSeperator = (typeof seperator === 'string') ? seperator : seperator.name
 
   return React.Children.map(children, child => {
     return (
       <>
-        <div className={`l-FlexBoxItem ${direction} ${justify}`} onClick={() => child.props.onItemClick(child.props)}>
+        <div className={`l-FlexBoxItem ${direction} ${justify}`} onClick={() => itemClick(child.props)}>
           {child}
         </div>
         {/* {defaultSeperator && (!isLastItem) ? <NamedSeperator name={defaultSeperator} /> : null} */}

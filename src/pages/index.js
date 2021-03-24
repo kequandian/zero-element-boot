@@ -4,7 +4,6 @@ import PlainListDemo from './Demo/PlainListDemo';
 import RoundListDemo from './Demo/RoundListDemo';
 import RectangleListDemo from './Demo/RectangleListDemo';
 import CircleListDemo from './Demo/CircleListDemo';
-import AdListDemo from './Demo/AdListDemo';
 import AdItemDemo from './Demo/AdItemDemo';
 
 import { Cart } from "@/components/cart";
@@ -15,6 +14,13 @@ import IsValidElementTest from './Test/IsValidElementTest'
 import ContainerTest from './Test/ContainerTest'
 import AutoLayoutDemo from './AutoLayoutDemo'
 import UserItemDemo from './Demo/UserItemDemo'
+
+
+import AdListDemo from '@/composition/AdList/Sandbox';
+import ComponentListDemo from '@/pages/ComponentListDemo';
+
+//复选框测试
+import CheckBoxDemo from '@/pages/Demo/CheckboxDemo';
 
 export default function index(props) {
 

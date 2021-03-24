@@ -4,7 +4,7 @@ import useLayout from '@/hooks/useLayout';
 import ContainerContext from '@/components/AutoX/ContainerContext';
 
 
-export default function SelectedList(props) {
+export default function SelectChecBoxList(props) {
   const { children, items, layout, cart, onItemClick= () => {console.log('未设置SelectedList onItemClick点击事件')} } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
@@ -12,10 +12,16 @@ export default function SelectedList(props) {
 
   const Child = React.Children.only(children);
 
-  const [curr_index, setCurrIndex] = useState(0)
+  const [checkedList, setCheckedList] = useState(items);
 
-  function onSelected (index) {
-    setCurrIndex(index)
+  function onSelected (props) {
+    const { checked, id } = props;
+    checkedList.map(item =>{
+      if(item.id == id){
+        item.checked = !checked;
+      }
+    })
+    setCheckedList(checkedList);
   }
 
   return <div
@@ -27,7 +33,7 @@ export default function SelectedList(props) {
     ref={containerRef}
   >
     <ContainerContext.Provider value={size}>
-        {items.map((item, i) => React.isValidElement(Child) ?
+        {checkedList.map((item, i) => React.isValidElement(Child) ?
             React.cloneElement(Child, {
                 ...item,
                 ...layout,
@@ -38,8 +44,6 @@ export default function SelectedList(props) {
                 onItemClick: onItemClick,
                 isLastItem: items.length == (i+1) ? true : false,
                 onSelected: onSelected,
-                item_index: i,
-                curr_index : curr_index
             })
             : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef} onItemClick={onItemClick} 
             onSelected={onSelected}
