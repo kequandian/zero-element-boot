@@ -39,7 +39,7 @@ export default function Index(props) {
     }
 
     return (
-      <div style={{width: '800px'}}>
+      <div style={{width: '1250px'}}>
         <AutoLayout {...config} onItemClick={onClick}>
             <ListItem onItemClick={onChildItemClick} />
         </AutoLayout>

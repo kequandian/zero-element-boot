@@ -16,13 +16,15 @@ import fetchLayout from '@/utils/fetchLayout';
 
 
 //CR.2021-01-13 merge AutoComponent and AutoLayout
+
+// 2021-3-25 新增通过 fetch 获取 layoutJson 配置信息
 export default function (props){
 
   const { localLayoutJsonPath='' } = props;
   const [ layoutJson, setLayoutJson ] = useState('');
   const [ firstRequest, setFirstRequest ] = useState(0);
   useEffect(()=>{
-    if(firstRequest == 0){
+    if(firstRequest == 0 && localLayoutJsonPath != ''){
       fetchLayout(localLayoutJsonPath, setJsonObject);
       setFirstRequest(1);
     }
