@@ -6,7 +6,9 @@ export default {
   // history: {
   //   type: 'hash',
   // },
-
+  dynamicImport: {
+    loading: '@/utils/loading'
+  },
   devtool: false,
   locale: {
     default: 'zh-CN',
