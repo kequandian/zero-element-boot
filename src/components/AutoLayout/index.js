@@ -17,16 +17,20 @@ import fetchLayout from '@/utils/fetchLayout';
 
 //CR.2021-01-13 merge AutoComponent and AutoLayout
 export default function (props){
+
+  const { localLayoutJsonPath='' } = props;
   const [ layoutJson, setLayoutJson ] = useState('');
   const [ firstRequest, setFirstRequest ] = useState(0);
   useEffect(()=>{
     if(firstRequest == 0){
-      fetchLayout('x/PublicLayoutDemo/layout.json', setLayoutJson);
+      fetchLayout(localLayoutJsonPath, setJsonObject);
       setFirstRequest(1);
     }
   },[layoutJson])
 
-  console.log('props = ', props)
+  function setJsonObject(jsonValue){
+    setLayoutJson(jsonValue)
+  }
 
    if(props.layout.children){
       return AutoComponent(props)

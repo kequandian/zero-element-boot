@@ -1,7 +1,7 @@
 
-export default (layoutPath, setLayoutJson) => {
+export default (jsonPath, setJsonObject) => {
 
-    fetch(layoutPath ,{
+    fetch(jsonPath ,{
       headers : { 
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -13,7 +13,7 @@ export default (layoutPath, setLayoutJson) => {
       })
       .then(function(myJson) {
         console.log(myJson);
-        setLayoutJson(myJson);
+        setJsonObject(myJson);
         // return myJson
       });
 }
