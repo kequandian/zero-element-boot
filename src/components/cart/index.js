@@ -9,6 +9,7 @@ import HoverShadowCart from './HoverShadowCart';
 import HightlightCart from './HightlightCart';
 import SelectCart from './SelectCart';
 import Circle from './Circle';
+import TheNewCart from './TheNewCart';
 
 export {
     Shape,
@@ -22,4 +23,5 @@ export {
     HightlightCart,
     SelectCart,
     Circle,
+    TheNewCart,
 }
