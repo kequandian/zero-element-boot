@@ -1,5 +1,6 @@
-
 export default (jsonPath, setJsonObject) => {
+
+    // const data = {};
 
     fetch(jsonPath ,{
       headers : { 
@@ -8,11 +9,13 @@ export default (jsonPath, setJsonObject) => {
        }
     })
       .then(function(resp){
-        // console.log(resp)
+        // console.log("resp = ",resp)
+        // data.status = resp.status;
         return resp.json();
       })
       .then(function(myJson) {
-        console.log(myJson);
+        // console.log(myJson);
+        // data.jsonObject = myJson;
         setJsonObject(myJson);
         // return myJson
       });
