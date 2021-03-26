@@ -26,10 +26,10 @@ export default function (props) {
   const [layoutJson, setLayoutJson] = useState('');
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    // setTimeout(() => { //模拟加载
-    fetchLayout(path, setJsonObject);
-    setLoading(false);
-    // }, 3000);
+    setTimeout(() => { //模拟加载
+      fetchLayout(path, setJsonObject);
+      setLoading(false);
+    }, 3000);
   }, [])
 
   function setJsonObject(jsonValue) {
