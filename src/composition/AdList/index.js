@@ -15,7 +15,7 @@ export default function Index(props) {
 
     let layoutData = '';
     // /x/PublicLayoutDemo/layout.json
-    const layoutJsonPath = '/x/PublicLayoutDemo/layout.json';
+    const layoutJsonPath = '';
     //local layout json
     const localLayoutJson = layoutOfYML;
 

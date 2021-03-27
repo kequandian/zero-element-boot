@@ -25,8 +25,8 @@ export default forwardRef(function SelectBox(props, ref) {
   const Seperator = line.Seperator;
 
   function clickItem (props) {
-    const { item_index } = props;
-    props.onSelected(item_index)
+    const { itemIndex } = props;
+    props.onSelected(itemIndex)
     props.onItemClick(props)
   }
 
@@ -35,13 +35,13 @@ export default forwardRef(function SelectBox(props, ref) {
   return React.Children.map(children, child => {
     const childProps = child.props;
 
-    const { item_index, curr_index } = childProps;
+    const { isSelected } = childProps;
 
     const toggleHover = () => {
       const result = !onHover;
       setOnHover(result)
     }
-  
+
     const fill = '#ffffff';
     const margin = '6px';
     const padding = '10px'
@@ -57,7 +57,7 @@ export default forwardRef(function SelectBox(props, ref) {
       bgColor = `${fill}ff`;
     }
 
-    if(item_index == curr_index){
+    if(isSelected){
       bgColor = activeColor;
       linewidth = activeLeftLine;
     }
