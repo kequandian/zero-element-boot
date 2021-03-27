@@ -25,8 +25,8 @@ import CheckBoxDemo from '@/pages/Demo/CheckboxDemo';
 
 export default function index(props) {
 
-  function onItemClickHandle () {
-    // console.log('//')
+  function onItemClickHandle (data) {
+    // console.log('data = ', data)
   }
 
   //<TestUserSelectionDemo />

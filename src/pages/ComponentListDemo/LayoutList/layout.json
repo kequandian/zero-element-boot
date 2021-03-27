@@ -1,0 +1,26 @@
+{
+    "xname": "Flexbox",
+    "props": {
+        "align": "start",
+        "direction": "row"
+    },
+    "gateway": {
+        "xname": "Binding",
+        "props": {
+            "binding": {
+                "name": "name",
+                "pathUrl": "pathUrl",
+                "imageUrl": "imageUrl"
+            }
+        }
+    },
+    "cart": {
+        "xname": "HightlightCart",
+        "indicator": "SelectIndicatorCart",
+        "props": {
+            "fill": "transparent",
+            "padding": "10px"
+        }
+    },
+    "container": "SelectedList"
+}

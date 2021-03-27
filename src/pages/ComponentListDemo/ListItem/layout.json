@@ -1,0 +1,22 @@
+{
+  "xname": "Flexbox",
+  "props": {
+    "align": "start",
+    "direction": "row",
+    "justify": "center"
+  },
+  "children": [
+    {
+      "presenter": "LayoutList",
+      "gateway": {
+        "xname": "Binding",
+        "props": {
+          "binding": {
+            "componentName": "componentName",
+            "records": "records"
+          }
+        }
+      }
+    }
+  ]
+}

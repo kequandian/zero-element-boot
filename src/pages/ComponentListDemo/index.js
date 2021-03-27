@@ -33,15 +33,13 @@ export default function Index(props) {
     };
 
     const onClick = (item) => {
-    }
-
-    const onChildItemClick = (item) => {
+        onItemClickHandle(item)
     }
 
     return (
       <div style={{width: '1250px'}}>
         <AutoLayout {...config} onItemClick={onClick}>
-            <ListItem onItemClick={onChildItemClick} />
+            <ListItem/>
         </AutoLayout>
       </div>
     )

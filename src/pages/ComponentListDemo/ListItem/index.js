@@ -6,8 +6,6 @@ import LayoutList from '../LayoutList';
 
 export default function ListItem(props) {
 
-  const { onItemClick } = props;
-
   const allComponents = {
     LayoutList,
   }
@@ -19,7 +17,6 @@ export default function ListItem(props) {
         align: 'start',
         direction: 'row',
         justify: 'center',
-        onItemClick
       },
       children: [
         {
