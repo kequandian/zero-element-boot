@@ -20,37 +20,58 @@ import loadingPage from '@/utils/loading';
 
 // 2021-3-25 新增通过 fetch 获取 layoutJson 配置信息, 新增 loading 加载效果
 export default function (props) {
-
-  const { layoutObject = {} } = props;
-  const { path = '', layout = {} } = layoutObject;
-  const [layoutJson, setLayoutJson] = useState('');
+  const { layout: { path = '', layout } } = props;
+  const [layoutJson, setLayoutJson] = useState({});
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    setTimeout(() => { //模拟加载
-      fetchLayout(path, setJsonObject);
-      setLoading(false);
-    }, 3000);
+    if (path) {
+      fetchData();
+    }
   }, [])
 
-  function setJsonObject(jsonValue) {
-    setLayoutJson(jsonValue)
+  //根据 path 异步获取 layout json
+  const fetchData = async () => {
+    const result = await fetch(path, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+      .then(function (resp) {
+        return resp.json();
+      })
+      .then(function (layoutJson) {
+        return layoutJson;
+      });
+    //保存layout json 数据
+    setLayoutJson(result.layout);
+    //更改loading状态
+    setLoading(false);
   }
 
-  if (loading) {
-    return loadingPage();
-  } else {
-    const p = { ...props, layout };
-
-    //需测试 /x 路径 layout, 取消以下注释即可
-    // if(layoutJson){
-    //   p.layout = layoutJson.layout;
-    // }
-
-    if (p.layout.children) {
-      return AutoComponent(p)
+  if (path) {
+    if (loading) {
+      return loadingPage();
+    } else {
+      if (layoutJson && JSON.stringify(layoutJson) != '{}') {
+        const p = { ...props, layout: layoutJson };
+        if (p.layout.children) {
+          return AutoComponent(p);
+        }
+        return AutoLayout(p);
+      } else {
+        console.error('获取配置数据异常')
+      }
     }
-    return AutoLayout(p)
+  } else {
+    const localProps = { ...props, layout };
+    if (localProps.layout.children) {
+      return AutoComponent(localProps);
+    }
+    return AutoLayout(localProps);
   }
+
 }
 
 

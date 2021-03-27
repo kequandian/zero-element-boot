@@ -14,7 +14,7 @@ export default (jsonPath, setJsonObject) => {
         return resp.json();
       })
       .then(function(myJson) {
-        // console.log(myJson);
+        // console.log('myJson = ', myJson);
         // data.jsonObject = myJson;
         setJsonObject(myJson);
         // return myJson

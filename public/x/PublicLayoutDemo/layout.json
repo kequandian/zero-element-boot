@@ -1,36 +1,28 @@
 {
     "layout": {
-      "name": "Flexbox",
+      "xname": "Flexbox",
       "props": {
         "align": "start",
-        "direction": "row",
-        "justify":"center"
+        "direction": "row"
       },
-      "children": [
-        {
-          "name": "Clean",
-          "gateway": {
-            "name": "Gateway",
-            "props": {
-              "field": "avatar",
-              "converter": {
-                "avatar": "avatarIcon"
-              }
-            }
-          }
-        },
-        {
-          "name": "Butter",
-          "gateway": {
-            "name": "Gateway",
-            "props": {
-              "field": "account",
-              "converter": {
-                "account": "TitleText"
-              }
-            }
+      "gateway": {
+        "xname": "Binding",
+        "props": {
+          "binding": {
+            "url": "url",
+            "title": "title",
+            "describe": "describe",
+            "adType": "adType",
+            "createTime": "createTime"
           }
         }
-      ]
+      },
+      "cart": {
+        "xname": "HoverShadowCart",
+        "props": {
+          "padding": "16px"
+        }
+      },
+      "container": "PlainList"
     }
 }
