@@ -12,15 +12,23 @@ export default function Index(props) {
 
     const { onItemClickHandle, data } = props;
 
+
+    let layoutData = '';
     // /x/PublicLayoutDemo/layout.json
     const layoutJsonPath = '/x/PublicLayoutDemo/layout.json';
+    //local layout json
+    const localLayoutJson = layoutOfYML;
+
+    if(layoutJsonPath){
+        layoutData = { path: layoutJsonPath};
+    }else{
+        layoutData = localLayoutJson;
+    }
+
     //Cart HoverShadowCart
     const config = {
         items: data.length > 0 ? data : [],
-        layout: {
-            path: layoutJsonPath,
-            layout: layoutOfYML
-        }
+        layout: layoutData
     };
 
     const onClick = (item) => {

@@ -20,7 +20,7 @@
       "cart": {
         "xname": "HoverShadowCart",
         "props": {
-          "padding": "16px"
+          "padding": "30px"
         }
       },
       "container": "PlainList"
