@@ -15,7 +15,7 @@ export default forwardRef(function HoverShadowCart(props, ref) {
 
   const {
     children, fill = '#ffffff', corner = '4px', stroke = 'solid', linewidth = '1px',
-    margin = '6px', padding = '10px', shadow = '0 0px 10px rgba(0, 0, 0, 0.15)', lineColor = '#DFE1E5', } = props;
+    margin = '6px', padding = '10px', shadow = '0 0px 10px rgba(0, 0, 0, 0.35)', lineColor = '#DFE1E5', } = props;
 
   const [onHover, setOnHover] = useState(false);
 
@@ -30,13 +30,13 @@ export default forwardRef(function HoverShadowCart(props, ref) {
     setOnHover(result)
   }
 
-  let bgColor = `#696969`;
+  let bgColor = `#ccc`;
   let showShadow = '';
   if (onHover) {
     bgColor = `#ffffdd`;
     showShadow = shadow;
   } else {
-    bgColor = `#696969`;
+    bgColor = `#ccc`;
     showShadow = '';
   }
 
@@ -46,10 +46,10 @@ export default forwardRef(function HoverShadowCart(props, ref) {
       padding: `30px`,
       borderRadius: `10px`,
       background: `${bgColor}`,
-      borderStyle: `${stroke}`,
+      borderStyle: `dashed`,
       boxShadow: `${showShadow}`,
       borderWidth: `${linewidth}`,
-      borderColor: `${lineColor}`,
+      borderColor: `#fffff0`,
     }}
       onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
     >
