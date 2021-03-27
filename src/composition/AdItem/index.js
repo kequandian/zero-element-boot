@@ -5,7 +5,7 @@ const { ImageAnimation } = require('@/presenter/demo');
 
 const { TextContent, FootContent } = require('./components');
 
-import layout from './layout';
+import layout from './_layout';
 
 export default function AdItem(props) {
 

@@ -3,6 +3,7 @@ import Grid from './Grid/Index';
 import WrappedGrid from './WrappedGrid';
 import Flexbox from './Flexbox';
 import SelectBox from './SelectBox';
+import Box from './Box/Align';
 
 export {
   Flexbox,
@@ -10,4 +11,5 @@ export {
   Align,
   WrappedGrid,
   SelectBox,
+  Box,
 }
