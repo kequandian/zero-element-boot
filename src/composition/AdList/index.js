@@ -12,15 +12,15 @@ export default function Index(props) {
 
     const { onItemClickHandle, data } = props;
 
-    const layoutJsonPath = 'x/PublicLayoutDemo/layout.json';
+    // /x/PublicLayoutDemo/layout.json
+    const layoutJsonPath = '/x/PublicLayoutDemo/layout.json';
     //Cart HoverShadowCart
     const config = {
         items: data.length > 0 ? data : [],
-        layoutObject: {
-            path: 'x/PublicLayoutDemo/layout.json',
+        layout: {
+            path: layoutJsonPath,
             layout: layoutOfYML
-        },
-        // localLayoutJsonPath:layoutJsonPath,
+        }
     };
 
     const onClick = (item) => {
