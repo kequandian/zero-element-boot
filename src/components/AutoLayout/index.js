@@ -20,7 +20,7 @@ import loadingPage from '@/utils/loading';
 
 // 2021-3-25 新增通过 fetch 获取 layoutJson 配置信息, 新增 loading 加载效果
 export default function (props) {
-  const { layout: { path = '', layout } } = props;
+  const { layout: { path = ''}, ...rest } = props;
   const [layoutJson, setLayoutJson] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -65,11 +65,10 @@ export default function (props) {
       }
     }
   } else {
-    const localProps = { ...props, layout };
-    if (localProps.layout.children) {
-      return AutoComponent(localProps);
+    if (props.layout.children) {
+      return AutoComponent(props);
     }
-    return AutoLayout(localProps);
+    return AutoLayout(props);
   }
 
 }
