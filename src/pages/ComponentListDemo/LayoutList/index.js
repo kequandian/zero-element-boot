@@ -8,7 +8,7 @@ require('./index.less');
 
 export default function Index(props) {
 
-    const { componentName, records } = props;
+    const { componentName, records, onItemClicklist } = props;
 
     //Cart HoverShadowCart
     const config = {

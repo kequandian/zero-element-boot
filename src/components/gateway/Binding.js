@@ -17,6 +17,7 @@ export default function Binding({ children, binding={}, ...rest}) {
 
   return childrenList.map(child => React.cloneElement(child, {
     ...data,
+    ...rest
   }))
 }
 
