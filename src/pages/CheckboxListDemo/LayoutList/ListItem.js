@@ -19,6 +19,7 @@ export default function ListItem(props) {
           align: 'start',
           direction: 'column',
           justify: 'center',
+          onItemClick
         },
         children: [
           {
@@ -48,17 +49,9 @@ export default function ListItem(props) {
     ...props,
   };
 
-  function onItemClickAction (v) {
-    console.log(v)
-    if(onItemClick){
-      console.log('click = ', v)
-      onItemClick(v)
-    }
-  }
-
   return (
     <>
-      <AutoComponent {...config} allComponents={allComponents} onItemClick={onItemClickAction}/>
+      <AutoComponent {...config} allComponents={allComponents}/>
     </>
   )
 

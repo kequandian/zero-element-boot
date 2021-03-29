@@ -1,5 +1,5 @@
 module.exports = {
-    xname: 'SelectBox',
+    xname: 'SelectCheckBox',
     props: {
         align: 'start',
         direction: 'row',
@@ -23,5 +23,5 @@ module.exports = {
             padding: '10px',
         }
     },
-    container: 'SelectedList'
+    container: 'SelectChecBoxList'
 }

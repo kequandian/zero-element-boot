@@ -4,7 +4,9 @@ import AdList from './index';
 
 const promiseAjax = require('@/utils/request');
 
-export default function(props){
+// import { APIContainer } from '@/components';
+
+export default function (props) {
 
     const api = '/api/adList';
 
@@ -22,5 +24,5 @@ export default function(props){
         handleQuery(api);
     }, []);
 
-    return <AdList data={data} {...props } />;
+    return <AdList data={data} {...props} />;
 }

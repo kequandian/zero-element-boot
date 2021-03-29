@@ -10,13 +10,17 @@ export default function Index(props) {
 
     const { onItemClickHandle } = props;
 
-    const api = '/api/componentList'
-
     const [data, setData] = useState([]);
 
+    const api = '/api/adList'
     function handleQuery(API, queryData) {
         return promiseAjax(API, queryData).then(response => {
             if (response && response.code === 200) {
+                const respDate = response.data;
+                respDate.map(item => {
+                    item.checked = false;
+                    return item;
+                })
                 setData(response.data);
             }
         });
@@ -33,13 +37,15 @@ export default function Index(props) {
     };
 
     const onClick = (item) => {
-        onItemClickHandle(item)
+    }
+
+    const onChildItemClick = (item) => {
     }
 
     return (
       <div style={{width: '1250px'}}>
         <AutoLayout {...config} onItemClick={onClick}>
-            <ListItem/>
+            <ListItem onItemClick={onChildItemClick} />
         </AutoLayout>
       </div>
     )
