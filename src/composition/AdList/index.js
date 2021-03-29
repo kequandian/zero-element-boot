@@ -28,12 +28,7 @@ export default function Index(props) {
     //Cart HoverShadowCart
     const config = {
         items: data.length > 0 ? data : [],
-<<<<<<< HEAD
-        layout: layout,
-        localLayoutJsonPath:layoutJsonPath,
-=======
         layout: layoutData
->>>>>>> 73603089dbb89d1b99bbf4fcf286d74544451dac
     };
 
     const onClick = (item) => {
