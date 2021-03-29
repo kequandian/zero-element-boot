@@ -9,6 +9,8 @@ import NamedGateway from './NamedGateway';
 import AutoLayout from './AutoLayout';
 import AutoComponent from './AutoComponent';
 
+import APIContainer from './container/APIContainer';
+
 // default to export core components
 export {
         AutoLayout,
@@ -20,4 +22,7 @@ export {
     NamedContainer,
     NamedSeperator,
     NamedGateway,
+    
+    //
+    APIContainer
 };

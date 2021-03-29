@@ -11,6 +11,9 @@ import SelectCart from './SelectCart';
 import Circle from './Circle';
 import TheNewCart from './TheNewCart';
 
+// indicator
+import SelectIndicatorCart from './indicator/SelectIndicatorCart';
+
 export {
     Shape,
     Cart,
@@ -24,4 +27,6 @@ export {
     SelectCart,
     Circle,
     TheNewCart,
+
+    SelectIndicatorCart,
 }

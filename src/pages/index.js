@@ -18,19 +18,20 @@ import UserItemDemo from './Demo/UserItemDemo'
 
 import AdListDemo from '@/composition/AdList/Sandbox';
 import ComponentListDemo from '@/pages/ComponentListDemo';
+// import CheckboxListDemo from '@/pages/CheckboxListDemo';
 
 //复选框测试
 import CheckBoxDemo from '@/pages/Demo/CheckboxDemo';
 
 export default function index(props) {
 
-  function onItemClickHandle () {
-    // console.log('//')
+  function onItemClickHandle (data) {
+    // console.log('data = ', data)
   }
 
   //<TestUserSelectionDemo />
   // <AdListDemo onItemClickHandle={onItemClickHandle} />
   //<AdItemDemo/>
   
-  return <AdListDemo onItemClickHandle={onItemClickHandle} />;
+  return <ComponentListDemo onItemClickHandle={onItemClickHandle} />;
 }

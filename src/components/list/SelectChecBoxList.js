@@ -21,6 +21,7 @@ export default function SelectChecBoxList(props) {
         item.checked = !checked;
       }
     })
+    console.log('checkedList = ', checkedList)
     setCheckedList(checkedList);
   }
 
@@ -46,9 +47,8 @@ export default function SelectChecBoxList(props) {
                 onSelected: onSelected,
             })
             : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef} onItemClick={onItemClick} 
+            isLastItem={items.length == (i+1) ? true : false}
             onSelected={onSelected}
-            item_index= {i}
-            curr_index= {curr_index}
             />)}
     </ContainerContext.Provider>
   </div>

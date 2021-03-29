@@ -29,7 +29,7 @@ export default forwardRef(function HightlightCart(props, ref) {
 
   let bgColor = `${fill}ff`;
   if (onHover) {
-    bgColor = `${fill}8C`;
+    bgColor = `${fill}80`;
   } else {
     bgColor = `${fill}ff`;
   }

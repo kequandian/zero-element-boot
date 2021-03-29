@@ -12,7 +12,7 @@ export default function SelectedList(props) {
 
   const Child = React.Children.only(children);
 
-  const [curr_index, setCurrIndex] = useState(0)
+  const [currIndex, setCurrIndex] = useState(0)
 
   function onSelected (index) {
     setCurrIndex(index)
@@ -38,13 +38,13 @@ export default function SelectedList(props) {
                 onItemClick: onItemClick,
                 isLastItem: items.length == (i+1) ? true : false,
                 onSelected: onSelected,
-                item_index: i,
-                curr_index : curr_index
+                itemIndex: i,
+                isSelected: i == currIndex ? true : false
             })
             : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef} onItemClick={onItemClick} 
             onSelected={onSelected}
-            item_index= {i}
-            curr_index= {curr_index}
+            itemIndex= {i}
+            isSelected= {i == currIndex ? true : false}
             />)}
     </ContainerContext.Provider>
   </div>
