@@ -1,6 +1,6 @@
 import React from 'react';
 
-const useLayout = require('@/hooks/useLayout');
+const useLayout = require('@/components/hooks/useLayout');
 export default function Container({children, ...rest}) {
   const [layoutRef, { getClassName }] = useLayout();
 

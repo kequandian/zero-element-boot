@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { List, Button } from 'antd';
 import { useMount, useSize } from 'ahooks';
-import useLayout from '@/hooks/useLayout';
+import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/AutoX/ContainerContext';
 
 export default function LoadMoreList(props) {
