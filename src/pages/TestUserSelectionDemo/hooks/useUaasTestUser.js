@@ -1,5 +1,5 @@
 const { useState, useEffect } = require('react');
-const promiseAjax = require('@/utils/request');
+const promiseAjax = require('@/components/utils/request');
 
 module.exports = function useUaasTestUser({endpoint, accountToken}, callBack) {
 

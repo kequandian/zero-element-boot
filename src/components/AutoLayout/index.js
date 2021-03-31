@@ -7,8 +7,8 @@ const DefaultContainer = require('@/components/container/Container')
 
 const AutoComponent = require('@/components/AutoComponent');
 
-import fetchLayout from '@/utils/fetchLayout';
-import loadingPage from '@/utils/loading';
+import fetchLayout from '@/components/utils/fetchLayout';
+import loadingPage from '@/components/loading';
 
 // change history
 //CR.2020-12-26 init

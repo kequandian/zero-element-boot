@@ -2,7 +2,7 @@
   "name": "zero-element-boot",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/export.js",
+  "main": "lib/components/index.js",
   "scripts": {
     "start": "umi dev",
     "clean": "rimraf lib/",

@@ -1,0 +1,45 @@
+.content {
+    display: flex;
+    flex-flow: column;
+
+    .title {
+        width: 100%;
+        height: 42px;
+        line-height: 42px;
+        font-size: 18px;
+    }
+
+    .footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: 10px;
+        padding: 0px 10px;
+
+        .bt{
+            width: 80px;/*设置宽60像素*/
+            height: 32px;/*设置高40像素*/
+            display: block;/*行内元素设置宽高不生效，适用display:block;可以将行内元素设置为块集元素 */
+            text-align: center ;/*文字在容器中横向居中*/
+            line-height: 32px;/*当数值与height一样的时候文字垂直居中*/
+            text-decoration: none;/*将文字下划线去除*/
+            background: #006EFF;/*设置元素背景颜色：天蓝色*/
+            color:white;/*设置文字颜色：白色*/
+            margin-bottom: 10px;/*下部外边框距离10像素*/
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .bt:hover{
+            background: #1A7DFF;
+        }
+
+        .bt:active{
+            background: #006EFF;
+        }
+
+    }
+
+}
+
