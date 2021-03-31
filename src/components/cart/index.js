@@ -10,6 +10,7 @@ import HightlightCart from './HightlightCart';
 import SelectCart from './SelectCart';
 import Circle from './Circle';
 import TheNewCart from './TheNewCart';
+import TheItemCart from'./TheItemCart';
 
 // indicator
 import SelectIndicatorCart from './indicator/SelectIndicatorCart';
@@ -27,6 +28,7 @@ export {
     SelectCart,
     Circle,
     TheNewCart,
+    TheItemCart,
 
     SelectIndicatorCart,
 }
