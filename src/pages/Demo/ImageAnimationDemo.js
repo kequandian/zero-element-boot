@@ -6,7 +6,7 @@ import { PlainList } from '@/components/list';
 
 const { ImageItem } = require('@/composition');
 
-const promiseAjax = require('@/utils/request');
+const promiseAjax = require('@/components/utils/request');
 
 /**
  * hook callback 参考

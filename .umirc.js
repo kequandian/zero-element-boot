@@ -7,7 +7,7 @@ export default {
   //   type: 'hash',
   // },
   dynamicImport: {
-    loading: '@/utils/loading'
+    loading: '@/components/loading'
   },
   devtool: false,
   locale: {

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 import {NamedContainer, NamedGateway, NamedList, NamedLayout, NamedCart } from "@/components";
 // import AutoLayout from '@/components/AutoLayout'
-import { AutoLayout } from '@/export';
+import { AutoLayout } from '@/components';
 
 const { UserItem } = require('@/composition');
 
 // const useUaasTestUser = require('@/pages/TestUserSelectionDemo/hooks/useUaasTestUser');
-const promiseAjax = require('@/utils/request');
+const promiseAjax = require('@/components/utils/request');
 
 
 /**
