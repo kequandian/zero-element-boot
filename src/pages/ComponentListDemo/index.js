@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { AutoLayout } from '@/export';
+import { AutoLayout } from '@/components';
 
-const promiseAjax = require('@/utils/request');
+const promiseAjax = require('@/components/utils/request');
 
 import layout from './layout';
 import ListItem from './ListItem';

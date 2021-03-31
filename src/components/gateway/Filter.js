@@ -1,6 +1,6 @@
 import React from 'react';
 
-const filterMethod = require('@/utils/filter')
+const filterMethod = require('@/components/utils/filter')
 
 /**
  * 过滤数据, 默认获取后将数据展开

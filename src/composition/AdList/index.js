@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutoLayout } from '@/export';
+import { AutoLayout } from '@/components';
 
 // import layout from './layout';
 

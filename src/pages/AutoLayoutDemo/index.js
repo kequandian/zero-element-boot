@@ -3,7 +3,7 @@ const { useState, useEffect } = require('react');
 import AutoLayout from "@/components/AutoLayout";
 
 const { UserItem } = require('@/composition');
-const promiseAjax = require('@/utils/request');
+const promiseAjax = require('@/components/utils/request');
 
 
 /**

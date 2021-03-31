@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import AdList from './index';
 
-const promiseAjax = require('@/utils/request');
+const promiseAjax = require('@/components/utils/request');
 
 // import { APIContainer } from '@/components';
 

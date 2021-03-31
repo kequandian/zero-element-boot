@@ -1,6 +1,6 @@
 const React = require('react');
 const { forwardRef } = require('react');
-const useLayout = require('@/hooks/useLayout');
+const useLayout = require('@/components/hooks/useLayout');
 const DefaultCartSet = require('../cart');
 
 /**
