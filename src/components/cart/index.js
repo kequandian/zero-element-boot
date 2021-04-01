@@ -9,6 +9,8 @@ import HoverShadowCart from './HoverShadowCart';
 import HightlightCart from './HightlightCart';
 import SelectCart from './SelectCart';
 import Circle from './Circle';
+import TheNewCart from './TheNewCart';
+import TheItemCart from'./TheItemCart';
 
 // indicator
 import SelectIndicatorCart from './indicator/SelectIndicatorCart';
@@ -25,6 +27,8 @@ export {
     HightlightCart,
     SelectCart,
     Circle,
+    TheNewCart,
+    TheItemCart,
 
     SelectIndicatorCart,
 }
