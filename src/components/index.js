@@ -15,13 +15,15 @@ import APIContainer from './container/APIContainer';
 import { set as NamedCartSet } from '@/config/NamedCartConfig';
 import { set as NamedPresenterSet } from '@/config/NamedPresenterConfig';
 
-//cart
+//cart 
+import Cart from './cart/Cart';
 import ItemCart from './cart/ItemCart';
 import HightlightCart from './cart/HightlightCart';
 import HoverShadowCart from './cart/HoverShadowCart';
 import SelectCart from './cart/SelectCart';
 
 NamedCartSet({
+  Cart,
   ItemCart,
   HightlightCart,
   HoverShadowCart,
