@@ -4,7 +4,7 @@ import { AutoLayout } from '@/components';
 import layout from './layout';
 
 //加载yml文件
-// import layoutOfYML from 'js-yaml-loader!./layout.yml';
+import layoutOfYML from 'js-yaml-loader!./layout.yml';
 
 const { AdItem } = require('@/composition');
 

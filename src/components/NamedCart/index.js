@@ -1,7 +1,8 @@
 const React = require('react');
 const { forwardRef } = require('react');
 const useLayout = require('@/components/hooks/useLayout');
-const DefaultCartSet = require('../cart');
+// const DefaultCartSet = require('../cart');
+import { get as DefaultCartSet } from '@/config/NamedCartConfig';
 
 /**
  * NamedCart [,NamedLayout] 负责处理数据传递，具体的Cart[ItemCart, OffsetCart, ...] 不负责处理数据传递
@@ -9,8 +10,7 @@ const DefaultCartSet = require('../cart');
  */
 export default function NamedCart({ children, xname, indicator, props, cart = { xname, props }, cartSet, ...rest }) {
 
-  const _CartSet = cartSet ? cartSet : DefaultCartSet
-
+  const _CartSet = cartSet ? cartSet : DefaultCartSet()
   const cartName = (typeof cart === 'string') ? cart : cart.xname
   const _Cart = _CartSet[cartName] || tips(cartName);
 

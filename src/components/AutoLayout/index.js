@@ -6,6 +6,7 @@ const { NamedContainer, NamedLayout, NamedGateway, NamedCart } = require('@/comp
 const DefaultContainer = require('@/components/container/Container')
 
 const AutoComponent = require('@/components/AutoComponent');
+import {get as NamedPresenterGet } from '@/config/NamedPresenterConfig';
 
 import fetchLayout from '@/components/utils/fetchLayout';
 import loadingPage from '@/components/loading';
@@ -94,8 +95,8 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
   const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
 
   // if layout contains childrenData, means this is for auto component
-  const Presenter = presenter ? (allComponents[presenter] || tips(presenter)) : null
-
+  const Presenter = presenter ? (allComponents[presenter] || tips(presenter)) : null;
+  
   // restLayout means layout props
   // child iterator from children contains: [name, span, width, gateway, cart, [,seperator]]
   // <NamedList name='PlainList' {...config} onItemClick={onClick}>
@@ -134,7 +135,7 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
           (cart ?
             <NamedCart {..._cart} >
               {presenter ?
-                <Presenter />
+                  <AutoComponent layout={presenter.props} allComponents={NamedPresenterGet()} />
                 :
                 React.Children.toArray(children)
               }
