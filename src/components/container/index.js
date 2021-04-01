@@ -4,6 +4,7 @@ import Container from './Container';
 import PlainList from '../list/PlainList';
 import SelectedList from '../list/SelectedList';
 import SelectChecBoxList from '../list/SelectChecBoxList';
+import LoadingList from '../list/LoadingList'
 
 export {
     APIContainer,
@@ -12,4 +13,5 @@ export {
     PlainList,
     SelectedList,
     SelectChecBoxList,
+    LoadingList
 }

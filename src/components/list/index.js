@@ -3,6 +3,7 @@ import LoadMoreList from './LoadMoreList';
 import PlainList from './PlainList';
 import SelectedList from './SelectedList';
 import SelectChecBoxList from './SelectChecBoxList';
+import LoadingList from './LoadingList';
 
 /**
  * List 属于抽象组件类型 container,容器 
@@ -12,5 +13,6 @@ export {
   LoadMoreList,
   PlainList,
   SelectedList,
-  SelectChecBoxList
+  SelectChecBoxList,
+  LoadingList
 }
