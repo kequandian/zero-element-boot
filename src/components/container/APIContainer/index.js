@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-let queryMethod = require('@/components/utils/promiseAjax');
+import queryMethod from '@/components/utils/promiseAjax';
 
 /**
  * 
