@@ -13,7 +13,6 @@ import APIContainer from './container/APIContainer';
 
 //set components config
 import { set as NamedCartSet } from '@/config/NamedCartConfig';
-import { set as NamedPresenterSet } from '@/config/NamedPresenterConfig';
 
 //cart 
 import Cart from './cart/Cart';
