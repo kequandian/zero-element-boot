@@ -10,8 +10,7 @@ const { AdItem } = require('@/composition');
 
 export default function Index(props) {
 
-    const { onItemClickHandle, data } = props;
-
+    const { onItemClickHandle, data=[] } = props;
 
     let layoutData = '';
     // /x/PublicLayoutDemo/layout.json
@@ -31,16 +30,16 @@ export default function Index(props) {
         layout: layoutData
     };
 
-    const onClick = (item) => {
-        console.log(item)
-        onItemClickHandle();
+    const onClick = (value) => {
+        console.log('list click = ', value)
+        // onItemClickHandle();
     }
 
     // console.log("解释 layout.yml = ", JSON.stringify(layoutOfYML, null, 2));
     // console.log('layoutOfYML = ', layoutOfYML)
     
     return (
-        <AutoLayout {...config} onItemClick={onClick} >
+        <AutoLayout {...config}>
             <AdItem />
         </AutoLayout>
     )
