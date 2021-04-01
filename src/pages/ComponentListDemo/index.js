@@ -12,23 +12,24 @@ export default function Index(props) {
 
     const api = '/api/componentList'
 
-    const [data, setData] = useState([]);
+    // const [data, setData] = useState([]);
 
-    function handleQuery(API, queryData) {
-        return promiseAjax(API, queryData).then(response => {
-            if (response && response.code === 200) {
-                setData(response.data);
-            }
-        });
-    }
+    // function handleQuery(API, queryData) {
+    //     return promiseAjax(API, queryData).then(response => {
+    //         if (response && response.code === 200) {
+    //             setData(response.data);
+    //         }
+    //     });
+    // }
 
-    useEffect(_ => {
-        handleQuery(api);
-    }, []);
+    // useEffect(_ => {
+    //     handleQuery(api);
+    // }, []);
 
     //Cart HoverShadowCart
     const config = {
-        items: data.length > 0 ? data : [],
+        // items: data.length > 0 ? data : [],
+        API:api,
         layout,
     };
 

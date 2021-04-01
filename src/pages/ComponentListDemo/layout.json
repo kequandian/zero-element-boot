@@ -20,5 +20,5 @@
         "isOnHover": false
       }
     },
-    "container": "PlainList"
+    "container": "LoadingList"
   }
