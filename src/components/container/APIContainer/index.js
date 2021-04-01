@@ -7,12 +7,11 @@ let queryMethod = require('@/components/utils/promiseAjax');
  */
 export default function APIContainer(props) {
   const [data, setData] = useState({});
-  const { API, queryData, extend = true, token, children, ...rest } = props;
+  const { API, queryData={}, extend = true, token, children, ...rest } = props;
 
   useEffect(_ => {
     queryMethod(API, queryData, token)
       .then(responseData => {
-
         if (responseData && responseData.code === 200) {
           setData(responseData.data);
         }
