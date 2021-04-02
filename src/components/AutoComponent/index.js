@@ -3,6 +3,7 @@ const React = require('react');
 const {NamedContainer, NamedLayout, NamedGateway, NamedCart} = require('@/components');
 // const useLayout = require('@/hooks/useLayout');
 const requireConfig = require('@/components/AutoX/requireConfig');
+const namedPresenterGet = require('@/config/NamedPresenterConfig').get();
 
 const {Container} = require('@/components/container');
 
@@ -25,9 +26,11 @@ const {Container} = require('@/components/container');
  * @param {布局} layout 
  * @param {绑定数据} data
  */
-module.exports = function ({layout = requireConfig(parent), allComponents={}, ...data}) {
+module.exports = function ({layout = requireConfig(parent), allComponents, ...data}) {
   const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
+  
+  const componentsJson = allComponents ? allComponents : namedPresenterGet();
 
   const {xname, props, container, children, gateway, cart, presenter } = layout || {};
   const defaultGateway = gateway
@@ -50,7 +53,7 @@ module.exports = function ({layout = requireConfig(parent), allComponents={}, ..
           {children.map((child, i) => {
             const { presenter, span, gateway, cart } = child;
             const _presenter = presenter ? presenter : defaultPresenter
-            const Presenter = _presenter ? allComponents[_presenter] || tips(_presenter) : null;
+            const Presenter = _presenter ? componentsJson[_presenter] || tips(_presenter) : null;
 
             const _gateway = gateway ? ((typeof gateway === 'string')? {xname: gateway} : gateway) : defaultGateway
             const _cart = cart? ((typeof cart === 'string')? {xname: cart} : cart) : defaultCart
