@@ -19,6 +19,7 @@ import UserItemDemo from './Demo/UserItemDemo'
 import AdListDemo from '@/composition/AdList/Sandbox';
 import ComponentListDemo from '@/pages/ComponentListDemo';
 // import CheckboxListDemo from '@/pages/CheckboxListDemo';
+import TheTest from '@/pages/TheTest'
 import PresenterTestDemo from '@/pages/PresenterTestDemo/Sandbox';
 
 //复选框测试
