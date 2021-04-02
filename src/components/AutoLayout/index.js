@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 const { NamedContainer, NamedLayout, NamedGateway, NamedCart } = require('@/components');
 const DefaultContainer = require('@/components/container/Container')
 
+const { CloneAutoLayout } = require('@/components/CloneAutoLayout');
 const AutoComponent = require('@/components/AutoComponent');
 import {get as NamedPresenterGet } from '@/config/NamedPresenterConfig';
 
@@ -79,7 +80,7 @@ export default function (props) {
 // CR.增加处理选中的 (Cart=> indicator)
 // when: 2021-03-24
 
-function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
+function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
 
   // handle layout, for children in {layout
   const { xname, props, container, gateway, cart, indicator, presenter } = layout || {};
@@ -95,7 +96,14 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
   const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
 
   // if layout contains childrenData, means this is for auto component
-  const Presenter = presenter ? (allComponents[presenter] || tips(presenter)) : null;
+  const Presenter = presenter ? ( typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout : tips(presenter)) : null;
+
+   function isJsonObject(obj) {
+    if(typeof(obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]"){
+      return true;
+    }
+    return false;
+  }
   
   // restLayout means layout props
   // child iterator from children contains: [name, span, width, gateway, cart, [,seperator]]
@@ -118,14 +126,14 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
             {cart ?
               <NamedCart {..._cart} >
                 {presenter ?
-                  <Presenter />
+                  <Presenter {...presenter}/>
                   :
                   React.Children.toArray(children)
                 }
               </NamedCart>
               :
               (presenter ?
-                <Presenter />
+                <Presenter {...presenter}/>
                 :
                 React.Children.toArray(children)
               )
@@ -135,14 +143,14 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
           (cart ?
             <NamedCart {..._cart} >
               {presenter ?
-                  <AutoComponent layout={presenter.props} allComponents={NamedPresenterGet()} />
+                  <Presenter {...presenter}/>
                 :
                 React.Children.toArray(children)
               }
             </NamedCart>
             :
             (presenter ?
-              <Presenter />
+              <Presenter {...presenter}/>
               :
               React.Children.toArray(children)
             )
