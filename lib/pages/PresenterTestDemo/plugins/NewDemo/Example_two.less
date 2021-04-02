@@ -1,0 +1,57 @@
+
+.BigBox{
+    // border:0.2em solid #ccc;
+    margin: 0px 15px 0 15px;
+    width: 350px;
+    // padding: 15px;
+    overflow: hidden;
+}
+.ExampleImage{
+    cursor: pointer;
+    overflow: hidden;
+}
+.BigBox .theImage{
+    width: 100%;
+}
+img .theImage{
+    overflow: hidden;
+
+}
+.TextContent{
+    overflow: hidden;
+}
+.ExampleTitle{
+    height:50px;
+    padding-top: 12px;
+    // text-align: center;
+    font-size: 15px;
+}
+.ExampleText{
+    fon-size:12px;
+    color:gray;
+    padding-top: 15px;
+    font-size: 12px;
+	display:-webkit-box;
+	-webkit-line-clamp:2;
+	-webkit-box-orient:vertical;
+    overflow: hidden;  //隐藏多余行数
+}
+.ExampleTime{
+    padding-top: 15px;
+}
+.ExampleTime .theType{
+    font-size:10px;
+    color:gray;
+    display:inline-block;
+}
+.ExampleTime .theTime{
+    font-size:10px;
+    color:gray;
+    margin-left:183px ;
+    display:inline-block;
+}
+.theImage:hover{
+    transform: scale(1.15);
+    display:inline;
+    transition: all 0.5s ease-in-out;
+}
