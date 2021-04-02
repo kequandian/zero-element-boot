@@ -3,12 +3,13 @@ import React from 'react';
 require('./index.less');
 
 export default function Butter(props) {
+
     return (
-        <section className="color" id="butter">
-            <h2 className="name">Butter</h2>
+        <section className="color" id="green">
+            <h2 className="name">Pink</h2>
             <ul className="details">
-                <li>{props.color}</li>
-                <li>{props.reg}</li>
+                <li>#ffb6c1</li>
+                <li>RGB(255,182,193)</li>
             </ul>
         </section>
     )
