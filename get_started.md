@@ -39,5 +39,86 @@ export default function TestNamedCart(props){
 
 #### 如何对多个React组件进行布局
 ```
+import React from 'react';
+import Butter from '@/presenter/default/Butter'
+import Clean from '@/presenter/default/Clean'
+import Pink from '@/presenter/default/Pink'
+import Flexbox from '@/components/layout/Flexbox'
 
+
+
+export default function TestCart(props){
+    return(
+        <Flexbox>
+            <Butter />
+            <Clean />
+            <Pink />
+        </Flexbox>
+    )
+}
+```
+
+#### 如何通过NamedLayout对多个组件进行布局
+```
+import React from 'react';
+import Butter from '@/presenter/default/Butter'
+import Clean from '@/presenter/default/Clean'
+import Pink from '@/presenter/default/Pink'
+import NamedLayout from '@/components/NamedLayout'
+
+
+
+export default function TestCart(props){
+    return(
+        <NamedLayout xname="Flexbox">
+            <Butter />
+            <Clean />
+            <Pink />
+        </NamedLayout>
+    )
+}
+```
+
+#### 如何向React组件传递数据
+```
+import React from 'react';
+import Butter from '@/presenter/default/Butter'
+import NamedCart from '@/components/NamedCart'
+import Binding from '@/components/gateway/Binding'
+
+export default function TestNamedCart(props){
+    const data={
+        color:"#F2D388",
+        reg:"RGB(242,211,136)"
+    }
+    return(
+        <NamedCart xname="ItemCart">
+            <Binding {...data}>
+                <Butter />
+            </Binding>
+        </NamedCart>
+    )
+}
+```
+
+#### 如何通过Gateway向React组件传递并绑定数据
+```
+import React from 'react';
+import Butter from '@/presenter/default/Butter'
+import NamedCart from '@/components/NamedCart'
+import NamedGateway from '@/components/NamedGateway'
+
+export default function TestNamedCart(props){
+    const data={
+        color:"#F2D388",
+        reg:"RGB(242,211,136)"
+    }
+    return(
+        <NamedCart xname="ItemCart">
+            <NamedGateway xname="Binding" {...data}>
+                <Butter />
+            </NamedGateway>
+        </NamedCart>
+    )
+}
 ```
