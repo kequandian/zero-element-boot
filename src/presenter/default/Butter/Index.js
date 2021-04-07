@@ -7,8 +7,8 @@ export default function Butter(props) {
         <section className="color" id="butter">
             <h2 className="name">Butter</h2>
             <ul className="details">
-                <li>{props.color}</li>
-                <li>{props.reg}</li>
+                <li>#F2D388</li>
+                <li>RGB(242,211,136)</li>
             </ul>
         </section>
     )

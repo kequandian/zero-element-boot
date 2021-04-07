@@ -1,18 +1,22 @@
 import React from 'react';
 import Butter from '@/presenter/default/Butter'
-import NamedCart from '@/components/NamedCart'
-import Binding from '@/components/gateway/Binding'
+import Clean from '@/presenter/default/Clean'
+import Pink from '@/presenter/default/Pink'
+import Flexbox from '@/components/layout/Flexbox'
+import Container from '@/components/container/Container'
 
-export default function TestNamedCart(props){
-    const data={
-        color:"#F2D388",
-        reg:"RGB(242,211,136)"
-    }
+
+
+export default function TestCart(props){
     return(
-        <NamedCart xname="ItemCart">
-            <Binding {...data}>
+        <div style={{height:'1000px', display:'flex', alignContent:'center'}}>
+        <Container>
+            <Flexbox align="around" justify="center">
                 <Butter />
-            </Binding>
-        </NamedCart>
+                <Clean />
+                <Pink />
+            </Flexbox>
+        </Container>
+        </div>
     )
 }
