@@ -2,6 +2,17 @@ import React, { useImperativeHandle, forwardRef, useState } from 'react';
 
 require('./index.less');
 
+/**
+ * 
+ * @param {color} fill 背景
+ * @param {borderRadius} corner 圆角
+ * @param {borderStyle} stroke 边框
+ * @param {borderWidth} linewidth 边框线框
+ * @param {margin} margin 边距
+ * @param {padding} padding 内距
+ * 
+ * @returns 
+ */
 export default function Cart(props) {
 
   /**
