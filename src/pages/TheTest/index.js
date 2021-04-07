@@ -1,7 +1,7 @@
 import React from 'react';
 import Butter from '@/presenter/default/Butter'
 import NamedCart from '@/components/NamedCart'
-import NamedGateway from '@/components/NamedGateway'
+import Binding from '@/components/gateway/Binding'
 
 export default function TestNamedCart(props){
     const data={
@@ -10,9 +10,9 @@ export default function TestNamedCart(props){
     }
     return(
         <NamedCart xname="ItemCart">
-            <NamedGateway xname="Binding" {...data}>
+            <Binding {...data}>
                 <Butter />
-            </NamedGateway>
+            </Binding>
         </NamedCart>
     )
 }
