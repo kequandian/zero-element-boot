@@ -4,12 +4,13 @@ import Clean from '@/presenter/default/Clean'
 import Pink from '@/presenter/default/Pink'
 import Flexbox from '@/components/layout/Flexbox'
 import Container from '@/components/container/Container'
+import PageCart from '@/components/cart/PageCart';
 
 
 
 export default function TestCart(props){
     return(
-        <div style={{height:'1000px', display:'flex', alignContent:'center'}}>
+        <PageCart>
         <Container>
             <Flexbox align="around" justify="center">
                 <Butter />
@@ -17,6 +18,6 @@ export default function TestCart(props){
                 <Pink />
             </Flexbox>
         </Container>
-        </div>
+        </PageCart>
     )
 }
