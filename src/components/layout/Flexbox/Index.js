@@ -26,7 +26,7 @@ export default forwardRef(function Flexbox(props, ref) {
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `l-FlexBox ${align} ${direction}`;
+      return `l-FlexBox  ${align} ${direction}`;
     }
   }));
 
