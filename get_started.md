@@ -28,9 +28,14 @@ import React from 'react';
 import Butter from '@/presenter/default/Butter'
 import NamedCart from '@/components/NamedCart'
 
-export default function TestNamedCart(props){
-    return(
-        <NamedCart xname="ItemCart">
+
+// NamedCart风格，用xname来使用所想使用的风格
+// xname中引用的Cart 来自于  @/component/cart/index.js 的导出，可以查看代码获知
+// 已定义的Cart 包括： [Cart,Circle,Corner,HoverShadowCart,ItemCart ...]
+
+export default function TestNamedCart(props) {
+    return (
+        <NamedCart xname="ItemCart" props={{ padding: "20px" }}>
             <Butter />
         </NamedCart>
     )
@@ -44,16 +49,22 @@ import Butter from '@/presenter/default/Butter'
 import Clean from '@/presenter/default/Clean'
 import Pink from '@/presenter/default/Pink'
 import Flexbox from '@/components/layout/Flexbox'
+import Container from '@/components/container/Container'
+import PageCart from '@/components/cart/PageCart';
 
 
 
 export default function TestCart(props){
     return(
-        <Flexbox>
-            <Butter />
-            <Clean />
-            <Pink />
-        </Flexbox>
+        <PageCart>
+        <Container>
+            <Flexbox align="around" justify="center">
+                <Butter />
+                <Clean />
+                <Pink />
+            </Flexbox>
+        </Container>
+        </PageCart>
     )
 }
 ```
