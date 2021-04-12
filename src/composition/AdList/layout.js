@@ -2,7 +2,7 @@ module.exports = {
   xname: 'Flexbox',
   props: {
     align: 'start',
-    direction: 'row',
+    direction: 'row'
   },
   gateway: {
     xname: 'Binding',
@@ -17,7 +17,7 @@ module.exports = {
     }
   },
   cart: {
-    xname: 'TheNewCart',
+    xname: 'HoverShadowCart',
     props: {
       padding: '16px',
     }

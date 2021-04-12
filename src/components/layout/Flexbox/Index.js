@@ -30,7 +30,6 @@ export default forwardRef(function Flexbox(props, ref) {
     }
   }));
 
-
   // get named seperator
   //const defaultSeperator = (typeof seperator === 'string') ? seperator : seperator.name
 
@@ -38,10 +37,10 @@ export default forwardRef(function Flexbox(props, ref) {
     
     const childProps = child.props;
 
-    const { onItemClick } = childProps;
+    const { onItemClick, setClick } = childProps;
 
     function itemClick(props){
-      if(onItemClick){
+      if(onItemClick && setClick){
         onItemClick(props)
       }
     }
