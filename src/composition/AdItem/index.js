@@ -23,8 +23,7 @@ export default function AdItem(props) {
   };
 
   /**
-   * 激活点击事件参数
-   * @param {布局} setClick { 值: true or false }
+   * @param {激活点击事件} setClick { 值: true or false }
    */
 
   return (
