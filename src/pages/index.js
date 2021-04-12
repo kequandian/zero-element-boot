@@ -27,15 +27,5 @@ import CheckBoxDemo from '@/pages/Demo/CheckboxDemo';
 
 export default function index(props) {
 
-  function onItemClickHandle (data) {
-    // console.log('data = ', data)
-  }
-
-  //<TestUserSelectionDemo />
-  // <AdListDemo onItemClickHandle={onItemClickHandle} />
-  //<AdItemDemo/>
-  
-  // return <PresenterTestDemo onItemClickHandle={onItemClickHandle} />;
-
-  return <TheTest onItemClickHandle={onItemClickHandle}/>;
+  return <AdListDemo onItemClickHandle={onItemClickHandle}/>;
 }

@@ -10,19 +10,11 @@ export default function (props) {
 
     const api = '/api/adList';
 
-    // const [data, setData] = useState([]);
+    function onItemClickHandle (data) {
+        // console.log('data = ', data)
+    }
 
-    // function handleQuery(API, queryData) {
-    //     return promiseAjax(API, queryData).then(response => {
-    //         if (response && response.code === 200) {
-    //             setData(response.data);
-    //         }
-    //     });
-    // }
-
-    // useEffect(_ => {
-    //     handleQuery(api);
-    // }, []);
+    //TODO, handle onClick event
 
     return (
         <APIContainer API={api} extend={false}>
