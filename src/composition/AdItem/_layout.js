@@ -5,6 +5,12 @@ module.exports = {
       direction: 'column',
       justify: 'center'
     },
+    // cart: {
+    //   xname: 'HoverShadowCart',
+    //   props: {
+    //     padding: '16px',
+    //   }
+    // },
     children: [
       
       {

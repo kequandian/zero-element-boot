@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import AdList from './index';
 
-const promiseAjax = require('@/components/utils/request');
-
 import { APIContainer } from '@/components';
+
+import useTokenRequest from '@/components/hooks/useTokenRequest';
+
+import bindFiles from './gateway.json'
 
 export default function (props) {
 
@@ -14,11 +16,15 @@ export default function (props) {
         // console.log('data = ', data)
     }
 
-    //TODO, handle onClick event
+    const [ data ] = useTokenRequest({api, bindFiles});
+
+    // return (
+    //     <APIContainer API={api} extend={false}>
+    //         <AdList {...props} />
+    //     </APIContainer>
+    // )
 
     return (
-        <APIContainer API={api} extend={false}>
-            <AdList {...props} />
-        </APIContainer>
+        <AdList {...props} data={data}/>
     )
 }
