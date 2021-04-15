@@ -1,7 +1,7 @@
 const { useEffect, useState } = require('react');
 const promiseAjax = require('@/components/utils/request');
 
-module.exports = function useTokenRequest(apiUrl, requestData = {}, accountToken='') {
+module.exports = function useTokenRequest(apiUrl, requestData = {}, accountToken = '') {
 
     const [data, setRespData] = useState([]);
 
@@ -20,12 +20,16 @@ module.exports = function useTokenRequest(apiUrl, requestData = {}, accountToken
             options.method = 'POST';
         }
 
-        promiseAjax(apiUrl, reqData, options)
-            .then(responseData => {
-                if (responseData && responseData.code === 200) {
-                    setRespData(responseData.data)
-                }
-            })
+        if (apiUrl) {
+            promiseAjax(apiUrl, reqData, options)
+                .then(responseData => {
+                    if (responseData && responseData.code === 200) {
+                        setRespData(responseData.data)
+                    }
+                })
+        }else{
+            console.warn('API为空, 访问被拒绝');
+        }
 
 
     }, [postData]);
