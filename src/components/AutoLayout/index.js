@@ -7,7 +7,7 @@ const DefaultContainer = require('@/components/container/Container')
 
 const { CloneAutoLayout } = require('@/components/CloneAutoLayout');
 const AutoComponent = require('@/components/AutoComponent');
-import {get as NamedPresenterGet } from '@/config/NamedPresenterConfig';
+import { get as NamedPresenterGet } from '@/config/NamedPresenterConfig';
 
 import fetchLayout from '@/components/utils/fetchLayout';
 import loadingPage from '@/components/loading';
@@ -22,7 +22,7 @@ import loadingPage from '@/components/loading';
 
 // 2021-3-25 新增通过 fetch 获取 layoutJson 配置信息, 新增 loading 加载效果
 export default function (props) {
-  const { layout: { path = ''}, ...rest } = props;
+  const { layout: { path = '' }, ...rest } = props;
   const [layoutJson, setLayoutJson] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -96,15 +96,15 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
   const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
 
   // if layout contains childrenData, means this is for auto component
-  const Presenter = presenter ? ( typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout : tips(presenter)) : null;
+  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout : tips(presenter)) : null;
 
-   function isJsonObject(obj) {
-    if(typeof(obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]"){
+  function isJsonObject(obj) {
+    if (typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]") {
       return true;
     }
     return false;
   }
-  
+
   // restLayout means layout props
   // child iterator from children contains: [name, span, width, gateway, cart, [,seperator]]
   // <NamedList name='PlainList' {...config} onItemClick={onClick}>
@@ -119,44 +119,82 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
   return <Container {..._container} {...data} onItemClick={onItemClick} >
 
     <NamedLayout xname={xname} props={props}>
-
-      <NamedGateway {..._gateway}>
-        {indicator ?
-          <NamedCart {..._indicator}>
-            {cart ?
+      {gateway ? (
+        <NamedGateway {..._gateway}>
+          {indicator ?
+            <NamedCart {..._indicator}>
+              {cart ?
+                <NamedCart {..._cart} >
+                  {presenter ?
+                    <Presenter {...presenter} />
+                    :
+                    React.Children.toArray(children)
+                  }
+                </NamedCart>
+                :
+                (presenter ?
+                  <Presenter {...presenter} />
+                  :
+                  React.Children.toArray(children)
+                )
+              }
+            </NamedCart> // end indicator
+            :
+            (cart ?
               <NamedCart {..._cart} >
                 {presenter ?
-                  <Presenter {...presenter}/>
+                  <Presenter {...presenter} />
                   :
                   React.Children.toArray(children)
                 }
               </NamedCart>
               :
               (presenter ?
-                <Presenter {...presenter}/>
+                <Presenter {...presenter} />
                 :
                 React.Children.toArray(children)
               )
-            }
-          </NamedCart> // end indicator
-          :
-          (cart ?
-            <NamedCart {..._cart} >
-              {presenter ?
-                  <Presenter {...presenter}/>
+            )//cart?
+          }
+        </NamedGateway>
+      ) : (
+
+          indicator ?
+            <NamedCart {..._indicator}>
+              {cart ?
+                <NamedCart {..._cart} >
+                  {presenter ?
+                    <Presenter {...presenter} />
+                    :
+                    React.Children.toArray(children)
+                  }
+                </NamedCart>
+                :
+                (presenter ?
+                  <Presenter {...presenter} />
+                  :
+                  React.Children.toArray(children)
+                )
+              }
+            </NamedCart> // end indicator
+            :
+            (cart ?
+              <NamedCart {..._cart} >
+                {presenter ?
+                  <Presenter {...presenter} />
+                  :
+                  React.Children.toArray(children)
+                }
+              </NamedCart>
+              :
+              (presenter ?
+                <Presenter {...presenter} />
                 :
                 React.Children.toArray(children)
-              }
-            </NamedCart>
-            :
-            (presenter ?
-              <Presenter {...presenter}/>
-              :
-              React.Children.toArray(children)
-            )
-          )//cart?
-        }
-      </NamedGateway>
+              )
+            )//cart?
+
+        )}
 
     </NamedLayout>
   </Container>

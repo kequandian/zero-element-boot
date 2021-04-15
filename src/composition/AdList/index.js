@@ -10,7 +10,7 @@ const { AdItem } = require('@/composition');
 
 export default function Index(props) {
 
-    const { onItemClickHandle, data=[] } = props;
+    const { data=[] } = props;
 
     let layoutData = '';
     // /x/PublicLayoutDemo/layout.json
