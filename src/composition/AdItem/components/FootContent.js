@@ -46,7 +46,7 @@ export default function FootContent(props) {
 
   return (
     <>
-      <AutoComponent {...config} allComponents={allComponents} setClick={false}/>
+      <AutoComponent {...config} allComponents={allComponents} />
     </>
   )
 

@@ -21,14 +21,10 @@ export default function AdItem(props) {
     layout,
     ...props,
   };
-
-  /**
-   * @param {激活点击事件} setClick { 值: true or false }
-   */
-
+  
   return (
     <>
-      <AutoComponent {...config} allComponents={allComponents} onItemClick={onAdItemClick} setClick={true}/>
+      <AutoComponent {...config} allComponents={allComponents} onItemClick={onAdItemClick} />
     </>
   )
 
