@@ -1,5 +1,5 @@
 module.exports = {
-    xname: 'Flexbox',
+    xname: 'Itembox',
     props: {
       align: 'start',
       direction: 'column',
