@@ -1,11 +1,11 @@
 const React = require('react');
 // const { useState, useEffect } = require('react');
-const {NamedContainer, NamedLayout, NamedGateway, NamedCart} = require('@/components');
+const { NamedContainer, NamedLayout, NamedGateway, NamedCart } = require('@/components');
 // const useLayout = require('@/hooks/useLayout');
 const requireConfig = require('@/components/AutoX/requireConfig');
 const namedPresenterGet = require('@/config/NamedPresenterConfig').get();
 
-const {Container} = require('@/components/container');
+const { Container } = require('@/components/container');
 
 //change history
 //CR.2020-12-29  handle AutoComponent, add Container
@@ -26,20 +26,23 @@ const {Container} = require('@/components/container');
  * @param {布局} layout 
  * @param {绑定数据} data
  */
-module.exports = function ({layout = requireConfig(parent), allComponents, ...data}) {
+module.exports = function ({ layout = requireConfig(parent), allComponents, ...data }) {
   const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
-  
+
   const componentsJson = allComponents ? allComponents : namedPresenterGet();
 
-  const {xname, props, container, children, gateway, cart, presenter } = layout || {};
+  const { xname, props, container, children, gateway, cart, presenter } = layout || {};
   const defaultGateway = gateway
   const defaultCart = cart
+
+  const _cart = (cart && typeof cart === 'string') ? { xname: cart } : cart
+
   const defaultPresenter = presenter
 
   //handle container
   const _Container = container ? NamedContainer : Container
-  const _container = ( (typeof container === 'string')? {xname: container} : container ) || {}
+  const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
 
   // restLayout means layout props
   // child iterator from children contains: [name, span, cart, gateway]
@@ -48,38 +51,74 @@ module.exports = function ({layout = requireConfig(parent), allComponents, ...da
   // >
   // <NamedLayout xname={xname} props={props} ref={layoutRef}>
   return <_Container {..._container} {...data}>
+    {cart ? (
+      <NamedLayout xname={xname} props={props}>
+        <NamedCart {..._cart}>
+          <NamedLayout xname={xname} props={props} >
+            {children.map((child, i) => {
+              const { presenter, span, gateway, cart } = child;
+              const _presenter = presenter ? presenter : defaultPresenter
+              const Presenter = _presenter ? componentsJson[_presenter] || tips(_presenter) : null;
 
-      <NamedLayout xname={xname} props={props} >
+              const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
+              const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
+
+              // each item has its Named Gateway
+              return <NamedGateway {..._gateway} key={i} span={span} >
+                {cart ?
+                  <NamedCart key={i} {..._cart} >
+                    {presenter ?
+                      <Presenter />
+                      :
+                      React.Children.toArray(children)
+                    }
+                  </NamedCart>
+                  :
+                  (presenter ?
+                    <Presenter />
+                    :
+                    React.Children.toArray(children)
+                  )
+                }
+              </NamedGateway>
+
+            })}
+          </NamedLayout>
+        </NamedCart>
+      </NamedLayout>
+    ) : (
+        <NamedLayout xname={xname} props={props} >
           {children.map((child, i) => {
-            const { presenter, span, gateway, cart } = child;
+            const { presenter, span, gateway, cart: isUndefined } = child;
             const _presenter = presenter ? presenter : defaultPresenter
             const Presenter = _presenter ? componentsJson[_presenter] || tips(_presenter) : null;
 
-            const _gateway = gateway ? ((typeof gateway === 'string')? {xname: gateway} : gateway) : defaultGateway
-            const _cart = cart? ((typeof cart === 'string')? {xname: cart} : cart) : defaultCart
+            const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
+            const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
 
             // each item has its Named Gateway
             return <NamedGateway {..._gateway} key={i} span={span} >
-              {cart?
+              {cart ?
                 <NamedCart key={i} {..._cart} >
-                  {presenter?
+                  {presenter ?
                     <Presenter />
                     :
                     React.Children.toArray(children)
                   }
                 </NamedCart>
-              :
-               ( presenter?
-                <Presenter />
                 :
-                React.Children.toArray(children)
-               )
-            }
+                (presenter ?
+                  <Presenter />
+                  :
+                  React.Children.toArray(children)
+                )
+              }
             </NamedGateway>
 
           })}
         </NamedLayout>
-    </_Container>
+      )}
+  </_Container>
   // </div>;
 }
 

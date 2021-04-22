@@ -2,31 +2,29 @@ import React, { useState, useEffect } from 'react';
 
 import AdList from './index';
 
-const promiseAjax = require('@/components/utils/request');
-
 import { APIContainer } from '@/components';
+
+import useTokenRequest from '@/components/hooks/useTokenRequest';
+
+import bindFiles from './gateway.json'
 
 export default function (props) {
 
     const api = '/api/adList';
 
-    // const [data, setData] = useState([]);
+    function onItemClickHandle (data) {
+        // console.log('data = ', data)
+    }
 
-    // function handleQuery(API, queryData) {
-    //     return promiseAjax(API, queryData).then(response => {
-    //         if (response && response.code === 200) {
-    //             setData(response.data);
-    //         }
-    //     });
-    // }
+    const [ data ] = useTokenRequest({api, bindFiles});
 
-    // useEffect(_ => {
-    //     handleQuery(api);
-    // }, []);
+    // return (
+    //     <APIContainer API={api} extend={false}>
+    //         <AdList {...props} />
+    //     </APIContainer>
+    // )
 
     return (
-        <APIContainer API={api} extend={false}>
-            <AdList {...props} />
-        </APIContainer>
+        <AdList {...props} data={data}/>
     )
 }

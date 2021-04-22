@@ -14,7 +14,7 @@ export default function FootContent(props) {
       xname: 'Flexbox',
       props: {
         align: 'between',
-        direction: 'row',
+        direction: 'row'
       },
       children: [
         {
@@ -46,7 +46,7 @@ export default function FootContent(props) {
 
   return (
     <>
-      <AutoComponent {...config} allComponents={allComponents}/>
+      <AutoComponent {...config} allComponents={allComponents} />
     </>
   )
 
