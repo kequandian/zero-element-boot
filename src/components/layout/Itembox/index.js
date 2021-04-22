@@ -19,14 +19,14 @@ require('./index.less');
    }
    @param {是否划线} isLastItem
  */
-export default forwardRef(function Flexbox(props, ref) {
+export default forwardRef(function Itembox(props, ref) {
 
   const { children, align='', direction='', justify={}, isLastItem, Seperator } = props;
   // console.log('align=', align, 'direction=', direction, 'justify=', justify)
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `l-FlexBox  ${align} ${direction}`;
+      return `l-ItemBox  ${align} ${direction}`;
     }
   }));
 
@@ -35,9 +35,19 @@ export default forwardRef(function Flexbox(props, ref) {
 
   return React.Children.map(children, child => {
     
+    const childProps = child.props;
+
+    const { onItemClick } = childProps;
+
+    function itemClick(props){
+      if(onItemClick){
+        onItemClick(props)
+      }
+    }
+
     return (
       <>
-        <div className={`l-FlexBoxItem ${direction} ${justify}`}>
+        <div className={`l-ItemBoxChild ${direction} ${justify}`} onClick={() => itemClick(child.props)}>
           {child}
         </div>
         {/* {defaultSeperator && (!isLastItem) ? <NamedSeperator name={defaultSeperator} /> : null} */}

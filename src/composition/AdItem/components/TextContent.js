@@ -48,7 +48,7 @@ export default function TextContent(props) {
 
   return (
     <>
-      <AutoComponent {...config} allComponents={allComponents}/>
+      <AutoComponent {...config} allComponents={allComponents} />
     </>
   )
 

@@ -1,10 +1,16 @@
 module.exports = {
-    xname: 'Flexbox',
+    xname: 'Itembox',
     props: {
       align: 'start',
       direction: 'column',
       justify: 'center'
     },
+    // cart: {
+    //   xname: 'HoverShadowCart',
+    //   props: {
+    //     padding: '16px',
+    //   }
+    // },
     children: [
       
       {

@@ -2,22 +2,22 @@ module.exports = {
   xname: 'Flexbox',
   props: {
     align: 'start',
-    direction: 'row',
+    direction: 'row'
   },
-  gateway: {
-    xname: 'Binding',
-    props: {
-      binding: {
-        url: 'url',
-        title: 'title',
-        describe: 'describe',
-        adType: 'adType',
-        createTime: 'createTime'
-      }
-    }
-  },
+  // gateway: {
+  //   xname: 'Binding',
+  //   props: {
+  //     binding: {
+  //       url: 'url',
+  //       title: 'title',
+  //       describe: 'describe',
+  //       adType: 'adType',
+  //       createTime: 'createTime'
+  //     }
+  //   }
+  // },
   cart: {
-    xname: 'TheNewCart',
+    xname: 'HoverShadowCart',
     props: {
       padding: '16px',
     }
