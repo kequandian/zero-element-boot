@@ -20,13 +20,15 @@ import ItemCart from './cart/ItemCart';
 import HightlightCart from './cart/HightlightCart';
 import HoverShadowCart from './cart/HoverShadowCart';
 import SelectCart from './cart/SelectCart';
+import SelectIndicatorCart from './cart/indicator/SelectIndicatorCart';
 
 NamedCartSet({
   Cart,
   ItemCart,
   HightlightCart,
   HoverShadowCart,
-  SelectCart
+  SelectCart,
+  SelectIndicatorCart
 })
 
 // default to export core components
