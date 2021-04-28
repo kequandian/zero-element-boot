@@ -1,10 +1,11 @@
 import React, { useImperativeHandle, forwardRef } from 'react';
 
-import Shape from '../Shape'
+// import Shape from '../Shape'
 
 require('./index.less');
 
 export default forwardRef(function Circle(props, ref) {
+  // console.log(props)
 
   /**
    * corner     圆角
@@ -14,7 +15,7 @@ export default forwardRef(function Circle(props, ref) {
    * outline    边界线类型
    */
 
-  const { children } = props;
+  const { children,corner="0px", fill = '#1ab3f1', stroke = '#7e2df0', lineWidth = '2', outline= 'solid' } = props;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
@@ -23,23 +24,31 @@ export default forwardRef(function Circle(props, ref) {
   }));
 
   return React.Children.map(children, child => {
+    return  <div className="c-circle-item" style={{
+      borderRadius:`${corner}`,
+      background:`${fill}`,
+      borderColor:`${stroke}`,
+      borderWidth:`${lineWidth}`,
+      borderStyle:`${outline}`
+    }}>
+      {child}
+    </div>
 
-    const { corner = '0px', fill = '#1ab3f1', stroke = '#7e2df0', lineWidth = '2', outline= 'solid' } = 
-    props.corner || props.fill || props.stroke || props.lineWidth || props.outline ? props : child.props.cart.props;
+    // const { corner = '0px', fill = '#1ab3f1', stroke = '#7e2df0', lineWidth = '2', outline= 'solid' } = 
+    // props.corner || props.fill || props.stroke || props.lineWidth || props.outline ? props : child.props.cart.props;
 
-    const config = {
-      corner,
-      fill, 
-      stroke, 
-      lineWidth,
-      outline
-    }
-    
-    return (
-      <Shape {...config} >
-        {child}
-      </Shape>
-    )
+    // const config = {
+    //   corner,
+    //   fill, 
+    //   stroke, 
+    //   lineWidth,
+    //   outline
+    // }
+    // return (
+    //   <Shape {...config} >
+    //     {child}
+    //   </Shape>
+    // )
 
     // return <div style={{ border:`${linewidth} ${outline} ${stroke}`, borderRadius:`${corner}`, backgroundColor:`${fill}` }}>
     //   {child}

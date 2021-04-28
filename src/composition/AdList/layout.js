@@ -19,7 +19,7 @@ module.exports = {
   cart: {
     xname: 'HoverShadowCart',
     props: {
-      padding: '16px',
+      // padding: '16px',
     }
   },
   container: 'PlainList'
