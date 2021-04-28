@@ -14,7 +14,7 @@ export default forwardRef(function Rectangle(props, ref) {
    * outline    边界线类型
    */
 
-  const { children } = props;
+  const { children,corner = '0px', fill = '#1ab3f1', stroke = '#7e2df0', lineWidth = '2', outline= 'solid' } = props;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
@@ -24,23 +24,32 @@ export default forwardRef(function Rectangle(props, ref) {
 
 
   return React.Children.map(children, child => {
+    return  <div className="c-Rectangle-item" style={{
+      borderRadius:`${corner}`,
+      background:`${fill}`,
+      borderColor:`${stroke}`,
+      borderWidth:`${lineWidth}`,
+      borderStyle:`${outline}`
+    }}>
+      {child}
+    </div>
     
-    const { corner = '0px', fill = '#1ab3f1', stroke = '#7e2df0', lineWidth = '2', outline= 'solid' } = 
-    props.corner || props.fill || props.stroke || props.lineWidth || props.outline ? props : child.props.cart.props;
+    // const { corner = '0px', fill = '#1ab3f1', stroke = '#7e2df0', lineWidth = '2', outline= 'solid' } = 
+    // props.corner || props.fill || props.stroke || props.lineWidth || props.outline ? props : child.props.cart.props;
 
-    const config = {
-      corner,
-      fill, 
-      stroke, 
-      lineWidth,
-      outline
-    }
+    // const config = {
+    //   corner,
+    //   fill, 
+    //   stroke, 
+    //   lineWidth,
+    //   outline
+    // }
 
-    return (
-        <Shape {...config} >
-          {child}
-        </Shape>
-    )
+    // return (
+    //     <Shape {...config} >
+    //       {child}
+    //     </Shape>
+    // )
   })
 
   // return React.Children.map(children, child => {

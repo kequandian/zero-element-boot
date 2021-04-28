@@ -14,7 +14,7 @@ export default forwardRef(function Round(props, ref) {
    * lineWidth  线框粗
    */
 
-  const { children } = props;
+  const { children, fill = '#1ee', stroke = '#9bd', lineWidth = '2'  } = props;
 
 
   useImperativeHandle(ref, () => ({
@@ -28,25 +28,32 @@ export default forwardRef(function Round(props, ref) {
 
 
   return React.Children.map(children, child => {
+    return  <div className="c-Rectangle-item" style={{
+      background:`${fill}`,
+      borderColor:`${stroke}`,
+      borderWidth:`${lineWidth}`,
+    }}>
+      {child}
+    </div>
     
-    const { fill = '#1ee', stroke = '#9bd', lineWidth = '2' } = props.fill || props.stroke || props.lineWidth ? props : child.props.cart.props;
+    // const { fill = '#1ee', stroke = '#9bd', lineWidth = '2' } = props.fill || props.stroke || props.lineWidth ? props : child.props.cart.props;
 
-    const config = {
-      corner: radiusSize ? `${radiusSize}px` : '',
-      fill, 
-      stroke, 
-      lineWidth
-    }
+    // const config = {
+    //   corner: radiusSize ? `${radiusSize}px` : '',
+    //   fill, 
+    //   stroke, 
+    //   lineWidth
+    // }
 
-    return (
-      <div ref={containerRef}>
-        <Shape 
-          {...config}
-        >
-          {child}
-        </Shape>
-      </div>
-    )
+    // return (
+    //   <div ref={containerRef}>
+    //     <Shape 
+    //       {...config}
+    //     >
+    //       {child}
+    //     </Shape>
+    //   </div>
+    // )
   })
 })
 
