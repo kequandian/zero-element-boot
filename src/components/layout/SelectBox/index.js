@@ -13,7 +13,7 @@ require('./index.less');
 
 export default forwardRef(function SelectBox(props, ref) {
 
-  const { children, align = '', direction = '', justify='', line = {}, isLastItem} = props;
+  const { children, align = '', direction = '', justify = '', line = {}, isLastItem } = props;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
@@ -24,7 +24,7 @@ export default forwardRef(function SelectBox(props, ref) {
   //分割线
   const Seperator = line.Seperator;
 
-  function clickItem (props) {
+  function clickItem(props) {
     const { itemIndex } = props;
     props.onSelected(itemIndex)
     props.onItemClick(props)
@@ -43,13 +43,13 @@ export default forwardRef(function SelectBox(props, ref) {
     }
 
     const fill = '#ffffff';
-    const margin = '6px';
-    const padding = '10px'
-    let linewidth = '';
-    let activeLeftLine = line.activeLeftLine ? line.activeLeftLine : '3px';
+    // const margin = '6px';
+    // const padding = '10px'
+    // let linewidth = '';
+    // let activeLeftLine = line.activeLeftLine ? line.activeLeftLine : '3px';
     const hoverColor = '#EAEAEA';
-    const activeColor = hoverColor;
-    const lineColor = '#4285F4';
+    // const activeColor = hoverColor;
+    // const lineColor = '#4285F4';
     let bgColor = `${fill}`;
     if (onHover) {
       bgColor = `${hoverColor}80`;
@@ -57,14 +57,14 @@ export default forwardRef(function SelectBox(props, ref) {
       bgColor = `${fill}ff`;
     }
 
-    if(isSelected){
-      bgColor = activeColor;
-      linewidth = activeLeftLine;
-    }
+    // if(isSelected){
+    //   bgColor = activeColor;
+    //   linewidth = activeLeftLine;
+    // }
 
     return (
       <>
-        <div className={`l-SelectBoxItem ${direction} ${align}`} onClick={() => clickItem(childProps)}
+        {/* <div className={`l-SelectBoxItem ${direction} ${align}`} onClick={() => clickItem(childProps)}
           style={{
             position: 'relative',
             margin: `${margin}`,
@@ -81,11 +81,15 @@ export default forwardRef(function SelectBox(props, ref) {
             borderStyle: `solid`,
             borderWidth: `0 0 0 ${linewidth}`,
             borderColor: `${lineColor}`}}></div>
-          ): null}
-
+          ): null} */}
+        <div onClick={() => clickItem(childProps)}
+          onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
+        >
           {child}
         </div>
-        {Seperator && (!isLastItem) ? <Seperator {...line.props} /> : null}
+
+        {/* </div>
+        {Seperator && (!isLastItem) ? <Seperator {...line.props} /> : null} */}
       </>
 
     )

@@ -35,7 +35,7 @@ export default function Index(props) {
                 {componentName}
             </div>
             <AutoLayout {...config} onItemClick={onClick} >
-                <ListItem onItemClick={onChildItemClick}/>
+                <ListItem onListItemClick={onChildItemClick}/>
             </AutoLayout>
             <div className="footer">
                 <div className="bt" onClick={() => onChange(componentName)}>切换</div>
