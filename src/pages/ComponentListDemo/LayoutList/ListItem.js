@@ -5,7 +5,7 @@ const { ImageAnimation, Title } = require('@/presenter/demo');
 
 export default function ListItem(props) {
 
-  const { onItemClick } = props;
+  const { onListItemClick } = props;
 
   const allComponents = {
     ImageAnimation,
@@ -14,7 +14,7 @@ export default function ListItem(props) {
 
   const config = {
     layout:{
-        xname: 'Flexbox',
+        xname: 'SelectBox',
         props: {
           align: 'start',
           direction: 'column',
@@ -48,17 +48,17 @@ export default function ListItem(props) {
     ...props,
   };
 
-  function onItemClickAction (v) {
-    console.log(v)
-    if(onItemClick){
-      console.log('click = ', v)
-      onItemClick(v)
-    }
-  }
+  // function onItemClickAction (v) {
+  //   console.log(v)
+  //   if(onItemClick){
+  //     console.log('click = ', v)
+  //     onItemClick(v)
+  //   }
+  // }
 
   return (
     <>
-      <AutoComponent {...config} allComponents={allComponents} onItemClick={onItemClickAction}/>
+      <AutoComponent {...config} allComponents={allComponents} onItemClick={onListItemClick}/>
     </>
   )
 

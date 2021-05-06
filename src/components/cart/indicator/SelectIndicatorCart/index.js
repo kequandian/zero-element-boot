@@ -17,9 +17,9 @@ export default forwardRef(function SelectIndicatorCart(props, ref) {
 
   const [onHover, setOnHover] = useState(false);
 
-  function clickItem (itemIndex) {
-    props.onSelected(itemIndex)
-  }
+  // function clickItem (itemIndex) {
+  //   props.onSelected(itemIndex)
+  // }
 
   return React.Children.map(children, child => {
 
@@ -51,7 +51,7 @@ export default forwardRef(function SelectIndicatorCart(props, ref) {
 
     return (
       <>
-        <div className={`i-SelectIndicatorCart`} onClick={() => clickItem(itemIndex)}
+        <div className={`i-SelectIndicatorCart`}
           style={{
             position: 'relative',
             margin: `${margin}`,

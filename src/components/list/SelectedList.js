@@ -13,7 +13,7 @@ export default function SelectedList(props) {
   const Child = React.Children.only(children);
 
   const [currIndex, setCurrIndex] = useState(0)
-
+  
   function onSelected (index) {
     setCurrIndex(index)
   }

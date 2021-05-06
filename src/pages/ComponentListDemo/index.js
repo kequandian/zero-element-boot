@@ -34,7 +34,7 @@ export default function Index(props) {
     };
 
     const onClick = (item) => {
-        onItemClickHandle(item)
+        // onItemClickHandle(item)
     }
 
     return (
