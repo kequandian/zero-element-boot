@@ -14,7 +14,7 @@ export default function ListItem(props) {
 
   const config = {
     layout:{
-        xname: 'SelectBox',
+        xname: 'Itembox',
         props: {
           align: 'start',
           direction: 'column',

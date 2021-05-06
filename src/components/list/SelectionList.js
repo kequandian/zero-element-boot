@@ -29,38 +29,7 @@ export default function SelectedList(props) {
     <ContainerContext.Provider value={size}>
         {items.map((item, i) => {
 
-          const [onHover, setOnHover] = useState(false);
-
-          const toggleHover = () => {
-            const result = !onHover;
-            setOnHover(result);
-          }
-
-          const fill = '#ffffff';
-          const margin = '6px';
-          const padding = '5px'
-          const hoverColor = '#EAEAEA';
-          const activeColor = hoverColor;
-          let bgColor = `${fill}`;
-
-          if (onHover) {
-            bgColor = `${hoverColor}80`;
-          } else {
-            bgColor = `${fill}ff`;
-          }
-
-          if(i == currIndex){
-            bgColor = activeColor;
-          }
-
           return <div key={i} onClick={() => onSelected(i)}
-            style={{
-              position: 'relative',
-              margin: `${margin}`,
-              padding: `${padding}`,
-              backgroundColor: `${bgColor}`,
-            }}
-            onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
           >
             {
               React.isValidElement(Child) ?
