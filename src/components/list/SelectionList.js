@@ -4,7 +4,7 @@ import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/AutoX/ContainerContext';
 
 
-export default function SelectedList(props) {
+export default function SelectionList(props) {
   const { children, items, layout, cart, onItemClick= () => {console.log('未设置SelectedList onItemClick点击事件')} } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
