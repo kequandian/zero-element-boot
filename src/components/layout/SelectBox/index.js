@@ -26,8 +26,10 @@ export default forwardRef(function SelectBox(props, ref) {
 
   function clickItem(props) {
     const { itemIndex } = props;
-    props.onSelected(itemIndex)
-    props.onItemClick(props)
+    if(props.onSelected && props.onItemClick){
+      props.onSelected(itemIndex)
+      props.onItemClick(props)
+    }
   }
 
   const [onHover, setOnHover] = useState(false);

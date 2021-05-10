@@ -11,11 +11,13 @@ require('./index.less');
    }
  */
 
-export default forwardRef(function SelectIndicatorCart(props, ref) {
+export default forwardRef(function CheckBoxIndicatorCart(props, ref) {
 
-  const { children, line = {}, isSelected} = props;
+  const { children, line = {}, checked, } = props;
 
   const [onHover, setOnHover] = useState(false);
+
+  // console.log('item props = ', props)
 
   return React.Children.map(children, child => {
 
@@ -40,14 +42,14 @@ export default forwardRef(function SelectIndicatorCart(props, ref) {
       bgColor = `${fill}ff`;
     }
 
-    if(isSelected){
+    if(checked){
       bgColor = activeColor;
       // linewidth = activeLeftLine;
     }
 
     return (
       <>
-        <div className={`i-SelectIndicatorCart`}
+        <div className={`i-CheckBoxIndicatorCart`}
           style={{
             position: 'relative',
             margin: `${margin}`,

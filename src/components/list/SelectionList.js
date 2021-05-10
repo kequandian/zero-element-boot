@@ -29,8 +29,7 @@ export default function SelectionList(props) {
     <ContainerContext.Provider value={size}>
         {items.map((item, i) => {
 
-          return <div key={i} onClick={() => onSelected(i)}
-          >
+          return <div key={i} onClick={() => onSelected(i)} >
             {
               React.isValidElement(Child) ?
               React.cloneElement(Child, {
@@ -49,7 +48,6 @@ export default function SelectionList(props) {
               />
             }
           </div>
-
            
         })}
     </ContainerContext.Provider>

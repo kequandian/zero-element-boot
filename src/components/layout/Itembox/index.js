@@ -40,9 +40,10 @@ export default forwardRef(function Itembox(props, ref) {
     const { onItemClick } = childProps;
 
     function itemClick(props){
-      if(onItemClick){
-        onItemClick(props)
-      }
+      console.log('props = ', props)
+      // if(onItemClick){
+      //   onItemClick(props)
+      // }
     }
 
     return (
