@@ -21,6 +21,7 @@ import HightlightCart from './cart/HightlightCart';
 import HoverShadowCart from './cart/HoverShadowCart';
 import SelectCart from './cart/SelectCart';
 import SelectIndicatorCart from './cart/indicator/SelectIndicatorCart';
+import CheckBoxIndicatorCart from './cart/indicator/CheckBoxIndicatorCart';
 import Circle from './cart/Circle';
 import Corner from './cart/Corner';
 // import indicator from './cart/indicator';
@@ -37,6 +38,7 @@ NamedCartSet({
   HoverShadowCart,
   SelectCart,
   SelectIndicatorCart,
+  CheckBoxIndicatorCart,
   Circle,
   Corner,
   // indicator,

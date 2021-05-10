@@ -1,0 +1,22 @@
+#对象键值对
+name: xxx
+hash: { name: Steve, foo: bar } 
+#数组
+array:
+  - Cat
+  - Dog
+  - Goldfish
+array2: [{name: Cat}, Dog]
+array3:
+  - a: zz
+    name: hh
+    sex: 男
+  - b: bb
+
+#符合结构
+languages:
+  - ruby
+  - [{name: perl,code: 2}]
+  - 
+    name: js
+    code: 3 
