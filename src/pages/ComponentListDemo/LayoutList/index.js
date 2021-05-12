@@ -17,6 +17,7 @@ export default function Index(props) {
     };
 
     const onClick = (item) => {
+        // console.log("item = ", item)
     }
 
     const onChildItemClick = (item) => {

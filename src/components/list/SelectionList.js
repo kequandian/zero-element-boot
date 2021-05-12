@@ -5,7 +5,7 @@ import ContainerContext from '@/components/AutoX/ContainerContext';
 
 
 export default function SelectionList(props) {
-  const { children, items, layout, cart, onItemClick= () => {console.log('未设置SelectedList onItemClick点击事件')} } = props;
+  const { children, items, layout, cart, onItemClick= () => {console.log('未设置SelectionList onItemClick点击事件')} } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -14,8 +14,11 @@ export default function SelectionList(props) {
 
   const [currIndex, setCurrIndex] = useState(0)
 
-  function onSelected (index) {
-    setCurrIndex(index)
+  function onSelected (item, index) {
+    setCurrIndex(index);
+    if(onItemClick){
+      onItemClick(item)
+    }
   }
 
   return <div
@@ -29,7 +32,7 @@ export default function SelectionList(props) {
     <ContainerContext.Provider value={size}>
         {items.map((item, i) => {
 
-          return <div key={i} onClick={() => onSelected(i)} >
+          return <div key={i} onClick={() => onSelected(item, i)} >
             {
               React.isValidElement(Child) ?
               React.cloneElement(Child, {
@@ -39,11 +42,10 @@ export default function SelectionList(props) {
                   cart:cart,
                   key: i,
                   ref: layoutRef,
-                  onItemClick: onItemClick,
                   isLastItem: items.length == (i+1) ? true : false,
                   isSelected: i == currIndex ? true : false
               })
-              : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef} onItemClick={onItemClick} 
+              : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef}
                   isSelected={i == currIndex ? true : false}
               />
             }
