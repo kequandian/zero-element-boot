@@ -25,10 +25,10 @@ export default forwardRef(function SelectBox(props, ref) {
   const Seperator = line.Seperator;
 
   function clickItem(props) {
-    const { itemIndex } = props;
-    if(props.onSelected && props.onItemClick){
-      props.onSelected(itemIndex)
-      props.onItemClick(props)
+    const { itemIndex, onSelected=null,  onItemClick=null} = props;
+    if(onSelected && onItemClick){
+      onSelected(itemIndex)
+      onItemClick(props)
     }
   }
 
