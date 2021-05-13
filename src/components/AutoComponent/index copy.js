@@ -50,12 +50,10 @@ module.exports = function ({children, layout = requireConfig(parent), allCompone
   //   className={getClassName()}
   // >
   // <NamedLayout xname={xname} props={props} ref={layoutRef}>
-
-  /** 
-  * 2021-5-13 移除 NamedLayout NamedCart，有需要在 index copy.js 取回
-  */
   return <_Container {..._container} {...data}>
     {cart ? (
+      <NamedLayout xname={xname} props={props}>
+        <NamedCart {..._cart}>
           <NamedLayout xname={xname} props={props} >
             {layoutChildren ? layoutChildren.map((child, i) => {
               const { presenter, span, gateway, cart } = child;
@@ -97,6 +95,8 @@ module.exports = function ({children, layout = requireConfig(parent), allCompone
               })
             )}
           </NamedLayout>
+        </NamedCart>
+      </NamedLayout>
     ) : (
         <NamedLayout xname={xname} props={props} >
           {layoutChildren ? layoutChildren.map((child, i) => {
