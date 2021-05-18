@@ -11,9 +11,9 @@ export default forwardRef(function ItemCart(props, ref) {
    * outline    边界线类型
    */
 
-  const { children, padding = '10px' } = props;
+  const { children, padding = '10px', margin = '10px' } = props;
 
-  let config = {padding: padding}
+  let config = {padding: padding, margin: margin}
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
