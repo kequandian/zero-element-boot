@@ -26,7 +26,7 @@ const { Container } = require('@/components/container');
  * @param {布局} layout 
  * @param {绑定数据} data
  */
-module.exports = function ({children, layout = requireConfig(parent), allComponents, ...data }) {
+module.exports = function ({ children, layout = requireConfig(parent), allComponents, ...data }) {
   const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
 
@@ -56,51 +56,51 @@ module.exports = function ({children, layout = requireConfig(parent), allCompone
   */
   return <_Container {..._container} {...data}>
     {cart ? (
-          <NamedLayout xname={xname} props={props} >
-            {layoutChildren ? layoutChildren.map((child, i) => {
-              const { presenter, span, gateway, cart } = child;
-              const _presenter = presenter ? presenter : defaultPresenter
-              const Presenter = _presenter ? componentsJson[_presenter] || tips(_presenter) : null;
+      <NamedLayout xname={xname} props={props} >
+        {layoutChildren ? layoutChildren.map((child, i) => {
+          const { presenter, span, gateway, cart: childCart } = child;
+          const _presenter = presenter ? presenter : defaultPresenter
+          const Presenter = _presenter ? componentsJson[_presenter] || tips(_presenter) : null;
 
-              const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
-              const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
+          const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
+          const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
 
-              // each item has its Named Gateway
-              return <NamedGateway {..._gateway} key={i} span={span} >
-                {cart ?
-                  <NamedCart key={i} {..._cart} >
-                    {presenter ?
-                      <Presenter />
-                      :
-                      React.Children.toArray(children)
-                    }
-                  </NamedCart>
+          // each item has its Named Gateway
+          return <NamedGateway {..._gateway} key={i} span={span} >
+            {cart ?
+              <NamedCart key={i} {..._cart} >
+                {presenter ?
+                  <Presenter />
                   :
-                  (presenter ?
-                    <Presenter />
-                    :
-                    React.Children.toArray(children)
-                  )
+                  React.Children.toArray(children)
                 }
-              </NamedGateway>
+              </NamedCart>
+              :
+              (presenter ?
+                <Presenter />
+                :
+                React.Children.toArray(children)
+              )
+            }
+          </NamedGateway>
 
-            }):(
-              React.Children.map(children, (child, i)  => {
-                return cart ?
+        }) : (
+            React.Children.map(children, (child, i) => {
+              return cart ?
                 <NamedCart key={i} {..._cart} >
                   {child}
                 </NamedCart>
                 :
                 (
-                  {child}
+                  child
                 )
-              })
-            )}
-          </NamedLayout>
+            })
+          )}
+      </NamedLayout>
     ) : (
         <NamedLayout xname={xname} props={props} >
           {layoutChildren ? layoutChildren.map((child, i) => {
-            const { presenter, span, gateway, cart: isUndefined } = child;
+            const { presenter, span, gateway, cart: childCart } = child;
             const _presenter = presenter ? presenter : defaultPresenter
             const Presenter = _presenter ? componentsJson[_presenter] || tips(_presenter) : null;
 
@@ -126,19 +126,19 @@ module.exports = function ({children, layout = requireConfig(parent), allCompone
               }
             </NamedGateway>
 
-          }):(
-            
-            React.Children.map(children, (child, i) => {
-              return cart ?
-              <NamedCart key={i} {..._cart} >
-                {child}
-              </NamedCart>
-              :
-              (
-                {child}
-              )
-            })
-          )}
+          }) : (
+
+              React.Children.map(children, (child, i) => {
+                return cart ?
+                  <NamedCart key={i} {..._cart} >
+                    {child}
+                  </NamedCart>
+                  :
+                  (
+                    child
+                  )
+              })
+            )}
         </NamedLayout>
       )}
   </_Container>
