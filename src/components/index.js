@@ -25,7 +25,6 @@ import CheckBoxIndicatorCart from './cart/indicator/CheckBoxIndicatorCart';
 import Circle from './cart/Circle';
 import Corner from './cart/Corner';
 // import indicator from './cart/indicator';
-import OffsetCart from './cart/OffsetCart';
 import PageCart from './cart/PageCart';
 import Rectangle from './cart/Rectangle';
 import Round from './cart/Round';
@@ -42,7 +41,6 @@ NamedCartSet({
   Circle,
   Corner,
   // indicator,
-  OffsetCart,
   PageCart,
   Rectangle,
   Round,
