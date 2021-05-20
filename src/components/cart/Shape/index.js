@@ -10,7 +10,7 @@ export default function Shape(props) {
    * lineWidth  线框粗
    */
 
-  const { children, outline = 'solid', corner = '8px', fill = '#1ee', stroke = '#9bd', lineWidth = '2' } = props;
+  const { children, outline = 'solid', corner = '8px', fill = '#1ee', stroke = '#9bd', lineWidth = '1px' } = props;
 
   return React.Children.map(children, child => {
     return <div style={{ borderStyle:`${outline}`, borderRadius: `${corner}`, background: `${fill}`, borderColor:`${stroke}`, borderWidth:`${lineWidth}px` }} >

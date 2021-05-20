@@ -14,7 +14,7 @@ export default forwardRef(function Rectangle(props, ref) {
    * outline    边界线类型
    */
 
-  const { children,corner = '0px', fill = '#1ab3f1', stroke = '#d0cdcd', lineWidth = '2', outline= 'solid' } = props;
+  const { children,corner = '0px', fill = '#1ab3f1', stroke = '#d0cdcd', lineWidth = '1px', outline= 'solid' } = props;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
@@ -34,7 +34,7 @@ export default forwardRef(function Rectangle(props, ref) {
       {child}
     </div>
     
-    // const { corner = '0px', fill = '#1ab3f1', stroke = '#d0cdcd', lineWidth = '2', outline= 'solid' } = 
+    // const { corner = '0px', fill = '#1ab3f1', stroke = '#d0cdcd', lineWidth = '1px', outline= 'solid' } = 
     // props.corner || props.fill || props.stroke || props.lineWidth || props.outline ? props : child.props.cart.props;
 
     // const config = {

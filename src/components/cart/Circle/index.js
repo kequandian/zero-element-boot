@@ -15,16 +15,16 @@ export default forwardRef(function Circle(props, ref) {
    * outline    边界线类型
    */
 
-  const { children,corner="0px", fill = '#1ab3f1', stroke = '#d0cdcd', lineWidth = '2', outline= 'solid' } = props;
+  const { children,corner="0px", fill = '#1ab3f1', stroke = '#d0cdcd', lineWidth = '1px', outline= 'solid' } = props;
 
-  useImperativeHandle(ref, () => ({
-    getClassName: () => {
-      return `c-Circle`;
-    }
-  }));
+  // useImperativeHandle(ref, () => ({
+  //   getClassName: () => {
+  //     return `c-Circle`;
+  //   }
+  // }));
 
   return React.Children.map(children, child => {
-    return  <div className="c-circle-item" style={{
+    return  <div className="c-circle" style={{
       borderRadius:`${corner}`,
       background:`${fill}`,
       borderColor:`${stroke}`,
@@ -34,7 +34,7 @@ export default forwardRef(function Circle(props, ref) {
       {child}
     </div>
 
-    // const { corner = '0px', fill = '#1ab3f1', stroke = '#d0cdcd', lineWidth = '2', outline= 'solid' } = 
+    // const { corner = '0px', fill = '#1ab3f1', stroke = '#d0cdcd', lineWidth = '1px', outline= 'solid' } = 
     // props.corner || props.fill || props.stroke || props.lineWidth || props.outline ? props : child.props.cart.props;
 
     // const config = {

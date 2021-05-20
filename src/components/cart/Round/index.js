@@ -14,7 +14,7 @@ export default forwardRef(function Round(props, ref) {
    * lineWidth  线框粗
    */
 
-  const { children, fill = '#1ee', stroke = '#9bd', lineWidth = '2'  } = props;
+  const { children, fill = '#1ee', stroke = '#9bd', lineWidth = '1px'  } = props;
 
 
   useImperativeHandle(ref, () => ({
@@ -36,7 +36,7 @@ export default forwardRef(function Round(props, ref) {
       {child}
     </div>
     
-    // const { fill = '#1ee', stroke = '#9bd', lineWidth = '2' } = props.fill || props.stroke || props.lineWidth ? props : child.props.cart.props;
+    // const { fill = '#1ee', stroke = '#9bd', lineWidth = '1px' } = props.fill || props.stroke || props.lineWidth ? props : child.props.cart.props;
 
     // const config = {
     //   corner: radiusSize ? `${radiusSize}px` : '',
