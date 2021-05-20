@@ -13,7 +13,7 @@ export default forwardRef(function ItemCart(props, ref) {
 
   const { children, padding = '10px', margin = '10px' } = props;
 
-  let config = {padding: padding, margin: margin}
+  let config = {padding: padding, margin: margin, }
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
@@ -22,7 +22,7 @@ export default forwardRef(function ItemCart(props, ref) {
   }));
 
   return React.Children.map(children, child => {
-    return <Cart corner='' margin='' stroke='' {...config} >
+    return <Cart corner='' margin='' stroke='solid' {...config} >
        {child}
     </Cart>
   })
