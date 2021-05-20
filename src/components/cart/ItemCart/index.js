@@ -11,9 +11,9 @@ export default forwardRef(function ItemCart(props, ref) {
    * outline    边界线类型
    */
 
-  const { children, padding = '10px', margin = '10px' } = props;
+  const { children, padding = '10px', margin = '10px', stroke='solid' } = props;
 
-  let config = {padding: padding, margin: margin, }
+  let config = {padding, margin, stroke }
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
@@ -22,7 +22,7 @@ export default forwardRef(function ItemCart(props, ref) {
   }));
 
   return React.Children.map(children, child => {
-    return <Cart corner='' margin='' stroke='solid' {...config} >
+    return <Cart corner='' margin='' {...config} >
        {child}
     </Cart>
   })
