@@ -1,6 +1,6 @@
 {
   "name": "zero-element-boot",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "lib/components/index.js",
   "scripts": {
