@@ -13,7 +13,7 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}, ac
 
     useEffect(() => {
 
-        const reqData = requestData;
+        let reqData = requestData;
 
         const options = {
             token: accountToken,
@@ -26,9 +26,9 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}, ac
 
         if (api) {
 
-            if (useId) {
-                reqData.token = accountToken;
-            }
+            //if (useId) {
+                //reqData.token = accountToken;
+            //}
 
             query(mApi, reqData, options)
 
