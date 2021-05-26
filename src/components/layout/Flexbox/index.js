@@ -7,8 +7,9 @@ require('./index.less');
 
 /**
  * @param {对齐方式: [start, center, end, around, between, start-with-last-end, align-content-center] } align
- * @param {对齐方向: [row, column, row-reverse, column-reverse] } direction
+ * @param {对齐方向: [row, column, row-reverse, column-reverse, no-wrap] } direction
  * @param {子项对齐方式: start, center, end, [full, half, quad]: for item width } justify
+ * @param {不换行 [no-wrap] } flexFlow 默认换行
  * @param spacing 间隔
  * @param {ReactElement} Seperator 直接转入的分隔线组件（不引入NamedSeperator依赖）
  * Seperator: 'Divider', 组件名
@@ -22,11 +23,11 @@ require('./index.less');
  */
 export default forwardRef(function Flexbox(props, ref) {
 
-  const { children, align = '', direction = '', justify = {}, spacing = 0, isLastItem, Seperator } = props;
+  const { children, align = '', direction = '', flexFlow='', justify = {}, spacing = 0, isLastItem, Seperator } = props;
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `l-FlexBox ${align} ${direction}`;
+      return `l-FlexBox ${align} ${direction} ${flexFlow}`;
     }
   }));
 

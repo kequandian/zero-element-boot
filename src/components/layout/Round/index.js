@@ -3,18 +3,14 @@ import React from 'react';
 import Container from '@/components/container/Container';
 import Flexbox from '@/components/layout/Flexbox';
 
-/**
- * @param {间隔} spacing
- */
+export default function Round(props) {
 
-export default function Wrap(props) {
-
-  const { children, spacing = 8 } = props;
+  const { children } = props;
 
   return (
     <>
       <Container>
-        <Flexbox align='start' direction='row' flexFlow='no-wrap' spacing={spacing}>
+        <Flexbox align='start' direction='row between'>
           {children}
         </Flexbox>
       </Container>
