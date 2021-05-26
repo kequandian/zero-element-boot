@@ -58,7 +58,10 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}, ac
                         }
                     }
                     setRespData(data);
-                    callBack(data)
+
+                    if (useId) {
+                        callBack(data);
+                    }
                 }
             })
     }
@@ -66,7 +69,7 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}, ac
     function setData(data) {
         setPostData(data)
     }
-    
+
     //根据ID获取数据
     function changeData({ id, api }) {
         setId(id);
