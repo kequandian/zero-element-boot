@@ -1,7 +1,6 @@
 import Grid from './Grid/Index';
 import Flexbox from './Flexbox';
 import Itembox from './Itembox';
-import SelectBox from './SelectBox';
 
 
 import Wrap from './Wrap';
@@ -12,7 +11,6 @@ export {
   Flexbox,
   Itembox,
   Grid,
-  SelectBox,
 
   Wrap,
   Stack,
