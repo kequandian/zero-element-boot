@@ -12,7 +12,7 @@ export default function RoundItem(props) {
 
   const config = {
     layout: {
-      name: 'Grid',
+      name: 'Flexbox',
       props: {
         col: 1,
       },
