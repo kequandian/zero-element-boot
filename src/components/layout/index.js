@@ -4,8 +4,6 @@ import WrappedGrid from './WrappedGrid';
 import Flexbox from './Flexbox';
 import Itembox from './Itembox';
 import SelectBox from './SelectBox';
-import Box from './Box/Align';
-import SelectCheckBox from './SelectCheckBox';
 
 
 import Wrap from './Wrap';
@@ -18,8 +16,6 @@ export {
   Align,
   WrappedGrid,
   SelectBox,
-  Box,
-  SelectCheckBox,
 
   Wrap,
   Stack
