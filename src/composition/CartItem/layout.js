@@ -1,5 +1,5 @@
 const layout = {
-      name: 'Grid',
+      name: 'Flexbox',
       props: {
         col: 1,
       },

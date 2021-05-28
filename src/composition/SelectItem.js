@@ -8,7 +8,7 @@ export default function SelectItem(props) {
 
   const config = {
     layout: {
-      name: 'Grid',
+      name: 'Flexbox',
       props: {
         col: 1,
       },

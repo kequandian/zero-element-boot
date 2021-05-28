@@ -12,7 +12,7 @@ export default function Circle(props) {
 
   const config = {
     layout: {
-      name: 'Grid',
+      name: 'Flexbox',
       props: {
         col: 1,
       },

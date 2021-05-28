@@ -5,7 +5,7 @@ export default function CartList(props) {
 
   const config = {
     layout: {
-      name: 'Grid',
+      name: 'Flexbox',
       props: {
         col: 3,
       },
