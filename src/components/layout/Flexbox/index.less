@@ -1,10 +1,13 @@
 .l-FlexBox {
   display  : flex;
   flex-flow: row wrap;
-  width    : 100%;
 }
 
 .l-FlexBox {
+
+  &.width100{
+    width: 100%;
+  }
   
   &.start {
     justify-content: flex-start;

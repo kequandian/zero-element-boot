@@ -13,8 +13,8 @@ export default function FootContent(props) {
     layout: {
       xname: 'Flexbox',
       props: {
-        align: 'between',
-        direction: 'row'
+        align: 'start',
+        direction: 'between'
       },
       children: [
         {
