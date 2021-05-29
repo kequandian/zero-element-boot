@@ -5,7 +5,7 @@ const useLayout = require('@/components/hooks/useLayout');
 import { get as DefaultCartSet } from '@/config/NamedCartConfig';
 
 /**
- * NamedCart [,NamedLayout] 负责处理数据传递，具体的Cart[ItemCart, OffsetCart, ...] 不负责处理数据传递
+ * NamedCart [,NamedLayout] 负责处理数据传递，具体的Cart[ItemCart, ...] 不负责处理数据传递
  * 区别于 NamedGateway 数据传递由具体的 Gateway 处理
  */
 export default function NamedCart({ children, xname, indicator, props, cart = { xname, props }, cartSet, ...rest }) {

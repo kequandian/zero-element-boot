@@ -23,27 +23,49 @@ require('./index.less');
  */
 export default forwardRef(function Flexbox(props, ref) {
 
-  const { children, align = '', direction = '', flexFlow='', justify = {}, spacing = 0, isLastItem, Seperator } = props;
+  const { children, align = '', direction = '', flexFlow = '', justify = {}, spacing = 0, isLastItem, Seperator } = props;
+
+  const width100 = direction == 'between' || direction.indexOf("between") != -1 ? 'width100' : '';
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `l-FlexBox ${align} ${direction} ${flexFlow}`;
+      return `l-FlexBox ${align} ${direction} ${flexFlow} ${width100}`;
     }
   }));
 
   // get named seperator
   //const defaultSeperator = (typeof seperator === 'string') ? seperator : seperator.name
 
-  return React.Children.map(children, (child, index) => {
+  // return React.Children.map(children, (child, index) => {
 
-    return (
-      <>
-        <div className={`l-FlexBoxItem ${direction} ${justify}`} style={{marginLeft: index > 0 && spacing > 0 ? `${spacing}px`:'0px'}}>
-          {child}
-        </div>
-        {/* {defaultSeperator && (!isLastItem) ? <NamedSeperator name={defaultSeperator} /> : null} */}
-        {Seperator}
-      </>
-    )
-  })
+  //   return (
+  //     <>
+  //       <div className={`l-FlexBoxItem ${direction} ${justify}`} style={{marginLeft: index > 0 && spacing > 0 ? `${spacing}px`:'0px'}}>
+  //         {child}
+  //       </div>
+  //       {/* {defaultSeperator && (!isLastItem) ? <NamedSeperator name={defaultSeperator} /> : null} */}
+  //       {Seperator}
+  //     </>
+  //   )
+  // })
+
+  return (
+    <div className={`l-FlexBox ${align} ${direction} ${flexFlow} ${width100}`}>
+      {
+        React.Children.map(children, (child, index) => {
+
+          return (
+            <>
+              <div className={`l-FlexBoxItem ${direction} ${justify}`} style={{ marginLeft: index > 0 && spacing > 0 ? `${spacing}px` : '0px' }}>
+                {child}
+              </div>
+              {/* {defaultSeperator && (!isLastItem) ? <NamedSeperator name={defaultSeperator} /> : null} */}
+              {Seperator}
+            </>
+          )
+        })
+      }
+    </div>
+  )
+
 })
