@@ -25,7 +25,7 @@ export default forwardRef(function Flexbox(props, ref) {
 
   const { children, align = '', direction = '', flexFlow = '', justify = {}, spacing = 0, isLastItem, Seperator } = props;
 
-  const width100 = direction == 'between' || direction.indexOf("between") != -1 ? 'width100' : '';
+  const width100 = align == 'between' || align.indexOf("between") != -1 ? 'width100' : '';
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
