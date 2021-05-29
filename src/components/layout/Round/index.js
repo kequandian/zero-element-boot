@@ -10,7 +10,7 @@ export default function Round(props) {
   return (
     <>
       <Container>
-        <Flexbox align='start' direction='row between'>
+        <Flexbox align='between'>
           {children}
         </Flexbox>
       </Container>
