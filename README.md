@@ -47,9 +47,23 @@ https://editorx.com
 ## Konvajs 基于canvas的图形编辑库
 https://konvajs.org/
 
+### 全局定义 layout 使用方法
+  - 在项目 src/global.js 里使用 (如没有 global.js 文件可以直接在src目录下创建即可)
+```
+//set namedcart
+import { set as NamedLayoutSet } from '@/config/NamedLayoutConfig';
+
+import Flexbox from '@/components/layout/Flexbox';
+
+NamedLayoutSet({
+  Flexbox,
+})
+
+```
+
 
 ### 全局定义 car 和 persenter 使用方法
-  - 在项目 src/global.js 下使用 (如没有 global.js 文件可以直接在src目录下创建即可)
+  - 在项目 src/global.js 里使用
 ```
 //set namedcart
 import { set as NamedCartSet } from '@/config/NamedCartConfig';
@@ -70,4 +84,5 @@ NamedPresenterSet({
 })
 
 ```
+
 

@@ -12,7 +12,15 @@ import AutoComponent from './AutoComponent';
 import APIContainer from './container/APIContainer';
 
 //set components config
+import { set as NamedLayoutSet } from '@/config/NamedLayoutConfig';
 import { set as NamedCartSet } from '@/config/NamedCartConfig';
+
+//layout
+import Flexbox from '@/components/layout/Flexbox';
+import Itembox from '@/components/layout/Itembox';
+import Wrap from '@/components/layout/Wrap';
+import Stack from '@/components/layout/Stack';
+import Round from '@/components/layout/Round';
 
 //cart 
 import Cart from './cart/Cart';
@@ -27,8 +35,17 @@ import Corner from './cart/Corner';
 // import indicator from './cart/indicator';
 import PageCart from './cart/PageCart';
 import Rectangle from './cart/Rectangle';
-import Round from './cart/Round';
+import RoundCart from './cart/Round';
 import Shape from './cart/Shape';
+
+
+NamedLayoutSet({
+  Flexbox,
+  Itembox,
+  Wrap,
+  Stack,
+  Round
+})
 
 NamedCartSet({
   Cart,
@@ -43,7 +60,7 @@ NamedCartSet({
   // indicator,
   PageCart,
   Rectangle,
-  Round,
+  Round: RoundCart,
   Shape,
 })
 
