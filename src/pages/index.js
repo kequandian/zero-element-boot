@@ -1,9 +1,11 @@
 import * as React from 'react';
+//passed  import IsValidElementTest from './TestCases/IsValidElementTest'
+import TestPageCart from './TestCases/TestPageCart'
+
 
 // import PlainListDemo from './Demo/PlainListDemo';
 // import AdItemDemo from './Demo/AdItemDemo';
 
-// import IsValidElementTest from './Test/IsValidElementTest'
 // import UserItemDemo from './Demo/UserItemDemo'
 
 import AdListDemo from '@/composition/AdList/Sandbox';
@@ -18,8 +20,9 @@ export default function index(props) {
     // console.log('data = ', data)
   }
 
-  return <AdListDemo onItemClickHandle={onItemClickHandle} />
+  // return <AdListDemo onItemClickHandle={onItemClickHandle} />
   //<AdItemDemo/>
-  
   // return <ComponentListDemo onItemClickHandle={onItemClickHandle}/>;
+
+  return <TestPageCart />
 }
