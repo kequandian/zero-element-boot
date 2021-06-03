@@ -28,6 +28,3 @@ export default function IsValidElementTest(props) {
 
     return <Bar/>
 }
-
-
-
