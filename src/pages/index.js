@@ -4,10 +4,14 @@ import {Avatar, Title, Subtitle} from '@/presenter/demo'
 
 // TestCase
 import IsValidElementTest from './TestCases/IsValidElementTest'
-import TestPageCart from './TestCases/TestPageCart'
+import TestPageCart from './TestCart/TestPageCart'
 
 // TestComposition
 import AvatarItemDemo from './TestComposition/AvatarItemDemo'
+
+// TestSelector
+import TestDefaultHoverIndicator from './TestSelector/TestDefaultHoverIndicator'
+import TestSelector from './TestSelector/TestSelector'
 
 //Demo
 import PlainListDemo from './Demo/PlainListDemo';
@@ -43,5 +47,5 @@ export default function index(props) {
   //<AdItemDemo/>
   // return <ComponentListDemo onItemClickHandle={onItemClickHandle}/>;
 
-  return <AvatarItemDemo />
+  return <TestSelector />
 }
