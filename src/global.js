@@ -1,5 +1,5 @@
 // import { set as NamedCartSet } from '@/config/NamedCartConfig';
-import { set as NamedPresenterSet } from '@/config/NamedPresenterConfig';
+import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 
 // //cart
 // import ItemCart from '@/components/cart/ItemCart';

@@ -6,7 +6,7 @@ const { NamedContainer, NamedLayout, NamedGateway, NamedCart } = require('@/comp
 const DefaultContainer = require('@/components/container/Container')
 
 const AutoComponent = require('@/components/AutoComponent');
-import {get as NamedPresenterGet } from '@/config/NamedPresenterConfig';
+import {get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 
 //2012-04-02 copy autoLayout
 const CloneAutoLayout = (props) => {

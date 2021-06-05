@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { set as NamedPresenterSet } from '@/config/NamedPresenterConfig';
+import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import {Avatar, Title, Subtitle} from '@/presenter/demo'
 
 // TestCase
@@ -23,7 +23,7 @@ import AdListDemo from '@/composition/AdList/Sandbox';
 
 export default function index(props) {
 
-  // init presenter
+  // pre-init. presenter set 
   NamedPresenterSet({
     Avatar,
     Title,
