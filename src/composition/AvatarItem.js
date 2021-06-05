@@ -1,20 +1,22 @@
 import React from 'react';
 const AutoComponent = require('@/components/AutoComponent');
 
-const { Avatar, Title } = require('@/presenter/demo');
+// import from global
+// const { Avatar, Title, Subtitle } = require('@/presenter/demo');
 
 /**
  * 
- * @param {} avatar 头像
- * @param {} title  头衔, 账户
- * @param {} subtitle 副标题，显示名称
+ * @param {String} avatar 头像
+ * @param {String} title  头衔, 账户
+ * @param {String} subtitle 副标题，显示名称
  */
-export default function UserItem(props) {
+export default function AvatarItem(props) {
 
-  const allComponents = {
-    Avatar,
-    Title
-  }
+  // const allComponents = {
+  //   Avatar,
+  //   Title,
+  //   Subtitle
+  // }
 
   const config = {
     layout: {
@@ -31,7 +33,7 @@ export default function UserItem(props) {
             xname: 'Binding',
             props: {
               binding: {
-                avatar: 'avatarIcon'
+                avatar: 'url'
               }
             }
           }
@@ -42,7 +44,18 @@ export default function UserItem(props) {
             xname: 'Binding',
             props: {
               binding: {
-                title: 'TitleText'
+                title: 'body'
+              }
+            }
+          }
+        },
+        {
+          presenter: 'Subtitle',
+          gateway: {
+            xname: 'Binding',
+            props: {
+              binding: {
+                title: 'body'
               }
             }
           }
@@ -54,7 +67,7 @@ export default function UserItem(props) {
 
   return (
     <>
-      <AutoComponent {...config} allComponents={allComponents} />
+      <AutoComponent {...config} /*allComponents={allComponents}*/ />
     </>
   )
 

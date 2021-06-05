@@ -17,19 +17,6 @@ export default function RoundItem(props) {
         col: 1,
       },
       children: [
-        // {
-        //   name: 'Avatar',
-        //   span: 1,
-        //   gateway: {
-        //     name: 'Gateway',
-        //     props: {
-        //       field: 'icon',
-        //       converter: {
-        //         icon: 'avatarIcon'
-        //       }
-        //     }
-        //   }
-        // },
         {
           name: 'Title',
           span: 1,
@@ -43,25 +30,10 @@ export default function RoundItem(props) {
             }
           }
         },
-        // {
-        //   name: 'Title',
-        //   span: 1,
-        //   gateway: {
-        //     name: 'Gateway',
-        //     props: {
-        //       field: 'title',
-        //       converter: {
-        //         title: 'TitleText'
-        //       }
-        //     }
-        //   }
-        // },
       ]
     },
     ...props,
   };
-
-  // <div style={{ minWidth: '300px', margin: '5px', padding: '20px', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
 
   return (
       <AutoComponent config={config} allComponents={allComponents}/>
