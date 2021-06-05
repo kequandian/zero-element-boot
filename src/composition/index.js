@@ -1,6 +1,6 @@
 
 import CartItem from './CartItem';
-import UserItem from './UserItem';
+import AvatorItem from './AvatarItem';
 import ImageItem from './ImageItem';
 import SelectItem from './SelectItem';
 import RoundItem from './RoundItem';
@@ -10,7 +10,7 @@ import AdItem from './AdItem';
 
 export {
     CartItem,
-    UserItem,
+    AvatorItem,
     ImageItem,
     SelectItem,
     RoundItem,

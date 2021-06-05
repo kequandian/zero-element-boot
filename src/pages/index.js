@@ -1,9 +1,16 @@
 import * as React from 'react';
-//passed  import IsValidElementTest from './TestCases/IsValidElementTest'
+import { set as NamedPresenterSet } from '@/config/NamedPresenterConfig';
+import {Avatar, Title, Subtitle} from '@/presenter/demo'
+
+// TestCase
+import IsValidElementTest from './TestCases/IsValidElementTest'
 import TestPageCart from './TestCases/TestPageCart'
 
+// TestComposition
+import AvatarItemDemo from './TestComposition/AvatarItemDemo'
 
-// import PlainListDemo from './Demo/PlainListDemo';
+//Demo
+import PlainListDemo from './Demo/PlainListDemo';
 // import AdItemDemo from './Demo/AdItemDemo';
 
 // import UserItemDemo from './Demo/UserItemDemo'
@@ -16,6 +23,18 @@ import AdListDemo from '@/composition/AdList/Sandbox';
 
 export default function index(props) {
 
+  // init presenter
+  NamedPresenterSet({
+    Avatar,
+    Title,
+    Subtitle
+  })
+
+
+// //cart
+// import ItemCart from '@/components/cart/ItemCart';
+
+
   function onItemClickHandle (data) {
     // console.log('data = ', data)
   }
@@ -24,5 +43,5 @@ export default function index(props) {
   //<AdItemDemo/>
   // return <ComponentListDemo onItemClickHandle={onItemClickHandle}/>;
 
-  return <TestPageCart />
+  return <AvatarItemDemo />
 }
