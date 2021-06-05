@@ -7,7 +7,7 @@ const DefaultContainer = require('@/components/container/Container')
 
 const { CloneAutoLayout } = require('@/components/CloneAutoLayout');
 const AutoComponent = require('@/components/AutoComponent');
-import { get as NamedPresenterGet } from '@/config/NamedPresenterConfig';
+import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 
 import fetchLayout from '@/components/utils/fetchLayout';
 import loadingPage from '@/components/loading';

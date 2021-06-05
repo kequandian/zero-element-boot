@@ -3,7 +3,7 @@ const React = require('react');
 const { NamedContainer, NamedLayout, NamedGateway, NamedCart } = require('@/components');
 // const useLayout = require('@/hooks/useLayout');
 const requireConfig = require('@/components/AutoX/requireConfig');
-const namedPresenterGet = require('@/config/NamedPresenterConfig').get();
+const namedPresenterGet = require('@/components/config/NamedPresenterConfig').get();
 
 const { Container } = require('@/components/container');
 
@@ -30,7 +30,7 @@ module.exports = function ({ children, layout = requireConfig(parent), allCompon
   const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
 
-  const componentsJson = allComponents ? allComponents : namedPresenterGet;
+  const componentsJson = allComponents ? allComponents : namedPresenterGet;  //
 
   const { xname, props, container, children: layoutChildren, gateway, cart, presenter } = layout || {};
   const defaultGateway = gateway

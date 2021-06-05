@@ -8,7 +8,6 @@ const AutoComponent = require('@/components/AutoComponent');
  * 
  * @param {String} avatar 头像
  * @param {String} title  头衔, 账户
- * @param {String} subtitle 副标题，显示名称
  */
 export default function AvatarItem(props) {
 
@@ -24,7 +23,7 @@ export default function AvatarItem(props) {
       props: {
         align: 'start',
         direction: 'row',
-        justify: 'center'
+        justify: 'center',
       },
       children: [
         {
@@ -40,17 +39,6 @@ export default function AvatarItem(props) {
         },
         {
           presenter: 'Title',
-          gateway: {
-            xname: 'Binding',
-            props: {
-              binding: {
-                title: 'body'
-              }
-            }
-          }
-        },
-        {
-          presenter: 'Subtitle',
           gateway: {
             xname: 'Binding',
             props: {

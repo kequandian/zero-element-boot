@@ -12,8 +12,8 @@ import AutoComponent from './AutoComponent';
 import APIContainer from './container/APIContainer';
 
 //set components config
-import { set as NamedLayoutSet } from '@/config/NamedLayoutConfig';
-import { set as NamedCartSet } from '@/config/NamedCartConfig';
+import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
+import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
 
 //layout
 import Flexbox from '@/components/layout/Flexbox';
