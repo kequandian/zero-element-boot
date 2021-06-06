@@ -2,8 +2,11 @@ import * as React from 'react';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import {Avatar, Title, Subtitle} from '@/presenter/demo'
 
-// TestCase
+// TestCase, Presenter etc.
 import IsValidElementTest from './TestCases/IsValidElementTest'
+import ImageAnimationDemo  from './TestCases/ImageAnimationDemo'
+
+// TestCart
 import TestPageCart from './TestCart/TestPageCart'
 
 // TestComposition
@@ -15,7 +18,7 @@ import TestSelector from './TestSelector/TestSelector'
 
 //Demo
 import PlainListDemo from './Demo/PlainListDemo';
-// import AdItemDemo from './Demo/AdItemDemo';
+import AdItemDemo from './Demo/AdItemDemo';
 
 // import UserItemDemo from './Demo/UserItemDemo'
 
@@ -35,17 +38,12 @@ export default function index(props) {
   })
 
 
-// //cart
-// import ItemCart from '@/components/cart/ItemCart';
-
-
   function onItemClickHandle (data) {
-    // console.log('data = ', data)
+    console.log('data = ', data)
   }
 
+  // return <AdItemDemo/>
   // return <AdListDemo onItemClickHandle={onItemClickHandle} />
-  //<AdItemDemo/>
-  // return <ComponentListDemo onItemClickHandle={onItemClickHandle}/>;
 
   return <TestSelector />
 }
