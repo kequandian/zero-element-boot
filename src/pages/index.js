@@ -16,6 +16,9 @@ import AvatarItemDemo from './TestComposition/AvatarItemDemo'
 import TestDefaultHoverIndicator from './TestSelector/TestDefaultHoverIndicator'
 import TestSelector from './TestSelector/TestSelector'
 
+// ChakraSample
+import ChakraSample from './chakra'
+
 //Demo
 import PlainListDemo from './Demo/PlainListDemo';
 import AdItemDemo from './Demo/AdItemDemo';
@@ -37,7 +40,6 @@ export default function index(props) {
     Subtitle
   })
 
-
   function onItemClickHandle (data) {
     console.log('data = ', data)
   }
@@ -45,5 +47,7 @@ export default function index(props) {
   // return <AdItemDemo/>
   // return <AdListDemo onItemClickHandle={onItemClickHandle} />
 
-  return <TestSelector />
+  return (
+      <ChakraSample />
+  )
 }
