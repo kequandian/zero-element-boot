@@ -2,6 +2,10 @@
 ```
 import React from 'react'
 
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
 export default function Index(){
     return <div> Hello React! </div>
 }
