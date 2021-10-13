@@ -17,10 +17,11 @@ module.exports={
         }
     },
     cart:{
-        xname:"ItemCart",
+        xname:"Cart",
         indicator: "SelectIndicatorCart",
         props:{
-            padding:'10px'
+            padding:'10px',
+            corner: ''
         }
     },
     container:"SelectedList"
