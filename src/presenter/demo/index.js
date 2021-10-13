@@ -1,4 +1,3 @@
-
 import Default from './Default';
 import Avatar from './Avatar';
 import Title from './Title';

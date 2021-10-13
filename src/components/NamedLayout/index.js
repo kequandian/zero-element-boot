@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import NamedSeperator from '@/components/NamedSeperator';
 
-const DefaultLayoutSet = require('@/config/NamedLayoutConfig').get();
+const DefaultLayoutSet = require('@/components/config/NamedLayoutConfig').get();
 
 // const DefaultLayoutSet = require('../layout');
 

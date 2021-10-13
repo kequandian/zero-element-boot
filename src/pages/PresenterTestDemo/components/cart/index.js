@@ -1,5 +1,5 @@
 import ItemCart from './ItemCart'
-import SelectIndicatorCart from '@/components/cart/indicator/SelectIndicatorCart'
+import SelectIndicatorCart from '@/components/indicator/SelectIndicatorCart'
 
 export {
     ItemCart,

@@ -12,8 +12,8 @@ import AutoComponent from './AutoComponent';
 import APIContainer from './container/APIContainer';
 
 //set components config
-import { set as NamedLayoutSet } from '@/config/NamedLayoutConfig';
-import { set as NamedCartSet } from '@/config/NamedCartConfig';
+import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
+import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
 
 //layout
 import Flexbox from '@/components/layout/Flexbox';
@@ -27,8 +27,8 @@ import Cart from './cart/Cart';
 import HightlightCart from './cart/HightlightCart';
 import HoverShadowCart from './cart/HoverShadowCart';
 import SelectCart from './cart/SelectCart';
-import SelectIndicatorCart from './cart/indicator/SelectIndicatorCart';
-import CheckBoxIndicatorCart from './cart/indicator/CheckBoxIndicatorCart';
+import SelectIndicatorCart from './indicator/SelectIndicatorCart';
+import CheckBoxIndicatorCart from './indicator/CheckBoxIndicatorCart';
 import Circle from './cart/Circle';
 import Corner from './cart/Corner';
 // import indicator from './cart/indicator';
