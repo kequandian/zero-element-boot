@@ -2,7 +2,7 @@ const React = require('react');
 const { forwardRef } = require('react');
 const useLayout = require('@/components/hooks/useLayout');
 // const DefaultCartSet = require('../cart');
-import { get as DefaultCartSet } from '@/config/NamedCartConfig';
+import { get as DefaultCartSet } from '@/components/config/NamedCartConfig';
 
 /**
  * NamedCart [,NamedLayout] 负责处理数据传递，具体的Cart[ItemCart, ...] 不负责处理数据传递

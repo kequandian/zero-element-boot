@@ -10,7 +10,7 @@ import Circle from './Circle';
 import PageCart from './PageCart'
 
 // indicator
-import SelectIndicatorCart from './indicator/SelectIndicatorCart';
+import SelectIndicatorCart from '../indicator/SelectIndicatorCart';
 
 export {
     Shape,

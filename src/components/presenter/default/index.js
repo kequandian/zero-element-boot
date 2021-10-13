@@ -1,8 +1,12 @@
 
 import Clean from './Clean';
 import Butter from './Butter';
+import Pink from './Pink';
+import Clear from './Clear';
 
 export {
   Clean,
-  Butter
+  Butter, 
+  Pink,
+  Clear
 }
