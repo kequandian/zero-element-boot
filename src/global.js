@@ -2,7 +2,7 @@
 import { set as NamedPresenterSet } from '@/config/NamedPresenterConfig';
 
 // //cart
-// import ItemCart from '@/components/cart/ItemCart';
+// import Cart from '@/components/cart/Cart';
 
 //presenter
 import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvator'
@@ -10,7 +10,7 @@ import ContentText from '@/pages/PresenterTestDemo/plugins/TodoList/TodoItem/Con
 import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/ItemIconAction'
 
 // NamedCartSet({
-//   ItemCart
+//   Cart
 // })
 
 NamedPresenterSet({

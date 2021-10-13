@@ -17,9 +17,10 @@
         }
     },
     "cart":{
-        "xname":"ItemCart",
+        "xname":"Cart",
         "props":{
-            "padding":"10px"
+            "padding":"10px",
+            "corner": ""
         }
     },
     "container":"PlainList",

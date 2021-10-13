@@ -24,7 +24,6 @@ import Round from '@/components/layout/Round';
 
 //cart 
 import Cart from './cart/Cart';
-import ItemCart from './cart/ItemCart';
 import HightlightCart from './cart/HightlightCart';
 import HoverShadowCart from './cart/HoverShadowCart';
 import SelectCart from './cart/SelectCart';
@@ -49,7 +48,6 @@ NamedLayoutSet({
 
 NamedCartSet({
   Cart,
-  ItemCart,
   HightlightCart,
   HoverShadowCart,
   SelectCart,

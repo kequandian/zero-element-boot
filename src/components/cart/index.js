@@ -1,6 +1,5 @@
 import Shape from './Shape';
 import Cart from './Cart';
-import ItemCart from './ItemCart';
 import Rectangle from './Rectangle';
 import Corner from './Corner';
 import Round from './Round';
@@ -16,7 +15,6 @@ import SelectIndicatorCart from './indicator/SelectIndicatorCart';
 export {
     Shape,
     Cart,
-    ItemCart,
     Rectangle,
     Round,
     Corner,

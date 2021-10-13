@@ -18,11 +18,6 @@ export default {
         "type": 'radio',
         "records": [
           {
-            "name": "ItemCart",
-            "pathUrl": "",
-            "imageUrl": "https://img.36krcdn.com/20201224/v2_0859a3ca4ddb49b4b8ff878270f07942_img_png",
-          },
-          {
             "name": "HoverShadowCart",
             "pathUrl": "",
             "imageUrl": "https://img.36krcdn.com/20201224/v2_0859a3ca4ddb49b4b8ff878270f07942_img_png",

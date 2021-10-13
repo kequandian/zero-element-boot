@@ -4,7 +4,6 @@ import Cart from '../Cart'
 export default forwardRef(function ItemCart(props, ref) {
 
   /**
-   * corner     圆角半径
    * fill       背景色
    * stroke     线框色
    * lineWidth  线框粗
@@ -15,14 +14,14 @@ export default forwardRef(function ItemCart(props, ref) {
 
   let config = {padding, margin, stroke }
 
-  useImperativeHandle(ref, () => ({
-    getClassName: () => {
-      return `c-cart-item`;
-    }
-  }));
+  // useImperativeHandle(ref, () => ({
+  //   getClassName: () => {
+  //     return `c-cart-item`;
+  //   }
+  // }));
 
   return React.Children.map(children, child => {
-    return <Cart corner='' margin='' {...config} >
+    return <Cart corner='' {...config} >
        {child}
     </Cart>
   })

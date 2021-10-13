@@ -52,7 +52,7 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
   // <NamedList name='PlainList' {...config} onItemClick={onClick}>
   //     <NamedLayout>
   //         <NamedGateway name='Gateway'>
-  //             <NamedCart name='ItemCart' props={{padding: '12px'}}> 
+  //             <NamedCart name='Cart' props={{padding: '12px', corner:''}}> 
   //                 <UserItem />
   //             </NamedCart>
   //         </NamedGateway>
