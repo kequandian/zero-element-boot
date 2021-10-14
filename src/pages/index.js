@@ -31,6 +31,8 @@ import AdListDemo from '@/composition/AdList/Sandbox';
 // import PresenterTestDemo from '@/pages/PresenterTestDemo/Sandbox';
 // import CheckboxDemo from '@/pages/CheckboxDemo/Sandbox';
 
+import StatisticsContainer from '@/composition/StatisticsContainer/Sandbox';
+
 export default function index(props) {
 
   // pre-init. presenter set 
@@ -47,7 +49,9 @@ export default function index(props) {
   // return <AdItemDemo/>
   // return <AdListDemo onItemClickHandle={onItemClickHandle} />
 
-  return (
-      <ChakraSample />
-  )
+  // return (
+  //     <ChakraSample />
+  // )
+
+  return <StatisticsContainer  onItemClickHandle={onItemClickHandle} />
 }

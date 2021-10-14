@@ -2,12 +2,12 @@ import React from 'react';
 require('./index.less');
 
 /**
- * @param {String} body 内容
+ * @param {String} TitleText 内容
  */
 export default function (props) {
 
-    const { body } = props;
+    const { TitleText } = props;
 
-    return <div className="title">{body}</div>
+    return <div className="title">{TitleText}</div>
 
 }

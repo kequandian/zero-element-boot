@@ -5,6 +5,8 @@ import Subtitle from './Subtitle';
 import ImageAnimation from './ImageAnimation';
 import Description from './Description';
 import Author from './Author';
+import Seperator from './Seperator';
+import StatisticsList from './StatisticsList';
 
 export {
   Default,
@@ -14,4 +16,6 @@ export {
   ImageAnimation,
   Description,
   Author,
+  Seperator,
+  StatisticsList,
 }
