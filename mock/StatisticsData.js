@@ -5,10 +5,7 @@ export default {
       {
         "id": 1,
         "title": "2021年9月安兔兔Android手机好评榜TOP 10",
-        "url": "https://img.36krcdn.com/20201224/v2_0859a3ca4ddb49b4b8ff878270f07942_img_png",
         "describe":"数据来源: 安兔兔测评(2021.9.1 - 2021.9.30)",
-        "adType": "商业哲学派",
-        "createTime": "2020-12-25 10:53",
         "items": [
           { "id": 1, "value": 97.1, "title": "三星"},
           { "id": 2, "value": 95.19, "title": "OPPO"}, 
