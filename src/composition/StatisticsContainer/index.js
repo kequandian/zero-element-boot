@@ -10,9 +10,7 @@ export default function Index(props) {
     const { data=[] } = props;
 
     let layoutData = '';
-    // /x/PublicLayoutDemo/layout.json
     const layoutJsonPath = '';
-    //local layout json
     const localLayoutJson = layout;
 
     if(layoutJsonPath){
@@ -21,7 +19,6 @@ export default function Index(props) {
         layoutData = localLayoutJson;
     }
 
-    //Cart HoverShadowCart
     const config = {
         items: data.length > 0 ? data : [],
         layout: layoutData
@@ -32,9 +29,6 @@ export default function Index(props) {
         // onItemClickHandle();
     }
 
-    // console.log("解释 layout.yml = ", JSON.stringify(layoutOfYML, null, 2));
-    // console.log('layoutOfYML = ', layoutOfYML)
-    
     return (
         <AutoLayout {...config} onItemClick={null}>
             <StatisticsBody />

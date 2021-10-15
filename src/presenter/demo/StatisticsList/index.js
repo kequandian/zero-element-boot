@@ -16,8 +16,8 @@ export default function (props) {
             </Box>
             <Spacer />
             <Box>
-                <Center color="red">
-                    好评率
+                <Center color="#1FA7B2">
+                    *好评率
                 </Center>
             </Box>
         </Flex>
@@ -31,9 +31,9 @@ export default function (props) {
                         <Box flex="1">
                             <Progress height="30px" percentageNum={item.value/100} progressName={item.title} indexValue={index+1}/>
                         </Box>
-                        <Center w="50px" >
+                        {/* <Center w="50px" >
                             {item.value}%
-                        </Center>
+                        </Center> */}
                     </Flex>
                 )
             })}

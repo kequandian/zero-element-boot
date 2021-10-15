@@ -58,14 +58,22 @@ export default class Progress extends Component {
         position: "absolute",
         width:"auto",
         height:this.props.height,
-        right:"15px",
+        right: "15px",
         lineHeight: this.props.height,
         fontSize: "16px",
-        color: "#000",
+        color: "#fff",
       };
     return (
       <div style={div1}>
-        <div style={div2} className={`indexBg_${this.props.indexValue}`}></div>
+        <div style={div2} className={`indexBg_${this.props.indexValue}`}>
+          <div style={{position: 'relative'}}>
+          <div style={div4}>
+            {percentageNum}%
+                  {/* | 
+            {this.props.allNum} */}
+          </div>
+          </div>
+        </div>
         <div style={div3}>{this.props.progressName}</div>
         {/* <div style={div4}>
           {percentageNum}%
