@@ -27,10 +27,12 @@ export default function EffectCart(props) {
    */
 
   const { 
-    children, styleCon={
-      fill = '#ffffff', corner = '4px', stroke = 'solid', linewidth = '1px', 
-      margin = '6px', padding = '10px', shadow = '', lineColor = '#d0cdcd'}, 
+    children, styleCon={}, 
     isOnHover=true, isSelected=false } = props;
+
+    const {
+      fill = '#ffffff', corner = '4px', stroke = 'solid', linewidth = '1px', 
+      margin = '6px', padding = '10px', shadow = '', lineColor = '#d0cdcd'} = styleCon
 
   const [onHover, setOnHover] = useState(false);
 
