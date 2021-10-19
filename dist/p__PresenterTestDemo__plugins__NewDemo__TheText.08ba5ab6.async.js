@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([[29],{AM3f:function(e,n,t){"use strict";t.r(n),t.d(n,"default",(function(){return c}));var a=t("q1tI"),r=t.n(a);function c(e){var n=e.theText;return r.a.createElement("div",{className:"ExampleText"},n)}}}]);

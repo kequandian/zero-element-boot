@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([[25],{quK4:function(e,a,n){"use strict";n.r(a),n.d(a,"default",(function(){return c}));var t=n("q1tI"),r=n.n(t);function c(e){var a=e.imgUrl;return r.a.createElement("div",{className:"ExampleImage"},r.a.createElement("img",{className:"theImage",src:a}))}}}]);

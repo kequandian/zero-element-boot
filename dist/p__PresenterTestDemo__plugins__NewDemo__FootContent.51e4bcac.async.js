@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([[24],{E7ZH:function(e,a,t){"use strict";t.r(a),t.d(a,"default",(function(){return i}));var n=t("q1tI"),c=t.n(n);function i(e){var a=e.time,t=e.adType;return c.a.createElement("div",{className:"ExampleTime"},c.a.createElement("div",{className:"theType"},t),c.a.createElement("div",{className:"theTime"},a))}}}]);
