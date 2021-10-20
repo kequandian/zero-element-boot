@@ -24,7 +24,7 @@ export default function (props) {
         <Stack spacing={5}>
             { list.map((item, index) =>{
                 return (
-                    <Flex h="30px">
+                    <Flex h="30px" key={index}>
                         <Center w="30px">
                             {index+1}
                         </Center>

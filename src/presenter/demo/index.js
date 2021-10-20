@@ -7,6 +7,7 @@ import Description from './Description';
 import Author from './Author';
 import Seperator from './Seperator';
 import StatisticsList from './StatisticsList';
+import TableCompx from './TableCompx';
 
 export {
   Default,
@@ -18,4 +19,5 @@ export {
   Author,
   Seperator,
   StatisticsList,
+  TableCompx
 }
