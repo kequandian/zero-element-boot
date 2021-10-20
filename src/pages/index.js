@@ -32,6 +32,7 @@ import AdListDemo from '@/composition/AdList/Sandbox';
 // import CheckboxDemo from '@/pages/CheckboxDemo/Sandbox';
 
 import StatisticsContainer from '@/composition/StatisticsContainer/Sandbox';
+import TableContainer from '@/pages/TableDemo/Sandbox';
 
 export default function index(props) {
 
@@ -53,5 +54,5 @@ export default function index(props) {
   //     <ChakraSample />
   // )
 
-  return <StatisticsContainer  onItemClickHandle={onItemClickHandle} />
+  return <TableContainer  onItemClickHandle={onItemClickHandle} />
 }
