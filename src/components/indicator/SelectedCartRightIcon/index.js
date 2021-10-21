@@ -1,5 +1,7 @@
 import React, { useImperativeHandle, forwardRef, useState } from 'react';
 
+import selectedIcon from '@/assets/selected2-icon.svg';
+
 require('./index.less');
 
 /**
@@ -11,9 +13,9 @@ require('./index.less');
    }
  */
 
-export default forwardRef(function SelectIndicatorCart(props, ref) {
+export default forwardRef(function SelectedCartRightIcon(props, ref) {
 
-  const { children, line = {}, isSelected } = props;
+  const { children, line = {}, isSelected} = props;
 
   const [onHover, setOnHover] = useState(false);
 
@@ -24,7 +26,7 @@ export default forwardRef(function SelectIndicatorCart(props, ref) {
       setOnHover(result)
     }
 
-    const fill = '#ffffff';
+    const fill = 'transparent';
     const margin = '6px';
     const padding = '5px'
     let linewidth = '';
@@ -34,38 +36,41 @@ export default forwardRef(function SelectIndicatorCart(props, ref) {
     const lineColor = '#4285F4';
     let bgColor = `${fill}`;
 
-    if (onHover) {
-      bgColor = `${hoverColor}80`;
-    } else {
-      bgColor = `${fill}ff`;
+    // if (onHover) {
+    //   bgColor = `${hoverColor}80`;
+    // } else {
+    //   bgColor = `${fill}ff`;
+    // }
+
+    const styles = {
+      position: 'relative',
+      margin: `${margin}`,
+      padding: `${padding}`,
+      backgroundColor: `${bgColor}`,
+      borderRadius: '8px',
+      borderWidth: '2px',
+      borderStyle: 'solid',
+      borderColor: '#E7E8EB'
     }
 
     if(isSelected){
       bgColor = activeColor;
       // linewidth = activeLeftLine;
+      styles.borderColor = '#aab1dc';
+      styles.boxShadow = '0 0px 6px rgba(170, 177, 220, 1)';
     }
 
     return (
       <>
-        <div className={`i-SelectIndicatorCart`}
-          style={{
-            position: 'relative',
-            margin: `${margin}`,
-            padding: `${padding}`,
-            backgroundColor: `${bgColor}`,
-          }}
+        <div className={`i-SelectedCartRightIcon`}
+          style={styles}
           onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
         >
-          {linewidth ? (
-            <div style={{position:'absolute', 
-            height: '100%',
-            left: 0,
-            top: 0,
-            borderStyle: `solid`,
-            borderWidth: `0 0 0 ${linewidth}`,
-            borderColor: `${lineColor}`}}></div>
+          {isSelected ? (
+            <div className="rightIcon">
+              <img src={selectedIcon} />
+            </div>
           ): null}
-
           {child}
         </div>
       </>

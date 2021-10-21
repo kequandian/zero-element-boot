@@ -37,6 +37,9 @@ import Rectangle from './cart/Rectangle';
 import RoundCart from './cart/Round';
 import Shape from './cart/Shape';
 
+import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
+import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
+
 
 NamedLayoutSet({
   Flexbox,
@@ -60,6 +63,8 @@ NamedCartSet({
   Rectangle,
   Round: RoundCart,
   Shape,
+  SelectedCartUpperRightIcon,
+  SelectedCartRightIcon
 })
 
 // default to export core components
