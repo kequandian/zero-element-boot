@@ -1,12 +1,12 @@
 {
-  "name": "zero-element-boot",
+  "name": "zero-element-boot-hovercart",
   "version": "1.0.7",
   "description": "",
-  "main": "lib/components/index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "umi dev",
     "clean": "rimraf lib/",
-    "build": "npm run clean && gulp",
+    "build": "npm run clean && gulp"
   },
   "dependencies": {
     "framer-motion": "^4.1.17",
