@@ -6,7 +6,7 @@
   "scripts": {
     "start": "umi dev",
     "clean": "rimraf lib/",
-    "build": "npm run clean && gulp",
+    "build": "npm run clean && gulp"
   },
   "dependencies": {
     "framer-motion": "^4.1.17",
