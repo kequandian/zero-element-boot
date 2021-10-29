@@ -16,7 +16,21 @@ module.exports = function useLayout() {
     }
   }
 
+  function getHoverStyles() {
+    if (layoutRef.current && layoutRef.current.getHoverStyles) {
+      return layoutRef.current.getHoverStyles();
+    }
+  }
+
+  function getSelectStyles() {
+    if (layoutRef.current && layoutRef.current.getSelectStyles) {
+      return layoutRef.current.getSelectStyles();
+    }
+  }
+
   return [layoutRef, {
     getClassName,
+    getHoverStyles,
+    getSelectStyles
   }]
 }

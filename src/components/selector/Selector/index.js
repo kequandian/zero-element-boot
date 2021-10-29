@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import useLayout from '@/components/hooks/useLayout';
 
 /**
  * 
@@ -9,6 +10,11 @@ import React, { useState } from 'react';
 export default function Selector(props) {
 
   const { children, hoverIndicator = {}, selectedIndicator={}, isSelected=false} = props;
+  
+  
+  const [hoverRef, { getHoverStyles }] = useLayout();
+  const [selectRef, { getSelectStyles }] = useLayout();
+  
   // TODO
   // 判断 hoverIndicator 是否有 hoverIndicator.props 属性
   // 1. 有则获取 hoverIndicator.indicator, hoverIndicator.props
@@ -16,21 +22,52 @@ export default function Selector(props) {
 
   const [onHover, setOnHover] = useState(false);
 
-  const toggleHover = () => {
-    const result = !onHover;
-    setOnHover(result)
-  }
-
   return React.Children.map(children, child => {
+
+    const toggleHover = () => {
+      const result = !onHover;
+      setOnHover(result)
+    }
+
     const HoverIndicator = hoverIndicator
-    return <div onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}>
-      {onHover? (
-        <HoverIndicator>
-          {child}
-        </HoverIndicator>
-      )
-       : child
+    const SelectedIndicator = selectedIndicator
+    
+    const styles = {
+      position: 'relative',
+      margin: '6px',
+      padding: '5px',
+      backgroundColor: 'transparent',
+      borderRadius: '8px',
+      borderWidth: '2px',
+      borderStyle: 'solid',
+      borderColor: 'transparent',
+      boxShadow: '0 0px 6px rgba(255, 255, 255, 1)'
+    }
+    
+    let changeStyle = styles;
+    if(onHover){
+      changeStyle = {
+        ...styles,
+        ...getHoverStyles()
       }
-    </div>
+    }
+    if(isSelected){
+      changeStyle = {
+        ...styles,
+        ...getSelectStyles()
+      }
+    }
+    
+    return (
+      <div
+        style={changeStyle}
+        onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}>
+          <HoverIndicator indicate={onHover} ref={hoverRef}>
+            <SelectedIndicator indicate={isSelected} ref={selectRef}>
+            {child}
+            </SelectedIndicator>
+          </HoverIndicator>
+      </div>
+    )
   })
 }

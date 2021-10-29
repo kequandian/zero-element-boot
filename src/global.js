@@ -1,8 +1,13 @@
 // import { set as NamedCartSet } from '@/config/NamedCartConfig';
+import { set as NamedIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 
 // //cart
 // import Cart from '@/components/cart/Cart';
+
+//indicator
+import MyIndicatorSelect from '@/components/indicator/MyIndicatorSelect';
+import MyIndicatorSelected from '@/components/indicator/MyIndicatorSelected';
 
 //presenter
 import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvator'
@@ -14,6 +19,11 @@ import {Avator, Title} from '@/presenter/demo'
 // NamedCartSet({
 //   Cart
 // })
+
+NamedIndicatorSet({
+  MyIndicatorSelect,
+  MyIndicatorSelected
+})
 
 NamedPresenterSet({
   Avator,
