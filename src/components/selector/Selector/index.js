@@ -62,8 +62,8 @@ export default function Selector(props) {
       <div
         style={changeStyle}
         onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}>
-          <HoverIndicator indicate={onHover} ref={hoverRef}>
-            <SelectedIndicator indicate={isSelected} ref={selectRef}>
+          <HoverIndicator indicate={onHover}>
+            <SelectedIndicator indicate={isSelected}>
             {child}
             </SelectedIndicator>
           </HoverIndicator>
