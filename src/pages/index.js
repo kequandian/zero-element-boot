@@ -55,6 +55,6 @@ export default function index(props) {
   //     <ChakraSample />
   // )
 
-  // return <SelectDemo  onItemClickHandle={onItemClickHandle} />
-  return <TestSelector />
+  return <SelectDemo  onItemClickHandle={onItemClickHandle} />
+  // return <TestSelector />
 }
