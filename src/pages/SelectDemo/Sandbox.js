@@ -10,11 +10,14 @@ export default function (props) {
 
     const api = '/api/selectdata';
 
-    function onItemClickHandle (data) {
-        // console.log('data = ', data)
-    }
-
     const [ data ] = useTokenRequest({api, bindFiles});
+
+    if(data){
+        data.map(item => {
+            item.checked = false;
+            return item;
+        })
+    }
 
     return (
         <div style={{background:'white'}}>

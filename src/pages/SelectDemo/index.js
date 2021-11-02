@@ -9,7 +9,7 @@ import SelectRightIconItem from './SelectRightIconItem';
 
 export default function Index(props) {
 
-    const { data=[] } = props;
+    const { data=[], onItemClick = ()=>{} } = props;
 
     let layoutData = '';
     const layoutJsonPath = '';
@@ -26,13 +26,8 @@ export default function Index(props) {
         layout: layoutData
     };
 
-    const onAdItemClick = (value) => {
-        console.log("value = ", value)
-        // onItemClickHandle();
-    }
-
     return (
-        <AutoLayout {...config} onItemClick={null}>
+        <AutoLayout {...config} onItemClick={onItemClick}>
             <SelectUpperRightItem />
             {/* <SelectRightIconItem /> */}
         </AutoLayout>

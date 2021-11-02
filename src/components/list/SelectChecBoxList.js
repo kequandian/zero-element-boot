@@ -5,7 +5,7 @@ import ContainerContext from '@/components/AutoX/ContainerContext';
 import checkBoxTool from '@/components/utils/checkBoxTool';
 
 export default function SelectChecBoxList(props) {
-  const { children, items, layout, cart, onItemClick= () => {console.log('未设置SelectedList onItemClick点击事件')} } = props;
+  const { children, items, layout, cart, onItemClick= () => {console.log('未设置 SelectChecBoxList onItemClick点击事件')} } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -39,6 +39,9 @@ export default function SelectChecBoxList(props) {
       newCheckedList.push(item);
     }
     setCheckedList(newCheckedList);
+    if(onItemClick){
+      onItemClick(newCheckedList.filter(item => item.checked == true))
+    }
   }
 
   // console.log('checkedItems = ', checkedItems)
@@ -63,11 +66,12 @@ export default function SelectChecBoxList(props) {
                 cart:cart,
                 key: i,
                 ref: layoutRef,
-                onItemClick: onItemClick,
-                isLastItem: items.length == (i+1) ? true : false,
-                checkedItems: checkedItems
+                // onItemClick: onItemClick,
+                // isLastItem: items.length == (i+1) ? true : false,
+                // checkedItems: checkedItems,
+                isSelected: item.checked
             })
-            : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef} onItemClick={onItemClick} checkedItems={checkedItems}
+            : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef} onItemClick={onItemClick} checkedItems={checkedItems} isSelected={item.checked}
             />
           }
         </div>

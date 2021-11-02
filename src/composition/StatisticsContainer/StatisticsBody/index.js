@@ -51,6 +51,27 @@ export default function TextContent(props) {
               }
             }
           },
+
+          {
+            presenter: {
+              xname: 'Stack',
+              gateway: 'Binding',
+              cart: 'Box',
+              container: 'PlainList',
+              presenter: {
+                xname: 'Progress',
+                props:{}
+              }
+            },
+            gateway: {
+              xname: 'Binding',
+              props: {
+                binding: {
+                  items: 'list'
+                }
+              }
+            }
+          }
       ]
     },
     ...props,
