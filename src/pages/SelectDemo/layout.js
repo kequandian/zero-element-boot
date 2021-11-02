@@ -46,6 +46,7 @@ module.exports = {
 	//  props: {
 	//  }
   // },
-  //selector: SelectedCartUpperRightIcon
+  //selector: SelectedCartUpperRightIcon 
   container: 'SelectionList'
+  // container: 'SelectChecBoxList'
 }
