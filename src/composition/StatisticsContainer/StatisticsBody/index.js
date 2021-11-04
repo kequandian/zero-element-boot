@@ -3,12 +3,15 @@ const AutoComponent = require('@/components/AutoComponent');
 
 const { Title, Subtitle, StatisticsList, StatisticalDescription } = require('@/presenter/demo');
 
+import ProgressList from '../ProgressList';
+
 export default function StatisticsBody(props) {
   const allComponents = {
     Title,
     Subtitle,
     StatisticsList,
-    StatisticalDescription
+    StatisticalDescription,
+    ProgressList
   }
 
   const config = {
@@ -52,13 +55,24 @@ export default function StatisticsBody(props) {
             }
           }
         },
+        // {
+        //   presenter: 'StatisticsList',
+        //   gateway: {
+        //     xname: 'Binding',
+        //     props: {
+        //       binding: {
+        //         items: 'list'
+        //       }
+        //     }
+        //   }
+        // },
         {
-          presenter: 'StatisticsList',
+          presenter: 'ProgressList',
           gateway: {
             xname: 'Binding',
             props: {
               binding: {
-                items: 'list'
+                items: 'data'
               }
             }
           }
