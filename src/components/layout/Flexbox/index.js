@@ -50,7 +50,8 @@ export default forwardRef(function Flexbox(props, ref) {
   // })
 
   return (
-    <div className={`l-FlexBox ${align} ${direction} ${flexFlow} ${width100}`}>
+    // <div className={`l-FlexBox ${align} ${direction} ${flexFlow} ${width100}`}>
+    <>
       {
         React.Children.map(children, (child, index) => {
 
@@ -65,7 +66,7 @@ export default forwardRef(function Flexbox(props, ref) {
           )
         })
       }
-    </div>
+    </>
   )
 
 })

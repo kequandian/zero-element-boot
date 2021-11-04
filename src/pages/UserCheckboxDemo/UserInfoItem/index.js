@@ -1,52 +1,40 @@
 import React from 'react';
 const AutoComponent = require('@/components/AutoComponent');
 
-const { Title, Subtitle, StatisticsList } = require('@/presenter/demo');
+const { UserAvatar, UserName } = require('@/presenter/demo');
 
-export default function TextContent(props) {
+export default function SelectUpperRightItem(props) {
   const allComponents = {
-    Title,
-    Subtitle,
-    StatisticsList
+    UserAvatar, UserName,
   }
-
   const config = {
     layout: {
       xname: 'Flexbox',
       props: {
-        direction: 'column', 
-        justify: 'center row'
+          align: 'start',
+          direction: 'row',
+          justify: 'center',
+          spacing: 10
       },
       children: [
         {
-          presenter: 'Title',
+          presenter: 'UserAvatar',
           gateway: {
             xname: 'Binding',
             props: {
               binding: {
-                title: 'TitleText'
+                avatar: 'url'
               }
             }
           }
         },
         {
-          presenter: 'Subtitle',
+          presenter: 'UserName',
           gateway: {
             xname: 'Binding',
             props: {
               binding: {
-                describe: 'contentTxt'
-              }
-            }
-          }
-        },
-        {
-          presenter: 'StatisticsList',
-          gateway: {
-            xname: 'Binding',
-            props: {
-              binding: {
-                items: 'list'
+                name: 'body'
               }
             }
           }
@@ -57,9 +45,9 @@ export default function TextContent(props) {
   };
 
   return (
-    <>
+    <div style={{width: '250px'}}>
       <AutoComponent {...config} allComponents={allComponents} />
-    </>
+    </div>
   )
 
 }

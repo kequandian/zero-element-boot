@@ -34,7 +34,7 @@ export default function Selector(props) {
     
     const styles = {
       position: 'relative',
-      margin: '6px',
+      margin: '1px 6px 1px 6px',
       padding: '5px',
       backgroundColor: 'transparent',
       borderRadius: '8px',
@@ -48,7 +48,7 @@ export default function Selector(props) {
     if(onHover){
       changeStyle = {
         ...styles,
-        ...getHoverStyles()
+        ...getHoverStyles(),
       }
     }
     if(isSelected){
@@ -62,8 +62,8 @@ export default function Selector(props) {
       <div
         style={changeStyle}
         onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}>
-          <HoverIndicator indicate={onHover}>
-            <SelectedIndicator indicate={isSelected}>
+          <HoverIndicator indicate={onHover} ref={hoverRef}>
+            <SelectedIndicator indicate={isSelected} ref={selectRef}>
             {child}
             </SelectedIndicator>
           </HoverIndicator>
