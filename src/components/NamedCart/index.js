@@ -28,10 +28,10 @@ export default function NamedCart({ children, xname, indicator, selector, props,
   //2021-10-28 新增 selector 模块
   const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
   // get indicator
-  const indicatorName = (typeof indicator === 'string') ? indicator : indicator.xname
+  const indicatorName = (typeof indicator === 'string') ? indicator : (typeof indicator === 'object') ? indicator.xname : '';
   const    _Indicator  = _IndicatorSet[indicatorName];
   // get selector
-  const selectorName = (typeof selector === 'string') ? selector : selector.xname
+  const selectorName = (typeof selector === 'string') ? selector : (typeof selector === 'object') ? selector.xname : '';
   const    _Selector  = _IndicatorSet[selectorName];
 
   return (
@@ -53,7 +53,7 @@ export default function NamedCart({ children, xname, indicator, selector, props,
             </Selector>
         ) : 
         (
-           <_CartModule Cart={_Cart} props={cart.props} data={rest} />
+           <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} />
         )
       }
     </>
