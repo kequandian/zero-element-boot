@@ -7,6 +7,7 @@ import Description from './Description';
 import Author from './Author';
 import Seperator from './Seperator';
 import StatisticsList from './StatisticsList';
+import StatisticalDescription from './StatisticalDescription';
 import TableCompx from './TableCompx';
 import UserAvatar from './UserAvatar';
 import UserName from './UserName';
@@ -23,5 +24,6 @@ export {
   StatisticsList,
   TableCompx,
   UserAvatar,
-  UserName
+  UserName,
+  StatisticalDescription
 }
