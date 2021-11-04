@@ -8,6 +8,8 @@ import Author from './Author';
 import Seperator from './Seperator';
 import StatisticsList from './StatisticsList';
 import TableCompx from './TableCompx';
+import UserAvatar from './UserAvatar';
+import UserName from './UserName';
 
 export {
   Default,
@@ -19,5 +21,7 @@ export {
   Author,
   Seperator,
   StatisticsList,
-  TableCompx
+  TableCompx,
+  UserAvatar,
+  UserName
 }

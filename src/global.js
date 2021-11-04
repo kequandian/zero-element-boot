@@ -8,6 +8,8 @@ import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConf
 //indicator
 import MyIndicatorSelect from '@/components/indicator/MyIndicatorSelect';
 import MyIndicatorSelected from '@/components/indicator/MyIndicatorSelected';
+import RightIconCheckboxSelect from '@/components/indicator/RightIconCheckboxIndicator/Select';
+import RightIconCheckboxSelected from '@/components/indicator/RightIconCheckboxIndicator/Selected';
 
 //presenter
 import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvator'
@@ -22,7 +24,9 @@ import {Avator, Title} from '@/presenter/demo'
 
 NamedIndicatorSet({
   MyIndicatorSelect,
-  MyIndicatorSelected
+  MyIndicatorSelected,
+  RightIconCheckboxSelect,
+  RightIconCheckboxSelected
 })
 
 NamedPresenterSet({
