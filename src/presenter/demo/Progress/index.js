@@ -8,7 +8,8 @@ export default class Progress extends Component {
     percentageNum: PropTypes.number,
     allNum: PropTypes.number,
     progressName: PropTypes.string,
-    indexValue: PropTypes.number
+    indexValue: PropTypes.number,
+    bgColor: PropTypes.string
   };
   constructor(props) {
     super(props)
@@ -44,6 +45,7 @@ export default class Progress extends Component {
         // left:`${leftPercentage}px`,
       //这个支持css样式响应式的
         left:`${leftPercentage}%`,
+        background: `${ this.props.bgColor ?  this.props.bgColor : '#1CABAE' }`
       };
     let div3 = {
         position: "absolute",
@@ -63,9 +65,10 @@ export default class Progress extends Component {
         fontSize: "16px",
         color: "#fff",
       };
+      
     return (
       <div style={div1}>
-        <div style={div2} className={`indexBg_${this.props.indexValue}`}>
+        <div style={div2}>
           <div style={{position: 'relative'}}>
           <div style={div4}>
             {percentageNum}%

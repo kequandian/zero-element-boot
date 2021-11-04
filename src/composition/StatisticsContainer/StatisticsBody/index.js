@@ -1,13 +1,14 @@
 import React from 'react';
 const AutoComponent = require('@/components/AutoComponent');
 
-const { Title, Subtitle, StatisticsList } = require('@/presenter/demo');
+const { Title, Subtitle, StatisticsList, StatisticalDescription } = require('@/presenter/demo');
 
-export default function TextContent(props) {
+export default function StatisticsBody(props) {
   const allComponents = {
     Title,
     Subtitle,
-    StatisticsList
+    StatisticsList,
+    StatisticalDescription
   }
 
   const config = {
@@ -36,6 +37,17 @@ export default function TextContent(props) {
             props: {
               binding: {
                 describe: 'contentTxt'
+              }
+            }
+          }
+        },
+        {
+          presenter: 'StatisticalDescription',
+          gateway: {
+            xname: 'Binding',
+            props: {
+              binding: {
+                statisticalDescription: 'contentTxt'
               }
             }
           }

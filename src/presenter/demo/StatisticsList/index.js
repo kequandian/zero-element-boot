@@ -10,17 +10,7 @@ export default function (props) {
 
     const { list } = props;
 
-    return <div className="listContent">
-        <Flex h="30px" align="right">
-            <Box p="2">
-            </Box>
-            <Spacer />
-            <Box>
-                <Center color="#1FA7B2">
-                    *好评率
-                </Center>
-            </Box>
-        </Flex>
+    return <div className="statistics_list_content">
         <Stack spacing={5}>
             { list.map((item, index) =>{
                 return (
@@ -29,7 +19,7 @@ export default function (props) {
                             {index+1}
                         </Center>
                         <Box flex="1">
-                            <Progress height="30px" percentageNum={item.value/100} progressName={item.title} indexValue={index+1}/>
+                            <Progress height="30px" bgColor={item.bgColor} percentageNum={item.value/100} progressName={item.title} indexValue={index+1}/>
                         </Box>
                         {/* <Center w="50px" >
                             {item.value}%

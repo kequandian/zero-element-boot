@@ -4,5 +4,6 @@
     "describe": "describe",
     "adType": "adType",
     "createTime": "createTime",
-    "items": "items"
+    "items": "items",
+    "statisticalDescription": "statisticalDescription"
 }
