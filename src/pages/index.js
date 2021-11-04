@@ -56,6 +56,7 @@ export default function index(props) {
   //     <ChakraSample />
   // )
 
-  return <UserCheckboxDemo  onItemClick={onItemClickHandle} />
+  // return <UserCheckboxDemo  onItemClick={onItemClickHandle} />
+  return <StatisticsContainer />
   // return <TestSelector />
 }
