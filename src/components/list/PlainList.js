@@ -44,8 +44,9 @@ export default function PlainList(props) {
                 ref: layoutRef,
                 onItemClick:onItemClick,
                 isLastItem: dataSource.length == (i+1) ? true : false,
+                index: i
             })
-            : <Child key={i} {...item } {...rest} layout={layout} ref={layoutRef} onItemClick={onItemClick} />)}
+            : <Child key={i} {...item } {...rest} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />)}
     </ContainerContext.Provider>
   </div>
 }
