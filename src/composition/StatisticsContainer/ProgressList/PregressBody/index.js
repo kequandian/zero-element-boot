@@ -4,7 +4,7 @@ import Progress from "@/presenter/demo/Progress";
 require('./index.less');
 
 /**
- * @param {Array} items 统计数据
+ * 
  */
 export default function (props) {
 
