@@ -7,6 +7,8 @@ const namedPresenterGet = require('@/components/config/NamedPresenterConfig').ge
 
 const { Container } = require('@/components/container');
 
+const { CloneAutoLayout } = require('@/components/CloneAutoLayout');
+
 //change history
 //CR.2020-12-29  handle AutoComponent, add Container
 
@@ -101,37 +103,55 @@ module.exports = function ({ children, layout = requireConfig(parent), allCompon
         <NamedLayout xname={xname} props={props} >
           {layoutChildren ? layoutChildren.map((child, i) => {
             const { presenter, span, gateway, cart: childCart } = child;
+            
+
+            const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
+            const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
 
             if(typeof presenter === 'string'){
-              presenterString({children, presenter, defaultPresenter, gateway, defaultGateway, cart, defaultCart, span, componentsJson }, i);
-            }else if(typeof presenter === 'object'){
+              // return (
+              //   <_PresenterString
+              //     children={children}
+              //     presenter={presenter}
+              //     defaultPresenter={defaultPresenter}
+              //     gateway={gateway}
+              //     defaultGateway={defaultGateway}
+              //     cart={cart}
+              //     defaultCart={defaultCart}
+              //     span={span}
+              //     componentsJson={componentsJson}
+              //     key={i}
+              //   />
+              // )
 
+              const _presenter = presenter ? presenter : defaultPresenter
+              const Presenter = _presenter ? componentsJson[_presenter] || tips(_presenter) : null;
+
+              // each item has its Named Gateway
+              return <NamedGateway {..._gateway} key={i} span={span} >
+                {cart ?
+                  <NamedCart {..._cart} >
+                    {presenter ?
+                      <Presenter />
+                      :
+                      React.Children.toArray(children)
+                    }
+                  </NamedCart>
+                  :
+                  (presenter ?
+                    <Presenter />
+                    :
+                    React.Children.toArray(children)
+                  )
+                }
+              </NamedGateway>
+            }else if(isJsonObject(presenter)){
+              return (
+                <NamedGateway {..._gateway} key={i} span={span} >
+                  <CloneAutoLayout {...presenter}/>
+                </NamedGateway>
+              )
             }
-
-            // const _presenter = presenter ? presenter : defaultPresenter
-            // const Presenter = _presenter ? componentsJson[_presenter] || tips(_presenter) : null;
-
-            // const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
-            // const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
-
-            // each item has its Named Gateway
-            // return <NamedGateway {..._gateway} key={i} span={span} >
-            //   {cart ?
-            //     <NamedCart key={i} {..._cart} >
-            //       {presenter ?
-            //         <Presenter />
-            //         :
-            //         React.Children.toArray(children)
-            //       }
-            //     </NamedCart>
-            //     :
-            //     (presenter ?
-            //       <Presenter />
-            //       :
-            //       React.Children.toArray(children)
-            //     )
-            //   }
-            // </NamedGateway>
 
           }) : (
 
@@ -156,8 +176,7 @@ function tips(name) {
   return _ => `${name} 未定义`;
 }
 
-function presenterString(props, i){
-  const {children, presenter, defaultPresenter, gateway, defaultGateway, cart, defaultCart, span, componentsJson } = props;
+function _PresenterString({children, presenter, defaultPresenter, gateway, defaultGateway, cart, defaultCart, span, componentsJson }){
   const _presenter = presenter ? presenter : defaultPresenter
   const Presenter = _presenter ? componentsJson[_presenter] || tips(_presenter) : null;
 
@@ -165,9 +184,9 @@ function presenterString(props, i){
   const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
 
   // each item has its Named Gateway
-  return <NamedGateway {..._gateway} key={i} span={span} >
+  return <NamedGateway {..._gateway} span={span} >
     {cart ?
-      <NamedCart key={i} {..._cart} >
+      <NamedCart {..._cart} >
         {presenter ?
           <Presenter />
           :
@@ -182,4 +201,11 @@ function presenterString(props, i){
       )
     }
   </NamedGateway>
+}
+
+function isJsonObject(obj) {
+  if (typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]") {
+    return true;
+  }
+  return false;
 }
