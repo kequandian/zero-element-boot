@@ -28,13 +28,13 @@ export default function SelectChecBoxList(props) {
       const orgCheckedItems = checkedItems;
       if(item.id == id){
         item.checked = !checked;
-        if(item.checked){
-          checkedItems.push(item);
-          setCheckedItems(checkedItems);
-        }else{
-          const newCheckedItems = orgCheckedItems.filter(item => item.id !== id)
-          setCheckedItems(newCheckedItems);
-        }
+        // if(item.checked){
+        //   checkedItems.push(item);
+        //   setCheckedItems(checkedItems);
+        // }else{
+        //   const newCheckedItems = orgCheckedItems.filter(item => item.id !== id)
+        //   setCheckedItems(newCheckedItems);
+        // }
       }
       newCheckedList.push(item);
     }
@@ -44,8 +44,6 @@ export default function SelectChecBoxList(props) {
     }
   }
 
-  // console.log('checkedItems = ', checkedItems)
-  
   return <div
     style={{
       overflow: 'auto',

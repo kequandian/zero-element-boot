@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import SelectContainer from './index';
+import UserCheckboxContainer from './index';
 
 import useTokenRequest from '@/components/hooks/useTokenRequest';
 
@@ -20,8 +20,10 @@ export default function (props) {
     }
 
     return (
-        <div style={{background:'white'}}>
-            <SelectContainer {...props} data={data}/>
-        </div>
+        <>
+            <div style={{background:'white'}}>
+                <UserCheckboxContainer {...props} data={data}/>
+            </div>
+        </>
     )
 }
