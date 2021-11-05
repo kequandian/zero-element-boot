@@ -4,6 +4,7 @@ module.exports = {
     align: 'start',
     direction: 'column'
   },
+  presenter: 'PregressBody',
   cart: {
     xname: 'Cart',
     props: {
