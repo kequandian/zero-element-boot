@@ -16,7 +16,9 @@ import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/
 import ContentText from '@/pages/PresenterTestDemo/plugins/TodoList/TodoItem/Content_text'
 import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/ItemIconAction'
 
-import {Avator, Title} from '@/presenter/demo'
+import {Avator, Title} from '@/presenter/demo';
+
+import PregressBody from './composition/StatisticsContainer/ProgressList/PregressBody';
 
 // NamedCartSet({
 //   Cart
@@ -35,6 +37,8 @@ NamedPresenterSet({
 
   ImageAnimation,
   ContentText,
-  ContentFinish
+  ContentFinish,
+
+  PregressBody
 })
 

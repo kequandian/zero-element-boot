@@ -25,16 +25,9 @@ export default function Index(props) {
         layout: layoutData
     };
 
-    const onAdItemClick = (value) => {
-        console.log("value = ", value)
-        // onItemClickHandle();
-    }
-
     return (
         <div style={{width: '100%'}}>
-            <AutoLayout {...config} onItemClick={null}>
-                <PregressBody />
-            </AutoLayout>
+            <AutoLayout {...config}/>
         </div>
     )
 }
