@@ -10,6 +10,7 @@ import {get as NamedPresenterGet } from '@/components/config/NamedPresenterConfi
 
 //2012-04-02 copy autoLayout
 const CloneAutoLayout = (props) => {
+  console.log('CloneAutoLayout = ', props)
     if (props.children && Array.isArray(props.children) && props.children.length > 0) {
       return AutoComponent({layout:props, allComponents:NamedPresenterGet(), ...props});
     }
