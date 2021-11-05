@@ -10,6 +10,8 @@ export default function (props) {
 
     const { bgColor, value, title, index=0 } = props;
 
+    console.log('统计数据 index = ', index)
+
     return <Flex h="30px">
         <Center w="30px">
             {index+1}
