@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import {Avatar, Title, Subtitle} from '@/presenter/demo'
 
@@ -35,6 +36,7 @@ import StatisticsContainer from '@/composition/StatisticsContainer/Sandbox';
 import TableContainer from '@/pages/TableDemo/Sandbox';
 import SelectDemo from '@/pages/SelectDemo/Sandbox';
 import UserCheckboxDemo from '@/pages/UserCheckboxDemo/Sandbox';
+import CheckBoxMoadlDemo from '@/pages/CheckBoxMoadlDemo';
 
 export default function index(props) {
 
@@ -46,8 +48,9 @@ export default function index(props) {
   })
 
   function onItemClickHandle (data) {
-    console.log('data = ', data)
+    console.log('data111111 = ', data)
   }
+
 
   // return <AdItemDemo/>
   // return <AdListDemo onItemClickHandle={onItemClickHandle} />
@@ -56,7 +59,7 @@ export default function index(props) {
   //     <ChakraSample />
   // )
 
-  // return <UserCheckboxDemo  onItemClick={onItemClickHandle} />
-  return <StatisticsContainer />
-  // return <TestSelector />
+  // return <UserCheckboxDemo onItemClick={onItemClickHandle}/>
+  
+  return <CheckBoxMoadlDemo />
 }

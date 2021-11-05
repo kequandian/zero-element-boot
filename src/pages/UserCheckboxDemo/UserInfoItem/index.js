@@ -45,9 +45,9 @@ export default function SelectUpperRightItem(props) {
   };
 
   return (
-    <div style={{width: '250px'}}>
+    <>
       <AutoComponent {...config} allComponents={allComponents} />
-    </div>
+    </>
   )
 
 }

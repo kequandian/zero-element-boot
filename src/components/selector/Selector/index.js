@@ -41,7 +41,8 @@ export default function Selector(props) {
       borderWidth: '2px',
       borderStyle: 'solid',
       borderColor: 'transparent',
-      boxShadow: '0 0px 6px rgba(255, 255, 255, 1)'
+      boxShadow: '0 0px 6px rgba(255, 255, 255, 1)',
+      flex:1 
     }
     
     let changeStyle = styles;
