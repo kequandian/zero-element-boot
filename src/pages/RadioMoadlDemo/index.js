@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { history } from 'umi';
+
 import { 
     ChakraProvider,
     Button,
@@ -12,15 +14,16 @@ import {
     ModalCloseButton,
     Stack,
     Text,
+    ButtonGroup
 } from "@chakra-ui/react"
 
-import UserCheckboxDemo from '@/pages/UserCheckboxDemo/Sandbox';
+import UserRadioDemo from '@/pages/UserRadioDemo/Sandbox';
 
 export default function Index(props) {
 
-  let checkedList = [];
+  let selectData = '';
   const [ isOpen, setIsOpen ] = useState(false);
-  const [ selectData, setSelectData ] = useState([]);
+  const [ showData, setShowData ] = useState([]);
   const [ onShow, setOnShow ] = useState(false);
 
   function onOpen() {
@@ -31,39 +34,41 @@ export default function Index(props) {
   function onClose() {
     setIsOpen(false);
     setOnShow(false);
-    checkedList = [];
-    setSelectData([]);
+    selectData = [];
+    setShowData([]);
   }
 
   function onOk(){
     setIsOpen(false);
     setOnShow(true);
-    if(checkedList && checkedList.length > 0){
-      setSelectData(checkedList)
+    if(selectData && JSON.stringify(selectData) != '{}'){
+      setShowData(selectData)
     }
   }
   
   function onItemClickHandle (data) {
     console.log('data111111 = ', data)
-    checkedList = data;
+    selectData = data;
+  }
+
+  function goToCheckboxPage() {
+    history.push('/CheckBoxMoadlDemo')
   }
 
   return (
       
     <ChakraProvider>
-        <div style={{ width: '200px', minHeight: '100px', background: '#ffffff', padding: '20px'}}>
-          <Stack align="stretch" spacing={6}>
-            <Button colorScheme="teal" onClick={onOpen}>多选框</Button>
-          </Stack>
-
+        <div style={{width: '200px', minHeight: '100px', background: '#ffffff', padding: '20px'}}>
+            <Stack spacing="6">
+              <Button colorScheme="teal" onClick={onOpen}>单选框</Button>
+              {/* <Button colorScheme="teal" onClick={goToCheckboxPage}>跳转多选框</Button> */}
+            </Stack>
             {
               onShow ? (
                 <>
                   <div style={{marginTop:'10px', marginBottom: '10px'}}>选中内容</div>
                   <Stack spacing={3}>
-                      { selectData && selectData.length > 0 && selectData.map((item, index) => {
-                        return <Text fontSize="sm" key={index}>{item.name}</Text>
-                      })}
+                        <Text fontSize="sm">{showData.name}</Text>
                   </Stack>
                 </>
               ):<></>
@@ -73,10 +78,10 @@ export default function Index(props) {
         <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
-            <ModalHeader>多选框</ModalHeader>
+            <ModalHeader>单选框</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-                <UserCheckboxDemo onItemClick={(data) => onItemClickHandle(data)}/>
+                <UserRadioDemo onItemClick={(data) => onItemClickHandle(data)}/>
             </ModalBody>
             <ModalFooter>
                 <Button variant="ghost" onClick={onClose}>关闭</Button>

@@ -16,5 +16,5 @@ module.exports = {
       padding: '0px'
     }
   },
-  container: 'SelectCheckboxList'
+  container: 'SelectionList'
 }

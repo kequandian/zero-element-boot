@@ -4,7 +4,7 @@ import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/AutoX/ContainerContext';
 import checkBoxTool from '@/components/utils/checkBoxTool';
 
-export default function SelectChecBoxList(props) {
+export default function SelectCheckboxList(props) {
   const { children, items, layout, cart, onItemClick } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();

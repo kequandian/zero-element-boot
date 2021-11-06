@@ -4,7 +4,7 @@ import Container from './Container';
 import PlainList from '../list/PlainList';
 import SelectedList from '../list/SelectedList';
 import SelectionList from '../list/SelectionList';
-import SelectChecBoxList from '../list/SelectChecBoxList';
+import SelectCheckboxList from '../list/SelectCheckboxList';
 import LoadingList from '../list/LoadingList'
 
 export {
@@ -13,7 +13,7 @@ export {
         // list type of container
     PlainList,
     SelectedList,
-    SelectChecBoxList,
+    SelectCheckboxList,
     LoadingList,
     SelectionList
 }

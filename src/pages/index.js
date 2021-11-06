@@ -36,7 +36,9 @@ import StatisticsContainer from '@/composition/StatisticsContainer/Sandbox';
 import TableContainer from '@/pages/TableDemo/Sandbox';
 import SelectDemo from '@/pages/SelectDemo/Sandbox';
 import UserCheckboxDemo from '@/pages/UserCheckboxDemo/Sandbox';
+import UserRadioDemo from '@/pages/UserRadioDemo/Sandbox';
 import CheckBoxMoadlDemo from '@/pages/CheckBoxMoadlDemo';
+import RadioMoadlDemo from '@/pages/RadioMoadlDemo';
 
 export default function index(props) {
 
@@ -59,7 +61,7 @@ export default function index(props) {
   //     <ChakraSample />
   // )
 
-  // return <SelectDemo onItemClick={onItemClickHandle}/>
+  // return <UserRadioDemo onItemClick={onItemClickHandle}/>
   
   return <CheckBoxMoadlDemo />
 }
