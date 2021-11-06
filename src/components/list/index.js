@@ -2,7 +2,7 @@ import AutoLoadList from './AutoLoadList';
 import LoadMoreList from './LoadMoreList';
 import PlainList from './PlainList';
 import SelectedList from './SelectedList';
-import SelectChecBoxList from './SelectChecBoxList';
+import SelectCheckboxList from './SelectCheckboxList';
 import LoadingList from './LoadingList';
 import SelectionList from './SelectionList';
 
@@ -14,7 +14,7 @@ export {
   LoadMoreList,
   PlainList,
   SelectedList,
-  SelectChecBoxList,
+  SelectCheckboxList,
   LoadingList,
   SelectionList
 }

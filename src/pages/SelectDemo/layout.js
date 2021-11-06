@@ -48,5 +48,5 @@ module.exports = {
   // },
   //selector: SelectedCartUpperRightIcon 
   container: 'SelectionList'
-  // container: 'SelectChecBoxList'
+  // container: 'SelectCheckboxList'
 }
