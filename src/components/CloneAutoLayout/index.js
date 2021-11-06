@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 const { NamedContainer, NamedLayout, NamedGateway, NamedCart } = require('@/components');
 const DefaultContainer = require('@/components/container/Container')
 
-const AutoComponent = require('@/components/AutoComponent');
+const CloneAutoComponent = require('@/components/CloneAutoComponent');
 import {get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 
 
@@ -15,6 +15,7 @@ import loadingPage from '@/components/loading';
 //2012-04-02 copy autoLayout
 const CloneAutoLayout = (props) => {
   console.log('CloneAutoLayout = ', props)
+
   const { layout: { path = '' }, ...rest } = props;
   const [layoutJson, setLayoutJson] = useState({});
   const [loading, setLoading] = useState(true);
@@ -52,7 +53,7 @@ const CloneAutoLayout = (props) => {
       if (layoutJson && JSON.stringify(layoutJson) != '{}') {
         const p = { ...props, layout: layoutJson };
         if (p.layout.children) {
-          return AutoComponent(p);
+          return CloneAutoComponent(p);
         }
         return AutoLayout(p);
       } else {
@@ -61,7 +62,7 @@ const CloneAutoLayout = (props) => {
     }
   } else {
     if (props.layout.children) {
-      return AutoComponent(props);
+      return CloneAutoComponent(props);
     }
     return AutoLayout(props);
   }
