@@ -7,7 +7,7 @@ import UserInfoItem from './UserInfoItem';
 
 export default function Index(props) {
 
-    const { data=[], onItemClick = ()=>{} } = props;
+    const { data=[], onItemClick } = props;
 
     let layoutData = '';
     const layoutJsonPath = '';

@@ -18,26 +18,34 @@ import UserCheckboxDemo from '@/pages/UserCheckboxDemo/Sandbox';
 
 export default function Index(props) {
 
+  let checkedList = [];
   const [ isOpen, setIsOpen ] = useState(false);
   const [ selectData, setSelectData ] = useState([]);
   const [ onShow, setOnShow ] = useState(false);
 
   function onOpen() {
     setIsOpen(true);
+    setOnShow(false)
   }
 
   function onClose() {
     setIsOpen(false);
+    setOnShow(false);
+    checkedList = [];
+    setSelectData([]);
   }
 
   function onOk(){
     setIsOpen(false);
-    setOnShow(true)
+    setOnShow(true);
+    if(checkedList && checkedList.length > 0){
+      setSelectData(checkedList)
+    }
   }
   
   function onItemClickHandle (data) {
     console.log('data111111 = ', data)
-    setSelectData(data)
+    checkedList = data;
   }
 
   return (
@@ -49,10 +57,10 @@ export default function Index(props) {
             {
               onShow ? (
                 <>
-                  <div style={{marginTop:'10px'}}>选中内容</div>
+                  <div style={{marginTop:'10px', marginBottom: '10px'}}>选中内容</div>
                   <Stack spacing={3}>
                       { selectData && selectData.length > 0 && selectData.map((item, index) => {
-                        <Text fontSize="sm" key={index}>{item.name}</Text>
+                        return <Text fontSize="sm" key={index}>{item.name}</Text>
                       })}
                   </Stack>
                 </>
@@ -66,7 +74,7 @@ export default function Index(props) {
             <ModalHeader>多选框</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-                <UserCheckboxDemo onItemClick={onItemClickHandle}/>
+                <UserCheckboxDemo onItemClick={(data) => onItemClickHandle(data)}/>
             </ModalBody>
             <ModalFooter>
                 <Button variant="ghost" onClick={onClose}>关闭</Button>

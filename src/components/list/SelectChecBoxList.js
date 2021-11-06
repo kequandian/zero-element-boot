@@ -5,7 +5,7 @@ import ContainerContext from '@/components/AutoX/ContainerContext';
 import checkBoxTool from '@/components/utils/checkBoxTool';
 
 export default function SelectChecBoxList(props) {
-  const { children, items, layout, cart, onItemClick= () => {console.log('未设置 SelectChecBoxList onItemClick点击事件')} } = props;
+  const { children, items, layout, cart, onItemClick } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -39,7 +39,7 @@ export default function SelectChecBoxList(props) {
       newCheckedList.push(item);
     }
     setCheckedList(newCheckedList);
-    if(onItemClick){
+    if(onItemClick && newCheckedList && newCheckedList.length > 0){
       onItemClick(newCheckedList.filter(item => item.checked == true))
     }
   }
