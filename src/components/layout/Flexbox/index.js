@@ -12,6 +12,7 @@ require('./index.less');
  * @param {不换行 [no-wrap] } flexFlow 默认换行
  * @param spacing 间隔
  * @param {ReactElement} Seperator 直接转入的分隔线组件（不引入NamedSeperator依赖）
+ * @param {弹性宽度 [flex:1] } flexWidth 弹性宽度 flex:1
  * Seperator: 'Divider', 组件名
  * {
       name: 'Divider',
@@ -23,13 +24,13 @@ require('./index.less');
  */
 export default forwardRef(function Flexbox(props, ref) {
 
-  const { children, align = '', direction = '', flexFlow = '', justify = {}, spacing = 0, isLastItem, Seperator } = props;
+  const { children, align = '', direction = '', flexFlow = '', justify = {}, spacing = 0, isLastItem, Seperator, flexWidth = '' } = props;
 
   const width100 = align == 'between' || align.indexOf("between") != -1 ? 'width100' : '';
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `l-FlexBox ${align} ${direction} ${flexFlow} ${width100}`;
+      return `l-FlexBox ${align} ${direction} ${flexFlow} ${width100} ${flexWidth}`;
     }
   }));
 
