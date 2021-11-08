@@ -15,7 +15,7 @@ import Selector from '@/components/selector/Selector';
  * NamedCart [,NamedLayout] 负责处理数据传递，具体的Cart[ItemCart, ...] 不负责处理数据传递
  * 区别于 NamedGateway 数据传递由具体的 Gateway 处理
  */
-export default function NamedCart({ children, xname, indicator, selector, props, cart = { xname, props }, cartSet, indicatorSet, ...rest }) {
+export default function NamedCart({ children, xname, indicator, selector, cartIndicator, props, cart = { xname, props }, cartSet, indicatorSet, ...rest }) {
 
   
   const _CartSet = cartSet ? cartSet : DefaultCartSet()

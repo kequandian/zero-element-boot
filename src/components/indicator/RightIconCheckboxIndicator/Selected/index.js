@@ -28,17 +28,9 @@ export default forwardRef(function Index(props, ref) {
     return (
 
         <div>
-          {
-            indicate ? (
-              <div className="right_icon_on">
-                <img src={checkOn} />
-              </div>
-            ): (
-              <div className="right_icon_off">
-                <img src={checkOff} />
-              </div>
-            )
-          }
+          <div className={ indicate ?  'right_icon_on' : 'right_icon_off'} >
+            <img src={indicate ? checkOn : checkOff} />
+          </div>
           {child}
         </div>
 
