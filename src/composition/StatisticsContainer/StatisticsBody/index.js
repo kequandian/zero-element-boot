@@ -82,7 +82,8 @@ export default function StatisticsBody(props) {
             xname: 'Flexbox',
             props: {
               align: 'start',
-              direction: 'column'
+              direction: 'column',
+              flexWidth: 'flex100'
             },
             presenter: 'PregressBody',
             cart: {
