@@ -1,1 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([[12],{"8lGM":function(n,e,a){"use strict";a.r(e),a.d(e,"default",(function(){return c}));var t=a("q1tI"),r=a.n(t),o=a("M0V9");function c(n){var e={layout:{name:"Flexbox",props:{col:3},children:[{name:"CartItem",span:1},{name:"CartItem",span:1},{name:"CartItem",span:1}]}};return r.a.createElement(o,{config:e})}}}]);
