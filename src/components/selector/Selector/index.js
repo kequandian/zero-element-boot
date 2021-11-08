@@ -3,13 +3,14 @@ import useLayout from '@/components/hooks/useLayout';
 
 /**
  * 
+ * @param {Object} defaultIndicator 默认样式 ( type of Cart)
  * @param {Object} hoverIndicator 响应Hover事件的Indicator ( type of Cart)
  * @param {Object} hoverIndicator 响应Selected事件的Indicator (type of Cart)
  * @returns 
  */
 export default function Selector(props) {
 
-  const { children, hoverIndicator = {}, selectedIndicator={}, isSelected=false} = props;
+  const { children, hoverIndicator = {}, selectedIndicator={}, defaultIndicator={}, isSelected=false} = props;
   
   
   const [hoverRef, { getHoverStyles }] = useLayout();
@@ -31,44 +32,20 @@ export default function Selector(props) {
 
     const HoverIndicator = hoverIndicator
     const SelectedIndicator = selectedIndicator
-    
-    const styles = {
-      position: 'relative',
-      margin: '1px 6px 1px 6px',
-      padding: '5px',
-      backgroundColor: 'transparent',
-      borderRadius: '8px',
-      borderWidth: '2px',
-      borderStyle: 'solid',
-      borderColor: 'transparent',
-      boxShadow: '0 0px 6px rgba(255, 255, 255, 1)',
-      flex:1 
-    }
-    
-    let changeStyle = styles;
-    if(onHover){
-      changeStyle = {
-        ...styles,
-        ...getHoverStyles(),
-      }
-    }
-    if(isSelected){
-      changeStyle = {
-        ...styles,
-        ...getSelectStyles()
-      }
-    }
+    const DefaultIndicator = defaultIndicator
     
     return (
-      <div
-        style={changeStyle}
-        onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}>
-          <HoverIndicator indicate={onHover} ref={hoverRef}>
-            <SelectedIndicator indicate={isSelected} ref={selectRef}>
-            {child}
-            </SelectedIndicator>
-          </HoverIndicator>
+
+      <div style={{flex: 1}} onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}>
+          <DefaultIndicator onHover={onHover} isSelected={isSelected} getHoverStyles={getHoverStyles} getSelectStyles={getSelectStyles}>
+            <HoverIndicator indicate={onHover} ref={hoverRef}>
+              <SelectedIndicator indicate={isSelected} ref={selectRef}>
+              {child}
+              </SelectedIndicator>
+            </HoverIndicator>
+          </DefaultIndicator>
       </div>
+      
     )
   })
 }

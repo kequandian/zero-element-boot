@@ -63,5 +63,5 @@ export default function index(props) {
 
   // return <UserRadioDemo onItemClick={onItemClickHandle}/>
   
-  return <RadioMoadlDemo />
+  return <CheckBoxMoadlDemo />
 }
