@@ -22,9 +22,9 @@ export default  forwardRef(function Index(props, ref) {
   return React.Children.map(children, child => {
 
     return (
-      <div>
+      <>
         {child}
-      </div>
+      </>
 
     )
   })

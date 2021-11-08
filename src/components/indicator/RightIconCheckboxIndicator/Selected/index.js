@@ -27,12 +27,12 @@ export default forwardRef(function Index(props, ref) {
 
     return (
 
-        <div>
+        <>
           <div className={ indicate ?  'right_icon_on' : 'right_icon_off'} >
             <img src={indicate ? checkOn : checkOff} />
           </div>
           {child}
-        </div>
+        </>
 
     )
   })

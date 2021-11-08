@@ -10,6 +10,7 @@ import MyIndicatorSelect from '@/components/indicator/MyIndicatorSelect';
 import MyIndicatorSelected from '@/components/indicator/MyIndicatorSelected';
 import RightIconCheckboxSelect from '@/components/indicator/RightIconCheckboxIndicator/Select';
 import RightIconCheckboxSelected from '@/components/indicator/RightIconCheckboxIndicator/Selected';
+import RightIconCheckboxDefauct from '@/components/indicator/RightIconCheckboxIndicator/Defauct';
 
 //presenter
 import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvator'
@@ -28,7 +29,8 @@ NamedIndicatorSet({
   MyIndicatorSelect,
   MyIndicatorSelected,
   RightIconCheckboxSelect,
-  RightIconCheckboxSelected
+  RightIconCheckboxSelected,
+  RightIconCheckboxDefauct
 })
 
 NamedPresenterSet({
