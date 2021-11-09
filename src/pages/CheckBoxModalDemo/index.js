@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { history, connect } from 'umi';
 
 import { 
     ChakraProvider,
@@ -16,7 +17,10 @@ import {
 
 import UserCheckboxDemo from '@/pages/UserCheckboxDemo/Sandbox';
 
-export default function Index(props) {
+function Index(props) {
+
+  const { dispatch } = props;
+  console.log('CheckboxMoadlDemo props = ', props)
 
   let checkedList = [];
   const [ isOpen, setIsOpen ] = useState(false);
@@ -37,9 +41,22 @@ export default function Index(props) {
 
   function onOk(){
     setIsOpen(false);
-    setOnShow(true);
+    // setOnShow(true);
     if(checkedList && checkedList.length > 0){
-      setSelectData(checkedList)
+      // setSelectData(checkedList)
+      dispatch({
+        type: "radioDataModel/changeData",
+        payload: {
+          list: checkedList,
+        },
+      })
+      
+      history.push({
+        pathname: '/RadioModalDemo',
+        query: {
+          list: checkedList
+        }
+      })
     }
   }
   
@@ -88,3 +105,10 @@ export default function Index(props) {
   )
 
 }
+
+const mapStateToProps = ({ }) => {
+  return {
+  };
+};
+
+export default connect(mapStateToProps)(Index);

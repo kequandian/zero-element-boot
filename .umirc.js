@@ -18,7 +18,11 @@ export default {
     baseSeparator: '-',
   },
   antd: {},
-  dva: false,
+  //配置model, 禁用即 dva:true
+  dva: {
+    hmr: true,
+    immer: false,
+  },
 
   ignoreMomentLocale: true, // 忽略 moment 的 locale 文件
 }
