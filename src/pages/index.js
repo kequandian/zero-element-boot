@@ -37,10 +37,10 @@ import TableContainer from '@/pages/TableDemo/Sandbox';
 import SelectDemo from '@/pages/SelectDemo/Sandbox';
 import UserCheckboxDemo from '@/pages/UserCheckboxDemo/Sandbox';
 import UserRadioDemo from '@/pages/UserRadioDemo/Sandbox';
-import CheckBoxMoadlDemo from '@/pages/CheckBoxMoadlDemo';
-import RadioMoadlDemo from '@/pages/RadioMoadlDemo';
+import CheckBoxModalDemo from '@/pages/CheckBoxModalDemo';
+import RadioModalDemo from '@/pages/RadioModalDemo';
 
-export default function index(props) {
+export default function Index(props) {
 
   // pre-init. presenter set 
   NamedPresenterSet({
@@ -63,5 +63,5 @@ export default function index(props) {
 
   // return <UserRadioDemo onItemClick={onItemClickHandle}/>
   
-  return <RadioMoadlDemo />
+  return <RadioModalDemo />
 }
