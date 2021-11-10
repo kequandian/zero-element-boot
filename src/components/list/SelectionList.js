@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react';
+import { history } from 'umi';
 import { useSize } from 'ahooks';
 import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/AutoX/ContainerContext';
 
 
 export default function SelectionList(props) {
-  const { children, items, layout, cart, onItemClick= () => {console.log('未设置SelectionList onItemClick点击事件')} } = props;
+  const { children, items, layout, cart, navigation,  onItemClick= () => {console.log('未设置SelectionList onItemClick点击事件')} } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -16,7 +17,24 @@ export default function SelectionList(props) {
 
   function onSelected (item, index) {
     setCurrIndex(index);
-    if(onItemClick){
+    if(navigation){
+      if(navigation.indexOf('(id)') === -1){
+        history.push({
+          pathname: navigation,
+          query: {
+            data: item
+          }
+        })
+      }else if(navigation.indexOf('(id)') > -1){
+        const formatNav = navigation.replace('(id)', item.id);
+        console.log('formatNav = ',formatNav)
+        history.push({
+          pathname: formatNav,
+          query: {
+          }
+        })
+      }
+    }else if(onItemClick){
       onItemClick(item)
     }
   }

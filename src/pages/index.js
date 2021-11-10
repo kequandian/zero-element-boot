@@ -1,4 +1,5 @@
 import React from 'react';
+import { history } from 'umi';
 
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import {Avatar, Title, Subtitle} from '@/presenter/demo'
@@ -38,7 +39,7 @@ import SelectDemo from '@/pages/SelectDemo/Sandbox';
 import UserCheckboxDemo from '@/pages/UserCheckboxDemo/Sandbox';
 import UserRadioDemo from '@/pages/UserRadioDemo/Sandbox';
 import CheckBoxModalDemo from '@/pages/CheckBoxModalDemo';
-import RadioModalDemo from '@/pages/RadioModalDemo';
+// import RadioModalDemo from '@/pages/RadioModalDemo';
 
 export default function Index(props) {
 
@@ -63,5 +64,10 @@ export default function Index(props) {
 
   // return <UserRadioDemo onItemClick={onItemClickHandle}/>
   
-  return <RadioModalDemo />
+  // return <RadioModalDemo />
+
+  //通过跳转进入单选页面
+  history.push('/RadioModalDemo');
+  
+  return <div>首页</div>
 }
