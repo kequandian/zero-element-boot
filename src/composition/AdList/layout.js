@@ -22,5 +22,6 @@ module.exports = {
       // padding: '16px',
     }
   },
+  navigation: '/CheckboxPageDemo',
   container: 'PlainList'
 }

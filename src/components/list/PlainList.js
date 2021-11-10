@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { history } from 'umi';
 import { useSize } from 'ahooks';
 import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/AutoX/ContainerContext';
@@ -11,7 +12,7 @@ import ContainerContext from '@/components/AutoX/ContainerContext';
  * @param {array}} items,dataSource
  */
 export default function PlainList(props) {
-  const { children, layout, items, dataSource=items, onItemClick= () => {console.log('未设置onItemClick点击事件')}, ...rest } = props;
+  const { children, layout, items, dataSource=items, navigation, onItemClick= () => {console.log('未设置onItemClick点击事件')}, ...rest } = props;
 
   const [layoutRef, { getClassName }] = useLayout();
 
@@ -26,6 +27,28 @@ export default function PlainList(props) {
      return tips(dataSource)
   }
 
+  function clickAction (item) {
+    if(navigation){
+      if(navigation.indexOf('(id)') === -1){
+        history.push({
+          pathname: navigation,
+          query: {
+            data: item
+          }
+        })
+      }else if(navigation.indexOf('(id)') > -1){
+        const formatNav = navigation.replace('(id)', item.id);
+        history.push({
+          pathname: formatNav,
+          query: {
+          }
+        })
+      }
+    }else if(onItemClick){
+      onItemClick(item)
+    }
+  }
+
   return <div
     style={{
       overflow: 'auto',
@@ -35,18 +58,26 @@ export default function PlainList(props) {
     ref={containerRef}
   >
     <ContainerContext.Provider value={size}>
-        {dataSource.map((item, i) => React.isValidElement(Child) ?
-            React.cloneElement(Child, {
-                ...item,
-                ...rest,
-                layout:layout,
-                key: i,
-                ref: layoutRef,
-                onItemClick:onItemClick,
-                isLastItem: dataSource.length == (i+1) ? true : false,
-                index: i
-            })
-            : <Child key={i} {...item } {...rest} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />)}
+        {dataSource.map((item, i) => {
+          return (
+            <div key={i} onClick={() => clickAction(item)} >
+              {
+                React.isValidElement(Child) ?
+                  React.cloneElement(Child, {
+                      ...item,
+                      ...rest,
+                      layout:layout,
+                      // key: i,
+                      ref: layoutRef,
+                      // onItemClick:onItemClick,
+                      isLastItem: dataSource.length == (i+1) ? true : false,
+                      index: i
+                  })
+                : <Child key={i} {...item } {...rest} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
+              }
+            </div>
+          )
+        })}
     </ContainerContext.Provider>
   </div>
 }
