@@ -29,7 +29,7 @@ function Index(props) {
   
   const { list=[] } = location.query;
 
-  console.log('RadioMoadlDemo list = ', list)
+  // console.log('RadioMoadlDemo list = ', list)
 
   let selectData = '';
   const [ isOpen, setIsOpen ] = useState(false);

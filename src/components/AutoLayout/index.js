@@ -80,10 +80,13 @@ export default function (props) {
 // CR.增加处理选中的 (Cart=> indicator)
 // when: 2021-03-24
 
+//2021-11-10
+//新增 layout 新增 navigation 属性
+
 function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
 
   // handle layout, for children in {layout
-  const { xname, props, container, gateway, cart, indicator, presenter } = layout || {};
+  const { xname, props, container, gateway, cart, indicator, presenter, navigation } = layout || {};
 
   const _cart = (cart && typeof cart === 'string') ? { xname: cart } : cart
   const _gateway = (gateway && typeof gateway === 'string') ? { xname: gateway } : gateway
@@ -116,7 +119,7 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
   //         </NamedGateway>
   //     </NamedLayout>
   // </NamedList>
-  return <Container {..._container} {...data} onItemClick={onItemClick} >
+  return <Container {..._container} {...data} onItemClick={onItemClick} navigation={navigation} >
 
     <NamedLayout xname={xname} props={props}>
       {gateway ? (

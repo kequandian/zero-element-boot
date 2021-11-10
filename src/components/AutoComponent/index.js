@@ -28,7 +28,7 @@ const { CloneAutoLayout } = require('@/components/CloneAutoLayout');
  * @param {布局} layout 
  * @param {绑定数据} data
  */
-module.exports = function ({ children, layout = requireConfig(parent), allComponents, ...data }) {
+module.exports = function ({ children, layout = requireConfig(parent), allComponents , ...data }) {
   const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
 
@@ -52,6 +52,8 @@ module.exports = function ({ children, layout = requireConfig(parent), allCompon
   //   className={getClassName()}
   // >
   // <NamedLayout xname={xname} props={props} ref={layoutRef}>
+
+  // console.log('autocomponent xname = ', xname)
 
   /** 
   * 2021-5-13 移除 NamedLayout NamedCart，有需要在 index copy.js 取回
