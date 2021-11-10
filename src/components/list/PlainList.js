@@ -33,7 +33,7 @@ export default function PlainList(props) {
         history.push({
           pathname: navigation,
           query: {
-            data: item
+            itemData: item
           }
         })
       }else if(navigation.indexOf('(id)') > -1){

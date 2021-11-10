@@ -13,6 +13,7 @@ import UserCheckboxDemo from '@/pages/UserCheckboxDemo/Sandbox';
 function Index(props) {
 
   const { dispatch } = props;
+  
   console.log('CheckboxMoadlDemo props = ', props)
 
   let checkedList = [];

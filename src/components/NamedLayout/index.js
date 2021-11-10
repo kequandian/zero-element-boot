@@ -15,7 +15,7 @@ const DefaultLayoutSet = require('@/components/config/NamedLayoutConfig').get();
  * @param {命名组件自定义属性} props
  * @param {命名组件的 [name, props] 通过 layout 传递 } layout
  */
-export default forwardRef(function NamedLayout({children, xname, props, layout={xname, props}, isLastItem, layoutSet, ...rest}, ref) {
+export default forwardRef(function NamedLayout({children, xname, props, navigation, layout={xname, props}, isLastItem, layoutSet, ...rest}, ref) {
 
   // custom layoutSet first
   const LayoutSet = layoutSet || DefaultLayoutSet
@@ -31,7 +31,7 @@ export default forwardRef(function NamedLayout({children, xname, props, layout={
   const Seperator = seperatorName ? NamedSeperator({name: seperatorName}) : null
 
   // just forward ref to the specified layout (e.g. Flexbox)
-  return <Layout {...layout.props} {...isLastItemConfig} Seperator={Seperator} ref={ref}>
+  return <Layout {...layout.props} {...isLastItemConfig} navigation={navigation} Seperator={Seperator} ref={ref}>
     {React.Children.toArray(children).map(child => {
       let element = React.cloneElement(child, {
         ...rest,
