@@ -1,9 +1,9 @@
-node_modules/
+/node_modules
 package-lock.json
 yarn.lock
 .umi
 
-dist/
-my_first_webpack
+/dist
+/my_first_webpack
 /my_first_webpack/node_modules
 /my_first_webpack/package-lock.json
