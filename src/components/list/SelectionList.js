@@ -27,7 +27,6 @@ export default function SelectionList(props) {
         })
       }else if(navigation.indexOf('(id)') > -1){
         const formatNav = navigation.replace('(id)', item.id);
-        console.log('formatNav = ',formatNav)
         history.push({
           pathname: formatNav,
           query: {

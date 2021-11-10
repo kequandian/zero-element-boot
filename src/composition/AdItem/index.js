@@ -23,9 +23,9 @@ export default function AdItem(props) {
   };
   
   return (
-    <>
+    <div style={{ width: '400px'}}>
       <AutoComponent {...config} allComponents={allComponents} onItemClick={onAdItemClick} />
-    </>
+    </div>
   )
 
 }
