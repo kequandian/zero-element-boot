@@ -1,4 +1,5 @@
 import React, { useImperativeHandle, forwardRef } from 'react';
+import { history } from 'umi';
 
 //CR. 2021-01-13 do not dependens NamedSeperator with layout
 //import NamedSeperator from '@/components/NamedSeperator';
@@ -21,7 +22,7 @@ require('./index.less');
  */
 export default forwardRef(function Itembox(props, ref) {
 
-  const { children, align='', direction='', justify={}, isLastItem, Seperator } = props;
+  const { children, align='', direction='', justify={}, isLastItem, Seperator,  navigation } = props;
   // console.log('align=', align, 'direction=', direction, 'justify=', justify)
 
   useImperativeHandle(ref, () => ({
@@ -29,6 +30,8 @@ export default forwardRef(function Itembox(props, ref) {
       return `l-ItemBox  ${align} ${direction}`;
     }
   }));
+
+  // console.log('navigation 1123232 = ',navigation)
 
   // get named seperator
   //const defaultSeperator = (typeof seperator === 'string') ? seperator : seperator.name
@@ -40,7 +43,23 @@ export default forwardRef(function Itembox(props, ref) {
     const { onItemClick } = childProps;
 
     function itemClick(props){
-      if(onItemClick){
+      if(navigation){
+        if(navigation.indexOf('(id)') === -1){
+          history.push({
+            pathname: navigation,
+            query: {
+              itemData: props
+            }
+          })
+        }else if(navigation.indexOf('(id)') > -1){
+          const formatNav = navigation.replace('(id)', props.id);
+          history.push({
+            pathname: formatNav,
+            query: {
+            }
+          })
+        }
+      }else if(onItemClick){
         onItemClick(props)
       }
     }

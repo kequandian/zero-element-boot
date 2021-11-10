@@ -28,13 +28,13 @@ const { CloneAutoLayout } = require('@/components/CloneAutoLayout');
  * @param {布局} layout 
  * @param {绑定数据} data
  */
-module.exports = function ({ children, layout = requireConfig(parent), allComponents , ...data }) {
+module.exports = function ({ children, layout = requireConfig(parent), allComponents, ...data }) {
   const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
 
   const componentsJson = allComponents ? allComponents : namedPresenterGet;  //
 
-  const { xname, props, container, children: layoutChildren, gateway, cart, presenter } = layout || {};
+  const { xname, props, container, children: layoutChildren, gateway, cart, presenter, navigation } = layout || {};
   const defaultGateway = gateway
   const defaultCart = cart
 
@@ -58,7 +58,7 @@ module.exports = function ({ children, layout = requireConfig(parent), allCompon
   /** 
   * 2021-5-13 移除 NamedLayout NamedCart，有需要在 index copy.js 取回
   */
-  return <_Container {..._container} {...data}>
+  return <_Container {..._container} {...data} navigation={navigation}>
     {cart ? (
       <NamedLayout xname={xname} props={props} >
         {layoutChildren ? layoutChildren.map((child, i) => {
@@ -102,10 +102,9 @@ module.exports = function ({ children, layout = requireConfig(parent), allCompon
           )}
       </NamedLayout>
     ) : (
-        <NamedLayout xname={xname} props={props} >
+        <NamedLayout xname={xname} props={props} navigation={navigation} >
           {layoutChildren ? layoutChildren.map((child, i) => {
             const { presenter, span, gateway, cart: childCart } = child;
-            
 
             const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
             const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
