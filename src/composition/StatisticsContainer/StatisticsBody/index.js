@@ -83,7 +83,7 @@ export default function StatisticsBody(props) {
             props: {
               align: 'start',
               direction: 'column',
-              flexWidth: 'flex100'
+              flexWidth: 'auto-full'
             },
             presenter: 'PregressBody',
             cart: {

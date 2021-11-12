@@ -60,7 +60,7 @@ module.exports = function ({ children, layout = requireConfig(parent), allCompon
   */
   return <_Container {..._container} {...data} navigation={navigation}>
     {cart ? (
-      <NamedLayout xname={xname} props={props} >
+      <NamedLayout xname={xname} props={props} navigation={navigation} >
         {layoutChildren ? layoutChildren.map((child, i) => {
           const { presenter, span, gateway, cart: childCart } = child;
           const _presenter = presenter ? presenter : defaultPresenter

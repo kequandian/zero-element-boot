@@ -66,9 +66,9 @@ export default function Index(props) {
   
   // return <AdListDemo  onItemClick={onItemClickHandle}/>
 
-  // return <AdItemDemo/>
+  return <StatisticsContainer/>
 
   //通过跳转进入单选页面
-  history.push('/RadioModalDemo');
-  return <div>首页</div>
+  // history.push('/RadioModalDemo');
+  // return <div>首页</div>
 }
