@@ -28,6 +28,11 @@ export default function LoadingList(props) {
         }
       })
   }, []);
+
+  /**
+   * 2021-11-15
+   * 互换了 "...item" 和 "...rest"  顺序
+   */
   return <div
     style={{
       overflow: 'auto',
@@ -39,15 +44,15 @@ export default function LoadingList(props) {
     <ContainerContext.Provider value={size}>
         {data.map((item, i) => React.isValidElement(Child) ?
             React.cloneElement(Child, {
-                ...item,
                 ...rest,
+                ...item,
                 layout:layout,
                 key: i,
                 ref: layoutRef,
                 onItemClick:onItemClick,
                 isLastItem: data.length == (i+1) ? true : false,
             })
-            : <Child key={i} {...item } {...rest} layout={layout} ref={layoutRef} onItemClick={onItemClick} />)}
+            : <Child key={i} {...rest} {...item } layout={layout} ref={layoutRef} onItemClick={onItemClick} />)}
     </ContainerContext.Provider>
   </div>
 }

@@ -36,8 +36,10 @@ export default function LoadingList(props) {
 
   console.log(data)
 
-  
-
+  /**
+   * 2021-11-15
+   * 互换了 "...item" 和 "...rest"  顺序
+   */
   return(
     <div
         style={{
@@ -50,8 +52,8 @@ export default function LoadingList(props) {
         <ContainerContext.Provider value={size}>
             {data.map((item, i) => React.isValidElement(Child) ?
                 React.cloneElement(Child, {
-                    ...item,
                     ...rest,
+                    ...item,
                     layout:layout,
                     key: i,
                     ref: layoutRef,
