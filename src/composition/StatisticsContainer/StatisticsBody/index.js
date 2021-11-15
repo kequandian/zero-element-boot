@@ -95,7 +95,7 @@ export default function StatisticsBody(props) {
                 padding: '0px'
               }
             },
-            container: 'PlainList'
+            container: 'PlainList',
           },
           gateway: {
             xname: 'Binding',

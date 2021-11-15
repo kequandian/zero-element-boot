@@ -14,7 +14,6 @@ import loadingPage from '@/components/loading';
 
 //2012-04-02 copy autoLayout
 const CloneAutoLayout = (props) => {
-  console.log('CloneAutoLayout = ', props)
 
   const { layout: { path = '' }, ...rest } = props;
   const [layoutJson, setLayoutJson] = useState({});
