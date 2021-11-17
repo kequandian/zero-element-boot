@@ -26,8 +26,15 @@ const { Container } = require('@/components/container');
  * @param {布局} layout 
  * @param {绑定数据} data
  */
+
+
+/**
+ * 2021年11月17日
+ * 注释 const parent = module.parents[0];
+ */
+
 module.exports = function ({ children, layout = requireConfig(parent), allComponents, ...data }) {
-  const parent = module.parents[0]; //get module name
+  // const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
 
   const componentsJson = allComponents ? allComponents : namedPresenterGet;  //
@@ -51,9 +58,6 @@ module.exports = function ({ children, layout = requireConfig(parent), allCompon
   // >
   // <NamedLayout xname={xname} props={props} ref={layoutRef}>
 
-  /** 
-  * 2021-5-13 移除 NamedLayout NamedCart，有需要在 index copy.js 取回
-  */
   return <_Container {..._container} {...data}>
     {cart ? (
       <NamedLayout xname={xname} props={props} >

@@ -2,29 +2,26 @@ import React, { useState, useEffect } from 'react';
 
 import StatisticsContainer from './index';
 
-import { APIContainer } from '@/components';
-
 import useTokenRequest from '@/components/hooks/useTokenRequest';
 
-import bindFiles from './gateway.json'
+import bindFiles from './gateway.json';
 
 export default function (props) {
 
     const api = '/api/statistics';
+    // const api = '/x/api/testData.json';
 
     function onItemClickHandle (data) {
         // console.log('data = ', data)
     }
 
     const [ data ] = useTokenRequest({api, bindFiles});
-
-    // return (
-    //     <APIContainer API={api} extend={false}>
-    //         <AdList {...props} />
-    //     </APIContainer>
-    // )
+    
+    // console.log('data111111111 = ', data)
 
     return (
-        <StatisticsContainer {...props} data={data}/>
+          data && data.length > 0 ? (
+            <StatisticsContainer {...props} data={data}/>
+          ):<div></div>
     )
 }

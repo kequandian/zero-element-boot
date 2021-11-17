@@ -25,4 +25,6 @@ export default {
   },
 
   ignoreMomentLocale: true, // 忽略 moment 的 locale 文件
+  // outputPath: '/dist/admin',
+  // publicPath: './',  //设置 dist/index.html 访问 js和css路径
 }

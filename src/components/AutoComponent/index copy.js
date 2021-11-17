@@ -26,8 +26,13 @@ const { Container } = require('@/components/container');
  * @param {布局} layout 
  * @param {绑定数据} data
  */
+
+/**
+ * 2021年11月17日
+ * 注释 const parent = module.parents[0];
+ */
 module.exports = function ({ children, layout = requireConfig(parent), allComponents, ...data }) {
-  const parent = module.parents[0]; //get module name
+  //const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
 
   const componentsJson = allComponents ? allComponents : namedPresenterGet;  //
