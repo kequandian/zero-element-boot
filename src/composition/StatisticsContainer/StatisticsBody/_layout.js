@@ -1,51 +1,71 @@
 module.exports = {
-    xname: 'Itembox',
-    props: {
-      align: 'start',
-      direction: 'column',
-      justify: 'center'
+  xname: 'Flexbox',
+  props: {
+    direction: 'column', 
+    justify: 'center row'
+  },
+  children: [
+    {
+      presenter: 'Title',
+      gateway: {
+        xname: 'Binding',
+        props: {
+          binding: {
+            title: 'TitleText'
+          }
+        }
+      }
     },
-    // cart: {
-    //   xname: 'HoverShadowCart',
-    //   props: {
-    //     padding: '16px',
-    //   }
-    // },
-    children: [
-      {
-        presenter: 'ImageAnimation',
-        gateway: {
-          xname: 'Binding',
-          props: {
-            binding: {
-              url: 'imgUrl'
-            }
+    {
+      presenter: 'Subtitle',
+      gateway: {
+        xname: 'Binding',
+        props: {
+          binding: {
+            describe: 'contentTxt'
           }
         }
-      },
-      {
-        presenter: 'TextContent',
-        gateway: {
-          xname: 'Binding',
-          props: {
-            binding: {
-              title: 'title',
-              describe: 'describe'
-            }
+      }
+    },
+    {
+      presenter: 'StatisticalDescription',
+      gateway: {
+        xname: 'Binding',
+        props: {
+          binding: {
+            statisticalDescription: 'contentTxt'
           }
         }
+      }
+    },
+    {
+      presenter: {
+        xname: 'Flexbox',
+        props: {
+          align: 'start',
+          direction: 'column',
+          flexWidth: 'auto-full'
+        },
+        presenter: 'PregressBody',
+        cart: {
+          xname: 'Cart',
+          props: {
+            isOnHover:false,
+            margin: '2px 0px 2px 0px',
+            linewidth: 0,
+            padding: '0px'
+          }
+        },
+        container: 'PlainList',
       },
-      // {
-      //   presenter: 'FootContent',
-      //   gateway: {
-      //     xname: 'Binding',
-      //     props: {
-      //       binding: {
-      //         adType: 'adType',
-      //         createTime: 'createTime'
-      //       }
-      //     }
-      //   }
-      // },
-    ]
+      gateway: {
+        xname: 'Binding',
+        props: {
+          binding: {
+            items: 'items'
+          }
+        }
+      }
+    },
+  ]
 }

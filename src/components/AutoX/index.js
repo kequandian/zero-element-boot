@@ -12,7 +12,7 @@ const promiseAjax = require('@/components/utils/request');
 // };
 
 module.exports = function AutoX(props) {
-  const parent = module.parents[0];
+  const parent = module.parents && module.parents.length > 0 ?  module.parents[0] : {};
 
   const { config = requireConfig(parent), allComponents={} } = props;
   const [cfg, setCfg] = useState(config);
