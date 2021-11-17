@@ -12,6 +12,9 @@ import {get as NamedPresenterGet } from '@/components/config/NamedPresenterConfi
 import fetchLayout from '@/components/utils/fetchLayout';
 import loadingPage from '@/components/loading';
 
+
+const { CloneAutoLayout1 } = require('@/components/CloneAutoLayout1');
+
 //2012-04-02 copy autoLayout
 const CloneAutoLayout = (props) => {
 
@@ -93,7 +96,7 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
   const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
 
   // if layout contains childrenData, means this is for auto component
-  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout : tips(presenter)) : null;
+  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout1 : tips(presenter)) : null;
 
   function isJsonObject(obj) {
     if (typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]") {

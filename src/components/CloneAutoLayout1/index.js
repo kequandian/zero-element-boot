@@ -5,27 +5,20 @@ import { useState, useEffect } from 'react';
 const { NamedContainer, NamedLayout, NamedGateway, NamedCart } = require('@/components');
 const DefaultContainer = require('@/components/container/Container')
 
-const { CloneAutoLayout } = require('@/components/CloneAutoLayout');
-const AutoComponent = require('@/components/AutoComponent');
-import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
+const CloneAutoComponent1 = require('@/components/CloneAutoComponent1');
+import {get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
+
 
 import fetchLayout from '@/components/utils/fetchLayout';
 import loadingPage from '@/components/loading';
 
-// change history
-//CR.2020-12-26 init
+//2012-04-02 copy autoLayout
+const CloneAutoLayout1 = (props) => {
 
-//CR.2020-12-29 add Container
-
-
-//CR.2021-01-13 merge AutoComponent and AutoLayout
-
-// 2021-3-25 新增通过 fetch 获取 layoutJson 配置信息, 新增 loading 加载效果
-export default function (props) {
-  const { layout: { path = '' }, ...rest } = props;
+  const { layout: { }, ...rest } = props;
   const [layoutJson, setLayoutJson] = useState({});
   const [loading, setLoading] = useState(true);
-console.log('path = ', path)
+
   useEffect(() => {
     if (path) {
       fetchData();
@@ -59,7 +52,7 @@ console.log('path = ', path)
       if (layoutJson && JSON.stringify(layoutJson) != '{}') {
         const p = { ...props, layout: layoutJson };
         if (p.layout.children) {
-          return AutoComponent(p);
+          return CloneAutoComponent1(p);
         }
         return AutoLayout(p);
       } else {
@@ -68,11 +61,15 @@ console.log('path = ', path)
     }
   } else {
     if (props.layout.children) {
-      return AutoComponent(props);
+      return CloneAutoComponent1(props);
     }
     return AutoLayout(props);
   }
 
+}
+
+export {
+    CloneAutoLayout1
 }
 
 
@@ -80,13 +77,10 @@ console.log('path = ', path)
 // CR.增加处理选中的 (Cart=> indicator)
 // when: 2021-03-24
 
-//2021-11-10
-//新增 layout 新增 navigation 属性
-
 function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
 
   // handle layout, for children in {layout
-  const { xname, props, container, gateway, cart, indicator, presenter, navigation } = layout || {};
+  const { xname, props, container, gateway, cart, indicator, presenter } = layout || {};
 
   const _cart = (cart && typeof cart === 'string') ? { xname: cart } : cart
   const _gateway = (gateway && typeof gateway === 'string') ? { xname: gateway } : gateway
@@ -99,7 +93,7 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
   const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
 
   // if layout contains childrenData, means this is for auto component
-  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout : tips(presenter)) : null;
+  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout1 : tips(presenter)) : null;
 
   function isJsonObject(obj) {
     if (typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]") {
@@ -119,7 +113,7 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
   //         </NamedGateway>
   //     </NamedLayout>
   // </NamedList>
-  return <Container {..._container} {...data} onItemClick={onItemClick} navigation={navigation} >
+  return <Container {..._container} {...data} onItemClick={onItemClick} >
 
     <NamedLayout xname={xname} props={props}>
       {gateway ? (
