@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 const { NamedContainer, NamedLayout, NamedGateway, NamedCart } = require('@/components');
 const DefaultContainer = require('@/components/container/Container')
 
+const { CloneAutoLayout2 } = require('@/components/CloneAutoLayout2');
 const CloneAutoComponent1 = require('@/components/CloneAutoComponent1');
 import {get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 
@@ -15,10 +16,9 @@ import loadingPage from '@/components/loading';
 //2012-04-02 copy autoLayout
 const CloneAutoLayout1 = (props) => {
 
-  const { layout: { }, ...rest } = props;
+  const { layout: { path=''  }, ...rest } = props;
   const [layoutJson, setLayoutJson] = useState({});
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     if (path) {
       fetchData();
@@ -93,7 +93,7 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
   const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
 
   // if layout contains childrenData, means this is for auto component
-  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout1 : tips(presenter)) : null;
+  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout2 : tips(presenter)) : null;
 
   function isJsonObject(obj) {
     if (typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]") {
