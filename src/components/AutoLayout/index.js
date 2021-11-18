@@ -25,7 +25,6 @@ export default function (props) {
   const { layout: { path = '' }, ...rest } = props;
   const [layoutJson, setLayoutJson] = useState({});
   const [loading, setLoading] = useState(true);
-console.log('path = ', path)
   useEffect(() => {
     if (path) {
       fetchData();
