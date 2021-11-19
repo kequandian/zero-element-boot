@@ -95,6 +95,11 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
 
   // if layout contains childrenData, means this is for auto component
   const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout3 : tips(presenter)) : null;
+  
+  //如 presenter 为 object，则封装到 layout
+  if(isJsonObject(presenter)){
+    presenter.layout = {...presenter}
+  }
 
   function isJsonObject(obj) {
     if (typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]") {
