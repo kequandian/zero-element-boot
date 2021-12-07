@@ -156,7 +156,7 @@ module.exports = function ({ children, layout = requireConfig(parent), allCompon
               return (
                 <NamedGateway {..._gateway} key={i} span={span} >
                   {presenter ?
-                    <CloneAutoLayout {...presenter}/>
+                    <CloneAutoLayout layout = {presenter}/>
                     :
                     React.Children.toArray(children)
                   }

@@ -8,7 +8,7 @@ import bindFiles from './gateway.json';
 
 export default function (props) {
 
-    const api = '/api/statistics';
+    const api = '/x/api/statistics';
     // const api = '/x/api/testData.json';
 
     function onItemClickHandle (data) {
