@@ -18,7 +18,8 @@ import loadingPage from '@/components/loading';
 //2012-04-02 copy autoLayout
 const CloneAutoLayout = (props) => {
 
-  const { layout: { path = '' }, ...rest } = props;
+  const { layout, ...rest } = props;
+  const { path } = layout;
   const [layoutJson, setLayoutJson] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -97,6 +98,11 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
 
   // if layout contains childrenData, means this is for auto component
   const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout1 : tips(presenter)) : null;
+
+  //如 presenter 为 object，则封装到 layout
+  if(isJsonObject(presenter)){
+    presenter.layout = {...presenter}
+  }
 
   function isJsonObject(obj) {
     if (typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]") {
