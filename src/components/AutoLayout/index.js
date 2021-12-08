@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 const { NamedContainer, NamedLayout, NamedGateway, NamedCart } = require('@/components');
 const DefaultContainer = require('@/components/container/Container')
 
-const CloneAutoLayout = require('@/components/CloneAutoLayout');
+//const CloneAutoLayout = require('@/components/CloneAutoLayout');
 const AutoComponent = require('@/components/AutoComponent');
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 
@@ -99,7 +99,7 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
   const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
 
   // if layout contains childrenData, means this is for auto component
-  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout : tips(presenter)) : null;
+  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? AutoLayout : tips(presenter)) : null;
 
   function isJsonObject(obj) {
     if (typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]") {
