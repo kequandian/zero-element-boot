@@ -5,8 +5,7 @@ import { useState, useEffect } from 'react';
 const { NamedContainer, NamedLayout, NamedGateway, NamedCart } = require('@/components');
 const DefaultContainer = require('@/components/container/Container')
 
-const { CloneAutoLayout1 } = require('@/components/CloneAutoLayout1');
-const CloneAutoComponent = require('@/components/CloneAutoComponent');
+const AutoComponent = require('@/components/AutoComponent');
 import {get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 
 
@@ -56,7 +55,7 @@ const CloneAutoLayout = (props) => {
       if (layoutJson && JSON.stringify(layoutJson) != '{}') {
         const p = { ...props, layout: layoutJson };
         if (p.layout.children) {
-          return CloneAutoComponent(p);
+          return AutoComponent(p);
         }
         return AutoLayout(p);
       } else {
@@ -65,7 +64,7 @@ const CloneAutoLayout = (props) => {
     }
   } else {
     if (props.layout.children) {
-      return CloneAutoComponent(props);
+      return AutoComponent(props);
     }
     return AutoLayout(props);
   }
@@ -97,7 +96,7 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
   const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
 
   // if layout contains childrenData, means this is for auto component
-  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? CloneAutoLayout1 : tips(presenter)) : null;
+  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? AutoLayout : tips(presenter)) : null;
 
   //如 presenter 为 object，则封装到 layout
   if(isJsonObject(presenter)){
