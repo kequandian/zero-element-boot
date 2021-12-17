@@ -42,6 +42,7 @@ import CheckBoxModalDemo from '@/pages/CheckBoxModalDemo';
 // import RadioModalDemo from '@/pages/RadioModalDemo';
 
 import Standalone from '@/composition/Standalone/Sandbox';
+import TestUserSelection from '@/composition/testUserSelection/Sandbox';
 
 export default function Index(props) {
 
@@ -68,7 +69,7 @@ export default function Index(props) {
   
   // return <AdListDemo  onItemClick={onItemClickHandle}/>
 
-  return <StatisticsContainer/>
+  return <TestUserSelection/>
 
   //通过跳转进入单选页面
   // history.push('/RadioModalDemo');

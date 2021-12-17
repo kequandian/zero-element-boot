@@ -10,19 +10,20 @@
     "buildA": "umi build"
   },
   "dependencies": {
-    "framer-motion": "^4.1.17",
+    "@chakra-ui/avatar": "^1.2.5",
+    "@chakra-ui/layout": "^1.4.5",
+    "@chakra-ui/react": "^1.6.3",
+    "@chakra-ui/system": "^1.6.7",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "@chakra-ui/system": "^1.6.7",
-    "@chakra-ui/react": "^1.6.3",
-    "@chakra-ui/layout": "^1.4.5",
-    "@chakra-ui/avatar": "^1.2.5",
     "@loadable/component": "^5.10.1",
     "ahooks": "^2.4.0",
+    "framer-motion": "^4.1.17",
     "lodash": "^4.17.19",
     "mini-css-extract-plugin": "^1.3.9",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-hook-form": "^7.22.1"
   },
   "devDependencies": {
     "@umijs/preset-react": "^1.5.12",
