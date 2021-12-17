@@ -34,7 +34,7 @@ const { CloneAutoLayout } = require('@/components/CloneAutoLayout');
  * 注释 const parent = module.parents[0];
  */
 
-module.exports = function ({ children, layout = requireConfig(parent), allComponents, ...data }) {
+module.exports = function ({ children, layout = requireConfig(parent), allComponents, onItemClick, ...data }) {
   //const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
 
@@ -59,7 +59,7 @@ module.exports = function ({ children, layout = requireConfig(parent), allCompon
   // >
   // <NamedLayout xname={xname} props={props} ref={layoutRef}>
 
-  // console.log('autocomponent xname = ', xname)
+  // console.log('autocomponent onItemClick = ', onItemClick)
 
   /** 
   * 2021-5-13 移除 NamedLayout NamedCart，有需要在 index copy.js 取回
@@ -142,7 +142,7 @@ module.exports = function ({ children, layout = requireConfig(parent), allCompon
               return (
                 <NamedGateway {..._gateway} key={i} span={span} >
                   {presenter ?
-                    <CloneAutoLayout layout = {presenter}/>
+                    <CloneAutoLayout layout = {presenter} onItemClick={onItemClick}/>
                     :
                     React.Children.toArray(children)
                   }
