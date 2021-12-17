@@ -41,6 +41,8 @@ import UserRadioDemo from '@/pages/UserRadioDemo/Sandbox';
 import CheckBoxModalDemo from '@/pages/CheckBoxModalDemo';
 // import RadioModalDemo from '@/pages/RadioModalDemo';
 
+import Standalone from '@/composition/Standalone/Sandbox';
+
 export default function Index(props) {
 
   // pre-init. presenter set 

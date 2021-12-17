@@ -8,9 +8,12 @@ import bindFiles from './gateway.json';
 
 export default function (props) {
 
-    const api = '/x/api/statistics';
-    // const api = '/x/api/testData.json';
-
+  let api = '';
+  if (process.env.NODE_ENV === 'development') {
+    api = '/x/api/statistics';
+  }else{
+    api = '/x/api/statistics.json'
+  }
     function onItemClickHandle (data) {
         // console.log('data = ', data)
     }
@@ -20,7 +23,7 @@ export default function (props) {
     // console.log('data111111111 = ', data)
 
     return (
-          data && data.length > 0 ? (
+          data ? (
             <StatisticsContainer {...props} data={data}/>
           ):<div></div>
     )

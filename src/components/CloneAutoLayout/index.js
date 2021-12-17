@@ -80,7 +80,7 @@ export {
 // CR.增加处理选中的 (Cart=> indicator)
 // when: 2021-03-24
 
-function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
+function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onItemClick = () => { console.log('clone未设置onItemClick点击事件') }, ...data }) {
 
   // handle layout, for children in {layout
   const { xname, props, container, gateway, cart, indicator, presenter } = layout || {};
