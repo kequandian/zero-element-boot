@@ -24,5 +24,8 @@ module.exports = {
           corner: ''
       }
   },
-  container: 'PlainList'
+  container: 'AddMoreList',
+  navigation: {
+      add: '/AddUserPage'
+  },
 }

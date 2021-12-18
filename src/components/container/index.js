@@ -6,6 +6,7 @@ import SelectedList from '../list/SelectedList';
 import SelectionList from '../list/SelectionList';
 import SelectCheckboxList from '../list/SelectCheckboxList';
 import LoadingList from '../list/LoadingList'
+import AddMoreList from '../list/AddMoreList';
 
 export {
     APIContainer,
@@ -15,5 +16,6 @@ export {
     SelectedList,
     SelectCheckboxList,
     LoadingList,
-    SelectionList
+    SelectionList,
+    AddMoreList
 }

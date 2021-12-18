@@ -14,7 +14,7 @@ import { ChakraProvider, Flex, Box, VStack, Spacer, Button,
     FormErrorMessage
 } from "@chakra-ui/react";
 
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
 
 import { AutoLayout } from '@/components';
 
@@ -99,8 +99,9 @@ export default function Index(props) {
                         <AutoLayout {...config} onItemClick={onUserItemClick}>
                             <UserItem/>
                         </AutoLayout>
+                        
                     </Box>
-                    <Box flex='1'>
+                    {/* <Box flex='1'>
                         <div style={{ width:'100%', marginTop:'8px'}}>
                             <Flex>
                                 <Box p='4'>
@@ -120,7 +121,7 @@ export default function Index(props) {
                                 </Box>
                             </Flex>
                         </div>
-                    </Box>
+                    </Box> */}
                 </VStack>
             </div>
             
