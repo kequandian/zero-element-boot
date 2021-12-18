@@ -18,7 +18,6 @@ export default function Index(props) {
     }else{
         layoutData = localLayoutJson;
     }
-
     const config = {
         items: data.length > 0 ? data : [],
         layout: layoutData
