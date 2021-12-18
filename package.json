@@ -10,6 +10,8 @@
     "buildA": "umi build"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
     "@chakra-ui/avatar": "^1.2.5",
     "@chakra-ui/layout": "^1.4.5",
     "@chakra-ui/react": "^1.6.3",
