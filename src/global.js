@@ -20,6 +20,7 @@ import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/I
 import {Avator, Title} from '@/presenter/demo';
 
 import PregressBody from '@/composition/StatisticsContainer/ProgressList/PregressBody';
+import JarItem from '@/composition/Standalone/JarItem';
 
 // NamedCartSet({
 //   Cart
@@ -41,6 +42,7 @@ NamedPresenterSet({
   ContentText,
   ContentFinish,
 
-  PregressBody
+  PregressBody,
+  JarItem
 })
 

@@ -16,19 +16,11 @@ module.exports = {
   //     }
   //   }
   // },
-  // cart: {
-  //   xname: 'Cart',
-  //   props: {
-  //     // padding: '16px',
-  //     isOnHover:false
-  //   }
-  // },
   cart: {
-    xname: 'Page',
+    xname: 'Cart',
     props: {
-      otherStyle:{
-        background: '#ffffff'
-      }
+      // padding: '16px',
+      isOnHover:false
     }
   },
   container: 'PlainList'

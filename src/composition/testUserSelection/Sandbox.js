@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import StatisticsContainer from './index';
+import TestUserSelection from './index';
 
 import useTokenRequest from '@/components/hooks/useTokenRequest';
 
@@ -10,21 +10,18 @@ export default function (props) {
 
   let api = '';
   if (process.env.NODE_ENV === 'development') {
-    api = '/x/api/statistics';
+    api = '/x/api/users';
   }else{
-    api = '/x/api/statistics.json'
+    api = '/x/api/users.json'
   }
-    function onItemClickHandle (data) {
-        // console.log('data = ', data)
-    }
 
-    const [ data ] = useTokenRequest({api, bindFiles});
+    const [ data ] = useTokenRequest({api});
     
     // console.log('data111111111 = ', data)
 
     return (
           data ? (
-            <StatisticsContainer {...props} data={data}/>
+            <TestUserSelection {...props} data={data}/>
           ):<div></div>
     )
 }
