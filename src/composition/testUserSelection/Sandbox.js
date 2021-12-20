@@ -8,6 +8,8 @@ import bindFiles from './gateway.json';
 
 export default function (props) {
 
+  const { newUser } = props;
+
   let api = '';
   if (process.env.NODE_ENV === 'development') {
     api = '/x/api/users';
@@ -21,7 +23,7 @@ export default function (props) {
 
     return (
           data ? (
-            <TestUserSelection {...props} data={data}/>
+            <TestUserSelection {...props} data={data} newUser={newUser}/>
           ):<div></div>
     )
 }

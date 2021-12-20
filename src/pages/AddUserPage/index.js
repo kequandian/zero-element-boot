@@ -20,12 +20,12 @@ export default function Index(props) {
       } = useForm()
 
     function validateData(values) {
-        values.id = listData.length + 1;
+        values.id = values.length;
         values.avatar = 'https://avatars1.githubusercontent.com/u/37545?s=460&v=4';
         history.push({
             pathname: '/TestUserListDemo',
             query: {
-                data: values
+                data: JSON.stringify(values, null, 2)
             }
         })
     }
