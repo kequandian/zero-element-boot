@@ -7,11 +7,11 @@ export default function Page(props){
         width="100vw",//设定宽度
         height="100vh"//设定高度
     }=props 
-    console.log('otherStyle = ', otherStyle)
+    
     let centerStyles = { //居中样式
         display:"flex",
-        "align-items":"center",
-        "justify-content":"center",
+        "alignItems":"center",
+        "justifyContent":"center",
         "width":width,
         "height":height,
         "margin":0,
