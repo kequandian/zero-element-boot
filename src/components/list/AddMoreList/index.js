@@ -53,7 +53,6 @@ export default function AddMoreList(props) {
   }
 
   function clickAddAction (){
-    console.log('navigation.add =  ',navigation.add)
     history.push({
       pathname: navigation.add,
       query: {

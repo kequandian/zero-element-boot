@@ -24,9 +24,9 @@ import UserItem from './UserItem';
 
 export default function Index(props) {
 
-    const { data=[] } = props;
+    const { data=[], newUser } = props;
 
-    const [ listData, setListData ] = useState(data)
+    const [ listData, setListData ] = useState([])
 
     const [ isOpen, setIsOpen ] = useState(false)
 
@@ -38,9 +38,15 @@ export default function Index(props) {
 
     useEffect(() => {
         if (data && data.length > 0) {
-            setListData(data);
+            if(newUser){
+                const nData = data;
+                nData.push(JSON.parse(newUser));
+                setListData(nData);
+            }else{
+                setListData(data);
+            }
         }
-    }, [data]); 
+    }, [data, newUser]); 
 
     const initialRef = React.useRef()
     const finalRef = React.useRef()
