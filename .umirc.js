@@ -6,9 +6,9 @@ export default {
   // history: {
   //   type: 'hash',
   // },
-  dynamicImport: {
-    loading: '@/components/loading'
-  },
+  // dynamicImport: {
+  //   loading: '@/components/loading'
+  // },
   devtool: false,
   locale: {
     default: 'zh-CN',
@@ -25,6 +25,39 @@ export default {
   },
 
   ignoreMomentLocale: true, // 忽略 moment 的 locale 文件
-  outputPath: '/dist/static',
+
+  chainWebpack(memo, { env, webpack, createCSSRule }) {
+//     memo.entry = [
+//       './src/pages/index.js', 
+//       './src/pages/UserRadioDemo/Sandbox.js', 
+//       './src/pages/UserCheckboxDemo/Sandbox.js', 
+//       './src/pages/AddUserPage/index.js', 
+//       './src/pages/CheckBoxModalDemo/index.js', 
+//       './src/pages/CheckboxPageDemo/index.js', 
+//       './src/pages/ComponentListDemo/index.js', 
+//     ]
+    memo.output.set('filename', 'bundle.js')
+    memo.output.hotUpdateMainFilename('dev-test')
+    // memo.optimization.splitChunks({
+    //   cacheGroups: {
+    //     js:{
+    //       chunks: 'all',
+    //       name:'bundle', // 打包后的文件名
+    //       test: /\.(js)$/,
+    //       minSize: 0, 
+    //       minChunks: 1 // 重复1次才能打包到此模块
+    //     },
+    //     styles: {
+    //       name: 'styles',
+    //       test: /\.(css|less)$/,
+    //       chunks: 'async',
+    //       minChunks: 1,
+    //       minSize: 0,
+    //     },
+    //   },
+    // });
+  },
+  
+  // outputPath: '/dist/static',
   publicPath: process.env.NODE_ENV === 'production' ? './static/' : '/',  //设置 dist/index.html 访问 js和css路径
 }
