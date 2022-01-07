@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Flex, Center, Box, Stack, Spacer, VStack, Container  } from "@chakra-ui/react";
+import { ChakraProvider, Flex, Center, Box, Stack, Spacer, VStack, Container, Button  } from "@chakra-ui/react";
 import { AutoLayout } from '@/components';
+import Loading from '@/components/loading';
 const promiseAjax = require('@/components/utils/request');
 
 import layout from './layout';
@@ -11,13 +12,17 @@ export default function Index(props) {
 
     const { data=[] } = props;
 
+    const [ isShowList, setIsShowList ] = useState(true);
+    const [ isShowData, setIsShowData ] = useState(false);
+    const [ isLoading, setIsLoading ] = useState(false);
     const [ showDetail, setDetail ] = useState('');
 
     let layoutData = '';
     const layoutJsonPath = '';
     const localLayoutJson = layout;
 
-    let api = '/dev/dependency/decompile/json';
+    // let api = '/dev/dependency/decompile/json';
+    let api = '/dev/dependency/json';
 
     if (process.env.NODE_ENV === 'development') {
       api = `http://192.168.3.121:8080${api}`;
@@ -35,7 +40,7 @@ export default function Index(props) {
     };
 
     const onJarItemClick = (item) => {
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        // document.body.scrollTop = document.documentElement.scrollTop = 0;
         let name = item.value;
         // if(name.indexOf('/') > -1){
         //     const list = name.split('/');
@@ -52,13 +57,19 @@ export default function Index(props) {
     //
     const getDetailFetch = async (name) => {
         // const api = `http://localhost:8080/api/dev/dependency/decompile`;
+        setIsShowList(false)
+        setIsLoading(true)
         promiseAjax(api, {pattern:name}, {})
             .then(responseData => {
                 if (responseData && responseData.code === 200) {
                     let respData = responseData.data;
-                    console.log('respData = ', respData)
                     setDetail(respData);
+                    setIsShowData(true)
+                }else{
+                    setIsShowList(true)
+                    setIsShowData(false)
                 }
+                setIsLoading(false)
             })
     }
 
@@ -72,7 +83,11 @@ export default function Index(props) {
                 <Stack>
                     {
                         data.map((item, index) => {
-                            return  <Container maxW='container.xl'>{item}</Container>
+                            if(item.indexOf("/*") > -1){
+                                return <div style={{ whiteSpace: 'pre-wrap'}} key={index}>{item}</div>;
+                            }else{
+                                return  <Container maxW='container.xl' key={index}>{item}</Container>
+                            }
                         })
                     }
                 </Stack>
@@ -83,21 +98,51 @@ export default function Index(props) {
 
     }
 
+    function goBack () {
+        setIsShowList(true)
+        setIsShowData(false)
+    }
+
 
     return (
-        <Flex>
-            <Box>
-                <AutoLayout {...config} onItemClick={null}>
-                    <StandaloneBody  onItemClick={onJarItemClick}/>
-                </AutoLayout>
-            </Box>
-            <Box flex='1'>
-                { showDetail && showDetail.length > 0 ? (
-                    <div style={{background:'#ffffff', width:'100%', padding: '10px', marginTop:'8px'}}>
-                        {handleContent(showDetail)}
-                    </div>
-                ): null}
-            </Box>
-        </Flex>
+        <ChakraProvider>
+            <Flex>
+                
+                <Box>
+                    <VStack>
+                        <div style={{width: '100%', margin:'10px 10px -5px 25px'}}>
+                            <Stack direction={['column', 'row']} w="100%">
+                                <Button colorScheme='blue' onClick={() => goBack()}>Home</Button>
+                            </Stack>
+                        </div>
+                        
+                        {
+                            isShowList ? (
+                                <AutoLayout {...config} onItemClick={null}>
+                                    <StandaloneBody  onItemClick={onJarItemClick}/>
+                                </AutoLayout>
+                            ): <></>
+                        }
+                        
+                        {
+                            isLoading ? (
+                                    <Loading styles={{marginTop: '60px'}}/>
+                            )
+                             : isShowData && showDetail ? (
+                                <div style={{width: '100%', margin:'15px 10px 10px 25px'}}>
+                                    <Box flex='1'>
+                                        { showDetail && showDetail.length > 0 ? (
+                                            <div style={{background:'#ffffff', width:'100%', padding: '10px'}}>
+                                                {handleContent(showDetail)}
+                                            </div>
+                                        ): null}
+                                    </Box>
+                                </div>
+                            ): <></>
+                        }
+                    </VStack>
+                </Box>
+            </Flex>
+        </ChakraProvider>
     )
 }
