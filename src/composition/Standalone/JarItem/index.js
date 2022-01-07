@@ -10,15 +10,21 @@ export default function (props) {
 
     const { value, index=0 } = props;
 
-    return <Flex h="30px">
-        <Center w="40px">
-            {index+1}
-        </Center>
-        <Center axis='vertical'>
-            {value}
-        </Center>
-        <Center w="10px">
-        </Center>
-    </Flex>
+    return (
+        <div className="textColor">
+            <Flex h="30px">
+                {/* <Center w="40px">
+                    {index+1}
+                </Center> */}
+                <Center axis='vertical' >
+                  {`${index+1}.   ${value}`}
+                </Center>
+                <Center w="10px">
+                </Center>
+            </Flex>
+        </div>
+    )
+    
+ 
 
 }
