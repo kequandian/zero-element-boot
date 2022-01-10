@@ -2,10 +2,10 @@
 // ref: https://umijs.org/config/
 export default {
   title: 'Demo',
-  // hash: true,
-  // history: {
-  //   type: 'hash',
-  // },
+  hash: true,
+  history: {
+    type: 'hash',
+  },
   // dynamicImport: {
   //   loading: '@/components/loading'
   // },
@@ -27,10 +27,10 @@ export default {
   ignoreMomentLocale: true, // 忽略 moment 的 locale 文件
 
   chainWebpack(memo, { env, webpack, createCSSRule }) {
-    memo.output.set('path', require('path').resolve(__dirname, 'dist/dev-dependency'))
+    memo.output.set('path', require('path').resolve(__dirname, 'dist/dependency-ui'))
     memo.output.set('filename', 'bundle.js')
   },
   
-  // outputPath: '/dist/dev-dependency',
-  publicPath: process.env.NODE_ENV === 'production' ? './dev-dependency/' : '/',  //设置 dist/index.html 访问 js和css路径
+  // outputPath: '/dist/dependency-ui',
+  publicPath: process.env.NODE_ENV === 'production' ? './dependency-ui/' : '/',  //设置 dist/index.html 访问 js和css路径
 }

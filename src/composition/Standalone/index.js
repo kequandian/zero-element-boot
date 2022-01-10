@@ -110,8 +110,8 @@ export default function Index(props) {
                 
                 <Box>
                     <VStack>
-                        <div style={{width: '100%', margin:'10px 10px -5px 25px'}}>
-                            <Stack direction={['column', 'row']} w="100%">
+                        <div style={{minWidth: '500px', width: '100%', height: '60px', lineHeight: '60px', backgroundColor: '#ffffff'}}>
+                            <Stack direction={['column', 'row']} w="100%" h="100%" p="10px">
                                 <Button colorScheme='blue' onClick={() => goBack()}>Home</Button>
                             </Stack>
                         </div>
@@ -129,7 +129,7 @@ export default function Index(props) {
                                     <Loading styles={{marginTop: '60px'}}/>
                             )
                              : isShowData && showDetail ? (
-                                <div style={{width: '100%', margin:'15px 10px 10px 25px'}}>
+                                <div style={{width: '100%'}}>
                                     <Box flex='1'>
                                         { showDetail && showDetail.length > 0 ? (
                                             <div style={{background:'#ffffff', width:'100%', padding: '10px'}}>
