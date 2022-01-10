@@ -3,5 +3,5 @@ var fs = require('fs-extra');
 
 var distPath = path.resolve(process.cwd(), './dist');
 
-fs.moveSync(`${distPath}/dev-dependency/index.html`, `${distPath}/index.html`);
+fs.moveSync(`${distPath}/dependency-ui/index.html`, `${distPath}/dependency-ui.html`);
 // fs.moveSync(`${distPath}/static/x`, `${distPath}/x`);
