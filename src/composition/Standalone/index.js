@@ -80,7 +80,7 @@ export default function Index(props) {
             return data;
         }if(data instanceof Array && data.length > 0){
             return (
-                <Stack>
+                <Stack spacing='6px'>
                     {
                         data.map((item, index) => {
                             if(item.indexOf("/*") > -1){
@@ -109,7 +109,7 @@ export default function Index(props) {
             <Flex>
                 
                 <Box>
-                    <VStack>
+                    <VStack spacing='6px'>
                         <div style={{minWidth: '500px', width: '100%', height: '60px', lineHeight: '60px', backgroundColor: '#ffffff'}}>
                             <Stack direction={['column', 'row']} w="100%" h="100%" p="10px">
                                 <Button colorScheme='blue' onClick={() => goBack()}>Home</Button>

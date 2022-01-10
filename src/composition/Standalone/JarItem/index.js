@@ -12,12 +12,15 @@ export default function (props) {
 
     return (
         <div className="textColor">
-            <Flex h="30px">
+            <Flex h="25px">
                 {/* <Center w="40px">
                     {index+1}
                 </Center> */}
-                <Center axis='vertical' >
+                {/* <Center axis='vertical' >
                   {`${index+1}.   ${value}`}
+                </Center> */}
+                <Center axis='vertical' >
+                  {`${value}`}
                 </Center>
                 <Center w="10px">
                 </Center>
