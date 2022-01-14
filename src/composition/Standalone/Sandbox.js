@@ -4,7 +4,7 @@ import StandaloneContainer from './index';
 
 import useTokenRequest from '@/components/hooks/useTokenRequest';
 
-export default function (props) {
+export default function Sandbox (props) {
 
   // let api = '/dev/dependency/decompile/json';
   let api = '/dev/dependency/json';

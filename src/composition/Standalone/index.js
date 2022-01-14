@@ -7,7 +7,8 @@ import JarItem from '@/composition/Standalone/JarItem';
 
 import layout from './layout';
 
-import StandaloneBody from './StandaloneBody';
+// import StandaloneBody from './StandaloneBody';
+const StandaloneBody = require('./StandaloneBody');
 
 export default function Index(props) {
 
