@@ -3,6 +3,7 @@ import { ChakraProvider, Flex, Center, Box, Stack, Spacer, VStack, Container, Bu
 import { AutoLayout } from '@/components';
 import Loading from '@/components/loading';
 const promiseAjax = require('@/components/utils/request');
+import JarItem from '@/composition/Standalone/JarItem';
 
 import layout from './layout';
 
@@ -16,6 +17,7 @@ export default function Index(props) {
     const [ isShowData, setIsShowData ] = useState(false);
     const [ isLoading, setIsLoading ] = useState(false);
     const [ showDetail, setDetail ] = useState('');
+    const [ currentItemName, setCurrentItemName ] = useState('');
 
     let layoutData = '';
     const layoutJsonPath = '';
@@ -51,11 +53,15 @@ export default function Index(props) {
             name = list[0]
         }
         setDetail([])
-        getDetailFetch(name)
+        getDetailFetch(name, 1)
     }
 
     //
-    const getDetailFetch = async (name) => {
+    const getDetailFetch = async (name, num) => {
+
+        if(num == 1){
+            setCurrentItemName(name)
+        }
         // const api = `http://localhost:8080/api/dev/dependency/decompile`;
         setIsShowList(false)
         setIsLoading(true)
@@ -83,10 +89,19 @@ export default function Index(props) {
                 <Stack spacing='6px'>
                     {
                         data.map((item, index) => {
-                            if(item.indexOf("/*") > -1){
-                                return <div style={{ whiteSpace: 'pre-wrap'}} key={index}>{item}</div>;
+                            if(item.indexOf("/*") > -1 || item.indexOf("*") > -1){
+                                return <div style={{ whiteSpace: 'pre-wrap'}} key={`${index}_item`}>{item}</div>;
                             }else{
-                                return  <Container maxW='container.xl' key={index}>{item}</Container>
+                                // return  <Container maxW='container.xl' key={index}>{item}</Container>
+                                if(item.indexOf("BOOT-INF") > -1){
+                                    return  (
+                                        <div key={`${index}_item`} onClick={() => getDetailFetch(item, 2) }>
+                                            <JarItem value={item} />
+                                        </div>
+                                    )
+                                }else{
+                                    return  <Container maxW='container.xl' key={`${index}_item`}>{item}</Container>
+                                }
                             }
                         })
                     }
@@ -101,6 +116,7 @@ export default function Index(props) {
     function goBack () {
         setIsShowList(true)
         setIsShowData(false)
+        setCurrentItemName('')
     }
 
 
@@ -110,9 +126,12 @@ export default function Index(props) {
                 
                 <Box>
                     <VStack spacing='6px'>
-                        <div style={{minWidth: '500px', width: '100%', height: '60px', lineHeight: '60px', backgroundColor: '#ffffff'}}>
-                            <Stack direction={['column', 'row']} w="100%" h="100%" p="10px">
-                                <Button colorScheme='blue' onClick={() => goBack()}>Home</Button>
+                        <div style={{minWidth: '500px', width: '100%', height: '60px', lineHeight: '60px', backgroundColor: '#ffffff', padding:'20px 10px 10px 25px'}}>
+                            <Stack direction={['column', 'row']} w="100%" spacing='6px'>
+                                <Button h="35px" colorScheme='blue' onClick={() => goBack()}>Home</Button>
+                                { currentItemName ? (
+                                    <Button h="35px" colorScheme='blue' onClick={() => getDetailFetch(currentItemName, 1)}>{currentItemName}</Button>
+                                ):<></>}
                             </Stack>
                         </div>
                         
@@ -129,10 +148,10 @@ export default function Index(props) {
                                     <Loading styles={{marginTop: '60px'}}/>
                             )
                              : isShowData && showDetail ? (
-                                <div style={{width: '100%'}}>
+                                <div style={{width: '100%', paddingLeft:'25px'}}>
                                     <Box flex='1'>
                                         { showDetail && showDetail.length > 0 ? (
-                                            <div style={{background:'#ffffff', width:'100%', padding: '10px'}}>
+                                            <div style={{background:'#ffffff', width:'100%', paddingTop: '10px'}}>
                                                 {handleContent(showDetail)}
                                             </div>
                                         ): null}
