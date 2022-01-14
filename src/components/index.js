@@ -41,8 +41,6 @@ import Page from './cart/Page';
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 
-import Standalone from '../composition/Standalone'
-
 
 NamedLayoutSet({
   Flexbox,
@@ -84,6 +82,5 @@ export {
     NamedGateway,
     
     //
-    APIContainer,
-    Standalone
+    APIContainer
 };
