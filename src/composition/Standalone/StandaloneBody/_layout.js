@@ -40,7 +40,7 @@ module.exports = {
           xname: 'Cart',
           props: {
             isOnHover: true,
-            margin: '2px 0px 2px 0px',
+            margin: '0px 0px 2px 0px',
             linewidth: 1,
             padding: '0px'
           }
