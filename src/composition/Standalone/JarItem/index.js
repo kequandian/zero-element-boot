@@ -1,6 +1,5 @@
 import React from 'react';
 import { Flex, Center, Box, Stack, Spacer } from "@chakra-ui/react";
-import Progress from "@/presenter/demo/Progress";
 require('./index.less');
 
 /**
@@ -12,7 +11,7 @@ export default function (props) {
 
     return (
         <div className="textColor">
-            <Flex h="25px">
+            <Flex h="19px">
                 {/* <Center w="40px">
                     {index+1}
                 </Center> */}

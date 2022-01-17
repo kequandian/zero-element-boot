@@ -7,8 +7,7 @@ import JarItem from '@/composition/Standalone/JarItem';
 
 import layout from './layout';
 
-// import StandaloneBody from './StandaloneBody';
-const StandaloneBody = require('./StandaloneBody');
+import StandaloneBody from './StandaloneBody';
 
 export default function Index(props) {
 
@@ -87,7 +86,7 @@ export default function Index(props) {
             return data;
         }if(data instanceof Array && data.length > 0){
             return (
-                <Stack spacing='6px'>
+                <Stack spacing='3px'>
                     {
                         data.map((item, index) => {
                             if(item.indexOf("/*") > -1 || item.indexOf("*") > -1){
@@ -126,9 +125,9 @@ export default function Index(props) {
             <Flex>
                 
                 <Box>
-                    <VStack spacing='6px'>
+                    <VStack spacing='3px'>
                         <div style={{minWidth: '500px', width: '100%', height: '60px', lineHeight: '60px', backgroundColor: '#ffffff', padding:'20px 10px 10px 25px'}}>
-                            <Stack direction={['column', 'row']} w="100%" spacing='6px'>
+                            <Stack direction={['column', 'row']} w="100%" spacing='10px'>
                                 <Button h="35px" colorScheme='blue' onClick={() => goBack()}>Home</Button>
                                 { currentItemName ? (
                                     <Button h="35px" colorScheme='blue' onClick={() => getDetailFetch(currentItemName, 1)}>{currentItemName}</Button>
