@@ -11,6 +11,7 @@ import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConf
 
 // import fetchLayout from '@/components/utils/fetchLayout';
 import loadingPage from '@/components/loading';
+import { AutoComponent } from 'lib/components';
 
 
 const requireConfig = require('@/components/AutoX/requireConfig');
@@ -106,11 +107,11 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
   const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
 
   // if layout contains childrenData, means this is for auto component
-  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? AutoLayout : tips(presenter)) : null;
+  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : presenter.children ? _AutoComponent({...presenter.children, ...data}) : isJsonObject(presenter) ? AutoLayout : tips(presenter)) : null;
  console.log('allComponents ===== ', allComponents)
  console.log('presenter ===== ', presenter)
   //如 presenter 为 object，则封装到 layout
-  if(isJsonObject(presenter)){
+  if(isJsonObject(presenter) && !presenter.children){
     presenter.layout = {...presenter}
   }
 
@@ -234,7 +235,7 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
  * 2021年11月17日
  * 注释 const parent = module.parents[0];
  */
-function _AutoComponent ({ children, layout = requireConfig(parent), allComponents, onItemClick, ...data }) {
+function _AutoComponent ({ children, layout = requireConfig(parent), allComponents = NamedPresenterGet(), onItemClick, ...data }) {
   //const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
 
