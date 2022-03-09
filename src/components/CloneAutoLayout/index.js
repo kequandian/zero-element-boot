@@ -103,11 +103,6 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
     presenter.layout = {...presenter}
   }
 
-  //如 presenter 为 object，则封装到 layout
-  if(isJsonObject(presenter)){
-    presenter.layout = {...presenter}
-  }
-
   function isJsonObject(obj) {
     if (typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]") {
       return true;

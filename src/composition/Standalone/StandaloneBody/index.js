@@ -16,10 +16,15 @@ export default function StandaloneBody(props) {
     ...props,
   };
 
+  const componentConf = {
+    ...config,
+    allComponents:allComponents
+  }
+
   // console.log('props = ', props)
 
   return (
-    <AutoComponent {...config} allComponents={allComponents} />
+    <AutoComponent componentConf={componentConf}/>
   )
 
 }
