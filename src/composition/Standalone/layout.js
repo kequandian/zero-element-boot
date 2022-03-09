@@ -27,6 +27,5 @@ module.exports = {
       isOnHover:false
     }
   },
-  container: 'PlainList',
-  presenter: 'StandaloneBody'
+  container: 'PlainList'
 }
