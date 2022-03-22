@@ -5,28 +5,6 @@ module.exports = {
     justify: 'center row'
   },
   children: [
-    // {
-    //   presenter: 'Title',
-    //   gateway: {
-    //     xname: 'Binding',
-    //     props: {
-    //       binding: {
-    //         title: 'TitleText'
-    //       }
-    //     }
-    //   }
-    // },
-    // {
-    //   presenter: 'Subtitle',
-    //   gateway: {
-    //     xname: 'Binding',
-    //     props: {
-    //       binding: {
-    //         describe: 'contentTxt'
-    //       }
-    //     }
-    //   }
-    // },
     {
       presenter: {
         xname: 'Flexbox',

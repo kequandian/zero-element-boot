@@ -1,5 +1,7 @@
 import React from 'react';
-const AutoComponent = require('@/components/AutoComponent');
+
+// const AutoComponent = require('@/components/AutoComponent');
+const AutoComponent = require('@/components/AutoLayout');
 
 // import JarItem from '@/composition/Standalone/JarItem';
 
