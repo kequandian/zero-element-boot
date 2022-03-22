@@ -98,6 +98,7 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
   // if layout contains childrenData, means this is for auto component
   const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? AutoLayout : tips(presenter)) : null;
 
+  console.log('Presenter ===== 1111', Presenter)
   //如 presenter 为 object，则封装到 layout
   if(isJsonObject(presenter)){
     presenter.layout = {...presenter}

@@ -38,6 +38,10 @@ module.exports = function ({ children, layout = requireConfig(parent), allCompon
   //const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
 
+  console.log('_AutoComponent children = ', children)
+  console.log('_AutoComponent layout = ', layout)
+  console.log('_AutoComponent data = ', data)
+
   const componentsJson = allComponents ? allComponents : namedPresenterGet;  //
 
   const { xname, props, container, children: layoutChildren, gateway, cart, presenter, navigation } = layout || {};
