@@ -95,46 +95,44 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
 
   const _cart = (cart && typeof cart === 'string') ? { xname: cart } : cart
   const _gateway = (gateway && typeof gateway === 'string') ? { xname: gateway } : gateway
-  //  when: 2021-03-24
-  const _indicator = (indicator && typeof indicator === 'string') ? { xname: indicator } : indicator
-
+  
+  // AutoComponent config
+  let _indicator;
+  let Presenter;
+  if(!layoutChildren){
+    _indicator = (indicator && typeof indicator === 'string') ? { xname: indicator } : indicator
+    Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? AutoLayout : tips(presenter)) : null;
+  }
+  // AutoComponent config
 
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
   const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
 
-  // if layout contains childrenData, means this is for auto component
-  const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? AutoLayout : tips(presenter)) : null;
-
-  
-  // const Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : presenter.autoComponent ? 
-  //   _AutoComponent({children, layout: presenter.children, onItemClick,  ...data.items[0]})
-  //    : isJsonObject(presenter) ? AutoLayout : tips(presenter)) : null;
-
-  //如 presenter 为 object，则封装到 layout
-  console.log('children ===== 1111', children)
-  console.log('layoutChildren ===== 1111', layoutChildren)
-
-  console.log('_AutoComponent layout = ', layout)
-  console.log('_AutoComponent data = ', data)
-  console.log('_AutoComponent allComponents = ', allComponents)
-
-
   if(isJsonObject(presenter)){
     presenter.layout = {...presenter}
   }
 
-  // restLayout means layout props
-  // child iterator from children contains: [name, span, width, gateway, cart, [,seperator]]
-  // <NamedList name='PlainList' {...config} onItemClick={onClick}>
-  //     <NamedLayout>
-  //         <NamedGateway name='Gateway'>
-  //             <NamedCart name='ItemCart' props={{padding: '12px'}}> 
-  //                 <UserItem />
-  //             </NamedCart>
-  //         </NamedGateway>
-  //     </NamedLayout>
-  // </NamedList>
+  console.log('children ===== 1111', children)
+  console.log('cart ===== 1111', cart)
+  console.log('layout ===== 1111', layout)
+  console.log('layoutChildren ===== 1111', layoutChildren)
+
+  // AutoComponent config
+  let componentsJson;
+  let defaultPresenter;
+  let defaultGateway;
+  let defaultCart;
+  let _Container;
+  if(layoutChildren){
+    _Container = container ? NamedContainer : DefaultContainer
+    componentsJson = allComponents ? allComponents : namedPresenterGet;  //
+    defaultPresenter = presenter;
+    defaultGateway = gateway
+    defaultCart = cart
+  }
+  // AutoComponent config
+
   return layoutChildren ? (
 
     <_Container {..._container} {...data} navigation={navigation}>
@@ -145,8 +143,8 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
           const _presenter = presenter ? presenter : defaultPresenter
           const Presenter = _presenter ? componentsJson[_presenter] || tips(_presenter) : null;
 
-          const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
-          const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
+          // const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
+          // const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
 
           // each item has its Named Gateway
           return <NamedGateway {..._gateway} key={i} span={span} >
@@ -184,9 +182,15 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
         <NamedLayout xname={xname} props={props} navigation={navigation} >
           {layoutChildren ? layoutChildren.map((child, i) => {
             const { presenter, span, gateway, cart: childCart } = child;
+            
+  console.log('_AutoComponent child ===== 1111', child)
 
-            const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
-            const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
+  console.log('_AutoComponent layout = ', layout)
+  console.log('_AutoComponent data = ', data)
+  console.log('_AutoComponent allComponents = ', allComponents)
+
+            // const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
+            // const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
 
             if(typeof presenter === 'string'){
 
