@@ -44,6 +44,8 @@ import CheckBoxModalDemo from '@/pages/CheckBoxModalDemo';
 import Standalone from '@/composition/Standalone/Sandbox';
 import TestUserSelection from '@/composition/testUserSelection/Sandbox';
 
+import UserItem from '@/composition/testUserSelection/UserItem'
+
 export default function Index(props) {
 
   // pre-init. presenter set 
@@ -74,6 +76,14 @@ export default function Index(props) {
   // history.push('/TestUserListDemo');
   //通过跳转进入单选页面
   // history.push('/RadioModalDemo');
-  history.push('/CheckboxPageDemo');
-  return <div>首页</div>
+  // history.push('/CheckboxPageDemo');
+  // return <div>首页</div>
+
+  
+  const data = {
+    avatar: 'https://media.geeksforgeeks.org/wp-content/uploads/20200403151026/adblur_gfg.png',
+    account: 'inspector',
+    subtitle: 'cf9bfbe6278fa75794d517a0e36d9263'
+  }
+  return <UserItem {...data}/>
 }
