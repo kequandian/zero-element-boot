@@ -7,7 +7,7 @@ const namedPresenterGet = require('@/components/config/NamedPresenterConfig').ge
 
 const { Container } = require('@/components/container');
 
-const { CloneAutoLayout } = require('@/components/CloneAutoLayout');
+// const { CloneAutoLayout } = require('@/components/CloneAutoLayout');
 
 //change history
 //CR.2020-12-29  handle AutoComponent, add Container
@@ -141,8 +141,9 @@ module.exports = function ({ children, layout = requireConfig(parent), allCompon
             }else if(isJsonObject(presenter)){
               return (
                 <NamedGateway {..._gateway} key={i} span={span} >
+                  {/* <CloneAutoLayout layout = {presenter} onItemClick={onItemClick}/> */}
                   {presenter ?
-                    <CloneAutoLayout layout = {presenter} onItemClick={onItemClick}/>
+                    <div>引用CloneAutoLayout</div>
                     :
                     React.Children.toArray(children)
                   }
