@@ -1,0 +1,157 @@
+.l-FlexBox {
+  display  : flex;
+  flex-flow: row wrap;
+}
+
+.l-FlexBox {
+
+  &.width100{
+    width: 100%;
+  }
+  
+  &.start {
+    justify-content: flex-start;
+  }
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.end {
+    justify-content: flex-end;
+  }
+
+  &.around {
+    justify-content: space-around;
+
+    // .l-FlexBoxItem {
+    //   flex: 1;
+    // }
+  }
+
+  &.between {
+    justify-content: space-between;
+
+    // .l-FlexBoxItem {
+    //   flex: 1;
+    // }
+  }
+
+  &.start-with-last-end.row {
+    
+    justify-content: flex-start;
+
+    .l-FlexBoxItem:last-child {
+      // width             : 100%;
+      flex           :  1;
+      display           : flex;
+      justify-content   : flex-end;
+    }
+  }
+
+  &.start-with-last-end.row-reverse {
+    
+    justify-content: flex-start;
+
+    .l-FlexBoxItem:last-child {
+      // width             : 100%;
+      flex           :  1;
+      display           : flex;
+      justify-content   : flex-start;
+    }
+  }
+
+  // &.start-with-last-center  {
+  //   justify-content: flex-start;
+
+  //   .l-FlexBoxItem:last-child {
+  //     // width             : 100%;
+  //     flex           : 1;
+  //     display           : flex;
+  //     justify-content   : center;
+  //   }
+  // }
+
+  &.row {
+    flex-direction: row;
+  }
+
+  &.row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.column-reverse {
+    flex-direction: column-reverse;
+  }
+
+  &.align-content-center{
+    align-content: center;
+  }
+
+  &.no-wrap{
+    flex-flow: nowrap;
+  }
+
+  &.auto-full{
+    flex: 1
+  }
+
+}
+
+.l-FlexBoxItem{
+
+  display: flex;
+  
+  &.full {
+    width: 100%;
+  }
+
+  &.half{
+    width: 50%;
+  }
+
+  &.quad{
+    width: 25%;
+  }
+
+  &.start.column {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &.center.column {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &.end.column {
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  // for column direction
+  &.start.row{
+    flex-direction: row;
+    align-items: flex-start
+  }
+
+  &.center.row{
+    flex-direction: row;
+    align-items: center
+  }
+  
+  &.between.row{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &.end.row{
+    flex-direction: row;
+    align-items: flex-end
+  }
+
+}
