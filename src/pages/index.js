@@ -71,7 +71,7 @@ export default function Index(props) {
   
   // return <AdListDemo  onItemClick={onItemClickHandle}/>
 
-  // return <Standalone/>
+  return <Standalone/>
 
   // history.push('/TestUserListDemo');
   //通过跳转进入单选页面
@@ -80,10 +80,10 @@ export default function Index(props) {
   // return <div>首页</div>
 
   
-  const data = {
-    avatar: 'https://media.geeksforgeeks.org/wp-content/uploads/20200403151026/adblur_gfg.png',
-    account: 'inspector',
-    subtitle: 'cf9bfbe6278fa75794d517a0e36d9263'
-  }
-  return <UserItem {...data}/>
+  // const data = {
+  //   avatar: 'https://media.geeksforgeeks.org/wp-content/uploads/20200403151026/adblur_gfg.png',
+  //   account: 'inspector',
+  //   subtitle: 'cf9bfbe6278fa75794d517a0e36d9263'
+  // }
+  // return <UserItem {...data}/>
 }

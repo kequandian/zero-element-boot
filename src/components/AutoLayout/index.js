@@ -314,3 +314,15 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
     </Container>
   )
 }
+
+
+function tips(name) {
+  return _ => `${name} 未定义`;
+}
+
+function isJsonObject(obj) {
+  if (typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]") {
+    return true;
+  }
+  return false;
+}
