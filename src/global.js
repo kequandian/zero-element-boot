@@ -13,11 +13,11 @@ import RightIconCheckboxSelected from '@/components/indicator/RightIconCheckboxI
 import RightIconCheckboxDefauct from '@/components/indicator/RightIconCheckboxIndicator/Defauct';
 
 //presenter
-import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvator'
+import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvatar'
 import ContentText from '@/pages/PresenterTestDemo/plugins/TodoList/TodoItem/Content_text'
 import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/ItemIconAction'
 
-import {Avator, Title} from '@/presenter/demo';
+import {Avatar, Title} from '@/presenter/demo';
 
 import PregressBody from '@/composition/StatisticsContainer/ProgressList/PregressBody';
 import JarItem from '@/composition/Standalone/JarItem';
@@ -35,7 +35,7 @@ NamedIndicatorSet({
 })
 
 NamedPresenterSet({
-  Avator,
+  Avatar,
   Title,
 
   ImageAnimation,

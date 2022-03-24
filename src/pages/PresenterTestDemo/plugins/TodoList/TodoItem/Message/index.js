@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Tabs } from 'antd';
-import TodoList from '@/pages/PresenterTestDemo/plugins/TodoList/SandBox'
+import TodoList from '@/pages/PresenterTestDemo/plugins/TodoList/Sandboxx'
 import display from '@/pages/PresenterTestDemo/components/presenter/item/ItemIconAction'
 require('./index.less')
 

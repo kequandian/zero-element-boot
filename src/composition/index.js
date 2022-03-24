@@ -1,8 +1,8 @@
 
-import AvatorItem from './AvatarItem';
+import AvatarItem from './AvatarItem';
 import AdItem from './AdItem';
 
 export {
-    AvatorItem,
+    AvatarItem,
     AdItem,
 }
