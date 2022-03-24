@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import StandaloneContainer from './index';
+// import StandaloneContainer from './index';
 
 import useTokenRequest from '@/components/hooks/useTokenRequest';
+import {StandalonePage} from '@/components';
 
 export default function (props) {
 
@@ -30,7 +31,7 @@ export default function (props) {
   
   return (
         data.length > 0 ? (
-          <StandaloneContainer {...props} data={dataX}/>
+          <StandalonePage {...props} data={dataX}/>
         ):<></>
   )
 }

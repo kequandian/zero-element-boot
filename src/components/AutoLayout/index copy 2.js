@@ -1,21 +1,16 @@
 import { useSize } from 'ahooks';
 
-const React = require('react');
+import React from 'react';
 import { useState, useEffect } from 'react';
-const { NamedContainer, NamedLayout, NamedGateway, NamedCart } = require('@/components');
-const DefaultContainer = require('@/components/container/Container')
+import { NamedContainer, NamedLayout, NamedGateway, NamedCart } from '@/components';
+import DefaultContainer from '@/components/container/Container'
 
-//const CloneAutoLayout = require('@/components/CloneAutoLayout');
-// const AutoComponent = require('@/components/AutoComponent');
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 
-// import fetchLayout from '@/components/utils/fetchLayout';
 import loadingPage from '@/components/loading';
-// import AutoComponent  from '@/components/AutoComponent';
 
-
-const requireConfig = require('@/components/AutoX/requireConfig');
-const { Container } = require('@/components/container');
+import requireConfig from '@/components/AutoX/requireConfig';
+import { Container } from '@/components/container';
 
 // change history
 //CR.2020-12-26 init
@@ -113,11 +108,6 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
     presenter.layout = {...presenter}
   }
 
-  console.log('children ===== 1111', children)
-  console.log('cart ===== 1111', cart)
-  console.log('layout ===== 1111', layout)
-  console.log('layoutChildren ===== 1111', layoutChildren)
-
   // AutoComponent config
   let componentsJson;
   let defaultPresenter;
@@ -183,14 +173,8 @@ function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onI
           {layoutChildren ? layoutChildren.map((child, i) => {
             const { presenter, span, gateway, cart: childCart } = child;
             
-  console.log('_AutoComponent child ===== 1111', child)
-
-  console.log('_AutoComponent layout = ', layout)
-  console.log('_AutoComponent data = ', data)
-  console.log('_AutoComponent allComponents = ', allComponents)
-
-            // const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
-            // const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
+            const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
+            const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
 
             if(typeof presenter === 'string'){
 
