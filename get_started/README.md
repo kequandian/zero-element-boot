@@ -181,7 +181,7 @@ module.exports={
     },
     children:[
         {
-            presenter:'ItemAvator',
+            presenter:'ItemAvatar',
             gateway:{
                 xname:"Binding",
                 props:{

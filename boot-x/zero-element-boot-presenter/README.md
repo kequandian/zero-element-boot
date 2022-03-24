@@ -77,7 +77,7 @@ NamedCartSet({
 //set persentor
 import { set as NamedPresenterSet } from '@/config/NamedPresenterConfig';
 
-import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvator'
+import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvatar'
 
 NamedPresenterSet({
   ImageAnimation,

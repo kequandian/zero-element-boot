@@ -1,7 +1,7 @@
 import React from 'react';
 // import layout from '@/plugins/TodoList/designLayout'
 require('./index.less')
-import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvator'
+import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvatar'
 import ContentText from '@/pages/PresenterTestDemo/plugins/TodoList/TodoItem/Content_text'
 import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/ItemIconAction'
 import { AutoComponent, AutoLayout} from '@/components';
