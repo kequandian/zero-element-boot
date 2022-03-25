@@ -6,7 +6,7 @@
   "scripts": {
     "start": "umi dev",
     "clean": "rimraf lib/",
-    "build": "npm run clean && gulp",
+    "build": "npm run clean && gulp && node libCtrl",
     "buildA": "node init.js && umi build && node gen",
     "buildB": "umi build"
   },
