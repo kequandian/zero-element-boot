@@ -14,6 +14,7 @@ import APIContainer from './container/APIContainer';
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
 import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
+import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 
 //layout
 import Flexbox from '@/components/layout/Flexbox';
