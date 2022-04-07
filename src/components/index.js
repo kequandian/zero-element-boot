@@ -42,7 +42,9 @@ import Page from './cart/Page';
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 
-import StandalonePage from "@/composition/Standalone";
+import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
+
+import {Avatar, Title} from '@/presenter/demo';
 
 NamedLayoutSet({
   Flexbox,
@@ -71,6 +73,12 @@ NamedCartSet({
   SelectedCartRightIcon
 })
 
+NamedPresenterSet({
+  Avatar,
+  Title
+})
+
+
 // default to export core components
 export {
         AutoLayout,
@@ -84,6 +92,5 @@ export {
     NamedGateway,
     
     //
-    APIContainer,
-    StandalonePage
+    APIContainer
 };
