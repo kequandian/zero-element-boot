@@ -46,14 +46,18 @@ import TestUserSelection from '@/composition/testUserSelection/Sandbox';
 
 import UserItem from '@/composition/testUserSelection/UserItem'
 
+import AutoLayout from '@/components/AutoLayout';
+import userListLayoutJson from './userList/layout';
+import useTokenRequest from '@/components/hooks/useTokenRequest';
+
 export default function Index(props) {
 
   // pre-init. presenter set 
-  NamedPresenterSet({
-    Avatar,
-    Title,
-    Subtitle
-  })
+  // NamedPresenterSet({
+  //   Avatar,
+  //   Title,
+  //   Subtitle
+  // })
 
   function onItemClickHandle (data) {
     console.log('data111111 = ', data)
@@ -71,7 +75,7 @@ export default function Index(props) {
   
   // return <AdListDemo  onItemClick={onItemClickHandle}/>
 
-  return <Standalone/>
+  // return <Standalone/>
 
   // history.push('/TestUserListDemo');
   //通过跳转进入单选页面
@@ -86,4 +90,21 @@ export default function Index(props) {
   //   subtitle: 'cf9bfbe6278fa75794d517a0e36d9263'
   // }
   // return <UserItem {...data}/>
+
+  //test start
+  let api = '/api/userData';
+
+  const [ data ] = useTokenRequest({api});
+
+  const config = {
+    items: data.length > 0 ? data : [],
+    layout: userListLayoutJson
+  };
+
+  const onJarItemClick = (item) => {
+    console.log('item === ', item)
+  }
+  
+  return <AutoLayout {...config} onItemClick={onJarItemClick} />
+  //test end
 }
