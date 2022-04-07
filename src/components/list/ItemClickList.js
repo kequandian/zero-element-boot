@@ -27,6 +27,28 @@ export default function PlainList(props) {
      return tips(dataSource)
   }
 
+  function clickAction (item) {
+    if(navigation){
+      if(navigation.indexOf('(id)') === -1){
+        history.push({
+          pathname: navigation,
+          query: {
+            itemData: item
+          }
+        })
+      }else if(navigation.indexOf('(id)') > -1){
+        const formatNav = navigation.replace('(id)', item.id);
+        history.push({
+          pathname: formatNav,
+          query: {
+          }
+        })
+      }
+    }else if(onItemClick){
+      onItemClick(item)
+    }
+  }
+
   /**
    * 2021-11-15
    * 互换了 "...item" 和 "...rest"  顺序
@@ -42,7 +64,7 @@ export default function PlainList(props) {
     <ContainerContext.Provider value={size}>
         {dataSource.map((item, i) => {
           return (
-            <div key={i} >
+            <div key={i} onClick={() => clickAction(item)} >
               {
                 React.isValidElement(Child) ?
                   React.cloneElement(Child, {
@@ -51,11 +73,11 @@ export default function PlainList(props) {
                       layout:layout,
                       // key: i,
                       ref: layoutRef,
-                      onItemClick:onItemClick,
+                      // onItemClick:onItemClick,
                       isLastItem: dataSource.length == (i+1) ? true : false,
                       index: i
                   })
-                : <Child key={i} {...rest} {...item } layout={layout} ref={layoutRef} index={i} />
+                : <Child key={i} {...rest} {...item } layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
               }
             </div>
           )
