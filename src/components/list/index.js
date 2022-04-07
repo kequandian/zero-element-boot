@@ -6,6 +6,7 @@ import SelectCheckboxList from './SelectCheckboxList';
 import LoadingList from './LoadingList';
 import SelectionList from './SelectionList';
 import AddMoreList from './AddMoreList';
+import ItemClickList from './ItemClickList';
 
 /**
  * List 属于抽象组件类型 container,容器 
@@ -18,5 +19,6 @@ export {
   SelectCheckboxList,
   LoadingList,
   SelectionList,
-  AddMoreList
+  AddMoreList,
+  ItemClickList
 }
