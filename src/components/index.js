@@ -42,8 +42,6 @@ import Page from './cart/Page';
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 
-import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
-
 import {Avatar, Title} from '@/presenter/demo';
 
 NamedLayoutSet({
