@@ -19,6 +19,7 @@ import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConf
 //layout
 import Flexbox from '@/components/layout/Flexbox';
 import Itembox from '@/components/layout/Itembox';
+import Gridbox from '@/components/layout/Gridbox';
 import Wrap from '@/components/layout/Wrap';
 import Stack from '@/components/layout/Stack';
 import Round from '@/components/layout/Round';
@@ -47,6 +48,7 @@ import {Avatar, Title} from '@/presenter/demo';
 NamedLayoutSet({
   Flexbox,
   Itembox,
+  Gridbox,
   Wrap,
   Stack,
   Round

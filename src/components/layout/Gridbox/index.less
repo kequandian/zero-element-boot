@@ -1,0 +1,59 @@
+.l-Gridbox {
+    display  : grid;  
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
+    
+    .l-GridboxItem {
+
+        display: flex;
+
+        &.full {
+            width: 100%;
+          }
+        
+          &.half{
+            width: 50%;
+          }
+        
+          &.quad{
+            width: 25%;
+          }
+        
+          &.start.column {
+            flex-direction: column;
+            justify-content: flex-start;
+          }
+        
+          &.center.column {
+            flex-direction: column;
+            justify-content: center;
+          }
+        
+          &.end.column {
+            flex-direction: column;
+            justify-content: flex-end;
+          }
+        
+          // for column direction
+          &.start.row{
+            flex-direction: row;
+            align-items: flex-start
+          }
+        
+          &.center.row{
+            flex-direction: row;
+            align-items: center
+          }
+          
+          &.between.row{
+            flex-direction: row;
+            justify-content: space-between;
+          }
+        
+          &.end.row{
+            flex-direction: row;
+            align-items: flex-end
+          }
+    }
+}
