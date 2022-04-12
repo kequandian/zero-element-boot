@@ -1,5 +1,6 @@
 import Flexbox from './Flexbox';
 import Itembox from './Itembox';
+import Gridbox from './Gridbox';
 
 
 import Wrap from './Wrap';
@@ -9,6 +10,7 @@ import Round from "./Round";
 export {
   Flexbox,
   Itembox,
+  Gridbox,
 
   Wrap,
   Stack,

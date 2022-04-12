@@ -48,7 +48,11 @@ export default function Cart(props) {
 
   let bgColor = `${fill}`;
   if (onHover) {
-    bgColor = `${fill}80`;
+    if(fill === '#ffffff'){
+      bgColor = '#EAEAEA80';
+    }else{
+      bgColor = `${fill}80`;
+    }
   } else {
     bgColor = `${fill}ff`;
   }
