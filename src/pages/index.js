@@ -42,13 +42,15 @@ import CheckBoxModalDemo from '@/pages/CheckBoxModalDemo';
 // import RadioModalDemo from '@/pages/RadioModalDemo';
 
 import Standalone from '@/composition/Standalone/Sandbox';
-import TestUserSelection from '@/composition/testUserSelection/Sandbox';
+// import TestUserSelection from '@/composition/testUserSelection/Sandbox';
 
-import UserItem from '@/composition/testUserSelection/UserItem'
+// import UserItem from '@/composition/testUserSelection/UserItem'
 
-import AutoLayout from '@/components/AutoLayout';
-import userListLayoutJson from './userList/layout';
-import useTokenRequest from '@/components/hooks/useTokenRequest';
+// import AutoLayout from '@/components/AutoLayout';
+// import userListLayoutJson from './userList/layout';
+// import useTokenRequest from '@/components/hooks/useTokenRequest';
+
+import TestCRUDList from '@/composition/testCrudList';
 
 export default function Index(props) {
 
@@ -59,9 +61,9 @@ export default function Index(props) {
   //   Subtitle
   // })
 
-  function onItemClickHandle (data) {
-    console.log('data111111 = ', data)
-  }
+  // function onItemClickHandle (data) {
+  //   console.log('data111111 = ', data)
+  // }
 
 
   // return <AdItemDemo/>
@@ -75,7 +77,7 @@ export default function Index(props) {
   
   // return <AdListDemo  onItemClick={onItemClickHandle}/>
 
-  // return <Standalone/>
+  return <TestCRUDList/>
 
   // history.push('/TestUserListDemo');
   //通过跳转进入单选页面
@@ -92,19 +94,19 @@ export default function Index(props) {
   // return <UserItem {...data}/>
 
   //test start
-  let api = '/api/userData';
+  // let api = '/api/userData';
 
-  const [ data ] = useTokenRequest({api});
+  // const [ data ] = useTokenRequest({api});
 
-  const config = {
-    items: data.length > 0 ? data : [],
-    layout: userListLayoutJson
-  };
+  // const config = {
+  //   items: data.length > 0 ? data : [],
+  //   layout: userListLayoutJson
+  // };
 
-  const onJarItemClick = (item) => {
-    console.log('item === ', item)
-  }
+  // const onJarItemClick = (item) => {
+  //   console.log('item === ', item)
+  // }
   
-  return <AutoLayout {...config} onItemClick={onJarItemClick} />
+  // return <AutoLayout {...config} onItemClick={onJarItemClick} />
   //test end
 }

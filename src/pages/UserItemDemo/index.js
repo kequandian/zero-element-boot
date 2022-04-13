@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AutoLayout } from 'zero-element-boot';
+import { AutoLayout } from '@/components';
 import layoutJson from './layout';
 
 export default function index (props) {
