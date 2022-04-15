@@ -3,6 +3,7 @@ import { history } from 'umi';
 import { useSize } from 'ahooks';
 import { useForm } from 'react-hook-form';
 import useLayout from '@/components/hooks/useLayout';
+import { getEndpoint, getToken } from '@/components/config/common';
 // import ContainerContext from '@/components/AutoX/ContainerContext';
 
 import {
@@ -31,8 +32,6 @@ require('./index.less');
 const formItemMap = {
   input: InputCompx
 }
-
-const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjE2IiwidXNlcklkIjoiNCIsInRlbmFudE9yZ0lkIjoxNiwiYWNjb3VudCI6ImFkbWluIiwidXNlclR5cGUiOjAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDk5MTg5MjEsImp0aSI6IjQiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY1MDE3ODEyMX0.xsucJ55Y8mNKGfow38Ey6nTm9Zz0Cei2mieDsDpQoubAPOZ4Y0T1KQyYjwDMRK3NtuIbMre40aAuhy26GMtAlg'
 
 /**
  * 列表属性{template}包括 [布局, Cart, 分隔线, 数据转换 [,子组件] ]
@@ -105,6 +104,7 @@ export default function AddMoreList(props) {
       } else if (navigation.model && isSwtich) {
         setModelTitle('编辑')
         setCurrentId(item.id)
+        setCurrentData(item)
         setIsOpen(true)
       } else if (onItemClick) {
         onItemClick(item)
@@ -160,10 +160,10 @@ export default function AddMoreList(props) {
 
   //获取详情数据
   function getData(id) {
-    const api = `http://app1.console.smallsaas.cn:8001${getAPI.replace('(id)', id)}`;
+    const api = `${getEndpoint()}${getAPI.replace('(id)', id)}`;
     const queryData = {};
     setLoading(true)
-    promiseAjax(api, queryData, { token }).then(resp => {
+    promiseAjax(api, queryData, { token: getToken() }).then(resp => {
       if (resp && resp.code === 200) {
         setCurrentData(resp.data)
       } else {
@@ -175,9 +175,9 @@ export default function AddMoreList(props) {
 
   //新增数据
   function postData(values) {
-    const api = `http://app1.console.smallsaas.cn:8001${createAPI}`;
-    const queryData = { ...values };
-    promiseAjax(api, queryData, { method: 'POST', token }).then(resp => {
+    const api = `${getEndpoint()}${createAPI}`;
+    const queryData = { ...values};
+    promiseAjax(api, queryData, { method: 'POST', token: getToken() }).then(resp => {
       if (resp && resp.code === 200) {
         cb(true)
         setIsOpen(false)
@@ -189,9 +189,9 @@ export default function AddMoreList(props) {
 
   //修改数据
   function putData(values, id) {
-    const api = `http://app1.console.smallsaas.cn:8001${updateAPI.replace('(id)', id)}`;
-    const queryData = { ...values };
-    promiseAjax(api, queryData, { method: 'PUT', token }).then(resp => {
+    const api = `${getEndpoint()}${updateAPI.replace('(id)', id)}`;
+    const queryData = { ...values, orgId: 16 };
+    promiseAjax(api, queryData, { method: 'PUT', token: getToken() }).then(resp => {
       if (resp && resp.code === 200) {
         console.log("修改成功")
         cb(true)
@@ -253,8 +253,10 @@ export default function AddMoreList(props) {
     {/* </ContainerContext.Provider> */}
     {
       navigation && isSwtich ? (
-        <div className='footerBtn' onClick={() => clickAddAction(navigation)}>
-          <div className='addBtn'>
+        <div className='footerContent' >
+          <div className='footerBtn' onClick={() => clickAddAction(navigation)}>
+            <div className='addBtn'>
+            </div>
           </div>
         </div>
       ) : <></>

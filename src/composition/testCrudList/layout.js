@@ -1,6 +1,8 @@
 module.exports = {
-  xname: 'Flexbox',
+  xname: 'Gridbox',
   props: {
+    direction: 'column',
+    justify: 'center row',
   },
   presenter: {
     xname: 'Flexbox',
@@ -37,8 +39,8 @@ module.exports = {
   cart: {
     xname: 'Cart',
     props: {
-      padding: '10px',
-      margin: '10px',
+      padding: '5px 10px',
+      margin: '5px',
       linewidth: 0
     }
 

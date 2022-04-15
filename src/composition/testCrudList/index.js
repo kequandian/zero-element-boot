@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ChakraProvider, Box, VStack, Spinner } from "@chakra-ui/react";
+import { ChakraProvider, Box, VStack, Spinner, Switch, FormControl, FormLabel } from "@chakra-ui/react";
 
 import { AutoLayout } from '@/components';
+import { getEndpoint, getToken } from '@/components/config/common';
 import promiseAjax from '@/components/utils/request';
 
 import layout from './layout';
@@ -12,13 +13,13 @@ export default function Index(props) {
 
     const [listData, setListData] = useState([])
     const [isLoading, setLoading] = useState(false)
+    const [switchStatus, setSwitchStatus] = useState(false)
 
-    let api = '/api/userData';
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjE2IiwidXNlcklkIjoiNCIsInRlbmFudE9yZ0lkIjoxNiwiYWNjb3VudCI6ImFkbWluIiwidXNlclR5cGUiOjAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDk5MTg5MjEsImp0aSI6IjQiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY1MDE3ODEyMX0.xsucJ55Y8mNKGfow38Ey6nTm9Zz0Cei2mieDsDpQoubAPOZ4Y0T1KQyYjwDMRK3NtuIbMre40aAuhy26GMtAlg'
+    let api = '/api/crud/test/tests';
 
 
     if (process.env.NODE_ENV === 'development') {
-        api = `http://app1.console.smallsaas.cn:8001/api/crud/test/tests`;
+        api = `${getEndpoint()}/api/crud/test/tests`;
     }
 
 
@@ -49,11 +50,13 @@ export default function Index(props) {
     //获取列表信息
     const fetchData = (api, queryData) => {
         setLoading(true)
-        return promiseAjax(api, queryData, { token }).then(resp => {
+        return promiseAjax(api, queryData, { token: getToken() }).then(resp => {
             if (resp && resp.code === 200) {
                 const list = resp.data.records;
                 setListData(list);
                 setLoading(false)
+            } else {
+                console.error('获取列表数据失败 ==', resp)
             }
         });
     }
@@ -64,6 +67,7 @@ export default function Index(props) {
         alert(`选择的用户id为: ${id}`)
     }
 
+    //回调函数
     const callback = (value) => {
 
         console.log('item1111111 = ', value)
@@ -72,22 +76,36 @@ export default function Index(props) {
         }
     }
 
+    const handleChange = () => {
+        const status = !switchStatus;
+        setSwitchStatus(status)
+    }
+
     return (
         <ChakraProvider>
-            {
-                isLoading ? (
-                    <Spinner />
-                ) : (
-                    <div style={{ width: '500px' }}>
-                        <VStack align='stretch' spacing='-2'>
-                            <Box>
-                                <AutoLayout {...config} onItemClick={onUserItemClick} cb={callback} />
-                            </Box>
-                        </VStack>
-                    </div>
 
-                )
-            }
+            <div style={{ width: '600px' }}>
+                <VStack align='stretch' spacing='-2'>
+                    <Box style={{ margin: '10px 10px 30px 10px', paddingLeft: '8px' }}>
+                        <FormControl display='flex' alignItems='center'>
+                            <FormLabel htmlFor='email-alerts' mb='0'>
+                                编辑开关：
+                            </FormLabel>
+                            <Switch size='lg' onChange={() => handleChange()} isChecked={switchStatus} />
+                        </FormControl>
+
+                    </Box>
+                    {isLoading ? (
+                        <Spinner />
+                    ) : (
+                        <Box>
+                            <AutoLayout {...config} onItemClick={onUserItemClick} cb={callback} isSwtich={switchStatus} />
+                        </Box>
+                    )
+                    }
+                </VStack>
+            </div>
+
         </ChakraProvider>
     )
 
