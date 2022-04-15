@@ -9,17 +9,17 @@ module.exports = {
       justify: 'center row',
     },
     children: [
-      {
-        presenter: 'Avatar',
-        gateway: {
-          xname: 'Binding',
-          props: {
-            binding: {
-              avatar: 'url'
-            }
-          }
-        }
-      },
+      // {
+      //   presenter: 'Avatar',
+      //   gateway: {
+      //     xname: 'Binding',
+      //     props: {
+      //       binding: {
+      //         name: 'url'
+      //       }
+      //     }
+      //   }
+      // },
       {
         presenter: "Title",
         gateway: {
@@ -46,21 +46,26 @@ module.exports = {
   container: 'SimCRUDList',
   navigation: {
     model: {
-      api: '',
+      api: {
+        createAPI:'/api/crud/test/tests',
+        getAPI:'/api/crud/test/tests/(id)',
+        updateAPI:'/api/crud/test/tests/(id)',
+        deleteAPI:''
+      },
       fields:[
         {
           label:'姓名', 
           field:'name', 
           type:'input',
           required:{
-            placeholder: '',
+            placeholder: '请输入姓名',
           }
         },
-        {
-          label:'年龄', 
-          field:'age', 
-          type:'input'
-        }
+        // {
+        //   label:'年龄', 
+        //   field:'age', 
+        //   type:'input'
+        // }
       ]
     }
   }

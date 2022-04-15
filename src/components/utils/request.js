@@ -2,12 +2,12 @@
 module.exports =  function promiseAjax(url, data = {}, options = {}) {
   const { method = 'GET', async = true, token } = options;
 
-  let param;
+  let param = '';
   let payload;
   if (method === 'GET') {
     param = `?${Object.keys(data).map(key => `${key}=${data[key]}`).join('&')}`;
   } else {
-    payload = data;
+    payload = JSON.stringify(data);
   }
 
   return new Promise((resolve, reject) => {
@@ -39,6 +39,11 @@ module.exports =  function promiseAjax(url, data = {}, options = {}) {
         reject(xhr.statusText);
       }
     }
+
+    if(method === 'POST' || method === 'PUT'){
+      xhr.setRequestHeader("Content-Type", "application/json")
+    }
+
     xhr.onerror = (err) => {
       reject(err);
     }

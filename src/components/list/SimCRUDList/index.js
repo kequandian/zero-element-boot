@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { history } from 'umi';
 import { useSize } from 'ahooks';
+import { useForm } from 'react-hook-form';
 import useLayout from '@/components/hooks/useLayout';
 // import ContainerContext from '@/components/AutoX/ContainerContext';
 
@@ -17,9 +18,9 @@ import {
   Stack, // 布局组件 设置子元素坚决
   FormControl, // 未表单元素添加动态效果 如校验 禁用等
   FormLabel, // label
-  FormErrorMessage
+  FormErrorMessage,
+  Spinner
 } from "@chakra-ui/react";
-import { useForm } from 'react-hook-form';
 import promiseAjax from '@/components/utils/request';
 
 import { InputCompx } from './formItemCompx'
@@ -30,6 +31,8 @@ require('./index.less');
 const formItemMap = {
   input: InputCompx
 }
+
+const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjE2IiwidXNlcklkIjoiNCIsInRlbmFudE9yZ0lkIjoxNiwiYWNjb3VudCI6ImFkbWluIiwidXNlclR5cGUiOjAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDk5MTg5MjEsImp0aSI6IjQiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY1MDE3ODEyMX0.xsucJ55Y8mNKGfow38Ey6nTm9Zz0Cei2mieDsDpQoubAPOZ4Y0T1KQyYjwDMRK3NtuIbMre40aAuhy26GMtAlg'
 
 /**
  * 列表属性{template}包括 [布局, Cart, 分隔线, 数据转换 [,子组件] ]
@@ -44,12 +47,18 @@ const formItemMap = {
  * 
  */
 export default function AddMoreList(props) {
+
   const { children, layout, items, dataSource = items, navigation, onItemClick, cb, isSwtich = true, ...rest } = props;
+
+  const { api: { createAPI, getAPI, updateAPI, deleteAPI } } = navigation.model;
 
   const [layoutRef, { getClassName, getStyles }] = useLayout();
 
   const [isOpen, setIsOpen] = useState(false)
   const [currentId, setCurrentId] = useState('')
+  const [currentData, setCurrentData] = useState({})
+  const [isLoading, setLoading] = useState(false)
+  const [modelTitle, setModelTitle] = useState('Title')
 
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -62,9 +71,11 @@ export default function AddMoreList(props) {
   //根据 id 获取数据
   useEffect(() => {
 
-    console.log('获取item id = ', currentId)
+    if (getAPI && currentId) {
+      getData(currentId)
+    }
 
-  }, [currentId && currentId != '']);
+  }, [currentId]);
 
   // 检查数据是否有效
   if (!(dataSource && Array.isArray(dataSource))) {
@@ -92,6 +103,7 @@ export default function AddMoreList(props) {
           })
         }
       } else if (navigation.model && isSwtich) {
+        setModelTitle('编辑')
         setCurrentId(item.id)
         setIsOpen(true)
       } else if (onItemClick) {
@@ -111,6 +123,7 @@ export default function AddMoreList(props) {
         }
       })
     } else if (nav.model) {
+      setModelTitle('添加')
       setCurrentId('')
       setIsOpen(true)
     }
@@ -119,12 +132,15 @@ export default function AddMoreList(props) {
 
   //关闭模态框
   function onClose() {
+    reset()
+    setCurrentData({})
     setIsOpen(false)
   }
 
   const {
     handleSubmit,
     register,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm()
 
@@ -132,45 +148,57 @@ export default function AddMoreList(props) {
 
     return new Promise((resolve) => {
       setTimeout(() => {
-        postData(values)
+        if (currentId) {
+          putData(values, currentId)
+        } else {
+          postData(values)
+        }
         resolve()
-      }, 3000)
+      }, 2000)
     })
+  }
+
+  //获取详情数据
+  function getData(id) {
+    const api = `http://app1.console.smallsaas.cn:8001${getAPI.replace('(id)', id)}`;
+    const queryData = {};
+    setLoading(true)
+    promiseAjax(api, queryData, { token }).then(resp => {
+      if (resp && resp.code === 200) {
+        setCurrentData(resp.data)
+      } else {
+        console.error("获取数据失败")
+      }
+      setLoading(false)
+    });
   }
 
   //新增数据
   function postData(values) {
-    const api = '';
+    const api = `http://app1.console.smallsaas.cn:8001${createAPI}`;
     const queryData = { ...values };
-    console.log('新增 == ', queryData)
-    setIsOpen(false)
-    return
-    promiseAjax(api, queryData).then(resp => {
+    promiseAjax(api, queryData, { method: 'POST', token }).then(resp => {
       if (resp && resp.code === 200) {
-        const list = resp.data;
-        // setListData(list);
-        cb(queryData)
+        cb(true)
+        setIsOpen(false)
       } else {
         console.error("提交失败")
       }
-      setIsOpen(false)
     });
   }
 
   //修改数据
-  function putData(values) {
-    const api = '';
+  function putData(values, id) {
+    const api = `http://app1.console.smallsaas.cn:8001${updateAPI.replace('(id)', id)}`;
     const queryData = { ...values };
-    console.log('修改 == ', queryData)
-    cb(queryData)
-    return
-    promiseAjax(api, queryData, { method: 'PUT' }).then(resp => {
+    promiseAjax(api, queryData, { method: 'PUT', token }).then(resp => {
       if (resp && resp.code === 200) {
         console.log("修改成功")
+        cb(true)
+        setIsOpen(false)
       } else {
         console.error("修改失败")
       }
-      setIsOpen(false)
     });
   }
 
@@ -179,11 +207,17 @@ export default function AddMoreList(props) {
     const fieldList = list;
     return fieldList.map((item, index) => {
 
-      const { type } = item;
+      const { label, field, type } = item;
 
       const C = formItemMap[type]
 
-      return <C {...item} register={register} errors={errors} key={`${index}_i`}/>
+      return <FormControl isInvalid={errors[field]} key={`${index}_i`}>
+        <FormLabel htmlFor={field}>{label}</FormLabel>
+        <C {...item} register={register} errors={errors} defaultValue={currentData[field]} />
+        <FormErrorMessage>
+          {errors[field] && errors[field].message}
+        </FormErrorMessage>
+      </FormControl>
     })
   }
 
@@ -235,16 +269,18 @@ export default function AddMoreList(props) {
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>添加用户</ModalHeader>
+        <ModalHeader>{modelTitle}</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
-
-          <form onSubmit={handleSubmit(validateData)}>
-            <Stack spacing="2">
-              {
-                handleFormItem(navigation.model.fields)
-              }
-              {/* <FormControl isInvalid={errors.account}>
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <form onSubmit={handleSubmit(validateData)}>
+              <Stack spacing="2">
+                {
+                  handleFormItem(navigation.model.fields)
+                }
+                {/* <FormControl isInvalid={errors.account}>
                 <FormLabel htmlFor='account'>用户名</FormLabel>
                 <Input bgColor="gray.50" placeholder="请输入用户名" id='account'
                   {...register('account', {
@@ -256,14 +292,16 @@ export default function AddMoreList(props) {
                   {errors.account && errors.account.message}
                 </FormErrorMessage>
               </FormControl> */}
-              <Stack direction='row' spacing={4} align='center'>
-                <Button width='100px' colorScheme='teal' variant='solid' isLoading={isSubmitting} type='submit'>
-                  保存
-                </Button>
-                <Button width='100px' colorScheme='teal' variant='outline' onClick={onClose}>取消</Button>
+                <Stack direction='row' spacing={4} align='center'>
+                  <Button width='100px' colorScheme='teal' variant='solid' isLoading={isSubmitting} type='submit'>
+                    保存
+                  </Button>
+                  <Button width='100px' colorScheme='teal' variant='outline' onClick={onClose}>取消</Button>
+                </Stack>
               </Stack>
-            </Stack>
-          </form>
+            </form>
+          )}
+
         </ModalBody>
 
         {/* <ModalFooter>
