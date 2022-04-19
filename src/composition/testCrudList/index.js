@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ChakraProvider, Box, VStack, Spinner, Switch, FormControl, FormLabel } from "@chakra-ui/react";
 
 import { AutoLayout } from '@/components';
-import { getEndpoint, getToken } from '@/components/config/common';
-import promiseAjax from '@/components/utils/request';
+const promiseAjax = require('@/components/utils/request');
 
 import layout from './layout';
 
@@ -15,13 +14,7 @@ export default function Index(props) {
     const [isLoading, setLoading] = useState(false)
     const [switchStatus, setSwitchStatus] = useState(false)
 
-    let api = '/api/crud/test/tests';
-
-
-    if (process.env.NODE_ENV === 'development') {
-        api = `${getEndpoint()}/api/crud/test/tests`;
-    }
-
+    let api = '/api/v/navigation/navigations';
 
     useEffect(() => {
         console.log('首次加载')
@@ -50,7 +43,7 @@ export default function Index(props) {
     //获取列表信息
     const fetchData = (api, queryData) => {
         setLoading(true)
-        return promiseAjax(api, queryData, { token: getToken() }).then(resp => {
+        return promiseAjax(api, queryData).then(resp => {
             if (resp && resp.code === 200) {
                 const list = resp.data.records;
                 setListData(list);
@@ -84,7 +77,7 @@ export default function Index(props) {
     return (
         <ChakraProvider>
 
-            <div style={{ width: '600px' }}>
+            <div style={{ maxWidth: '600px' }}>
                 <VStack align='stretch' spacing='-2'>
                     <Box style={{ margin: '10px 10px 30px 10px', paddingLeft: '8px' }}>
                         <FormControl display='flex' alignItems='center'>

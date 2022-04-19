@@ -3,11 +3,10 @@ import { history } from 'umi';
 import { useSize } from 'ahooks';
 import { useForm } from 'react-hook-form';
 import useLayout from '@/components/hooks/useLayout';
-import { getEndpoint, getToken } from '@/components/config/common';
 // import ContainerContext from '@/components/AutoX/ContainerContext';
 
 import {
-  ChakraProvider, Flex, Box, VStack, Spacer, Button,
+  Button,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -22,7 +21,8 @@ import {
   FormErrorMessage,
   Spinner
 } from "@chakra-ui/react";
-import promiseAjax from '@/components/utils/request';
+
+const promiseAjax = require('@/components/utils/request');
 
 import { InputCompx } from './formItemCompx'
 // import InputCompx from './formItemCompx/InputCompx'
@@ -51,7 +51,7 @@ export default function AddMoreList(props) {
 
   const { api: { createAPI, getAPI, updateAPI, deleteAPI } } = navigation.model;
 
-  const [layoutRef, { getClassName, getStyles }] = useLayout();
+  const [layoutRef, { getClassName }] = useLayout();
 
   const [isOpen, setIsOpen] = useState(false)
   const [currentId, setCurrentId] = useState('')
@@ -160,10 +160,10 @@ export default function AddMoreList(props) {
 
   //获取详情数据
   function getData(id) {
-    const api = `${getEndpoint()}${getAPI.replace('(id)', id)}`;
+    const api = `${getAPI.replace('(id)', id)}`;
     const queryData = {};
     setLoading(true)
-    promiseAjax(api, queryData, { token: getToken() }).then(resp => {
+    promiseAjax(api, queryData ).then(resp => {
       if (resp && resp.code === 200) {
         setCurrentData(resp.data)
       } else {
@@ -175,9 +175,9 @@ export default function AddMoreList(props) {
 
   //新增数据
   function postData(values) {
-    const api = `${getEndpoint()}${createAPI}`;
+    const api = `${createAPI}`;
     const queryData = { ...values};
-    promiseAjax(api, queryData, { method: 'POST', token: getToken() }).then(resp => {
+    promiseAjax(api, queryData, { method: 'POST' }).then(resp => {
       if (resp && resp.code === 200) {
         cb(true)
         setIsOpen(false)
@@ -189,9 +189,9 @@ export default function AddMoreList(props) {
 
   //修改数据
   function putData(values, id) {
-    const api = `${getEndpoint()}${updateAPI.replace('(id)', id)}`;
-    const queryData = { ...values, orgId: 16 };
-    promiseAjax(api, queryData, { method: 'PUT', token: getToken() }).then(resp => {
+    const api = `${updateAPI.replace('(id)', id)}`;
+    const queryData = { ...values };
+    promiseAjax(api, queryData, { method: 'PUT' }).then(resp => {
       if (resp && resp.code === 200) {
         console.log("修改成功")
         cb(true)
