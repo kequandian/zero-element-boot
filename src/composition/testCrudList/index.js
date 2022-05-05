@@ -14,7 +14,7 @@ export default function Index(props) {
     const [isLoading, setLoading] = useState(false)
     const [switchStatus, setSwitchStatus] = useState(false)
 
-    let api = '/api/v/navigation/navigations';
+    let api = '/api/c/navigation/navigations';
 
     useEffect(() => {
         console.log('首次加载')
