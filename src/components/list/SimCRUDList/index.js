@@ -6,6 +6,7 @@ import useLayout from '@/components/hooks/useLayout';
 // import ContainerContext from '@/components/AutoX/ContainerContext';
 
 import {
+  ButtonGroup,
   Button,
   Modal,
   ModalOverlay,
@@ -19,7 +20,8 @@ import {
   FormControl, // 未表单元素添加动态效果 如校验 禁用等
   FormLabel, // label
   FormErrorMessage,
-  Spinner
+  Spinner,
+  useToast,
 } from "@chakra-ui/react";
 
 const promiseAjax = require('@/components/utils/request');
@@ -45,7 +47,7 @@ const formItemMap = {
  * @param { 切换CRUD开关 } isSwtich
  * 
  */
-export default function AddMoreList(props) {
+export default function SimCRUDList(props) {
 
   const { children, layout, items, dataSource = items, navigation, onItemClick, cb, isSwtich = true, ...rest } = props;
 
@@ -54,6 +56,7 @@ export default function AddMoreList(props) {
   const [layoutRef, { getClassName }] = useLayout();
 
   const [isOpen, setIsOpen] = useState(false)
+  const [isDelOpen, setIsDelOpen] = useState(false)
   const [currentId, setCurrentId] = useState('')
   const [currentData, setCurrentData] = useState({})
   const [isLoading, setLoading] = useState(false)
@@ -64,13 +67,14 @@ export default function AddMoreList(props) {
 
   const initialRef = useRef()
   const finalRef = useRef()
+  const toast = useToast()
 
   const Child = React.Children.only(children);
 
   //根据 id 获取数据
   useEffect(() => {
 
-    if (getAPI && currentId) {
+    if (getAPI && currentId && !isDelOpen) {
       getData(currentId)
     }
 
@@ -163,7 +167,7 @@ export default function AddMoreList(props) {
     const api = `${getAPI.replace('(id)', id)}`;
     const queryData = {};
     setLoading(true)
-    promiseAjax(api, queryData ).then(resp => {
+    promiseAjax(api, queryData).then(resp => {
       if (resp && resp.code === 200) {
         setCurrentData(resp.data)
       } else {
@@ -176,13 +180,15 @@ export default function AddMoreList(props) {
   //新增数据
   function postData(values) {
     const api = `${createAPI}`;
-    const queryData = { ...values};
+    const queryData = { ...values };
     promiseAjax(api, queryData, { method: 'POST' }).then(resp => {
       if (resp && resp.code === 200) {
+        toastTips('修改成功')
         cb(true)
         setIsOpen(false)
       } else {
-        console.error("提交失败")
+        console.error("提交失败 === ", resp)
+        toastTips('提交失败', 'error')
       }
     });
   }
@@ -193,11 +199,40 @@ export default function AddMoreList(props) {
     const queryData = { ...values };
     promiseAjax(api, queryData, { method: 'PUT' }).then(resp => {
       if (resp && resp.code === 200) {
-        console.log("修改成功")
+        toastTips('修改成功')
         cb(true)
         setIsOpen(false)
       } else {
-        console.error("修改失败")
+        console.error("修改失败 == ", resp)
+        toastTips('修改失败', 'error')
+      }
+    });
+  }
+
+  //删除确认提示
+  function showDelModel(item) {
+    console.log('deleteAPI === ', deleteAPI)
+    console.log('item === ', item)
+    if (deleteAPI && item && item.id) {
+      setCurrentId(item.id)
+      setIsDelOpen(true)
+    } else {
+      console.log('未设置 deleteAPI 或 item 数据异常')
+    }
+  }
+
+  //删除数据
+  function delData(values, id) {
+    const api = `${deleteAPI.replace('(id)', id)}`;
+    const queryData = { ...values };
+    promiseAjax(api, queryData, { method: 'DELETE' }).then(resp => {
+      if (resp && resp.code === 200) {
+        toastTips('删除成功')
+        cb(true)
+        setIsOpen(false)
+      } else {
+        console.error("删除失败 == ", resp)
+        toastTips('删除失败', 'error')
       }
     });
   }
@@ -221,6 +256,18 @@ export default function AddMoreList(props) {
     })
   }
 
+  // tips
+  function toastTips(text, status = 'success') {
+    toast({
+      title: text,
+      description: "",
+      status: status,
+      duration: 3000,
+      isClosable: true,
+      position: 'top'
+    })
+  }
+
   return <div
     style={{
       overflow: 'auto',
@@ -233,21 +280,42 @@ export default function AddMoreList(props) {
     {/* <ContainerContext.Provider value={size}> */}
     {dataSource.map((item, i) => {
       return (
-        <div key={i} onClick={() => clickAction(item)} >
+        <div style={{ position: 'relative' }} key={i}>
+          <div onClick={() => clickAction(item)}>
+            {
+              React.isValidElement(Child) ?
+                React.cloneElement(Child, {
+                  ...rest,
+                  ...item,
+                  layout: layout,
+                  // key: i,
+                  ref: layoutRef,
+                  isLastItem: dataSource.length == (i + 1) ? true : false,
+                  index: i
+                })
+                : <Child {...rest} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
+            }
+          </div>
           {
-            React.isValidElement(Child) ?
-              React.cloneElement(Child, {
-                ...rest,
-                ...item,
-                layout: layout,
-                // key: i,
-                ref: layoutRef,
-                isLastItem: dataSource.length == (i + 1) ? true : false,
-                index: i
-              })
-              : <Child key={i} {...rest} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
+            isSwtich ? (
+
+              <div style={{
+                position: 'absolute',
+                top: '0',
+                right: '0',
+                width: '26px',
+                height: '26px',
+                background: '#ff3030',
+                borderRadius: '50%',
+                textAlign: 'center',
+              }} onClick={() => showDelModel(item)} >
+                <div className={`del-btn`} ></div>
+              </div>
+            ) : null
           }
+
         </div>
+
       )
     })}
     {/* </ContainerContext.Provider> */}
@@ -262,7 +330,7 @@ export default function AddMoreList(props) {
       ) : <></>
     }
 
-
+    {/* 编辑模态框 */}
     <Modal
       initialFocusRef={initialRef}
       finalFocusRef={finalRef}
@@ -313,6 +381,30 @@ export default function AddMoreList(props) {
           </ModalFooter> */}
       </ModalContent>
     </Modal>
+
+    {/* 删除提示模态框 */}
+    <Modal isOpen={isDelOpen} onClose={() => setIsDelOpen(false)}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>提示</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <div>确定要删除吗?</div>
+        </ModalBody>
+
+        <ModalFooter>
+
+
+          <Stack direction='row' spacing={4} align='center'>
+            <Button variant='ghost' onClick={() => setIsDelOpen(false)}>取消</Button>
+            <Button colorScheme='blue' mr={3} onClick={() => delData({}, currentId)}>
+              确定
+            </Button>
+          </Stack>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+
 
 
   </div>

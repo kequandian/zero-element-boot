@@ -11,17 +11,17 @@ module.exports = {
       justify: 'center row',
     },
     children: [
-      // {
-      //   presenter: 'Avatar',
-      //   gateway: {
-      //     xname: 'Binding',
-      //     props: {
-      //       binding: {
-      //         name: 'url'
-      //       }
-      //     }
-      //   }
-      // },
+      {
+        presenter: 'Avatar',
+        gateway: {
+          xname: 'Binding',
+          props: {
+            binding: {
+              name: 'url'
+            }
+          }
+        }
+      },
       {
         presenter: "Title",
         gateway: {
@@ -49,10 +49,10 @@ module.exports = {
   navigation: {
     model: {
       api: {
-        createAPI:'/api/v/navigation/navigations',
-        getAPI:'/api/v/navigation/navigations/(id)',
-        updateAPI:'/api/v/navigation/navigations/(id)',
-        deleteAPI:''
+        createAPI:'/api/c/navigation/navigations',
+        getAPI:'/api/c/navigation/navigations/(id)',
+        updateAPI:'/api/c/navigation/navigations/(id)',
+        deleteAPI:'/api/c/navigation/navigations/(id)'
       },
       fields:[
         {
