@@ -6,6 +6,8 @@ const promiseAjax = require('@/components/utils/request');
 
 import layout from './layout';
 
+require('./index.less')
+
 export default function Index(props) {
 
     const { } = props;
@@ -84,7 +86,7 @@ export default function Index(props) {
                             <FormLabel htmlFor='email-alerts' mb='0'>
                                 编辑开关：
                             </FormLabel>
-                            <Switch size='lg' onChange={() => handleChange()} isChecked={switchStatus} />
+                            <Switch isFocusable size='lg' onChange={() => handleChange()} isChecked={switchStatus} />
                         </FormControl>
 
                     </Box>

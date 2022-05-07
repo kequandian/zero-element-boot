@@ -7,6 +7,7 @@ import NamedGateway from './NamedGateway';
 
 // AutoComponent
 import AutoLayout from './AutoLayout';
+// import  { CloneAutoLayout }  from './CloneAutoLayout';
 import AutoComponent from './AutoComponent';
 
 import APIContainer from './container/APIContainer';
@@ -82,6 +83,7 @@ NamedPresenterSet({
 // default to export core components
 export {
         AutoLayout,
+        // CloneAutoLayout,
         AutoComponent,
 
     NamedLayout,
