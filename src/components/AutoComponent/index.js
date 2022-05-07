@@ -1,6 +1,6 @@
 const React = require('react');
 // const { useState, useEffect } = require('react');
-const { NamedContainer, NamedLayout, NamedGateway, NamedCart } = require('@/components');
+const { NamedContainer, NamedLayout, NamedGateway, NamedCart, CloneAutoLayout } = require('@/components');
 // const useLayout = require('@/hooks/useLayout');
 const requireConfig = require('@/components/AutoX/requireConfig');
 const namedPresenterGet = require('@/components/config/NamedPresenterConfig').get();

@@ -211,8 +211,6 @@ export default function SimCRUDList(props) {
 
   //删除确认提示
   function showDelModel(item) {
-    console.log('deleteAPI === ', deleteAPI)
-    console.log('item === ', item)
     if (deleteAPI && item && item.id) {
       setCurrentId(item.id)
       setIsDelOpen(true)
@@ -305,7 +303,7 @@ export default function SimCRUDList(props) {
                 right: '0',
                 width: '26px',
                 height: '26px',
-                background: '#ff3030',
+                background: '#c3c3c3',
                 borderRadius: '50%',
                 textAlign: 'center',
               }} onClick={() => showDelModel(item)} >
@@ -393,7 +391,6 @@ export default function SimCRUDList(props) {
         </ModalBody>
 
         <ModalFooter>
-
 
           <Stack direction='row' spacing={4} align='center'>
             <Button variant='ghost' onClick={() => setIsDelOpen(false)}>取消</Button>
