@@ -17,21 +17,18 @@ export default function Index(props) {
 
     const { } = props;
 
+    const [navCateListData, setNavCateListData] = useState([])
     const [listData, setListData] = useState([])
     const [isLoading, setLoading] = useState(false)
     const [switchStatus, setSwitchStatus] = useState(false)
     const [tabIndex, setTabIndex] = useState(0)
 
-    let api = '/api/c/navigation/navigations';
+    let navListApi = '/api/data/services/navigation';
+    let navApi = '/api/data/services/navCategory';
 
     useEffect(() => {
         console.log('首次加载')
-        const queryData = {}
-        fetchData(api, queryData)
-    }, []);
-
-    useEffect(() => {
-
+        fetchNavCategoryData(navApi, {})
     }, []);
 
     let layoutData = '';
@@ -48,6 +45,23 @@ export default function Index(props) {
         layout: layoutData
     };
 
+    //获取分类列表信息
+    const fetchNavCategoryData = (api, queryData) => {
+        setLoading(true)
+        return promiseAjax(api, queryData).then(resp => {
+            if (resp && resp.code === 200) {
+                const list = resp.data.records;
+                setNavCateListData(list);
+                setLoading(false)
+            } else {
+                console.error('获取列表数据失败 ==', resp)
+            }
+        }).finally(_=>{
+            setLoading(false)
+            fetchData(navListApi, {})
+        });
+    }
+
     //获取列表信息
     const fetchData = (api, queryData) => {
         setLoading(true)
@@ -59,10 +73,12 @@ export default function Index(props) {
             } else {
                 console.error('获取列表数据失败 ==', resp)
             }
+        }).finally(_=>{
+            setLoading(false)
         });
     }
 
-    const onUserItemClick = (item) => {
+    const onNavItemClick = (item) => {
         const id = item.id;
         console.log('id = ', id)
         alert(`选择的用户id为: ${id}`)
@@ -73,7 +89,7 @@ export default function Index(props) {
 
         console.log('item1111111 = ', value)
         if (value) {
-            fetchData(api, {})
+            fetchData(navListApi, {})
         }
     }
 
@@ -88,7 +104,7 @@ export default function Index(props) {
         if(index != tabIndex){
             setTabIndex(index)
             const queryData = {}
-            fetchData(api, queryData)
+            fetchData(navListApi, queryData)
         }
     }
 
@@ -107,31 +123,32 @@ export default function Index(props) {
 
                     </Box>
                     
-                    <Box>
-                            <Tabs variant='enclosed' style={{width:'1000px'}} defaultIndex={tabIndex}>
+                    { navCateListData && navCateListData.length > 0 ? (
+                        <Box>
+                            <Tabs variant='enclosed' style={{width:'900px'}} defaultIndex={tabIndex}>
                                 <TabList>
-                                    { categoryData && categoryData.map((item, index) => (
-                                        <Tab key={`${index}_tab`} onClick={() => switchTab(item, index)}>{item.title}</Tab>
+                                    { navCateListData.map((item, index) => (
+                                        <Tab key={`${index}_tab`} onClick={() => switchTab(item, index)}>{item.name}</Tab>
                                     ))}
                                 </TabList>
                                 <TabPanels>
-                                    { categoryData && categoryData.map((item, index) => (
+                                    { navCateListData.map((item, index) => (
                                         <TabPanel  key={`${index}_tabPanel`} >
                                             {isLoading ? (
                                                 <Spinner />
                                             ) : (
                                                 <Box>
-                                                    <AutoLayout {...config} onItemClick={onUserItemClick} cb={callback} isSwtich={switchStatus} />
+                                                    <AutoLayout {...config} onItemClick={onNavItemClick} cb={callback} isSwtich={switchStatus} />
                                                 </Box>
-                                            )
-                                            }
+                                            )}
                                         </TabPanel>
                                     ))}
                                     
                                 </TabPanels>
                             </Tabs>
-                            {/* <AutoLayout {...config} onItemClick={onUserItemClick} cb={callback} isSwtich={switchStatus} /> */}
                         </Box>
+                    ):null}
+                    
                     
                 </VStack>
             </div>
