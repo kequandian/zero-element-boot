@@ -52,6 +52,8 @@ import Standalone from '@/composition/Standalone/Sandbox';
 
 import TestCRUDList from '@/composition/testCrudList';
 
+import TestDownload from '@/pages/TestDownloadDemo'
+
 export default function Index(props) {
 
   // pre-init. presenter set 
@@ -77,7 +79,7 @@ export default function Index(props) {
   
   // return <AdListDemo  onItemClick={onItemClickHandle}/>
 
-  return <TestCRUDList/>
+  return <TestDownload/>
 
   // history.push('/TestUserListDemo');
   //通过跳转进入单选页面
