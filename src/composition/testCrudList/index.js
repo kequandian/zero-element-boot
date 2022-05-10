@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChakraProvider, Box, VStack, Spinner, Switch, FormControl, FormLabel } from "@chakra-ui/react";
+import { ChakraProvider, Box, VStack, Spinner, Switch, FormControl, FormLabel, Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 
 import { AutoLayout } from '@/components';
 const promiseAjax = require('@/components/utils/request');
@@ -8,6 +8,11 @@ import layout from './layout';
 
 require('./index.less')
 
+const categoryData = [
+    {id:'1', title:'分类1'},
+    {id:'2', title:'分类2'}
+]
+
 export default function Index(props) {
 
     const { } = props;
@@ -15,6 +20,7 @@ export default function Index(props) {
     const [listData, setListData] = useState([])
     const [isLoading, setLoading] = useState(false)
     const [switchStatus, setSwitchStatus] = useState(false)
+    const [tabIndex, setTabIndex] = useState(0)
 
     let api = '/api/c/navigation/navigations';
 
@@ -76,6 +82,16 @@ export default function Index(props) {
         setSwitchStatus(status)
     }
 
+    //tab切换
+    const switchTab = (item, index) => {
+        console.log('item === ', item)
+        if(index != tabIndex){
+            setTabIndex(index)
+            const queryData = {}
+            fetchData(api, queryData)
+        }
+    }
+
     return (
         <ChakraProvider>
 
@@ -90,14 +106,33 @@ export default function Index(props) {
                         </FormControl>
 
                     </Box>
-                    {isLoading ? (
-                        <Spinner />
-                    ) : (
-                        <Box>
-                            <AutoLayout {...config} onItemClick={onUserItemClick} cb={callback} isSwtich={switchStatus} />
+                    
+                    <Box>
+                            <Tabs variant='enclosed' style={{width:'1000px'}} defaultIndex={tabIndex}>
+                                <TabList>
+                                    { categoryData && categoryData.map((item, index) => (
+                                        <Tab key={`${index}_tab`} onClick={() => switchTab(item, index)}>{item.title}</Tab>
+                                    ))}
+                                </TabList>
+                                <TabPanels>
+                                    { categoryData && categoryData.map((item, index) => (
+                                        <TabPanel  key={`${index}_tabPanel`} >
+                                            {isLoading ? (
+                                                <Spinner />
+                                            ) : (
+                                                <Box>
+                                                    <AutoLayout {...config} onItemClick={onUserItemClick} cb={callback} isSwtich={switchStatus} />
+                                                </Box>
+                                            )
+                                            }
+                                        </TabPanel>
+                                    ))}
+                                    
+                                </TabPanels>
+                            </Tabs>
+                            {/* <AutoLayout {...config} onItemClick={onUserItemClick} cb={callback} isSwtich={switchStatus} /> */}
                         </Box>
-                    )
-                    }
+                    
                 </VStack>
             </div>
 

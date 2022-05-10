@@ -44,7 +44,7 @@ import Page from './cart/Page';
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 
-import {Avatar, Title} from '@/presenter/demo';
+import {Avatar, Title, DownloadCompx} from '@/presenter/demo';
 
 NamedLayoutSet({
   Flexbox,
@@ -76,7 +76,8 @@ NamedCartSet({
 
 NamedPresenterSet({
   Avatar,
-  Title
+  Title,
+  DownloadCompx
 })
 
 
