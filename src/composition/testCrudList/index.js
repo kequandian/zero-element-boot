@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ChakraProvider, Box, VStack, Spinner, Switch, FormControl, FormLabel, Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { 
+    ChakraProvider, Box, VStack, Spinner, Switch, FormControl, FormLabel, Tabs, TabList, TabPanels, Tab, TabPanel, 
+    Button, useTab, useMultiStyleConfig, Icon
+} from "@chakra-ui/react";
 
 import { AutoLayout } from '@/components';
 const promiseAjax = require('@/components/utils/request');
@@ -7,11 +10,6 @@ const promiseAjax = require('@/components/utils/request');
 import layout from './layout';
 
 require('./index.less')
-
-const categoryData = [
-    {id:'1', title:'分类1'},
-    {id:'2', title:'分类2'}
-]
 
 export default function Index(props) {
 
@@ -48,17 +46,22 @@ export default function Index(props) {
     //获取分类列表信息
     const fetchNavCategoryData = (api, queryData) => {
         setLoading(true)
+        let newNavCateList = []
         return promiseAjax(api, queryData).then(resp => {
             if (resp && resp.code === 200) {
-                const list = resp.data.records;
-                setNavCateListData(list);
+                newNavCateList = resp.data.records;
+                const addItem = {
+                    id: '-1'
+                }
+                newNavCateList.push(addItem)
+                setNavCateListData(newNavCateList);
                 setLoading(false)
             } else {
                 console.error('获取列表数据失败 ==', resp)
             }
         }).finally(_=>{
             setLoading(false)
-            fetchData(navListApi, {})
+            fetchData(navListApi, {typeId: newNavCateList[0].id})
         });
     }
 
@@ -103,10 +106,31 @@ export default function Index(props) {
         console.log('item === ', item)
         if(index != tabIndex){
             setTabIndex(index)
-            const queryData = {}
+            const queryData = {
+                typeId: item.id
+            }
             fetchData(navListApi, queryData)
         }
     }
+
+    //自定义tab按钮
+    const CustomTab = React.forwardRef((props, ref) => {
+        // 1. Reuse the `useTab` hook
+        const tabProps = useTab({ ...props, ref })
+        const isSelected = !!tabProps['aria-selected']
+    
+        // 2. Hook into the Tabs `size`, `variant`, props
+        const styles = useMultiStyleConfig('Tabs', tabProps)
+    
+        return (
+          <Button __css={styles.tab} {...tabProps}>
+            <Box as='span' mr='1'>
+              {isSelected ? '+' : '+'}
+            </Box>
+            {/* {tabProps.children} */}
+          </Button>
+        )
+      })
 
     return (
         <ChakraProvider>
@@ -127,9 +151,12 @@ export default function Index(props) {
                         <Box>
                             <Tabs variant='enclosed' style={{width:'900px'}} defaultIndex={tabIndex}>
                                 <TabList>
-                                    { navCateListData.map((item, index) => (
-                                        <Tab key={`${index}_tab`} onClick={() => switchTab(item, index)}>{item.name}</Tab>
-                                    ))}
+                                    { navCateListData.map((item, index) => {
+                                        if(item.id === '-1'){
+                                            return <CustomTab key={`${index}_tab`} onClick={() => console.log('添加')}></CustomTab>
+                                        }
+                                        return <Tab key={`${index}_tab`} onClick={() => switchTab(item, index)}>{item.name}</Tab>
+                                    })}
                                 </TabList>
                                 <TabPanels>
                                     { navCateListData.map((item, index) => (
