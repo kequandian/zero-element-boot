@@ -11,7 +11,7 @@ import StatisticalDescription from './StatisticalDescription';
 import TableCompx from './TableCompx';
 import UserAvatar from './UserAvatar';
 import UserName from './UserName';
-import DownloadCompx from './DownloadCompx';
+import DownloadButton from './DownloadButton';
 
 export {
   Default,
@@ -27,5 +27,5 @@ export {
   UserAvatar,
   UserName,
   StatisticalDescription,
-  DownloadCompx
+  DownloadButton
 }
