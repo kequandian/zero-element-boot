@@ -72,13 +72,13 @@ export default function SimCRUDList(props) {
   const Child = React.Children.only(children);
 
   //根据 id 获取数据
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (getAPI && currentId && !isDelOpen) {
-      getData(currentId)
-    }
+  //   if (getAPI && currentId && !isDelOpen) {
+  //     getData(currentId)
+  //   }
 
-  }, [currentId]);
+  // }, [currentId]);
 
   // 检查数据是否有效
   if (!(dataSource && Array.isArray(dataSource))) {
@@ -106,9 +106,10 @@ export default function SimCRUDList(props) {
           })
         }
       } else if (navigation.model && isSwtich) {
+        console.log('item === ', item)
+        getData(item.id)
         setModelTitle('编辑')
         setCurrentId(item.id)
-        setCurrentData(item)
         setIsOpen(true)
       } else if (onItemClick) {
         onItemClick(item)
@@ -173,6 +174,7 @@ export default function SimCRUDList(props) {
       } else {
         console.error("获取数据失败")
       }
+    }).finally(_=>{
       setLoading(false)
     });
   }
