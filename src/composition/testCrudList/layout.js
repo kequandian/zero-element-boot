@@ -2,13 +2,13 @@ module.exports = {
   xname: 'Gridbox',
   props: {
     direction: 'column',
-    justify: 'center row',
+    justify: 'center row'
   },
   presenter: {
     xname: 'Flexbox',
     props: {
       direction: 'column',
-      justify: 'center row',
+      justify: 'center row'
     },
     children: [
       {
@@ -27,14 +27,12 @@ module.exports = {
         gateway: {
           xname: "Binding",
           props: {
-
             binding: {
               name: "titleText"
             }
           }
         }
-      },
-    ]
+      }]
   },
   cart: {
     xname: 'Cart',
@@ -43,32 +41,66 @@ module.exports = {
       margin: '5px',
       linewidth: 0
     }
-
   },
   container: 'SimCRUDList',
   navigation: {
     model: {
       api: {
-        createAPI:'/api/data/services/navigation',
-        getAPI:'/api/data/services/navigation/(id)',
-        updateAPI:'/api/data/services/navigation/(id)',
-        deleteAPI:'/api/data/services/navigation/(id)'
+        createAPI: '/api/pub/data/services/navigation',
+        getAPI: '/api/pub/data/services/navigation/(id)',
+        updateAPI: '/api/pub/data/services/navigation/(id)',
+        deleteAPI: '/api/pub/data/services/navigation/(id)'
       },
-      fields:[
-        {
-          label:'标题', 
-          field:'name', 
-          type:'input',
-          required:{
-            placeholder: '请输入标题',
-          }
+      fields: [{
+        label: '标题',
+        field: 'name',
+        type: 'input',
+        required: {
+          placeholder: '请输入标题'
+        }
+      },
+      {
+        label: '图片',
+        field: 'url',
+        type: 'input',
+        required: {
+          placeholder: '图片链接'
+        }
+      },
+      {
+        label: '描述',
+        field: 'desc',
+        type: 'input',
+        // height: '25px',
+        required: {
+          placeholder: '描述属性'
+        }
+      },
+      {
+        label: '链接',
+        field: 'path',
+        type: 'input',
+        required: {
+          placeholder: '请输入本地链接/第三方以http开头'
+        }
+      },
+      {
+        label: '类别',
+        field: 'typeId',
+        type: 'select-fetch',
+        required: {
+          placeholder: '请类别'
         },
-        // {
-        //   label:'年龄', 
-        //   field:'age', 
-        //   type:'input'
-        // }
+        saveData:{ //额外提交的字段和值
+          typeName: 'name'
+        },
+        options: {
+          api: '/api/pub/data/services/navCategory',
+          label: 'name',
+          value: 'id',
+        }
+      }
       ]
     }
   }
-}
+};

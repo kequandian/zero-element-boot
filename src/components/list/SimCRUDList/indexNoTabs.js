@@ -26,13 +26,13 @@ import {
 
 const promiseAjax = require('@/components/utils/request');
 
-import { InputCompx, SelectFetch } from '@/components/formItemCompx';
+import { InputCompx } from './formItemCompx'
+// import InputCompx from './formItemCompx/InputCompx'
 
 require('./index.less');
 
 const formItemMap = {
-  'input': InputCompx,
-  'select-fetch': SelectFetch
+  input: InputCompx
 }
 
 /**
@@ -49,14 +49,9 @@ const formItemMap = {
  */
 export default function SimCRUDList(props) {
 
-  const { children, layout, 
-    items, dataSource = items, currentTabItem,
-    navigation, onItemClick, cb, isSwtich = true, ...rest } = props;
+  const { children, layout, items, dataSource = items, navigation, onItemClick, cb, isSwtich = true, ...rest } = props;
 
-  const { 
-    api: { createAPI, getAPI, updateAPI, deleteAPI },
-    saveData 
-  } = navigation.model;
+  const { api: { createAPI, getAPI, updateAPI, deleteAPI } } = navigation.model;
 
   const [layoutRef, { getClassName }] = useLayout();
 
@@ -65,8 +60,7 @@ export default function SimCRUDList(props) {
   const [currentId, setCurrentId] = useState('')
   const [currentData, setCurrentData] = useState({})
   const [isLoading, setLoading] = useState(false)
-  const [modelTitle, setModelTitle] = useState('Title');
-  const [formData, setFormData] = useState({})
+  const [modelTitle, setModelTitle] = useState('Title')
 
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -112,6 +106,7 @@ export default function SimCRUDList(props) {
           })
         }
       } else if (navigation.model && isSwtich) {
+        console.log('item === ', item)
         getData(item.id)
         setModelTitle('编辑')
         setCurrentId(item.id)
@@ -186,40 +181,24 @@ export default function SimCRUDList(props) {
 
   //新增数据
   function postData(values) {
-
-    // let rtValue;
-    // let formatApi = `${createAPI}`;
-    // if(createAPI.indexOf('(') != -1){
-    //   rtValue = handleChangeApiParam(createAPI)
-    //   formatApi = createAPI.replace(`(${rtValue})`, currentTabItem[rtValue]);
-    // }
-    // const api = `${formatApi}`;
     const api = `${createAPI}`;
-    const queryData = { ...values, ...formData };
+    const queryData = { ...values };
     promiseAjax(api, queryData, { method: 'POST' }).then(resp => {
       if (resp && resp.code === 200) {
-        toastTips('新增成功')
+        toastTips('修改成功')
         cb(true)
         setIsOpen(false)
       } else {
-        console.error("新增失败 === ", resp)
-        toastTips('新增失败', 'error')
+        console.error("提交失败 === ", resp)
+        toastTips('提交失败', 'error')
       }
     });
   }
 
   //修改数据
   function putData(values, id) {
-    
-    // let rtValue;
-    // let formatApi = `${updateAPI}`;
-    // if(updateAPI.indexOf('(') != -1){
-    //   rtValue = handleChangeApiParam(updateAPI)
-    //   formatApi = updateAPI.replace(`(${rtValue})`, currentTabItem[rtValue]);
-    // }
-    // const api = `${formatApi}`;
     const api = `${updateAPI.replace('(id)', id)}`;
-    const queryData = { ...values, ...formData };
+    const queryData = { ...values };
     promiseAjax(api, queryData, { method: 'PUT' }).then(resp => {
       if (resp && resp.code === 200) {
         toastTips('修改成功')
@@ -258,34 +237,18 @@ export default function SimCRUDList(props) {
     });
   }
 
-  //替换 api 参数值 用小括号包住， 如: /api/(id)
-  // function handleChangeApiParam(value) {
-  //   var rt = /(.+)?(?:\(|（)(.+)(?=\)|）)/.exec(value);
-  //   return rt[2]
-  // }
-  
-  //处理额外提交的字段和值
-  function handleFormData(data){
-    const newFormData = {
-      ...formData,
-      ...data
-    }
-    setFormData(newFormData)
-  }
-
   //根据type 加载表单组件
   function handleFormItem(list) {
     const fieldList = list;
-
     return fieldList.map((item, index) => {
 
-      const { label, field, type  } = item;
+      const { label, field, type } = item;
 
       const C = formItemMap[type]
 
       return <FormControl isInvalid={errors[field]} key={`${index}_i`}>
         <FormLabel htmlFor={field}>{label}</FormLabel>
-        <C {...item} register={register} errors={errors} defaultValue={currentData[field]} onChange={handleFormData}/>
+        <C {...item} register={register} errors={errors} defaultValue={currentData[field]} />
         <FormErrorMessage>
           {errors[field] && errors[field].message}
         </FormErrorMessage>
