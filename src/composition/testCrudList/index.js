@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { 
-    ChakraProvider, Box, VStack, Spinner, Switch, FormControl, FormLabel, Tabs, TabList, TabPanels, Tab, TabPanel, 
-    Button, useTab, useMultiStyleConfig, Icon
+import React, { useState, useEffect, useRef } from 'react';
+import {
+    ChakraProvider, Box, VStack, Spinner, Switch, FormControl, FormLabel, Tabs, TabList, TabPanels, Tab, TabPanel,
+    Button, useTab, useMultiStyleConfig, Image
 } from "@chakra-ui/react";
+import { useForm } from 'react-hook-form';
 
 import { AutoLayout } from '@/components';
+import TabsCompox from './compx/tabsComps';
 const promiseAjax = require('@/components/utils/request');
 
 import layout from './layout';
@@ -21,8 +23,9 @@ export default function Index(props) {
     const [switchStatus, setSwitchStatus] = useState(false)
     const [tabIndex, setTabIndex] = useState(0)
 
-    let navListApi = '/api/data/services/navigation';
-    let navApi = '/api/data/services/navCategory';
+
+    let navListApi = '/api/pub/data/services/navigation';
+    let navApi = '/api/pub/data/services/navCategory';
 
     useEffect(() => {
         console.log('首次加载')
@@ -50,18 +53,19 @@ export default function Index(props) {
         return promiseAjax(api, queryData).then(resp => {
             if (resp && resp.code === 200) {
                 newNavCateList = resp.data.records;
-                const addItem = {
-                    id: '-1'
-                }
-                newNavCateList.push(addItem)
+
+                //-1:新增  -2删除
+                newNavCateList.push({id:'-1'})
+                newNavCateList.push({id:'-2'})
                 setNavCateListData(newNavCateList);
                 setLoading(false)
             } else {
                 console.error('获取列表数据失败 ==', resp)
             }
-        }).finally(_=>{
+        }).finally(_ => {
             setLoading(false)
-            fetchData(navListApi, {typeId: newNavCateList[0].id})
+            setTabIndex(newNavCateList[0].id)
+            fetchData(navListApi, { typeId: newNavCateList[0].id })
         });
     }
 
@@ -76,35 +80,51 @@ export default function Index(props) {
             } else {
                 console.error('获取列表数据失败 ==', resp)
             }
-        }).finally(_=>{
+        }).finally(_ => {
             setLoading(false)
         });
     }
 
+    //列表item点击事件
     const onNavItemClick = (item) => {
         const id = item.id;
         console.log('id = ', id)
         alert(`选择的用户id为: ${id}`)
     }
 
-    //回调函数
+    //列表item回调函数
     const callback = (value) => {
-
-        console.log('item1111111 = ', value)
         if (value) {
-            fetchData(navListApi, {})
+            const queryData = {
+                typeId: tabIndex
+            }
+            fetchData(navListApi, queryData)
         }
     }
 
+    //列表item回调函数
+    const tabscallback = (value) => {
+        if (value) {
+            setNavCateListData([])
+            setListData([])
+            fetchNavCategoryData(navApi, {})
+        }
+    }
+
+    //开启/关闭 编辑按钮
     const handleChange = () => {
         const status = !switchStatus;
         setSwitchStatus(status)
+        if(!status){
+            setNavCateListData([])
+            setListData([])
+            fetchNavCategoryData(navApi, {})
+        }
     }
 
     //tab切换
     const switchTab = (item, index) => {
-        console.log('item === ', item)
-        if(index != tabIndex){
+        if (index != tabIndex) {
             setTabIndex(index)
             const queryData = {
                 typeId: item.id
@@ -118,19 +138,19 @@ export default function Index(props) {
         // 1. Reuse the `useTab` hook
         const tabProps = useTab({ ...props, ref })
         const isSelected = !!tabProps['aria-selected']
-    
+
         // 2. Hook into the Tabs `size`, `variant`, props
         const styles = useMultiStyleConfig('Tabs', tabProps)
-    
+
         return (
-          <Button __css={styles.tab} {...tabProps}>
-            <Box as='span' mr='1'>
-              {isSelected ? '+' : '+'}
-            </Box>
-            {/* {tabProps.children} */}
-          </Button>
+            <Button __css={styles.tab} {...tabProps}>
+                <Box as='span' mr='1' display='flex' alignItems='center'>
+                    {isSelected ? <Image src={pluOn} /> : <Image src={pluOff} />}
+                </Box>
+                {/* {tabProps.children} */}
+            </Button>
         )
-      })
+    })
 
     return (
         <ChakraProvider>
@@ -146,21 +166,21 @@ export default function Index(props) {
                         </FormControl>
 
                     </Box>
-                    
-                    { navCateListData && navCateListData.length > 0 ? (
-                        <Box>
-                            <Tabs variant='enclosed' style={{width:'900px'}} defaultIndex={tabIndex}>
+
+                    <Box>
+                        {/* {navCateListData && navCateListData.length > 0 ? (
+                            <Tabs variant='enclosed' style={{ width: '900px' }} defaultIndex={tabIndex}>
                                 <TabList>
-                                    { navCateListData.map((item, index) => {
-                                        if(item.id === '-1'){
-                                            return <CustomTab key={`${index}_tab`} onClick={() => console.log('添加')}></CustomTab>
+                                    {navCateListData.map((item, index) => {
+                                        if (item.id === '-1' && switchStatus) {
+                                            return <CustomTab key={`${index}_tab`} onClick={() => addNavItem()}></CustomTab>
                                         }
                                         return <Tab key={`${index}_tab`} onClick={() => switchTab(item, index)}>{item.name}</Tab>
                                     })}
                                 </TabList>
                                 <TabPanels>
-                                    { navCateListData.map((item, index) => (
-                                        <TabPanel  key={`${index}_tabPanel`} >
+                                    {navCateListData.map((item, index) => (
+                                        <TabPanel key={`${index}_tabPanel`} >
                                             {isLoading ? (
                                                 <Spinner />
                                             ) : (
@@ -170,13 +190,29 @@ export default function Index(props) {
                                             )}
                                         </TabPanel>
                                     ))}
-                                    
+
                                 </TabPanels>
                             </Tabs>
-                        </Box>
-                    ):null}
-                    
-                    
+                        ) : null} */}
+
+                        {navCateListData && navCateListData.length > 0 ? (
+                            <>
+                                <TabsCompox items={navCateListData} onSwitchTab={switchTab} isSwtich={switchStatus} cb={tabscallback}/>
+                                
+                                <div style={{marginTop:'20px'}}>
+                                    {isLoading ? (
+                                        <Spinner />
+                                    ) : (
+                                        <Box>
+                                            <AutoLayout {...config} onItemClick={onNavItemClick} cb={callback} isSwtich={switchStatus} />
+                                        </Box>
+                                    )}
+                                </div>
+                            </>
+                        ) : null}
+
+                    </Box>
+
                 </VStack>
             </div>
 
