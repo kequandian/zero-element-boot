@@ -134,23 +134,23 @@ export default function Index(props) {
     }
 
     //自定义tab按钮
-    const CustomTab = React.forwardRef((props, ref) => {
-        // 1. Reuse the `useTab` hook
-        const tabProps = useTab({ ...props, ref })
-        const isSelected = !!tabProps['aria-selected']
+    // const CustomTab = React.forwardRef((props, ref) => {
+    //     // 1. Reuse the `useTab` hook
+    //     const tabProps = useTab({ ...props, ref })
+    //     const isSelected = !!tabProps['aria-selected']
 
-        // 2. Hook into the Tabs `size`, `variant`, props
-        const styles = useMultiStyleConfig('Tabs', tabProps)
+    //     // 2. Hook into the Tabs `size`, `variant`, props
+    //     const styles = useMultiStyleConfig('Tabs', tabProps)
 
-        return (
-            <Button __css={styles.tab} {...tabProps}>
-                <Box as='span' mr='1' display='flex' alignItems='center'>
-                    {isSelected ? <Image src={pluOn} /> : <Image src={pluOff} />}
-                </Box>
-                {/* {tabProps.children} */}
-            </Button>
-        )
-    })
+    //     return (
+    //         <Button __css={styles.tab} {...tabProps}>
+    //             <Box as='span' mr='1' display='flex' alignItems='center'>
+    //                 {isSelected ? <Image src={pluOn} /> : <Image src={pluOff} />}
+    //             </Box>
+    //             {/* {tabProps.children} */}
+    //         </Button>
+    //     )
+    // })
 
     return (
         <ChakraProvider>
