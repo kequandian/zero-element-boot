@@ -3,6 +3,7 @@ import { setEndpoint, setToken } from '@/components/config/common';
 // import { set as NamedCartSet } from '@/config/NamedCartConfig';
 import { set as NamedIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
+import { set as FormItemTypeSet } from '@/components/config/formItemTypeConfig';
 
 // //cart
 // import Cart from '@/components/cart/Cart';
@@ -23,6 +24,8 @@ import {Avatar, Title} from '@/presenter/demo';
 
 import PregressBody from '@/composition/StatisticsContainer/ProgressList/PregressBody';
 import JarItem from '@/composition/Standalone/JarItem';
+
+import { InputCompx, SelectFetch } from '@/components/formItemType';
 
 // NamedCartSet({
 //   Cart
@@ -52,5 +55,11 @@ NamedPresenterSet({
 
   PregressBody,
   JarItem
+})
+
+//注入表单组件
+FormItemTypeSet({
+  "input": InputCompx, 
+  "select-fetch": SelectFetch
 })
 

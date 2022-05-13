@@ -24,12 +24,7 @@ import pluOff from '../icons/plus-off.png';
 import minusOn from '../icons/minus-on.png';
 import minusOff from '../icons/minus-off.png';
 
-import { InputCompx, SelectFetch } from '@/components/formItemCompx';
-
-const formItemMap = {
-    'input': InputCompx,
-    'select-fetch': SelectFetch
-}
+const formItemTypeMap = require('@/components/config/formItemTypeConfig').get();
 
 export default function Index(props) {
 
@@ -244,7 +239,7 @@ export default function Index(props) {
 
             const { label, field, type } = item;
 
-            const C = formItemMap[type]
+            const C = formItemTypeMap[type]
 
             return <FormControl isInvalid={errors[field]} key={`${index}_i`}>
                 <FormLabel htmlFor={field}>{label}</FormLabel>

@@ -25,15 +25,9 @@ import {
 } from "@chakra-ui/react";
 
 const promiseAjax = require('@/components/utils/request');
-
-import { InputCompx, SelectFetch } from '@/components/formItemCompx';
+const formItemTypeMap = require('@/components/config/formItemTypeConfig').get();
 
 require('./index.less');
-
-const formItemMap = {
-  'input': InputCompx,
-  'select-fetch': SelectFetch
-}
 
 /**
  * 列表属性{template}包括 [布局, Cart, 分隔线, 数据转换 [,子组件] ]
@@ -281,7 +275,7 @@ export default function SimCRUDList(props) {
 
       const { label, field, type  } = item;
 
-      const C = formItemMap[type]
+      const C = formItemTypeMap[type]
 
       return <FormControl isInvalid={errors[field]} key={`${index}_i`}>
         <FormLabel htmlFor={field}>{label}</FormLabel>
