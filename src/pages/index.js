@@ -52,7 +52,9 @@ import Standalone from '@/composition/Standalone/Sandbox';
 
 import TestCRUDList from '@/composition/testCrudList';
 
-import TestDownload from '@/pages/TestDownloadDemo'
+import TestDownload from '@/pages/TestDownloadDemo';
+
+import TestRowIcons from '@/composition/testRowIcons/Sandbox';
 
 export default function Index(props) {
 
@@ -79,7 +81,6 @@ export default function Index(props) {
   
   // return <AdListDemo  onItemClick={onItemClickHandle}/>
 
-  return <TestCRUDList/>
 
   // history.push('/TestUserListDemo');
   //通过跳转进入单选页面
@@ -87,7 +88,6 @@ export default function Index(props) {
   // history.push('/CheckboxPageDemo');
   // return <div>首页</div>
 
-  
   // const data = {
   //   avatar: 'https://media.geeksforgeeks.org/wp-content/uploads/20200403151026/adblur_gfg.png',
   //   account: 'inspector',
@@ -111,4 +111,7 @@ export default function Index(props) {
   
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
   //test end
+
+  return <TestRowIcons/>
+
 }
