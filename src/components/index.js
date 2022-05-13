@@ -16,6 +16,7 @@ import APIContainer from './container/APIContainer';
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
 import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
+import { set as FormItemTypeSet } from '@/components/config/formItemTypeConfig';
 
 //layout
 import Flexbox from '@/components/layout/Flexbox';
@@ -45,6 +46,7 @@ import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 
 import {Avatar, Title, DownloadButton} from '@/presenter/demo';
+import { InputCompx, SelectFetch } from '@/components/formItemType';
 
 NamedLayoutSet({
   Flexbox,
@@ -78,6 +80,11 @@ NamedPresenterSet({
   Avatar,
   Title,
   DownloadButton
+})
+
+FormItemTypeSet({
+  "input": InputCompx, 
+  "select-fetch": SelectFetch
 })
 
 
