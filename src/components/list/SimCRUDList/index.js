@@ -150,8 +150,6 @@ export default function SimCRUDList(props) {
 
   function validateData(values) {
 
-    console.log('values === ', values)
-    return 
     return new Promise((resolve) => {
       setTimeout(() => {
         if (currentId) {
