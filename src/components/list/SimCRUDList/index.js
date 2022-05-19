@@ -6,7 +6,6 @@ import useLayout from '@/components/hooks/useLayout';
 // import ContainerContext from '@/components/AutoX/ContainerContext';
 
 import {
-  ButtonGroup,
   Button,
   Modal,
   ModalOverlay,
@@ -15,7 +14,6 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Input, // 文本框
   Stack, // 布局组件 设置子元素坚决
   FormControl, // 未表单元素添加动态效果 如校验 禁用等
   FormLabel, // label
@@ -273,11 +271,11 @@ export default function SimCRUDList(props) {
 
     return fieldList.map((item, index) => {
 
-      const { label, field, type  } = item;
+      const { label, field, type, rules = { isRequired:false }  } = item;
 
       const C = formItemTypeMap[type]
 
-      return <FormControl isInvalid={errors[field]} key={`${index}_i`}>
+      return <FormControl isInvalid={rules.isRequired && errors[field]} key={`${index}_i`}>
         <FormLabel htmlFor={field}>{label}</FormLabel>
         <C {...item} register={register} errors={errors} defaultValue={currentData[field]} onChange={handleFormData}/>
         <FormErrorMessage>

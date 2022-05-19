@@ -64,8 +64,10 @@ export default function Index(props) {
             }
         }).finally(_ => {
             setLoading(false)
-            setTabIndex(newNavCateList[0].id)
-            fetchData(navListApi, { typeId: newNavCateList[0].id })
+            if(newNavCateList.length > 0){
+                setTabIndex(newNavCateList[0].id)
+                fetchData(navListApi, { typeId: newNavCateList[0].id })
+            }
         });
     }
 
@@ -155,7 +157,7 @@ export default function Index(props) {
     return (
         <ChakraProvider>
 
-            <div style={{ maxWidth: '600px' }}>
+            <div style={{ maxWidth: '800px' }}>
                 <VStack align='stretch' spacing='-2'>
                     <Box style={{ margin: '10px 10px 30px 10px', paddingLeft: '8px' }}>
                         <FormControl display='flex' alignItems='center'>
