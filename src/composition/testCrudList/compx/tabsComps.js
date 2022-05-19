@@ -241,7 +241,7 @@ export default function Index(props) {
 
             const C = formItemTypeMap[type]
 
-            return <FormControl isInvalid={rules.isRequired && errors[field]} key={`${index}_i`}>
+            return <FormControl isRequired={rules.isRequired} isInvalid={rules.isRequired && rules.isRequired && errors[field]} key={`${index}_i`}>
                 <FormLabel htmlFor={field}>{label}</FormLabel>
                 <C {...item} register={register} errors={errors} defaultValue={currentData[field]} onChange={handleFormData} />
                 <FormErrorMessage>
@@ -337,7 +337,7 @@ export default function Index(props) {
                         {isLoading ? (
                             <Spinner />
                         ) : (
-                            <form onSubmit={handleSubmit(validateData)}>
+                            <form onSubmit={handleSubmit(validateData)} noValidate>
                                 <Stack spacing="2">
                                     {
                                         handleFormItem(tabFormConfig.fields)

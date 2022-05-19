@@ -5,7 +5,7 @@ const promiseAjax = require('@/components/utils/request');
 
 export default function SelectFetch(props) {
 
-    const { field, required, register, defaultValue, options, saveData, onChange, props: optProps } = props;
+    const { field, register, defaultValue, options, saveData, onChange, props: optProps, rules } = props;
     const { api: optionAPI, label, value } = options;
 
     const [data, setData] = useState('')
@@ -55,7 +55,7 @@ export default function SelectFetch(props) {
                 Object.keys(saveData).map(key => {
                     formatData[key] = currentSelected[saveData[key]]
                 })
-                console.log(' formatData == ', formatData)
+                // console.log(' formatData == ', formatData)
                 onChange(formatData)
             }
         }
@@ -67,10 +67,11 @@ export default function SelectFetch(props) {
                 <Select bgColor="gray.50" placeholder={optProps.placeholder ? optProps.placeholder : `请选择`} id={field}
                     value={selectedValue || defaultValue}
                     {...register(field,
-                        optProps ? {
+                        rules && rules.isRequired && optProps ? {
                             required: optProps.placeholder ? optProps.placeholder : `请选择`
                         } : {}
                     )}
+                    autoFocus
                     onChange={selectedChange}
                 >
                     {data && data.length > 0 && data.map((item, index) => (

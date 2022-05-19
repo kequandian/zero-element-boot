@@ -35,6 +35,7 @@ require('./index.less');
  * @param {array}} items,dataSource
  * 
  * @param { path: 跳转页面, model: 弹出模态框 } navigation 
+ * @param { delComfirmTips: 是否显示删除确认提示框 } model 
  * @param { 回调方法 } cb 
  * @param { 切换CRUD开关 } isSwtich
  * 
@@ -46,6 +47,7 @@ export default function SimCRUDList(props) {
     navigation, onItemClick, cb, isSwtich = true, ...rest } = props;
 
   const { 
+    delComfirmTips,
     api: { createAPI, getAPI, updateAPI, deleteAPI },
     saveData 
   } = navigation.model;
@@ -148,6 +150,8 @@ export default function SimCRUDList(props) {
 
   function validateData(values) {
 
+    console.log('values === ', values)
+    return 
     return new Promise((resolve) => {
       setTimeout(() => {
         if (currentId) {
@@ -228,7 +232,11 @@ export default function SimCRUDList(props) {
   function showDelModel(item) {
     if (deleteAPI && item && item.id) {
       setCurrentId(item.id)
-      setIsDelOpen(true)
+      if(delComfirmTips){
+        setIsDelOpen(true)
+      }else{
+        delData({}, item.id)
+      }
     } else {
       console.log('未设置 deleteAPI 或 item 数据异常')
     }
@@ -275,7 +283,7 @@ export default function SimCRUDList(props) {
 
       const C = formItemTypeMap[type]
 
-      return <FormControl isInvalid={rules.isRequired && errors[field]} key={`${index}_i`}>
+      return <FormControl isRequired={rules.isRequired} isInvalid={rules.isRequired && errors[field]} key={`${index}_i`}>
         <FormLabel htmlFor={field}>{label}</FormLabel>
         <C {...item} register={register} errors={errors} defaultValue={currentData[field]} onChange={handleFormData}/>
         <FormErrorMessage>
@@ -374,7 +382,7 @@ export default function SimCRUDList(props) {
           {isLoading ? (
             <Spinner />
           ) : (
-            <form onSubmit={handleSubmit(validateData)}>
+            <form onSubmit={handleSubmit(validateData)} noValidate>
               <Stack spacing="2">
                 {
                   handleFormItem(navigation.model.fields)

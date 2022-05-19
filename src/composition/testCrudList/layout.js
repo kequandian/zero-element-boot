@@ -45,6 +45,7 @@ module.exports = {
   container: 'SimCRUDList',
   navigation: {
     model: {
+      delComfirmTips: true,
       api: {
         createAPI: '/api/pub/data/services/navigation',
         getAPI: '/api/pub/data/services/navigation/(id)',
