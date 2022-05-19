@@ -33,7 +33,7 @@ import { InputCompx, SelectFetch } from '@/components/formItemType';
 
 //开发模式设置endpoint, token
 if(process.env.NODE_ENV == 'development'){
-  // setEndpoint('http://app1.console.smallsaas.cn:8001');
+  setEndpoint('http://app1.console.smallsaas.cn:8001');
   // setToken('')
 }
 

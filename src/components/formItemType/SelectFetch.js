@@ -5,7 +5,7 @@ const promiseAjax = require('@/components/utils/request');
 
 export default function SelectFetch(props) {
 
-    const { field, required, register, defaultValue, options, saveData, onChange } = props;
+    const { field, required, register, defaultValue, options, saveData, onChange, props: optProps } = props;
     const { api: optionAPI, label, value } = options;
 
     const [data, setData] = useState('')
@@ -64,11 +64,11 @@ export default function SelectFetch(props) {
     return (
         <>
             {loading ? <Spinner /> : (
-                <Select bgColor="gray.50" placeholder={required.placeholder ? required.placeholder : `请选择`} id={field}
+                <Select bgColor="gray.50" placeholder={optProps.placeholder ? optProps.placeholder : `请选择`} id={field}
                     value={selectedValue || defaultValue}
                     {...register(field,
-                        required ? {
-                            required: required.placeholder ? required.placeholder : `请选择`
+                        optProps ? {
+                            required: optProps.placeholder ? optProps.placeholder : `请选择`
                         } : {}
                     )}
                     onChange={selectedChange}

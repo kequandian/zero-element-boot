@@ -9,16 +9,22 @@ module.exports = {
         label: '类别名',
         field: 'name',
         type: 'input',
-        required: {
-          placeholder: '请输入类别名'
+        rules: {
+          isRequired: true
+        },
+        props:{
+          placeholder: '请输入类别名',
         }
       },
       {
         label: '描述',
         field: 'desc',
         type: 'input',
-        required: {
-          placeholder: '描述属性'
+        rules: {
+          isRequired: false
+        },
+        props:{
+          placeholder: '描述属性',
         }
       }
       ]

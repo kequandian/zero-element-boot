@@ -55,32 +55,32 @@ module.exports = {
         label: '标题',
         field: 'name',
         type: 'input',
-        required: {
-          placeholder: '请输入标题'
+        rules: {
+          isRequired: true
+        },
+        props:{
+          placeholder: '请输入标题',
         }
       },
       {
         label: '图片',
         field: 'url',
         type: 'input',
-        required: {
-          placeholder: '图片链接'
-        }
-      },
-      {
-        label: '描述',
-        field: 'desc',
-        type: 'input',
-        // height: '25px',
-        required: {
-          placeholder: '描述属性'
+        rules: {
+          isRequired: true
+        },
+        props:{
+          placeholder: '请输入图片',
         }
       },
       {
         label: '链接',
         field: 'path',
         type: 'input',
-        required: {
+        rules: {
+          isRequired: true
+        },
+        props:{
           placeholder: '请输入本地链接/第三方以http开头'
         }
       },
@@ -88,7 +88,10 @@ module.exports = {
         label: '类别',
         field: 'typeId',
         type: 'select-fetch',
-        required: {
+        rules: {
+          isRequired: true
+        },
+        props: {
           placeholder: '请类别'
         },
         saveData:{ //额外提交的字段和值
@@ -99,7 +102,15 @@ module.exports = {
           label: 'name',
           value: 'id',
         }
-      }
+      },
+      {
+        label: '描述',
+        field: 'desc',
+        type: 'input',
+        props: {
+          placeholder: '描述属性'
+        }
+      },
       ]
     }
   }

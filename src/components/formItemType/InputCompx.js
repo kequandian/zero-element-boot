@@ -6,13 +6,13 @@ import {
 
 export default function InputCompx(props) {
 
-    const { field, required, register, defaultValue } = props;
+    const { field, register, defaultValue, props: optProps } = props;
 
     
-    return <Input bgColor="gray.50" placeholder={required.placeholder ? required.placeholder : `请输入`} id={field} defaultValue={defaultValue}
+    return <Input bgColor="gray.50" placeholder={optProps.placeholder ? optProps.placeholder : `请输入`} id={field} defaultValue={defaultValue}
         {...register(field,
-            required ? {
-                required: required.placeholder ? required.placeholder : `请输入`
+            optProps ? {
+                required: optProps.placeholder ? optProps.placeholder : `请输入`
             } : {}
         )}
     />
