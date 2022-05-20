@@ -1,8 +1,7 @@
 module.exports = {
   xname: 'Gridbox',
   props: {
-    direction: 'column',
-    justify: 'center row'
+    columns: 4 //列数
   },
   presenter: {
     xname: 'Flexbox',
