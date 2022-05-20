@@ -1,7 +1,7 @@
 const { useEffect, useState } = require('react');
 const promiseAjax = require('@/components/utils/request');
 
-module.exports = function useTokenRequest({ api, bindFiles, requestData = {}, accountToken = '' }, callBack) {
+module.exports = function useTokenRequest({ api, bindFiles, requestData = {}}, callBack) {
 
     const [data, setRespData] = useState([]);
 
@@ -15,9 +15,7 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}, ac
 
         let reqData = requestData;
 
-        const options = {
-            token: accountToken,
-        }
+        const options = {}
 
         if (postData) {
             reqData = postData;
@@ -25,10 +23,6 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}, ac
         }
 
         if (api) {
-
-            //if (useId) {
-                //reqData.token = accountToken;
-            //}
 
             query(mApi, reqData, options)
 
