@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 require('./index.less');
+
+/**
+ * @param { 高度 } height 
+ * @param { 显示长度, 小数点传值 } percentageNum 
+ * @param { 显示的文字 } progressName 
+ * @param { 进度条背景色 } bgColor 
+ * 
+ */
  
 export default class Progress extends Component {
   static contextTypes = {
