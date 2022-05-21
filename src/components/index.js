@@ -45,7 +45,8 @@ import Page from './cart/Page';
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 
-import {Avatar, Title, DownloadButton} from '@/presenter/demo';
+import {Avatar, DownloadButton} from '@/components/presenter';
+import {Title, Subtitle} from '@/presenter/demo';
 import { InputCompx, SelectFetch } from '@/components/formItemType';
 
 NamedLayoutSet({
@@ -79,6 +80,7 @@ NamedCartSet({
 NamedPresenterSet({
   Avatar,
   Title,
+  Subtitle,
   DownloadButton
 })
 

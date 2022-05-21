@@ -2,7 +2,8 @@ import * as React from 'react';
 import {ChakraProvider} from "@chakra-ui/react"
 
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
-import {Avatar, Title, Subtitle} from '@/presenter/demo'
+import {Avatar} from '@/components/presenter'
+import {Title, Subtitle} from '@/presenter/demo'
 
 
 // TestChakraUI

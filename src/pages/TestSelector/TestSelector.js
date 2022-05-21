@@ -1,5 +1,5 @@
 import React from 'react';
-import {Clear, Butter} from '@/components/presenter/default'
+import {Clear, Butter} from '@/components/presenter'
 import DefaultHoverIndicator from '@/components/indicator/DefaultHoverIndicator'
 import Selector from '@/components/selector/Selector'
 

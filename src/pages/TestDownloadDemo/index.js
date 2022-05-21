@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChakraProvider } from "@chakra-ui/react";
 
-import { DownloadButton } from '@/presenter/demo';
+import { DownloadButton } from '@/components/presenter';
 
 
 export default function Index(props) {

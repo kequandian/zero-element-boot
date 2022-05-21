@@ -1,5 +1,4 @@
 import Default from './Default';
-import Avatar from './Avatar';
 import Title from './Title';
 import Subtitle from './Subtitle';
 import ImageAnimation from './ImageAnimation';
@@ -11,11 +10,9 @@ import StatisticalDescription from './StatisticalDescription';
 import TableCompx from './TableCompx';
 import UserAvatar from './UserAvatar';
 import UserName from './UserName';
-import DownloadButton from './DownloadButton';
 
 export {
   Default,
-  Avatar,
   Title,
   Subtitle,
   ImageAnimation,
@@ -27,5 +24,4 @@ export {
   UserAvatar,
   UserName,
   StatisticalDescription,
-  DownloadButton
 }
