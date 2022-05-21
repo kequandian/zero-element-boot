@@ -1,5 +1,5 @@
 import React from 'react';
-import {Butter, Clean, Pink} from '@/components/presenter/default'
+import {Butter, Clean, Pink} from '@/components/presenter'
 import Selector from '@/components/selector/Selector'
 import DefaultHoverIndicator from '@/components/indicator/DefaultHoverIndicator'
 

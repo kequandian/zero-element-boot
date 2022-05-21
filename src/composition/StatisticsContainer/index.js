@@ -3,7 +3,7 @@ import { AutoLayout } from '@/components';
 
 import layout from './layout';
 
-import StatisticsBody from './StatisticsBody';
+// import StatisticsBody from './StatisticsBody';
 
 export default function Index(props) {
 
@@ -30,7 +30,7 @@ export default function Index(props) {
 
     return (
         <AutoLayout {...config} onItemClick={null}>
-            <StatisticsBody />
+            {/* <StatisticsBody /> */}
         </AutoLayout>
     )
 }

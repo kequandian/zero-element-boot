@@ -110,6 +110,6 @@ export default function Index(props) {
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
   //test end
 
-  return <TestCRUDList/>
+  return <StatisticsContainer/>
 
 }

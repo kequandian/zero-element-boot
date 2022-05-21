@@ -1,5 +1,5 @@
 import React from 'react';
-import {Butter, Clean, Pink} from '@/components/presenter/default'
+import {Butter, Clean, Pink} from '@/components/presenter'
 import Flexbox from '@/components/layout/Flexbox'
 import PageCart from '@/components/cart/PageCart';
 
