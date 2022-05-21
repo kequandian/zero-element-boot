@@ -13,8 +13,6 @@ export default forwardRef(function Gridbox(props, ref) {
 
   const { children, gridRowGapSize = '10px', gridColumnGapSize = '10px', columns = 5, direction = '', justify = {}, itemStyle={} } = props;
 
-  console.log('columns == ', columns)
-
   useImperativeHandle(ref, () => ({
     getClassName: () => {
       return `l-Gridbox gridTemplateColumns_${columns}`;
