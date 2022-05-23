@@ -23,7 +23,6 @@ import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/I
 import {Avatar, DownloadButton, ItemPlaceholder} from '@/components/presenter';
 import {Title, Subtitle, StatisticsList, StatisticalDescription} from '@/presenter/demo';
 
-import PregressBody from '@/composition/StatisticsContainer/ProgressList/PregressBody';
 import JarItem from '@/composition/Standalone/JarItem';
 
 import { InputCompx, SelectFetch } from '@/components/formItemType';
@@ -56,7 +55,6 @@ NamedPresenterSet({
   ContentText,
   ContentFinish,
 
-  PregressBody,
   JarItem,
   Subtitle, 
   StatisticsList, 
