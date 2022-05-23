@@ -20,7 +20,7 @@ import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/
 import ContentText from '@/pages/PresenterTestDemo/plugins/TodoList/TodoItem/Content_text'
 import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/ItemIconAction'
 
-import {Avatar} from '@/components/presenter';
+import {Avatar, DownloadButton, ItemPlaceholder} from '@/components/presenter';
 import {Title, Subtitle, StatisticsList, StatisticalDescription} from '@/presenter/demo';
 
 import PregressBody from '@/composition/StatisticsContainer/ProgressList/PregressBody';
@@ -60,7 +60,10 @@ NamedPresenterSet({
   JarItem,
   Subtitle, 
   StatisticsList, 
-  StatisticalDescription
+  StatisticalDescription,
+
+  DownloadButton,
+  ItemPlaceholder
 })
 
 //注入表单组件

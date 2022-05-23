@@ -45,7 +45,7 @@ import Page from './cart/Page';
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 
-import {Avatar, DownloadButton} from '@/components/presenter';
+import {Avatar, DownloadButton, ItemPlaceholder} from '@/components/presenter';
 import {Title, Subtitle} from '@/presenter/demo';
 import { InputCompx, SelectFetch } from '@/components/formItemType';
 
@@ -81,7 +81,8 @@ NamedPresenterSet({
   Avatar,
   Title,
   Subtitle,
-  DownloadButton
+  DownloadButton,
+  ItemPlaceholder
 })
 
 FormItemTypeSet({

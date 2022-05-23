@@ -54,6 +54,8 @@ import TestDownload from '@/pages/TestDownloadDemo';
 import TestRowIcons from '@/composition/testRowIcons/Sandbox';
 import StatisticsContainer from '@/composition/StatisticsContainer/Sandbox';
 
+import ItemPlaceholderDemo from './ItemPlaceholderDemo'
+
 export default function Index(props) {
 
   // pre-init. presenter set 
@@ -110,6 +112,9 @@ export default function Index(props) {
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
   //test end
 
-  return <TableContainer/>
+  const params = {
+    width: '100px'
+  }
+  return <ItemPlaceholderDemo { ...params}/>
 
 }
