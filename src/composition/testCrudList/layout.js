@@ -92,7 +92,7 @@ module.exports = {
           isRequired: true
         },
         props: {
-          placeholder: '请类别'
+          placeholder: '请选择类别'
         },
         saveData:{ //额外提交的字段和值
           typeName: 'name'
@@ -109,6 +109,23 @@ module.exports = {
         type: 'input',
         props: {
           placeholder: '描述属性'
+        }
+      },
+      
+      {
+        label: '复选框',
+        field: 'checkedIds',
+        type: 'checkbox-fetch',
+        rules: {
+          isRequired: true
+        },
+        props: {
+          placeholder: '请选择'
+        },
+        options: {
+          api: '/api/pub/data/services/navCategory',
+          label: 'name',
+          value: 'id',
         }
       },
       ]
