@@ -2,20 +2,19 @@ import React from 'react';
 import { Box, Center } from '@chakra-ui/react'
 import Rectangle from './Rectangle';
 
+/**
+ * 
+ * @param {color} fill 圆、矩形背景色
+ * @param {color} bg 背景色
+ * @param {width} width 宽度
+ * @param {height} height 高度
+ * 
+ * 
+ */
 
 export default function ItemPlaceholder(props) {
 
     const { width = '90px', height = '90px', fill = '#edf0fd', bg = '#ffffff' } = props
-
-    /**
-     * 
-     * @param {color} fill 圆、矩形背景色
-     * @param {color} bg 背景色
-     * @param {width} width 宽度
-     * @param {height} height 高度
-     * 
-     * 
-     */
 
     return (
 
