@@ -28,8 +28,6 @@ const formItemTypeMap = require('@/components/config/formItemTypeConfig').get();
 require('./index.less');
 
 /**
- * 列表属性{template}包括 [布局, Cart, 分隔线, 数据转换 [,子组件] ]
- * 简单列表仅向子组件传递数据源以及 子组件属性
  * @param {*} props 
  * @param {object} layout  布局
  * @param {array}} items,dataSource
@@ -212,6 +210,9 @@ export default function SimCRUDList(props) {
     //   formatApi = updateAPI.replace(`(${rtValue})`, currentTabItem[rtValue]);
     // }
     // const api = `${formatApi}`;
+    console.log('values === ', values)
+    return
+
     const api = `${updateAPI.replace('(id)', id)}`;
     const queryData = { ...values, ...formData };
     promiseAjax(api, queryData, { method: 'PUT' }).then(resp => {

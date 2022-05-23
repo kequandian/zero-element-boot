@@ -53,8 +53,6 @@ import TestCRUDList from '@/composition/testCrudList';
 import TestDownload from '@/pages/TestDownloadDemo';
 import TestRowIcons from '@/composition/testRowIcons/Sandbox';
 
-import ItemPlaceholderDemo from './ItemPlaceholderDemo'
-
 export default function Index(props) {
 
   // pre-init. presenter set 
@@ -69,7 +67,6 @@ export default function Index(props) {
   }
 
 
-  // return <AdItemDemo/>
   // return <AdListDemo onItemClickHandle={onItemClickHandle} />
 
   // return (
@@ -111,9 +108,6 @@ export default function Index(props) {
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
   //test end
 
-  const params = {
-    width: '100px'
-  }
-  return <ItemPlaceholderDemo { ...params}/>
+  return <TestCRUDList/>
 
 }

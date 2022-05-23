@@ -47,7 +47,9 @@ import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 
 import {Avatar, DownloadButton, ItemPlaceholder} from '@/components/presenter';
 import {Title, Subtitle} from '@/presenter/demo';
-import { InputCompx, SelectFetch } from '@/components/formItemType';
+
+// Form 组件
+import { InputCompx, SelectFetch, CheckboxFetch } from '@/components/formItemType';
 
 NamedLayoutSet({
   Flexbox,
@@ -87,7 +89,8 @@ NamedPresenterSet({
 
 FormItemTypeSet({
   "input": InputCompx, 
-  "select-fetch": SelectFetch
+  "select-fetch": SelectFetch,
+  "checkbox-fetch": CheckboxFetch
 })
 
 
