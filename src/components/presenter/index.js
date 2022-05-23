@@ -8,13 +8,18 @@ import Progress from './Progress';
 import Avatar from './Avatar';
 import DownloadButton from './button/DownloadButton';
 
+import ItemPlaceholder from './ItemPlaceholder';
+import Rectangle from './Rectangle';
+
 export {
   Clean,
   Butter, 
   Pink,
   Clear,
+  Rectangle,
 
   Progress,
   Avatar,
-  DownloadButton
+  DownloadButton,
+  ItemPlaceholder
 }
