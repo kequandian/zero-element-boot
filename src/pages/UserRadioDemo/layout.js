@@ -17,6 +17,6 @@ module.exports = {
       padding: '0px'
     }
   },
-  navigation: '/CheckboxPageDemo',
+  // navigation: '/CheckboxPageDemo',
   container: 'SelectionList'
 }

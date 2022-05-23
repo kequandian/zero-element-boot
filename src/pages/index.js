@@ -33,7 +33,6 @@ import AdListDemo from '@/composition/AdList/Sandbox';
 // import PresenterTestDemo from '@/pages/PresenterTestDemo/Sandbox';
 // import CheckboxDemo from '@/pages/CheckboxDemo/Sandbox';
 
-import StatisticsContainer from '@/composition/StatisticsContainer/Sandbox';
 import TableContainer from '@/pages/TableDemo/Sandbox';
 import SelectDemo from '@/pages/SelectDemo/Sandbox';
 import UserCheckboxDemo from '@/pages/UserCheckboxDemo/Sandbox';
@@ -53,6 +52,7 @@ import Standalone from '@/composition/Standalone/Sandbox';
 import TestCRUDList from '@/composition/testCrudList';
 import TestDownload from '@/pages/TestDownloadDemo';
 import TestRowIcons from '@/composition/testRowIcons/Sandbox';
+import StatisticsContainer from '@/composition/StatisticsContainer/Sandbox';
 
 export default function Index(props) {
 
@@ -63,9 +63,9 @@ export default function Index(props) {
   //   Subtitle
   // })
 
-  // function onItemClickHandle (data) {
-  //   console.log('data111111 = ', data)
-  // }
+  function onItemClickHandle (data) {
+    console.log('data111111 = ', data)
+  }
 
 
   // return <AdItemDemo/>
@@ -110,6 +110,6 @@ export default function Index(props) {
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
   //test end
 
-  return <StatisticsContainer/>
+  return <TableContainer/>
 
 }
