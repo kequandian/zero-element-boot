@@ -55,6 +55,7 @@ module.exports = {
         label: '标题',
         field: 'name',
         type: 'input',
+        defaultValue: '123456',
         rules: {
           isRequired: true
         },
@@ -115,7 +116,7 @@ module.exports = {
       {
         label: '复选框',
         field: 'checkedIds',
-        type: 'checkbox-fetch',
+        type: 'checkbox-modal-fetch',
         rules: {
           isRequired: true
         },
@@ -123,9 +124,11 @@ module.exports = {
           placeholder: '请选择'
         },
         options: {
-          api: '/api/pub/data/services/navCategory',
+          modalTitle:'选择字段',
+          api: '/api/crud/api_model/apiTableModel/apiTableModels',
           label: 'name',
           value: 'id',
+          itemField:'fieldModelId'
         }
       },
       ]

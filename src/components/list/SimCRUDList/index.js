@@ -269,6 +269,7 @@ export default function SimCRUDList(props) {
       ...formData,
       ...data
     }
+    console.log('newFormData === ', newFormData)
     setFormData(newFormData)
   }
 
@@ -278,13 +279,13 @@ export default function SimCRUDList(props) {
 
     return fieldList.map((item, index) => {
 
-      const { label, field, type, rules = { isRequired:false }  } = item;
+      const { label, field, type, rules = { isRequired:false }, defaultValue  } = item;
 
       const C = formItemTypeMap[type]
 
       return <FormControl isRequired={rules.isRequired} isInvalid={rules.isRequired && errors[field]} key={`${index}_i`}>
         <FormLabel htmlFor={field}>{label}</FormLabel>
-        <C {...item} register={register} errors={errors} defaultValue={currentData[field]} onChange={handleFormData}/>
+        <C {...item} register={register} errors={errors} defaultValue={currentData[field] || defaultValue} onChange={handleFormData}/>
         <FormErrorMessage>
           {errors[field] && errors[field].message}
         </FormErrorMessage>
@@ -399,10 +400,10 @@ export default function SimCRUDList(props) {
                 </FormErrorMessage>
               </FormControl> */}
                 <Stack direction='row' spacing={4} align='center'>
-                  <Button width='100px' colorScheme='teal' variant='solid' isLoading={isSubmitting} type='submit'>
+                  <Button width='100px' colorScheme='teal' variant='solid' isLoading={isSubmitting} type='submit' size='sm'>
                     保存
                   </Button>
-                  <Button width='100px' colorScheme='teal' variant='outline' onClick={onClose}>取消</Button>
+                  <Button width='100px' colorScheme='teal' variant='outline' onClick={onClose} size='sm'>取消</Button>
                 </Stack>
               </Stack>
             </form>
