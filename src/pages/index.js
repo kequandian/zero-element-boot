@@ -66,18 +66,6 @@ export default function Index(props) {
     console.log('data111111 = ', data)
   }
 
-
-  // return <AdListDemo onItemClickHandle={onItemClickHandle} />
-
-  // return (
-  //     <ChakraSample />
-  // )
-
-  // return <UserRadioDemo onItemClick={onItemClickHandle}/>
-  
-  // return <AdListDemo  onItemClick={onItemClickHandle}/>
-
-
   // history.push('/TestUserListDemo');
   //通过跳转进入单选页面
   // history.push('/RadioModalDemo');

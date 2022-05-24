@@ -49,7 +49,7 @@ import {Avatar, DownloadButton, ItemPlaceholder} from '@/components/presenter';
 import {Title, Subtitle} from '@/presenter/demo';
 
 // Form 组件
-import { InputCompx, SelectFetch, CheckboxFetch } from '@/components/formItemType';
+import { InputCompx, SelectFetch, CheckboxFetch, CheckboxModalFetch } from '@/components/formItemType';
 
 NamedLayoutSet({
   Flexbox,
@@ -90,7 +90,8 @@ NamedPresenterSet({
 FormItemTypeSet({
   "input": InputCompx, 
   "select-fetch": SelectFetch,
-  "checkbox-fetch": CheckboxFetch
+  "checkbox-fetch": CheckboxFetch,
+  "checkbox-modal-fetch": CheckboxModalFetch
 })
 
 
