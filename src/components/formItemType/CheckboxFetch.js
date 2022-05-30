@@ -3,11 +3,9 @@ import { Spinner, CheckboxGroup, Checkbox, SimpleGrid } from "@chakra-ui/react";
 import { useForceUpdate } from '@/components/hooks/lifeCycle';
 const promiseAjax = require('@/components/utils/request');
 
-const ss = [{"fieldModelId":"2"},{"fieldModelId":"4"},{"fieldModelId":"5"}]
-
 export default function CheckboxFetch(props) {
 
-    const { field, register, defaultValue = ss, options, saveData, onChange, props: optProps, rules } = props;
+    const { field, register, defaultValue, options, saveData, onChange, props: optProps, rules } = props;
     const { api: optionAPI, label, value, itemField } = options;
 
     const [ listData, setListData ] = useState([])

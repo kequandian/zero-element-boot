@@ -16,7 +16,8 @@ require('./index.less');
 export default function Cart(props) {
 
   /**
-   * fill         背景
+   * fill         背景色
+   * fillHover    鼠标悬停背景色
    * corner       圆角
    * stroke       边框
    * linewidth    边框线框
@@ -27,7 +28,7 @@ export default function Cart(props) {
    */
 
   const { 
-    children, fill = '#ffffff', corner = '4px', stroke = 'solid', linewidth = '1px', 
+    children, fill='', fillHover='',  corner = '4px', stroke = 'solid', linewidth = '1px', 
     margin = '6px', padding = '10px', shadow = '', lineColor = '#d0cdcd', isOnHover=true } = props;
 
   const [onHover, setOnHover] = useState(false);
@@ -48,13 +49,9 @@ export default function Cart(props) {
 
   let bgColor = `${fill}`;
   if (onHover) {
-    if(fill === '#ffffff'){
-      bgColor = '#EAEAEA80';
-    }else{
-      bgColor = `${fill}80`;
-    }
+    bgColor = `${fillHover}`;
   } else {
-    bgColor = `${fill}ff`;
+    bgColor = `${fill}`;
   }
 
   return React.Children.map(children, child => {

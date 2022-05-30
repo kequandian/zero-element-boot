@@ -8,12 +8,13 @@ require('./index.less');
 
 export default forwardRef(function MyIndicatorSelected(props, ref) {
 
-  const { children, indicate } = props;
+  const { children, indicate, defaultSelectedStyles={} } = props;
 
   const styles = {
     backgroundColor: 'transparent',
     borderColor: '#aab1dc',
-    boxShadow: '0 0px 6px rgba(170, 177, 220, 1)'
+    boxShadow: '0 0px 6px rgba(170, 177, 220, 1)',
+    ...defaultSelectedStyles
   }
   
   useImperativeHandle(ref, () => ({
