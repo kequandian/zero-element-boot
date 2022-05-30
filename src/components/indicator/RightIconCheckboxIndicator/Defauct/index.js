@@ -5,7 +5,7 @@ import React from 'react';
 
 export default function Index(props, ref) {
 
-  const { children, onHover, isSelected, getHoverStyles, getSelectStyles } = props;
+  const { children, onHover, isSelected, getHoverStyles, getSelectStyles, defaultStyles={} } = props;
 
   const styles = {
     position: 'relative',
@@ -23,13 +23,15 @@ export default function Index(props, ref) {
   if(onHover){
     changeStyle = {
       ...styles,
-      ...getHoverStyles(),
+      ...getHoverStyles,
+      ...defaultStyles,
     }
   }
   if(isSelected){
     changeStyle = {
       ...styles,
-      ...getSelectStyles()
+      ...getSelectStyles,
+      ...defaultStyles
     }
   }
 
