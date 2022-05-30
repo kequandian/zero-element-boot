@@ -8,7 +8,7 @@ import { get as DefaultCartSet } from '@/components/config/NamedCartConfig';
 import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 
 //
-import Selector from '@/components/selector/Selector';
+import NamedSelector from '@/components/NamedSelector';
 
 
 /**
@@ -58,9 +58,9 @@ export default function NamedCart({ children, xname, indicator, selector, defaul
             //     })}
             //   </_Cart>
             // </_Indicator>
-            <Selector hoverIndicator={_Indicator} selectedIndicator={_Selector} defaultIndicator={_DefaultIndicator}  {...rest} >
+            <NamedSelector hoverIndicator={_Indicator} selectedIndicator={_Selector} defaultIndicator={_DefaultIndicator}  {...rest} >
               <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} />
-            </Selector>
+            </NamedSelector>
         ) : 
         (
            <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} />
