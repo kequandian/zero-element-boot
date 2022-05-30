@@ -116,7 +116,7 @@ module.exports = {
       {
         label: '复选框',
         field: 'checkedIds',
-        type: 'checkbox-modal-fetch',
+        type: 'checkbox-fetch',
         rules: {
           isRequired: true
         },
@@ -128,7 +128,7 @@ module.exports = {
           api: '/api/crud/api_model/apiTableModel/apiTableModels',
           label: 'name',
           value: 'id',
-          itemField:'fieldModelId'
+          itemField:'fieldModelId', // 数组的 item 承载字段
         }
       },
       ]

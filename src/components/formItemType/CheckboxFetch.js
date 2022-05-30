@@ -1,32 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { Spinner, CheckboxGroup, Checkbox, Stack } from "@chakra-ui/react";
+import { Spinner, CheckboxGroup, Checkbox, SimpleGrid } from "@chakra-ui/react";
 import { useForceUpdate } from '@/components/hooks/lifeCycle';
 const promiseAjax = require('@/components/utils/request');
 
+const ss = [{"fieldModelId":"2"},{"fieldModelId":"4"},{"fieldModelId":"5"}]
+
 export default function CheckboxFetch(props) {
 
-    const { field, register, defaultValue, options, saveData, onChange, props: optProps, rules } = props;
-    const { api: optionAPI, label, value } = options;
+    const { field, register, defaultValue = ss, options, saveData, onChange, props: optProps, rules } = props;
+    const { api: optionAPI, label, value, itemField } = options;
 
-    const [data, setData] = useState('')
+    const [ listData, setListData ] = useState([])
     const [loading, setLoading] = useState(false)
     const [selectedValue, setSelectedValue] = useState('')
 
     const forceUpdate = useForceUpdate()
 
+
     useEffect(_ => {
-        getSelectList()
+        formatDefaultValue()
+        getList()
     }, [])
 
-    //获取下拉框列表
-    function getSelectList() {
+    function formatDefaultValue () {
+        if(defaultValue){
+            const list = []
+            defaultValue.map(item => {
+                list.push(item[itemField])
+            })
+            // console.log('list == ', list)
+            // setSelectedValue(list)
+            if(onChange){
+                handleChange(list)
+            }
+        }
+    }
+
+    //获取复选框数据
+    function getList() {
 
         const api = `${optionAPI}`;
         const queryData = {};
         setLoading(true)
         promiseAjax(api, queryData).then(resp => {
             if (resp && resp.code === 200) {
-                setData(resp.data.records)
+                setListData(resp.data.records)
                 // if(onChange){
                 //     onChange(resp.data.records)
                 // }
@@ -61,6 +79,29 @@ export default function CheckboxFetch(props) {
         }
     }
 
+    const handleChange = (value) => {
+        console.log('e === ', value)
+        const mapList = []
+        if(value && value.length > 0){
+            if(itemField){
+                value.map(item => {
+                    const mapItem = {}
+                    mapItem[itemField] = item
+                    mapList.push(mapItem)
+                })
+            }else{
+                mapList = value
+            }
+            
+        }
+        setSelectedValue(value)
+        if(onChange){
+            const postData = {}
+            postData[field] = mapList
+            onChange(postData)
+        }
+    }
+
 
     // <Select bgColor="gray.50" placeholder={optProps.placeholder ? optProps.placeholder : `请选择`} id={field}
     //     value={selectedValue || defaultValue}
@@ -81,20 +122,19 @@ export default function CheckboxFetch(props) {
         <>
             {loading ? <Spinner /> : (
 
-                <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']} bgColor="gray.50" id={field}
-                    value={selectedValue || defaultValue}
+                <CheckboxGroup colorScheme='green' defaultValue={ selectedValue || defaultValue} bgColor="gray.50" id={field}
                     {...register(field,
                         rules && rules.isRequired && optProps ? {
                             required: optProps.placeholder ? optProps.placeholder : `请选择`
                         } : {}
                     )}
-                    ref={register(field).ref}
+                    onChange={handleChange}
                 >
-                    <Stack spacing={[1, 5]} direction={['column', 'row']}>
-                        <Checkbox value='naruto' ref={register(field).ref}>Naruto</Checkbox>
-                        <Checkbox value='sasuke' ref={register(field).ref}>Sasuke</Checkbox>
-                        <Checkbox value='kakashi' ref={register(field).ref}>kakashi</Checkbox>
-                    </Stack>
+                    <SimpleGrid columns={3} spacingX='20px' spacingY='20px'>
+                        { listData && listData.length > 0 && listData.map((item, index) => (
+                            <Checkbox value={item[value]} key={`${index}_checkbox`} ref={register(field).ref}>{item[label]}</Checkbox>
+                        ))}
+                    </SimpleGrid>
                 </CheckboxGroup>
             )}
         </>

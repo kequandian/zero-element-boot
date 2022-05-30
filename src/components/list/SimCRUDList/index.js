@@ -210,11 +210,10 @@ export default function SimCRUDList(props) {
     //   formatApi = updateAPI.replace(`(${rtValue})`, currentTabItem[rtValue]);
     // }
     // const api = `${formatApi}`;
-    console.log('values === ', values)
-    return
 
     const api = `${updateAPI.replace('(id)', id)}`;
     const queryData = { ...values, ...formData };
+    console.log('queryData === ', queryData)
     promiseAjax(api, queryData, { method: 'PUT' }).then(resp => {
       if (resp && resp.code === 200) {
         toastTips('修改成功')
@@ -269,7 +268,7 @@ export default function SimCRUDList(props) {
       ...formData,
       ...data
     }
-    console.log('newFormData === ', newFormData)
+    // console.log('newFormData === ', JSON.stringify(newFormData))
     setFormData(newFormData)
   }
 
