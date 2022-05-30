@@ -14,7 +14,13 @@ module.exports = {
       linewidth: 0,
       isOnHover: false,
       margin: '0px',
-      padding: '0px'
+      padding: '0px',
+      getHoverStyles:{
+        backgroundColor: 'transparent',
+      },
+      getSelectStyles:{
+        backgroundColor: 'transparent',
+      }
     }
   },
   container: 'SelectCheckboxList'
