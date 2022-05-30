@@ -45,6 +45,13 @@ import Page from './cart/Page';
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 
+import DefaultHoverIndicator from './indicator/DefaultHoverIndicator';
+import MyIndicatorSelect from './indicator/MyIndicatorSelect';
+import MyIndicatorSelected from './indicator/MyIndicatorSelected';
+import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
+import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
+import RightIconCheckboxIndicatorSelected from './indicator/RightIconCheckboxIndicator/Selected';
+
 import {Avatar, DownloadButton, ItemPlaceholder} from '@/components/presenter';
 import {Title, Subtitle} from '@/presenter/demo';
 
@@ -76,7 +83,13 @@ NamedCartSet({
   Round: RoundCart,
   Shape,
   SelectedCartUpperRightIcon,
-  SelectedCartRightIcon
+  SelectedCartRightIcon,
+  DefaultHoverIndicator,
+  MyIndicatorSelect,
+  MyIndicatorSelected,
+  RightIconCheckboxIndicatorDefauct,
+  RightIconCheckboxIndicatorSelect,
+  RightIconCheckboxIndicatorSelected
 })
 
 NamedPresenterSet({
