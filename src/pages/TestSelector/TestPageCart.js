@@ -1,12 +1,12 @@
 import React from 'react';
 import {Butter, Clean, Pink} from '@/components/presenter'
-import Selector from '@/components/selector/Selector'
+import NamedSelector from '@/components/NamedSelector'
 import DefaultHoverIndicator from '@/components/indicator/DefaultHoverIndicator'
 
 export default function TestSelector(props){
     return(
-        <Selector hoverIndicator={DefaultHoverIndicator}>
+        <NamedSelector hoverIndicator={DefaultHoverIndicator}>
             <Butter />
-        </Selector>
+        </NamedSelector>
     )
 }
