@@ -110,15 +110,13 @@ export default function CheckboxFetch(props) {
         }
     }
 
-console.log('selectedData === ', selectedData)
     //处理回显数据
-    const showSelectedData = (data) => {
+    const showSelectedData = (dataList) => {
         const showList = []
-        data.map(item => {
+        dataList.map(item => {
             const i = itemField ? item[itemField] : item
-            showList.push(i+'')
+            showList.push(i)
         })
-        console.log('data == ', data)
         return showList
     }
 

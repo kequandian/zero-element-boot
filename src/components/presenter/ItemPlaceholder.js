@@ -1,7 +1,5 @@
 import React from 'react';
 import { Box, Center } from '@chakra-ui/react'
-import PageCart from '@/components/cart/PageCart';
-// import Cart from 'zero-element-boot/lib/components/cart/Cart';
 import Rectangle from './Rectangle';
 
 
@@ -17,13 +15,10 @@ import Rectangle from './Rectangle';
 
 export default function ItemPlaceholder(props) {
 
-    const { width = '90px', height = '90px', fill = '#edf0fd', bg = '#ffffff' } = props
-
-    // console.log('w,h,b ==', width, height, fill)
+    const { width = '90px', height = '90px', fill = '#edf0fd', bg = '#dadde1' } = props
 
     return (
-        <PageCart backgroundColor='#dadde1' width='800px' height='400px' bg=''>
-
+        <Center w='100%' >
             <Center w='300px' h='140px' bg={bg}>
                 <Rectangle margin='10px' width={width} height={height} fill={fill} corner='50%' />
 
@@ -42,6 +37,6 @@ export default function ItemPlaceholder(props) {
                 {/* </Center> */}
 
             </Center>
-        </PageCart>
+        </Center>
     )
 }
