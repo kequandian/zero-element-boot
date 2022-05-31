@@ -36,8 +36,8 @@ module.exports = {
   cart: {
     xname: 'Cart',
     props: {
-      fill:'#ccc',
-      fillHover:'#FFFBE5',
+      // fill:'#ccc',
+      // fillHover:'#FFFBE5',
       padding: '5px 10px',
       margin: '5px',
       linewidth: 0
@@ -124,6 +124,9 @@ module.exports = {
         },
         props: {
           placeholder: '请选择'
+        },
+        saveData:{ //额外提交的字段和值
+          fieldModelName: 'name'
         },
         options: {
           modalTitle:'选择字段',

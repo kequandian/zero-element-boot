@@ -96,6 +96,16 @@ export default function CheckboxFetch(props) {
         if(onChange){
             const postData = {}
             postData[field] = mapList
+            if(saveData){
+                Object.keys(saveData).map(key => {
+                    listData.map(item =>{
+                        if(item.id == value){
+                            postData[key] = item[saveData[key]]
+                        }
+                    })
+                })
+            }
+            console.log('postData === ', postData)
             onChange(postData)
         }
     }

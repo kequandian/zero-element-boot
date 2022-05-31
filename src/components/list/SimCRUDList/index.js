@@ -214,6 +214,7 @@ export default function SimCRUDList(props) {
     const api = `${updateAPI.replace('(id)', id)}`;
     const queryData = { ...values, ...formData };
     console.log('queryData === ', queryData)
+    return
     promiseAjax(api, queryData, { method: 'PUT' }).then(resp => {
       if (resp && resp.code === 200) {
         toastTips('修改成功')
