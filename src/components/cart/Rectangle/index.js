@@ -1,7 +1,5 @@
 import React, { useImperativeHandle, forwardRef } from 'react';
 
-import Shape from '../Shape'
-
 require('./index.less');
 
 export default forwardRef(function Rectangle(props, ref) {
@@ -44,12 +42,6 @@ export default forwardRef(function Rectangle(props, ref) {
     //   lineWidth,
     //   outline
     // }
-
-    // return (
-    //     <Shape {...config} >
-    //       {child}
-    //     </Shape>
-    // )
   })
 
   // return React.Children.map(children, child => {
