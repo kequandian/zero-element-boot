@@ -40,7 +40,6 @@ import Corner from './cart/Corner';
 import PageCart from './cart/PageCart';
 import Rectangle from './cart/Rectangle';
 import RoundCart from './cart/Round';
-import Shape from './cart/Shape';
 import Page from './cart/Page';
 
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
@@ -86,7 +85,6 @@ NamedCartSet({
   Page,
   Rectangle,
   Round: RoundCart,
-  Shape,
   SelectedCartUpperRightIcon,
   SelectedCartRightIcon,
   DefaultHoverIndicator,
