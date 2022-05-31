@@ -8,7 +8,7 @@ export default function CheckboxFetch(props) {
     const { field, register, defaultValue, options, saveData, onChange, props: optProps, rules } = props;
     const { api: optionAPI, label, value, itemField } = options;
 
-    const [ listData, setListData ] = useState([])
+    const [listData, setListData] = useState([])
     const [loading, setLoading] = useState(false)
     const [selectedValue, setSelectedValue] = useState('')
 
@@ -20,15 +20,15 @@ export default function CheckboxFetch(props) {
         getList()
     }, [])
 
-    function formatDefaultValue () {
-        if(defaultValue){
+    function formatDefaultValue() {
+        if (defaultValue) {
             const list = []
             defaultValue.map(item => {
                 list.push(item[itemField])
             })
             // console.log('list == ', list)
             // setSelectedValue(list)
-            if(onChange){
+            if (onChange) {
                 handleChange(list)
             }
         }
@@ -55,56 +55,37 @@ export default function CheckboxFetch(props) {
         });
     }
 
-    //处理额外提交的字段和值
-    function selectedChange(s) {
-        const id = s.target.value
-        let currentSelected;
-        setSelectedValue(id)
-        data.map(item => {
-            if (item.id === id) {
-                currentSelected = item
-            }
-        })
-        if (onChange) {
-            if (saveData) {
-                const formatData = {}
-                Object.keys(saveData).map(key => {
-                    formatData[key] = currentSelected[saveData[key]]
-                })
-                // console.log(' formatData == ', formatData)
-                onChange(formatData)
-            }
-        }
-    }
+
 
     const handleChange = (value) => {
         console.log('e === ', value)
         const mapList = []
-        if(value && value.length > 0){
-            if(itemField){
+        if (value && value.length > 0) {
+            if (itemField) {
                 value.map(item => {
                     const mapItem = {}
                     mapItem[itemField] = item
+                    if (saveData) {
+                        Object.keys(saveData).map(key => {
+                            listData.map(listItem => {
+                                if (listItem.id == item) {
+                                    mapItem[key] = listItem[saveData[key]]
+                                }
+                            })
+                        })
+                    }
                     mapList.push(mapItem)
                 })
-            }else{
+            } else {
                 mapList = value
             }
-            
+
         }
         setSelectedValue(value)
-        if(onChange){
+        if (onChange) {
             const postData = {}
             postData[field] = mapList
-            if(saveData){
-                Object.keys(saveData).map(key => {
-                    listData.map(item =>{
-                        if(item.id == value){
-                            postData[key] = item[saveData[key]]
-                        }
-                    })
-                })
-            }
+            
             console.log('postData === ', postData)
             onChange(postData)
         }
@@ -130,7 +111,7 @@ export default function CheckboxFetch(props) {
         <>
             {loading ? <Spinner /> : (
 
-                <CheckboxGroup colorScheme='green' defaultValue={ selectedValue || defaultValue} bgColor="gray.50" id={field}
+                <CheckboxGroup colorScheme='green' defaultValue={selectedValue || defaultValue} bgColor="gray.50" id={field}
                     {...register(field,
                         rules && rules.isRequired && optProps ? {
                             required: optProps.placeholder ? optProps.placeholder : `请选择`
@@ -139,7 +120,7 @@ export default function CheckboxFetch(props) {
                     onChange={handleChange}
                 >
                     <SimpleGrid columns={3} spacingX='20px' spacingY='20px'>
-                        { listData && listData.length > 0 && listData.map((item, index) => (
+                        {listData && listData.length > 0 && listData.map((item, index) => (
                             <Checkbox value={item[value]} key={`${index}_checkbox`} ref={register(field).ref}>{item[label]}</Checkbox>
                         ))}
                     </SimpleGrid>
