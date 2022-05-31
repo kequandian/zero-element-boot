@@ -1,6 +1,6 @@
 import { setEndpoint, setToken } from '@/components/config/common';
 
-// import { set as NamedCartSet } from '@/config/NamedCartConfig';
+// import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
 import { set as NamedIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import { set as FormItemTypeSet } from '@/components/config/formItemTypeConfig';
@@ -15,6 +15,10 @@ import RightIconCheckboxSelect from '@/components/indicator/RightIconCheckboxInd
 import RightIconCheckboxSelected from '@/components/indicator/RightIconCheckboxIndicator/Selected';
 import RightIconCheckboxDefauct from '@/components/indicator/RightIconCheckboxIndicator/Defauct';
 
+import RightIconIndicatorDefault from '@/components/indicator/RightIconIndicatorDefault';
+import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
+import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
+
 //presenter
 import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvatar'
 import ContentText from '@/pages/PresenterTestDemo/plugins/TodoList/TodoItem/Content_text'
@@ -28,7 +32,7 @@ import JarItem from '@/composition/Standalone/JarItem';
 import { InputCompx, SelectFetch } from '@/components/formItemType';
 
 // NamedCartSet({
-//   Cart
+
 // })
 
 //开发模式设置endpoint, token
@@ -44,7 +48,11 @@ NamedIndicatorSet({
   MyIndicatorSelected,
   RightIconCheckboxSelect,
   RightIconCheckboxSelected,
-  RightIconCheckboxDefauct
+  RightIconCheckboxDefauct,
+  
+  RightIconIndicatorDefault,
+  RightIconIndicatorHover,
+  RightIconIndicatorSelected
 })
 
 NamedPresenterSet({

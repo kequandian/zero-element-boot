@@ -16,6 +16,7 @@ import APIContainer from './container/APIContainer';
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
 import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
+import { set as NamedIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 import { set as FormItemTypeSet } from '@/components/config/formItemTypeConfig';
 
 //layout
@@ -52,6 +53,10 @@ import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndi
 import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
 import RightIconCheckboxIndicatorSelected from './indicator/RightIconCheckboxIndicator/Selected';
 
+import RightIconIndicatorDefault from '@/components/indicator/RightIconIndicatorDefault';
+import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
+import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
+
 import {Avatar, DownloadButton, ItemPlaceholder} from '@/components/presenter';
 import {Title, Subtitle} from '@/presenter/demo';
 
@@ -87,9 +92,15 @@ NamedCartSet({
   DefaultHoverIndicator,
   MyIndicatorSelect,
   MyIndicatorSelected,
+})
+
+NamedIndicatorSet({
   RightIconCheckboxIndicatorDefauct,
   RightIconCheckboxIndicatorSelect,
-  RightIconCheckboxIndicatorSelected
+  RightIconCheckboxIndicatorSelected,
+  RightIconIndicatorDefault,
+  RightIconIndicatorHover,
+  RightIconIndicatorSelected
 })
 
 NamedPresenterSet({
