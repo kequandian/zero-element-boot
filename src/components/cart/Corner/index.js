@@ -1,7 +1,5 @@
 import React, { useImperativeHandle, forwardRef } from 'react';
 
-import Shape from '../Shape'
-
 require('./index.less');
 
 export default forwardRef(function Corner(props, ref) {
@@ -39,12 +37,6 @@ export default forwardRef(function Corner(props, ref) {
     //   outline
     // }
     
-    // return (
-    //   <Shape {...config} >
-    //     {child}
-    //   </Shape>
-    // )
-
     // return <div style={{ border:`${linewidth} ${outline} ${stroke}`, borderRadius:`${corner}`, backgroundColor:`${fill}` }}>
     //   {child}
     // </div>

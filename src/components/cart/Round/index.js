@@ -1,6 +1,5 @@
 import React, { useImperativeHandle, forwardRef, useRef } from 'react';
 import { useSize } from 'ahooks';
-import Shape from '../Shape'
 require('./index.less');
 
 export default forwardRef(function Round(props, ref) {
@@ -44,16 +43,6 @@ export default forwardRef(function Round(props, ref) {
     //   stroke, 
     //   lineWidth
     // }
-
-    // return (
-    //   <div ref={containerRef}>
-    //     <Shape 
-    //       {...config}
-    //     >
-    //       {child}
-    //     </Shape>
-    //   </div>
-    // )
   })
 })
 
