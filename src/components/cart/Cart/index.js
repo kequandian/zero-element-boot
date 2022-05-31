@@ -5,6 +5,7 @@ require('./index.less');
 /**
  * 
  * @param {color} fill 背景
+ * @param {color} fillHover 悬停背景
  * @param {borderRadius} corner 圆角
  * @param {borderStyle} stroke 边框
  * @param {borderWidth} linewidth 边框线框
@@ -29,7 +30,7 @@ export default function Cart(props) {
 
   const { 
     children, fill='', fillHover='',  corner = '4px', stroke = 'solid', linewidth = '1px', 
-    margin = '6px', padding = '10px', shadow = '', lineColor = '#d0cdcd', isOnHover=true } = props;
+    margin = '6px', padding = '10px', shadow = '', lineColor = '#d0cdcd', isOnHover=false } = props;
 
   const [onHover, setOnHover] = useState(false);
 
