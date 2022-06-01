@@ -120,13 +120,14 @@ module.exports = {
         field: 'checkedIds',
         type: 'checkbox-fetch',
         rules: {
-          isRequired: true
+          isRequired: false
         },
         props: {
           placeholder: '请选择'
         },
         saveData:{ //额外提交的字段和值
-          fieldModelName: 'name'
+          fieldName: 'name',
+          fieldModelName: 'modelName'
         },
         options: {
           modalTitle:'选择字段',

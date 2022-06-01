@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import { Spinner, CheckboxGroup, Checkbox, SimpleGrid } from "@chakra-ui/react";
 import { useForceUpdate } from '@/components/hooks/lifeCycle';
 const promiseAjax = require('@/components/utils/request');
 
-export default function CheckboxFetch(props) {
+export default forwardRef(function CheckboxFetch(props) {
 
     const { field, register, defaultValue, options, saveData, onChange, props: optProps, rules } = props;
     const { api: optionAPI, label, value, itemField } = options;
@@ -117,7 +117,7 @@ export default function CheckboxFetch(props) {
                             required: optProps.placeholder ? optProps.placeholder : `请选择`
                         } : {}
                     )}
-                    onChange={handleChange}
+                    onChange={(e) => handleChange(e)}
                 >
                     <SimpleGrid columns={3} spacingX='20px' spacingY='20px'>
                         {listData && listData.length > 0 && listData.map((item, index) => (
@@ -130,4 +130,4 @@ export default function CheckboxFetch(props) {
     )
 
 
-}
+})
