@@ -17,7 +17,7 @@ import NextIndicator from '@/components/indicator/NextIndicator';
  * @param {Boolean} overlay           hoverIndicator之cart组件效果是否叠加
  * @returns 
  */
- function NamedSelector( { children, defaultIndicator, defaultIndicatorProps = {},
+ export default function NamedSelector( { children, defaultIndicator, defaultIndicatorProps = {},
                                     hoverIndicator, hoverIndicatorProps = {}, overlay=false,
                                     selectedIndicator, selectedIndicatorProps={}, isSelected=false, selected=false}) {
 

@@ -11,7 +11,7 @@ import { get as DefaultCartSet } from '@/components/config/NamedCartConfig';
 // indicator 属于 CART, 这里考虑分开管理
 import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 
-import NamedSelector from 'lib/components/NamedSelector';
+import NamedSelector from '@/components/NamedSelector';
 
 
 /**
@@ -65,9 +65,9 @@ export default function NamedCart({ children, xname, props, cart = { xname, prop
             //   </_Cart>
             // </_Indicator>
 
-            <NamedSelector defaultIndicator={_DefaultIndicator} defaultIndicatorProps={...defaultIndicatorProps} 
-                           hoverIndicator={_Indicator}  hoverIndicatorProps = {...indicatorProps}
-                           selectedIndicator={_Selector}  selectedIndicatorProps = {...selectorProps}   {...rest} >
+            <NamedSelector defaultIndicator={_DefaultIndicator} defaultIndicatorProps={defaultIndicatorProps} 
+                           hoverIndicator={_Indicator}  hoverIndicatorProps = {indicatorProps}
+                           selectedIndicator={_Selector}  selectedIndicatorProps = {selectorProps}   {...rest} >
                 <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
             </NamedSelector>
         ) : 
