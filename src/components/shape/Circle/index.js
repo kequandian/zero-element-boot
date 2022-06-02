@@ -14,7 +14,7 @@ import React from 'react';
 export default function Circle(props) {
     const{
          fill='#ffffff',
-         borderWidth,
+         borderWidth='0',
          stroke,
      }=props;
 
@@ -25,7 +25,7 @@ export default function Circle(props) {
               backgroundColor:`${fill}`,
               height:'100%',
               borderRadius: '50%',
-              borderWidth: '2px',
+              borderWidth: `${borderWidth}`,
               borderColor: `${stroke}`,
               borderStyle:'solid'
             }
