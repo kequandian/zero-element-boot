@@ -1,11 +1,17 @@
-import React, { useState, useEffect, forwardRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Spinner, CheckboxGroup, Checkbox, SimpleGrid } from "@chakra-ui/react";
 import { useForceUpdate } from '@/components/hooks/lifeCycle';
 const promiseAjax = require('@/components/utils/request');
 
-export default forwardRef(function CheckboxFetch(props) {
+const ddd = [
+    {fieldModelId: '2', fieldName: '测试测试', fieldModelName: 'aaa'},
+    {fieldModelId: '4', fieldName: '测试测试', fieldModelName: 'bbb'},
+    {fieldModelId: '5', fieldName: '测试测试', fieldModelName: 'bbb'}
+]
 
-    const { field, register, defaultValue, options, saveData, onChange, props: optProps, rules } = props;
+export default function CheckboxFetch(props) {
+
+    const { field, register, defaultValue=ddd, options, saveData, onChange, props: optProps, rules } = props;
     const { api: optionAPI, label, value, itemField } = options;
 
     const [listData, setListData] = useState([])
@@ -118,10 +124,11 @@ export default forwardRef(function CheckboxFetch(props) {
                         } : {}
                     )}
                     onChange={(e) => handleChange(e)}
+                    ref={register(field).ref}
                 >
                     <SimpleGrid columns={3} spacingX='20px' spacingY='20px'>
                         {listData && listData.length > 0 && listData.map((item, index) => (
-                            <Checkbox value={item[value]} key={`${index}_checkbox`} ref={register(field).ref}>{item[label]}</Checkbox>
+                            <Checkbox value={item[value]} key={`${index}_checkbox`} >{item[label]}</Checkbox>
                         ))}
                     </SimpleGrid>
                 </CheckboxGroup>
@@ -130,4 +137,4 @@ export default forwardRef(function CheckboxFetch(props) {
     )
 
 
-})
+}
