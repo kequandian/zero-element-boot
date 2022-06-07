@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, forwardRef } from 'react';
 import { history } from 'umi';
 import { useSize } from 'ahooks';
 import { useForm } from 'react-hook-form';
@@ -38,7 +38,7 @@ require('./index.less');
  * @param { 切换CRUD开关 } isSwtich
  * 
  */
-export default function SimCRUDList(props) {
+export default forwardRef(function SimCRUDList(props) {
 
   const { children, layout, 
     items, dataSource = items, currentTabItem,
@@ -214,7 +214,6 @@ export default function SimCRUDList(props) {
     const api = `${updateAPI.replace('(id)', id)}`;
     const queryData = { ...values, ...formData };
     console.log('queryData === ', queryData)
-    return
     promiseAjax(api, queryData, { method: 'PUT' }).then(resp => {
       if (resp && resp.code === 200) {
         toastTips('修改成功')
@@ -444,7 +443,7 @@ export default function SimCRUDList(props) {
 
 
   </div>
-}
+})
 
 function tips(dataSource) {
   return <div>PlainList 数据无效</div>;
