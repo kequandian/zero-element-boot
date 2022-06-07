@@ -16,23 +16,23 @@ import React from 'react';
 
 
 export default function Rectangle(props) {
-    const {
-        fill = '', color = '#18e1d1', width = '', padding = '', margin = '', height = '', corner = '',
-    } = props;
+    const{
+         fill='',color='#18e1d1',width='',padding='',margin='' ,height='',corner='',
+     }=props;
 
     return (
-        <div style={
+        <div  style={
             {
-                width: `${width}`,
-                padding: `${padding}`,
-                backgroundColor: `${fill}`,
-                margin: `${margin}`,
-                height: `${height}`,
-                borderRadius: `${corner}`,
-
+                width:`${width}`,
+                padding:`${padding}`,
+              backgroundColor:`${fill}`,
+              margin:`${margin}`,
+              height:`${height}`,
+              borderRadius: `${corner}`,
+              
             }
         }>
-
+            
         </div>
     )
 }
