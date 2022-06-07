@@ -11,7 +11,7 @@ import React from 'react';
  */
 
 
-export default function Circle(props) {
+export default function no(props) {
     const{
          fill='#ffffff',
          borderWidth='0',
