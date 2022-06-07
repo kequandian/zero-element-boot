@@ -24,7 +24,7 @@ require('./index.less');
  */
 export default forwardRef(function Flexbox(props, ref) {
 
-  const { children, align = '', direction = '', flexFlow = '', justify = {}, spacing = 0, isLastItem, Seperator, flexWidth = '' } = props;
+  const { children, align = 'start', direction = '', flexFlow = '', justify = {}, spacing = 0, isLastItem, Seperator, flexWidth = '' } = props;
 
   const width100 = align == 'between' || align.indexOf("between") != -1 ? 'width100' : '';
 
