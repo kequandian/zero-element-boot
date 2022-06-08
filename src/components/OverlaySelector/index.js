@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import useLayout from '@/components/hooks/useLayout';
 
 // 无效果，仅传递数据
-import NextIndicator from '@/components/indicator/NextIndicator';
+import NextIndicator from '@/components/NextIndicator';
 
 
 /**
@@ -21,9 +21,12 @@ import NextIndicator from '@/components/indicator/NextIndicator';
                                     selectedIndicator, selectedIndicatorProps={}, isSelected=false, selected=false}) {
 
 
-const [defaultRef, { getDefaultStyles }] = useLayout();
-const [selectRef, { getSelectStyles }] = useLayout();
-const [hoverRef, { getHoverStyles }] = useLayout();
+/**
+ * 用于返回React内原生组件的属性集合, 通过ref引用
+ */
+// const [defaultRef, { getClassName }] = useLayout();
+// const [selectRef, { getSelectStyles }] = useLayout();
+// const [hoverRef, { getHoverStyles }] = useLayout();
 
 const [onHover, setOnHover] = useState(false);
 const [onSelected, setSelected] = useState(false);
@@ -49,20 +52,17 @@ const SelectedIndicator = (selectedIndicator===undefined || _isSelected == false
 // overlay hover indicator with default indicator
 const HoverIndicator =  ( hoverIndicator===undefined || onHover==false || _isSelected ) ? NextIndicator : hoverIndicator
 
-
 return React.Children.map(children, child => {
   return (
     <div style={{flex: 1}} onClick={()=>toggleSelected()} onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}>
-
-      <HoverIndicator ref={hoverRef} getHoverStyles={getHoverStyles} {...hoverIndicatorProps}>
+      <HoverIndicator {...hoverIndicatorProps}>
           {/* DefaultIndicator/SelectedIndicator 二选一 */}
-          <DefaultIndicator ref={defaultRef} getDefaultStyles={getDefaultStyles} {...defaultIndicatorProps}>
-          <SelectedIndicator ref={selectRef} getSelectStyles={getSelectStyles} {...selectedIndicatorProps}>
+          <DefaultIndicator {...defaultIndicatorProps}>
+          <SelectedIndicator {...selectedIndicatorProps}>
              {child}
           </SelectedIndicator>
           </DefaultIndicator>
       </HoverIndicator>
-
     </div>
     )
   })
