@@ -1,7 +1,7 @@
 import React from 'react';
 
 import checkOn from '@/assets/check_on.svg';
-require('./index.less');
+require('../index.less');
 
 
 export default function Index(props) {
