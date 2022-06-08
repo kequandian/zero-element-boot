@@ -53,7 +53,7 @@ export default function SelectCheckboxList(props) {
     ref={containerRef}
   >
     <ContainerContext.Provider value={size}>
-        {checkedList.map((item, i) => {
+        {checkedList && checkedList.length && checkedList.map((item, i) => {
           return <div key={i} onClick={() => onSelected(item)} >
           {
             React.isValidElement(Child) ?
@@ -61,7 +61,7 @@ export default function SelectCheckboxList(props) {
                 ...item,
                 ...layout,
                 layout:layout,
-                cart:cart,
+                // cart:cart,
                 key: i,
                 ref: layoutRef,
                 // onItemClick: onItemClick,
@@ -69,7 +69,7 @@ export default function SelectCheckboxList(props) {
                 // checkedItems: checkedItems,
                 isSelected: item.checked
             })
-            : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef} onItemClick={onItemClick} checkedItems={checkedItems} isSelected={item.checked}
+            : <Child key={i} {...item } {...layout} layout={layout} ref={layoutRef} isSelected={item.checked}
             />
           }
         </div>

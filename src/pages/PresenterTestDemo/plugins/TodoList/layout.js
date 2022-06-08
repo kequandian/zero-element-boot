@@ -24,5 +24,5 @@ module.exports={
             corner:''
         }
     },
-    container:"SelectedList"
+    container:"SelectionList"
 }
