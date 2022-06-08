@@ -26,7 +26,7 @@ export default function Index(props) {
       props: {
         columns: 2
       },
-      container: 'SelectCheckboxList'
+      container: 'MultiSelectList'
     }
 
   };

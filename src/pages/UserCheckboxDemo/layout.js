@@ -23,5 +23,5 @@ module.exports = {
       }
     }
   },
-  container: 'SelectCheckboxList'
+  container: 'MultiSelectList'
 }

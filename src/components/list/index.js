@@ -1,9 +1,9 @@
 import AutoLoadList from './AutoLoadList';
 import LoadMoreList from './LoadMoreList';
 import PlainList from './PlainList';
-import SelectCheckboxList from './SelectCheckboxList';
+import MultiSelectList from './MultiSelectList';
 import LoadingList from './LoadingList';
-import SelectionList from './SelectionList';
+import SelectList from './SelectList';
 import AddMoreList from './AddMoreList';
 import ItemClickList from './ItemClickList';
 import SimCRUDList from '../list/SimCRUDList';
@@ -15,9 +15,9 @@ export {
   AutoLoadList,
   LoadMoreList,
   PlainList,
-  SelectCheckboxList,
+  MultiSelectList,
   LoadingList,
-  SelectionList,
+  SelectList,
   AddMoreList,
   ItemClickList,
   SimCRUDList
