@@ -14,7 +14,7 @@
 //       isHover: false,
 //     }
 //   },
-//   container: 'SelectionList'
+//   container: 'SelectList'
 // }
 
 //
@@ -47,6 +47,6 @@ module.exports = {
 	//  }
   // },
   //selector: SelectedCartUpperRightIcon 
-  container: 'SelectionList'
-  // container: 'SelectCheckboxList'
+  container: 'SelectList'
+  // container: 'MultiSelectList'
 }

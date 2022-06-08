@@ -18,5 +18,5 @@ module.exports = {
     }
   },
   // navigation: '/CheckboxPageDemo',
-  container: 'SelectionList'
+  container: 'SelectList'
 }
