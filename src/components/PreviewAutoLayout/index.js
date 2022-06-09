@@ -3,8 +3,6 @@ import { ChakraProvider, Flex, Box, VStack } from "@chakra-ui/react";
 import { AutoLayout } from 'zero-element-boot';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 
-import layout from './layout';
-
 export default function Index (props) {
   // 参数
   const {api,layoutApi } = props;

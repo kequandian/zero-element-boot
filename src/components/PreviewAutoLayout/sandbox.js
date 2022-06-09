@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
 import PreviewAutoLayout from './index'
-
-import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 
 export default function (props) {
 
