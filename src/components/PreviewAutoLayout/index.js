@@ -5,7 +5,10 @@ import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequ
 
 export default function Index (props) {
   // 参数
-  const {api,layoutApi } = props;
+  const {api,layoutApi,layoutName} = props;
+
+  // 判断 layoutApi 是否为空，如果为空，则用 layoutName 拼接api路径
+  const localLayoutApi = layoutApi || '/api/' + layoutName
 
   // 从api获取显示数据
   const [ data ] = useTokenRequest({ api });
@@ -14,7 +17,7 @@ export default function Index (props) {
   dataX.push({ items: records })
 
   // 从layoutApi获取layoutJson
-  const respLayoutData = useTokenRequest({ api: layoutApi });
+  const respLayoutData = useTokenRequest({ api: localLayoutApi });
   const layoutJson = respLayoutData && respLayoutData[0]
 
   /**
