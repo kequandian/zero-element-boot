@@ -1,6 +1,8 @@
 # zero-element-boot
 Named Element Make Front-End Easy 
 
+## svg icons
+https://icons.getbootstrap.com/
 
 ## mockjs
 http://mockjs.com/examples.html
@@ -46,43 +48,5 @@ https://editorx.com
 
 ## Konvajs 基于canvas的图形编辑库
 https://konvajs.org/
-
-### 全局定义 layout 使用方法
-  - 在项目 src/global.js 里使用 (如没有 global.js 文件可以直接在src目录下创建即可)
-```
-//set namedcart
-import { set as NamedLayoutSet } from '@/config/NamedLayoutConfig';
-
-import Flexbox from '@/components/layout/Flexbox';
-
-NamedLayoutSet({
-  Flexbox,
-})
-
-```
-
-
-### 全局定义 car 和 persenter 使用方法
-  - 在项目 src/global.js 里使用
-```
-//set namedcart
-import { set as NamedCartSet } from '@/config/NamedCartConfig';
-
-import Cart from './cart/Cart';
-
-NamedCartSet({
-  Cart,
-})
-
-//set persentor
-import { set as NamedPresenterSet } from '@/config/NamedPresenterConfig';
-
-import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvatar'
-
-NamedPresenterSet({
-  ImageAnimation,
-})
-
-```
 
 

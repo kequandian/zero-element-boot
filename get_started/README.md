@@ -160,7 +160,7 @@ export default function TestNamedCart(props){
 }
 ```
 
-#### 如何通过AutoComponent对多个组件进行布局
+#### 如何通过AutoLayout对多个组件进行布局
 ```
     xname:'Flexbox',
     props:{
@@ -170,7 +170,7 @@ export default function TestNamedCart(props){
     }
 ```
 
-#### 如何通过AutoComponent对多个组件进行布局传递数据
+#### 如何通过AutoLayout对多个组件进行布局传递数据
 ```
 module.exports={
     xname:'Flexbox',
@@ -218,4 +218,40 @@ module.exports={
 }
 ```
 
+### 全局定义 layout 使用方法
+  - 在项目 src/global.js 里使用 (如没有 global.js 文件可以直接在src目录下创建即可)
+```
+//set namedcart
+import { set as NamedLayoutSet } from '@/config/NamedLayoutConfig';
+
+import Flexbox from '@/components/layout/Flexbox';
+
+NamedLayoutSet({
+  Flexbox,
+})
+
+```
+
+
+### 全局定义 car 和 persenter 使用方法
+  - 在项目 src/global.js 里使用
+```
+//set namedcart
+import { set as NamedCartSet } from '@/config/NamedCartConfig';
+
+import Cart from './cart/Cart';
+
+NamedCartSet({
+  Cart,
+})
+
+//set persentor
+import { set as NamedPresenterSet } from '@/config/NamedPresenterConfig';
+
+import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvatar'
+
+NamedPresenterSet({
+  ImageAnimation,
+})
+```
 
