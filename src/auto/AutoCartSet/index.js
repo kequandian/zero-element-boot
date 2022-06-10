@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { ChakraProvider,Center,Flex} from "@chakra-ui/react";
-import { AutoLayout } from 'zero-element-boot';
-import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
+import  AutoLayout  from '@/components/AutoLayout';
+import useTokenRequest from '@/components/hooks/useTokenRequest';
 import Presenter from './Presenter';
 
 
