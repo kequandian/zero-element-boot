@@ -13,7 +13,7 @@ export default function SelectionList(props) {
 
   const Child = React.Children.only(children);
 
-  const [currIndex, setCurrIndex] = useState(0)
+  const [currIndex, setCurrIndex] = useState(-1)
 
   function onSelected (item, index) {
     setCurrIndex(index);
@@ -56,13 +56,13 @@ export default function SelectionList(props) {
                   ...item,
                   ...layout,
                   layout:layout,
-                  cart:cart,
+                  // cart:cart,
                   key: i,
                   ref: layoutRef,
                   isLastItem: items.length == (i+1) ? true : false,
                   isSelected: i == currIndex ? true : false
               })
-              : <Child key={i} {...item } {...layout} layout={layout} cart={cart} ref={layoutRef}
+              : <Child key={i} {...item } {...layout} layout={layout} ref={layoutRef}
                   isSelected={i == currIndex ? true : false}
               />
             }
