@@ -1,12 +1,11 @@
 import React from 'react';
-const AutoComponent = require('@/components/AutoComponent');
+import { AutoLayout as AutoComponent } from '@/components';
 
-const { TableCompx } = require('@/presenter/demo');
 
 export default function TableItem(props) {
-  const allComponents = {
-    TableCompx,
-  }
+  // const allComponents = {
+  //   TableCompx,
+  // }
 
   console.log('TableItem = ', props)
   const config = {
@@ -33,7 +32,7 @@ export default function TableItem(props) {
 
   return (
     <>
-      <AutoComponent {...config} allComponents={allComponents} />
+      <AutoComponent {...config} />
     </>
   )
 
