@@ -55,6 +55,8 @@ import TestRowIcons from '@/composition/testRowIcons/Sandbox';
 import TestNamedCart from '@/pages/TestNamedCart'
 import AutoCartSet from '@/pages/AutoCartSet/Sandbox'
 
+import PreviewAutoLayout from '@/components/PreviewAutoLayout/sandbox'
+
 export default function Index(props) {
 
   // pre-init. presenter set 
@@ -98,6 +100,6 @@ export default function Index(props) {
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
   //test end
 
-  return <AutoCartSet/>
+  return <PreviewAutoLayout/>
 
 }
