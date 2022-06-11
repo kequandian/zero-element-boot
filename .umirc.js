@@ -22,13 +22,13 @@ export default {
   dva: {
     hmr: true,
     immer: false,
-  },
+  },
 
   ignoreMomentLocale: true, // 忽略 moment 的 locale 文件
 
   chainWebpack(memo, { env, webpack, createCSSRule }) {
     memo.output.set('path', require('path').resolve(__dirname, 'dist/dependency-ui'))
-    memo.output.set('filename', 'bundle.js')
+    memo.output.set('filename', 'bundle.js')
   },
   
   // outputPath: '/dist/dependency-ui',

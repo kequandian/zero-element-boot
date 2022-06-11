@@ -30,6 +30,7 @@ import {Title, Subtitle, StatisticsList, StatisticalDescription} from '@/present
 import JarItem from '@/composition/Standalone/JarItem';
 
 import { InputCompx, SelectFetch } from '@/components/formItemType';
+const { TableCompx } = require('@/presenter/demo');
 
 // NamedCartSet({
 
@@ -69,7 +70,8 @@ NamedPresenterSet({
   StatisticalDescription,
 
   DownloadButton,
-  ItemPlaceholder
+  ItemPlaceholder,
+  TableCompx
 })
 
 //注入表单组件
