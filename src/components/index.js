@@ -5,6 +5,8 @@ import NamedContainer from './NamedContainer';
 import NamedSeperator from './NamedSeperator';
 import NamedGateway from './NamedGateway';
 
+import NextIndicator from './NextIndicator';
+
 // AutoComponent
 import AutoLayout from './AutoLayout';
 // import  { CloneAutoLayout }  from './CloneAutoLayout';
@@ -129,6 +131,9 @@ export {
     NamedContainer,
     NamedSeperator,
     NamedGateway,
+
+    // 
+    NextIndicator,
     
     //
     APIContainer
