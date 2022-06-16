@@ -2,7 +2,7 @@ import { useSize } from 'ahooks';
 
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { NamedContainer, NamedLayout, NamedGateway, NamedCart } from '@/components';
+import { NamedContainer, NamedLayout, NamedGateway, NamedCart, NextIndicator } from '@/components';
 import DefaultContainer from '@/components/container/Container'
 
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
@@ -83,244 +83,85 @@ export default function (props) {
 //2021-11-10
 //新增 layout 新增 navigation 属性
 
-function AutoLayout({ children, layout, allComponents = NamedPresenterGet(), onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
+function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
 
-  // handle layout, for children in {layout
-  const { xname, props, container, gateway, cart, indicator, presenter, navigation, children: layoutChildren } = layout || {};
+  // handle layout, container, gateway, cart, presenter, navigation, children
+  const { xname, props, container, gateway, cart, presenter, navigation, children: layoutChildren } = layout || {};
 
   const _cart = (cart && typeof cart === 'string') ? { xname: cart } : cart
   const _gateway = (gateway && typeof gateway === 'string') ? { xname: gateway } : gateway
 
-  // AutoComponent config
-  let _indicator;
-  let Presenter;
-  if (!layoutChildren) {
-    _indicator = (indicator && typeof indicator === 'string') ? { xname: indicator } : indicator
-    Presenter = presenter ? (typeof presenter === 'string' ? allComponents[presenter] : isJsonObject(presenter) ? AutoLayout : tips(presenter)) : null;
-  }
-  // AutoComponent config
-
+  // Cart & Gateway 
+  const _NamedCart = _cart ? NamedCart : NextIndicator;
+  const _NamedGateway = _gateway ? NamedGateway : NextIndicator;
+  
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
   const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
 
-  if (isJsonObject(presenter)) {
-    presenter.layout = { ...presenter }
+  // allComponents
+  const defaultPresenterGet = NamedPresenterGet()
+  const _allComponents = { ...allComponents, ...defaultPresenterGet}
+
+  // Presenter,  means presenter is AutoLayout
+  const Presenter = ((presenter && typeof presenter === 'string') ? _allComponents[presenter]: (isJsonObject(presenter)? AutoLayout : undefined)) || tips(presenter)
+  const _presenter = isJsonObject(presenter)? {layout: {...presenter}} : {}
+
+  // handle simple presenter
+  if(isJsonObject(presenter) && presenter.presenter===undefined && presenter.children===undefined){
+       return <Presenter {..._presenter} />
   }
 
-  // AutoComponent config
-  let componentsJson;
-  let defaultPresenter;
-  let defaultGateway;
-  let defaultCart;
-  let _Container;
-  if (layoutChildren) {
-    _Container = container ? NamedContainer : DefaultContainer
-    componentsJson = allComponents ? allComponents : namedPresenterGet;  //
-    defaultPresenter = presenter;
-    defaultGateway = gateway
-    defaultCart = cart
-  }
-  // AutoComponent config
 
   return layoutChildren ? (
 
-    <_Container {..._container} {...data} navigation={navigation}>
-      {cart ? (
-        <NamedLayout xname={xname} props={props} navigation={navigation} >
+    <Container {..._container} {...data} navigation={navigation}>
+
+        <NamedLayout xname={xname} props={props} >
           {layoutChildren ? layoutChildren.map((child, i) => {
-            const { presenter, span, gateway, cart: childCart } = child;
-            const _presenter = presenter ? presenter : defaultPresenter
-            const Presenter = _presenter ? componentsJson[_presenter] || tips(_presenter) : null;
+            const { presenter, span, gateway, cart } = child;
 
-            // const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
-            // const _cart = cart ? ((typeof cart === 'string') ? { xname: cart } : cart) : defaultCart
+            const __cart = cart
+            const __gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : {}
+            const __NamedGateway = gateway ? NamedGateway : NextIndicator
 
-            // each item has its Named Gateway
-            return <NamedGateway {..._gateway} key={i} span={span} >
-              {cart ?
-                <NamedCart key={i} {..._cart} >
-                  {presenter ?
-                    <Presenter />
+            const __Presenter = ((presenter && typeof presenter === 'string') ? _allComponents[presenter]: (isJsonObject(presenter)? AutoLayout : undefined)) || tips(presenter)
+            const __presenter = isJsonObject(presenter)? {layout: {...presenter}} : {}
+
+            return (
+              <__NamedGateway {...__gateway} key={i} span={span} >
+                  <_NamedCart {...__cart} >
+                  {isJsonObject(__presenter)? 
+                      <__Presenter {...__presenter} onItemClick={onItemClick} />
                     :
-                    React.Children.toArray(children)
+                    <__Presenter {...__presenter}/>
                   }
-                </NamedCart>
-                :
-                (presenter ?
-                  <Presenter />
-                  :
-                  React.Children.toArray(children)
-                )
-              }
-            </NamedGateway>
+                  </_NamedCart>
+              </__NamedGateway>
+            )
 
           }) : (
             React.Children.map(children, (child, i) => {
-              return cart ?
-                <NamedCart key={i} {..._cart} >
+                <_NamedCart key={i} {..._cart} >
                   {child}
-                </NamedCart>
-                :
-                (
-                  child
-                )
+                </_NamedCart>
             })
           )}
         </NamedLayout>
-      ) : (
-        <NamedLayout xname={xname} props={props} navigation={navigation} >
-          {layoutChildren ? layoutChildren.map((child, i) => {
-            const { presenter, span, gateway, cart: childCart } = child;
-
-            const _gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : defaultGateway
-            const _cart = childCart ? ((typeof childCart === 'string') ? { xname: childCart } : childCart) : defaultCart
-
-            if (typeof presenter === 'string') {
-
-              const _presenter = presenter ? presenter : defaultPresenter
-              const Presenter = _presenter ? componentsJson[_presenter] || tips(_presenter) : null;
-
-              // each item has its Named Gateway
-              return <NamedGateway {..._gateway} key={i} span={span} >
-                {childCart ?
-                  <NamedCart {...childCart} >
-                    {presenter ?
-                      <Presenter />
-                      :
-                      React.Children.toArray(children)
-                    }
-                  </NamedCart>
-                  :
-                  (presenter ?
-                    <Presenter />
-                    :
-                    React.Children.toArray(children)
-                  )
-                }
-              </NamedGateway>
-            } else if (isJsonObject(presenter)) {
-              return (
-                <NamedGateway {..._gateway} key={i} span={span} >
-                  {childCart ?
-                    <NamedCart {...childCart} >
-                      {presenter ?
-                        <AutoLayout layout={presenter} onItemClick={onItemClick} />
-                        :
-                        React.Children.toArray(children)
-                      }
-                    </NamedCart>
-                    :
-                    (presenter ?
-                      <AutoLayout layout={presenter} onItemClick={onItemClick} />
-                      :
-                      React.Children.toArray(children)
-                    )
-                  }
-
-                </NamedGateway>
-              )
-            }
-
-          }) : (
-
-            React.Children.map(children, (child, i) => {
-              return cart ?
-                <NamedCart key={i} {..._cart} >
-                  {child}
-                </NamedCart>
-                :
-                (
-                  child
-                )
-            })
-          )}
-        </NamedLayout>
-      )}
-    </_Container>
-
+    </Container>
 
   ) : (
-
     <Container {..._container} {...data} onItemClick={onItemClick} navigation={navigation} >
-
       <NamedLayout xname={xname} props={props}>
-        {gateway ? (
-          <NamedGateway {..._gateway}>
-            {indicator ?
-              <NamedCart {..._indicator}>
-                {cart ?
-                  <NamedCart {..._cart} >
-                    {presenter ?
-                      <Presenter {...presenter} />
-                      :
-                      React.Children.toArray(children)
-                    }
-                  </NamedCart>
-                  :
-                  (presenter ?
-                    <Presenter {...presenter} />
-                    : React.Children.toArray(children)
-                  )
-                }
-              </NamedCart> // end indicator
-              :
-              (cart ?
-                <NamedCart {..._cart} >
+          <_NamedGateway {..._gateway}>
+                <_NamedCart {..._cart} >
                   {presenter ?
-                    <Presenter {...presenter} />
+                    <Presenter {..._presenter} />
                     :
                     React.Children.toArray(children)
                   }
-                </NamedCart>
-                :
-                (presenter ?
-                  <Presenter {...presenter} />
-                  :
-                  React.Children.toArray(children)
-                )
-              )//cart?
-            }
-          </NamedGateway>
-        ) : (
-
-          indicator ?
-            <NamedCart {..._indicator}>
-              {cart ?
-                <NamedCart {..._cart} >
-                  {presenter ?
-                    <Presenter {...presenter} />
-                    :
-                    React.Children.toArray(children)
-                  }
-                </NamedCart>
-                :
-                (presenter ?
-                  <Presenter {...presenter} />
-                  :
-                  React.Children.toArray(children)
-                )
-              }
-            </NamedCart> // end indicator
-            :
-            (cart ?
-              <NamedCart {..._cart} >
-                {presenter ?
-                  <Presenter {...presenter} />
-                  :
-                  React.Children.toArray(children)
-                }
-              </NamedCart>
-              :
-              (presenter ?
-                <Presenter {...presenter} />
-                :
-                React.Children.toArray(children)
-              )
-            )//cart?
-
-        )}
-
+                </_NamedCart>
+          </_NamedGateway>
       </NamedLayout>
     </Container>
   )
@@ -332,8 +173,10 @@ function tips(name) {
 }
 
 function isJsonObject(obj) {
-  if (typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]") {
-    return true;
-  }
-  return false;
+  return (obj && typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]")
 }
+
+// function isLayoutObject(obj) {
+//   return (obj && typeof (obj) == "object" && obj.xname) && 
+//          (obj.presenter || (obj.children && Object.prototype.toString.call(obj.children).toLowerCase() == "[object array]" && obj.children.length > 0 ))
+// }
