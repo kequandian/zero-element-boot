@@ -4,6 +4,9 @@ Named Element Make Front-End Easy
 ## svg icons
 https://icons.getbootstrap.com/
 
+## ai logo
+https://www.logosc.cn/
+
 ## p5.js (openframework)
 https://p5js.org/ 
 
