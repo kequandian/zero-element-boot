@@ -32,15 +32,17 @@ import JarItem from '@/composition/Standalone/JarItem';
 import { InputCompx, SelectFetch } from '@/components/formItemType';
 const { TableCompx } = require('@/presenter/demo');
 
+import PreviewItem from './components/PreviewAutoLayout/PreviewItem';
+
 // NamedCartSet({
 
 // })
 
 //开发模式设置endpoint, token
 if(process.env.NODE_ENV == 'development'){
-  // setEndpoint('http://app1.console.smallsaas.cn:8001');
+   setEndpoint('http://app1.console.smallsaas.cn:8001');
   // setEndpoint('http://demo.smallsaas.cn:8001');
-  // setToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NTM4NzYxMDYsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY1NDEzNTMwNn0.A18caXO5T9S0KMrkj_puu3b7eiF6LTA3MFjryTTgf7CxXyomfXWP3nznr0gxm6sssuQhmDTHuCDB9ywo7axp4A')
+   setToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NTQ5MTg5NDcsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY1NTE3ODE0N30.r6GwSIuv3BzZYSvxn2vTEWlUBMY8GntI7pR_SJDTeC0fNlnC8DxmT0JNb08XQN5n9H4Qe0vVX-ypbXKSUuLNNA')
 
 }
 
@@ -79,4 +81,10 @@ FormItemTypeSet({
   "input": InputCompx, 
   "select-fetch": SelectFetch
 })
+
+NamedPresenterSet({
+  PreviewItem
+})
+
+
 
