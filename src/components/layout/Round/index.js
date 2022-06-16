@@ -5,15 +5,11 @@ import Flexbox from '@/components/layout/Flexbox';
 
 export default function Round(props) {
 
-  const { children } = props;
+  const { children, ...data } = props;
 
   return (
-    <>
-      <Container>
-        <Flexbox align='between'>
-          {children}
-        </Flexbox>
-      </Container>
-    </>
+      <Flexbox align='between' {...data}>
+        {children}
+      </Flexbox>
   )
 }
