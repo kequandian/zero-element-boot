@@ -7,14 +7,11 @@ const React = require('react');
  * 
  * */
 export default function NextIndicator({ children, ...rest }) {
-    return (
-        <>
-            {React.Children.toArray(children).map(child => {
+    return React.Children.map(children, child => {
                 return React.cloneElement(child, {
                     ...rest
                 })
-            })}
-        </>)
+            })
     // return React.Children.map(children, child => {
     //     return (
     //     <>
