@@ -32,8 +32,6 @@ import JarItem from '@/composition/Standalone/JarItem';
 import { InputCompx, SelectFetch } from '@/components/formItemType';
 const { TableCompx } = require('@/presenter/demo');
 
-import PreviewItem from './components/PreviewAutoLayout/PreviewItem';
-
 // NamedCartSet({
 
 // })
@@ -82,10 +80,5 @@ FormItemTypeSet({
   "input": InputCompx, 
   "select-fetch": SelectFetch
 })
-
-NamedPresenterSet({
-  PreviewItem
-})
-
 
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import { history } from 'umi';
+import { ChakraProvider} from "@chakra-ui/react";
+
 
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import {Avatar, Title, Subtitle} from '@/presenter/demo'
@@ -80,8 +82,11 @@ export default function Index(props) {
 
   // 表格输出
   // return <TableContainer/>
-
-  // 测试 AutoLayout
-  return <PreviewAutoLayoutDemo/>
-
+  
+  // PreviewAutoLayoutDemo
+  return (
+    <ChakraProvider>
+      <PreviewAutoLayoutDemo/>
+    </ChakraProvider>
+  )
 }

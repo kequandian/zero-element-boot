@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout'
+import PreviewItem from './PreviewItem';
 
 export default function (props) {
 
@@ -13,7 +14,10 @@ export default function (props) {
   // let layoutName = 'thisAutoLayout'
   let layoutName = ''
 
+  const allComponents = {PreviewItem}
+  
   return (
-      <PreviewAutoLayout {...props} api={api} layoutApi={layoutJsonApi} layoutName={layoutName} />
+      <PreviewAutoLayout api={api} layoutApi={layoutJsonApi} layoutName={layoutName} allComponents={allComponents} {...props}/>
   )
 }
+
