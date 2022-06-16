@@ -9,8 +9,8 @@ import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConf
 
 import loadingPage from '@/components/loading';
 
-import requireConfig from '@/components/AutoX/requireConfig';
-import { Container } from '@/components/container';
+// import requireConfig from '@/components/AutoX/requireConfig';
+// import { Container } from '@/components/container';
 
 // change history
 //CR.2020-12-26 init
@@ -84,7 +84,6 @@ export default function (props) {
 //新增 layout 新增 navigation 属性
 
 function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
-
   // handle layout, container, gateway, cart, presenter, navigation, children
   const { xname, props, container, gateway, cart, presenter, navigation, children: layoutChildren } = layout || {};
 
@@ -94,7 +93,7 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
   // Cart & Gateway 
   const _NamedCart = _cart ? NamedCart : NextIndicator;
   const _NamedGateway = _gateway ? NamedGateway : NextIndicator;
-  
+
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
   const _container = ((typeof container === 'string') ? { xname: container } : container) || {}
@@ -109,9 +108,8 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
 
   // handle simple presenter
   if(isJsonObject(presenter) && presenter.presenter===undefined && presenter.children===undefined){
-       return <Presenter {..._presenter} />
+       return <Presenter {..._presenter} allComponents={allComponents} />
   }
-
 
   return layoutChildren ? (
 
@@ -132,9 +130,9 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
               <__NamedGateway {...__gateway} key={i} span={span} >
                   <_NamedCart {...__cart} >
                   {isJsonObject(__presenter)? 
-                      <__Presenter {...__presenter} onItemClick={onItemClick} />
+                      <__Presenter {...__presenter} allComponents={allComponents} onItemClick={onItemClick} />
                     :
-                    <__Presenter {...__presenter}/>
+                    <__Presenter {...__presenter} allComponents={allComponents} />
                   }
                   </_NamedCart>
               </__NamedGateway>
@@ -149,14 +147,13 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
           )}
         </NamedLayout>
     </Container>
-
   ) : (
     <Container {..._container} {...data} onItemClick={onItemClick} navigation={navigation} >
       <NamedLayout xname={xname} props={props}>
           <_NamedGateway {..._gateway}>
                 <_NamedCart {..._cart} >
                   {presenter ?
-                    <Presenter {..._presenter} />
+                    <Presenter {..._presenter} allComponents={allComponents} />
                     :
                     React.Children.toArray(children)
                   }

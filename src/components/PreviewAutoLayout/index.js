@@ -1,12 +1,12 @@
 import React from 'react';
-import { ChakraProvider, Flex, Box, VStack } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import  AutoLayout  from '@/components/AutoLayout';
 import useTokenRequest from '@/components/hooks/useTokenRequest';
 
 export default function Index (props) {
 
   // 参数
-  const {api,layoutApi,layoutName} = props;
+  const {api,layoutApi,layoutName, ...rest} = props;
 
   // 判断 layoutApi 是否为空，如果为空，则用 layoutName 拼接api路径
   const localLayoutApi = layoutApi || '/openapi/lc/components/layoutJson/' + layoutName
@@ -27,24 +27,19 @@ export default function Index (props) {
    */
   const config = {
     items: dataX.length > 0 ? dataX : [],
-    layout: layoutJson
+    layout: layoutJson,
+    ...rest
   };
 
   // 控制台输出信息
-  const onJarItemClick = (item) => {
+  const onPreviewItemClick = (item) => {
     //TODO
     console.log(item, ' === item')
   }
 
   return (
-    <ChakraProvider>
-      <Flex>
-        <Box>
-          <VStack spacing='3px'>
-            <AutoLayout {...config} onItemClick={onJarItemClick} />
-          </VStack>
-        </Box>
-      </Flex>
-    </ChakraProvider>
+    <Box spacing='3px'>
+        <AutoLayout {...config} onItemClick={onPreviewItemClick} />
+    </Box>
   )
 }
