@@ -22,8 +22,8 @@ import loadingPage from '@/components/loading';
 
 // 2021-3-25 新增通过 fetch 获取 layoutJson 配置信息, 新增 loading 加载效果
 export default function (props) {
-  const { layout, ...rest } = props;
-  const { path } = layout;
+  const { layout } = props;
+  const { path } = layout || undefined;
   const [layoutJson, setLayoutJson] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
