@@ -1,20 +1,14 @@
 import React from 'react';
 import Cart from '@/components/cart/Cart';
-// import ItemPlaceholder from 'zero-element-boot/lib/components/presenter/ItemPlaceholder'
-import ItemPlaceholder from '@/pages/ItemPlaceholder'
+import ItemPlaceholder from '@/components/presenter/ItemPlaceholder'
 import NamedCart from '@/components/NamedCart'
-import { Flex, Text, Center } from '@chakra-ui/react'
 import TitledContainer from '@/components/container/TitledContainer'
 
 import OverlaySelector  from '@/components/OverlaySelector'
 
-// import Default  from '@/components/indicator/CircularCheckboxIndicator'
-// import Selected  from '@/components/indicator/CircularCheckboxIndicator/Selected'
-// import ShadowIndicator from '@/components/indicator/ShadowIndicator';
-
-import Default  from '../../components/indicator/CircularCheckboxIndicator'
-import Selected  from '../../components/indicator/CircularCheckboxIndicator/Selected'
-import ShadowIndicator from '../../components/indicator/ShadowIndicator';
+import Default  from '@/components/indicator/CircularCheckboxIndicator'
+import Selected  from '@/components/indicator/CircularCheckboxIndicator/Selected'
+import ShadowIndicator from '@/components/indicator/ShadowIndicator';
 
 
 /**

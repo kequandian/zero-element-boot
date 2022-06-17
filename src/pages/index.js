@@ -1,5 +1,7 @@
 import React from 'react';
 import { history } from 'umi';
+import { ChakraProvider} from "@chakra-ui/react";
+
 
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import {Avatar, Title, Subtitle} from '@/presenter/demo'
@@ -55,6 +57,8 @@ import TestRowIcons from '@/composition/testRowIcons/Sandbox';
 import TestNamedCart from '@/pages/TestNamedCart'
 import AutoCartSet from '@/pages/AutoCartSet/Sandbox'
 
+import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
+
 export default function Index(props) {
 
   // pre-init. presenter set 
@@ -74,30 +78,15 @@ export default function Index(props) {
   // history.push('/CheckboxPageDemo');
   // return <div>首页</div>
 
-  // const data = {
-  //   avatar: 'https://media.geeksforgeeks.org/wp-content/uploads/20200403151026/adblur_gfg.png',
-  //   account: 'inspector',
-  //   subtitle: 'cf9bfbe6278fa75794d517a0e36d9263'
-  // }
-  // return <UserItem {...data}/>
-
-  //test start
-  // let api = '/api/userData';
-
-  // const [ data ] = useTokenRequest({api});
-
-  // const config = {
-  //   items: data.length > 0 ? data : [],
-  //   layout: userListLayoutJson
-  // };
-
-  // const onJarItemClick = (item) => {
-  //   console.log('item === ', item)
-  // }
-  
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
-  //test end
 
-  return <TableContainer/>
-
+  // 表格输出
+  // return <TableContainer/>
+  
+  // PreviewAutoLayoutDemo
+  return (
+    <ChakraProvider>
+      <PreviewAutoLayoutDemo/>
+    </ChakraProvider>
+  )
 }

@@ -10,6 +10,9 @@ https://www.logosc.cn/
 ## p5.js (openframework)
 https://p5js.org/ 
 
+## bit
+https://bit.dev/
+
 ## mockjs
 http://mockjs.com/examples.html
 
