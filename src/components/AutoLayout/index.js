@@ -107,9 +107,11 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
   const _presenter = isJsonObject(presenter)? {layout: {...presenter}} : {}
 
   // handle simple presenter
-  if(isJsonObject(presenter) && presenter.presenter===undefined && presenter.children===undefined){
-       return <Presenter {..._presenter} allComponents={allComponents} />
-  }
+  if (!presenter && !layoutChildren){
+      const {xname:__presenterName, props:__presenter } = data
+      const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
+      return <__Presenter {...__presenter} allComponents={allComponents} />
+ }
 
   return layoutChildren ? (
 
