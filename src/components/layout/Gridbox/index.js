@@ -27,7 +27,7 @@ export default forwardRef(function Gridbox(props, ref) {
 
           return (
             <>
-              <div className={`l-GridboxItem  ${direction} ${justify}`} style={{ marginLeft: index > 0 && spacing > 0 ? `${spacing}px` : '0px', ...itemStyle }}>
+              <div className={`l-GridboxItem  ${direction} ${justify}`} style={{ ...itemStyle }}>
                 {child}
               </div>
             </>
