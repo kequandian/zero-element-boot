@@ -37,7 +37,7 @@ export default function SelectionList(props) {
       onItemClick(item)
     }
   }
-
+console.log('currIndex == ', currIndex)
   return <div
     style={{
       overflow: 'auto',

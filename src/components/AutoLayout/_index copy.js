@@ -23,7 +23,7 @@ import loadingPage from '@/components/loading';
 // 2021-3-25 新增通过 fetch 获取 layoutJson 配置信息, 新增 loading 加载效果
 export default function (props) {
   const { layout } = props;
-  const { path } = layout ? layout : {};
+  const { path } = layout || undefined;
   const [layoutJson, setLayoutJson] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -107,8 +107,8 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
   const _presenter = isJsonObject(presenter)? {layout: {...presenter}} : {}
 
   // handle simple presenter
-  if (!presenter && !layoutChildren && !container){
-      const {_xname:__presenterName, _props:__presenter } = data
+  if (!presenter && !layoutChildren){
+      const {xname:__presenterName, props:__presenter } = data
       const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
       return <__Presenter {...__presenter} allComponents={allComponents} />
  }
