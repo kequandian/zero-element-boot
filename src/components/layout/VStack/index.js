@@ -7,11 +7,11 @@ export default function VStack(props) {
 
     const { children, ...data } = props;
 
-  return ( 
+    return (
         <Container>
             <Flexbox direction='column' {...data}>
                 {children}
             </Flexbox>
-        </Container> 
-  )
+        </Container>
+    )
 }
