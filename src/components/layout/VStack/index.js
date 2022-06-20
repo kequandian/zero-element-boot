@@ -5,13 +5,13 @@ import Container from '@/components/container/Container'
 export default function VStack(props) {
 
 
-    const { children, ...data } = props;
+    const { children, spacing, ...data } = props;
 
-    return (
+  return ( 
         <Container>
-            <Flexbox direction='column' {...data}>
+            <Flexbox direction='column' spacing={spacing} {...data}>
                 {children}
             </Flexbox>
-        </Container>
-    )
+        </Container> 
+  )
 }

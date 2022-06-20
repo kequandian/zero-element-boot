@@ -50,6 +50,13 @@ export default forwardRef(function Flexbox(props, ref) {
   //   )
   // })
 
+  let spacingStyle = {}
+  if(direction == 'row' && spacing > 0 ){
+    spacingStyle = { marginLeft: `${spacing}px` }
+  }else if(direction == 'column' && spacing > 0 ){
+    spacingStyle = { marginBottom: `${spacing}px` }
+  }
+
   return (
     // <div className={`l-FlexBox ${align} ${direction} ${flexFlow} ${width100}`}>
     <>
@@ -58,7 +65,7 @@ export default forwardRef(function Flexbox(props, ref) {
 
           return (
             <>
-              <div className={`l-FlexBoxItem ${direction} ${justify}`} style={{ marginLeft: index > 0 && spacing > 0 ? `${spacing}px` : '0px' }}>
+              <div className={`l-FlexBoxItem ${direction} ${justify}`} style={ index >= 0 &&  index <= (children.length -1 ) ? spacingStyle : {}}>
                 {child}
               </div>
               {/* {defaultSeperator && (!isLastItem) ? <NamedSeperator name={defaultSeperator} /> : null} */}
