@@ -49,7 +49,7 @@ export default function NamedCart({ children, xname, props, cart = { xname, prop
   const defaultIndicatorName = (typeof defaultIndicator === 'string') ? defaultIndicator : (typeof defaultIndicator === 'object') ? defaultIndicator.xname : ''
   const _DefaultIndicator  = _IndicatorSet[defaultIndicatorName] || tips(defaultIndicatorName)
   const defaultIndicatorProps = (typeof defaultIndicator === 'object') ? defaultIndicator.props : {}
-
+  
   return (
     <>
       {
@@ -67,7 +67,7 @@ export default function NamedCart({ children, xname, props, cart = { xname, prop
 
             <OverlaySelector defaultIndicator={_DefaultIndicator} defaultIndicatorProps={defaultIndicatorProps} 
                            hoverIndicator={_Indicator}  hoverIndicatorProps = {indicatorProps}
-                           selectedIndicator={_Selector}  selectedIndicatorProps = {selectorProps}   {...rest} >
+                           selectedIndicator={_Selector}  selectedIndicatorProps = {selectorProps} isSelected={isSelected}   {...rest} >
                 <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
             </OverlaySelector>
         ) : 
