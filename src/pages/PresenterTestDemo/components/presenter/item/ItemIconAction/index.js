@@ -1,7 +1,10 @@
 import React ,{useState}from 'react';
 import { Tooltip} from 'antd';
-const check = require('./images/check.png')
-const overcheck=require('./images/overcheck.png')
+// const check = require('./images/check.png')
+// const overcheck=require('./images/overcheck.png')
+
+import check from '@/assets/check_off.svg';
+import overcheck from '@/assets/check_on.svg';
 
 require('./index.less')
 
