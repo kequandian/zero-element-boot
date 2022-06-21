@@ -59,7 +59,7 @@ import AutoCartSet from '@/pages/AutoCartSet/Sandbox'
 
 import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
 import AutoComponentSet from './AutoComponentSet'
-const RouterParamsDemo  = './GetRouterPath/demo'
+import RouterParamsDemo from './GetRouterPath/demo'
 
 export default function Index(props) {
 
@@ -84,7 +84,7 @@ export default function Index(props) {
 
   // return <TableContainer/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  return <PreviewAutoLayoutDemo/> 
+  // return <PreviewAutoLayoutDemo/> 
 
-  // return <RouterParamsDemo />
+  return <RouterParamsDemo />
 }
