@@ -47,10 +47,10 @@ const _isSelected = selected ? onSelected : isSelected
 const DefaultIndicator =  (defaultIndicator===undefined || _isSelected) ? NextIndicator : defaultIndicator
 
 // 没有传入 selectedIndicator, 或 isSelected==false, 相当于没有效果
-const SelectedIndicator = (selectedIndicator===undefined || _isSelected == false )? NextIndicator : selectedIndicator
+const SelectedIndicator = (selectedIndicator===undefined || !_isSelected )? NextIndicator : selectedIndicator
 
 // overlay hover indicator with default indicator
-const HoverIndicator =  ( hoverIndicator===undefined || onHover==false || _isSelected ) ? NextIndicator : hoverIndicator
+const HoverIndicator =  ( hoverIndicator===undefined && onHover==false && _isSelected ) ? NextIndicator : hoverIndicator
 
 return React.Children.map(children, child => {
   return (

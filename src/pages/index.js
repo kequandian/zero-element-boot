@@ -58,6 +58,8 @@ import TestNamedCart from '@/pages/TestNamedCart'
 import AutoCartSet from '@/pages/AutoCartSet/Sandbox'
 
 import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
+import AutoComponentSet from './AutoComponentSet'
+import GetRouterPath from './GetRouterPath'
 
 export default function Index(props) {
 
@@ -82,11 +84,21 @@ export default function Index(props) {
 
   // 表格输出
   // return <TableContainer/>
+
+
+  // return <AutoComponentSet onItemClick={onItemClickHandle}/>
+  history.push({
+    pathname: '/GetRouterPath',
+    query:{
+      id: '20'
+    }
+  })
+  return <div></div>
   
   // PreviewAutoLayoutDemo
-  return (
-    <ChakraProvider>
-      <PreviewAutoLayoutDemo/>
-    </ChakraProvider>
-  )
+  // return (
+  //   <ChakraProvider>
+  //     <PreviewAutoLayoutDemo/>
+  //   </ChakraProvider>
+  // )
 }
