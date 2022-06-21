@@ -59,11 +59,7 @@ import AutoCartSet from '@/pages/AutoCartSet/Sandbox'
 
 import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
 import AutoComponentSet from './AutoComponentSet'
-<<<<<<< HEAD
-import GetRouterPath from './GetRouterPath'
-=======
 import RouterParamsDemo from './GetRouterPath/demo'
->>>>>>> b9cf5aac3d9a24b92899e76f29e39133f6f790e3
 
 export default function Index(props) {
 
@@ -87,28 +83,8 @@ export default function Index(props) {
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
 
   // return <TableContainer/>
-<<<<<<< HEAD
-
-
-  // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  history.push({
-    pathname: '/GetRouterPath',
-    query:{
-      id: '20'
-    }
-  })
-  return <div></div>
-  
-  // PreviewAutoLayoutDemo
-  // return (
-  //   <ChakraProvider>
-  //     <PreviewAutoLayoutDemo/>
-  //   </ChakraProvider>
-  // )
-=======
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
   // return <PreviewAutoLayoutDemo/> 
 
   return <RouterParamsDemo />
->>>>>>> b9cf5aac3d9a24b92899e76f29e39133f6f790e3
 }
