@@ -106,11 +106,23 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
   const Presenter = ((presenter && typeof presenter === 'string') ? _allComponents[presenter]: (isJsonObject(presenter)? AutoLayout : undefined)) || tips(presenter)
   const _presenter = isJsonObject(presenter)? {layout: {...presenter}} : {}
 
-  // handle simple presenter
+  // handle simple presenter, from data
   if (!presenter && !layoutChildren && !container){
-      const {_xname:__presenterName, _props:__presenter } = data
+      // support from data, not layout
+      const {_xname = {xname}, _props = {props}, _cart = {cart}, ...rest } = data
+
+      const __presenterName = _xname || tips(_xname);
+      const __presenter = _props || {};
+      const __cart = _cart || {};
+
+      const __NamedCart = _cart ? NamedCart : NextIndicator;
+
       const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
-      return <__Presenter {...__presenter} allComponents={allComponents} />
+      return (
+        <__NamedCart {...__cart} {...rest} >
+            <__Presenter {...__presenter} allComponents={allComponents} />
+        </__NamedCart>
+      )
  }
 
   return layoutChildren ? (

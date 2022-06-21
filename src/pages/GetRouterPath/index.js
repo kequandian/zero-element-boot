@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const useRouterParams = require('@/components/hooks/useRouterParams');
 
 
-export default function Index(props) {
+export default function GetRouterPath(props) {
 
     const [ currParams, setCurrParams ] = useState({})
 
