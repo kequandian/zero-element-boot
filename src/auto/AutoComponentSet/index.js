@@ -26,7 +26,7 @@ export default function index(props) {
       },
 
 
-      cart: 'TestCircularCheckboxIndicator',
+      cart: 'DefaultSelector',
     
 
       container: 'SelectList'

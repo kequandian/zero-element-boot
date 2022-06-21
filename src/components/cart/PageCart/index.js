@@ -8,7 +8,7 @@ import useSize from '@/components/hooks/useSize';
  * @param {color } backgroundColor 背景颜色
  * 
  */
-export default function HCart(props) {
+export default function PageCart(props) {
 
   const size = useSize()
 
