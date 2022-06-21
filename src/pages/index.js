@@ -59,7 +59,7 @@ import AutoCartSet from '@/pages/AutoCartSet/Sandbox'
 
 import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
 import AutoComponentSet from './AutoComponentSet'
-import GetRouterPath from './GetRouterPath'
+const RouterParamsDemo  = './GetRouterPath/demo'
 
 export default function Index(props) {
 
@@ -82,23 +82,9 @@ export default function Index(props) {
 
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
 
-  // 表格输出
   // return <TableContainer/>
-
-
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  history.push({
-    pathname: '/GetRouterPath',
-    query:{
-      id: '20'
-    }
-  })
-  return <div></div>
-  
-  // PreviewAutoLayoutDemo
-  // return (
-  //   <ChakraProvider>
-  //     <PreviewAutoLayoutDemo/>
-  //   </ChakraProvider>
-  // )
+  return <PreviewAutoLayoutDemo/> 
+
+  // return <RouterParamsDemo />
 }
