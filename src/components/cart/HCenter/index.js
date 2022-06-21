@@ -6,7 +6,7 @@ import React from 'react';
  * @param {offset } offset 顶部padding
  * 
  */
-export default function HCart(props) {
+export default function HCenter(props) {
 
     const { children, backgroundColor = '#ffffff', offset } = props
 
