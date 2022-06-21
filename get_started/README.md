@@ -11,7 +11,24 @@ export default function Index(){
 }
 ```
 
+#### 如何写一个容器组件
+
+```
+import React from "react";
+export default function Father(props){
+    const {children} = props
+    return children.map(child =>{
+        return (<div style={{color:'red'}}>我是一个父组件
+            {child}
+        </div>)
+    })
+}
+```
+
+
+
 #### 如何通过一个Cart修饰一个组件
+
 ```
 import React from 'react';
 import Butter from '@/presenter/default/Butter'
