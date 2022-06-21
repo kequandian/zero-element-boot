@@ -19,6 +19,11 @@ import RightIconIndicatorDefault from '@/components/indicator/RightIconIndicator
 import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
 import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
 
+
+import CircularCheckboxIndicatorDefault from '@/components/indicator/CircularCheckboxIndicator';
+import ShadowIndicator from '@/components/indicator/ShadowIndicator';
+import CircularCheckboxIndicatorSelected from '@/components/indicator/CircularCheckboxIndicator/Selected';
+
 //presenter
 import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvatar'
 import ContentText from '@/pages/PresenterTestDemo/plugins/TodoList/TodoItem/Content_text'
@@ -54,7 +59,11 @@ NamedIndicatorSet({
   
   RightIconIndicatorDefault,
   RightIconIndicatorHover,
-  RightIconIndicatorSelected
+  RightIconIndicatorSelected,
+
+  CircularCheckboxIndicatorDefault,
+  ShadowIndicator,
+  CircularCheckboxIndicatorSelected
 })
 
 NamedPresenterSet({
