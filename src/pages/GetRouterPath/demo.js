@@ -1,3 +1,5 @@
+import { history } from 'umi';
+
 export default function Index(props){
 
     history.push({
