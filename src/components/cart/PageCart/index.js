@@ -1,51 +1,32 @@
-import React,{forwardRef, useState } from 'react';
 
+import React from 'react';
 
-export default forwardRef(function PageCart(props, ref){
+import useSize from '@/components/hooks/useSize';
 
+/**
+ * 
+ * @param {color } backgroundColor 背景颜色
+ * 
+ */
+export default function PageCart(props) {
 
-    const {display='flex',alignItems='center',backgroundColor='#D2E9FF' ,children,width='100%',height='1000px',cursor='pointer' ,justifyContent="center"}=props
-    console.log(children)
+  const size = useSize()
 
-    const [onHover, setOnHover] = useState(false);
-    // const [onDisplay ,setOnDisplay]=useState(true)
-    const toggleHover = () => {
-      const result = !onHover;
-      setOnHover(result)
-    }
-    // const toggleDisplay = () => {
-    //   const result = !onDisplay;
-    //   setOnDisplay(result)
-    // }
-    // let theDisplay="block";
-    // if(onDisplay){
-    //   theDisplay="none";
-    // }else{
-    //   theDisplay="block";
-    // }
+  const { children, backgroundColor = '#ffffff' } = props
 
-    let bgColor = `${backgroundColor}80`;
-    if (onHover) {
-      bgColor = `${backgroundColor}ff`;
-    } else {
-      bgColor = `${backgroundColor}80`;
-    }
-    
-      return React.Children.map(children, child => {
-        return <div style={{
-          display: `${display}`,
-          alignItems: `${alignItems}`,
-          backgroundColor: `${backgroundColor}`,
-          width:`${width}`,
-          height:`${height}`,
-          cursor:`${cursor}`,
-          justifyContent:`${justifyContent}`,
+  return React.Children.map(children, child => {
+    return <div style={{
 
-        }}
-        
-      onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
-        >
-          {child}
-        </div>
-      })
-    })
+      backgroundColor: `${backgroundColor}`,
+      cursor: 'pointer',
+      display: 'flex',
+      justifyContent: "center",
+      width: '100%',
+      height: `${size.height}px`,
+      alignItems: 'center',
+    }} >
+      {child}
+    </div>
+  })
+}
+
