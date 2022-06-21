@@ -66,10 +66,14 @@ export default forwardRef(function Flexbox(props, ref) {
           return (
             <>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <div className={`l-FlexBoxItem ${direction} ${justify}`} style={ index >= 0 &&  index <= (children.length -1 ) ? spacingStyle : {}}>
 =======
               <div className={`l-FlexBoxItem ${direction} ${justify}`} style={ index > 0 && spacing > 0 ? spacingStyle : {}}>
 >>>>>>> b9cf5aac3d9a24b92899e76f29e39133f6f790e3
+=======
+              <div className={`l-FlexBoxItem ${direction} ${justify}`} style={ index >= 0 &&  index <= (children.length -1 ) ? spacingStyle : {}}>
+>>>>>>> 63a3bdfbf04a7c1bf4c209da16dbebdd2850363b
                 {child}
               </div>
               {/* {defaultSeperator && (!isLastItem) ? <NamedSeperator name={defaultSeperator} /> : null} */}
