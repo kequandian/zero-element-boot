@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { history } from 'umi';
-
+const convertToQuery = require('./convertToNavObject')
 
 /**
  * 
@@ -8,7 +8,7 @@ import { history } from 'umi';
  * @param {solid} solid 深色背景，字体白色
  * @param {outline} outline 有边框，背景半透明
  * @param {add} add 加号
- * @param {navigation} navigation  点击响应外部事件
+ * @param {navigation} navigation  外部路径
  * @param {onAction} onAction 点击响应内部事件
  * 
  */
@@ -24,27 +24,23 @@ export default function Index(props) {
 
     const colors = (!outline && solid) ? '#ffffff' : `${color}`
 
-    const title = add ? '+' : null
 
 
-    const onHandleButtonClick = (ButtonClick) => {
-        console.log('ButtonClick == ', ButtonClick)
-    }
+    // "/GetPath?id=34&name=34"
+
+    // if(navigation && navigation.contains("?")){
+
+    // }
+
+    const queryData = convertToQuery(navigation)
+    console.log('queryData === ', queryData)
 
     const path = () => {
-        history.push({
-            pathname: '/GetRouterPath',
-            query: {
-                id: '20'
-            }
-        })
+        history.push(queryData)
     }
 
-    const onTagClick = (!onAction && navigation) ? path : (onAction && !navigation) ? onHandleButtonClick : null
+    const onButtonClick = (!onAction && navigation) ? path : (onAction && !navigation) ? onAction : null
 
-    console.log(navigation, '== navigation')
-
-    console.log(onAction, '== onAction')
 
     const baseStyle = {
         textAlign: 'center',
@@ -61,13 +57,29 @@ export default function Index(props) {
 
 
     return (
-        <div style={baseStyle} onClick={onTagClick}>
-            <div style={{ margin: 'auto 2px 6px 2px', fontWeight: 'bold', fontSize: '30px', lineHeight: '100%' }} > {title}</div>
-            {
-                React.Children.map(children, child => (
-                    child
+        <div style={baseStyle} onClick={onButtonClick}>
+            {add ?
+                <>
+                    <div style={{ margin: 'auto 2px 4px 2px', fontWeight: 'bold', fontSize: '30px', lineHeight: '100%' }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill={colors} class="bi bi-plus-lg" viewBox="0 0 20 16">
+                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                        </svg>
+                    </div>
+                    {
+                        React.Children.map(children, child => (
+                            child
 
-                ))
+                        ))
+                    }
+                </>
+                : <>
+                    {
+                        React.Children.map(children, child => (
+                            child
+
+                        ))
+                    }
+                </>
             }
         </div>
     )
