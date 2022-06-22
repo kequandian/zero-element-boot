@@ -1,9 +1,9 @@
 
 
-module.exports = function convertToNavObject(value = '') {
+module.exports = function useQuery(value = '') {
 
 
-    function convertToQuery(dataString){
+    function useQuery(dataString){
         if(dataString){
             const dsArray = dataString.split('&')
             const res = {}
@@ -21,7 +21,7 @@ module.exports = function convertToNavObject(value = '') {
     if(value){
         const navArray = value.split('?')
         res.pathname = navArray[0]
-        res.query = convertToQuery(navArray[1])
+        res.query = useQuery(navArray[1])
         return res
     }else{
         return {}
