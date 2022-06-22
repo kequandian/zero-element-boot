@@ -13,7 +13,7 @@ import Cart from '@/components/cart/Cart';
 
 export default function ItemPlaceholder(props) {
 
-   const { fill = '#e0e4e4', bg = '', size = 150 } = props
+   const { fill = '#f1f4f4', bg = '', size = 150 } = props
 
    console.log(size,'===size');
    
