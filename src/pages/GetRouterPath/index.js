@@ -1,21 +1,13 @@
-import { useState, useEffect } from 'react';
 
-const useRouterParams = require('@/components/hooks/useRouterParams');
-
-// const useRouterParams = require('@/components/hooks/useRouterParams');
+import useRouterParams from '@/components/hooks/useRouterParams';
 
 export default function GetRouterPath(props) {
 
-    const [ currParams, setCurrParams ] = useState({})
-
-    useEffect(_=>{
-        const params = useRouterParams(props)
-        setCurrParams(params)
-    })
+    const [ params ] = useRouterParams(props)
 
     return (
         <>
-            <div>当前路由参数: {JSON.stringify(currParams)}</div>
+            <div>当前路由参数: {JSON.stringify(params)}</div>
         </>
     )
 }
