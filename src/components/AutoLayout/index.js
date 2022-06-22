@@ -84,8 +84,9 @@ export default function (props) {
 //新增 layout 新增 navigation 属性
 
 function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
-  // handle layout, container, gateway, cart, presenter, navigation, children
-  const { xname, props, container, gateway, cart, presenter, navigation, children: layoutChildren } = layout || {};
+  // handle layout, container, gateway, cart, presenter, xpresenter, navigation, children
+  // xpresenter 子项组件数据多层传递问题，意义同 presenter
+  const { xname, props, container, gateway, cart, presenter, xpresenter, navigation, children: layoutChildren } = layout || {};
 
   const _cart = (cart && typeof cart === 'string') ? { xname: cart } : cart
   const _gateway = (gateway && typeof gateway === 'string') ? { xname: gateway } : gateway
@@ -109,11 +110,11 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
   // handle simple presenter, from data
   if (!presenter && !layoutChildren && !container){
       // support from data, not layout
-      const {_xname = {xname}, _props = {props}, _cart = {cart}, ...rest } = data
+      const {_xname = {xname}, _props = {props}, _cart = {cart}, xpresenter = {xname:_xname, props:_props, cart:_cart}, ...rest } = data
 
-      const __presenterName = _xname || tips(_xname);
-      const __presenter = _props || {};
-      const __cart = _cart || {};
+      const __presenterName = xpresenter.xname || tips(xpresenter.xname);
+      const __presenter = xpresenter.props || {};
+      const __cart = xpresenter.cart || {};
 
       const __NamedCart = _cart ? NamedCart : NextIndicator;
 
