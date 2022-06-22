@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { history } from 'umi';
-const convertToQuery = require('./convertToNavObject')
+import useQuery from '@/components/hooks/useQuery.js'
 
 /**
  * 
@@ -32,7 +32,7 @@ export default function Index(props) {
 
     // }
 
-    const queryData = convertToQuery(navigation)
+    const queryData = useQuery(navigation)
     console.log('queryData === ', queryData)
 
     const path = () => {
