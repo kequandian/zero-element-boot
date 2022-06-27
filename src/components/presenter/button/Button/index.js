@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { history } from 'umi';
 import useQuery from '@/components/hooks/useQuery.js'
 
+
 /**
  * 
  * @param {color} color 背景，边框，字体颜色
+ * @param {height} height 高度
  * @param {solid} solid 深色背景，字体白色
  * @param {outline} outline 有边框，背景半透明
  * @param {add} add 加号
@@ -16,7 +18,7 @@ import useQuery from '@/components/hooks/useQuery.js'
 
 export default function Index(props) {
 
-    const { children, color = '#8e72ff', solid, outline, add, navigation, onAction } = props;
+    const { children, color = '#8e72ff',height='40px', solid, outline, add, navigation, onAction } = props;
 
     const bg = (!outline && solid) ? `${color}` : (outline && !solid) ? `${color}26` : null
 
@@ -52,7 +54,8 @@ export default function Index(props) {
         color: `${colors}`,
         border: `${border}`,
         borderRadius: '10px',
-        margin: '6px'
+        margin: '6px',
+        height:`${height}`
     }
 
 
@@ -60,7 +63,7 @@ export default function Index(props) {
         <div style={baseStyle} onClick={onButtonClick}>
             {add ?
                 <>
-                    <div style={{ margin: 'auto 2px 4px 2px', fontWeight: 'bold', fontSize: '30px', lineHeight: '100%' }}>
+                    <div style={{ margin: 'auto 2px', fontWeight: 'bold', fontSize: '30px', lineHeight: '100%' }}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill={colors} class="bi bi-plus-lg" viewBox="0 0 20 16">
                             <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
                         </svg>
