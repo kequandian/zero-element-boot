@@ -1,9 +1,16 @@
 const React = require('react');
 const DefaultContainerSet = require('../container');
 
+import { get as DefaultListSet } from '@/components/config/NamedListConfig';
+
 export default function NamedContainer({children, xname, props, container={xname, props}, containerSet,  ...data}) {
 
-  const _ContainerSet = containerSet ? containerSet: DefaultContainerSet
+  const newDefaultContainerSet = {
+    ...DefaultContainerSet,
+    ...DefaultListSet()
+  }
+
+  const _ContainerSet = containerSet ? containerSet: newDefaultContainerSet
 
   const containerName = (typeof container === 'string') ? container : container.xname
   const NamedContainer = _ContainerSet[containerName] || tips(containerName);
