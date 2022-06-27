@@ -1,5 +1,6 @@
 const React = require('react');
-const NamedListSet = require('../list');
+import { get as NamedListSet } from '@/components/config/NamedListConfig';
+//const NamedListSet = require('../list');
 
 //export default function NamedList({ name, API, props, children, spin = '' }) {
 export default function NamedList({ xname, props, children, ...data}) {
