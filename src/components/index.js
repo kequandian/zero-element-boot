@@ -20,6 +20,7 @@ import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import { set as NamedIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 import { set as FormItemTypeSet } from '@/components/config/formItemTypeConfig';
+import { set as NamedListSet } from '@/components/config/NamedListConfig';
 
 //layout
 import Flexbox from '@/components/layout/Flexbox';
@@ -60,6 +61,18 @@ import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicato
 
 import {Avatar, DownloadButton, ItemPlaceholder} from '@/components/presenter';
 import {Title, Subtitle} from '@/presenter/demo';
+
+import { 
+  AutoLoadList,
+  LoadMoreList,
+  PlainList,
+  MultiSelectList,
+  LoadingList,
+  SelectList,
+  AddMoreList,
+  ItemClickList,
+  SimCRUDList
+} from './list';
 
 // Form 组件
 import { InputCompx, SelectFetch, CheckboxFetch, CheckboxModalFetch } from '@/components/formItemType';
@@ -109,6 +122,18 @@ NamedPresenterSet({
   Subtitle,
   DownloadButton,
   ItemPlaceholder
+})
+
+NamedListSet({
+  AutoLoadList,
+  LoadMoreList,
+  PlainList,
+  MultiSelectList,
+  LoadingList,
+  SelectList,
+  AddMoreList,
+  ItemClickList,
+  SimCRUDList
 })
 
 FormItemTypeSet({
