@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AutoComponentSet from './index';
-import CssCart from '@/components/css/CssCart';
+import CssCart from '@/components/cart/CssCart';
 
 
 

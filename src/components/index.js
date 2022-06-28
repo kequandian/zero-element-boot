@@ -28,6 +28,7 @@ import Itembox from '@/components/layout/Itembox';
 import Gridbox from '@/components/layout/Gridbox';
 import Wrap from '@/components/layout/Wrap';
 import Stack from '@/components/layout/Stack';
+import VStack from '@/components/layout/VStack';
 import Round from '@/components/layout/Round';
 
 //cart 
@@ -83,6 +84,7 @@ NamedLayoutSet({
   Gridbox,
   Wrap,
   Stack,
+  VStack,
   Round
 })
 
