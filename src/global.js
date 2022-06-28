@@ -69,8 +69,8 @@ NamedIndicatorSet({
 NamedPresenterSet({
   Avatar,
   Title,
-
   ImageAnimation,
+
   ContentText,
   ContentFinish,
 
@@ -84,9 +84,8 @@ NamedPresenterSet({
   TableCompx
 })
 
-//注入表单组件
 FormItemTypeSet({
-  "input": InputCompx, 
+  "input":  InputCompx, 
   "select-fetch": SelectFetch
 })
 
