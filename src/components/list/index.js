@@ -1,6 +1,7 @@
 import AutoLoadList from './AutoLoadList';
 import LoadMoreList from './LoadMoreList';
 import PlainList from './PlainList';
+import GroupedList from './GroupedList';
 import MultiSelectList from './MultiSelectList';
 import LoadingList from './LoadingList';
 import SelectList from './SelectList';
@@ -15,6 +16,7 @@ export {
   AutoLoadList,
   LoadMoreList,
   PlainList,
+  GroupedList,
   MultiSelectList,
   LoadingList,
   SelectList,

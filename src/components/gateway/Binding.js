@@ -14,7 +14,6 @@ export default function Binding({ children, binding={}, ...rest}) {
   let data = doBind(binding, rest)
 
   const childrenList = React.Children.toArray(children);
-
   return childrenList.map(child => React.cloneElement(child, {
     ...data,
     ...rest
@@ -29,3 +28,4 @@ function doBind(binding, data={}) {
   })
   return { ...bindingData };
 }
+
