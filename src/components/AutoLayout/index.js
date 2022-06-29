@@ -23,6 +23,9 @@ import loadingPage from '@/components/loading';
 //CR.2021-01-13 merge AutoComponent and AutoLayout
 
 // 2021-3-25 新增通过 fetch 获取 layoutJson 配置信息, 新增 loading 加载效果
+
+// 2022-6-27 gateway simplify
+
 export default function (props) {
   const { layout } = props;
   const { path } = layout ? layout : {};
@@ -85,19 +88,22 @@ export default function (props) {
 //2021-11-10
 //新增 layout 新增 navigation 属性
 
-function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
+function AutoLayout({ children, layout, gateway = {}, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
   // handle layout, container, gateway, cart, presenter, xpresenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
-  const { xname, props, container, gateway, cart, presenter, xpresenter, navigation, children: layoutChildren } = layout || {};
+  const { xname, props, container, gateway: layoutGateway = {...gateway}, cart, presenter, xpresenter, navigation, children: layoutChildren } = layout || {};
 
   const _NamedLayout = xname ? NamedLayout : DefaultLayout
 
+  // Cart
   const _cart = (cart && typeof cart === 'string') ? { xname: cart } : cart
-  const _gateway = (gateway && typeof gateway === 'string') ? { xname: gateway } : gateway
-
-  // Cart & Gateway 
   const _NamedCart = _cart ? NamedCart : NextIndicator;
+
+  // Gateway 
+  const _gateway = layoutGateway ? (typeof layoutGateway==='string' ? { xname: layoutGateway } : simplifyGateway(layoutGateway)) : undefined
   const _NamedGateway = _gateway ? NamedGateway : NextIndicator;
+  console.log('gateway=', _gateway)
+
 
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
@@ -192,6 +198,24 @@ function tips(name) {
 
 function isJsonObject(obj) {
   return (obj && typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]")
+}
+
+function simplifyGateway(gateway){
+  const {xname, props } = gateway  
+  if(xname){
+    return gateway
+  }
+
+  // rebuild gateway
+  const gw = {
+    xname: 'Binding',
+    props: {
+      binding: {
+        ...gateway
+      }
+    }
+  }
+  return gw;
 }
 
 // function isLayoutObject(obj) {
