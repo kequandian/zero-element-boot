@@ -11,8 +11,8 @@ import ContainerContext from '@/components/AutoX/ContainerContext';
  * @param {array}} items,dataSource
  */
 export default function GroupedList(props) {
-  const { children, layout,  dataSource={}, navigation, onItemClick, ...rest } = props;
-
+  const { children,  layout,  dataSource={}, navigation, onItemClick, groupKeyStyle ,...rest} = props;
+  
   const [layoutRef, { getClassName }] = useLayout();
 
   const containerRef = useRef();
@@ -29,8 +29,10 @@ export default function GroupedList(props) {
             return (<div key={g}>
 
             {/* 分组标题风格 */}
-              <div styles={{color: '#00ffaa', marginTop: '40px'}}>
-                 {groupKey}
+              <div style={groupKeyStyle
+                // {color: '#00ffaa', marginTop: '40px'}
+            }>
+                {groupKey}
               </div>
 
               {/* 分组风格 */}
@@ -49,7 +51,7 @@ export default function GroupedList(props) {
                           {
                             React.isValidElement(Child) ?
                               React.cloneElement(Child, {
-                                  ...rest,
+                                  // ...rest,
                                   ...item,
                                   layout: layout,
                                   // key: i,
@@ -58,7 +60,7 @@ export default function GroupedList(props) {
                                   isLastItem: dataSource.length == (i+1) ? true : false,
                                   index: i
                               })
-                            : <Child key={i} {...rest} {...item } layout={layout} ref={layoutRef} index={i} />
+                            : <Child key={i}  {...item } layout={layout} ref={layoutRef} index={i} />
                           }
                         </div>)
                       })
