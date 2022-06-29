@@ -5,6 +5,7 @@ import Gridbox from './Gridbox';
 
 import Wrap from './Wrap';
 import Stack from './Stack';
+import VStack from './VStack';
 import Round from "./Round";
 
 export {
@@ -14,5 +15,6 @@ export {
 
   Wrap,
   Stack,
+  VStack,
   Round
 }

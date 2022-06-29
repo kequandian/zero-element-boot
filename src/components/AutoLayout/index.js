@@ -3,7 +3,9 @@ import { useSize } from 'ahooks';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { NamedContainer, NamedLayout, NamedGateway, NamedCart, NextIndicator } from '@/components';
+
 import DefaultContainer from '@/components/container/Container'
+import DefaultLayout from '@/components/layout/VStack'
 
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 
@@ -84,8 +86,11 @@ export default function (props) {
 //新增 layout 新增 navigation 属性
 
 function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
-  // handle layout, container, gateway, cart, presenter, navigation, children
-  const { xname, props, container, gateway, cart, presenter, navigation, children: layoutChildren } = layout || {};
+  // handle layout, container, gateway, cart, presenter, xpresenter, navigation, children
+  // xpresenter 子项组件数据多层传递问题，意义同 presenter
+  const { xname, props, container, gateway, cart, presenter, xpresenter, navigation, children: layoutChildren } = layout || {};
+
+  const _NamedLayout = xname ? NamedLayout : DefaultLayout
 
   const _cart = (cart && typeof cart === 'string') ? { xname: cart } : cart
   const _gateway = (gateway && typeof gateway === 'string') ? { xname: gateway } : gateway
@@ -109,13 +114,13 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
   // handle simple presenter, from data
   if (!presenter && !layoutChildren && !container){
       // support from data, not layout
-      const {_xname = {xname}, _props = {props}, _cart = {cart}, ...rest } = data
+      const {_xname = xname, _props = {...props}, _cart = {...cart}, xpresenter = {xname:_xname, props: {..._props}, cart: {..._cart}}, ...rest } = data
 
-      const __presenterName = _xname || tips(_xname);
-      const __presenter = _props || {};
-      const __cart = _cart || {};
+      const __presenterName = xpresenter.xname || tips(xpresenter.xname);
+      const __presenter = xpresenter.props || {};
+      const __cart = xpresenter.cart || {};
 
-      const __NamedCart = _cart ? NamedCart : NextIndicator;
+      const __NamedCart = (_cart && (typeof _cart === 'string')) ? NamedCart : NextIndicator;
 
       const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
       return (
@@ -129,11 +134,13 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
 
     <Container {..._container} {...data} navigation={navigation}>
 
-        <NamedLayout xname={xname} props={props} >
+        <_NamedLayout xname={xname} props={props} >
           {layoutChildren ? layoutChildren.map((child, i) => {
             const { presenter, span, gateway, cart } = child;
 
-            const __cart = cart
+            const __cart = cart ? cart : (_cart ? _cart : undefined)
+            const __NamedCart = __cart ? _NamedCart : NextIndicator
+
             const __gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : {}
             const __NamedGateway = gateway ? NamedGateway : NextIndicator
 
@@ -142,13 +149,13 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
 
             return (
               <__NamedGateway {...__gateway} key={i} span={span} >
-                  <_NamedCart {...__cart} >
+                  <__NamedCart {...__cart} >
                   {isJsonObject(__presenter)? 
                       <__Presenter {...__presenter} allComponents={allComponents} onItemClick={onItemClick} />
                     :
                     <__Presenter {...__presenter} allComponents={allComponents} />
                   }
-                  </_NamedCart>
+                  </__NamedCart>
               </__NamedGateway>
             )
 
@@ -159,11 +166,11 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
                 </_NamedCart>
             })
           )}
-        </NamedLayout>
+        </_NamedLayout>
     </Container>
   ) : (
     <Container {..._container} {...data} onItemClick={onItemClick} navigation={navigation} >
-      <NamedLayout xname={xname} props={props}>
+      <_NamedLayout xname={xname} props={props}>
           <_NamedGateway {..._gateway}>
                 <_NamedCart {..._cart} >
                   {presenter ?
@@ -173,7 +180,7 @@ function AutoLayout({ children, layout, allComponents = {}, onItemClick = () => 
                   }
                 </_NamedCart>
           </_NamedGateway>
-      </NamedLayout>
+      </_NamedLayout>
     </Container>
   )
 }
