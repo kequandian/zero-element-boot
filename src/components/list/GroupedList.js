@@ -29,7 +29,7 @@ export default function GroupedList(props) {
             return (<div key={g}>
 
             {/* 分组标题风格 */}
-              <div style={groupKeyStyle
+              <div style={style
                 // {color: '#00ffaa', marginTop: '40px'}
             }>
                 {groupKey}
@@ -51,7 +51,7 @@ export default function GroupedList(props) {
                           {
                             React.isValidElement(Child) ?
                               React.cloneElement(Child, {
-                                  // ...rest,
+                                  ...rest,
                                   ...item,
                                   layout: layout,
                                   // key: i,
@@ -60,7 +60,7 @@ export default function GroupedList(props) {
                                   isLastItem: dataSource.length == (i+1) ? true : false,
                                   index: i
                               })
-                            : <Child key={i}  {...item } layout={layout} ref={layoutRef} index={i} />
+                            : <Child key={i}  {...item }{...rest} layout={layout} ref={layoutRef} index={i} />
                           }
                         </div>)
                       })
