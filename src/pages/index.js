@@ -1,7 +1,7 @@
 import React from 'react';
 import { history } from 'umi';
 import { ChakraProvider} from "@chakra-ui/react";
-
+import { AutoLayout, NamedLayout } from '@/components';
 
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import {Avatar, Title, Subtitle} from '@/presenter/demo'
@@ -60,7 +60,7 @@ import AutoCartSet from '@/pages/AutoCartSet/Sandbox'
 import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
 import AutoComponentSet from './AutoComponentSet'
 import RouterParamsDemo from './GetRouterPath/demo'
-import { AutoLayout } from '@/components';
+import TestGroupedList from './TestGroupedList';
 
 export default function Index(props) {
 
@@ -88,16 +88,20 @@ export default function Index(props) {
   // return <PreviewAutoLayoutDemo/> 
 
   // return <RouterParamsDemo />
+  return <TestGroupedList/>
 
-  const layout = {
-    children: [ 
-      {
-        "presenter" : { xname: "ItemPlaceholder", props: {} }
-      },
-      {
-        "presenter" : "ItemPlaceholder"
-      }
-    ]
-  }
-  return <AutoLayout layout={layout}/>
+  // AutoLayout 组件测试
+  // const layout = {
+  //   children: [ 
+  //     {
+  //       "presenter" : { xname: "ItemPlaceholder", props: {} }
+  //     },
+  //     {
+  //       "presenter" : "ItemPlaceholder"
+  //     }
+  //   ]
+  // }
+  // return <AutoLayout layout={layout}/>
+
+
 }

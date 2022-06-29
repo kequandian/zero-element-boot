@@ -22,7 +22,7 @@ export default function ItemPlaceholder(props) {
 
    return (
       <Cart fill={bg} paddin='0' linewidth='0' margin='0'>
-         < Flex >
+         <Flex>
             {/* <Rectangle margin={`${0.042 * size}px`} width={`${0.4 * size}px`} height={`${0.4 * size}px`} fill={fill} corner='50%' /> */}
         
             <div style={{ margin: `${0.042 * size}px`, width: `${0.4 * size}px`, height: `${0.4 * size}px`, backgroundColor: `${fill}`, backgroundImage: `url(${url})`, borderRadius: '50%', backgroundSize: '100% 100%' }}></div>
