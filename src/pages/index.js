@@ -60,6 +60,7 @@ import AutoCartSet from '@/pages/AutoCartSet/Sandbox'
 import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
 import AutoComponentSet from './AutoComponentSet'
 import RouterParamsDemo from './GetRouterPath/demo'
+import { AutoLayout } from '@/components';
 
 export default function Index(props) {
 
@@ -86,5 +87,17 @@ export default function Index(props) {
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
   // return <PreviewAutoLayoutDemo/> 
 
-  return <RouterParamsDemo />
+  // return <RouterParamsDemo />
+
+  const layout = {
+    children: [ 
+      {
+        "presenter" : { xname: "ItemPlaceholder", props: {} }
+      },
+      {
+        "presenter" : "ItemPlaceholder"
+      }
+    ]
+  }
+  return <AutoLayout layout={layout}/>
 }
