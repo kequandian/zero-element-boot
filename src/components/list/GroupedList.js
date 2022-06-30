@@ -29,7 +29,7 @@ export default function GroupedList(props) {
             return (<div key={g}>
 
             {/* 分组标题风格 */}
-              <div style={style
+              <div style={groupKeyStyle
                 // {color: '#00ffaa', marginTop: '40px'}
             }>
                 {groupKey}
