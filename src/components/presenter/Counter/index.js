@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import DotDashButton from '@/components/presenter/button/DotDashButton'
 import DotPlusButton from '@/components/presenter/button/DotPlusButton'
 import { Flex } from "@chakra-ui/react";
-import ShowHideIndicator from 'zero-element-boot/lib/components/indicator/ShowHideIndicator';
-import NextIndicator from 'zero-element-boot/lib/components/NextIndicator'
+import ShowHideIndicator from '@/components/indicator/ShowHideIndicator';
+import NextIndicator from '@/components/NextIndicator'
 
 /**
  * 
