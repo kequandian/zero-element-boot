@@ -1,15 +1,19 @@
-import React from 'react';
+import React, {useImperativeHandle, forwardRef} from 'react';
 
-import Container from '@/components/container/Container';
 import Flexbox from '@/components/layout/Flexbox';
+import Container from '@/components/container/Container';
+import NextIndicator from '@/components/NextIndicator';
 
-export default function Round(props) {
+export default forwardRef(function Round(props, ref) {
 
-  const { children, ...data } = props;
+  const { children, __, ...data } = props;
+  const _Container = __ ? NextIndicator : Container
 
   return (
-      <Flexbox align='between' {...data}>
-        {children}
-      </Flexbox>
+    <_Container>
+        <Flexbox align='between' {...data}>
+          {children}
+        </Flexbox>
+    </_Container>
   )
-}
+})

@@ -12,15 +12,20 @@ import React from 'react';
  *   <Child /> // get props test = 123 foo = 456
  * </GetField>
  */
-export default function GetField({ children, dataField, dataSource, ...rest }) {
-  const field =  (dataSource ? dataSource[dataField] : rest[dataField]) || {}
-  // if (Array.isArray(data)) {
-  //   field = field[itemIndex];
-  // }
+export default function GetItem({ children, dataSource, items = dataSource, itemIndex = 0, ...rest }) {
+  const data = (items ? items[itemIndex] : rest[itemIndex]) || {}
 
   const childrenList = React.Children.toArray(children);
   return childrenList.map(child => React.cloneElement(child, {
     ...rest,
-    ...field
+    ...data
   }))
+  
+  // do not work below ...
+  // React.Children.map(children, child => {
+  //   return React.cloneElement(child, {
+  //       ...data,
+  //       ...rest
+  //   })  
+  // })
 }
