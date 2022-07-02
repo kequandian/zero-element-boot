@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { NamedContainer, NamedLayout, NamedGateway, NamedCart, NextIndicator } from '@/components';
 
 import DefaultContainer from '@/components/container/Container'
-import DefaultLayout from '@/components/layout/VStack'
 
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 
@@ -25,6 +24,16 @@ import loadingPage from '@/components/loading';
 // 2021-3-25 新增通过 fetch 获取 layoutJson 配置信息, 新增 loading 加载效果
 
 // 2022-6-27 gateway simplify
+
+
+// 2022-7-01 支持children 列表数据索引
+// {
+//   presenter: 'ItemPlaceholder',
+//   gateway: {
+//     _: 0
+//   }
+// }
+
 
 export default function (props) {
   const { layout } = props;
@@ -91,9 +100,7 @@ export default function (props) {
 function AutoLayout({ children, layout, gateway = {}, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
   // handle layout, container, gateway, cart, presenter, xpresenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
-  const { xname, props, container, gateway: layoutGateway = {...gateway}, cart, presenter, xpresenter, navigation, children: layoutChildren } = layout || {};
-
-  const _NamedLayout = xname ? NamedLayout : DefaultLayout
+  const { xname='VStack', props, container, gateway: layoutGateway = {...gateway}, cart, presenter, xpresenter, navigation, children: layoutChildren } = layout || {};
 
   // Cart
   const _cart = (cart && typeof cart === 'string') ? { xname: cart } : cart
@@ -102,8 +109,6 @@ function AutoLayout({ children, layout, gateway = {}, allComponents = {}, onItem
   // Gateway 
   const _gateway = layoutGateway ? (typeof layoutGateway==='string' ? { xname: layoutGateway } : simplifyGateway(layoutGateway)) : undefined
   const _NamedGateway = _gateway ? NamedGateway : NextIndicator;
-  console.log('gateway=', _gateway)
-
 
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
@@ -137,32 +142,15 @@ function AutoLayout({ children, layout, gateway = {}, allComponents = {}, onItem
  }
 
   return layoutChildren ? (
-
     <Container {..._container} {...data} navigation={navigation}>
-
-        <_NamedLayout xname={xname} props={props} >
+        <NamedLayout xname={xname} props={props} __>
           {layoutChildren ? layoutChildren.map((child, i) => {
-            const { presenter, span, gateway, cart } = child;
 
-            const __cart = cart ? cart : (_cart ? _cart : undefined)
-            const __NamedCart = __cart ? _NamedCart : NextIndicator
-
-            const __gateway = gateway ? ((typeof gateway === 'string') ? { xname: gateway } : gateway) : {}
-            const __NamedGateway = gateway ? NamedGateway : NextIndicator
-
-            const __Presenter = ((presenter && typeof presenter === 'string') ? _allComponents[presenter]: (isJsonObject(presenter)? AutoLayout : undefined)) || tips(presenter)
-            const __presenter = isJsonObject(presenter)? {layout: {...presenter}} : {}
+            const __Presenter = ((typeof child === 'string') ? _allComponents[child] : AutoLayout) || tips(presenter)
+            const __presenter = isJsonObject(child)? {layout: {...child}} : {}
 
             return (
-              <__NamedGateway {...__gateway} key={i} span={span} >
-                  <__NamedCart {...__cart} >
-                  {isJsonObject(__presenter)? 
-                      <__Presenter {...__presenter} allComponents={allComponents} onItemClick={onItemClick} />
-                    :
-                    <__Presenter {...__presenter} allComponents={allComponents} />
-                  }
-                  </__NamedCart>
-              </__NamedGateway>
+                <__Presenter {...__presenter} allComponents={allComponents} onItemClick={onItemClick}  key={i} />
             )
 
           }) : (
@@ -172,11 +160,11 @@ function AutoLayout({ children, layout, gateway = {}, allComponents = {}, onItem
                 </_NamedCart>
             })
           )}
-        </_NamedLayout>
+        </NamedLayout>
     </Container>
   ) : (
     <Container {..._container} {...data} onItemClick={onItemClick} navigation={navigation} >
-      <_NamedLayout xname={xname} props={props}>
+      <NamedLayout xname={xname} props={props} __>
           <_NamedGateway {..._gateway}>
                 <_NamedCart {..._cart} >
                   {presenter ?
@@ -186,7 +174,7 @@ function AutoLayout({ children, layout, gateway = {}, allComponents = {}, onItem
                   }
                 </_NamedCart>
           </_NamedGateway>
-      </_NamedLayout>
+      </NamedLayout>    
     </Container>
   )
 }
@@ -201,13 +189,24 @@ function isJsonObject(obj) {
 }
 
 function simplifyGateway(gateway){
-  const {xname, props } = gateway  
+  const {xname, _,  props } = gateway  
+  // named gateway, just return for NamedGateway
   if(xname){
     return gateway
   }
 
+  // get item index
+  if(_!==undefined){
+    return {
+      xname: 'GetItem',
+      props: {
+        itemIndex: _
+      }
+    }
+  }
+
   // rebuild gateway
-  const gw = {
+  const bindingGw = {
     xname: 'Binding',
     props: {
       binding: {
@@ -215,7 +214,7 @@ function simplifyGateway(gateway){
       }
     }
   }
-  return gw;
+  return bindingGw;
 }
 
 // function isLayoutObject(obj) {

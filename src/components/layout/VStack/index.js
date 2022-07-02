@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useImperativeHandle, forwardRef} from 'react';
 import Flexbox from '@/components/layout/Flexbox';
-import Container from '@/components/container/Container'
-
+import Container from '@/components/container/Container';
+import NextIndicator from '@/components/NextIndicator';
 
 /**
  * 
@@ -9,16 +9,15 @@ import Container from '@/components/container/Container'
  * 
  */
 
-export default function VStack(props) {
-
-
-    const { children, spacing, ...data } = props;
+export default forwardRef(function VStack(props, ref) {
+    const { children,  __, spacing, ...data } = props;
+    const _Container = __ ? NextIndicator : Container
 
     return (
-        <Container>
+        <_Container>
             <Flexbox direction='column' spacing={spacing} {...data}>
                 {children}
             </Flexbox>
-        </Container>
+        </_Container>
     )
-}
+})

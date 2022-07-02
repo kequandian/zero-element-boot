@@ -1,19 +1,23 @@
-import React from 'react';
+import React, {useImperativeHandle, forwardRef} from 'react';
 
-import Container from '@/components/container/Container';
 import Flexbox from '@/components/layout/Flexbox';
+import Container from '@/components/container/Container';
+import NextIndicator from '@/components/NextIndicator';
 
 /**
  * @param {间隔} spacing
  */
 
-export default function (props) {
+export default forwardRef(function Stack(props, ref) {
 
-  const { children, spacing = 8, ...data } = props;
+  const { children, __, spacing = 8, ...data } = props;
+  const _Container = __ ? NextIndicator : Container
 
   return (
+    <_Container>
       <Flexbox align='start' direction='row' flexFlow='no-wrap' spacing={spacing} {...data}>
         {children}
       </Flexbox>
+    </_Container>
   )
-}
+})

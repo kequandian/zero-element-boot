@@ -9,14 +9,14 @@ import React from 'react';
  *   <Child /> // get props test = 123 foo = 456
  * </GetField>
  */
-export default function Binding({ children, binding={}, ...rest}) {
-
-  let data = doBind(binding, rest)
+export default function Binding({ children, binding={}, dataSource, ...rest}) {
+  
+  const data = doBind(binding, (dataSource ? dataSource : rest) )
 
   const childrenList = React.Children.toArray(children);
   return childrenList.map(child => React.cloneElement(child, {
-    ...data,
-    ...rest
+    ...rest,
+    ...data
   }))
 }
 
