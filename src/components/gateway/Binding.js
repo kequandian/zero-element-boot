@@ -1,13 +1,8 @@
 import React from 'react';
 
 /**
- * @param {string} dataField 读取的 props
+ * @param {string} binding 数据绑定
  * 
- * const demo = { test: 123, foo: 456 }
- * 
- * <GetField dataField="data" data={demo}>
- *   <Child /> // get props test = 123 foo = 456
- * </GetField>
  */
 export default function Binding({ children, binding={}, dataSource, ...rest}) {
   
@@ -15,8 +10,8 @@ export default function Binding({ children, binding={}, dataSource, ...rest}) {
 
   const childrenList = React.Children.toArray(children);
   return childrenList.map(child => React.cloneElement(child, {
+    ...data,
     ...rest,
-    ...data
   }))
 }
 

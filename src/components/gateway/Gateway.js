@@ -1,58 +1,59 @@
 const React = require('react');
+import Binding from './Binding';
+import Filter from './Filter'
+import GetItem from './GetItem';
+import Chain from './Chain'
 
 /**
  * 此组件 Binding 可替换
- * @param {object} converter  转换数据域名称,值不变 (如把sex:Male 转换为 gentle:Male) 
- * @param {object} filter  仅对指定数据域进行 converter 转换
+ * @param {object} binding 数据绑定
+ * @param {object} filter  过滤数据, 默认获取后将数据展开
+ * 
  */
-module.exports = function Gateway({ children, field, filter, converter, ...rest }) {
-
-  // handle data
-  let data = { ...rest };
+export default function Gateway({ children, chain, filter, binding, _, itemIndex=_, dataSource, ...rest }) {
 
   if (filter) {
-    if (Array.isArray(data[filter])) {
-      data[filter] = data[filter].map(item => execMap(item, converter));
-    } else {
-      data[filter] = execMap(data[filter], converter);
-    }
-  } else if(field){
-    data = execFieldMap(data, field, converter);
+    return Filter({children, filter, dataSource, ...rest})
 
-  } else if(converter) {
-    data = execMap(data, converter);
-  }
+  } else if(binding) {
+    return Binding({children, binding, dataSource, ...rest})
   
-  return React.cloneElement(children, {
-    ...data,
-  })
-}
+  }else if(itemIndex){
+    return GetItem({children, _:itemIndex, dataSource, ...rest})
+  
+  }else if(chain){
+    return Chain({children, chain, dataSource, ...rest})
+  }
 
-/**
- * 
- * @param {} data 
- * @param {*} field 
- * @param {*} converter 
- */
-function execFieldMap(data = {}, field, converter) {
-
-  var result = { ...data, ...data[field] };
-
-  Object.keys(converter).forEach(key => {
-    result[converter[key]] = result[key];
-    delete result[key];
-  })
-  return result;
+  return Binding({children, dataSource, ...rest})
 }
 
 
-/*
- * 转换数据域名称
-*/
-function execMap(data = {}, converter) {
-  Object.keys(converter).forEach(key => {
-    data[converter[key]] = data[key];
-    delete data[key];
-  })
-  return { ...data };
-}
+// /**
+//  * 
+//  * @param {} data 
+//  * @param {*} field 
+//  * @param {*} converter 
+//  */
+// function execFieldMap(data = {}, field, converter) {
+
+//   var result = { ...data, ...data[field] };
+
+//   Object.keys(converter).forEach(key => {
+//     result[converter[key]] = result[key];
+//     delete result[key];
+//   })
+//   return result;
+// }
+
+
+// /*
+//  * 转换数据域名称
+// */
+// function execMap(data = {}, converter) {
+//   Object.keys(converter).forEach(key => {
+//     data[converter[key]] = data[key];
+//     delete data[key];
+//   })
+//   return { ...data };
+// }

@@ -12,6 +12,11 @@ module.exports = function NamedGateway({children, xname, props, gateway={xname, 
   const gatewayName = (typeof gateway === 'string')? gateway : gateway.xname
   const Gateway =  GatewaySet[gatewayName] || tips(gatewayName);
 
+  // means chain
+  if(gateway && gateway.props && Array.isArray(gateway.props)){
+    gateway.props = {chain: gateway.props}
+  }
+
   // let Gateway, ... to handle data, not by NamedGateway
   return <Gateway {...gateway.props} {...rest} >
     {children}
