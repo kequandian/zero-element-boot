@@ -195,6 +195,15 @@ function simplifyGateway(gateway){
     return gateway
   }
 
+  if(Array.isArray(gateway)){
+    return {
+      xname: 'Chain',
+      props: {
+         chain: gateway
+      }
+    }
+  }
+
   // get item index
   if(_!==undefined){
     return {
