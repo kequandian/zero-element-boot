@@ -29,8 +29,8 @@ export default function(props){
     }
 
   // 
-  const layout = {
-    children: [ {
+  const layout = 
+    [ {
         presenter: 'ItemPlaceholder',
         gateway: [
             {
@@ -46,9 +46,9 @@ export default function(props){
       },
       {
         presenter: 'ItemPlaceholder',
-      }
-    ]
-  }
+      }, 
+      'ItemPlaceholder'
+  ]
 
   const gateway = {
   }
