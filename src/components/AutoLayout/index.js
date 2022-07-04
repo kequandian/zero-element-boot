@@ -100,14 +100,14 @@ export default function (props) {
 function AutoLayout({ children, layout, gateway = {}, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
   // handle layout, container, gateway, cart, presenter, xpresenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
-  const { xname='VStack', props, container, gateway: layoutGateway = {...gateway}, cart, presenter, xpresenter, navigation, children: layoutChildren } = layout || {};
+  const { xname='VStack', props, container, gateway: layoutGateway = {...gateway}, cart, presenter, xpresenter, navigation, children: layoutChildren } = sugarLayout(layout) || {};
 
   // Cart
   const _cart = (cart && typeof cart === 'string') ? { xname: cart } : cart
   const _NamedCart = _cart ? NamedCart : NextIndicator;
 
   // Gateway 
-  const _gateway = layoutGateway ? (typeof layoutGateway==='string' ? { xname: layoutGateway } : simplifyGateway(layoutGateway)) : undefined
+  const _gateway = layoutGateway ? (typeof layoutGateway==='string' ? { xname: layoutGateway } : sugarGateway(layoutGateway)) : undefined
   const _NamedGateway = _gateway ? NamedGateway : NextIndicator;
 
   // handle container
@@ -188,7 +188,17 @@ function isJsonObject(obj) {
   return (obj && typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]")
 }
 
-function simplifyGateway(gateway){
+function sugarLayout(layout){
+    // layout is array
+    if(Array.isArray(layout)){
+        return {
+          children: layout
+        }
+    }
+    return layout
+}
+
+function sugarGateway(gateway){
   const {xname, _,  props } = gateway  
   // named gateway, just return for NamedGateway
   if(xname){
