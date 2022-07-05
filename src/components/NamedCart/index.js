@@ -17,12 +17,12 @@ import OverlaySelector from '@/components/OverlaySelector';
 /**
  * NamedCart [,NamedLayout] 负责处理数据传递，具体的Cart[ItemCart, ...] 不负责处理数据传递
  * 区别于 NamedGateway 数据传递由具体的 Gateway 处理
- * @param {} xname 引用的Cart的名称
- * @param {} props 引用的Cart的属性
- * @param {} cart 参数格式 car={xname:'Cart', props: {}}
- * @param {} indicator 鼠标hover时的Cart的名称
- * @param {} selector 选中的时候的Cart的名称
- * @param {} defaultIndicator 默认状态下的叠加的Cart
+ * @param {string} xname 引用的Cart的名称
+ * @param {object} props 引用的Cart的属性
+ * @param {xname:'', props:{}} cart 参数格式 car={xname:'Cart', props: {}}
+ * @param {xname:'', props:{}} indicator 鼠标hover时的Cart的名称
+ * @param {xname:'', props:{}} selector 选中的时候的Cart的名称
+ * @param {xname:'', props:{}} defaultIndicator 默认状态下的叠加的Cart  (默认不需要)
  */
 export default function NamedCart({ children, xname, props, cart = { xname, props }, cartSet,  /*multi indicator*/ indicator, selector, defaultIndicator, indicatorSet, isSelected, /* end indicator*/    ...rest }) {
 
@@ -44,11 +44,13 @@ export default function NamedCart({ children, xname, props, cart = { xname, prop
   const    _Selector  = _IndicatorSet[selectorName] || tips(selectorName)
   const selectorProps = (typeof selector === 'object') ? selector.props : {}
 
+
   //2021-10-28 新增 defaultIndicator 模块
+  //2022-07-05 不一定需要 defaultIndicator
   // get defaultIndicator, the same as _Cart
-  const defaultIndicatorName = (typeof defaultIndicator === 'string') ? defaultIndicator : (typeof defaultIndicator === 'object') ? defaultIndicator.xname : ''
-  const _DefaultIndicator  = _IndicatorSet[defaultIndicatorName] || tips(defaultIndicatorName)
-  const defaultIndicatorProps = (typeof defaultIndicator === 'object') ? defaultIndicator.props : {}
+  const defaultIndicatorName = defaultIndicator ? ((typeof defaultIndicator === 'string') ? defaultIndicator : ((typeof defaultIndicator === 'object') ? defaultIndicator.xname : undefined)) : undefined
+  const _DefaultIndicator  = defaultIndicatorName ? _IndicatorSet[defaultIndicatorName] : undefined
+  const defaultIndicatorProps = (defaultIndicatorName && (typeof defaultIndicator === 'object')) ? defaultIndicator.props : {}
   
   return (
     <>
