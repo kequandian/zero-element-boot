@@ -9,11 +9,16 @@ import React from 'react';
 /**
  * 过滤数据, 默认获取后将数据展开
  * @param {string} filter  过滤的数据域 
- */
-export default function Filter({ children, filter={}, dataSource, ...rest }) {
-  const data = dataSource || rest || {}
+ * @param {string} _  仅过虑数据
 
+ */
+export default function Filter({ children, filter={}, dataSource, _, ...rest }) {
+  const data = dataSource || rest || {}
   const filtereddata =  (typeof filter === 'string') ? data[filter] : filterData(data, filter)
+
+  if(_){
+    return filtereddata
+  }
 
   // if (Array.isArray(data)) {
   //   field = field[itemIndex];

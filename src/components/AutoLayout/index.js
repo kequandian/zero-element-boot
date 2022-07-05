@@ -9,6 +9,7 @@ import DefaultContainer from '@/components/container/Container'
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 
 import loadingPage from '@/components/loading';
+import { Filter } from '../gateway';
 
 // import requireConfig from '@/components/AutoX/requireConfig';
 // import { Container } from '@/components/container';
@@ -97,18 +98,22 @@ export default function (props) {
 //2021-11-10
 //新增 layout 新增 navigation 属性
 
-function AutoLayout({ children, layout, gateway = {}, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, ...data }) {
+function AutoLayout({ children, layout, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource, ...rest }) {
   // handle layout, container, gateway, cart, presenter, xpresenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
-  const { xname='VStack', props, container, gateway: layoutGateway = {...gateway}, cart, presenter, xpresenter, navigation, children: layoutChildren } = sugarLayout(layout) || {};
+  const { xname='VStack', props, container, gateway: layoutGateway, cart, indicator, selector, presenter, xpresenter, navigation, children: layoutChildren } = sugarLayout(layout) || {};
+  const data = dataSource || rest || {}
 
   // Cart
-  const _cart = (cart && typeof cart === 'string') ? { xname: cart } : cart
-  const _NamedCart = _cart ? NamedCart : NextIndicator;
+  const __cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || {}
+  const _cart = sugarCart({...__cart, indicator: indicator, selector:selector})
+  const _NamedCart = cart ? NamedCart : NextIndicator;
 
-  // Gateway 
-  const _gateway = layoutGateway ? (typeof layoutGateway==='string' ? { xname: layoutGateway } : sugarGateway(layoutGateway)) : undefined
+  // Gateway
+  const _layoutGateway = layoutGateway || gateway
+  const _gateway = _layoutGateway ? (typeof _layoutGateway==='string' ? { xname: _layoutGateway } : sugarGateway(_layoutGateway)) : undefined
   const _NamedGateway = _gateway ? NamedGateway : NextIndicator;
+
 
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
@@ -188,6 +193,48 @@ function isJsonObject(obj) {
   return (obj && typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]")
 }
 
+/**
+ * if filter gateway
+ * @param {object} gateway 
+ */
+function isFilter(gateway){
+  let filtered = undefined
+  if(Object.keys(gateway).length===1){
+    Object.keys(gateway).map(key => {
+      const filterValue = gateway[key]
+      if(Array.isArray(filterValue) && filterValue.length===0){
+        filtered = 1
+      }
+    })
+    return filtered
+  }
+}
+
+
+/**
+ * cart 参数必须是 xname
+ * @param {xname: cart} cart 
+ * @returns 
+ */
+function sugarCart({indicator:indicator, selector:selector, ...cart}){
+    if(indicator || selector){
+      return {
+        cart: {
+          ...cart, 
+          indicator: indicator,
+          selector: selector
+        }
+      }
+    }
+    return cart
+}
+
+
+/**
+ * layout is array without children
+ * @param {object} layout 
+ * @returns 
+ */
 function sugarLayout(layout){
     // layout is array
     if(Array.isArray(layout)){
@@ -205,6 +252,10 @@ function sugarGateway(gateway){
     return gateway
   }
 
+  if(typeof gateway === 'object' && Object.keys(gateway).length===0){
+    return gateway
+  }
+
   if(Array.isArray(gateway)){
     return {
       xname: 'Chain',
@@ -215,7 +266,7 @@ function sugarGateway(gateway){
   }
 
   // get item index
-  if(_!==undefined){
+  if(_){
     return {
       xname: 'GetItem',
       props: {
@@ -224,8 +275,18 @@ function sugarGateway(gateway){
     }
   }
 
+  // filter 
+  if(isFilter(gateway)){
+    return {
+        xname: 'Filter', 
+        props: {
+          filter: gateway
+        }
+    }
+  }
+
   // rebuild gateway
-  const bindingGw = {
+  return {
     xname: 'Binding',
     props: {
       binding: {
@@ -233,7 +294,6 @@ function sugarGateway(gateway){
       }
     }
   }
-  return bindingGw;
 }
 
 // function isLayoutObject(obj) {
