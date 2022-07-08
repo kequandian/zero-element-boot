@@ -1,7 +1,7 @@
 import React, { useState, useEffect,useBoolean } from 'react';
 import Cart from '@/components/cart/Cart';
 import { Radio, RadioGroup, Button,Flex,Stack,ChakraProvider } from '@chakra-ui/react'
-import CssCart from '@/components/css/CssCart';
+import CssCart from '@/components/Cart/Cart';
 import {
     Popover,
     PopoverTrigger,
