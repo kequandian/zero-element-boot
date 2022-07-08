@@ -1,8 +1,8 @@
 
 import Clean from './default/Clean';
-import Butter from './default/Butter';
-import Pink from './default/Pink';
-import Clear from './default/Clear';
+import Butter from './default/Butter/butter';
+import Pink from './default/Pink/pink';
+import Clear from './default/Clear/clear';
 
 import Progress from './Progress';
 import Avatar from './Avatar';
