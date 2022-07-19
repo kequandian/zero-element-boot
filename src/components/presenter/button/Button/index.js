@@ -34,14 +34,22 @@ export default function Index(props) {
 
     // }
 
-    const queryData = useQuery(navigation)
-    console.log('queryData === ', queryData)
+    // console.log('queryData === ', queryData)
 
-    const path = () => {
-        history.push(queryData)
+    // const path = () => {
+    //     history.push(queryData)
+    // }
+
+    // const onButtonClick = (!onAction && navigation) ? path : (onAction && !navigation) ? onAction : null
+
+    function onButtonClick () {
+        if(!onAction && navigation){
+            const queryData = useQuery(navigation)
+            history.push(queryData)
+        }else if (onAction && !navigation){
+            onAction()
+        }
     }
-
-    const onButtonClick = (!onAction && navigation) ? path : (onAction && !navigation) ? onAction : null
 
 
     const baseStyle = {
@@ -60,7 +68,7 @@ export default function Index(props) {
 
 
     return (
-        <div style={baseStyle} onClick={onButtonClick}>
+        <div style={baseStyle} onClick={()=>onButtonClick()}>
             {add ?
                 <>
                     <div style={{ margin: 'auto 2px', fontWeight: 'bold', fontSize: '30px', lineHeight: '100%' }}>
