@@ -4,10 +4,12 @@
 export default function useQuery(props) {
 
     let value = ''
+    let currtPathName = ''
 
     if (typeof props == 'string') {
         value = props
     } else if (typeof props === 'object') {
+        currtPathName = props.location.pathname
         value = props.location.search
     }
 
@@ -15,14 +17,14 @@ export default function useQuery(props) {
         if (dataString) {
             const res = {}
             if (dataString.indexOf('&') != -1) {
-                console.log('dataString ==', dataString)
+                // console.log('dataString ==', dataString)
                 const dsArray = dataString.split('&')
                 dsArray.map(item => {
                     const dsItemArray = item.split('=')
                     res[dsItemArray[0]] = dsItemArray[1]
                 })
             } else {
-                console.log('dataString 111 ==', dataString)
+                // console.log('dataString 111 ==', dataString)
                 const dString = dataString.split('=')
                 res[dString[0]] = dString[1]
             }
@@ -39,8 +41,8 @@ export default function useQuery(props) {
             res.pathname = navArray[0]
             res.query = useQuery(navArray[1])
         } else {
-            res.pathname = value
-            res.query = {}
+            res.pathname = currtPathName
+            res.query = useQuery(value)
         }
         return res
     } else {
