@@ -78,17 +78,17 @@ export default function Index(props) {
   // history.push('/TestUserListDemo');
   //通过跳转进入单选页面
   // history.push('/RadioModalDemo');
-  // history.push('/CheckboxPageDemo');
+  // history.push('/PreviewAutoLayoutTest');
   // return <div>首页</div>
 
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
 
   // return <TableContainer/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  // return <PreviewAutoLayoutDemo/> 
+  return <PreviewAutoLayoutDemo {...props}/> 
 
   // return <RouterParamsDemo />
-  return <TestGroupedList/>
+  // return <PreviewAutoLayoutTest/>
 
   // AutoLayout 组件测试
   // const layout = {

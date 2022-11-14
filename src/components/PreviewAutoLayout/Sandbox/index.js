@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import qs from 'qs';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout'
 import PreviewItem from './PreviewItem';
 
 export default function (props) {
 
+  const params = props.location.query ||  qs.parse(props.location.search.split('?')[1])
   // 获取要显示的数据的接口
-  let api = '/api/crud/fieldModel/fieldModels'
+  // let api = '/api/crud/fieldModel/fieldModels'
+  let api = params.apiName || ''
+  
   // 获取layoutJson的本地接口
   // let layoutJsonApi = '/api/layoutJson'
-
 
   let layoutJsonApi = '/openapi/lc/module/getAutoLayOut/autoLayOut'
 
@@ -19,7 +22,7 @@ export default function (props) {
 
   // 获取layoutJson的api接口，如果本地接口为空，则会使用该接口请求api
   // let layoutName = 'thisAutoLayout'
-  let layoutName = ''
+  let layoutName = params.layoutName || ''
 
   const allComponents = { PreviewItem }
 
