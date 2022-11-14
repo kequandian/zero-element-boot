@@ -6,7 +6,8 @@ import useTokenRequest from '@/components/hooks/useTokenRequest';
 export default function Index (props) {
 
   // 参数
-  const {api,layoutApi,layoutName, ...rest} = props;
+  const {api,layoutApi, layoutName, ...rest} = props;
+
   console.log('props',props)
   // console.log('layoutName =',layoutName)
 
