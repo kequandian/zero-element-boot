@@ -27,10 +27,10 @@ export default {
   ignoreMomentLocale: true, // 忽略 moment 的 locale 文件
 
   chainWebpack(memo, { env, webpack, createCSSRule }) {
-    memo.output.set('path', require('path').resolve(__dirname, 'dist/dependency-ui'))
+    memo.output.set('path', require('path').resolve(__dirname, 'dist/preview-ui'))
     memo.output.set('filename', 'bundle.js')
   },
   
   // outputPath: '/dist/dependency-ui',
-  publicPath: process.env.NODE_ENV === 'production' ? './dependency-ui/' : '/',  //设置 dist/index.html 访问 js和css路径
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/',  //设置 dist/index.html 访问 js和css路径
 }
