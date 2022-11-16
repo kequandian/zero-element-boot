@@ -8,9 +8,6 @@ export default function Index (props) {
   // 参数
   const {api,layoutApi, layoutName, ...rest} = props;
 
-  console.log('props',props)
-  // console.log('layoutName =',layoutName)
-
   // 判断 layoutApi 是否为空，如果为空，则用 layoutName 拼接api路径
   const localLayoutApi = layoutApi || '/openapi/lc/components/layoutJson/' + layoutName
 
