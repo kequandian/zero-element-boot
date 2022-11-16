@@ -8,7 +8,7 @@ function setEndpoint(value) {
 
 function getEndpoint() {
   const wZEle = window.ZEle;
-  if(wZEle.endpoint){
+  if(wZEle && wZEle.endpoint){
     return wZEle.endpoint
   }
   return endpoint;

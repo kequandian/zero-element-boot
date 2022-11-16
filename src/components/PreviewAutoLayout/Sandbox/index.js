@@ -22,7 +22,7 @@ export default function (props) {
   function getApiUrl() {
     if(params.api){
       setApiPath(params.api)
-    }else{
+    }else if(params.apiName){
       //通过apiName获取API路径
       const api = `/openapi/lc/apis/${params.apiName}`;
       const queryData = {};
@@ -54,7 +54,7 @@ export default function (props) {
   const allComponents = { PreviewItem }
 
   return (
-        <PreviewAutoLayout api={apiPath} layoutApi={layoutJsonApi} layoutName={layoutName} allComponents={allComponents} />
+    <PreviewAutoLayout api={apiPath} layoutApi={layoutJsonApi} layoutName={layoutName} allComponents={allComponents} />
   )
 }
 
