@@ -6,12 +6,14 @@ import NextIndicator from '@/components/NextIndicator';
 
 export default forwardRef(function Round(props, ref) {
 
+  const {direction = 'row' } = props
+
   const { children, __, ...data } = props;
   const _Container = __ ? NextIndicator : Container
 
   return (
     <_Container>
-        <Flexbox align='between' {...data}>
+        <Flexbox align='around' direction={direction}  {...data}>
           {children}
         </Flexbox>
     </_Container>
