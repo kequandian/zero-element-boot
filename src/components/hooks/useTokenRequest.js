@@ -41,13 +41,14 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}}, c
                     let data = responseData.data;
 
                     if (bindFiles) {
-                        if (Array.isArray(data)) {
+                        if (Array.isArray(data) || Array.isArray(data.records)) {
                             const newList = [];
-                            data.map(item => {
+                            const ls = Array.isArray(data) ? data :  data.records
+                            ls.map(item => {
                                 newList.push(doBind(bindFiles, item));
                             })
                             data = newList;
-                        } else {
+                        }else {
                             data = doBind(bindFiles, responseData.data);
                         }
                     }

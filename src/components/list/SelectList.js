@@ -4,9 +4,21 @@ import { useSize } from 'ahooks';
 import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/AutoX/ContainerContext';
 
+/**
+ * @param {*} props 
+ * @param {array}} items api数据
+ * @param {Object}} navigation 导航
+ * @param {Object}} onItemClick 点击事件
+ */
 
-export default function SelectionList(props) {
-  const { children, items, layout, cart, navigation,  onItemClick= () => {console.log('未设置SelectionList onItemClick点击事件')} } = props;
+export default function SelectList(props) {
+  const { 
+    children, items, 
+    // layout, 
+    cart, navigation,  onItemClick= () => {console.log('未设置SelectionList onItemClick点击事件')} } = props;
+
+    // items.map(item => item.checked=false)
+    
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -37,7 +49,7 @@ export default function SelectionList(props) {
       onItemClick(item)
     }
   }
-console.log('currIndex == ', currIndex)
+  
   return <div
     style={{
       overflow: 'auto',
@@ -54,8 +66,8 @@ console.log('currIndex == ', currIndex)
               React.isValidElement(Child) ?
               React.cloneElement(Child, {
                   ...item,
-                  ...layout,
-                  layout:layout,
+                  // ...layout,
+                  // layout:layout,
                   // cart:cart,
                   key: i,
                   ref: layoutRef,

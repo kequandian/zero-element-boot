@@ -1,5 +1,5 @@
 import React from 'react';
-require('./default.less');
+require('./index.less');
 
 /**
  * 

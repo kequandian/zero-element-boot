@@ -1,11 +1,12 @@
 import React from 'react';
 const AutoComponent = require('@/components/AutoComponent');
 
-const { Avatar, Title } = require('@/presenter/demo');
+const { UserAvatar, Title } = require('@/presenter/demo');
 
 export default function SelectUpperRightItem(props) {
+  
   const allComponents = {
-    Avatar, Title,
+    UserAvatar, Title,
   }
   const config = {
     layout: {
@@ -16,7 +17,7 @@ export default function SelectUpperRightItem(props) {
       },
       children: [
         {
-          presenter: 'Avatar',
+          presenter: 'UserAvatar',
           gateway: {
             xname: 'Binding',
             props: {
@@ -32,7 +33,7 @@ export default function SelectUpperRightItem(props) {
             xname: 'Binding',
             props: {
               binding: {
-                name: 'TitleText'
+                name: 'titleText'
               }
             }
           }
