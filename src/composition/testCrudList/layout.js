@@ -44,6 +44,7 @@ module.exports = {
     }
   },
   container: 'ManageList',
+  addNew:'',
   navigation: {
     model: {
       delConfirmTips: true,

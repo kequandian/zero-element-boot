@@ -29,7 +29,7 @@ import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/
 import ContentText from '@/pages/PresenterTestDemo/plugins/TodoList/TodoItem/Content_text'
 import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/ItemIconAction'
 
-import {Avatar, DownloadButton, ItemPlaceholder} from '@/components/presenter';
+import {Avatar, DownloadButton, ItemPlaceholder, AddDefaultButton } from '@/components/presenter';
 import {Title, Subtitle, StatisticsList, StatisticalDescription} from '@/presenter/demo';
 
 import JarItem from '@/composition/Standalone/JarItem';
@@ -47,7 +47,7 @@ if(process.env.NODE_ENV == 'development'){
   // setEndpoint('http://demo.smallsaas.cn:8001');
   setEndpoint('http://static.smallsaas.cn');
   
-  // setToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2Njg2NTYwNDgsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY2ODkxNTI0OH0.o_GSr1qdIfcsKzzCSLlgoj2ZXTc57PlyNbmrXHCNn28d90ktvrVlKin04eS9eKfuYiE932ljI5YECqRKRb2UoA')
+  setToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2Njg2NTYwNDgsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY2ODkxNTI0OH0.o_GSr1qdIfcsKzzCSLlgoj2ZXTc57PlyNbmrXHCNn28d90ktvrVlKin04eS9eKfuYiE932ljI5YECqRKRb2UoA')
 
 }
 
@@ -82,7 +82,8 @@ NamedPresenterSet({
 
   DownloadButton,
   ItemPlaceholder,
-  TableCompx
+  TableCompx,
+  AddDefaultButton,
 })
 
 FormItemTypeSet({

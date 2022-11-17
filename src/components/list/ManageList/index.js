@@ -4,6 +4,7 @@ import { useSize } from 'ahooks';
 import { useForm } from 'react-hook-form';
 import useLayout from '@/components/hooks/useLayout';
 // import ContainerContext from '@/components/AutoX/ContainerContext';
+const namedPresenterGet = require("@/components/config/NamedPresenterConfig").get();
 
 import {
   Button,
@@ -42,7 +43,7 @@ export default forwardRef(function ManageList(props) {
 
   const { children, layout, 
     items, dataSource = items, currentTabItem,
-    navigation, onItemClick, cb, isSwtich = true, ...rest } = props;
+    navigation, addNew, onItemClick, cb, isSwtich = true, ...rest } = props;
 
   const { 
     delConfirmTips,
@@ -304,6 +305,13 @@ export default forwardRef(function ManageList(props) {
     })
   }
 
+  //列表添加按钮
+  function addNewButton () {
+      const btnName = addNew || 'AddDefaultButton'
+      const BC = namedPresenterGet[btnName]
+      return <BC/>
+  }
+
   return <div
     style={{
       overflow: 'auto',
@@ -358,9 +366,8 @@ export default forwardRef(function ManageList(props) {
     {
       navigation && isSwtich ? (
         <div className='footerContent' >
-          <div className='footerBtn' onClick={() => clickAddAction(navigation)}>
-            <div className='addBtn'>
-            </div>
+          <div onClick={() => clickAddAction(navigation)}>
+            {addNewButton()}
           </div>
         </div>
       ) : <></>
