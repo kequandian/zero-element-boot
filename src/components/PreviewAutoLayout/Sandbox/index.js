@@ -54,7 +54,11 @@ export default function (props) {
   const allComponents = { PreviewItem }
 
   return (
-    <PreviewAutoLayout api={apiPath} layoutApi={layoutJsonApi} layoutName={layoutName} allComponents={allComponents} />
+    <>
+      { apiPath ? (
+        <PreviewAutoLayout api={apiPath} layoutApi={layoutJsonApi} layoutName={layoutName} allComponents={allComponents} />
+      ):<></>}
+    </>
   )
 }
 
