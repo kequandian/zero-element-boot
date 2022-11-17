@@ -1,11 +1,11 @@
 import React from 'react';
 const AutoComponent = require('@/components/AutoComponent');
 
-const { Avatar, Title } = require('@/presenter/demo');
+const { Title } = require('@/presenter/demo');
 
 export default function SelectRightIconItem(props) {
   const allComponents = {
-    Avatar, Title,
+    Title,
   }
   const config = {
     layout: {

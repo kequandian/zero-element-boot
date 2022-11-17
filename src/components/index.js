@@ -60,7 +60,7 @@ import RightIconIndicatorDefault from '@/components/indicator/RightIconIndicator
 import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
 import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
 
-import {Avatar, DownloadButton, ItemPlaceholder,AddNewButton,AddDefaultButton} from '@/components/presenter';
+import {Avatar, DownloadButton, ItemPlaceholder,AddDefaultButton} from '@/components/presenter';
 import {Title, Subtitle} from '@/presenter/demo';
 
 import { 
@@ -125,7 +125,6 @@ NamedPresenterSet({
   Subtitle,
   DownloadButton,
   ItemPlaceholder,
-  AddNewButton,
   AddDefaultButton
 })
 

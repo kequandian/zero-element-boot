@@ -8,11 +8,11 @@ import bindFiles from './gateway.json'
 
 export default function (props) {
 
-    const api = '/api/userData';
+    const api = '/api/pub/data/services/navigation?typeId=41';
 
     const [ data ] = useTokenRequest({api, bindFiles});
-
-    if(data){
+    console.log('data == ', data)
+    if(data && data.length > 0){
         data.map(item => {
             item.checked = false;
             return item;
@@ -21,9 +21,13 @@ export default function (props) {
 
     return (
         <>
-            <div style={{background:'white'}}>
-                <UserRadioContainer {...props} data={data}/>
-            </div>
+            {
+                data && data.length > 0 ? (
+                    <div style={{background:'white'}}>
+                    <UserRadioContainer {...props} data={data}/>
+                </div>
+                ): <></>
+            }
         </>
     )
 }

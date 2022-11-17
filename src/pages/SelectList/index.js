@@ -2,14 +2,14 @@ import React from 'react';
 import { AutoLayout } from '@/components';
 
 // import layout from './layout_copy';
-import layout from './layout';
+import layout from './Sandbox/layout';
 
-import SelectUpperRightItem from './SelectUpperRightItem';
-import SelectRightIconItem from './SelectRightIconItem';
+// import SelectUpperRightItem from './Sandbox/SelectUpperRightItem';
+// import SelectRightIconItem from './Sandbox/SelectRightIconItem';
 
 export default function Index(props) {
 
-    const { data=[], onItemClick = ()=>{} } = props;
+    const { data=[], } = props;
 
     let layoutData = '';
     const layoutJsonPath = '';
@@ -26,9 +26,13 @@ export default function Index(props) {
         layout: layoutData
     };
 
+    const itemClick = (itemData) => {
+        console.log('itemData == ', itemData)
+    }
+
     return (
-        <AutoLayout {...config} onItemClick={onItemClick}>
-            <SelectUpperRightItem />
+        <AutoLayout {...config} onItemClick={itemClick}>
+            {/* <SelectUpperRightItem /> */}
             {/* <SelectRightIconItem /> */}
         </AutoLayout>
     )
