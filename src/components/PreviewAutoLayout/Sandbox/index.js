@@ -41,7 +41,9 @@ export default function (props) {
   // 获取layoutJson的本地接口
   // let layoutJsonApi = '/api/layoutJson'
 
-  let layoutJsonApi = '/openapi/lc/module/getAutoLayOut/autoLayOut'
+  // let layoutJsonApi = `/openapi/lc/module/getAutoLayOut/autoLayOut`
+
+  let layoutJsonApi = params.layoutJsonApi
 
   // if (process.env.NODE_ENV === 'development') {
   //   layoutJsonApi = 'http://192.168.3.112:8080/openapi/lc/module/getAutoLayOut/autoLayOut'

@@ -9,7 +9,7 @@ export default function Index (props) {
   const {api,layoutApi, layoutName, ...rest} = props;
 
   // 判断 layoutApi 是否为空，如果为空，则用 layoutName 拼接api路径
-  const localLayoutApi = layoutApi || '/openapi/lc/components/layoutJson/' + layoutName
+  const localLayoutApi = layoutApi || '/openapi/lc/module/getAutoLayOut/' + layoutName
 
   // 从api获取显示数据
   const [ data ] = useTokenRequest({ api });
