@@ -83,9 +83,9 @@ export default function Index(props) {
 
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
 
-  // return <TableContainer/>
+  return <TestCRUDList/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  return <PreviewAutoLayoutDemo {...props}/> 
+  // return <PreviewAutoLayoutDemo {...props}/> 
 
   // return <RouterParamsDemo />
   // return <PreviewAutoLayoutTest/>

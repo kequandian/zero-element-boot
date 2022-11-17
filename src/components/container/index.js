@@ -8,7 +8,7 @@ import Container from './Container';
 // import LoadingList from '../list/LoadingList'
 // import AddMoreList from '../list/AddMoreList';
 // import ItemClickList from '../list/ItemClickList';
-// import SimCRUDList from '../list/SimCRUDList';
+// import ManageList from '../list/ManageList';
 
 export {
     APIContainer,
@@ -20,5 +20,5 @@ export {
     // SelectList,
     // AddMoreList,
     // ItemClickList,
-    // SimCRUDList
+    // ManageList
 }
