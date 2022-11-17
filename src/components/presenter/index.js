@@ -11,6 +11,8 @@ import DownloadButton from './button/DownloadButton';
 import ItemPlaceholder from './ItemPlaceholder';
 import Rectangle from './Rectangle';
 
+import AddDefaultButton from './button/AddButton'
+
 export {
   Clean,
   Butter, 
@@ -21,5 +23,6 @@ export {
   Progress,
   Avatar,
   DownloadButton,
-  ItemPlaceholder
+  ItemPlaceholder,
+  AddDefaultButton
 }
