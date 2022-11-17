@@ -7,7 +7,7 @@ import LoadingList from './LoadingList';
 import SelectList from './SelectList';
 import AddMoreList from './AddMoreList';
 import ItemClickList from './ItemClickList';
-import SimCRUDList from '../list/SimCRUDList';
+import ManageList from '../list/ManageList';
 
 /**
  * List 属于抽象组件类型 container,容器 
@@ -22,5 +22,5 @@ export {
   SelectList,
   AddMoreList,
   ItemClickList,
-  SimCRUDList
+  ManageList
 }

@@ -43,7 +43,7 @@ module.exports = {
       linewidth: 0
     }
   },
-  container: 'SimCRUDList',
+  container: 'ManageList',
   navigation: {
     model: {
       delConfirmTips: true,

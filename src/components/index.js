@@ -73,7 +73,7 @@ import {
   SelectList,
   AddMoreList,
   ItemClickList,
-  SimCRUDList
+  ManageList
 } from './list';
 
 // Form 组件
@@ -137,7 +137,7 @@ NamedListSet({
   SelectList,
   AddMoreList,
   ItemClickList,
-  SimCRUDList
+  ManageList
 })
 
 FormItemTypeSet({

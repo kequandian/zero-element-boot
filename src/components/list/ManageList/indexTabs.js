@@ -48,7 +48,7 @@ const formItemMap = {
  * @param { 切换CRUD开关 } isSwtich
  * 
  */
-export default function SimCRUDList(props) {
+export default function ManageList(props) {
 
   const { children, layout, items, dataSource = items, navigation, onItemClick, cb, isSwtich = true, ...rest } = props;
 

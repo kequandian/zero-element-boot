@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, forwardRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { history } from 'umi';
 import { useSize } from 'ahooks';
 import { useForm } from 'react-hook-form';
@@ -6,6 +6,7 @@ import useLayout from '@/components/hooks/useLayout';
 // import ContainerContext from '@/components/AutoX/ContainerContext';
 
 import {
+  ButtonGroup,
   Button,
   Modal,
   ModalOverlay,
@@ -14,6 +15,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Input, // 文本框
   Stack, // 布局组件 设置子元素坚决
   FormControl, // 未表单元素添加动态效果 如校验 禁用等
   FormLabel, // label
@@ -23,32 +25,33 @@ import {
 } from "@chakra-ui/react";
 
 const promiseAjax = require('@/components/utils/request');
-const formItemTypeMap = require('@/components/config/formItemTypeConfig').get();
+
+import { InputCompx } from './formItemCompx'
+// import InputCompx from './formItemCompx/InputCompx'
 
 require('./index.less');
 
+const formItemMap = {
+  input: InputCompx
+}
+
 /**
+ * 列表属性{template}包括 [布局, Cart, 分隔线, 数据转换 [,子组件] ]
+ * 简单列表仅向子组件传递数据源以及 子组件属性
  * @param {*} props 
  * @param {object} layout  布局
  * @param {array}} items,dataSource
  * 
  * @param { path: 跳转页面, model: 弹出模态框 } navigation 
- * @param { delConfirmTips: 是否显示删除确认提示框 } model 
  * @param { 回调方法 } cb 
  * @param { 切换CRUD开关 } isSwtich
  * 
  */
-export default forwardRef(function SimCRUDList(props) {
+export default function ManageList(props) {
 
-  const { children, layout, 
-    items, dataSource = items, currentTabItem,
-    navigation, onItemClick, cb, isSwtich = true, ...rest } = props;
+  const { children, layout, items, dataSource = items, navigation, onItemClick, cb, isSwtich = true, ...rest } = props;
 
-  const { 
-    delConfirmTips,
-    api: { createAPI, getAPI, updateAPI, deleteAPI },
-    saveData 
-  } = navigation.model;
+  const { api: { createAPI, getAPI, updateAPI, deleteAPI } } = navigation.model;
 
   const [layoutRef, { getClassName }] = useLayout();
 
@@ -57,8 +60,7 @@ export default forwardRef(function SimCRUDList(props) {
   const [currentId, setCurrentId] = useState('')
   const [currentData, setCurrentData] = useState({})
   const [isLoading, setLoading] = useState(false)
-  const [modelTitle, setModelTitle] = useState('Title');
-  const [formData, setFormData] = useState({})
+  const [modelTitle, setModelTitle] = useState('Title')
 
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -104,6 +106,7 @@ export default forwardRef(function SimCRUDList(props) {
           })
         }
       } else if (navigation.model && isSwtich) {
+        console.log('item === ', item)
         getData(item.id)
         setModelTitle('编辑')
         setCurrentId(item.id)
@@ -178,42 +181,24 @@ export default forwardRef(function SimCRUDList(props) {
 
   //新增数据
   function postData(values) {
-
-    // let rtValue;
-    // let formatApi = `${createAPI}`;
-    // if(createAPI.indexOf('(') != -1){
-    //   rtValue = handleChangeApiParam(createAPI)
-    //   formatApi = createAPI.replace(`(${rtValue})`, currentTabItem[rtValue]);
-    // }
-    // const api = `${formatApi}`;
     const api = `${createAPI}`;
-    const queryData = { ...values, ...formData };
+    const queryData = { ...values };
     promiseAjax(api, queryData, { method: 'POST' }).then(resp => {
       if (resp && resp.code === 200) {
-        toastTips('新增成功')
+        toastTips('修改成功')
         cb(true)
         setIsOpen(false)
       } else {
-        console.error("新增失败 === ", resp)
-        toastTips('新增失败', 'error')
+        console.error("提交失败 === ", resp)
+        toastTips('提交失败', 'error')
       }
     });
   }
 
   //修改数据
   function putData(values, id) {
-    
-    // let rtValue;
-    // let formatApi = `${updateAPI}`;
-    // if(updateAPI.indexOf('(') != -1){
-    //   rtValue = handleChangeApiParam(updateAPI)
-    //   formatApi = updateAPI.replace(`(${rtValue})`, currentTabItem[rtValue]);
-    // }
-    // const api = `${formatApi}`;
-
     const api = `${updateAPI.replace('(id)', id)}`;
-    const queryData = { ...values, ...formData };
-    // console.log('queryData === ', queryData)
+    const queryData = { ...values };
     promiseAjax(api, queryData, { method: 'PUT' }).then(resp => {
       if (resp && resp.code === 200) {
         toastTips('修改成功')
@@ -230,11 +215,7 @@ export default forwardRef(function SimCRUDList(props) {
   function showDelModel(item) {
     if (deleteAPI && item && item.id) {
       setCurrentId(item.id)
-      if(delConfirmTips){
-        setIsDelOpen(true)
-      }else{
-        delData({}, item.id)
-      }
+      setIsDelOpen(true)
     } else {
       console.log('未设置 deleteAPI 或 item 数据异常')
     }
@@ -256,35 +237,18 @@ export default forwardRef(function SimCRUDList(props) {
     });
   }
 
-  //替换 api 参数值 用小括号包住， 如: /api/(id)
-  // function handleChangeApiParam(value) {
-  //   var rt = /(.+)?(?:\(|（)(.+)(?=\)|）)/.exec(value);
-  //   return rt[2]
-  // }
-  
-  //处理额外提交的字段和值
-  function handleFormData(data){
-    const newFormData = {
-      ...formData,
-      ...data
-    }
-    // console.log('newFormData === ', JSON.stringify(newFormData))
-    setFormData(newFormData)
-  }
-
   //根据type 加载表单组件
   function handleFormItem(list) {
     const fieldList = list;
-
     return fieldList.map((item, index) => {
 
-      const { label, field, type, rules = { isRequired:false }, defaultValue  } = item;
+      const { label, field, type } = item;
 
-      const C = formItemTypeMap[type]
+      const C = formItemMap[type]
 
-      return <FormControl isRequired={rules.isRequired} isInvalid={rules.isRequired && errors[field]} key={`${index}_i`}>
+      return <FormControl isInvalid={errors[field]} key={`${index}_i`}>
         <FormLabel htmlFor={field}>{label}</FormLabel>
-        <C {...item} register={register} errors={errors} defaultValue={currentData[field] || defaultValue} onChange={handleFormData}/>
+        <C {...item} register={register} errors={errors} defaultValue={currentData[field]} />
         <FormErrorMessage>
           {errors[field] && errors[field].message}
         </FormErrorMessage>
@@ -381,7 +345,7 @@ export default forwardRef(function SimCRUDList(props) {
           {isLoading ? (
             <Spinner />
           ) : (
-            <form onSubmit={handleSubmit(validateData)} noValidate>
+            <form onSubmit={handleSubmit(validateData)}>
               <Stack spacing="2">
                 {
                   handleFormItem(navigation.model.fields)
@@ -399,10 +363,10 @@ export default forwardRef(function SimCRUDList(props) {
                 </FormErrorMessage>
               </FormControl> */}
                 <Stack direction='row' spacing={4} align='center'>
-                  <Button width='100px' colorScheme='teal' variant='solid' isLoading={isSubmitting} type='submit' size='sm'>
+                  <Button width='100px' colorScheme='teal' variant='solid' isLoading={isSubmitting} type='submit'>
                     保存
                   </Button>
-                  <Button width='100px' colorScheme='teal' variant='outline' onClick={onClose} size='sm'>取消</Button>
+                  <Button width='100px' colorScheme='teal' variant='outline' onClick={onClose}>取消</Button>
                 </Stack>
               </Stack>
             </form>
@@ -443,7 +407,7 @@ export default forwardRef(function SimCRUDList(props) {
 
 
   </div>
-})
+}
 
 function tips(dataSource) {
   return <div>PlainList 数据无效</div>;
