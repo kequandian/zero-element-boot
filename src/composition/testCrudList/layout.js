@@ -11,7 +11,7 @@ module.exports = {
     },
     children: [
       {
-        presenter: 'Avatar',
+        presenter: 'DefaultAvatar',
         gateway: {
           xname: 'Binding',
           props: {
@@ -43,8 +43,12 @@ module.exports = {
       linewidth: 0
     }
   },
-  container: 'ManageList',
-  addNew:'',
+  container: {
+    xname: 'ManageList',
+    props:{
+      addnew: ''
+    }
+  },
   navigation: {
     model: {
       delConfirmTips: true,

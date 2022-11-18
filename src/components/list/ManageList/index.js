@@ -43,8 +43,8 @@ export default forwardRef(function ManageList(props) {
 
   const { children, layout, 
     items, dataSource = items, currentTabItem,
-    navigation, addNew, onItemClick, cb, isSwtich = true, ...rest } = props;
-
+    navigation, addnew, onItemClick, cb, isSwtich = true, ...rest } = props;
+    
   const { 
     delConfirmTips,
     api: { createAPI, getAPI, updateAPI, deleteAPI },
@@ -307,7 +307,7 @@ export default forwardRef(function ManageList(props) {
 
   //列表添加按钮
   function addNewButton () {
-      const btnName = addNew || 'AddDefaultButton'
+      const btnName = addnew || 'AddDefaultButton'
       const BC = namedPresenterGet[btnName]
       return <BC/>
   }

@@ -90,8 +90,25 @@ export default function Index(props) {
     //列表item点击事件
     const onNavItemClick = (item) => {
         const id = item.id;
-        console.log('id = ', id)
-        alert(`选择的用户id为: ${id}`)
+        // console.log('id = ', id)
+        // alert(`选择的用户id为: ${id}`)
+        //点击跳转页面
+        if (item.path.indexOf('http') != -1) {
+          // window.location.replace(item.path)
+    
+          // history.push(url);
+          const w = window.open('about:blank');
+          w.location.href = item.path
+        //   console.log(item.path);
+    
+        } else {
+          const w = window.open('about:blank');
+          const host = getEndpoint || location.host
+          w.location.href = host + item.path
+    
+        //   console.log(host);
+    
+        }
     }
 
     //列表item回调函数

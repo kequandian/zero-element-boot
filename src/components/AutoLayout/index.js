@@ -101,7 +101,7 @@ export default function (props) {
 function AutoLayout({ children, layout, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource, ...rest }) {
   // handle layout, container, gateway, cart, presenter, xpresenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
-  const { xname='VStack', props, container, gateway: layoutGateway, cart, indicator, selector, presenter, xpresenter, addNew, navigation, children: layoutChildren } = sugarLayout(layout) || {};
+  const { xname='VStack', props, container, gateway: layoutGateway, cart, indicator, selector, presenter, xpresenter, navigation, children: layoutChildren } = sugarLayout(layout) || {};
   const data = dataSource || rest || {}
 
   // Cart
@@ -147,7 +147,7 @@ function AutoLayout({ children, layout, gateway, allComponents = {}, onItemClick
  }
 
   return layoutChildren ? (
-    <Container {..._container} {...data} navigation={navigation} addNew={addNew}>
+    <Container {..._container} {...data} navigation={navigation}>
         <NamedLayout xname={xname} props={props} __>
           {layoutChildren ? layoutChildren.map((child, i) => {
 
@@ -168,7 +168,7 @@ function AutoLayout({ children, layout, gateway, allComponents = {}, onItemClick
         </NamedLayout>
     </Container>
   ) : (
-    <Container {..._container} {...data} onItemClick={onItemClick} navigation={navigation} addNew={addNew}>
+    <Container {..._container} {...data} onItemClick={onItemClick} navigation={navigation}>
       <NamedLayout xname={xname} props={props} __>
           <_NamedGateway {..._gateway}>
                 <_NamedCart {..._cart} >

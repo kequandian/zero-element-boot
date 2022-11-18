@@ -26,7 +26,7 @@ export default function Index(props) {
         alignItems: 'center',
         // border: '1px #ff0000 solid',
         backgroundImage: `url(${url})`,
-        borderRadius: '50%',
+        borderRadius: '6px',
         backgroundSize: '100% 100%'
     }
 
