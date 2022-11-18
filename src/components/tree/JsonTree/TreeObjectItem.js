@@ -3,7 +3,7 @@ import TreeItem from './TreeItem';
 import TreeArrayItem from './TreeArrayItem';
 import { Flex, Stack, Center } from '@chakra-ui/layout';
 import Tree from './index'
-import PageSection from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSection';
+import PageSection from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSectionTitle';
 
 
 export default function index(props) {
