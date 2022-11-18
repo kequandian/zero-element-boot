@@ -1,7 +1,7 @@
 import { Box, Center, Flex, Stack } from '@chakra-ui/layout';
 import React from 'react';
-import PageSection from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSection';
-import TagIndicator from 'zero-element-boot/lib/components/indicator/TagIndicator'
+import PageSection from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSectionTitle';
+import TagIndicator from '@/components/indicator/TagIndicator'
 
 export default function index(props) {
 

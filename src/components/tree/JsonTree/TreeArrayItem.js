@@ -1,7 +1,7 @@
 import { Center, Flex, Stack } from '@chakra-ui/layout';
 import React from 'react';
 import Tree from './index'
-import PageSection from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSection';
+import PageSection from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSectionTitle';
 
 export default function index(props) {
 

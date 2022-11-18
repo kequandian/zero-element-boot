@@ -61,6 +61,7 @@ import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
 import AutoComponentSet from './AutoComponentSet'
 import RouterParamsDemo from './GetRouterPath/demo'
 import TestGroupedList from './TestGroupedList';
+import JsonTreeDemo from '@/components/tree/JsonTree/Sandbox'
 
 export default function Index(props) {
 
@@ -85,7 +86,7 @@ export default function Index(props) {
 
   // return <TestCRUDList/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  return <PreviewAutoLayoutDemo {...props}/> 
+  return <JsonTreeDemo {...props}/> 
 
   // return <RouterParamsDemo />
   // return <PreviewAutoLayoutTest/>
