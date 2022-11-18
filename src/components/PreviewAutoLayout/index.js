@@ -11,7 +11,7 @@ export default function Index (props) {
   // 判断 layoutApi 是否为空，如果为空，则用 layoutName 拼接api路径
   let localLayoutApi = ''
   if(layoutApi || layoutName){
-    localLayoutApi = layoutApi || '/openapi/lc/module/getAutoLayOut/' + layoutName
+    localLayoutApi = layoutApi || '/openapi/lc/module/getAutoLayout/' + layoutName
   }else if(layoutId){
     localLayoutApi = `/form?id=${layoutId}`
   }
