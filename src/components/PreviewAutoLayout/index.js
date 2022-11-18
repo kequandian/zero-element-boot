@@ -6,10 +6,15 @@ import useTokenRequest from '@/components/hooks/useTokenRequest';
 export default function Index (props) {
 
   // 参数
-  const {api,layoutApi, layoutName, ...rest} = props;
+  const {api,layoutApi, layoutName, layoutId, ...rest} = props;
 
   // 判断 layoutApi 是否为空，如果为空，则用 layoutName 拼接api路径
-  const localLayoutApi = layoutApi || '/openapi/lc/module/getAutoLayOut/' + layoutName
+  let localLayoutApi = ''
+  if(layoutApi || layoutName){
+    localLayoutApi = layoutApi || '/openapi/lc/module/getAutoLayOut/' + layoutName
+  }else if(layoutId){
+    localLayoutApi = `/form?id=${layoutId}`
+  }
 
   // 从api获取显示数据
   const [ data ] = useTokenRequest({ api });

@@ -52,13 +52,14 @@ export default function (props) {
   // 获取layoutJson的api接口，如果本地接口为空，则会使用该接口请求api
   // let layoutName = 'thisAutoLayout'
   let layoutName = params.layoutName || ''
+  let layoutId = params.layoutId || ''
 
   const allComponents = { PreviewItem }
 
   return (
     <>
       { apiPath ? (
-        <PreviewAutoLayout api={apiPath} layoutApi={layoutJsonApi} layoutName={layoutName} allComponents={allComponents} />
+        <PreviewAutoLayout api={apiPath} layoutApi={layoutJsonApi} layoutName={layoutName} layoutId={layoutId} allComponents={allComponents} />
       ):<></>}
     </>
   )

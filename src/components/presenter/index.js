@@ -6,6 +6,7 @@ import Clear from './default/Clear/clear';
 
 import Progress from './Progress';
 import Avatar from './Avatar';
+import DefaultAvatar from './DefaultAvatar';
 import DownloadButton from './button/DownloadButton';
 
 import ItemPlaceholder from './ItemPlaceholder';
@@ -22,6 +23,7 @@ export {
 
   Progress,
   Avatar,
+  DefaultAvatar,
   DownloadButton,
   ItemPlaceholder,
   AddDefaultButton
