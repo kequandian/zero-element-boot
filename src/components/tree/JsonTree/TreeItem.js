@@ -24,6 +24,7 @@ export default function index(props) {
                     </PageSection>
                 </Center>
                 <Center h='100%'>
+                    {/* <Center h='28px' color='#d3455b' border='2px solid #efbcc4' borderRadius='8px' padding='0 16px' margin='4px' > */}
                     <Center h='28px' color='#d3455b' border='2px solid #efbcc4' borderRadius='8px' padding='0 16px' margin='4px' >
                         <PageSection>
                             {values}

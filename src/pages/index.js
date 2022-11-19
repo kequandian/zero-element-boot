@@ -51,17 +51,22 @@ import Standalone from '@/composition/Standalone/Sandbox';
 // import userListLayoutJson from './userList/layout';
 // import useTokenRequest from '@/components/hooks/useTokenRequest';
 
-import TestCRUDList from '@/composition/testCrudList';
 import TestDownload from '@/pages/TestDownloadDemo';
 import TestRowIcons from '@/composition/testRowIcons/Sandbox';
 import TestNamedCart from '@/pages/TestNamedCart'
 import AutoCartSet from '@/pages/AutoCartSet/Sandbox'
 
-import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
 import AutoComponentSet from './AutoComponentSet'
 import RouterParamsDemo from './GetRouterPath/demo'
 import TestGroupedList from './TestGroupedList';
+//manage-ui
+import TestCRUDList from '@/composition/testCrudList';
+//preview-ui
+import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
+//jsontree-ui
 import JsonTreeDemo from '@/components/tree/JsonTree/Sandbox'
+//apis-ui
+import ApisUi from '@/composition/ApisUi/Sandbox';
 
 export default function Index(props) {
 
@@ -84,9 +89,9 @@ export default function Index(props) {
 
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
 
-  // return <TestCRUDList/>
+  return <ApisUi/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  return <JsonTreeDemo {...props}/> 
+  // return <PreviewAutoLayoutDemo {...props}/> 
 
   // return <RouterParamsDemo />
   // return <PreviewAutoLayoutTest/>
