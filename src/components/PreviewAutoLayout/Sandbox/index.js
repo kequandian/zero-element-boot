@@ -16,8 +16,9 @@ export default function (props) {
   const [ apiPath, setApiPath ] = useState('')
 
   useEffect(_ => {
+    setApiPath('')
     getApiUrl()
-  }, [])
+  }, [params])
 
   function getApiUrl() {
     if(params.api){

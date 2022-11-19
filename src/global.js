@@ -33,6 +33,7 @@ import {Avatar, DownloadButton, ItemPlaceholder, AddDefaultButton } from '@/comp
 import {Title, Subtitle, StatisticsList, StatisticalDescription} from '@/presenter/demo';
 
 import JarItem from '@/composition/Standalone/JarItem';
+import ApiItem from '@/composition/ApisUi/ApiItem';
 
 import { InputCompx, SelectFetch } from '@/components/formItemType';
 const { TableCompx } = require('@/presenter/demo');
@@ -76,6 +77,7 @@ NamedPresenterSet({
   ContentFinish,
 
   JarItem,
+  ApiItem,
   Subtitle, 
   StatisticsList, 
   StatisticalDescription,
