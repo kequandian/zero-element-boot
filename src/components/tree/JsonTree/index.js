@@ -12,6 +12,8 @@ import TreeObjectItem from './TreeObjectItem';
 export default function Tree(props) {
 
     const keys = Object.keys(props)
+    
+    // console.log('keys ==', keys)
     return (
         <>
             {

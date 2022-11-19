@@ -89,9 +89,9 @@ export default function Index(props) {
 
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
 
-  return <ApisUi/>
+  // return <ApisUi/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  // return <PreviewAutoLayoutDemo {...props}/> 
+  return <JsonTreeDemo {...props}/> 
 
   // return <RouterParamsDemo />
   // return <PreviewAutoLayoutTest/>
