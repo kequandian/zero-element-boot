@@ -9,8 +9,8 @@ export default function index(props) {
 
     const values = data[keyName]
 
-    console.log('props ==', props)
-    console.log('keyNamessss ==', keyName)
+    // console.log('props ==', props)
+    // console.log('keyNamessss ==', keyName)
 
     return (
         <>

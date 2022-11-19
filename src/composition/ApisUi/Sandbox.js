@@ -1,31 +1,49 @@
 import React, { useState, useEffect } from 'react';
 
 import StandaloneContainer from './index';
+const promiseAjax = require('@/components/utils/request');
 
-import useTokenRequest from '@/components/hooks/useTokenRequest';
+// import useTokenRequest from '@/components/hooks/useTokenRequest';
 
 export default function (props) {
 
-  let api = '/openapi/crud/lc_low_auto_apis/lowAutoApis/lowAutoApises';
-
-  const requestData = {
-    pageNum: 1,
-    pageSize: 1000,
-    apiMethod: 'GET'
-  }
-
-  const [ data ] = useTokenRequest({api, requestData});
-
-  // console.log('data == ', data)
-
-  if(!data || !data.length === 0 || !data.records || !data.records.length === 0){
-    return <></>
-  }
-
-  const dataX = []
-  dataX.push({items:data.records})
+  const params = props.location.query ||  qs.parse(props.location.search.split('?')[1])
   
+  const [ data, setData ] = useState({})
+
+  useEffect(_ => {
+    setData([])
+    getData()
+  }, [params])
+
+  function getData() {
+
+    let apiStr = '/openapi/crud/lc_low_auto_apis/lowAutoApis/lowAutoApises';
+    const api = `${apiStr}`;
+      const queryData = {
+        pageNum: 1,
+        pageSize: 1000,
+        apiMethod: (params && params.method) || ''
+      };
+      promiseAjax(api, queryData).then(resp => {
+          if (resp && resp.code === 200) {
+            
+            const dataX = []
+            dataX.push({items: resp.data.records})
+            setData(dataX)
+          } else {
+              console.error("获取api 数据失败")
+          }
+      }).finally(_ => {
+      });
+    
+  }
+
   return (
-      <StandaloneContainer {...props} data={dataX}/>
+    <>
+      { data && data.length > 0 ? (
+        <StandaloneContainer method={(params && params.method) || ''} data={data}/>
+      ):<></>}
+    </>
   )
 }

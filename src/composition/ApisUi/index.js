@@ -12,7 +12,7 @@ import JsonTree from '@/components/tree/JsonTree/Sandbox'
 
 export default function Index(props) {
 
-    const { data=[] } = props;
+    const { data=[], method='' } = props;
 
     const [ listData, setListData ] = useState(data)
     const [ isShowList, setIsShowList ] = useState(true);
@@ -21,6 +21,10 @@ export default function Index(props) {
     const [ showApiDetail, setApi ] = useState('');
     const [ searchValue, setSearchValue ] = useState('');
     const [ isShowBackBtn, setIsShowBackBtn ] = useState(false);
+    const [ currentItemApi, setCurrentItemApi ] = useState('');
+    const [ currentItemOldApi, setCurrentItemOldApi ] = useState('');
+    const [ isShowCurrentItemApiStatus, setIsShowCurrentItemApiStatus ] = useState(false);
+    
 
     let layoutData = '';
     const layoutJsonPath = '';
@@ -40,13 +44,17 @@ export default function Index(props) {
     const onApiItemClick = (item) => {
         // document.body.scrollTop = document.documentElement.scrollTop = 0;
         
-        console.log('item == ', item)
-        setApi(item.api)
+        // console.log('item == ', item)
+        const apiStr = `/openapi/crud/lc_low_auto_apis/lowAutoApis/lowAutoApises/${item.id}`
+        setCurrentItemApi(item.api)
+        setCurrentItemOldApi(apiStr)
+        setApi(apiStr)
         setIsShowData(true)
         setIsShowList(false)
-
+        setIsShowBackBtn(true)
     }
 
+    //返回首页
     function goHome () {
         setIsShowList(true)
         setIsShowData(false)
@@ -56,25 +64,35 @@ export default function Index(props) {
     }
 
     function goBack () {
-        setIsShowList(true)
-        setIsShowData(false)
+        if(isShowCurrentItemApiStatus){
+            setApi(currentItemOldApi)
+            setIsShowList(false)
+            setIsShowData(true)
+            setIsShowCurrentItemApiStatus(false)
+        }else{
+            setIsShowList(true)
+            setIsShowData(false)
+        }
     }
 
+    //提交搜索栏信息
     const handleSearchClick = (e) => {
         searchApiList(searchValue)
     }
 
+    //保存搜索栏信息
     const handleSearchValue = (e) => {
         setSearchValue(e.target.value)
     }
 
+    //搜索
     function searchApiList(searchValue) {
         //通过apiName获取API路径
         const api = `/openapi/crud/lc_low_auto_apis/lowAutoApis/lowAutoApises`;
         const queryData = {
             pageNum: 1,
             pageSize: 1000,
-            apiMethod: 'GET',
+            apiMethod: method,
             search: searchValue
         };
         promiseAjax(api, queryData).then(resp => {
@@ -86,6 +104,14 @@ export default function Index(props) {
             }
         }).finally(_ => {
         });
+    }
+
+    //查看API
+    function getApiDetail(){
+        setApi(currentItemApi)
+        setIsShowCurrentItemApiStatus(true)
+        setIsShowData(true)
+        setIsShowList(false)
     }
 
     return (
@@ -122,8 +148,11 @@ export default function Index(props) {
                                 {
                                     !isShowList && isShowBackBtn && listData.length > 0 && <Button w='100px' h="40px" colorScheme='blue' onClick={() => goBack()}>Back</Button>
                                 }
-                                
-                                
+                                {
+                                    isShowData && showApiDetail && (
+                                        <Button w='100px' h="40px" colorScheme='blue' onClick={() => getApiDetail()}>查看API</Button>
+                                    )
+                                }
                             </Stack>
                         </div>
                         
@@ -141,7 +170,7 @@ export default function Index(props) {
                              : isShowData && showApiDetail ? (
                                 <div style={{width: '100%', paddingLeft:'25px'}}>
                                     <Box flex='1'>
-                                        <div style={{background:'#ffffff', width:'100%', paddingTop: '10px'}}>
+                                        <div style={{background:'#ffffff', width:'100%', paddingTop: '15px'}}>
                                             <JsonTree api={showApiDetail}/>
                                         </div>
                                     </Box>
