@@ -6,12 +6,11 @@ import Loading from '@/components/loading';
 
 export default function index(props) {
 
-    const { api, isComponent=true } = props
-    const params = props.location && (props.location.query ||  qs.parse(props.location.search.split('?')[1]))
+    const { api, compParams } = props
+    const params = (props.location && ( props.location && (props.location.query ||  qs.parse(props.location.search.split('?')[1])) )) || compParams
 
     const [ jsonData, setJsonData ] = useState('')
     const [ isLoading, setIsLoading ] = useState(false);
-    const [ isComponentStatus, setIsComponentStatus ] = useState(isComponent);
     
     // const api = params.api || `/openapi/lc/apis/${params.apiName}`
     // const api = `/api/ContentTest`
@@ -19,7 +18,6 @@ export default function index(props) {
 
     useEffect(_ => {
         setJsonData('')
-        if(isComponentStatus)
         if((params && params.api) || api){
             if(params && params.api){
                 setIsLoading(true)
@@ -65,7 +63,7 @@ export default function index(props) {
 
     //通过 layoutName 获取 api路径
     function getJsonDataByLayoutName(api){
-        promiseAjax(api)
+        promiseAjax(api, params)
             .then(res => {
                 if (res && res.code === 200) {
                     let data = res.data
@@ -77,7 +75,7 @@ export default function index(props) {
 
     //
     function getJsonDataByApi(api){
-        promiseAjax(api)
+        promiseAjax(api, params)
             .then(res => {
                 if (res && res.code === 200) {
                     let data = res.data

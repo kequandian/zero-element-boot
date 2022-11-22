@@ -3,17 +3,25 @@ import React, { useState, useEffect } from 'react';
 import StandaloneContainer from './index';
 const promiseAjax = require('@/components/utils/request');
 
+import JsonTreePage from '@/components/tree/JsonTree/Sandbox'
+
 // import useTokenRequest from '@/components/hooks/useTokenRequest';
 
 export default function (props) {
 
-  const params = props.location.query ||  qs.parse(props.location.search.split('?')[1])
+  const params = props.location && (props.location.query ||  qs.parse(props.location.search.split('?')[1]))
+
   
-  const [ data, setData ] = useState({})
+  const [ data, setData ] = useState([])
+  const [ jsonTreeParams, setJsonTreeParams ] = useState({})
 
   useEffect(_ => {
     setData([])
-    getData()
+    if(params.apiName){
+      setJsonTreeParams(params)
+    }else{
+      getData()
+    }
   }, [params])
 
   function getData() {
@@ -43,6 +51,8 @@ export default function (props) {
     <>
       { data && data.length > 0 ? (
         <StandaloneContainer method={(params && params.method) || ''} data={data}/>
+      ): jsonTreeParams && JSON.stringify(jsonTreeParams) != '{}' ? (
+        <JsonTreePage compParams={jsonTreeParams} />
       ):<></>}
     </>
   )

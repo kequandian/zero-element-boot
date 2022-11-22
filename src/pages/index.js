@@ -59,7 +59,7 @@ import AutoCartSet from '@/pages/AutoCartSet/Sandbox'
 import AutoComponentSet from './AutoComponentSet'
 import RouterParamsDemo from './GetRouterPath/demo'
 import TestGroupedList from './TestGroupedList';
-//manage-ui
+//nav-ui
 import TestCRUDList from '@/composition/testCrudList';
 //preview-ui
 import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
@@ -91,10 +91,7 @@ export default function Index(props) {
 
   // return <ApisUi/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  return <JsonTreeDemo {...props}/> 
-
-  // return <RouterParamsDemo />
-  // return <PreviewAutoLayoutTest/>
+  return <ApisUi {...props}/> 
 
   // AutoLayout 组件测试
   // const layout = {
