@@ -43,13 +43,12 @@ module.exports = {
             direction: 'column',
             flexWidth: 'auto-full'
           },
-          presenter: 'ApiItem',
+          presenter: 'SwaggerItem',
           cart: {
             xname: 'Cart',
             props: {
-              isOnHover: true,
-              margin: '0px 0px 2px 0px',
-              linewidth: 1,
+              margin: '0px 0px 12px 0px',
+              linewidth: 0,
               padding: '0px'
             }
           },
