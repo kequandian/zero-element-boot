@@ -32,30 +32,32 @@ export default function NamedCart({ children, xname, props, cart = { xname, prop
 
   //2021-10-28 新增 selector 模块
   const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
-  
+  console.log('indicator=',indicator,'selector=',selector,'defaultIndicator=',defaultIndicator)
+
 
   // get indicator
-  const indicatorName = (typeof indicator === 'string') ? indicator : (typeof indicator === 'object') ? indicator.xname : ''
-  const    _Indicator  = _IndicatorSet[indicatorName] || tips(indicatorName)
-  const indicatorProps = (typeof indicator === 'object') ? indicator.props : {}
+  const indicatorName = indicator ? ((typeof indicator === 'string') ? indicator : (typeof indicator === 'object') ? indicator.xname : '') : ''
+
+  const _Indicator  = indicatorName ? _IndicatorSet[indicatorName] : undefined
+  const indicatorProps = (indicator && typeof indicator === 'object') ? indicator.props : {}
 
   // get selector
-  const selectorName = (typeof selector === 'string') ? selector : (typeof selector === 'object') ? selector.xname : ''
-  const    _Selector  = _IndicatorSet[selectorName] || tips(selectorName)
-  const selectorProps = (typeof selector === 'object') ? selector.props : {}
+  const selectorName =  selector ? ((typeof selector === 'string') ? selector : (typeof selector === 'object') ? selector.xname : '') : ''
+  const _Selector  = selectorName ? _IndicatorSet[selectorName] : undefined
+  const selectorProps = (indicator && typeof selector === 'object') ? selector.props : {}
 
 
   //2021-10-28 新增 defaultIndicator 模块
   //2022-07-05 不一定需要 defaultIndicator
   // get defaultIndicator, the same as _Cart
-  const defaultIndicatorName = defaultIndicator ? ((typeof defaultIndicator === 'string') ? defaultIndicator : ((typeof defaultIndicator === 'object') ? defaultIndicator.xname : undefined)) : undefined
+  const defaultIndicatorName = defaultIndicator ? ((typeof defaultIndicator === 'string') ? defaultIndicator : ((typeof defaultIndicator === 'object') ? defaultIndicator.xname : '')) : ''
   const _DefaultIndicator  = defaultIndicatorName ? _IndicatorSet[defaultIndicatorName] : undefined
   const defaultIndicatorProps = (defaultIndicatorName && (typeof defaultIndicator === 'object')) ? defaultIndicator.props : {}
   
   return (
     <>
       {
-        (indicator || selector || defaultIndicator) ? 
+        (indicator && selector && defaultIndicator) ? 
         (
             // <_Indicator {...rest}>
             //    <_Cart {...cart.props}>

@@ -73,18 +73,12 @@ export default function (props) {
     } else {
       if (layoutJson && JSON.stringify(layoutJson) != '{}') {
         const p = { ...props, layout: layoutJson };
-        // if (p.layout.children) {
-        //   return _AutoComponent(p);
-        // }
         return AutoLayout(p);
       } else {
         console.error('获取配置数据异常')
       }
     }
   } else {
-    // if (layout.children) {
-    //   return _AutoComponent(props);
-    // }
     return AutoLayout(props);
   }
 
@@ -106,8 +100,9 @@ function AutoLayout({ children, layout, gateway, allComponents = {}, onItemClick
 
   // Cart
   const __cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || {}
-  const _cart = sugarCart({...__cart, indicator: indicator, selector:selector})
+  const _cart = sugarCart({ cart: __cart, indicator: indicator, selector:selector})
   const _NamedCart = cart ? NamedCart : NextIndicator;
+
 
   // Gateway
   const _layoutGateway = layoutGateway || gateway
@@ -216,7 +211,7 @@ function isFilter(gateway){
  * @param {xname: cart} cart 
  * @returns 
  */
-function sugarCart({indicator:indicator, selector:selector, ...cart}){
+function sugarCart({cart, indicator, selector}){
     if(indicator || selector){
       return {
         cart: {
