@@ -38,6 +38,18 @@ import SwaggerItem from '@/composition/ApisUi/SwaggerItem';
 import { InputCompx, SelectFetch } from '@/components/formItemType';
 const { TableCompx } = require('@/presenter/demo');
 
+// SelectListDemo
+//indicator
+import RightIconRadioHoverIndicator from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Select';
+import RightIconRadioSelectedIndicator from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Selected';
+import RightIconRadioDefauct from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Defauct';
+
+//presenter
+import ItemImg from '@/pages/SelectListDemo/presenter/ItemImg'
+import ItemTitle from '@/pages/SelectListDemo/presenter/ItemTitle'
+
+
+
 // NamedCartSet({
 
 // })
@@ -46,7 +58,7 @@ const { TableCompx } = require('@/presenter/demo');
 if(process.env.NODE_ENV == 'development'){
   // setEndpoint('http://app1.console.smallsaas.cn:8001');
   // setEndpoint('http://demo.smallsaas.cn:8001');
-  setEndpoint('http://static.smallsaas.cn');
+  //setEndpoint('http://static.smallsaas.cn');
   
   // setToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2Njg2NTYwNDgsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY2ODkxNTI0OH0.o_GSr1qdIfcsKzzCSLlgoj2ZXTc57PlyNbmrXHCNn28d90ktvrVlKin04eS9eKfuYiE932ljI5YECqRKRb2UoA')
 
@@ -65,10 +77,19 @@ NamedIndicatorSet({
 
   CircularCheckboxIndicatorDefault,
   ShadowIndicator,
-  CircularCheckboxIndicatorSelected
+  CircularCheckboxIndicatorSelected, 
+
+  //SelectList
+  //NamedIndicatorSet({
+    RightIconRadioHoverIndicator,
+    RightIconRadioSelectedIndicator,
+    RightIconRadioDefauct
+  //})
 })
 
 NamedPresenterSet({
+  ItemPlaceholder,
+
   Avatar,
   Title,
   ImageAnimation,
@@ -83,9 +104,14 @@ NamedPresenterSet({
   StatisticalDescription,
 
   DownloadButton,
-  ItemPlaceholder,
   TableCompx,
   AddDefaultButton,
+
+  //SelectList
+  //NamedPresenterSet({
+    ItemImg,
+    ItemTitle
+  //})
 })
 
 FormItemTypeSet({
