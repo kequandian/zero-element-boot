@@ -67,6 +67,8 @@ import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
 import JsonTreeDemo from '@/components/tree/JsonTree/Sandbox'
 //apis-ui
 import ApisUi from '@/composition/ApisUi/Sandbox';
+// SelectListDemo
+import SelectListDemo from './SelectListDemo/Sandbox'
 
 export default function Index(props) {
 
@@ -91,7 +93,8 @@ export default function Index(props) {
 
   // return <ApisUi/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  return <ApisUi {...props}/> 
+  // return <ApisUi {...props}/> 
+  return <SelectListDemo />
 
   // AutoLayout 组件测试
   // const layout = {
