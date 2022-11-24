@@ -13,7 +13,7 @@ import MyIndicatorSelect from '@/components/indicator/MyIndicatorSelect';
 import MyIndicatorSelected from '@/components/indicator/MyIndicatorSelected';
 import RightIconCheckboxSelect from '@/components/indicator/RightIconCheckboxIndicator/Select';
 import RightIconCheckboxSelected from '@/components/indicator/RightIconCheckboxIndicator/Selected';
-import RightIconCheckboxDefauct from '@/components/indicator/RightIconCheckboxIndicator/Defauct';
+import RightIconCheckboxDefault from '@/components/indicator/RightIconCheckboxIndicator/Default';
 
 import RightIconIndicatorDefault from '@/components/indicator/RightIconIndicatorDefault';
 import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
@@ -42,7 +42,7 @@ const { TableCompx } = require('@/presenter/demo');
 //indicator
 import RightIconRadioHoverIndicator from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Select';
 import RightIconRadioSelectedIndicator from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Selected';
-import RightIconRadioDefauct from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Defauct';
+import RightIconRadioDefault from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Default';
 
 //presenter
 import ItemImg from '@/pages/SelectListDemo/presenter/ItemImg'
@@ -69,7 +69,7 @@ NamedIndicatorSet({
   MyIndicatorSelected,
   RightIconCheckboxSelect,
   RightIconCheckboxSelected,
-  RightIconCheckboxDefauct,
+  RightIconCheckboxDefault,
   
   RightIconIndicatorDefault,
   RightIconIndicatorHover,
@@ -83,7 +83,7 @@ NamedIndicatorSet({
   //NamedIndicatorSet({
     RightIconRadioHoverIndicator,
     RightIconRadioSelectedIndicator,
-    RightIconRadioDefauct
+    RightIconRadioDefault
   //})
 })
 

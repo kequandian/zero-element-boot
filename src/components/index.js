@@ -52,7 +52,7 @@ import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 import DefaultHoverIndicator from './indicator/DefaultHoverIndicator';
 import MyIndicatorSelect from './indicator/MyIndicatorSelect';
 import MyIndicatorSelected from './indicator/MyIndicatorSelected';
-import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
+import RightIconCheckboxIndicatorDefault from './indicator/RightIconCheckboxIndicator/Default';
 import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
 import RightIconCheckboxIndicatorSelected from './indicator/RightIconCheckboxIndicator/Selected';
 
@@ -111,7 +111,7 @@ NamedCartSet({
 })
 
 NamedIndicatorSet({
-  RightIconCheckboxIndicatorDefauct,
+  RightIconCheckboxIndicatorDefault,
   RightIconCheckboxIndicatorSelect,
   RightIconCheckboxIndicatorSelected,
   RightIconIndicatorDefault,

@@ -13,7 +13,7 @@ module.exports = {
       margin: '0px',
       padding: '0px'
     },
-    defaultIndicator: "RightIconRadioDefauct", //默认样式
+    defaultIndicator: "RightIconRadioDefault", //默认样式
     indicator: "RightIconRadioHoverIndicator",  //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
     selector: "RightIconRadioSelectedIndicator"  // select时用，第一次向子组件转递时，更名为 selectedIndicator
   },

@@ -6,9 +6,6 @@ module.exports = {
   },
   cart: {
     xname:"Cart",
-    defaultIndicator: "RightIconCheckboxDefauct", //默认样式
-    indicator: "RightIconCheckboxSelect",  //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
-  	selector: 'RightIconCheckboxSelected',  // select时用，第一次向子组件转递时，更名为 selectedIndicator
     props:{
       fill: 'transparent',
       linewidth: 0,
@@ -18,5 +15,8 @@ module.exports = {
     }
   },
   // navigation: '/CheckboxPageDemo',
-  container: 'SelectList'
+  container: 'SelectList',
+  indicator: "RightIconCheckboxSelect",  //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
+  selector: 'RightIconCheckboxSelected',  // select时用，第一次向子组件转递时，更名为 selectedIndicator
+  unselector: "RightIconCheckboxDefault" //默认样式
 }
