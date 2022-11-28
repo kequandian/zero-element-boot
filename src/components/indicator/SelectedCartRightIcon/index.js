@@ -1,6 +1,6 @@
 import React, { useImperativeHandle, forwardRef, useState } from 'react';
 
-import selectedIcon from '@/../assets/selected2-icon.svg';
+import selectedIcon from '@/assets/selected2-icon.svg';
 
 require('./index.less');
 
@@ -15,7 +15,7 @@ require('./index.less');
 
 export default forwardRef(function SelectedCartRightIcon(props, ref) {
 
-  const { children, line = {}, isSelected} = props;
+  const { children, line = {}, state = 'unSelected' } = props;
 
   const [onHover, setOnHover] = useState(false);
 
@@ -53,7 +53,7 @@ export default forwardRef(function SelectedCartRightIcon(props, ref) {
       borderColor: '#E7E8EB'
     }
 
-    if(isSelected){
+    if (state == 'selected') {
       bgColor = activeColor;
       // linewidth = activeLeftLine;
       styles.borderColor = '#aab1dc';
@@ -66,11 +66,11 @@ export default forwardRef(function SelectedCartRightIcon(props, ref) {
           style={styles}
           onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
         >
-          {isSelected ? (
+          {state == 'selected' ? (
             <div className="rightIcon">
               <img src={selectedIcon} />
             </div>
-          ): null}
+          ) : null}
           {child}
         </div>
       </>
