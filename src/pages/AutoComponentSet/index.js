@@ -25,13 +25,8 @@ export default function index(props) {
         direction: 'column',
         justify: 'center'
       },
-
-
       cart: {
         xname:"Cart",
-        defaultIndicator: "CircularCheckboxIndicatorDefault", //默认样式
-        indicator: "ShadowIndicator",  //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
-        selector: 'CircularCheckboxIndicatorSelected',  // select时用，第一次向子组件转递时，更名为 selectedIndicator
         props:{
           fill: 'transparent',
           linewidth: '1px',
@@ -40,7 +35,9 @@ export default function index(props) {
           padding: '0'
         }
       },
-      container: 'SelectList'
+      container: 'SelectList',
+      indicator: "ShadowIndicator",  //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
+      selector: 'CircularCheckboxIndicatorSelected',  // select时用，第一次向子组件转递时，更名为 selectedIndicator
     },
     ...props
   };
