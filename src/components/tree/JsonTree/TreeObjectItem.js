@@ -12,11 +12,20 @@ export default function index(props) {
     const [ isShowObj, setIsShowObj ] = useState(true)
 
     const keys = Object.keys(props)
+
     // console.log('keyName 1111111 == ', keyName)
 
     function showObj(){
         const status = !isShowObj
         setIsShowObj(status)
+    }
+
+    function formatKeyName (value) {
+        const reg = /^[0-9]+.?[0-9]*$/
+        if(reg.test(value)){
+            return `[${value}]`
+        }
+        return value
     }
 
     return (
@@ -34,12 +43,12 @@ export default function index(props) {
                             </Center>
                             <Center h='30px' margin='0 0 0' >
                                 <PageSection>
-                                    {keyName}
+                                    {formatKeyName(keyName)}
                                 </PageSection>
                             </Center>
                         </Flex>
 
-                        <Stack h='' margin='0 0 0 40px' spacing='0' display={isShowObj ? '' : 'none'}>
+                        <Stack h='' margin='0 0 0 20px' spacing='0' display={isShowObj ? '' : 'none'}>
                             <Tree {...getValue(props, keyName)} />
                         </Stack>
                     </>

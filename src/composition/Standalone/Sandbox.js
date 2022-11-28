@@ -9,9 +9,9 @@ export default function (props) {
   // let api = '/dev/dependency/decompile/json';
   let api = '/dev/dependency/json';
 
-  if (process.env.NODE_ENV === 'development') {
-    api = `http://192.168.3.12:8000${api}`;
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   api = `http://192.168.3.12:8000${api}`;
+  // }
 
   const [ data ] = useTokenRequest({api});
 

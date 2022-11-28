@@ -24,14 +24,14 @@ module.exports = {
       corner: 0,
       linewidth: '0',
       padding: '10px 25px',
-      isOnHover:false
+      isOnHover: false
     }
   },
   container: 'PlainList',
-  presenter:{
+  presenter: {
     xname: 'Flexbox',
     props: {
-      direction: 'column', 
+      direction: 'column',
       justify: 'center row'
     },
     children: [

@@ -40,7 +40,7 @@ export default function index(props) {
                     </PageSection>
                 </Center>
             </Flex>
-                <Stack margin='0 0 0  40px'  spacing='0' display={isShowObj ? '' : 'none'}>
+                <Stack margin='0 0 0 20px'  spacing='0' display={isShowObj ? '' : 'none'}>
                     <Tree  {...getValue(props, keyName)} />
                 </Stack>
          

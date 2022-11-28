@@ -26,9 +26,9 @@ export default function Index(props) {
     // let api = '/dev/dependency/decompile/json';
     let api = '/dev/dependency/json';
 
-    if (process.env.NODE_ENV === 'development') {
-      api = `http://192.168.3.121:8080${api}`;
-    }
+    // if (process.env.NODE_ENV === 'development') {
+    //   api = `http://192.168.3.121:8080${api}`;
+    // }
 
     if(layoutJsonPath){
         layoutData = { path: layoutJsonPath};
@@ -52,6 +52,7 @@ export default function Index(props) {
             const list = name.split('@');
             name = list[0]
         }
+        console.log('item == ', item)
         setDetail([])
         getDetailFetch(name, 1)
     }
@@ -137,8 +138,8 @@ export default function Index(props) {
                         
                         {
                             isShowList ? (
-                                <AutoLayout {...config} onItemClick={null}>
-                                    <StandaloneBody  onItemClick={onJarItemClick}/>
+                                <AutoLayout {...config} onItemClick={onJarItemClick}>
+                                    {/* <StandaloneBody  onItemClick={onJarItemClick}/> */}
                                 </AutoLayout>
                             ): <></>
                         }

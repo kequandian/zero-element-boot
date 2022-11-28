@@ -120,28 +120,28 @@ module.exports = {
         }
       },
       
-      {
-        label: '复选框',
-        field: 'checkedIds',
-        type: 'checkbox-fetch',
-        rules: {
-          isRequired: false
-        },
-        props: {
-          placeholder: '请选择'
-        },
-        saveData:{ //额外提交的字段和值
-          fieldName: 'name',
-          fieldModelName: 'modelName'
-        },
-        options: {
-          modalTitle:'选择字段',
-          api: '/api/crud/api_model/apiTableModel/apiTableModels',
-          label: 'name',
-          value: 'id',
-          itemField:'fieldModelId', // 数组的 item 承载字段
-        }
-      },
+      // {
+      //   label: '复选框',
+      //   field: 'checkedIds',
+      //   type: 'checkbox-fetch',
+      //   rules: {
+      //     isRequired: false
+      //   },
+      //   props: {
+      //     placeholder: '请选择'
+      //   },
+      //   saveData:{ //额外提交的字段和值
+      //     fieldName: 'name',
+      //     fieldModelName: 'modelName'
+      //   },
+      //   options: {
+      //     modalTitle:'选择字段',
+      //     api: '/api/crud/api_model/apiTableModel/apiTableModels',
+      //     label: 'name',
+      //     value: 'id',
+      //     itemField:'fieldModelId', // 数组的 item 承载字段
+      //   }
+      // },
       ]
     }
   }

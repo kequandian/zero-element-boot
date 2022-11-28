@@ -25,7 +25,7 @@ export default function Index(props) {
 
 
     let navListApi = '/api/pub/data/services/navigation';
-    let navApi = '/api/pub/data/services/navCategory';
+    let navApi = '/api/pub/data/services/navCategory?sort=sortNum&orderBy=ASC';
 
     useEffect(() => {
         console.log('首次加载')

@@ -23,7 +23,7 @@ module.exports = {
             padding: '0px'
           }
         },
-        container: 'PlainList',
+        container: 'ItemClickList',
       },
       gateway: {
         xname: 'Binding',

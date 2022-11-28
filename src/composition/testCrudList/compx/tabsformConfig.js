@@ -5,7 +5,8 @@ module.exports = {
       updateAPI: '/api/pub/data/services/navCategory/(id)',
       deleteAPI: '/api/pub/data/services/navCategory/(id)'
     },
-    fields: [{
+    fields: [
+      {
         label: '类别名',
         field: 'name',
         type: 'input',
@@ -26,7 +27,18 @@ module.exports = {
         props:{
           placeholder: '描述属性',
         }
+      },
+      {
+        label: '排序号',
+        field: 'sortNum',
+        type: 'input',
+        rules: {
+          isRequired: false
+        },
+        props:{
+          placeholder: '请输入',
+        }
       }
-      ]
+    ]
   };
   

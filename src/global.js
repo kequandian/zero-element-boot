@@ -65,7 +65,8 @@ NamedIndicatorSet({
 
   CircularCheckboxIndicatorDefault,
   ShadowIndicator,
-  CircularCheckboxIndicatorSelected
+  CircularCheckboxIndicatorSelected,
+  
 })
 
 NamedPresenterSet({
@@ -86,6 +87,7 @@ NamedPresenterSet({
   ItemPlaceholder,
   TableCompx,
   AddDefaultButton,
+  
 })
 
 FormItemTypeSet({

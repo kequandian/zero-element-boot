@@ -24,12 +24,12 @@ import OverlaySelector from '@/components/OverlaySelector';
  * @param {xname:'', props:{}} selector 选中的时候的Cart的名称
  * @param {xname:'', props:{}} defaultIndicator 默认状态下的叠加的Cart  (默认不需要)
  */
-export default function NamedCart({ children, xname, props, cart = { xname, props }, cartSet,  /*multi indicator*/ indicator, selector, defaultIndicator, indicatorSet, isSelected, /* end indicator*/    ...rest }) {
-
+export default function NamedCart({ children, xname, props, cart = { xname, props }, cartSet,  /*multi indicator*/ indicator = cart.indicator, 
+  selector = cart.selector, defaultIndicator = cart.selector, indicatorSet, isSelected, /* end indicator*/    ...rest }) {
+  
   const _CartSet = cartSet ? cartSet : DefaultCartSet()
   const cartName = (typeof cart === 'string') ? cart : cart.xname
   const _Cart = _CartSet[cartName] || tips(cartName);
-
   //2021-10-28 新增 selector 模块
   const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
   

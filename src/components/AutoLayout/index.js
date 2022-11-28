@@ -106,9 +106,9 @@ function AutoLayout({ children, layout, gateway, allComponents = {}, onItemClick
 
   // Cart
   const __cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || {}
-  const _cart = sugarCart({...__cart, indicator: indicator, selector:selector})
+  const _cart = sugarCart({indicator: indicator, selector:selector, ...__cart })
   const _NamedCart = cart ? NamedCart : NextIndicator;
-
+  
   // Gateway
   const _layoutGateway = layoutGateway || gateway
   const _gateway = _layoutGateway ? (typeof _layoutGateway==='string' ? { xname: _layoutGateway } : sugarGateway(_layoutGateway)) : undefined
@@ -135,7 +135,7 @@ function AutoLayout({ children, layout, gateway, allComponents = {}, onItemClick
       const __presenterName = xpresenter.xname || tips(xpresenter.xname);
       const __presenter = xpresenter.props || {};
       const __cart = xpresenter.cart || {};
-
+      
       const __NamedCart = (_cart && (typeof _cart === 'string')) ? NamedCart : NextIndicator;
 
       const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
