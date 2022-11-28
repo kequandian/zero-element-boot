@@ -43,6 +43,7 @@ import CheckBoxModalDemo from '@/pages/CheckBoxModalDemo';
 // import RadioModalDemo from '@/pages/RadioModalDemo';
 
 import Standalone from '@/composition/Standalone/Sandbox';
+import Connection from '@/composition/Connection'
 // import TestUserSelection from '@/composition/testUserSelection/Sandbox';
 
 // import UserItem from '@/composition/testUserSelection/UserItem'
@@ -67,6 +68,8 @@ import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
 import JsonTreeDemo from '@/components/tree/JsonTree/Sandbox'
 //apis-ui
 import ApisUi from '@/composition/ApisUi/Sandbox';
+//logs-ui
+import LogsUi from '@/composition/LogsUi'
 
 export default function Index(props) {
 
@@ -89,9 +92,9 @@ export default function Index(props) {
 
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
 
-  // return <ApisUi/>
+  // return <Connection/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  return <ApisUi {...props}/> 
+  return <Connection {...props}/> 
 
   // AutoLayout 组件测试
   // const layout = {
