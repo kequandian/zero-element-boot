@@ -1,14 +1,14 @@
 import React from 'react';
 import { history } from 'umi';
-import { ChakraProvider} from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { AutoLayout, NamedLayout } from '@/components';
 
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
-import {Avatar, Title, Subtitle} from '@/presenter/demo'
+import { Avatar, Title, Subtitle } from '@/presenter/demo'
 
 // TestCase, Presenter etc.
 import IsValidElementTest from './TestCases/IsValidElementTest'
-import ImageAnimationDemo  from './TestCases/ImageAnimationDemo'
+import ImageAnimationDemo from './TestCases/ImageAnimationDemo'
 
 // TestCart
 import TestPageCart from './TestCart/TestPageCart'
@@ -55,10 +55,11 @@ import Connection from '@/composition/Connection'
 import TestDownload from '@/pages/TestDownloadDemo';
 import TestRowIcons from '@/composition/testRowIcons/Sandbox';
 import TestNamedCart from '@/pages/TestNamedCart'
-import AutoCartSet from '@/pages/AutoCartSet/Sandbox'
+import AutoCartSet from '@/pages/AutoCartSet/Presenter'
 
 import AutoComponentSet from './AutoComponentSet'
 import RouterParamsDemo from './GetRouterPath/demo'
+import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
 import TestGroupedList from './TestGroupedList';
 //nav-ui
 import TestCRUDList from '@/composition/testCrudList';
@@ -70,6 +71,12 @@ import JsonTreeDemo from '@/components/tree/JsonTree/Sandbox'
 import ApisUi from '@/composition/ApisUi/Sandbox';
 //logs-ui
 import LogsUi from '@/composition/LogsUi'
+// SelectListDemo
+import SelectListDemo from './SelectListDemo/Sandbox'
+// import AvatarSelectListDemo from './avatarSelectListDemo/Sandbox'
+import TestIndicator from './ATestIndicator'
+
+import CssCart from '@/components/cart/CssCart'
 
 export default function Index(props) {
 
@@ -80,7 +87,7 @@ export default function Index(props) {
   //   Subtitle
   // })
 
-  function onItemClickHandle (data) {
+  function onItemClickHandle(data) {
     console.log('data111111 = ', data)
   }
 
@@ -95,6 +102,15 @@ export default function Index(props) {
   // return <Connection/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
   return <Connection {...props}/> 
+  // return <ApisUi {...props}/> 
+  // return (
+  //   <CssCart width='300px' margin='40px'>
+  //     <TestIndicator />
+  //   </CssCart>
+  //   // <AutoCartSet />
+  // )
+
+  // return <div></div>
 
   // AutoLayout 组件测试
   // const layout = {

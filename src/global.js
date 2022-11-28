@@ -9,11 +9,11 @@ import { set as FormItemTypeSet } from '@/components/config/formItemTypeConfig';
 // import Cart from '@/components/cart/Cart';
 
 //indicator
-import MyIndicatorSelect from '@/components/indicator/MyIndicatorSelect';
-import MyIndicatorSelected from '@/components/indicator/MyIndicatorSelected';
-import RightIconCheckboxSelect from '@/components/indicator/RightIconCheckboxIndicator/Select';
-import RightIconCheckboxSelected from '@/components/indicator/RightIconCheckboxIndicator/Selected';
-import RightIconCheckboxDefauct from '@/components/indicator/RightIconCheckboxIndicator/Defauct';
+// import MyIndicatorSelect from '@/components/indicator/MyIndicatorSelect';
+// import MyIndicatorSelected from '@/components/indicator/MyIndicatorSelected';
+// import RightIconCheckboxSelect from '@/components/indicator/RightIconCheckboxIndicator/Select';
+// import RightIconCheckboxSelected from '@/components/indicator/RightIconCheckboxIndicator/Selected';
+// import RightIconCheckboxDefauct from '@/components/indicator/RightIconCheckboxIndicator/Defauct';
 
 import RightIconIndicatorDefault from '@/components/indicator/RightIconIndicatorDefault';
 import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
@@ -22,7 +22,7 @@ import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicato
 
 import CircularCheckboxIndicatorDefault from '@/components/indicator/CircularCheckboxIndicator';
 import ShadowIndicator from '@/components/indicator/ShadowIndicator';
-import CircularCheckboxIndicatorSelected from '@/components/indicator/CircularCheckboxIndicator/Selected';
+// import CircularCheckboxIndicatorSelected from '@/components/indicator/CircularCheckboxIndicator/CircularCheckboxSelected';
 
 //presenter
 import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvatar'
@@ -38,6 +38,18 @@ import SwaggerItem from '@/composition/ApisUi/SwaggerItem';
 import { InputCompx, SelectFetch } from '@/components/formItemType';
 const { TableCompx } = require('@/presenter/demo');
 
+// SelectListDemo
+//indicator
+import RightIconRadioHoverIndicator from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Select';
+import RightIconRadioSelectedIndicator from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Selected';
+import RightIconRadioDefault from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Default';
+
+//presenter
+import ItemImg from '@/pages/SelectListDemo/presenter/ItemImg'
+import ItemTitle from '@/pages/SelectListDemo/presenter/ItemTitle'
+
+
+
 // NamedCartSet({
 
 // })
@@ -45,31 +57,40 @@ const { TableCompx } = require('@/presenter/demo');
 //开发模式设置endpoint, token
 if(process.env.NODE_ENV == 'development'){
   // setEndpoint('http://app1.console.smallsaas.cn:8001');
-  // setEndpoint('http://demo.smallsaas.cn:8001');
-  setEndpoint('http://static.smallsaas.cn');
+  // setEndpoint('http://lowcode.smallsaas.cn');
+  // setEndpoint('https://house.cloud.smallsaas.cn');
+  // setEndpoint('http://static.smallsaas.cn')
+
   
-  // setToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2Njg2NTYwNDgsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY2ODkxNTI0OH0.o_GSr1qdIfcsKzzCSLlgoj2ZXTc57PlyNbmrXHCNn28d90ktvrVlKin04eS9eKfuYiE932ljI5YECqRKRb2UoA')
+  setToken('eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzAsInVzZXJJZCI6MzE4LCJhY2NvdW50IjoiYjQxYTg2OTRhNjM4NDIyNWJmNWMxOTQyZjdmZjIyNTYiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjoxNDYxLCJpYXQiOjE2NjkxMTMzMTQsImp0aSI6IjMxOCIsInN1YiI6ImI0MWE4Njk0YTYzODQyMjViZjVjMTk0MmY3ZmYyMjU2IiwiZXhwIjoxNjY5MzcyNTE0fQ.HnIuikkC0ugUeZAoqhtVgl4wYiJUgkuL9v8kd46YNIBpdCj-DujDVfHIUgfCqjp0mP23o-3hP697swHrP2qPiQ')
 
 }
 
 NamedIndicatorSet({
-  MyIndicatorSelect,
-  MyIndicatorSelected,
-  RightIconCheckboxSelect,
-  RightIconCheckboxSelected,
-  RightIconCheckboxDefauct,
-  
+  // MyIndicatorSelect,
+  // MyIndicatorSelected,
+  // RightIconCheckboxSelect,
+  // RightIconCheckboxSelected,
+  // RightIconCheckboxDefauct,
+
   RightIconIndicatorDefault,
   RightIconIndicatorHover,
   RightIconIndicatorSelected,
 
   CircularCheckboxIndicatorDefault,
   ShadowIndicator,
-  CircularCheckboxIndicatorSelected,
+  // CircularCheckboxIndicatorSelected,
   
+
+  //SelectList
+  RightIconRadioHoverIndicator,
+  RightIconRadioSelectedIndicator,
+  RightIconRadioDefault
 })
 
 NamedPresenterSet({
+  ItemPlaceholder,
+
   Avatar,
   Title,
   ImageAnimation,
@@ -84,10 +105,14 @@ NamedPresenterSet({
   StatisticalDescription,
 
   DownloadButton,
-  ItemPlaceholder,
   TableCompx,
   AddDefaultButton,
-  
+
+  //SelectList
+  //NamedPresenterSet({
+    ItemImg,
+    ItemTitle
+  //})
 })
 
 FormItemTypeSet({

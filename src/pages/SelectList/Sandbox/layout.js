@@ -6,11 +6,6 @@ module.exports = {
   },
   cart: {
     xname:"Cart",
-    // indicator: 'MyHoverCart',  //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
-	  // selector: 'SelectedCartUpperRightIcon',  // select时用，第一次向子组件转递时，更名为 selectedIndicator
-    defaultIndicator: "CircularCheckboxIndicatorDefault", //默认样式
-    indicator: "ShadowIndicator",  //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
-    selector: 'CircularCheckboxIndicatorSelected',  // select时用，第一次向子组件转递时，更名为 selectedIndicator
     props:{
       fill: 'transparent',
       linewidth: 0,
@@ -18,6 +13,12 @@ module.exports = {
     }
   },
   container: 'SelectList',
+    // indicator: 'MyHoverCart',  //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
+	  // selector: 'SelectedCartUpperRightIcon',  // select时用，第一次向子组件转递时，更名为 selectedIndicator
+    // defaultIndicator: "CircularCheckboxIndicatorDefault", //默认样式
+  indicator: "ShadowIndicator",  //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
+  selector: 'CircularCheckboxIndicatorSelected',  // select时用，第一次向子组件转递时，更名为 selectedIndicator
+  unselector: 'CircularCheckboxIndicatorDefault',  // select时用，第一次向子组件转递时，更名为 selectedIndicator
   presenter: {
     xname: 'Flexbox',
     props: {

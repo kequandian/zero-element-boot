@@ -49,16 +49,13 @@ import Page from './cart/Page';
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 
-import DefaultHoverIndicator from './indicator/DefaultHoverIndicator';
-import MyIndicatorSelect from './indicator/MyIndicatorSelect';
-import MyIndicatorSelected from './indicator/MyIndicatorSelected';
-import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
-import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
-import RightIconCheckboxIndicatorSelected from './indicator/RightIconCheckboxIndicator/Selected';
+// import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
+// import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
+// import RightIconCheckboxIndicatorSelected from './indicator/RightIconCheckboxIndicator/Selected';
 
-import RightIconIndicatorDefault from '@/components/indicator/RightIconIndicatorDefault';
-import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
-import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
+// import RightIconIndicatorDefault from '@/components/indicator/RightIconIndicatorDefault';
+// import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
+// import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
 
 import {Avatar, DefaultAvatar, DownloadButton, ItemPlaceholder,AddDefaultButton} from '@/components/presenter';
 import {Title, Subtitle} from '@/presenter/demo';
@@ -105,18 +102,15 @@ NamedCartSet({
   Round: RoundCart,
   SelectedCartUpperRightIcon,
   SelectedCartRightIcon,
-  DefaultHoverIndicator,
-  MyIndicatorSelect,
-  MyIndicatorSelected,
 })
 
 NamedIndicatorSet({
-  RightIconCheckboxIndicatorDefauct,
-  RightIconCheckboxIndicatorSelect,
-  RightIconCheckboxIndicatorSelected,
-  RightIconIndicatorDefault,
-  RightIconIndicatorHover,
-  RightIconIndicatorSelected
+  // RightIconCheckboxIndicatorDefauct,
+  // RightIconCheckboxIndicatorSelect,
+  // RightIconCheckboxIndicatorSelected,
+  // RightIconIndicatorDefault,
+  // RightIconIndicatorHover,
+  // RightIconIndicatorSelected
 })
 
 NamedPresenterSet({
