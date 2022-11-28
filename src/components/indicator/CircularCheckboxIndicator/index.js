@@ -1,39 +1,51 @@
 import React from 'react';
-
 import checkOff from '@/assets/check_off.svg';
-
+import checkXOn from '@/assets/check_on.svg';
 import StyleDate from './index.less';
-
 import { Flex } from '@chakra-ui/react'
-import Flexbox from '@/components/layout/Flexbox';
 import Cart from '@/components/cart/Cart';
 
+/**
+ *
+ *  
+ * @param {select} Ñ¡ÖÐ×´Ì¬
+ * 
+ * 
+ * @returns 
+ */
 
 export default function Index(props) {
 
-    const { children, ...defaultSelectedStyles } = props;
+    const { children, state ='unSelected', ...defaultSelectedStyles } = props;
 
     const styles = {
         position: 'relative',
         margin: 'auto 10px auto 30px',
         padding: '0',
-        // border:'1px #ff0000 solid',
         ...defaultSelectedStyles
     }
 
+    const imgStyle =  (state == "selected") ? StyleDate.right_icon_on : StyleDate.right_icon_off
+    const borderStyle =  (state == "selected")  ? '#1e6fff' : '#ffffff'
 
     return (
         <Flex>
-            <Cart padding='10px' margin='0' lineColor='#ffffff' >
+            <Cart padding='10px' margin='0' lineColor={borderStyle} >
                 {
                     React.Children.map(children, child => (
                         child
                     ))
                 }
             </Cart>
-            <div style={styles} className={StyleDate.right_icon_off}>
-                <img src={checkOff} />
+            <div style={styles} className={imgStyle}>
+                {
+                    state == "selected" ?
+                        <img src={checkXOn} />
+                        :
+                        <img src={checkOff} />
+                }
+
             </div>
-        </Flex>
+        </Flex >
     )
 }
