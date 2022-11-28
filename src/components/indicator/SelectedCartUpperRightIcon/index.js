@@ -15,7 +15,7 @@ require('./index.less');
 
 export default forwardRef(function SelectedCartUpperRightIcon(props, ref) {
 
-  const { children, line = {}, isSelected} = props;
+  const { children, line = {}, state = 'unSelected'} = props;
 
   const [onHover, setOnHover] = useState(false);
 
@@ -27,7 +27,7 @@ export default forwardRef(function SelectedCartUpperRightIcon(props, ref) {
     }
 
     const fill = 'transparent';
-    const margin = '6px';
+    const margin = '';
     const padding = '5px'
     let linewidth = '';
     let activeLeftLine = line.activeLeftLine ? line.activeLeftLine : '3px';
@@ -53,9 +53,9 @@ export default forwardRef(function SelectedCartUpperRightIcon(props, ref) {
       borderColor: '#E7E8EB'
     }
 
-    console.log('isSelected = ', isSelected)
+    console.log('state = ', state)
 
-    if(isSelected){
+    if(state == 'selected'){
       bgColor = activeColor;
       // linewidth = activeLeftLine;
       styles.borderColor = '#aab1dc';
@@ -68,7 +68,7 @@ export default forwardRef(function SelectedCartUpperRightIcon(props, ref) {
           style={styles}
           onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
         >
-          {isSelected ? (
+          {state == 'selected' ? (
             <div className="upperRightIcon">
               <img src={selectedIcon} />
             </div>
