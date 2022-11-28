@@ -862,7 +862,7 @@ export default function Index (props) {
                     <Loading styles={{ marginTop: '60px' }} />
                   )
                     : isShowData && showDetail ? (
-                      <div style={{ width: '100%', paddingLeft: '50px' }}>
+                      <div style={{ width: '100%', paddingLeft: '50px', paddingBottom: '20px' }}>
                         <Box flex='1'>
                           {showDetail && showDetail.length > 0 ? (
                             <div style={{ background: '#ffffff', width: '100%', paddingTop: '10px' }}>
