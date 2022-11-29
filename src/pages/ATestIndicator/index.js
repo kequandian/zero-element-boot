@@ -14,6 +14,7 @@ import SelectIndicatorCart from '@/components/indicator/SelectIndicatorCart';
 import TagIndicator from '@/components/indicator/TagIndicator';
 import OverlaySelector from '@/components/OverlaySelector'
 import ShadowIndicator from '@/components/indicator/ShadowIndicator'
+import NextIndicator from '@/components/NextIndicator'
 
 
 export default function index(props) {
@@ -23,8 +24,8 @@ export default function index(props) {
 
             <OverlaySelector
                 defaultIndicator={SelectedCartUpperRightIcon} 
-                hoverIndicator={ShadowIndicator}
                 selectedIndicator={SelectedCartUpperRightIcon} selectedIndicatorProps={{ state: 'selected' }}
+                hoverIndicator={ShadowIndicator}
                 // isSelected
                 selected
             >

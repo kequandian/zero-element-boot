@@ -15,7 +15,7 @@ require('./index.less');
 
 export default forwardRef(function SelectedCartUpperRightIcon(props, ref) {
 
-  const { children, line = {}, state = 'unSelected'} = props;
+  const { children, line = {}, state = 'unselected'} = props;
 
   const [onHover, setOnHover] = useState(false);
 
