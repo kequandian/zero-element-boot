@@ -60,6 +60,7 @@ import AutoCartSet from '@/pages/AutoCartSet/Presenter'
 import AutoComponentSet from './AutoComponentSet'
 import RouterParamsDemo from './GetRouterPath/demo'
 import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
+import RssAutoLayout from '@/pages/rssAutoLayout'
 import TestGroupedList from './TestGroupedList';
 //nav-ui
 import TestCRUDList from '@/composition/testCrudList';
@@ -103,12 +104,12 @@ export default function Index(props) {
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
   // return <Connection {...props}/> 
   // return <ApisUi {...props}/> 
-  return (
-    <CssCart width='300px' margin='40px'>
-      <TestIndicator />
-    </CssCart>
+  // return (
+    // <CssCart width='300px' margin='40px'>
+    //   <TestIndicator />
+    // </CssCart>
     // <AutoCartSet />
-  )
+  // )
 
   // return <div></div>
 
@@ -123,7 +124,7 @@ export default function Index(props) {
   //     }
   //   ]
   // }
-  // return <AutoLayout layout={layout}/>
+  return <RssAutoLayout/>
 
 
 }
