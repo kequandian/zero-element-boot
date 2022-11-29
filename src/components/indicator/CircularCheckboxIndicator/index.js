@@ -8,7 +8,7 @@ import Cart from '@/components/cart/Cart';
 /**
  *
  *  
- * @param {select} ѡ��״̬
+ * @param {select} ѡ��״̬
  * 
  * 
  * @returns 
@@ -16,7 +16,7 @@ import Cart from '@/components/cart/Cart';
 
 export default function Index(props) {
 
-    const { children, state ='unSelected', ...defaultSelectedStyles } = props;
+    const { children, state ='unselected', ...defaultSelectedStyles } = props;
 
     const styles = {
         position: 'relative',

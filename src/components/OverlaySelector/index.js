@@ -20,7 +20,7 @@ import NextIndicator from '@/components/NextIndicator';
  export default function OverlaySelector( { children, defaultIndicator, defaultIndicatorProps = {},
                                                       selectedIndicator, selectedIndicatorProps={}, 
                                                       hoverIndicator, hoverIndicatorProps = {},   // 响应 hover
-                                                      isSelected=false, selected=false}) {
+                                                      isSelected=false, selected=false, overlay=false}) {
 
 /**
  * 用于返回React内原生组件的属性集合, 通过ref引用
@@ -51,13 +51,12 @@ const DefaultIndicator =  (defaultIndicator===undefined || _isSelected) ? NextIn
 const SelectedIndicator = (selectedIndicator===undefined || !_isSelected )? NextIndicator : selectedIndicator
 
 // 选中状态，以及没有配置 overlay, hover 没有效果, overlay配置, 叠加 hover 效果
-const HoverIndicator =  ( hoverIndicator===undefined && onHover==false && (_isSelected && !overlay) ) ? NextIndicator : hoverIndicator
+const HoverIndicator =  ( hoverIndicator===undefined || onHover==false || (_isSelected && !overlay) ) ? NextIndicator : hoverIndicator
 
 return React.Children.map(children, child => {
   return (
     <div style={{flex: 1}} onClick={()=>toggleSelected()} onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}>
       <HoverIndicator {...hoverIndicatorProps}>
-          {/* DefaultIndicator/SelectedIndicator 二选一 */}
           <DefaultIndicator {...defaultIndicatorProps}>
               <SelectedIndicator {...selectedIndicatorProps}>
                 {child}
