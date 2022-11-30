@@ -5,7 +5,6 @@ import React from 'react';
  * 
  */
 export default function Binding({ children, binding={}, dataSource, ...rest}) {
-  
   const data = doBind(binding, (dataSource ? dataSource : rest) )
 
   const childrenList = React.Children.toArray(children);

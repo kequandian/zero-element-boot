@@ -10,6 +10,7 @@ import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConf
 
 import loadingPage from '@/components/loading';
 import { Filter } from '../gateway';
+import { bind } from 'lodash';
 
 // import requireConfig from '@/components/AutoX/requireConfig';
 // import { Container } from '@/components/container';
@@ -92,10 +93,10 @@ export default function (props) {
 //2021-11-10
 //新增 layout 新增 navigation 属性
 
-function AutoLayout({ children, layout, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource, ...rest }) {
-  // handle layout, container, gateway, cart, presenter, xpresenter, navigation, children
+function AutoLayout({ children, layout, binding, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource, ...rest }) {
+  // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
-  const { xname='VStack', props, container, gateway: layoutGateway, cart, indicator, selector, presenter, xpresenter, navigation, children: layoutChildren } = sugarLayout(layout) || {};
+  const { xname='VStack', props, container, binding:layoutBinding, gateway:layoutGateway, cart, indicator, selector, presenter, navigation, children: layoutChildren } = sugarLayout(layout) || {};
   const data = dataSource || rest || {}
 
   // Cart
@@ -103,12 +104,11 @@ function AutoLayout({ children, layout, gateway, allComponents = {}, onItemClick
   const _cart = sugarCart({ cart: __cart, indicator: indicator, selector:selector})
   const _NamedCart = cart ? NamedCart : NextIndicator;
 
-
   // Gateway
+  const _layoutBinding = layoutBinding || binding
   const _layoutGateway = layoutGateway || gateway
   const _gateway = _layoutGateway ? (typeof _layoutGateway==='string' ? { xname: _layoutGateway } : sugarGateway(_layoutGateway)) : undefined
   const _NamedGateway = _gateway ? NamedGateway : NextIndicator;
-
 
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
@@ -123,21 +123,29 @@ function AutoLayout({ children, layout, gateway, allComponents = {}, onItemClick
   const _presenter = isJsonObject(presenter)? {layout: {...presenter}} : {}
 
   // handle simple presenter, from data
-  if (!presenter && !layoutChildren && !container){
-      // support from data, not layout
-      const {_xname = xname, _props = {...props}, _cart = {...cart}, xpresenter = {xname:_xname, props: {..._props}, cart: {..._cart}}, ...rest } = data
+  if (!layoutChildren && !container){
+      // support from data, not layout,  with dash _  for xname,props,cart,binding,gateway,presenter
+      // xpresenter for local presenter  without 'presenter': {}
+      const {_xname = xname, _props = {...props}, _cart = {...cart}, _binding = {..._layoutBinding}, _gateway = {..._layoutGateway}, _presenter = {...presenter}, ...rest } = data
 
-      const __presenterName = xpresenter.xname || tips(xpresenter.xname);
-      const __presenter = xpresenter.props || {};
-      const __cart = xpresenter.cart || {};
-      
+      const _____presenterName = _presenter ? ((typeof _presenter === 'string')? _presenter : _presenter.xname) : undefined  //local presenter
+      const _____presenter = ((_presenter && _presenter.props) ? _presenter.props : {}) || {}
+      const __presenterName = _xname || _____presenterName ||  tips(_xname);
+      const __presenter = _props || _____presenter || {};
+      const __cart = _cart || {};
+      const __binding = _binding || {}
+      const __gateway = _gateway ? ((typeof _gateway ==='string')?undefined : _gateway.props ): undefined
+
       const __NamedCart = (_cart && (typeof _cart === 'string')) ? NamedCart : NextIndicator;
+      const __NamedGateway = (__binding || (__gateway && (typeof __gateway === 'string'))) ? NamedGateway : NextIndicator;
 
       const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
       return (
-        <__NamedCart {...__cart} {...rest} >
-            <__Presenter {...__presenter} allComponents={allComponents} />
-        </__NamedCart>
+        <__NamedGateway binding={__binding} gateway={__gateway} {...rest}>
+          <__NamedCart {...__cart} >
+              <__Presenter {...__presenter} allComponents={allComponents} />
+          </__NamedCart>
+        </__NamedGateway>
       )
  }
 
