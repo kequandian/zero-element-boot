@@ -96,7 +96,7 @@ export default function (props) {
 function AutoLayout({ children, layout, binding, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource, ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
-  const { xname='VStack', props, container, binding:layoutBinding, gateway:layoutGateway, cart, indicator, selector, presenter, navigation, children: layoutChildren } = sugarLayout(layout) || {};
+  const { xname, props, container, binding:layoutBinding, gateway:layoutGateway, cart, indicator, selector, presenter, navigation, children: layoutChildren } = sugarLayout(layout) || {};
   const data = dataSource || rest || {}
 
   // Cart
@@ -124,17 +124,26 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
 
   // handle simple presenter, from data
   if (!layoutChildren && !container){
+
       // support from data, not layout,  with dash _  for xname,props,cart,binding,gateway,presenter
       // xpresenter for local presenter  without 'presenter': {}
       const {_xname = xname, _props = {...props}, _cart = {...cart}, _binding = {..._layoutBinding}, _gateway = {..._layoutGateway}, _presenter = {...presenter}, ...rest } = data
 
+
+      // all props within presenter
       const _____presenterName = _presenter ? ((typeof _presenter === 'string')? _presenter : _presenter.xname) : undefined  //local presenter
       const _____presenter = ((_presenter && _presenter.props) ? _presenter.props : {}) || {}
+      const _____presenterCart = ((_presenter && _presenter.cart) ? _presenter.cart : {}) || {}
+      const _____presenterBinding = ((_presenter && _presenter.binding) ? _presenter.binding : {}) || {}
+      const _____presenterGateway = ((_presenter && _presenter.gateway) ? _presenter.gateway : {}) || {}
+
+      //
       const __presenterName = _xname || _____presenterName ||  tips(_xname);
       const __presenter = _props || _____presenter || {};
-      const __cart = _cart || {};
-      const __binding = _binding || {}
-      const __gateway = _gateway ? ((typeof _gateway ==='string')?undefined : _gateway.props ): undefined
+      const __cart = _cart || _____presenterCart || {};
+      const __binding = {..._binding, ..._____presenterBinding}
+      const __gateway = _gateway ? ((typeof _gateway ==='string')? undefined : _gateway.props ) : undefined || _____presenterGateway
+
 
       const __NamedCart = (_cart && (typeof _cart === 'string')) ? NamedCart : NextIndicator;
       const __NamedGateway = (__binding || (__gateway && (typeof __gateway === 'string'))) ? NamedGateway : NextIndicator;
@@ -149,9 +158,12 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
       )
  }
 
+ // xname use for layout, use default VStack
+  const __xname = xname || 'VStack'
+
   return layoutChildren ? (
     <Container {..._container} {...data} navigation={navigation}>
-        <NamedLayout xname={xname} props={props} __>
+        <NamedLayout xname={__xname} props={props} __>
           {layoutChildren ? layoutChildren.map((child, i) => {
 
             const __Presenter = ((typeof child === 'string') ? _allComponents[child] : AutoLayout) || tips(presenter)
@@ -172,7 +184,7 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
     </Container>
   ) : (
     <Container {..._container} {...data} onItemClick={onItemClick} navigation={navigation}>
-      <NamedLayout xname={xname} props={props} __>
+      <NamedLayout xname={__xname} props={props} __>
           <_NamedGateway {..._gateway}>
                 <_NamedCart {..._cart} >
                   {presenter ?
