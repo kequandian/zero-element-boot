@@ -125,24 +125,26 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
   // handle simple presenter, from data
   if (!layoutChildren && !container){
 
-      // support from data, not layout,  with dash _  for xname,props,cart,binding,gateway,presenter
-      // xpresenter for local presenter  without 'presenter': {}
-      const {_xname = xname, _props = {...props}, _cart = {...cart}, _binding = {..._layoutBinding}, _gateway = {..._layoutGateway}, _presenter = {...presenter}, ...rest } = data
+      // support component from data, not from layout, with dash _  for xname,props,cart,binding,gateway,presenter
+      const {_xname = xname, _props = {...props}, _cart, _binding = {..._layoutBinding}, _gateway, _presenter, ...rest } = data
+      const _n_cart = cart || _cart
+      const _n_gateway = _layoutGateway || _gateway
+      const _n_presenter = presenter || _presenter
 
 
       // all props within presenter
-      const _____presenterName = _presenter ? ((typeof _presenter === 'string')? _presenter : _presenter.xname) : undefined  //local presenter
-      const _____presenter = ((_presenter && _presenter.props) ? _presenter.props : {}) || {}
-      const _____presenterCart = ((_presenter && _presenter.cart) ? _presenter.cart : {}) || {}
-      const _____presenterBinding = ((_presenter && _presenter.binding) ? _presenter.binding : {}) || {}
-      const _____presenterGateway = ((_presenter && _presenter.gateway) ? _presenter.gateway : {}) || {}
+      const _____presenterName = _n_presenter ? ((typeof _n_presenter === 'string')? _n_presenter : _n_presenter.xname) : undefined  //local presenter
+      const _____presenter = ((_n_presenter && _n_presenter.props) ? _n_presenter.props : {}) || {}
+      const _____presenterCart = ((_n_presenter && _n_presenter.cart) ? _n_presenter.cart : {}) || {}
+      const _____presenterBinding = ((_n_presenter && _n_presenter.binding) ? _n_presenter.binding : {}) || {}
+      const _____presenterGateway = ((_n_presenter && _n_presenter.gateway) ? _n_presenter.gateway : {}) || {}
 
       //
       const __presenterName = _xname || _____presenterName ||  tips(_xname);
       const __presenter = _props || _____presenter || {};
-      const __cart = _cart || _____presenterCart || {};
+      const __cart = _n_cart || _____presenterCart || {};
       const __binding = {..._binding, ..._____presenterBinding}
-      const __gateway = _gateway ? ((typeof _gateway ==='string')? undefined : _gateway.props ) : undefined || _____presenterGateway
+      const __gateway = _n_gateway ? ((typeof _gateway ==='string')? undefined : _gateway.props ) : undefined || _____presenterGateway
 
 
       const __NamedCart = (_cart && (typeof _cart === 'string')) ? NamedCart : NextIndicator;
