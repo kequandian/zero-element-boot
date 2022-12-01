@@ -12,6 +12,8 @@ import { get as DefaultCartSet } from '@/components/config/NamedCartConfig';
 import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 
 import OverlaySelector from '@/components/OverlaySelector';
+import NamedIndicator from '@/components/NamedIndicator';
+import NextIndicator from '@/components/NextIndicator';
 
 
 /**
@@ -20,28 +22,33 @@ import OverlaySelector from '@/components/OverlaySelector';
  * @param {string} xname 引用的Cart的名称
  * @param {object} props 引用的Cart的属性
  * @param {xname:'', props:{}} cart 参数格式 car={xname:'Cart', props: {}}
- * @param {xname:'', props:{}} indicator 响应鼠标hover时的Cart的名称
- * @param {xname:'', props:{}} selector  选中的状态的Cart的名称
- * @param {boolean} indicated indicator仅仅作为响应hover的indicator,没有正常状态的indicator
+ * @param {xname:'', props:{}} indicator 响应鼠标hover时的Cart的属性
+ * @param {xname:'', props:{}} selector  选中的状态的Cart的属性
+ * @param {xname:'', props:{}} unselector  未选中的状态的Cart的属性
+ * @param {boolean} isSelected  传递是否选中状态
  * indicated
  */
-export default function NamedCart({ children, xname, props, cart = { xname, props }, cartSet,  /*multi indicator*/ indicator, selector, unselector, indicatorSet, /* end indicator*/ isSelected, ...rest }) {
-
+export default function NamedCart({ children, xname, props, indicator, selector, unselector, cart = { xname, props, indicator, selector, unselector},  cartSet, indicatorSet, /* end indicator*/ isSelected, ...rest }) {
   const _CartSet = cartSet ? cartSet : DefaultCartSet()
-  const cartName = (typeof cart === 'string') ? cart : cart.xname
-  const _Cart = _CartSet[cartName] || tips(cartName);
   //2021-10-28 新增 selector 模块
   const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
 
+  const cartName = (typeof cart === 'string') ? cart : cart.xname
+  const _Cart = _CartSet[cartName] || NextIndicator;
+
+
   // get indicator
-  const indicatorName = indicator ? ((typeof indicator === 'string') ? indicator : (typeof indicator === 'object') ? indicator.xname : '') : ''
-  const _Indicator  = indicatorName ? _IndicatorSet[indicatorName] : undefined  
-  const indicatorProps = (indicator && typeof indicator === 'object') ? indicator.props : {}
+  const _indicator = indicator || cart.indicator
+  const indicatorName = _indicator ? ((typeof _indicator === 'string') ? _indicator : (typeof _indicator === 'object') ? _indicator.xname : '') : ''
+  const _Indicator  = indicatorName ? (_IndicatorSet[indicatorName] || tips(indicatorName) ) : undefined  
+  const indicatorProps = (_indicator && typeof _indicator === 'object') ? _indicator.props : {}
+
 
   // get selector
-  const selectorName =  selector ? ((typeof selector === 'string') ? selector : (typeof selector === 'object') ? selector.xname : '') : ''
+  const _selector = selector || cart.selector
+  const selectorName =  _selector ? ((typeof _selector === 'string') ? _selector : (typeof _selector === 'object') ? _selector.xname : '') : ''
   const _Selector  = selectorName ? _IndicatorSet[selectorName] : undefined
-  const selectorProps = (indicator && typeof selector === 'object') ? selector.props : {}
+  const selectorProps = (_selector && typeof _selector === 'object') ? _selector.props : {}
 
   // 2022-11-24 defaultIndicator 更名为 unselector
   // //2021-10-28 新增 defaultIndicator 模块
@@ -50,15 +57,15 @@ export default function NamedCart({ children, xname, props, cart = { xname, prop
   // const defaultIndicatorName = defaultIndicator ? ((typeof defaultIndicator === 'string') ? defaultIndicator : ((typeof defaultIndicator === 'object') ? defaultIndicator.xname : '')) : ''
   // const _DefaultIndicator  = defaultIndicatorName ? _IndicatorSet[defaultIndicatorName] : undefined
   // const defaultIndicatorProps = (defaultIndicatorName && (typeof defaultIndicator === 'object')) ? defaultIndicator.props : {}
-  const unselectorName = unselector ? ((typeof unselector === 'string') ? unselector : ((typeof unselector === 'object') ? unselector.xname : '')) : ''
+  const _unselector = unselector || cart.unselector
+  const unselectorName = _unselector ? ((typeof _unselector === 'string') ? _unselector : ((typeof _unselector === 'object') ? _unselector.xname : '')) : ''
   const _Unselector  = unselectorName ? _IndicatorSet[unselectorName] : undefined
-  const unselectorProps = (unselectorName && (typeof unselector === 'object')) ? unselector.props : {}
-
+  const unselectorProps = (unselectorName && (typeof _unselector === 'object')) ? _unselector.props : {}
 
   return (
     <>
       {
-        (selector) ?  // (indicator || selector) ? only selector require OverlaySelector
+        (_selector) ?  // (indicator || selector) ? only selector require OverlaySelector
         (
             // <_Indicator {...rest}>
             //    <_Cart {...cart.props}>
@@ -78,7 +85,15 @@ export default function NamedCart({ children, xname, props, cart = { xname, prop
             </OverlaySelector>
         ) : 
         (
-            <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
+            (_indicator) ? 
+            (
+              <NamedIndicator indicator={_indicator}>
+                  <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
+              </NamedIndicator>
+            ):
+            (
+              <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
+            )
         )
       }
     </>
@@ -94,7 +109,6 @@ function _CartModule({children, Cart, props, data}){
             })}
         </Cart>)
 }
-
 
 function tips(name) {
   return _ => `NamedCart ${name} 未定义`;
