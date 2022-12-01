@@ -20,6 +20,7 @@ import NextIndicator from '@/components/NextIndicator';
  export default function OverlaySelector( { children, defaultIndicator, defaultIndicatorProps = {},
                                                       selectedIndicator, selectedIndicatorProps={}, 
                                                       hoverIndicator, hoverIndicatorProps = {},   // 响应 hover
+                                                      indicatorData={},
                                                       isSelected=false, selected=false, overlay=false}) {
 
 /**
@@ -56,7 +57,7 @@ const HoverIndicator =  ( hoverIndicator===undefined || onHover==false || (_isSe
 return React.Children.map(children, child => {
   return (
     <div style={{flex: 1}} onClick={()=>toggleSelected()} onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}>
-      <HoverIndicator {...hoverIndicatorProps}>
+      <HoverIndicator {...hoverIndicatorProps} indicatorData={indicatorData}>
           <DefaultIndicator {...defaultIndicatorProps}>
               <SelectedIndicator {...selectedIndicatorProps}>
                 {child}

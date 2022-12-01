@@ -6,9 +6,11 @@ import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorCo
 /**
  * @param {Component} Indicator  Indicator 组件
  * @param {Object} indicator     Indicator 组件参数
+ * @param {Component} indicatorSet  Indicator 组件集
+ * @param {Object} indicatorData  Indicator 数据
  * @returns 
  */
-export default function NamedIndicator( { children, Indicator, xname, props, indicator = {xname, props}, indicatorSet} ) {
+export default function NamedIndicator( { children, Indicator, xname, props, indicator = {xname, props}, indicatorSet, indicatorData} ) {
 
     const [onHover, setOnHover] = useState(false);
 
@@ -33,7 +35,7 @@ export default function NamedIndicator( { children, Indicator, xname, props, ind
     return React.Children.map(children, child => {
       return (
         <div style={{flex: 1}} onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}>
-          <___Indicator {..._indicator}>
+          <___Indicator {..._indicator} indicatorData={indicatorData}>
               {child}
           </___Indicator>
         </div>
