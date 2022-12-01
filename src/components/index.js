@@ -57,7 +57,7 @@ import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 // import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
 // import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
 
-import {Avatar, DefaultAvatar, DownloadButton, ItemPlaceholder,AddDefaultButton} from '@/components/presenter';
+import {Avatar, DefaultAvatar, DownloadButton, ItemPlaceholder,AddNewButton} from '@/components/presenter';
 import {Title, Subtitle} from '@/presenter/demo';
 
 import { 
@@ -120,20 +120,21 @@ NamedPresenterSet({
   Subtitle,
   DownloadButton,
   ItemPlaceholder,
-  AddDefaultButton
+  AddNewButton
 })
 
 NamedListSet({
   AutoLoadList,
   LoadMoreList,
-  PlainList,
-  GroupedList,
-  MultiSelectList,
-  LoadingList,
-  SelectList,
   AddMoreList,
+  LoadingList,
   ItemClickList,
-  ManageList
+  //
+  PlainList,
+  SelectList,
+  MultiSelectList,
+  ManageList,
+  GroupedList,
 })
 
 FormItemTypeSet({
