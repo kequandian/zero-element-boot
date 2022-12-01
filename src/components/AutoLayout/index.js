@@ -7,6 +7,7 @@ import { NamedContainer, NamedLayout, NamedGateway, NamedCart, NextIndicator } f
 import DefaultContainer from '@/components/container/Container'
 
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
+import { get as DefaultIndicatorGet } from '@/components/config/NamedIndicatorConfig';
 
 import loadingPage from '@/components/loading';
 import { Filter } from '../gateway';
@@ -99,7 +100,7 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
   const { xname, props, container, binding:layoutBinding, gateway:layoutGateway, cart, indicator, selector, unselector, presenter, navigation, children: layoutChildren } = sugarLayout(layout) || {};
   const data = dataSource || rest || {}
   // console.log('AutoLayout.container=', container)
-
+  
   // Cart
   const _align_cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || undefined
   const __cart = sugarCart({ cart: _align_cart, indicator: indicator, selector:selector, unselector:unselector})
@@ -123,6 +124,10 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
   const Presenter = ((presenter && typeof presenter === 'string') ? _allComponents[presenter]: (isJsonObject(presenter)? AutoLayout : undefined)) || tips(presenter)
   const _presenter = isJsonObject(presenter)? {layout: {...presenter}} : {}
 
+  // 处理item indicator
+  const _IndicatorSet = DefaultIndicatorGet()
+  const _ItemIndicator = indicator && typeof indicator === 'string' ? _IndicatorSet[indicator] : ''
+  
   // handle simple presenter, from data
   if (!layoutChildren && !container){
 
@@ -196,8 +201,14 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
       <NamedLayout xname={__xname} props={props} __>
           <_NamedGateway binding={_layoutBinding} gateway={_gateway}>
                 <_NamedCart {...__cart} >
-                  {presenter ?
-                    <Presenter {..._presenter} allComponents={allComponents} />
+                  {
+                  presenter ?(  
+                    indicator && typeof indicator === 'string' ? (
+                      <_ItemIndicator {..._presenter} onItemClick={onItemClick}>
+                        <Presenter {..._presenter} allComponents={allComponents} />
+                      </_ItemIndicator>
+                    ) : <Presenter {..._presenter} allComponents={allComponents} />
+                  )
                     :
                     React.Children.toArray(children)
                   }
