@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Flex } from '@chakra-ui/react'
-import Rectangle from '@/components/presenter/Rectangle';
+import Rectangle from '@/components/presenter/shape/Rectangle';
 import Cart from '@/components/cart/Cart';
 
 /**
