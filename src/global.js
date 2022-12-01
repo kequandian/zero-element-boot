@@ -23,6 +23,7 @@ import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicato
 import CircularCheckboxIndicatorDefault from '@/components/indicator/CircularCheckboxIndicator';
 import ShadowIndicator from '@/components/indicator/ShadowIndicator';
 // import CircularCheckboxIndicatorSelected from '@/components/indicator/CircularCheckboxIndicator/CircularCheckboxSelected';
+import DownloadIndicator from '@/components/indicator/DownloadIndicator'
 
 //presenter
 import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvatar'
@@ -59,10 +60,10 @@ if(process.env.NODE_ENV == 'development'){
   // setEndpoint('http://app1.console.smallsaas.cn:8001');
   // setEndpoint('http://lowcode.smallsaas.cn');
   // setEndpoint('https://house.cloud.smallsaas.cn');
-  // setEndpoint('http://static.smallsaas.cn')
+    setEndpoint('http://static.smallsaas.cn')
 
   
-  setToken('eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzAsInVzZXJJZCI6MzE4LCJhY2NvdW50IjoiYjQxYTg2OTRhNjM4NDIyNWJmNWMxOTQyZjdmZjIyNTYiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjoxNDYxLCJpYXQiOjE2NjkxMTMzMTQsImp0aSI6IjMxOCIsInN1YiI6ImI0MWE4Njk0YTYzODQyMjViZjVjMTk0MmY3ZmYyMjU2IiwiZXhwIjoxNjY5MzcyNTE0fQ.HnIuikkC0ugUeZAoqhtVgl4wYiJUgkuL9v8kd46YNIBpdCj-DujDVfHIUgfCqjp0mP23o-3hP697swHrP2qPiQ')
+  // setToken('eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzAsInVzZXJJZCI6MzE4LCJhY2NvdW50IjoiYjQxYTg2OTRhNjM4NDIyNWJmNWMxOTQyZjdmZjIyNTYiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjoxNDYxLCJpYXQiOjE2NjkxMTMzMTQsImp0aSI6IjMxOCIsInN1YiI6ImI0MWE4Njk0YTYzODQyMjViZjVjMTk0MmY3ZmYyMjU2IiwiZXhwIjoxNjY5MzcyNTE0fQ.HnIuikkC0ugUeZAoqhtVgl4wYiJUgkuL9v8kd46YNIBpdCj-DujDVfHIUgfCqjp0mP23o-3hP697swHrP2qPiQ')
 
 }
 
@@ -85,7 +86,9 @@ NamedIndicatorSet({
   //SelectList
   RightIconRadioHoverIndicator,
   RightIconRadioSelectedIndicator,
-  RightIconRadioDefault
+  RightIconRadioDefault,
+
+  DownloadIndicator
 })
 
 NamedPresenterSet({
