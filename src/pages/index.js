@@ -71,7 +71,7 @@ import JsonTreeDemo from '@/components/tree/JsonTree/Sandbox'
 //apis-ui
 import ApisUi from '@/composition/ApisUi/Sandbox';
 //logs-ui
-import LogsUi from '@/composition/LogsUi'
+import LogsUi from '@/composition/LogsUi/Sandbox'
 // SelectListDemo
 import SelectListDemo from './SelectListDemo/Sandbox'
 // import AvatarSelectListDemo from './avatarSelectListDemo/Sandbox'
@@ -103,7 +103,7 @@ export default function Index(props) {
   // return <Connection/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
   // return <Connection {...props}/> 
-  // return <ApisUi {...props}/> 
+  return <LogsUi {...props}/> 
   // return (
     // <CssCart width='300px' margin='40px'>
     //   <TestIndicator />
@@ -124,7 +124,7 @@ export default function Index(props) {
   //     }
   //   ]
   // }
-  return <RssAutoLayout/>
+  // return <RssAutoLayout/>
 
 
 }

@@ -4,19 +4,21 @@ import { AutoLayout } from '@/components';
 // import AutoLayout from '../AutoLayout';
 import Loading from '@/components/loading';
 const promiseAjax = require('@/components/utils/request');
-import JarItem from './JarItem';
+import JarItem from './Sandbox/JarItem';
 
 import layout from './layout';
 
 export default function Index (props) {
 
-  const { data = [] } = props;
-
+  const { data = [], sign='' } = props;
+  
   const [isShowList, setIsShowList] = useState(true);
   const [isShowData, setIsShowData] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showDetail, setDetail] = useState('');
   const [currentItemName, setCurrentItemName] = useState('');
+  const [searchLogContent, setSearchLogContent] = useState('');
+  const [searchLogCount, setSearchLogCount] = useState('');
   //
 
   let layoutData = '';
@@ -24,11 +26,6 @@ export default function Index (props) {
   const localLayoutJson = layout;
 
   let api = '/dev/logs/json';
-
-  if (process.env.NODE_ENV === 'development') {
-    api = `${api}`;
-  }
-
 
   if (layoutJsonPath) {
     layoutData = { path: layoutJsonPath };
@@ -55,13 +52,15 @@ export default function Index (props) {
 
   //
   const getDetailFetch = async (name, num) => {
+    setSearchLogContent('')
+    setSearchLogCount('')
     if (num == 1) {
       setCurrentItemName(name)
     }
     
     setIsShowList(false)
     setIsLoading(true)
-    promiseAjax(api, { pattern: name }, {})
+    promiseAjax(api, { pattern: name, sign }, {})
       .then(responseData => {
         if (responseData && responseData.code === 200) {
           let respData = responseData.data;
@@ -77,22 +76,24 @@ export default function Index (props) {
 
   }
   // console.log(statenum);
-  var searchData = ''
+  // var searchData = ''
   // var upDown =''
   //搜索输入框
   const setSearchContent = async (e,) => {
-    searchData = e
+    // searchData = e
+    setSearchLogContent(e)
   }
 
-  var upDown = ''
+  // var upDown = ''
   const setupDown = (N) => {
-    upDown = N
+    // upDown = N
+    setSearchLogCount(N)
   }
 
   //搜索按钮--获取返回的数据
   function anniu (body) {
     let url = '/dev/logs/json'
-    promiseAjax(url, { ...body })
+    promiseAjax(url, { ...body, sign })
       .then(responseData => {
         {
           if (responseData && responseData.code === 200) {
@@ -110,10 +111,21 @@ export default function Index (props) {
 
   //搜索方法
   function seach () {
+
+    if(!currentItemName){
+      alert('请选择日志文件')
+      return
+    }
+
+    if(!searchLogContent){
+      alert('请输入日志内容')
+      return
+    }
+
     const body = {
       pattern: currentItemName,
-      filter: searchData,
-      N: upDown
+      filter: searchLogContent,
+      n: searchLogCount
     }
     anniu(body)
 
@@ -166,6 +178,8 @@ export default function Index (props) {
     setIsShowList(true)
     setIsShowData(false)
     setCurrentItemName('')
+    setSearchLogContent('')
+    setSearchLogCount('')
 
   }
 
@@ -187,11 +201,11 @@ export default function Index (props) {
             <div style={{ minWidth: '800px', width: '100%', lineHeight: '60px', backgroundColor: '#ffffff', padding: '20px 10px 10px 25px' }}>
 
               <div style={{ left: '60%', width: '200px', top: '100px', height: '40px' }}>
-                <Input placeholder='输入上下文数量' onChange={(N) => setupDown(N.target.value)} width='150px' />
+                <Input placeholder='输入上下文数量' value={searchLogCount} onChange={(N) => setupDown(N.target.value)} width='150px' />
               </div>
 
               <div style={{ position: 'absolute', left: '180px', top: '54px' }}>
-                <Input placeholder='请输入您想要的日志内容' onChange={(e) => setSearchContent(e.target.value)} width='300px' /></div>
+                <Input placeholder='请输入您想要的日志内容' value={searchLogContent}  onChange={(e) => setSearchContent(e.target.value)} width='300px' /></div>
 
               <div style={{ position: 'absolute', left: '486px', top: '52px' }}>
                 <Button colorScheme='teal' onClick={() => seach()} >搜索</Button>
@@ -205,17 +219,11 @@ export default function Index (props) {
             </div>
 
 
-
-
-
-
-
             {/* <Input placeholder='请输入搜索内容' onChange={(e) => setSearchContent(SearchContent, 2)} /> */}
 
 
-
             {/* <Select placeholder='medium size' size='md' /> */}
-            <div style={{ minWidth: '800px' }}>   {
+            <div style={{ minWidth: '800px', marginTop: '15px' }}>   {
               isShowList ? (
                 <AutoLayout {...config} onItemClick={onJarItemClick}>
                   {/* <StandaloneBody  onItemClick={onJarItemClick}/> */}
@@ -225,7 +233,7 @@ export default function Index (props) {
 
             {
               isLoading ? (
-                <Loading styles={{ marginTop: '60px' }} />
+                <Loading styles={{ marginTop: '100px' }} />
               )
                 : isShowData && showDetail ? (
                   <div style={{ width: '100%', paddingLeft: '25px' }}>

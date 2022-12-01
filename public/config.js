@@ -2,4 +2,4 @@
 if (window.ZEle === undefined) {
     window.ZEle = {};
 }
-window.ZEle.endpoint = ''
+window.ZEle.endpoint = 'http://static.smallsaas.cn'
