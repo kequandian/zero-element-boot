@@ -8,7 +8,7 @@ export default function Index(props) {
 
     const { children } = props;
 
-    console.log('download props = ', props)
+    // console.log('download props = ', props)
 
     return (
         <div style={{width:'100%'}}>

@@ -84,15 +84,14 @@ module.exports = {
       padding: '5px 25px',
       isOnHover: false
     },
-    selector: true,
-    indicator:{
-      xname:'DownloadIndicator',
-      props:{
-        action: '/api/download'
-      }
-    },
   },
-  container: 'ItemClickList',
+  indicator:{
+    xname:'DownloadIndicator',
+    props:{
+      action: '/api/download'
+    }
+  },
+  container: 'PlainList',
   presenter: {
     xname: 'Flexbox',
     props: {
@@ -100,9 +99,7 @@ module.exports = {
     children: [
       {
         presenter: 'JarItem',
-        binding: {
-          items: 'items'
-        }
+        indicator: 'ClickIndicator',
       },
     ]
   }
