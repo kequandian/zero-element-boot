@@ -131,7 +131,6 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
       const _n_gateway = _layoutGateway || _gateway
       const _n_presenter = presenter || _presenter
 
-
       // all props within presenter
       const _____presenterName = _n_presenter ? ((typeof _n_presenter === 'string')? _n_presenter : _n_presenter.xname) : undefined  //local presenter
       const _____presenter = ((_n_presenter && _n_presenter.props) ? _n_presenter.props : {}) || {}
@@ -187,7 +186,7 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
   ) : (
     <Container {..._container} {...data} onItemClick={onItemClick} navigation={navigation}>
       <NamedLayout xname={__xname} props={props} __>
-          <_NamedGateway {..._gateway}>
+          <_NamedGateway binding={_layoutBinding} gateway={_gateway}>
                 <_NamedCart {..._cart} >
                   {presenter ?
                     <Presenter {..._presenter} allComponents={allComponents} />
