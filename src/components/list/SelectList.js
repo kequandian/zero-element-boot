@@ -25,10 +25,29 @@ export default function SelectList(props) {
 
   const Child = React.Children.only(children);
 
+  const [ list, setList ] = useState(items)
   const [currIndex, setCurrIndex] = useState(-1)
-
+  
   function onSelected (item, index) {
-    setCurrIndex(index);
+
+    list.map((item, i) => {
+      if(i === index && currIndex === -1){
+        item.isSelected = true
+        setCurrIndex(index)
+      }else if( i === index && index === currIndex){
+        item.isSelected = false
+        setCurrIndex(-1)
+      }else if( i === index){
+        item.isSelected = true
+        setCurrIndex(index)
+      }else{
+        item.isSelected = false
+      }
+    })
+
+    setList(list)
+
+    // setCurrIndex(index);
     if(navigation){
       if(navigation.indexOf('(id)') === -1){
         history.push({
@@ -46,7 +65,8 @@ export default function SelectList(props) {
         })
       }
     }else if(onItemClick){
-      onItemClick(item)
+      const itemData = list.find((fItem, findex)=> (findex === index))
+      onItemClick(itemData)
     }
   }
   
@@ -59,7 +79,7 @@ export default function SelectList(props) {
     ref={containerRef}
   >
     <ContainerContext.Provider value={size}>
-        {items.map((item, i) => {
+        {list.map((item, i) => {
 
           return <div key={i} onClick={() => onSelected(item, i)} >
             {
@@ -71,12 +91,9 @@ export default function SelectList(props) {
                   // cart:cart,
                   key: i,
                   ref: layoutRef,
-                  isLastItem: items.length == (i+1) ? true : false,
-                  isSelected: i == currIndex ? true : false
+                  isLastItem: list.length == (i+1) ? true : false,
               })
-              : <Child key={i} {...item } {...layout} layout={layout} ref={layoutRef}
-                  isSelected={i == currIndex ? true : false}
-              />
+              : <Child key={i} {...item } {...layout} layout={layout} ref={layoutRef}/>
             }
           </div>
            
