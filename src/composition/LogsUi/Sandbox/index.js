@@ -8,18 +8,22 @@ export default function index (props) {
 
   const [ data, setData ] = useState([])
 
+  const [ sign, setSign ] = useState('')
+
+  const [ errorMessage, setErrorMessage ] = useState(!sign && 'sign 无效')
+
   useEffect(_ => {
+    setSign('')
     setData([])
     if(params && params.sign){
-      getLogList()
-    }else{
-      alert('sign 无效')
+      setSign(params.sign)
+      getLogList(params.sign)
     }
   }, [params])
 
-  function getLogList() {
+  function getLogList(sign) {
     
-    const api = `/dev/logs/json?sign=${params.sign}`;
+    const api = `/dev/logs/json?sign=${sign}`;
     const queryData = {};
     promiseAjax(api, queryData).then(resp => {
         if (resp && resp.code === 200) {
@@ -32,22 +36,23 @@ export default function index (props) {
           })
           setData(newData)
         } else {
-            console.error("获取 logs 列表失败")
+            setErrorMessage('签名错误或已过期!')
         }
       }).catch(err =>{
-        alert('签名错误或已过期!')
+        setErrorMessage('签名错误或已过期!')
       });
     
   }
 
-  // const dataX = []
-  // dataX.push({ items: data })
-
   return (
     <>
-      { data && data.length > 0 ? (
-          <LogsUi data={data} sign={params.sign}/>
-      ):<></>}
+      { sign ? (
+        <>
+          { data && data.length > 0 ? (
+              <LogsUi data={data} sign={sign}/>
+          ):<div style={{margin: '10px'}}>{errorMessage}</div>}
+        </>
+      ):<div style={{margin: '10px'}}>{errorMessage}</div>}
     </>
   )
 
