@@ -88,7 +88,10 @@ module.exports = {
   indicator:{
     xname:'DownloadIndicator',
     props:{
-      action: '/api/download'
+      action: '/api/download/(fieldName)'
+    },
+    binding: {
+      "value":"fieldName"
     }
   },
   container: 'PlainList',
@@ -98,8 +101,11 @@ module.exports = {
     },
     children: [
       {
-        presenter: 'JarItem',
+        xname: 'JarItem',
         indicator: 'ClickIndicator',
+        binding: {
+          "value":"value"
+        }
       },
     ]
   }

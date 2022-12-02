@@ -31,7 +31,7 @@ import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/
 import ContentText from '@/pages/PresenterTestDemo/plugins/TodoList/TodoItem/Content_text'
 import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/ItemIconAction'
 
-import {Avatar, DownloadButton, ItemPlaceholder, AddDefaultButton } from '@/components/presenter';
+import {Avatar, DownloadButton, ItemPlaceholder, AddNewButton, Text } from '@/components/presenter';
 import {Title, Subtitle, StatisticsList, StatisticalDescription} from '@/presenter/demo';
 
 import JarItem from '@/composition/Standalone/JarItem';
@@ -97,6 +97,7 @@ NamedPresenterSet({
   ItemPlaceholder,
 
   Avatar,
+  Text,
   Title,
   ImageAnimation,
 
@@ -111,7 +112,7 @@ NamedPresenterSet({
 
   DownloadButton,
   TableCompx,
-  AddDefaultButton,
+  AddNewButton,
 
   //SelectList
   //NamedPresenterSet({

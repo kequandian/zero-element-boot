@@ -8,7 +8,7 @@ import Loading from '@/components/loading';
 const promiseAjax = require('@/components/utils/request');
 
 import layout from './layout';
-import JsonTree from '@/components/tree/JsonTree/Sandbox'
+import JsonTree from '@/components/presenter/tree/JsonTree/Sandbox'
 
 export default function Index(props) {
 

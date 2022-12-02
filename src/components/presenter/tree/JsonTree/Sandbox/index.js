@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import useTokenRequest from '@/components/hooks/useTokenRequest';
-import Tree from '@/components/tree/JsonTree'
+import Tree from '@/components/presenter/tree/JsonTree'
 const promiseAjax = require('@/components/utils/request');
 import Loading from '@/components/loading';
 
