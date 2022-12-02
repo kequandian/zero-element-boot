@@ -125,45 +125,48 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
   const _presenter = isJsonObject(presenter)? {layout: {...presenter}} : {}
 
   // 处理item indicator
-  const _IndicatorSet = DefaultIndicatorGet()
-  const _ItemIndicator = indicator && typeof indicator === 'string' ? _IndicatorSet[indicator] : ''
+  // const _IndicatorSet = DefaultIndicatorGet()
+  // const _ItemIndicator = indicator && typeof indicator === 'string' ? _IndicatorSet[indicator] : ''
   
+  // indicator binding
+  const indicatorBinding = (indicator && indicator.binding) ? indicator.binding : {}
+  const indicatorData = doBind(indicatorBinding, rest)
+
   // handle simple presenter, from data
   if (!layoutChildren && !container){
 
       // support component from data, not from layout, with dash _  for xname,props,cart,binding,gateway,presenter
-      const {_xname = xname, _props = {...props}, _cart, _binding = {..._layoutBinding}, _gateway, _presenter, ...rest } = data
-      const _n_cart = __cart || _cart
-      const _n_gateway = _layoutGateway || _gateway
-      const _n_presenter = presenter || _presenter
+      const {_xname = xname, _props = {...props}, _cart, _binding = {..._layoutBinding}, _gateway, _presenter, ..._rest } = data
+      const _data_cart = __cart || _cart || {}
+      const _data_gateway = _layoutGateway || _gateway
+      const _data_presenter = presenter || _presenter
 
       // all props (xname, props, binding, cart, indicator) from within presenter
-      const _____presenterName = _n_presenter ? ((typeof _n_presenter === 'string')? _n_presenter : _n_presenter.xname) : undefined  //local presenter
-      const _____presenter = ((_n_presenter && _n_presenter.props) ? _n_presenter.props : {}) || {}
-
+      const _____presenterName = _data_presenter ? ((typeof _data_presenter === 'string')? _data_presenter : _data_presenter.xname) : undefined  //local presenter
+      const _____presenter = ((_data_presenter && _data_presenter.props) ? _data_presenter.props : {}) || {}
 
       // TODO, should not support
-      const _____presenterCart = ((_n_presenter && _n_presenter.cart) ? _n_presenter.cart : undefined) || undefined
-      const _____presenterIndicator = ((_n_presenter && _n_presenter.indicator) ? _n_presenter.indicator : undefined) || undefined
-      const _____presenterBinding = ((_n_presenter && _n_presenter.binding) ? _n_presenter.binding : {}) || {}
-      const _____presenterGateway = ((_n_presenter && _n_presenter.gateway) ? _n_presenter.gateway : {}) || {}
+      const _____presenterCart = ((_data_presenter && _data_presenter.cart) ? _data_presenter.cart : undefined) || undefined
+      const _____presenterIndicator = ((_data_presenter && _data_presenter.indicator) ? _data_presenter.indicator : undefined) || undefined
+      const _____presenterBinding = ((_data_presenter && _data_presenter.binding) ? _data_presenter.binding : {}) || {}
+      const _____presenterGateway = ((_data_presenter && _data_presenter.gateway) ? _data_presenter.gateway : {}) || {}
+      // const __presenterName = _xname || _____presenterName ||  tips(_xname);
+      // const __presenter = _props || _____presenter || {};
+      const __cart0 = _data_cart || (_____presenterCart||_____presenterIndicator)? {cart: {..._____presenterCart, indicator:_____presenterIndicator}} : {};
+      const __binding = {..._binding, ..._____presenterBinding}
+      const __gateway = _data_gateway ? ((typeof _data_gateway ==='string')? undefined : _data_gateway.props ) : undefined || _____presenterGateway
+      // deprecated
 
       const __presenterName = _xname || _____presenterName ||  tips(_xname);
       const __presenter = _props || _____presenter || {};
-      const __cart0 = _n_cart || (_____presenterCart||_____presenterIndicator)? {cart: {..._____presenterCart, indicator:_____presenterIndicator}} : {};
-      const __binding = {..._binding, ..._____presenterBinding}
-      const __gateway = _n_gateway ? ((typeof _gateway ==='string')? undefined : _gateway.props ) : undefined || _____presenterGateway
-      // deprecated
 
-      
-
-      const __NamedCart = __cart0 ? NamedCart : NextIndicator;
+      const __NamedCart = _data_cart ? NamedCart : NextIndicator;
       const __NamedGateway = (__binding || (__gateway && (typeof __gateway === 'string'))) ? NamedGateway : NextIndicator;
 
       const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
       return (
-        <__NamedGateway binding={__binding} gateway={__gateway} {...rest}>
-          <__NamedCart {...__cart0} >
+        <__NamedGateway binding={_binding} gateway={_data_gateway} {..._rest}>
+          <__NamedCart {..._data_cart}  indicatorData={indicatorData}>
               <__Presenter {...__presenter} allComponents={allComponents} />
           </__NamedCart>
         </__NamedGateway>
@@ -202,13 +205,7 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
           <_NamedGateway binding={_layoutBinding} gateway={_gateway}>
                 <_NamedCart {...__cart} >
                   {
-                  presenter ?(  
-                    indicator && typeof indicator === 'string' ? (
-                      <_ItemIndicator {..._presenter} onItemClick={onItemClick}>
-                        <Presenter {..._presenter} allComponents={allComponents} />
-                      </_ItemIndicator>
-                    ) : <Presenter {..._presenter} allComponents={allComponents} />
-                  )
+                  presenter ?<Presenter {..._presenter} allComponents={allComponents} />
                     :
                     React.Children.toArray(children)
                   }
@@ -336,3 +333,13 @@ function sugarGateway(gateway){
 //   return (obj && typeof (obj) == "object" && obj.xname) && 
 //          (obj.presenter || (obj.children && Object.prototype.toString.call(obj.children).toLowerCase() == "[object array]" && obj.children.length > 0 ))
 // }
+
+
+function doBind(binding, data={}) {
+  let bindingData = {}
+  Object.keys(binding).forEach(key => {
+    //binding[key] = target field
+    bindingData[binding[key]] = data[key];
+  })
+  return { ...bindingData };
+}
