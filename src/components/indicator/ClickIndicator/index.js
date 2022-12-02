@@ -1,8 +1,22 @@
 import React from 'react';
-import { Flex } from '@chakra-ui/react'
-// import Cart from '@/components/cart/Cart';
-import CssCart from '@/components/cart/CssCart';
 
+/**
+ * 使用例子
+ * container：'',
+   presenter -> children
+   [{
+        xname: 'JarItem',
+        indicator:{
+            xname:'ClickIndicator',
+            binding: {
+                "value":"value"
+            }
+        },
+    }]
+ * 
+ * @param { object } indicatorData 为上述 binding 处理的参数
+ * 
+ */
 
 export default function Index(props) {
 
@@ -16,15 +30,11 @@ export default function Index(props) {
 
     return (
         <div style={{width:'100%'}} onClick={()=>itemClick()}>
-            <Flex>  
-                <div  style={{width:'100%'}}>
-                    {
-                        React.Children.map(children, child => (
-                            child
-                        ))
-                    }
-                </div>
-            </Flex>
+            {
+                React.Children.map(children, child => (
+                    child
+                ))
+            }
         </div>
     )
 }
