@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Flex, Button } from '@chakra-ui/react'
 // import Cart from '@/components/cart/Cart';
 import CssCart from '@/components/cart/CssCart';
-import { download } from 'zero-element/lib/utils/request';
+// import { download } from 'zero-element/lib/utils/request';
 import { formatParams } from '@/components/utils/tools'
+import { getEndpoint } from '@/components/config/common';
 
 
 export default function Index(props) {
@@ -13,10 +14,9 @@ export default function Index(props) {
     const [loading, setLoading] = useState(false);
 
     function onDownlaod () {
+        //old
         // setLoading(true)
-
-        const downloadUrl = formatParams(action, indicatorData)
-        console.log('downloadUrl == ', downloadUrl)
+        // const downloadUrl = getEndpoint() + formatParams(action, indicatorData)
         // download(downloadUrl, {}).then(rsp => {
         //     console.log('rsp == ', rsp)
         //     // if (message) {
@@ -26,9 +26,12 @@ export default function Index(props) {
         // .finally(_ => {
         //     setLoading(false);
         // })
-    }
 
-    
+        //new
+        const downloadUrl = getEndpoint() + formatParams(action, indicatorData)
+        const w = window.open('about:blank');
+        w.location.href = downloadUrl
+    }
 
     return (
         <div style={{width:'100%'}}>

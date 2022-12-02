@@ -158,8 +158,8 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
       const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
       return (
         <__NamedGateway binding={_data_binding} gateway={_data_gateway} {..._rest}>
-          <__NamedCart {..._data_cart} >
-              <__Presenter {...__presenter} allComponents={allComponents} />
+          <__NamedCart {..._data_cart} onItemClick={onItemClick}>
+              <__Presenter {...__presenter} allComponents={allComponents}/>
           </__NamedCart>
         </__NamedGateway>
       )
@@ -177,7 +177,7 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
             const __presenter = isJsonObject(child)? {layout: {...child}} : {}
 
             return (
-                <__Presenter {...__presenter} allComponents={allComponents} onItemClick={onItemClick}  key={i} />
+                <__Presenter {...__presenter} allComponents={allComponents}  key={i} onItemClick={onItemClick}/>
             )
 
           }) : (
@@ -195,7 +195,7 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
           <_NamedGateway binding={_layoutBinding} gateway={_gateway}>
                 <_NamedCart {...__cart} >
                   {
-                  presenter ?<Presenter {..._presenter} allComponents={allComponents} />
+                    presenter ?<Presenter {..._presenter} allComponents={allComponents} onItemClick={onItemClick} />
                     :
                     React.Children.toArray(children)
                   }
