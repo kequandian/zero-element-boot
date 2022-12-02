@@ -6,6 +6,23 @@ import CssCart from '@/components/cart/CssCart';
 import { formatParams } from '@/components/utils/tools'
 import { getEndpoint } from '@/components/config/common';
 
+/**
+ * 使用例子
+ * cart:{},
+   indicator:{
+    xname:'DownloadIndicator',
+    props:{
+      action: '/dev/logs/down/log?fileName=(fieldName)'
+    },
+    binding: {
+      "value":"fieldName"
+    }
+  },
+ * 
+ * @param { object } indicatorData 为上述 binding 处理的参数
+ * @param { string } action 下载API
+ * 
+ */
 
 export default function Index(props) {
 
@@ -27,7 +44,7 @@ export default function Index(props) {
         //     setLoading(false);
         // })
 
-        //new
+        //跳转新页面下载
         const downloadUrl = getEndpoint() + formatParams(action, indicatorData)
         const w = window.open('about:blank');
         w.location.href = downloadUrl
