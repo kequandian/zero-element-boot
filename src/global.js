@@ -47,7 +47,11 @@ import RightIconRadioDefault from '@/pages/SelectListDemo/indicator/RightIconRad
 //presenter
 import ItemImg from '@/pages/SelectListDemo/presenter/ItemImg'
 import ItemTitle from '@/pages/SelectListDemo/presenter/ItemTitle'
+import RssAutoLayout from '@/pages/rssAutoLayout/item'
 
+import OnDeleteIndicator from '@/components/indicator/OnDeleteIndicator';
+import SelectAvatar from '@/components/indicator/SelectAvatar';
+import Text from '@/pages/AvatarSelected/Text';
 
 
 // NamedCartSet({
@@ -80,12 +84,13 @@ NamedIndicatorSet({
   CircularCheckboxIndicatorDefault,
   ShadowIndicator,
   // CircularCheckboxIndicatorSelected,
-  
+  OnDeleteIndicator,
 
   //SelectList
   RightIconRadioHoverIndicator,
   RightIconRadioSelectedIndicator,
-  RightIconRadioDefault
+  RightIconRadioDefault,
+  SelectAvatar
 })
 
 NamedPresenterSet({
@@ -111,7 +116,9 @@ NamedPresenterSet({
   //SelectList
   //NamedPresenterSet({
     ItemImg,
-    ItemTitle
+    ItemTitle,
+    RssAutoLayout,
+    Text
   //})
 })
 
