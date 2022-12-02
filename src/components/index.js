@@ -46,8 +46,12 @@ import Rectangle from './cart/Rectangle';
 import RoundCart from './cart/Round';
 import Page from './cart/Page';
 
+//indicator
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
+
+import DownloadIndicator from './indicator/DownloadIndicator'
+import ClickIndicator from './indicator/ClickIndicator'
 
 // import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
 // import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
@@ -57,7 +61,8 @@ import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 // import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
 // import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
 
-import {Avatar, DefaultAvatar, DownloadButton, ItemPlaceholder,AddDefaultButton} from '@/components/presenter';
+
+import {Avatar, DefaultAvatar, DownloadButton, ItemPlaceholder,AddNewButton, Text} from '@/components/presenter';
 import {Title, Subtitle} from '@/presenter/demo';
 
 import { 
@@ -111,6 +116,8 @@ NamedIndicatorSet({
   // RightIconIndicatorDefault,
   // RightIconIndicatorHover,
   // RightIconIndicatorSelected
+  DownloadIndicator,
+  ClickIndicator
 })
 
 NamedPresenterSet({
@@ -120,20 +127,22 @@ NamedPresenterSet({
   Subtitle,
   DownloadButton,
   ItemPlaceholder,
-  AddDefaultButton
+  AddNewButton,
+  Text
 })
 
 NamedListSet({
   AutoLoadList,
   LoadMoreList,
-  PlainList,
-  GroupedList,
-  MultiSelectList,
-  LoadingList,
-  SelectList,
   AddMoreList,
+  LoadingList,
   ItemClickList,
-  ManageList
+  //
+  PlainList,
+  SelectList,
+  MultiSelectList,
+  ManageList,
+  GroupedList,
 })
 
 FormItemTypeSet({

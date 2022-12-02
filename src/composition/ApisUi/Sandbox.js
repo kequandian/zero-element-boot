@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import StandaloneContainer from './index';
 const promiseAjax = require('@/components/utils/request');
 
-import JsonTreePage from '@/components/tree/JsonTree/Sandbox'
+import JsonTreePage from '@/components/presenter/tree/JsonTree/Sandbox'
 
 // import useTokenRequest from '@/components/hooks/useTokenRequest';
 

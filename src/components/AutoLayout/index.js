@@ -7,10 +7,11 @@ import { NamedContainer, NamedLayout, NamedGateway, NamedCart, NextIndicator } f
 import DefaultContainer from '@/components/container/Container'
 
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
+import { get as DefaultIndicatorGet } from '@/components/config/NamedIndicatorConfig';
 
 import loadingPage from '@/components/loading';
-import { Filter } from '../gateway';
-import { bind } from 'lodash';
+// import { Filter } from '../gateway';
+// import { bind } from 'lodash';
 
 // import requireConfig from '@/components/AutoX/requireConfig';
 // import { Container } from '@/components/container';
@@ -99,7 +100,7 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
   const { xname, props, container, binding:layoutBinding, gateway:layoutGateway, cart, indicator, selector, unselector, presenter, navigation, children: layoutChildren } = sugarLayout(layout) || {};
   const data = dataSource || rest || {}
   // console.log('AutoLayout.container=', container)
-
+  
   // Cart
   const _align_cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || undefined
   const __cart = sugarCart({ cart: _align_cart, indicator: indicator, selector:selector, unselector:unselector})
@@ -125,41 +126,40 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
 
   // handle simple presenter, from data
   if (!layoutChildren && !container){
-
       // support component from data, not from layout, with dash _  for xname,props,cart,binding,gateway,presenter
-      const {_xname = xname, _props = {...props}, _cart, _binding = {..._layoutBinding}, _gateway, _presenter, ...rest } = data
-      const _n_cart = __cart || _cart
-      const _n_gateway = _layoutGateway || _gateway
-      const _n_presenter = presenter || _presenter
+      const {_xname = xname, _props = {...props}, _cart, _binding = {..._layoutBinding}, _gateway, _presenter, ..._rest } = data
+      const _data_cart = __cart || _cart || {}
+      const _data_gateway = _layoutGateway || _gateway
+      const _data_binding = _layoutBinding || _binding
+      const _data_presenter = presenter || _presenter
 
       // all props (xname, props, binding, cart, indicator) from within presenter
-      const _____presenterName = _n_presenter ? ((typeof _n_presenter === 'string')? _n_presenter : _n_presenter.xname) : undefined  //local presenter
-      const _____presenter = ((_n_presenter && _n_presenter.props) ? _n_presenter.props : {}) || {}
-
+      const _____presenterName = _data_presenter ? ((typeof _data_presenter === 'string')? _data_presenter : _data_presenter.xname) : undefined  //local presenter
+      const _____presenter = ((_data_presenter && _data_presenter.props) ? _data_presenter.props : {}) || {}
 
       // TODO, should not support
-      const _____presenterCart = ((_n_presenter && _n_presenter.cart) ? _n_presenter.cart : undefined) || undefined
-      const _____presenterIndicator = ((_n_presenter && _n_presenter.indicator) ? _n_presenter.indicator : undefined) || undefined
-      const _____presenterBinding = ((_n_presenter && _n_presenter.binding) ? _n_presenter.binding : {}) || {}
-      const _____presenterGateway = ((_n_presenter && _n_presenter.gateway) ? _n_presenter.gateway : {}) || {}
+      const _____presenterCart = ((_data_presenter && _data_presenter.cart) ? _data_presenter.cart : undefined) || undefined
+      const _____presenterIndicator = ((_data_presenter && _data_presenter.indicator) ? _data_presenter.indicator : undefined) || undefined
+      const _____presenterBinding = ((_data_presenter && _data_presenter.binding) ? _data_presenter.binding : {}) || {}
+      const _____presenterGateway = ((_data_presenter && _data_presenter.gateway) ? _data_presenter.gateway : {}) || {}
+      // const __presenterName = _xname || _____presenterName ||  tips(_xname);
+      // const __presenter = _props || _____presenter || {};
+      const __cart0 = _data_cart || (_____presenterCart||_____presenterIndicator)? {cart: {..._____presenterCart, indicator:_____presenterIndicator}} : {};
+      const __binding = {..._binding, ..._____presenterBinding}
+      const __gateway = _data_gateway ? ((typeof _data_gateway ==='string')? undefined : _data_gateway.props ) : undefined || _____presenterGateway
+      // deprecated
 
       const __presenterName = _xname || _____presenterName ||  tips(_xname);
       const __presenter = _props || _____presenter || {};
-      const __cart0 = _n_cart || (_____presenterCart||_____presenterIndicator)? {cart: {..._____presenterCart, indicator:_____presenterIndicator}} : {};
-      const __binding = {..._binding, ..._____presenterBinding}
-      const __gateway = _n_gateway ? ((typeof _gateway ==='string')? undefined : _gateway.props ) : undefined || _____presenterGateway
-      // deprecated
 
-      
-
-      const __NamedCart = __cart0 ? NamedCart : NextIndicator;
-      const __NamedGateway = (__binding || (__gateway && (typeof __gateway === 'string'))) ? NamedGateway : NextIndicator;
+      const __NamedCart = _data_cart ? NamedCart : NextIndicator;
+      const __NamedGateway = (_data_binding || _data_gateway) ? NamedGateway : NextIndicator;
 
       const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
       return (
-        <__NamedGateway binding={__binding} gateway={__gateway} {...rest}>
-          <__NamedCart {...__cart0} >
-              <__Presenter {...__presenter} allComponents={allComponents} />
+        <__NamedGateway binding={_data_binding} gateway={_data_gateway} {..._rest}>
+          <__NamedCart {..._data_cart} onItemClick={onItemClick}>
+              <__Presenter {...__presenter} allComponents={allComponents}/>
           </__NamedCart>
         </__NamedGateway>
       )
@@ -167,8 +167,6 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
 
  // xname use for layout, use default VStack
   const __xname = xname || 'VStack'
-  // console.log('AutoLayout.!cart=', _cart)
-
 
   return layoutChildren ? (
     <Container {..._container} {...data} navigation={navigation}>
@@ -179,7 +177,7 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
             const __presenter = isJsonObject(child)? {layout: {...child}} : {}
 
             return (
-                <__Presenter {...__presenter} allComponents={allComponents} onItemClick={onItemClick}  key={i} />
+                <__Presenter {...__presenter} allComponents={allComponents}  key={i} onItemClick={onItemClick}/>
             )
 
           }) : (
@@ -196,8 +194,8 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
       <NamedLayout xname={__xname} props={props} __>
           <_NamedGateway binding={_layoutBinding} gateway={_gateway}>
                 <_NamedCart {...__cart} >
-                  {presenter ?
-                    <Presenter {..._presenter} allComponents={allComponents} />
+                  {
+                    presenter ?<Presenter {..._presenter} allComponents={allComponents} onItemClick={onItemClick} />
                     :
                     React.Children.toArray(children)
                   }
@@ -325,3 +323,4 @@ function sugarGateway(gateway){
 //   return (obj && typeof (obj) == "object" && obj.xname) && 
 //          (obj.presenter || (obj.children && Object.prototype.toString.call(obj.children).toLowerCase() == "[object array]" && obj.children.length > 0 ))
 // }
+

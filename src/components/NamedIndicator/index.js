@@ -6,17 +6,26 @@ import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorCo
 /**
  * @param {Component} Indicator  Indicator 组件
  * @param {Object} indicator     Indicator 组件参数
+ * @param {Component} indicatorSet  Indicator 组件集
+ * @param {Object} indicatorData  Indicator 数据
+ * @param {{'hover','always','none'}} trigger 触发 indicator 的事件, 不配置为 hover
  * @returns 
  */
-export default function NamedIndicator( { children, Indicator, xname, props, indicator = {xname, props}, indicatorSet} ) {
+export default function NamedIndicator( { children, Indicator, xname, props, trigger='hover', indicator = {xname, props, trigger}, 
+    indicatorData, indicatorSet,  onItemClick} ) {
 
     const [onHover, setOnHover] = useState(false);
 
-    const toggleHover = () => {
-        const result = !onHover;
-        setOnHover(result)
+    // const toggleHover = () => {
+    //     const result = !onHover;
+    //     setOnHover(result)
+    // }
+    const toggleHoverEntered = () => {
+      setOnHover(true)
     }
-
+    const toggleHoverLeaved = () => {
+      setOnHover(false)
+    }
 
     const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
 
@@ -28,19 +37,28 @@ export default function NamedIndicator( { children, Indicator, xname, props, ind
 
     const _Indicator = Indicator || _IndicatorSet[indicatorName] || tips(indicatorName)
 
-    const ___Indicator = onHover ? _Indicator : NextIndicator
+    const _trigger = indicator.trigger || trigger
+    const triggered = (_trigger=='hover' && onHover) || _trigger=='always'
+    const ___Indicator = triggered ? _Indicator : NextIndicator
 
     return React.Children.map(children, child => {
-      return (
-        <div style={{flex: 1}} onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}>
-          <___Indicator {..._indicator}>
+      return (_trigger=='hover')?
+      (
+        <div style={{flex: 1}} onMouseEnter={() => toggleHoverEntered()} onMouseLeave={() => toggleHoverLeaved()}>
+          <___Indicator {..._indicator} indicatorData={indicatorData} onItemClick={onItemClick}>
               {child}
           </___Indicator>
         </div>
-        )
+      ) : 
+      (
+        <div style={{flex: 1}}>
+          <___Indicator {..._indicator} indicatorData={indicatorData}>
+              {child}
+          </___Indicator>
+        </div>
+      )
       })
 }
-
 
 
 function tips(name) {
