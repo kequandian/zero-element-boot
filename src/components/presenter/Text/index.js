@@ -6,11 +6,11 @@ import {
 
 export default function Index(props) {
 
-    const { value, fontSize='xl' } = props;
+    const { value,  } = props;
 
     return (
         <ChakraProvider>
-            <Text fontSize={fontSize}>{value}</Text>
+            <Text h={'24px'}>{value}</Text>
         </ChakraProvider>
     )
 }

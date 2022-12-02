@@ -11,7 +11,8 @@ import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorCo
  * @param {{'hover','always','none'}} trigger 触发 indicator 的事件, 不配置为 hover
  * @returns 
  */
-export default function NamedIndicator( { children, Indicator, xname, props, trigger='hover', indicator = {xname, props, trigger}, indicatorData, indicatorSet} ) {
+export default function NamedIndicator( { children, Indicator, xname, props, trigger='hover', indicator = {xname, props, trigger}, 
+    indicatorData, indicatorSet,  onItemClick} ) {
 
     const [onHover, setOnHover] = useState(false);
 
@@ -44,7 +45,7 @@ export default function NamedIndicator( { children, Indicator, xname, props, tri
       return (_trigger=='hover')?
       (
         <div style={{flex: 1}} onMouseEnter={() => toggleHoverEntered()} onMouseLeave={() => toggleHoverLeaved()}>
-          <___Indicator {..._indicator} indicatorData={indicatorData}>
+          <___Indicator {..._indicator} indicatorData={indicatorData} onItemClick={onItemClick}>
               {child}
           </___Indicator>
         </div>

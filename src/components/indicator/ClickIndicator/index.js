@@ -6,12 +6,12 @@ import CssCart from '@/components/cart/CssCart';
 
 export default function Index(props) {
 
-    const { children } = props;
-
-    console.log('click props = ', props)
-
+    const { children, onItemClick, indicatorData } = props;
+    
     function itemClick(){
-        console.log('click action ')
+        if(onItemClick){
+            onItemClick(indicatorData)
+        }
     }
 
     return (
