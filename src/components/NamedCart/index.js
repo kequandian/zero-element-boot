@@ -25,10 +25,14 @@ import NextIndicator from '@/components/NextIndicator';
  * @param {xname:'', props:{}} indicator 响应鼠标hover时的Cart的属性
  * @param {xname:'', props:{}} selector  选中的状态的Cart的属性
  * @param {xname:'', props:{}} unselector  未选中的状态的Cart的属性
+ * @param {ComponentSet} cartSet  cart 组件集
+ * @param {ComponentSet} indicatorSet  indicator 组件集
  * @param {boolean} isSelected  传递是否选中状态
+ * @param {object} indicatorData  响应数据, 传给 indicator
  * indicated
  */
-export default function NamedCart({ children, xname, props, indicator, selector, unselector, cart = { xname, props, indicator, selector, unselector},  cartSet, indicatorSet, /* end indicator*/ isSelected, ...rest }) {
+export default function NamedCart({ children, xname, props, indicator, selector, unselector, cart = { xname, props, indicator, selector, unselector}, cartSet, indicatorSet, 
+  indicatorData={}, isSelected, ...rest }) {
   const _CartSet = cartSet ? cartSet : DefaultCartSet()
   //2021-10-28 新增 selector 模块
   const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
@@ -80,14 +84,15 @@ export default function NamedCart({ children, xname, props, indicator, selector,
             <OverlaySelector defaultIndicator={_Unselector} defaultIndicatorProps={unselectorProps} 
                              selectedIndicator={_Selector}  selectedIndicatorProps = {selectorProps} 
                              hoverIndicator={_Indicator}  hoverIndicatorProps = {indicatorProps}
-                 isSelected={isSelected}   {...rest} >
+                             indicatorData={indicatorData}
+                 isSelected={isSelected} {...rest}  >
                 <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
             </OverlaySelector>
         ) : 
         (
             (_indicator) ? 
             (
-              <NamedIndicator indicator={_indicator}>
+              <NamedIndicator indicator={_indicator} indicatorData={indicatorData}>
                   <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
               </NamedIndicator>
             ):
