@@ -25,10 +25,15 @@ import NextIndicator from '@/components/NextIndicator';
  * @param {xname:'', props:{}} indicator 响应鼠标hover时的Cart的属性
  * @param {xname:'', props:{}} selector  选中的状态的Cart的属性
  * @param {xname:'', props:{}} unselector  未选中的状态的Cart的属性
+ * @param {ComponentSet} cartSet  cart 组件集
+ * @param {ComponentSet} indicatorSet  indicator 组件集
  * @param {boolean} isSelected  传递是否选中状态
  * indicated
  */
-export default function NamedCart({ children, xname, props, indicator, selector, unselector, cart = { xname, props, indicator, selector, unselector},  cartSet, indicatorSet, /* end indicator*/ isSelected, ...rest }) {
+export default function NamedCart(nameCartPropsx) {
+    const { children, xname, props, indicator, selector, unselector, cart = { xname, props, indicator, selector, unselector}, cartSet, indicatorSet, 
+    indicatorData={}, onItemClick, isSelected, ...rest } = nameCartPropsx
+    
   const _CartSet = cartSet ? cartSet : DefaultCartSet()
   //2021-10-28 新增 selector 模块
   const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
@@ -36,13 +41,12 @@ export default function NamedCart({ children, xname, props, indicator, selector,
   const cartName = (typeof cart === 'string') ? cart : cart.xname
   const _Cart = _CartSet[cartName] || NextIndicator;
 
-
   // get indicator
-  const _indicator = indicator || cart.indicator
+  const _indicator = cart.indicator
   const indicatorName = _indicator ? ((typeof _indicator === 'string') ? _indicator : (typeof _indicator === 'object') ? _indicator.xname : '') : ''
   const _Indicator  = indicatorName ? (_IndicatorSet[indicatorName] || tips(indicatorName) ) : undefined  
   const indicatorProps = (_indicator && typeof _indicator === 'object') ? _indicator.props : {}
-
+  const _indicatorData = (_indicator && _indicator.binding) ? doBind(_indicator.binding, rest) : {}
 
   // get selector
   const _selector = selector || cart.selector
@@ -61,7 +65,7 @@ export default function NamedCart({ children, xname, props, indicator, selector,
   const unselectorName = _unselector ? ((typeof _unselector === 'string') ? _unselector : ((typeof _unselector === 'object') ? _unselector.xname : '')) : ''
   const _Unselector  = unselectorName ? _IndicatorSet[unselectorName] : undefined
   const unselectorProps = (unselectorName && (typeof _unselector === 'object')) ? _unselector.props : {}
-
+  
   return (
     <>
       {
@@ -80,14 +84,15 @@ export default function NamedCart({ children, xname, props, indicator, selector,
             <OverlaySelector defaultIndicator={_Unselector} defaultIndicatorProps={unselectorProps} 
                              selectedIndicator={_Selector}  selectedIndicatorProps = {selectorProps} 
                              hoverIndicator={_Indicator}  hoverIndicatorProps = {indicatorProps}
-                 isSelected={isSelected}   {...rest} >
+                             indicatorData={_indicatorData} 
+                 isSelected={isSelected} >
                 <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
             </OverlaySelector>
         ) : 
         (
             (_indicator) ? 
             (
-              <NamedIndicator indicator={_indicator}>
+              <NamedIndicator indicator={_indicator} indicatorData={_indicatorData} onItemClick={onItemClick}>
                   <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
               </NamedIndicator>
             ):
@@ -109,6 +114,17 @@ function _CartModule({children, Cart, props, data}){
             })}
         </Cart>)
 }
+
+
+function doBind(binding, data={}) {
+  let bindingData = {}
+  Object.keys(binding).forEach(key => {
+    //binding[key] = target field
+    bindingData[binding[key]] = data[key];
+  })
+  return { ...bindingData };
+}
+
 
 function tips(name) {
   return _ => `NamedCart ${name} 未定义`;
