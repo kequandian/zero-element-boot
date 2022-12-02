@@ -39,7 +39,7 @@ export default function Index (props) {
   };
 
   const onJarItemClick = (item) => {
-    console.log(item, ' === item')
+    // console.log(item, ' === item')
     let name = item.value;
 
     if (name.indexOf('@') > -1) {
