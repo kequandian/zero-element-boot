@@ -28,7 +28,6 @@ import NextIndicator from '@/components/NextIndicator';
  * @param {ComponentSet} cartSet  cart 组件集
  * @param {ComponentSet} indicatorSet  indicator 组件集
  * @param {boolean} isSelected  传递是否选中状态
- * @param {object} indicatorData  响应数据, 传给 indicator
  * indicated
  */
 export default function NamedCart({ children, xname, props, indicator, selector, unselector, cart = { xname, props, indicator, selector, unselector}, cartSet, indicatorSet, 
@@ -42,11 +41,11 @@ export default function NamedCart({ children, xname, props, indicator, selector,
 
 
   // get indicator
-  const _indicator = indicator || cart.indicator
+  const _indicator = cart.indicator
   const indicatorName = _indicator ? ((typeof _indicator === 'string') ? _indicator : (typeof _indicator === 'object') ? _indicator.xname : '') : ''
   const _Indicator  = indicatorName ? (_IndicatorSet[indicatorName] || tips(indicatorName) ) : undefined  
   const indicatorProps = (_indicator && typeof _indicator === 'object') ? _indicator.props : {}
-
+  const _indicatorData = (_indicator && _indicator.binding) ? doBind(_indicator.binding, rest) : {}
 
   // get selector
   const _selector = selector || cart.selector
@@ -84,15 +83,15 @@ export default function NamedCart({ children, xname, props, indicator, selector,
             <OverlaySelector defaultIndicator={_Unselector} defaultIndicatorProps={unselectorProps} 
                              selectedIndicator={_Selector}  selectedIndicatorProps = {selectorProps} 
                              hoverIndicator={_Indicator}  hoverIndicatorProps = {indicatorProps}
-                             indicatorData={indicatorData}
-                 isSelected={isSelected} {...rest}  >
+                             indicatorData={_indicatorData}
+                 isSelected={isSelected} >
                 <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
             </OverlaySelector>
         ) : 
         (
             (_indicator) ? 
             (
-              <NamedIndicator indicator={_indicator} indicatorData={indicatorData}>
+              <NamedIndicator indicator={_indicator} indicatorData={_indicatorData}>
                   <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
               </NamedIndicator>
             ):
@@ -114,6 +113,17 @@ function _CartModule({children, Cart, props, data}){
             })}
         </Cart>)
 }
+
+
+function doBind(binding, data={}) {
+  let bindingData = {}
+  Object.keys(binding).forEach(key => {
+    //binding[key] = target field
+    bindingData[binding[key]] = data[key];
+  })
+  return { ...bindingData };
+}
+
 
 function tips(name) {
   return _ => `NamedCart ${name} 未定义`;

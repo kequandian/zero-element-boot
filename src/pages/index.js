@@ -67,7 +67,7 @@ import TestCRUDList from '@/composition/testCrudList';
 //preview-ui
 import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
 //jsontree-ui
-import JsonTreeDemo from '@/components/tree/JsonTree/Sandbox'
+import JsonTreeDemo from '@/components/presenter/tree/JsonTree/Sandbox'
 //apis-ui
 import ApisUi from '@/composition/ApisUi/Sandbox';
 //logs-ui
