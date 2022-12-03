@@ -43,8 +43,8 @@ export default forwardRef(function ManageList(props) {
 
   const { children, layout, 
     items, dataSource = items, currentTabItem,
-    navigation, addnew, onItemClick, cb, isSwtich = true, ...rest } = props;
-    
+    navigation, addnew, onItemClick, cb, isSwtich = false, ...rest } = props;
+
   const { 
     delConfirmTips,
     api: { createAPI, getAPI, updateAPI, deleteAPI },
@@ -307,7 +307,7 @@ export default forwardRef(function ManageList(props) {
 
   //列表添加按钮
   function addNewButton () {
-      const btnName = addnew || 'AddDefaultButton'
+      const btnName = addnew || 'AddNewButton'
       const BC = namedPresenterGet[btnName]
       return <BC/>
   }
@@ -331,10 +331,10 @@ export default forwardRef(function ManageList(props) {
                 React.cloneElement(Child, {
                   ...rest,
                   ...item,
-                  layout: layout,
-                  // key: i,
+                  // layout: layout,
+                  key: i,
                   ref: layoutRef,
-                  isLastItem: dataSource.length == (i + 1) ? true : false,
+                  // isLastItem: dataSource.length == (i + 1) ? true : false,
                   index: i
                 })
                 : <Child {...rest} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />

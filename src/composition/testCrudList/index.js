@@ -21,6 +21,7 @@ export default function Index(props) {
     const [listData, setListData] = useState([])
     const [isLoading, setLoading] = useState(false)
     const [switchStatus, setSwitchStatus] = useState(false)
+    const [categoryId, setCategoryId] = useState('')
     const [tabIndex, setTabIndex] = useState(0)
 
 
@@ -65,7 +66,7 @@ export default function Index(props) {
         }).finally(_ => {
             setLoading(false)
             if(newNavCateList.length > 0){
-                setTabIndex(newNavCateList[0].id)
+                setCategoryId(newNavCateList[0].id)
                 fetchData(navListApi, { typeId: newNavCateList[0].id })
             }
         });
@@ -115,7 +116,7 @@ export default function Index(props) {
     const callback = (value) => {
         if (value) {
             const queryData = {
-                typeId: tabIndex
+                typeId: categoryId
             }
             fetchData(navListApi, queryData)
         }
@@ -134,6 +135,7 @@ export default function Index(props) {
     const handleChange = () => {
         const status = !switchStatus;
         setSwitchStatus(status)
+        setTabIndex(0)
         if(!status){
             setNavCateListData([])
             setListData([])
@@ -145,6 +147,7 @@ export default function Index(props) {
     const switchTab = (item, index) => {
         if (index != tabIndex) {
             setTabIndex(index)
+            setCategoryId(item.id)
             const queryData = {
                 typeId: item.id
             }
@@ -216,7 +219,7 @@ export default function Index(props) {
 
                         {navCateListData && navCateListData.length > 0 ? (
                             <>
-                                <TabsCompox items={navCateListData} onSwitchTab={switchTab} isSwtich={switchStatus} cb={tabscallback}/>
+                                <TabsCompox items={navCateListData} currentTabIndex={tabIndex} onSwitchTab={switchTab} isSwtich={switchStatus} cb={tabscallback}/>
                                 
                                 <div style={{marginTop:'20px'}}>
                                     {isLoading ? (

@@ -103,7 +103,7 @@ export default function Index(props) {
   // return <Connection/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
   // return <Connection {...props}/> 
-  return <LogsUi {...props}/> 
+  return <TestCRUDList {...props}/> 
   // return (
     // <CssCart width='300px' margin='40px'>
     //   <TestIndicator />

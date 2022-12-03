@@ -28,7 +28,7 @@ const formItemTypeMap = require('@/components/config/formItemTypeConfig').get();
 
 export default function Index(props) {
 
-    const { items = [], onSwitchTab, isSwtich, cb } = props;
+    const { items = [], currentTabIndex = 0, onSwitchTab, isSwtich, cb } = props;
     const {
         api: { createAPI, getAPI, updateAPI, deleteAPI }
     } = tabFormConfig;
@@ -37,7 +37,7 @@ export default function Index(props) {
     const [isLoading, setLoading] = useState(false)
     const [currentId, setCurrentId] = useState('')
     const [currentData, setCurrentData] = useState({})
-    const [tabIndex, setTabIndex] = useState(0)
+    const [tabIndex, setTabIndex] = useState(currentTabIndex)
     const [isOpenEditTabModel, setIsOpenEditModel] = useState(false)
     const [isDelOpen, setIsDelOpen] = useState(false)
     const [modelTitle, setModelTitle] = useState('Title');
