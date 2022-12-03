@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext } from 'react';
 import { 
     Stack,
     Button,
@@ -51,33 +51,42 @@ export default function Index(props) {
         children, 
         action = {},
         indicatorData,
-        onItemDeleted, onItemAdded, onItemChanged, onItemIndicated
+        onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
     } = props;
 
     const { 
         createAPI, getAPI, updateAPI, deleteAPI,
     } = action;
 
-    // console.log('action = ', action)
-    // console.log('indicatorData = ', indicatorData)
+    console.log('props = ', props)
     
     const toast = useToast()
     const endpoint = getEndpoint()
     const [isDelOpen, setIsDelOpen] = useState(false)
     const [isLoading, setLoading] = useState(false)
 
+    // const ctx = useContext(containerContext);
+
+    // console.log('ctx = ', ctx)
+    function updateAction(){
+        if(onItemChanged){
+            onItemChanged(indicatorData)
+        }
+    }
+
     function showDelModel () {
         setIsDelOpen(true)
     }
 
+    //删除
     function delAction () {
         setLoading(true)
-        const api = endpoint + formatParams(deleteAPI, indicatorData);
+        const api = formatParams(deleteAPI, indicatorData);
         const queryData = {};
         promiseAjax(api, queryData, { method: 'DELETE' }).then(resp => {
             if (resp && resp.code === 200) {
                 toastTips('删除成功')
-                setIsOpen(false)
+                setIsDelOpen(false)
                 if(onItemDeleted){
                     onItemDeleted(true)
                 }
@@ -88,9 +97,6 @@ export default function Index(props) {
                 }
                 toastTips('删除失败', 'error')
             }
-        })
-        .catch(err => {
-            toastTips('删除失败', 'error')
         })
         .finally(_=>{
             setLoading(false)
@@ -124,7 +130,7 @@ export default function Index(props) {
                         </div>
                     </MenuButton>
                     <MenuList minWidth={120}>
-                        <MenuItem icon={<UpdateIcon />}>
+                        <MenuItem icon={<UpdateIcon />} onClick={()=> updateAction()}>
                             编辑
                         </MenuItem>
                         <MenuItem icon={<DelIcon />} onClick={()=>showDelModel()}>

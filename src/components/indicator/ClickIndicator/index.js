@@ -20,7 +20,7 @@ import React from 'react';
 
 export default function Index(props) {
 
-    const { children, onItemClick, indicatorData } = props;
+    const { children, onItemClick, indicatorData, ...rest } = props;
     
     function itemClick(){
         if(onItemClick){
