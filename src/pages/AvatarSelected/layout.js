@@ -5,13 +5,6 @@ module.exports = {
 
   },
   presenter: {
-    //   xname: 'Flexbox',
-    //   props: {
-    //     align: 'start',
-    //     direction: 'row',
-    //     justify: 'center',
-    //     spacing: 10
-    //   },
     children: [
       {
         xname: 'Avatar',
@@ -19,12 +12,17 @@ module.exports = {
           "avatarUrl": 'url',
           "size": 'size'
         },
-     
+
       },
       {
         xname: 'Text',
+        binding: {
+          "title": 'content'
+        },
         props: {
-          title: 'title'
+          w: '100%',
+          textAlign: 'center',
+          marginTop: '10px'
         }
       }
 
@@ -33,8 +31,13 @@ module.exports = {
   container: "SelectList",
   // container: "ItemClickList",
 
-  cart: "Cart",
-
+  cart: {
+    xname: "Cart",
+    props: {
+      linewidth: '0',
+      padding:'0'
+    }
+  },
   props: {
     fill: 'transparent',
     lineWidth: 0,
@@ -43,7 +46,15 @@ module.exports = {
     padding: '0px'
   },
   unselector: "SelectAvatar", //默认样式
-  indicator: "ShadowIndicator",  //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
+  indicator:
+  {
+    xname: "TagIndicator",
+    props: {
+      color: '#d4237a',
+      none: 'any',
+      outline: 'any'
+    }
+  }, //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
   selector: {
     xname: "SelectAvatar",
     props: {

@@ -79,6 +79,7 @@ import SelectListDemo from './SelectListDemo/Sandbox'
 import TestIndicator from './ATestIndicator'
 
 import CssCart from '@/components/cart/CssCart'
+import TestCart from '@/pages/TestCart'
 
 
 export default function Index(props) {
@@ -106,7 +107,7 @@ export default function Index(props) {
   // return <Connection/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
   // return <Connection {...props}/> 
-  return <LogsUi {...props}/> 
+  // return <LogsUi {...props}/> 
   // return (
   // <CssCart width='300px' margin='40px'>
   //   <TestIndicator />
@@ -126,10 +127,11 @@ export default function Index(props) {
   //     }
   //   ]
   // }
-  return <RssAutoLayout />
-  // return <TestCRUDList />
+  return <TestCRUDList />
 
   // return <AvatarSelected />
+  // return <TestCart />
+
   // return <RssAutoLayout/>
 
 

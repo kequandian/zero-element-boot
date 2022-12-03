@@ -8,23 +8,23 @@ export default function Index(props) {
     const items = [
         {
             size:70,
-        direction: "学生党",
+        title: "学生党",
         avatarUrl: 'https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png'
     },
     {
         size:70,
-        direction: "职场青年",
+        title: "职场青年",
         avatarUrl: 'https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png'
     },
     {
         size:70,
-        direction: "中年人",
+        title: "中年人",
         avatarUrl: 'https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png'
     },
         
     {
         size:70,
-        direction: "中年人",
+        title: "中年人",
         avatarUrl: 'https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png'
     }
 ]
