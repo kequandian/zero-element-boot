@@ -12,24 +12,17 @@ module.exports = {
     children: [
       {
         presenter: 'DefaultAvatar',
-        gateway: {
-          xname: 'Binding',
-          props: {
-            binding: {
-              name: 'url'
-            }
-          }
+        binding: {
+          path: 'url'
         }
       },
       {
-        presenter: "Title",
-        gateway: {
-          xname: "Binding",
-          props: {
-            binding: {
-              name: "titleText"
-            }
-          }
+        presenter: "Text",
+        binding: {
+          name: "content"
+        },
+        props:{
+          marginTop: '8px'
         }
       }]
   },
@@ -62,7 +55,7 @@ module.exports = {
         label: '标题',
         field: 'name',
         type: 'input',
-        defaultValue: '123456',
+        defaultValue: '',
         rules: {
           isRequired: true
         },
