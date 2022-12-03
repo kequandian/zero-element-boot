@@ -94,7 +94,8 @@ export default function (props) {
 //2021-11-10
 //新增 layout 新增 navigation 属性
 
-function AutoLayout({ children, layout, binding, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource, ...rest }) {
+function AutoLayout({ children, layout, binding, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource, 
+  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
   const { xname, props, container, binding:layoutBinding, gateway:layoutGateway, cart, indicator, selector, unselector, presenter, navigation, children: layoutChildren } = sugarLayout(layout) || {};
@@ -158,8 +159,11 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
       const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
       return (
         <__NamedGateway binding={_data_binding} gateway={_data_gateway} {..._rest}>
-          <__NamedCart {..._data_cart} onItemClick={onItemClick}>
-              <__Presenter {...__presenter} allComponents={allComponents}/>
+          <__NamedCart {..._data_cart} 
+              onItemClick={onItemClick}
+          >
+              <__Presenter {...__presenter} allComponents={allComponents}
+              />
           </__NamedCart>
         </__NamedGateway>
       )
@@ -167,7 +171,7 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
 
  // xname use for layout, use default VStack
   const __xname = xname || 'VStack'
-
+    
   return layoutChildren ? (
     <Container {..._container} {...data} navigation={navigation}>
         <NamedLayout xname={__xname} props={props} __>
@@ -177,7 +181,9 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
             const __presenter = isJsonObject(child)? {layout: {...child}} : {}
 
             return (
-                <__Presenter {...__presenter} allComponents={allComponents}  key={i} onItemClick={onItemClick}/>
+                <__Presenter {...__presenter} allComponents={allComponents}  key={i} 
+                  onItemClick={onItemClick}
+                />
             )
 
           }) : (
@@ -193,9 +199,16 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
     <Container {..._container} {...data} onItemClick={onItemClick} navigation={navigation}>
       <NamedLayout xname={__xname} props={props} __>
           <_NamedGateway binding={_layoutBinding} gateway={_gateway}>
-                <_NamedCart {...__cart} >
+                <_NamedCart {...__cart} 
+                  onItemDeleted={onItemDeleted}
+                  onItemAdded={onItemAdded}
+                  onItemChanged={onItemChanged}
+                  onItemIndicated={onItemIndicated}
+                >
                   {
-                    presenter ?<Presenter {..._presenter} allComponents={allComponents} onItemClick={onItemClick} />
+                    presenter ?<Presenter {..._presenter} allComponents={allComponents} 
+                      onItemClick={onItemClick} 
+                      />
                     :
                     React.Children.toArray(children)
                   }

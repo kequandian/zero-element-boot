@@ -25,6 +25,7 @@ import ShadowIndicator from '@/components/indicator/ShadowIndicator';
 // import CircularCheckboxIndicatorSelected from '@/components/indicator/CircularCheckboxIndicator/CircularCheckboxSelected';
 import DownloadIndicator from '@/components/indicator/DownloadIndicator'
 import ClickIndicator from '@/components/indicator/ClickIndicator'
+import ManageMenuIndicator from '@/components/indicator/ManageMenuIndicator'
 
 //presenter
 import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvatar'
@@ -90,7 +91,8 @@ NamedIndicatorSet({
   RightIconRadioDefault,
 
   DownloadIndicator,
-  ClickIndicator
+  ClickIndicator,
+  ManageMenuIndicator
 })
 
 NamedPresenterSet({
