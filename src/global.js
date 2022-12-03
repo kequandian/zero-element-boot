@@ -53,7 +53,7 @@ import RssAutoLayout from '@/pages/rssAutoLayout/item'
 
 import OnDeleteIndicator from '@/components/indicator/OnDeleteIndicator';
 import SelectAvatar from '@/components/indicator/SelectAvatar';
-import Text from '@/pages/AvatarSelected/Text';
+import TagIndicator from '@/components/indicator/TagIndicator'
 
 
 // NamedCartSet({
@@ -65,7 +65,7 @@ if(process.env.NODE_ENV == 'development'){
   // setEndpoint('http://app1.console.smallsaas.cn:8001');
   // setEndpoint('http://lowcode.smallsaas.cn');
   // setEndpoint('https://house.cloud.smallsaas.cn');
-    setEndpoint('http://static.smallsaas.cn')
+    // setEndpoint('http://static.smallsaas.cn')
 
   
   // setToken('eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzAsInVzZXJJZCI6MzE4LCJhY2NvdW50IjoiYjQxYTg2OTRhNjM4NDIyNWJmNWMxOTQyZjdmZjIyNTYiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjoxNDYxLCJpYXQiOjE2NjkxMTMzMTQsImp0aSI6IjMxOCIsInN1YiI6ImI0MWE4Njk0YTYzODQyMjViZjVjMTk0MmY3ZmYyMjU2IiwiZXhwIjoxNjY5MzcyNTE0fQ.HnIuikkC0ugUeZAoqhtVgl4wYiJUgkuL9v8kd46YNIBpdCj-DujDVfHIUgfCqjp0mP23o-3hP697swHrP2qPiQ')
@@ -94,14 +94,14 @@ NamedIndicatorSet({
   RightIconRadioDefault,
  SelectAvatar,
   DownloadIndicator,
-  ClickIndicator
+  ClickIndicator,
+  TagIndicator
 })
 
 NamedPresenterSet({
   ItemPlaceholder,
 
   Avatar,
-  Text,
   Title,
   ImageAnimation,
 

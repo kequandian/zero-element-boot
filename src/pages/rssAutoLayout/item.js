@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Flex, Center, Stack } from "@chakra-ui/react";
 const promiseAjax = require('@/components/utils/request');
 import { getEndpoint } from '@/components/config/common';
-import Tree from '@/components/tree/JsonTree'
+import Tree from '@/components/presenter/tree/JsonTree'
 import CssCart from '@/components/cart/CssCart';
 
 export default function Index(props) {
@@ -18,12 +18,13 @@ export default function Index(props) {
 
     // console.log('itemDetail= ', itemDetail)
 
-    function clickItem(e) {
-        console.log('e= ', e.target.value)
+    function clickItem(title) {
         setDetailStatus(!detailStatus)
-        setStyleName('H1')
+        setStyleName(title)
     }
-    let api = endpoint + `/openapi/lc/autoApi/lowAutoPageStyles/rss/json/${styleName}`
+    console.log('detailStatus = ',detailStatus)
+
+    let api = `/openapi/lc/autoApi/lowAutoPageStyles/rss/json/${styleName}`
 
     function getDetail() {
         if (detailStatus) {
@@ -58,7 +59,7 @@ export default function Index(props) {
             </Center>
             <Stack>
                 <Flex>
-                    <Center fontWeight='bold' bg='#f5f5f5' spacing='3px' w='350px' h='60px' onClick={(e) => clickItem(e)}>
+                    <Center fontWeight='bold' bg='#f5f5f5' spacing='3px' w='350px' h='60px' onClick={( ) => clickItem(title)}>
                         {title}
                     </Center>
                     <Center bg='#f5f5f5' marginLeft='10px' padding='10px'  w='150px'>

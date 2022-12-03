@@ -8,7 +8,7 @@ export default function Index(props) {
 
     let endpoint='http://static.smallsaas.cn'
 
-    let api =  endpoint +  '/openapi/lc/autoApi/lowAutoPageStyles/rss/list/group/styleName'
+    let api =   '/openapi/lc/autoApi/lowAutoPageStyles/rss/list/group/styleName'
 
     const [items, setItems] = useState('')
 

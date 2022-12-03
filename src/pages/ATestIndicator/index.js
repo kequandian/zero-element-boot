@@ -27,8 +27,8 @@ export default function index(props) {
 
             <OverlaySelector
                 defaultIndicator={SelectAvatar}
-                selectedIndicator={SelectAvatar} selectedIndicatorProps={{ state: 'selected' }}
-                hoverIndicator={ShadowIndicator}
+                selectedIndicator={TagIndicator}  selectedIndicatorProps={{color :'#ee941f', outline:'any' }}
+                // hoverIndicator={TagIndicator} hoverIndicatorProps ={{state: 'selected'}}
                 // isSelected
                 selected
             >
