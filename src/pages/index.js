@@ -60,7 +60,8 @@ import AutoCartSet from '@/pages/AutoCartSet/Presenter'
 import AutoComponentSet from './AutoComponentSet'
 import RouterParamsDemo from './GetRouterPath/demo'
 import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
-import RssAutoLayout from '@/pages/rssAutoLayout'
+import RssAutoLayout from '@/pages/rssAutoLayout/Sandbox'
+import AvatarSelected from '@/pages/AvatarSelected/Sandbox'
 import TestGroupedList from './TestGroupedList';
 //nav-ui
 import TestCRUDList from '@/composition/testCrudList';
@@ -78,6 +79,8 @@ import SelectListDemo from './SelectListDemo/Sandbox'
 import TestIndicator from './ATestIndicator'
 
 import CssCart from '@/components/cart/CssCart'
+import TestCart from '@/pages/TestCart'
+
 
 export default function Index(props) {
 
@@ -88,9 +91,10 @@ export default function Index(props) {
   //   Subtitle
   // })
 
-  function onItemClickHandle(data) {
-    console.log('data111111 = ', data)
-  }
+  // function onItemClickHandle(data) {
+  //   console.log('data111111 = ', data)
+  // }
+  
 
   // history.push('/TestUserListDemo');
   //通过跳转进入单选页面
@@ -103,12 +107,11 @@ export default function Index(props) {
   // return <Connection/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
   // return <Connection {...props}/> 
-  return <TestCRUDList {...props}/> 
+
   // return (
-    // <CssCart width='300px' margin='40px'>
-    //   <TestIndicator />
-    // </CssCart>
-    // <AutoCartSet />
+  // <CssCart width='300px' margin='40px'>
+  //   <TestIndicator />
+  // </CssCart>
   // )
 
   // return <div></div>
@@ -124,6 +127,11 @@ export default function Index(props) {
   //     }
   //   ]
   // }
+  // return <TestCRUDList />
+
+  // return <AvatarSelected />
+  return <TestCart />
+
   // return <RssAutoLayout/>
 
 

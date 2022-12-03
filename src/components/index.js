@@ -33,18 +33,18 @@ import Round from '@/components/layout/Round';
 
 //cart 
 import Cart from './cart/Cart';
-import HightlightCart from './cart/HightlightCart';
+import HightlightCart from './cart/deprecated/HightlightCart';
 import HoverShadowCart from './cart/HoverShadowCart';
 import SelectCart from './cart/SelectCart';
 import SelectIndicatorCart from './indicator/SelectIndicatorCart';
 import CheckBoxIndicatorCart from './indicator/CheckBoxIndicatorCart';
-import Circle from './cart/Circle';
-import Corner from './cart/Corner';
+// import Circle from './cart/deprecated/Circle';
+// import Corner from './cart/deprecated/Corner';
 // import indicator from './cart/indicator';
 import PageCart from './cart/PageCart';
-import Rectangle from './cart/Rectangle';
-import RoundCart from './cart/Round';
-import Page from './cart/Page';
+// import Rectangle from './cart/deprecated/Rectangle';
+// import RoundCart from './cart/deprecated/Round';
+// import Page from './cart/deprecated/Page';
 
 //indicator
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
@@ -94,18 +94,18 @@ NamedLayoutSet({
 
 NamedCartSet({
   Cart,
-  HightlightCart,
+  // HightlightCart,
   HoverShadowCart,
   SelectCart,
   SelectIndicatorCart,
   CheckBoxIndicatorCart,
-  Circle,
-  Corner,
+  // Circle,
+  // Corner,
   // indicator,
   PageCart,
-  Page,
-  Rectangle,
-  Round: RoundCart,
+  // Page,
+  // Rectangle,
+  // Round: RoundCart,
   SelectedCartUpperRightIcon,
   SelectedCartRightIcon,
 })
