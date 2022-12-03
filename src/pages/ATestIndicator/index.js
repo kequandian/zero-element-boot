@@ -15,6 +15,9 @@ import TagIndicator from '@/components/indicator/TagIndicator';
 import OverlaySelector from '@/components/OverlaySelector'
 import ShadowIndicator from '@/components/indicator/ShadowIndicator'
 import NextIndicator from '@/components/NextIndicator'
+import SelectAvatar from '@/components/indicator/SelectAvatar';
+import { Center, Stack, Text } from '@chakra-ui/layout';
+import Avatar from '@/components/presenter/Avatar';
 
 
 export default function index(props) {
@@ -23,13 +26,20 @@ export default function index(props) {
         <>
 
             <OverlaySelector
-                defaultIndicator={SelectedCartUpperRightIcon} 
-                selectedIndicator={SelectedCartUpperRightIcon} selectedIndicatorProps={{ state: 'selected' }}
-                hoverIndicator={ShadowIndicator}
+                defaultIndicator={SelectAvatar}
+                selectedIndicator={TagIndicator}  selectedIndicatorProps={{color :'#ee941f', outline:'any' }}
+                // hoverIndicator={TagIndicator} hoverIndicatorProps ={{state: 'selected'}}
                 // isSelected
                 selected
             >
-                <ItemPlaceholder />
+                <Stack>
+                    <Center>
+                        <Avatar size='70' url='https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png' />
+                    </Center>
+                    <Center>
+                        头像
+                    </Center>
+                </Stack>
             </OverlaySelector>
         </>
     )
