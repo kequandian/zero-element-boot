@@ -245,6 +245,7 @@ export default function Index(props) {
                                         <Box>
                                             <AutoLayout {...config} 
                                                 cb={callback}
+                                                onItemClick={onNavItemClick}
                                                 onItemDeleted={delateAction}
                                                 onItemAdded={addAction}
                                                 onItemChanged={updateAction}

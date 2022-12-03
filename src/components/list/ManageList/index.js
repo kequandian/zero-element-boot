@@ -3,7 +3,7 @@ import { history } from 'umi';
 import { useSize } from 'ahooks';
 import { useForm } from 'react-hook-form';
 import useLayout from '@/components/hooks/useLayout';
-// import ContainerContext from '@/components/AutoX/ContainerContext';
+import ContainerContext from '@/components/AutoX/ContainerContext';
 const namedPresenterGet = require("@/components/config/NamedPresenterConfig").get();
 
 import {
@@ -64,6 +64,7 @@ export default forwardRef(function ManageList(props) {
 
   const containerRef = useRef();
   const size = useSize(containerRef);
+
 
   const initialRef = useRef()
   const finalRef = useRef()
@@ -323,6 +324,7 @@ export default forwardRef(function ManageList(props) {
     ref={containerRef}
   >
     {/* <ContainerContext.Provider value={size}> */}
+    <ContainerContext.Provider>
     {dataSource.map((item, i) => {
       return (
         <div style={{ position: 'relative' }} key={i}>
@@ -336,7 +338,7 @@ export default forwardRef(function ManageList(props) {
                   key: i,
                   ref: layoutRef,
                   // isLastItem: dataSource.length == (i + 1) ? true : false,
-                  index: i
+                  index: i,
                 })
                 : <Child {...rest} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
             }
@@ -357,12 +359,12 @@ export default forwardRef(function ManageList(props) {
               </div>
             ) : null
           } */}
+        {/* </div> */}
 
         </div>
 
       )
     })}
-    {/* </ContainerContext.Provider> */}
     {
       navigation && isSwtich ? (
         <div className='footerContent' >
@@ -448,8 +450,10 @@ export default forwardRef(function ManageList(props) {
     </Modal>
 
 
+    </ContainerContext.Provider>
 
   </div>
+  
 })
 
 function tips(dataSource) {

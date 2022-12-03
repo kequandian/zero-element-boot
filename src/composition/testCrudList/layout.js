@@ -14,7 +14,15 @@ module.exports = {
         presenter: 'DefaultAvatar',
         binding: {
           path: 'url'
-        }
+        },
+        indicator:{
+          xname:'ClickIndicator',
+          binding: {
+            "id":"id",
+            "path":"path",
+            "name":"name",
+          }
+        },
       },
       {
         presenter: "Text",
@@ -24,7 +32,8 @@ module.exports = {
         props:{
           marginTop: '8px'
         }
-      }],
+      }
+    ],
   },
   cart: {
     xname: 'Cart',
@@ -40,11 +49,11 @@ module.exports = {
     xname:'ManageMenuIndicator',
     props:{
       action: {
-        deleteAPI: '/api/pub/data/services/navigation/(itemId)'
+        deleteAPI: '/api/pub/data/services/navigation/(id)'
       }
     },
     binding: {
-      "id":"itemId",
+      "id":"id",
       "path":"url",
       "name":"content",
     }
