@@ -28,8 +28,7 @@ export default function SelectList(props) {
   const [ list, setList ] = useState(items)
   const [currIndex, setCurrIndex] = useState(-1)
   
-  // const [ selected, setSelected ] = useState(false)
-  
+
   function onSelected (item, index) {
 
     list.map((item, i) => {
