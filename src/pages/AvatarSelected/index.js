@@ -7,7 +7,7 @@ import layout from './layout';
 
 export default function Index(props) {
 
-  const { items,...rest } = props;
+  const { items, ...rest } = props;
 
   // console.log('props =',props)
   /**
@@ -19,10 +19,18 @@ export default function Index(props) {
     ...rest
   };
 
+  const onHandleItemClick = (data) => {
+
+    //打印data , item 里面会多返回一个 isSelected 点击状态 true or false
+    console.log("data == ", data)
+    if (data.isSelected) {
+      console.log('执行事件')
+    }
+  }
 
   return (
     <Box spacing='3px'>
-      <AutoLayout {...config}/>
+      <AutoLayout {...config} onItemClick={onHandleItemClick} />
     </Box>
   )
 }

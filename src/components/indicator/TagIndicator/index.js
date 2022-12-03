@@ -49,7 +49,7 @@ export default function Index(props) {
     minWidth: `${minWidth}`,
     borderRadius:`${Radius}`,
     width:`${circleWidth}`,
-    height:`${circleHeight}`
+    height:`${circleHeight}`,
   }
 
 
