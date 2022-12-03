@@ -31,12 +31,13 @@ require('./index.less');
 /**
  * @param {*} props 
  * @param {object} layout  布局
- * @param {array}} items,dataSource
+ * @param {array} items 数据源
  * 
- * @param { path: 跳转页面, model: 弹出模态框 } navigation 
- * @param { delConfirmTips: 是否显示删除确认提示框 } model 
- * @param { 回调方法 } cb 
- * @param { 切换CRUD开关 } isSwtich
+ * @param { object } navigation path: 跳转页面, model: 弹出模态框
+ * @param { object } model delConfirmTips: 是否显示删除确认提示框
+ * @param { function } cb 回调方法
+ * @param { boolean } isSwtich 切换CRUD开关
+ * @param { string } addnew 自定义新增按钮样式
  * 
  */
 export default forwardRef(function ManageList(props) {
@@ -316,7 +317,7 @@ export default forwardRef(function ManageList(props) {
     style={{
       overflow: 'auto',
       position: 'relative',
-      alignItems: 'center'
+      // alignItems: 'center'
     }}
     className={getClassName()}
     ref={containerRef}
@@ -325,7 +326,7 @@ export default forwardRef(function ManageList(props) {
     {dataSource.map((item, i) => {
       return (
         <div style={{ position: 'relative' }} key={i}>
-          <div onClick={() => clickAction(item)}>
+          {/* <div onClick={() => clickAction(item)}> */}
             {
               React.isValidElement(Child) ?
                 React.cloneElement(Child, {
@@ -339,8 +340,7 @@ export default forwardRef(function ManageList(props) {
                 })
                 : <Child {...rest} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
             }
-          </div>
-          {
+          {/* {
             isSwtich ? (
 
               <div style={{
@@ -356,7 +356,7 @@ export default forwardRef(function ManageList(props) {
                 <div className={`del-btn`} ></div>
               </div>
             ) : null
-          }
+          } */}
 
         </div>
 

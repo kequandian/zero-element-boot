@@ -174,6 +174,23 @@ export default function Index(props) {
     //     )
     // })
 
+    function delateAction (data) {
+        console.log('delete action = ', data)
+        callback(data)
+    }
+
+    function addAction (data) {
+        console.log('add action = ', data)
+    }
+
+    function updateAction (data) {
+        console.log('update action = ', data)
+    }
+
+    function indicatedAction (data) {
+        console.log('indicated action = ', data)
+    }
+
     return (
         <ChakraProvider>
 
@@ -226,7 +243,14 @@ export default function Index(props) {
                                         <Spinner />
                                     ) : (
                                         <Box>
-                                            <AutoLayout {...config} onItemClick={onNavItemClick} cb={callback} isSwtich={switchStatus} />
+                                            <AutoLayout {...config} 
+                                                cb={callback}
+                                                onItemDeleted={delateAction}
+                                                onItemAdded={addAction}
+                                                onItemChanged={updateAction}
+                                                onItemIndicated={indicatedAction}
+                                                isSwtich={switchStatus} 
+                                            />
                                         </Box>
                                     )}
                                 </div>

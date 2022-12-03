@@ -24,7 +24,7 @@ module.exports = {
         props:{
           marginTop: '8px'
         }
-      }]
+      }],
   },
   cart: {
     xname: 'Cart',
@@ -34,6 +34,19 @@ module.exports = {
       padding: '5px 10px',
       margin: '5px',
       linewidth: 0
+    }
+  },
+  indicator:{
+    xname:'ManageMenuIndicator',
+    props:{
+      action: {
+        deleteAPI: '/api/pub/data/services/navigation/(itemId)'
+      }
+    },
+    binding: {
+      "id":"itemId",
+      "path":"url",
+      "name":"content",
     }
   },
   container: {

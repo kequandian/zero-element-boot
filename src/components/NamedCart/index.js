@@ -32,7 +32,9 @@ import NextIndicator from '@/components/NextIndicator';
  */
 export default function NamedCart(nameCartPropsx) {
     const { children, xname, props, indicator, selector, unselector, cart = { xname, props, indicator, selector, unselector}, cartSet, indicatorSet, 
-    indicatorData={}, onItemClick, isSelected, ...rest } = nameCartPropsx
+    indicatorData={}, onItemClick, isSelected,
+    onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
+    ...rest } = nameCartPropsx
     
   const _CartSet = cartSet ? cartSet : DefaultCartSet()
   //2021-10-28 新增 selector 模块
@@ -92,7 +94,12 @@ export default function NamedCart(nameCartPropsx) {
         (
             (_indicator) ? 
             (
-              <NamedIndicator indicator={_indicator} indicatorData={_indicatorData} onItemClick={onItemClick}>
+              <NamedIndicator indicator={_indicator} indicatorData={_indicatorData} onItemClick={onItemClick}
+                onItemDeleted={onItemDeleted}
+                onItemAdded={onItemAdded} 
+                onItemChanged={onItemChanged} 
+                onItemIndicated={onItemIndicated}
+              >
                   <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
               </NamedIndicator>
             ):
