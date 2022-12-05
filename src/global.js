@@ -51,7 +51,6 @@ import RightIconRadioDefault from '@/pages/SelectListDemo/indicator/RightIconRad
 import ItemImg from '@/pages/SelectListDemo/presenter/ItemImg'
 import ItemTitle from '@/pages/SelectListDemo/presenter/ItemTitle'
 import RssAutoLayout from '@/pages/rssAutoLayout/item'
-import ManageCart from '@/pages/ManageCart/item'
 
 import OnDeleteIndicator from '@/components/indicator/OnDeleteIndicator';
 import SelectAvatar from '@/components/indicator/SelectAvatar';
@@ -128,7 +127,6 @@ NamedPresenterSet({
     ItemImg,
     ItemTitle,
     RssAutoLayout,
-    ManageCart,
     Text
   //})
 })

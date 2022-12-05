@@ -81,6 +81,7 @@ import TestIndicator from './ATestIndicator'
 import CssCart from '@/components/cart/CssCart'
 import TestCart from '@/pages/TestCart'
 import ManageCart from '@/pages/ManageCart/Sandbox'
+import ManagePage from '@/pages/ManagePage/Sandbox'
 import AppList from '@/pages/appList/Sandbox'
 
 
@@ -133,11 +134,10 @@ export default function Index(props) {
 
   // return <AvatarSelected />
   // return <ManageCart />
-  // return <AppList />
-
+  return <AppList />
+  // return <ManagePage />
   // return <TestCRUDList />
-
-  return <RssAutoLayout/>
+  // return <RssAutoLayout/>
 
 
 }

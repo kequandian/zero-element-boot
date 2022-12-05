@@ -14,7 +14,7 @@ module.exports = {
     },
   },
   binding: {
-    "componentName": "content"
+    "pageTitle": "content"
   },
  
   cart: {

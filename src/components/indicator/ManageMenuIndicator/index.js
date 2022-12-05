@@ -16,7 +16,7 @@ import {
     ModalCloseButton,
     useToast,
 } from '@chakra-ui/react';
-import styles from './index.less';
+require('./index.less');
 import { MoreIcon, UpdateIcon, DelIcon } from './icons';
 import { formatParams } from '@/components/utils/tools';
 import { getEndpoint } from '@/components/config/common';

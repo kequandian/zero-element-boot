@@ -1,22 +1,21 @@
 module.exports = {
-  xname: 'Flexbox',
-  // props: {
-    // direction: "column"
-  // },
+  xname: 'Gridbox',
+  props: {
+    columns: "4"
+  },
   presenter: {
     children: [
       {
-        xname: 'Avatar',
+        xname: 'DefaultAvatar',
         binding: {
-          "avatarUrl": 'url',
+          "logo": 'url',
           "size": 'size'
         },
-
       },
       {
         xname: 'Text',
         binding: {
-          "title": 'content'
+          "name": 'content'
         },
         props: {
           w: '100%',
@@ -27,37 +26,102 @@ module.exports = {
 
     ],
   },
-  container: "SelectList",
-  // container: "ItemClickList",
+  // container: "SelectList",
+  container: {
+    xname: 'ManageList',
+    props: {
+      addnew: ' '
+    }
+  },
 
   cart: {
     xname: "Cart",
     props: {
       linewidth: '0',
-      padding:'0'
+      fill: '#edf2f7',
+      padding: '30px 40px',
+      margin: '0'
     }
   },
-  props: {
-    fill: 'transparent',
-    lineWidth: 0,
-    isOnHover: false,
-    margin: '0px',
-    padding: '0px'
-  },
-  unselector: "SelectAvatar", //默认样式
-  indicator:
-  {
-    xname: "TagIndicator",
+  // props: {
+  //   fill: 'transparent',
+  //   lineWidth: 0,
+  //   isOnHover: false,
+  //   margin: '0px',
+  //   padding: '0px'
+  // },
+  // unselector: "SelectedCartUpperRightIcon", //默认样式
+
+  indicator: {
+    xname: 'ManageMenuIndicator',
     props: {
-      color: '#d4237a',
-      none: 'any',
-      outline: 'any'
+      action: {
+        deleteAPI: '/api/pub/data/services/navigation/(id)'
+      }
+    },
+    binding: {
+      "id": "id",
+      "path": "url",
+      "name": "content",
     }
-  }, //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
-  selector: {
-    xname: "SelectAvatar",
-    props: {
-      state: 'selected'
+  },
+
+  // indicator:
+  // {
+  //   xname: "ShadowIndicator",
+  //   props: {
+  //   }
+  // }, //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
+  // selector: {
+  //   xname: "SelectedCartUpperRightIcon",
+  //   props: {
+  //     state: 'selected',
+  //     padding: '0'
+  //   }
+  // },
+
+  navigation: {
+    model: {
+      api: {
+        createAPI: '/api/u/lc/apps',
+        getAPI: '/openapi/crud/lc_low_auto_app/lowAutoApp/lowAutoApps/(id)',
+        updateAPI: '/openapi/crud/lc_low_auto_app/lowAutoApp/lowAutoApps/(id)',
+        deleteAPI: '/openapi/crud/lc_low_auto_app/lowAutoApp/lowAutoApps/(id)'
+      },
+      fields: [{
+        label: '名称',
+        field: 'name',
+        type: 'input',
+        defaultValue: '',
+        rules: {
+          isRequired: true
+        },
+        props: {
+          placeholder: '网站名称',
+        }
+      },
+      {
+        label: '图片',
+        field: 'logo',
+        type: 'input',
+        rules: {
+          isRequired: true
+        },
+        props: {
+          placeholder: '图片链接',
+        }
+      },
+      {
+        label: '备注',
+        field: 'notes',
+        type: 'input',
+        props: {
+          placeholder: '备注内容'
+        }
+      },
+
+      ]
     }
   }
+
 }
