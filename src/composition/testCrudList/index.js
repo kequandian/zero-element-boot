@@ -24,7 +24,6 @@ export default function Index(props) {
     const [categoryId, setCategoryId] = useState('')
     const [tabIndex, setTabIndex] = useState(0)
 
-console.log('listData=',listData)
     let navListApi = '/api/pub/data/services/navigation';
     let navApi = '/api/pub/data/services/navCategory?sort=sortNum&orderBy=ASC';
 

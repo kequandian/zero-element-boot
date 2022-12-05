@@ -130,7 +130,7 @@ export default function Index(props) {
   // return <TestCRUDList />
 
   // return <AvatarSelected />
-  return <TestCart />
+  return <TestCRUDList />
 
   // return <RssAutoLayout/>
 

@@ -1,3 +1,3 @@
 import React from 'react';
 
-export default React.createContext({clickState:'parent'});
+export default React.createContext();
