@@ -114,16 +114,16 @@ export default function Index(props) {
     }
 
     return (
-        <div className={styles.menuIndicator} style={{width:'100%'}}>
+        <div className='menu_indicator_container' style={{width:'100%'}}>
             {
                 React.Children.map(children, child => (
                     child
                 ))
             }
-            <div className={styles.menuIconContainer}>
+            <div className='menu_icon_container'>
                 <Menu>
                     <MenuButton onClick={()=>setClickState('')}>
-                        <div className={styles.menuIcon}>
+                        <div className='menu_icon'>
                             <MoreIcon />
                         </div>
                     </MenuButton>
