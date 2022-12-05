@@ -16,12 +16,16 @@ import {
     ModalCloseButton,
     useToast,
 } from '@chakra-ui/react';
+<<<<<<< HEAD
 require('./index.less');
+=======
+>>>>>>> 0738e2425cd7d0a6affe80ace086cdab7a9de4ef
 import { MoreIcon, UpdateIcon, DelIcon } from './icons';
 import { formatParams } from '@/components/utils/tools';
 import { getEndpoint } from '@/components/config/common';
 import ContainerContext from '@/components/AutoX/ContainerContext';
 const promiseAjax = require('@/components/utils/request');
+require('./index.less')
 
 /**
  * 使用例子
@@ -53,6 +57,7 @@ export default function Index(props) {
         action = {},
         indicatorData,
         onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
+        ...rest
     } = props;
 
     const { 
@@ -120,7 +125,7 @@ export default function Index(props) {
                     child
                 ))
             }
-            <div className='menu_icon_container'>
+            <div className='menu_icon_container' style={{...rest}}>
                 <Menu>
                     <MenuButton onClick={()=>setClickState('')}>
                         <div className='menu_icon'>

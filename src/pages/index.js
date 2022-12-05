@@ -109,7 +109,7 @@ export default function Index(props) {
 
   // return <Connection/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  // return <Connection {...props}/> 
+  // return <PreviewAutoLayoutDemo {...props}/> 
 
   // return (
   // <CssCart width='300px' margin='40px'>
@@ -136,6 +136,7 @@ export default function Index(props) {
   // return <ManageCart />
   return <AppList />
   // return <ManagePage />
+  // return <TestCRUDList />
   // return <TestCRUDList />
   // return <RssAutoLayout/>
 
