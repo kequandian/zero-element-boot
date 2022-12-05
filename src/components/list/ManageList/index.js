@@ -336,6 +336,7 @@ export default forwardRef(function ManageList(props) {
       overflow: 'auto',
       position: 'relative',
       // alignItems: 'center'
+      minHeight: '200px'
     }}
     className={getClassName()}
     ref={containerRef}

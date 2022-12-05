@@ -192,7 +192,7 @@ export default function Index(props) {
     return (
         <ChakraProvider>
 
-            <div style={{ maxWidth: '800px' }}>
+            <div style={{ maxWidth: '670px' }}>
                 <VStack align='stretch' spacing='-2'>
                     <Box style={{ margin: '10px 10px 30px 10px', paddingLeft: '8px' }}>
                         <FormControl display='flex' alignItems='center'>

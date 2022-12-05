@@ -1,7 +1,7 @@
 module.exports = {
   xname: 'Gridbox',
   props: {
-    columns: 4 //列数
+    columns: 6 //列数
   },
   presenter: {
     xname: 'Flexbox',
@@ -66,7 +66,6 @@ module.exports = {
   },
   navigation: {
     model: {
-      delConfirmTips: true,
       api: {
         createAPI: '/api/pub/data/services/navigation',
         getAPI: '/api/pub/data/services/navigation/(id)',
@@ -74,7 +73,7 @@ module.exports = {
         deleteAPI: '/api/pub/data/services/navigation/(id)'
       },
       fields: [{
-        label: '标题',
+        label: '名称',
         field: 'name',
         type: 'input',
         defaultValue: '',
@@ -82,7 +81,7 @@ module.exports = {
           isRequired: true
         },
         props:{
-          placeholder: '请输入标题',
+          placeholder: '网站名称',
         }
       },
       {
@@ -93,7 +92,7 @@ module.exports = {
           isRequired: true
         },
         props:{
-          placeholder: '请输入图片',
+          placeholder: '图片链接',
         }
       },
       {
@@ -104,7 +103,7 @@ module.exports = {
           isRequired: true
         },
         props:{
-          placeholder: '请输入本地链接/第三方以http开头'
+          placeholder: '本地链接/第三方以http开头'
         }
       },
       {
@@ -115,7 +114,7 @@ module.exports = {
           isRequired: true
         },
         props: {
-          placeholder: '请选择类别'
+          placeholder: '选择类别'
         },
         saveData:{ //额外提交的字段和值
           typeName: 'name'
