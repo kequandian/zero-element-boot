@@ -33,6 +33,7 @@ export default function PlainList(props) {
    */
   return <div
     style={{
+      width: '100%',
       overflow: 'auto',
       position: 'relative',
     }}

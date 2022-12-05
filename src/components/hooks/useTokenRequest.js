@@ -23,17 +23,19 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}}, c
         }
 
         if (api) {
-
-            query(mApi, reqData, options)
-
+            query(mApi || api, reqData, options)
         } else {
             console.warn('API为空, 访问被拒绝');
         }
 
 
-    }, [useId, postData]);
+    }, [api, useId, postData]);
 
     function query(api, reqData, options) {
+
+        if(!api){
+            return
+        }
 
         promiseAjax(api, reqData, options)
             .then(responseData => {
