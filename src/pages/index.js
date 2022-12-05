@@ -133,11 +133,11 @@ export default function Index(props) {
 
   // return <AvatarSelected />
   // return <ManageCart />
-  return <AppList />
+  // return <AppList />
 
-  // return <TestCart />
+  // return <TestCRUDList />
 
-  // return <RssAutoLayout/>
+  return <RssAutoLayout/>
 
 
 }

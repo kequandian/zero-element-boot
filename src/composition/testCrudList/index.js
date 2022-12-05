@@ -24,7 +24,6 @@ export default function Index(props) {
     const [categoryId, setCategoryId] = useState('')
     const [tabIndex, setTabIndex] = useState(0)
 
-console.log('listData=',listData)
     let navListApi = '/api/pub/data/services/navigation';
     let navApi = '/api/pub/data/services/navCategory?sort=sortNum&orderBy=ASC';
 
@@ -174,10 +173,26 @@ console.log('listData=',listData)
     //     )
     // })
 
+    function delateAction (data) {
+        callback(data)
+    }
+
+    function addAction (data) {
+        console.log('add action = ', data)
+    }
+
+    function updateAction (data) {
+        callback(data)
+    }
+
+    function indicatedAction (data) {
+        console.log('indicated action = ', data)
+    }
+
     return (
         <ChakraProvider>
 
-            <div style={{ maxWidth: '800px' }}>
+            <div style={{ maxWidth: '670px' }}>
                 <VStack align='stretch' spacing='-2'>
                     <Box style={{ margin: '10px 10px 30px 10px', paddingLeft: '8px' }}>
                         <FormControl display='flex' alignItems='center'>
@@ -226,7 +241,15 @@ console.log('listData=',listData)
                                         <Spinner />
                                     ) : (
                                         <Box>
-                                            <AutoLayout {...config} onItemClick={onNavItemClick} cb={callback} isSwtich={switchStatus} />
+                                            <AutoLayout {...config} 
+                                                cb={callback}
+                                                onItemClick={onNavItemClick}
+                                                onItemDeleted={delateAction}
+                                                onItemAdded={addAction}
+                                                onItemChanged={updateAction}
+                                                onItemIndicated={indicatedAction}
+                                                isSwtich={switchStatus} 
+                                            />
                                         </Box>
                                     )}
                                 </div>

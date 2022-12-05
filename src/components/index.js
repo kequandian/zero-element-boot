@@ -52,6 +52,7 @@ import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
 
 import DownloadIndicator from './indicator/DownloadIndicator'
 import ClickIndicator from './indicator/ClickIndicator'
+import ManageMenuIndicator from './indicator/ManageMenuIndicator'
 
 // import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
 // import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
@@ -117,7 +118,8 @@ NamedIndicatorSet({
   // RightIconIndicatorHover,
   // RightIconIndicatorSelected
   DownloadIndicator,
-  ClickIndicator
+  ClickIndicator,
+  ManageMenuIndicator
 })
 
 NamedPresenterSet({

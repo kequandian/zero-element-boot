@@ -12,7 +12,7 @@ import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorCo
  * @returns 
  */
 export default function NamedIndicator( { children, Indicator, xname, props, trigger='hover', indicator = {xname, props, trigger}, 
-    indicatorData, indicatorSet,  onItemClick} ) {
+    indicatorData, indicatorSet,  onItemClick, onItemDeleted, onItemAdded, onItemChanged, onItemIndicated } ) {
 
     const [onHover, setOnHover] = useState(false);
 
@@ -45,7 +45,13 @@ export default function NamedIndicator( { children, Indicator, xname, props, tri
       return (_trigger=='hover')?
       (
         <div style={{flex: 1}} onMouseEnter={() => toggleHoverEntered()} onMouseLeave={() => toggleHoverLeaved()}>
-          <___Indicator {..._indicator} indicatorData={indicatorData} onItemClick={onItemClick}>
+          <___Indicator {..._indicator} indicatorData={indicatorData} 
+            onItemClick={onItemClick}
+            onItemDeleted={onItemDeleted}
+            onItemAdded={onItemAdded} 
+            onItemChanged={onItemChanged} 
+            onItemIndicated={onItemIndicated}
+          >
               {child}
           </___Indicator>
         </div>

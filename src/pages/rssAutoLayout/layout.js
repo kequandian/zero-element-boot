@@ -1,15 +1,48 @@
 module.exports = {
   xname: 'Gridbox',
   props: {
-    columns: 1 //列数
+    columns: 6//列数
   },
-  presenter:
-  {
-    xname: 'RssAutoLayout',
-    binding: {
-      "styleName": "title",
-      "name": "subTitle"
-    }
+  // presenter:
+  // {
+  //   xname: 'RssAutoLayout',
+  //   binding: {
+  //     "styleName": "title",
+  //     "name": "subTitle"
+  //   }
+  // },
+
+  presenter: {
+    xname: 'Flexbox',
+    props: {
+      direction: 'column',
+      justify: 'center row'
+    },
+    children: [
+      {
+        presenter: 'DefaultAvatar',
+        binding: {
+          path: 'url'
+        },
+        indicator:{
+          xname:'ClickIndicator',
+          binding: {
+            "id":"id",
+            "path":"path",
+            "name":"name",
+          }
+        },
+      },
+      {
+        presenter: "Text",
+        binding: {
+          name: "content"
+        },
+        props:{
+          marginTop: '8px'
+        }
+      }
+    ],
   },
 
   cart: {
@@ -20,6 +53,20 @@ module.exports = {
       linewidth: 0
     }
   },
+  indicator:{
+    xname:'ManageMenuIndicator',
+    props:{
+      action: {
+        deleteAPI: '/api/pub/data/services/navigation/(id)'
+      }
+    },
+    binding: {
+      "id":"id",
+      "path":"url",
+      "name":"content",
+    }
+  },
+
   container: {
     xname: 'ManageList',
     // xname: 'PlainList',

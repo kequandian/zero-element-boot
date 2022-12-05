@@ -16,7 +16,8 @@ module.exports = function promiseAjax(url, data = {}, options = {}) {
 
   return new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest();
-    xhr.open(method, `${getEndpoint()}${url}${param}`, async);
+    const newurl = url.indexOf('http') != -1 ? url : `${getEndpoint()}${url}`
+    xhr.open(method, `${newurl}${param}`, async);
 
     if (token) {
       xhr.setRequestHeader("Authorization", `Bearer ${token}`);

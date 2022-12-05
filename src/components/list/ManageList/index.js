@@ -3,7 +3,8 @@ import { history } from 'umi';
 import { useSize } from 'ahooks';
 import { useForm } from 'react-hook-form';
 import useLayout from '@/components/hooks/useLayout';
-// import ContainerContext from '@/components/AutoX/ContainerContext';
+import ContainerContext from '@/components/AutoX/ContainerContext';
+import { formatParams } from '@/components/utils/tools';
 const namedPresenterGet = require("@/components/config/NamedPresenterConfig").get();
 
 import {
@@ -31,37 +32,44 @@ require('./index.less');
 /**
  * @param {*} props 
  * @param {object} layout  布局
- * @param {array}} items,dataSource
+ * @param {array} items 数据源
  * 
- * @param { path: 跳转页面, model: 弹出模态框 } navigation 
- * @param { delConfirmTips: 是否显示删除确认提示框 } model 
- * @param { 回调方法 } cb 
- * @param { 切换CRUD开关 } isSwtich
+ * @param { object } navigation path: 跳转页面, model: 弹出模态框
+ * @param { object } model delConfirmTips: 是否显示删除确认提示框
+ * @param { function } cb 回调方法
+ * @param { boolean } isSwtich 切换CRUD开关
+ * @param { string } addnew 自定义新增按钮样式
  * 
  */
 export default forwardRef(function ManageList(props) {
 
-  const { children, layout, 
+  const { children, layout,
     items, dataSource = items, currentTabItem,
-    navigation, addnew, onItemClick, cb, isSwtich = false, ...rest } = props;
+    navigation, addnew, onItemClick, cb, isSwtich = false, 
+    onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
+    ...rest } = props;
 
-  const { 
+  const {
     delConfirmTips,
     api: { createAPI, getAPI, updateAPI, deleteAPI },
-    saveData 
+    saveData
   } = navigation.model;
 
   const [layoutRef, { getClassName }] = useLayout();
 
   const [isOpen, setIsOpen] = useState(false)
-  const [isDelOpen, setIsDelOpen] = useState(false)
+  // const [isDelOpen, setIsDelOpen] = useState(false)
   const [currentId, setCurrentId] = useState('')
   const [currentData, setCurrentData] = useState({})
+  const [currentItemData, setCurrentItemData] = useState({})
   const [isLoading, setLoading] = useState(false)
   const [modelTitle, setModelTitle] = useState('Title');
   const [formData, setFormData] = useState({})
+  //item click state
+  const [clickState, setClickState] = useState('')
 
   const containerRef = useRef();
+  //list 容器 宽，高
   const size = useSize(containerRef);
 
   const initialRef = useRef()
@@ -86,6 +94,11 @@ export default forwardRef(function ManageList(props) {
 
   // 列表 item 点击事件
   function clickAction(item) {
+    setCurrentItemData(item)
+    if (!clickState) {
+      return
+    }
+    setClickState('listItemClick')
     if (navigation) {
       if (navigation.path) {
         const nav = navigation.detail;
@@ -104,11 +117,6 @@ export default forwardRef(function ManageList(props) {
             }
           })
         }
-      } else if (navigation.model && isSwtich) {
-        getData(item.id)
-        setModelTitle('编辑')
-        setCurrentId(item.id)
-        setIsOpen(true)
       } else if (onItemClick) {
         onItemClick(item)
       }
@@ -131,6 +139,14 @@ export default forwardRef(function ManageList(props) {
       setIsOpen(true)
     }
 
+  }
+
+  function showEditModal () {
+    const data = currentItemData
+    getData(data)
+    setModelTitle('编辑')
+    setCurrentId(data.id)
+    setIsOpen(true)
   }
 
   //关闭模态框
@@ -162,8 +178,8 @@ export default forwardRef(function ManageList(props) {
   }
 
   //获取详情数据
-  function getData(id) {
-    const api = `${getAPI.replace('(id)', id)}`;
+  function getData(data) {
+    const api = formatParams(getAPI, data);
     const queryData = {};
     setLoading(true)
     promiseAjax(api, queryData).then(resp => {
@@ -172,7 +188,7 @@ export default forwardRef(function ManageList(props) {
       } else {
         console.error("获取数据失败")
       }
-    }).finally(_=>{
+    }).finally(_ => {
       setLoading(false)
     });
   }
@@ -203,7 +219,7 @@ export default forwardRef(function ManageList(props) {
 
   //修改数据
   function putData(values, id) {
-    
+
     // let rtValue;
     // let formatApi = `${updateAPI}`;
     // if(updateAPI.indexOf('(') != -1){
@@ -212,14 +228,17 @@ export default forwardRef(function ManageList(props) {
     // }
     // const api = `${formatApi}`;
 
-    const api = `${updateAPI.replace('(id)', id)}`;
+    const api = formatParams(updateAPI, { id });
+    // const api = `${updateAPI.replace('(id)', id)}`;
     const queryData = { ...values, ...formData };
     // console.log('queryData === ', queryData)
     promiseAjax(api, queryData, { method: 'PUT' }).then(resp => {
       if (resp && resp.code === 200) {
         toastTips('修改成功')
-        cb(true)
         setIsOpen(false)
+        if(onItemChanged){
+          onItemChanged(true)
+        }
       } else {
         console.error("修改失败 == ", resp)
         toastTips('修改失败', 'error')
@@ -228,43 +247,43 @@ export default forwardRef(function ManageList(props) {
   }
 
   //删除确认提示
-  function showDelModel(item) {
-    if (deleteAPI && item && item.id) {
-      setCurrentId(item.id)
-      if(delConfirmTips){
-        setIsDelOpen(true)
-      }else{
-        delData({}, item.id)
-      }
-    } else {
-      console.log('未设置 deleteAPI 或 item 数据异常')
-    }
-  }
+  // function showDelModel(item) {
+  //   if (deleteAPI && item && item.id) {
+  //     setCurrentId(item.id)
+  //     if (delConfirmTips) {
+  //       setIsDelOpen(true)
+  //     } else {
+  //       delData({}, item.id)
+  //     }
+  //   } else {
+  //     console.log('未设置 deleteAPI 或 item 数据异常')
+  //   }
+  // }
 
   //删除数据
-  function delData(values, id) {
-    const api = `${deleteAPI.replace('(id)', id)}`;
-    const queryData = { ...values };
-    promiseAjax(api, queryData, { method: 'DELETE' }).then(resp => {
-      if (resp && resp.code === 200) {
-        toastTips('删除成功')
-        cb(true)
-        setIsOpen(false)
-      } else {
-        console.error("删除失败 == ", resp)
-        toastTips('删除失败', 'error')
-      }
-    });
-  }
+  // function delData(values, id) {
+  //   const api = `${deleteAPI.replace('(id)', id)}`;
+  //   const queryData = { ...values };
+  //   promiseAjax(api, queryData, { method: 'DELETE' }).then(resp => {
+  //     if (resp && resp.code === 200) {
+  //       toastTips('删除成功')
+  //       cb(true)
+  //       setIsOpen(false)
+  //     } else {
+  //       console.error("删除失败 == ", resp)
+  //       toastTips('删除失败', 'error')
+  //     }
+  //   });
+  // }
 
   //替换 api 参数值 用小括号包住， 如: /api/(id)
   // function handleChangeApiParam(value) {
   //   var rt = /(.+)?(?:\(|（)(.+)(?=\)|）)/.exec(value);
   //   return rt[2]
   // }
-  
+
   //处理额外提交的字段和值
-  function handleFormData(data){
+  function handleFormData(data) {
     const newFormData = {
       ...formData,
       ...data
@@ -279,13 +298,13 @@ export default forwardRef(function ManageList(props) {
 
     return fieldList.map((item, index) => {
 
-      const { label, field, type, rules = { isRequired:false }, defaultValue  } = item;
+      const { label, field, type, rules = { isRequired: false }, defaultValue } = item;
 
       const C = formItemTypeMap[type]
 
       return <FormControl isRequired={rules.isRequired} isInvalid={rules.isRequired && errors[field]} key={`${index}_i`}>
         <FormLabel htmlFor={field}>{label}</FormLabel>
-        <C {...item} register={register} errors={errors} defaultValue={currentData[field] || defaultValue} onChange={handleFormData}/>
+        <C {...item} register={register} errors={errors} defaultValue={currentData[field] || defaultValue} onChange={handleFormData} />
         <FormErrorMessage>
           {errors[field] && errors[field].message}
         </FormErrorMessage>
@@ -306,94 +325,93 @@ export default forwardRef(function ManageList(props) {
   }
 
   //列表添加按钮
-  function addNewButton () {
-      const btnName = addnew || 'AddNewButton'
-      const BC = namedPresenterGet[btnName]
-      return <BC/>
+  function addNewButton() {
+    const btnName = addnew || 'AddNewButton'
+    const BC = namedPresenterGet[btnName]
+    return <BC />
   }
 
   return <div
     style={{
       overflow: 'auto',
       position: 'relative',
-      alignItems: 'center'
+      // alignItems: 'center'
+      minHeight: '200px'
     }}
     className={getClassName()}
     ref={containerRef}
   >
-    {/* <ContainerContext.Provider value={size}> */}
-    {dataSource.map((item, i) => {
-      return (
-        <div style={{ position: 'relative' }} key={i}>
-          <div onClick={() => clickAction(item)}>
-            {
-              React.isValidElement(Child) ?
-                React.cloneElement(Child, {
-                  ...rest,
-                  ...item,
-                  // layout: layout,
-                  key: i,
-                  ref: layoutRef,
-                  // isLastItem: dataSource.length == (i + 1) ? true : false,
-                  index: i
-                })
-                : <Child {...rest} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
-            }
+    <ContainerContext.Provider value={{ setClickState, showEditModal }}>
+      {dataSource.map((item, i) => {
+        return (
+          <div style={{ position: 'relative' }} key={i}>
+            <div onClick={() => clickAction(item)}>
+              {
+                React.isValidElement(Child) ?
+                  React.cloneElement(Child, {
+                    ...rest,
+                    ...item,
+                    // layout: layout,
+                    key: i,
+                    ref: layoutRef,
+                    // isLastItem: dataSource.length == (i + 1) ? true : false,
+                    index: i,
+                  })
+                  : <Child {...rest} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
+              }
+              {/* {
+              isSwtich ? (
+
+                <div style={{
+                  position: 'absolute',
+                  top: '0',
+                  right: '0',
+                  width: '26px',
+                  height: '26px',
+                  background: '#c3c3c3',
+                  borderRadius: '50%',
+                  textAlign: 'center',
+                }} onClick={() => showDelModel(item)} >
+                  <div className={`del-btn`} ></div>
+                </div>
+              ) : null
+            } */}
+            </div>
           </div>
-          {
-            isSwtich ? (
 
-              <div style={{
-                position: 'absolute',
-                top: '0',
-                right: '0',
-                width: '26px',
-                height: '26px',
-                background: '#c3c3c3',
-                borderRadius: '50%',
-                textAlign: 'center',
-              }} onClick={() => showDelModel(item)} >
-                <div className={`del-btn`} ></div>
-              </div>
-            ) : null
-          }
-
-        </div>
-
-      )
-    })}
-    {/* </ContainerContext.Provider> */}
-    {
-      navigation && isSwtich ? (
-        <div className='footerContent' >
-          <div onClick={() => clickAddAction(navigation)}>
-            {addNewButton()}
+        )
+      })}
+      {
+        navigation && isSwtich ? (
+          <div className='footerContent' >
+            <div onClick={() => clickAddAction(navigation)}>
+              {addNewButton()}
+            </div>
           </div>
-        </div>
-      ) : <></>
-    }
+        ) : <></>
+      }
 
-    {/* 编辑模态框 */}
-    <Modal
-      initialFocusRef={initialRef}
-      finalFocusRef={finalRef}
-      isOpen={isOpen}
-      onClose={onClose}
-    >
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>{modelTitle}</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody pb={6}>
-          {isLoading ? (
-            <Spinner />
-          ) : (
-            <form onSubmit={handleSubmit(validateData)} noValidate>
-              <Stack spacing="2">
-                {
-                  handleFormItem(navigation.model.fields)
-                }
-                {/* <FormControl isInvalid={errors.account}>
+      {/* 编辑模态框 */}
+      <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{modelTitle}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              <form onSubmit={handleSubmit(validateData)} noValidate>
+                <Stack spacing="2">
+                  {
+                    handleFormItem(navigation.model.fields)
+                  }
+                  {/* <FormControl isInvalid={errors.account}>
                 <FormLabel htmlFor='account'>用户名</FormLabel>
                 <Input bgColor="gray.50" placeholder="请输入用户名" id='account'
                   {...register('account', {
@@ -405,51 +423,52 @@ export default forwardRef(function ManageList(props) {
                   {errors.account && errors.account.message}
                 </FormErrorMessage>
               </FormControl> */}
-                <Stack direction='row' spacing={4} align='center'>
-                  <Button width='100px' colorScheme='teal' variant='solid' isLoading={isSubmitting} type='submit' size='sm'>
-                    保存
-                  </Button>
-                  <Button width='100px' colorScheme='teal' variant='outline' onClick={onClose} size='sm'>取消</Button>
+                  <Stack direction='row' spacing={4} align='center'>
+                    <Button width='100px' colorScheme='teal' variant='solid' isLoading={isSubmitting} type='submit' size='sm'>
+                      保存
+                    </Button>
+                    <Button width='100px' colorScheme='teal' variant='outline' onClick={onClose} size='sm'>取消</Button>
+                  </Stack>
                 </Stack>
-              </Stack>
-            </form>
-          )}
+              </form>
+            )}
 
-        </ModalBody>
+          </ModalBody>
 
-        {/* <ModalFooter>
+          {/* <ModalFooter>
               <Button colorScheme='blue' mr={3} onClick={onOk}>
               Save
               </Button>
           </ModalFooter> */}
-      </ModalContent>
-    </Modal>
+        </ModalContent>
+      </Modal>
 
-    {/* 删除提示模态框 */}
-    <Modal isOpen={isDelOpen} onClose={() => setIsDelOpen(false)}>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>提示</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <div>确定要删除吗?</div>
-        </ModalBody>
+      {/* 删除提示模态框 */}
+      {/* <Modal isOpen={isDelOpen} onClose={() => setIsDelOpen(false)}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>提示</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <div>确定要删除吗?</div>
+          </ModalBody>
 
-        <ModalFooter>
+          <ModalFooter>
 
-          <Stack direction='row' spacing={4} align='center'>
-            <Button variant='ghost' onClick={() => setIsDelOpen(false)}>取消</Button>
-            <Button colorScheme='blue' mr={3} onClick={() => delData({}, currentId)}>
-              确定
-            </Button>
-          </Stack>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+            <Stack direction='row' spacing={4} align='center'>
+              <Button variant='ghost' onClick={() => setIsDelOpen(false)}>取消</Button>
+              <Button colorScheme='blue' mr={3} onClick={() => delData({}, currentId)}>
+                确定
+              </Button>
+            </Stack>
+          </ModalFooter>
+        </ModalContent>
+      </Modal> */}
 
-
+    </ContainerContext.Provider>
 
   </div>
+
 })
 
 function tips(dataSource) {

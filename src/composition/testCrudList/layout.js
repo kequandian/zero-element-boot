@@ -1,7 +1,7 @@
 module.exports = {
   xname: 'Gridbox',
   props: {
-    columns: 4 //列数
+    columns: 6 //列数
   },
   presenter: {
     xname: 'Flexbox',
@@ -14,7 +14,15 @@ module.exports = {
         presenter: 'DefaultAvatar',
         binding: {
           path: 'url'
-        }
+        },
+        indicator:{
+          xname:'ClickIndicator',
+          binding: {
+            "id":"id",
+            "path":"path",
+            "name":"name",
+          }
+        },
       },
       {
         presenter: "Text",
@@ -24,7 +32,8 @@ module.exports = {
         props:{
           marginTop: '8px'
         }
-      }]
+      }
+    ],
   },
   cart: {
     xname: 'Cart',
@@ -36,6 +45,19 @@ module.exports = {
       linewidth: 0
     }
   },
+  indicator:{
+    xname:'ManageMenuIndicator',
+    props:{
+      action: {
+        deleteAPI: '/api/pub/data/services/navigation/(id)'
+      }
+    },
+    binding: {
+      "id":"id",
+      "path":"url",
+      "name":"content",
+    }
+  },
   container: {
     xname: 'ManageList',
     props:{
@@ -44,7 +66,6 @@ module.exports = {
   },
   navigation: {
     model: {
-      delConfirmTips: true,
       api: {
         createAPI: '/api/pub/data/services/navigation',
         getAPI: '/api/pub/data/services/navigation/(id)',
@@ -52,7 +73,7 @@ module.exports = {
         deleteAPI: '/api/pub/data/services/navigation/(id)'
       },
       fields: [{
-        label: '标题',
+        label: '名称',
         field: 'name',
         type: 'input',
         defaultValue: '',
@@ -60,57 +81,57 @@ module.exports = {
           isRequired: true
         },
         props:{
-          placeholder: '请输入标题',
+          placeholder: '网站名称',
         }
-      // },
-      // {
-      //   label: '图片',
-      //   field: 'url',
-      //   type: 'input',
-      //   rules: {
-      //     isRequired: true
-      //   },
-      //   props:{
-      //     placeholder: '请输入图片',
-      //   }
-      // },
-      // {
-      //   label: '链接',
-      //   field: 'path',
-      //   type: 'input',
-      //   rules: {
-      //     isRequired: true
-      //   },
-      //   props:{
-      //     placeholder: '请输入本地链接/第三方以http开头'
-      //   }
-      // },
-      // {
-      //   label: '类别',
-      //   field: 'typeId',
-      //   type: 'select-fetch',
-      //   rules: {
-      //     isRequired: true
-      //   },
-      //   props: {
-      //     placeholder: '请选择类别'
-      //   },
-      //   saveData:{ //额外提交的字段和值
-      //     typeName: 'name'
-      //   },
-      //   options: {
-      //     api: '/api/pub/data/services/navCategory',
-      //     label: 'name',
-      //     value: 'id',
-      //   }
-      // },
-      // {
-      //   label: '描述',
-      //   field: 'desc',
-      //   type: 'input',
-      //   props: {
-      //     placeholder: '描述属性'
-      //   }
+      },
+      {
+        label: '图片',
+        field: 'url',
+        type: 'input',
+        rules: {
+          isRequired: true
+        },
+        props:{
+          placeholder: '图片链接',
+        }
+      },
+      {
+        label: '链接',
+        field: 'path',
+        type: 'input',
+        rules: {
+          isRequired: true
+        },
+        props:{
+          placeholder: '本地链接/第三方以http开头'
+        }
+      },
+      {
+        label: '类别',
+        field: 'typeId',
+        type: 'select-fetch',
+        rules: {
+          isRequired: true
+        },
+        props: {
+          placeholder: '选择类别'
+        },
+        saveData:{ //额外提交的字段和值
+          typeName: 'name'
+        },
+        options: {
+          api: '/api/pub/data/services/navCategory',
+          label: 'name',
+          value: 'id',
+        }
+      },
+      {
+        label: '描述',
+        field: 'desc',
+        type: 'input',
+        props: {
+          placeholder: '描述属性'
+        }
       },
       
       // {
