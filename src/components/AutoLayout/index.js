@@ -196,7 +196,13 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
         </NamedLayout>
     </Container>
   ) : (
-    <Container {..._container} {...data} onItemClick={onItemClick} navigation={navigation}>
+    <Container {..._container} {...data} 
+      onItemClick={onItemClick} navigation={navigation}
+      onItemDeleted={onItemDeleted}
+      onItemAdded={onItemAdded}
+      onItemChanged={onItemChanged}
+      onItemIndicated={onItemIndicated}
+    >
       <NamedLayout xname={__xname} props={props} __>
           <_NamedGateway binding={_layoutBinding} gateway={_gateway}>
                 <_NamedCart {...__cart} 
