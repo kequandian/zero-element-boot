@@ -28,7 +28,7 @@ export default forwardRef(function SelectedCartUpperRightIcon(props, ref) {
 
     const fill = 'transparent';
     const margin = '';
-    const padding = '5px'
+    const padding = '0'
     let linewidth = '';
     let activeLeftLine = line.activeLeftLine ? line.activeLeftLine : '3px';
     const hoverColor = '#EAEAEA';

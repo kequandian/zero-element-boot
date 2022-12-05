@@ -11,10 +11,10 @@ export default forwardRef(function Wrap(props, ref) {
   const _Container = __ ? NextIndicator : Container
 
   return (
-    <_Container>
+    <Container>
         <Flexbox align='start' direction='row' {...data}>
           {children}
         </Flexbox>
-    </_Container>
+    </Container>
   )
 })

@@ -1,5 +1,5 @@
 module.exports = {
-  xname: 'Wrap',
+  xname: 'Flexbox',
   // props: {
     // direction: "column"
   // },

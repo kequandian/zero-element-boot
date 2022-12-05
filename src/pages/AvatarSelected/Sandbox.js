@@ -11,6 +11,37 @@ export default function Index(props) {
         title: "学生党",
         avatarUrl: 'https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png'
     },
+
+    {
+        size:70,
+    title: "学生党",
+    avatarUrl: 'https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png'
+},
+{
+    size:70,
+title: "学生党",
+avatarUrl: 'https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png'
+},
+{
+    size:70,
+title: "学生党",
+avatarUrl: 'https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png'
+},
+{
+    size:70,
+title: "学生党",
+avatarUrl: 'https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png'
+},
+{
+    size:70,
+title: "学生党",
+avatarUrl: 'https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png'
+},
+        {
+            size:70,
+        title: "学生党",
+        avatarUrl: 'https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png'
+    },
     {
         size:70,
         title: "职场青年",
