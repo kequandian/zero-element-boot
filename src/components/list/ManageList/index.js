@@ -61,10 +61,11 @@ export default forwardRef(function ManageList(props) {
   const [isLoading, setLoading] = useState(false)
   const [modelTitle, setModelTitle] = useState('Title');
   const [formData, setFormData] = useState({})
+  const [ clickState, setClickState ] = useState('')
 
+  //容器宽，高
   const containerRef = useRef();
   const size = useSize(containerRef);
-
 
   const initialRef = useRef()
   const finalRef = useRef()
@@ -88,6 +89,11 @@ export default forwardRef(function ManageList(props) {
 
   // 列表 item 点击事件
   function clickAction(item) {
+    
+    if(!clickState){
+      return
+    }
+    setClickState('listItemClick')
     if (navigation) {
       if (navigation.path) {
         const nav = navigation.detail;
@@ -115,7 +121,7 @@ export default forwardRef(function ManageList(props) {
         onItemClick(item)
       }
     } else if (onItemClick) {
-      onItemClick(item)
+      // onItemClick(item)
     }
   }
 
@@ -323,43 +329,47 @@ export default forwardRef(function ManageList(props) {
     className={getClassName()}
     ref={containerRef}
   >
-    {/* <ContainerContext.Provider value={size}> */}
-    <ContainerContext.Provider>
+    <ContainerContext.Provider value={{setClickState}}>
+    {/* <ContainerContext.Provider> */}
     {dataSource.map((item, i) => {
       return (
         <div style={{ position: 'relative' }} key={i}>
-          {/* <div onClick={() => clickAction(item)}> */}
-            {
-              React.isValidElement(Child) ?
-                React.cloneElement(Child, {
-                  ...rest,
-                  ...item,
-                  // layout: layout,
-                  key: i,
-                  ref: layoutRef,
-                  // isLastItem: dataSource.length == (i + 1) ? true : false,
-                  index: i,
-                })
-                : <Child {...rest} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
-            }
-          {/* {
-            isSwtich ? (
+          <ContainerContext.Consumer>
+            { (contextValue) => (
+              <div onClick={() => clickAction(item)}>
+                {
+                  React.isValidElement(Child) ?
+                    React.cloneElement(Child, {
+                      ...rest,
+                      ...item,
+                      // layout: layout,
+                      key: i,
+                      ref: layoutRef,
+                      // isLastItem: dataSource.length == (i + 1) ? true : false,
+                      index: i,
+                    })
+                    : <Child {...rest} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
+                }
+              {/* {
+                isSwtich ? (
 
-              <div style={{
-                position: 'absolute',
-                top: '0',
-                right: '0',
-                width: '26px',
-                height: '26px',
-                background: '#c3c3c3',
-                borderRadius: '50%',
-                textAlign: 'center',
-              }} onClick={() => showDelModel(item)} >
-                <div className={`del-btn`} ></div>
+                  <div style={{
+                    position: 'absolute',
+                    top: '0',
+                    right: '0',
+                    width: '26px',
+                    height: '26px',
+                    background: '#c3c3c3',
+                    borderRadius: '50%',
+                    textAlign: 'center',
+                  }} onClick={() => showDelModel(item)} >
+                    <div className={`del-btn`} ></div>
+                  </div>
+                ) : null
+              } */}
               </div>
-            ) : null
-          } */}
-        {/* </div> */}
+            )}
+          </ContainerContext.Consumer>
 
         </div>
 

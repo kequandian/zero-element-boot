@@ -1,4 +1,4 @@
-import React, {useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { 
     Stack,
     Button,
@@ -20,6 +20,7 @@ import styles from './index.less';
 import { MoreIcon, UpdateIcon, DelIcon } from './icons';
 import { formatParams } from '@/components/utils/tools';
 import { getEndpoint } from '@/components/config/common';
+import ContainerContext from '@/components/AutoX/ContainerContext';
 const promiseAjax = require('@/components/utils/request');
 
 /**
@@ -58,16 +59,11 @@ export default function Index(props) {
         createAPI, getAPI, updateAPI, deleteAPI,
     } = action;
 
-    console.log('props = ', props)
-    
     const toast = useToast()
     const endpoint = getEndpoint()
     const [isDelOpen, setIsDelOpen] = useState(false)
     const [isLoading, setLoading] = useState(false)
 
-    // const ctx = useContext(containerContext);
-
-    // console.log('ctx = ', ctx)
     function updateAction(){
         if(onItemChanged){
             onItemChanged(indicatorData)
@@ -116,51 +112,56 @@ export default function Index(props) {
     }
 
     return (
-        <div className={styles.menuIndicator} style={{width:'100%'}}>
-            {
-                React.Children.map(children, child => (
-                    child
-                ))
-            }
-            <div className={styles.menuIconContainer}>
-                <Menu placement='left'>
-                    <MenuButton>
-                        <div className={styles.menuIcon}>
-                            <MoreIcon />
-                        </div>
-                    </MenuButton>
-                    <MenuList minWidth={120}>
-                        <MenuItem icon={<UpdateIcon />} onClick={()=> updateAction()}>
-                            编辑
-                        </MenuItem>
-                        <MenuItem icon={<DelIcon />} onClick={()=>showDelModel()}>
-                            删除
-                        </MenuItem>
-                    </MenuList>
-                </Menu>
-            </div>
+        <ContainerContext.Consumer>
+            { ({setClickState}) => (
+                <div className={styles.menuIndicator} style={{width:'100%'}}>
+                    {
+                        React.Children.map(children, child => (
+                            child
+                        ))
+                    }
+                    <div className={styles.menuIconContainer}>
+                        <Menu placement='left'>
+                            <MenuButton onClick={()=>setClickState('')}>
+                                <div className={styles.menuIcon}>
+                                    <MoreIcon />
+                                </div>
+                            </MenuButton>
+                            <MenuList minWidth={120}>
+                                <MenuItem icon={<UpdateIcon />} onClick={()=> updateAction()}>
+                                    编辑
+                                </MenuItem>
+                                <MenuItem icon={<DelIcon />} onClick={()=>showDelModel()}>
+                                    删除
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                    </div>
 
-            {/* 删除提示模态框 */}
-            <Modal isOpen={isDelOpen} onClose={() => setIsDelOpen(false)}>
-            <ModalOverlay />
-            <ModalContent>
-                <ModalHeader>提示</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                <div>确定删除吗?</div>
-                </ModalBody>
+                    {/* 删除提示模态框 */}
+                    <Modal isOpen={isDelOpen} onClose={() => setIsDelOpen(false)}>
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>提示</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                        <div>确定删除吗?</div>
+                        </ModalBody>
 
-                <ModalFooter>
+                        <ModalFooter>
 
-                <Stack direction='row' spacing={4} align='center'>
-                    <Button isLoading={isLoading} variant='ghost' onClick={() => setIsDelOpen(false)}>取消</Button>
-                    <Button isLoading={isLoading} colorScheme='blue' mr={3} onClick={() => delAction()}>
-                        确定
-                    </Button>
-                </Stack>
-                </ModalFooter>
-            </ModalContent>
-            </Modal>
-        </div>
+                        <Stack direction='row' spacing={4} align='center'>
+                            <Button isLoading={isLoading} variant='ghost' onClick={() => setIsDelOpen(false)}>取消</Button>
+                            <Button isLoading={isLoading} colorScheme='blue' mr={3} onClick={() => delAction()}>
+                                确定
+                            </Button>
+                        </Stack>
+                        </ModalFooter>
+                    </ModalContent>
+                    </Modal>
+                </div>
+            )}
+            
+        </ContainerContext.Consumer>
     )
 }
