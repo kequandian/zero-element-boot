@@ -121,7 +121,7 @@ export default function Index(props) {
                 ))
             }
             <div className={styles.menuIconContainer}>
-                <Menu placement='left'>
+                <Menu>
                     <MenuButton onClick={()=>setClickState('')}>
                         <div className={styles.menuIcon}>
                             <MoreIcon />
