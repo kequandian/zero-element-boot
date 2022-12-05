@@ -174,7 +174,6 @@ export default function Index(props) {
     // })
 
     function delateAction (data) {
-        console.log('delete action = ', data)
         callback(data)
     }
 
@@ -183,7 +182,7 @@ export default function Index(props) {
     }
 
     function updateAction (data) {
-        console.log('update action = ', data)
+        callback(data)
     }
 
     function indicatedAction (data) {
