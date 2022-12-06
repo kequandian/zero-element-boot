@@ -1,30 +1,59 @@
 module.exports = {
   xname: 'Gridbox',
   props: {
-    columns: 1 //列数
+    columns: 6//列数
   },
-  presenter:
-  {
-    xname: 'RssAutoLayout',
-    binding: {
-      "styleName": "title",
-      "name": "subTitle"
-    }
+ 
+
+  presenter: {
+    xname: 'Flexbox',
+    props: {
+      direction: 'column',
+      justify: 'center row'
+    },
+    children: [
+      {
+        presenter: "Text",
+        binding: {
+          styleName: "content"
+        },
+        props:{
+          marginTop: '8px',
+          // color:''
+        }
+      }
+    ],
   },
 
   cart: {
     xname: 'Cart',
     props: {
-      padding: '5px 10px',
+      padding: '20px 10px',
       margin: '5px',
-      linewidth: 0
+      linewidth: 0,
+      fill:'#82b29b',
     }
   },
+  indicator:{
+    xname:'ManageMenuIndicator',
+    props:{
+      action: {
+        deleteAPI: '/openapi/lc/autoApi/lowAutoPageStyles/rss/json/(styleName)'
+      }
+    },
+    binding: {
+      "id":"id",
+      "path":"url",
+      "name":"content",
+    }
+  },
+
   container: {
     xname: 'ManageList',
     // xname: 'PlainList',
     props: {
-      addnew: ''
+      addnew: '',
+      margin:'8px'
     }
   },
   navigation: {
@@ -32,9 +61,9 @@ module.exports = {
       delConfirmTips: true,
       api: {
         createAPI: '/openapi/lc/autoApi/lowAutoPageStyles/rss/json',
-        getAPI: '/openapi/lc/autoApi/lowAutoPageStyles/rss/list/group/styleName',
+        getAPI: '/openapi/lc/autoApi/lowAutoPageStyles/rss/json/(styleName)',
         updateAPI: '/openapi/lc/autoApi/lowAutoPageStyles/rss/list/{id}',
-        deleteAPI: '/openapi/lc/autoApi/lowAutoPageStyles/rss/list/{id}'
+        deleteAPI: '/openapi/lc/autoApi/lowAutoPageStyles/rss/json/(styleName)'
       },
       fields: [{
         label: '标题',
@@ -57,25 +86,6 @@ module.exports = {
         },
         props: {
           placeholder: '请输入名字',
-        }
-      },
-      {
-        label: '类别',
-        field: 'typeId',
-        type: 'select-fetch',
-        rules: {
-          isRequired: true
-        },
-        props: {
-          placeholder: '请选择类别'
-        },
-        saveData: { //额外提交的字段和值
-          typeName: 'name'
-        },
-        options: {
-          api: '/api/pub/data/services/navCategory',
-          label: 'name',
-          value: 'id',
         }
       },
       ]

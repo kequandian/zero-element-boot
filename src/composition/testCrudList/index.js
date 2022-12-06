@@ -222,7 +222,7 @@ export default function Index(props) {
                                                 <Spinner />
                                             ) : (
                                                 <Box>
-                                                    <AutoLayout {...config} onItemClick={onNavItemClick} cb={callback} isSwtich={switchStatus} />
+                                                    <AutoLayout {...config} onItemClick={onNavItemClick} cb={callback} isSwitch={switchStatus} />
                                                 </Box>
                                             )}
                                         </TabPanel>
@@ -234,7 +234,7 @@ export default function Index(props) {
 
                         {navCateListData && navCateListData.length > 0 ? (
                             <>
-                                <TabsCompox items={navCateListData} currentTabIndex={tabIndex} onSwitchTab={switchTab} isSwtich={switchStatus} cb={tabscallback}/>
+                                <TabsCompox items={navCateListData} currentTabIndex={tabIndex} onSwitchTab={switchTab} isSwitch={switchStatus} cb={tabscallback}/>
                                 
                                 <div style={{marginTop:'20px'}}>
                                     {isLoading ? (
@@ -248,7 +248,7 @@ export default function Index(props) {
                                                 onItemAdded={addAction}
                                                 onItemChanged={updateAction}
                                                 onItemIndicated={indicatedAction}
-                                                isSwtich={switchStatus} 
+                                                isSwitch={switchStatus} 
                                             />
                                         </Box>
                                     )}
