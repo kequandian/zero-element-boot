@@ -22,7 +22,7 @@ export default function Index(props) {
         setDetailStatus(!detailStatus)
         setStyleName(title)
     }
-    console.log('detailStatus = ',detailStatus)
+        console.log('detailStatus = ',detailStatus)
 
     let api = `/openapi/lc/autoApi/lowAutoPageStyles/rss/json/${styleName}`
 
@@ -54,15 +54,15 @@ export default function Index(props) {
 
     return (
         <Flex marginTop='8px' w='100%'  >
-            <Center color='#7d7d7d' bg='#f5f5f5' borderRight='1px #cdcdcd solid' spacing='3px' border='' w='150px' h='60px' >
+            <Center color='#718096' bg='#edf2f7' borderRight='1px #cdcdcd solid' spacing='3px' border='' w='150px' h='60px' >
                 {subTitle}
             </Center>
             <Stack>
                 <Flex>
-                    <Center fontWeight='bold' bg='#f5f5f5' spacing='3px' w='350px' h='60px' onClick={( ) => clickItem(title)}>
+                    <Center fontWeight='bold' bg='#edf2f7' spacing='3px' w='350px' h='60px' onClick={( ) => clickItem(title)}>
                         {title}
                     </Center>
-                    <Center bg='#f5f5f5' marginLeft='10px' padding='10px'  w='150px'>
+                    <Center bg='#edf2f7' marginLeft='10px' padding='10px'  w='150px'>
                         <div style={detailStatus && itemDetail ? styleData :style} >
                             测试文本
                         </div>
@@ -71,7 +71,7 @@ export default function Index(props) {
 
                 {detailStatus && itemDetail ?
                     <Stack spacing='4'>
-                        <Stack bg='#f5f5f5' margin='0' padding='10px 30px' w='350px'>
+                        <Stack bg='#edf2f7' margin='0' padding='10px 30px' w='350px'>
                             <Tree {...itemDetail} />
                         </Stack>
 

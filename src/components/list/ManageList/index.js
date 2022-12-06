@@ -37,7 +37,7 @@ require('./index.less');
  * @param { object } navigation path: 跳转页面, model: 弹出模态框
  * @param { object } model delConfirmTips: 是否显示删除确认提示框
  * @param { function } cb 回调方法
- * @param { boolean } isSwtich 切换CRUD开关
+ * @param { boolean } isSwitch 切换CRUD开关
  * @param { string } addnew 自定义新增按钮样式
  * 
  */
@@ -45,7 +45,7 @@ export default forwardRef(function ManageList(props) {
 
   const { children, layout,
     items, dataSource = items, currentTabItem,
-    navigation, addnew, onItemClick, cb, isSwtich = false, 
+    navigation, addnew, onItemClick, cb, isSwitch = false, 
     onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
     ...rest } = props;
 
@@ -360,7 +360,7 @@ export default forwardRef(function ManageList(props) {
                   : <Child {...rest} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
               }
               {/* {
-              isSwtich ? (
+              isSwitch ? (
 
                 <div style={{
                   position: 'absolute',
@@ -382,7 +382,7 @@ export default forwardRef(function ManageList(props) {
         )
       })}
       {
-        navigation && isSwtich ? (
+        navigation && isSwitch ? (
           <div className='footerContent' >
             <div onClick={() => clickAddAction(navigation)}>
               {addNewButton()}
