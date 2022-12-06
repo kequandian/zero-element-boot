@@ -67,8 +67,8 @@ export default function (props) {
   return (
     <>
         <PreviewAutoLayout api={apiPath} apiName={apiName} 
-        layoutData={layoutData} layoutApi={layoutJsonApi} layoutName={layoutName} layoutId={layoutId} allComponents={allComponents} 
-        testLayoutName={testLayoutName}
+          layoutData={layoutData} layoutApi={layoutJsonApi} layoutName={layoutName} layoutId={layoutId} allComponents={allComponents} 
+          testLayoutName={testLayoutName}
         />
     </>
   )

@@ -17,7 +17,7 @@ export default function PreAutoLayout (props) {
   }
 
   //testLayoutName
-  const testLayoutJsonUrl = testLayoutName ? `http://local.webtools.io/previewautolayout/${testLayoutName}/layout.json` : ''
+  const testLayoutJsonUrl = testLayoutName ? `http://192.168.3.224/previewautolayout/${testLayoutName}/layout.json` : ''
   const testLayoutJsonObj = useTokenRequest({ api:testLayoutJsonUrl });
   const testLayoutJsonData = testLayoutJsonObj && testLayoutJsonObj[0] || {}
 
@@ -32,7 +32,11 @@ export default function PreAutoLayout (props) {
 
   // 从layoutApi获取layoutJson
   const respLayoutData = useTokenRequest({ api: localLayoutApi });
-  const layoutJson = (layoutData && JSON.stringify(layoutData) !== '{}' && layoutData) || (respLayoutData && respLayoutData[0]) || testLayoutJsonData
+  const respLayoutDataRecords = respLayoutData && respLayoutData[0]
+
+  const layoutJson = (layoutData && typeof layoutData === 'object'  && JSON.stringify(layoutData) !== '{}' && layoutData) 
+    || (respLayoutDataRecords && typeof respLayoutDataRecords === 'object' && JSON.stringify(respLayoutDataRecords) !== '{}' && respLayoutDataRecords) 
+    || testLayoutJsonData
 
   /**
    * 页面配置
@@ -50,9 +54,11 @@ export default function PreAutoLayout (props) {
   }
 
   return (
+    records && records.length > 0 && layoutJson && JSON.stringify(layoutJson) !== '{}' ? (
       <Box spacing='3px'>
         <AutoLayout {...config} onItemClick={onPreviewItemClick} />
       </Box>
+    ):<></>
   )
 }
 

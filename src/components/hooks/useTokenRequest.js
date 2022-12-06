@@ -3,7 +3,7 @@ const promiseAjax = require('@/components/utils/request');
 
 module.exports = function useTokenRequest({ api, bindFiles, requestData = {}}, callBack) {
 
-    const [data, setRespData] = useState([]);
+    const [data, setRespData] = useState('');
 
     const [useId, setId] = useState('');
 
@@ -41,7 +41,6 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}}, c
             .then(responseData => {
                 if (responseData && responseData.code === 200) {
                     let data = responseData.data;
-
                     if (bindFiles) {
                         if (Array.isArray(data) || Array.isArray(data.records)) {
                             const newList = [];
