@@ -10,9 +10,12 @@ const promiseAjax = require('@/components/utils/request');
 import layout from './layout';
 import JsonTree from '@/components/presenter/tree/JsonTree/Sandbox'
 
+import Pagintion from './pagination'
+
 export default function Index(props) {
 
-    const { data=[], method='' } = props;
+    const { data=[], method='', op, onDelAction } = props;
+
 
     const [ listData, setListData ] = useState(data)
     const [ isShowList, setIsShowList ] = useState(true);
@@ -34,6 +37,7 @@ export default function Index(props) {
         layoutData = { path: layoutJsonPath};
     }else{
         layoutData = localLayoutJson;
+        layoutData.indicator.props.op = op
     }
 
     const config = {
@@ -91,14 +95,14 @@ export default function Index(props) {
         const api = `/openapi/crud/lc_low_auto_apis/lowAutoApis/lowAutoApises`;
         const queryData = {
             pageNum: 1,
-            pageSize: 1000,
+            pageSize: 10,
             apiMethod: method,
             search: searchValue
         };
         promiseAjax(api, queryData).then(resp => {
             if (resp && resp.code === 200) {
                 setIsShowBackBtn(resp.data.records.length > 0 && true)
-                setListData([{items: resp.data.records}])
+                setListData(resp.data.records || [])
             } else {
                 console.error("获取 api 列表失败")
             }
@@ -158,8 +162,13 @@ export default function Index(props) {
                         
                         {
                             isShowList ? (
-                                <AutoLayout {...config} onItemClick={onApiItemClick}>
-                                </AutoLayout>
+                                <>
+                                    <AutoLayout {...config} onItemClick={onApiItemClick} onItemDeleted={onDelAction}>
+                                    </AutoLayout>
+                                    <div style={{margin:'15px 0 15px 0'}}>
+                                        <Pagintion/>
+                                    </div>
+                                </>
                             ): <></>
                         }
                         
