@@ -3,18 +3,40 @@ import { Box, ChakraProvider } from "@chakra-ui/react";
 import AutoLayout from '@/components/AutoLayout';
 import useTokenRequest from '@/components/hooks/useTokenRequest';
 import layout from './layout';
+const promiseAjax = require('@/components/utils/request');
 
 
 export default function Index(props) {
 
-  const { items, ...rest } = props;
+  const { ...rest } = props;
 
   // console.log('props =', props)
+
+  let api = '/openapi/lc/apps'
+
+  const [items, setItems] = useState('')
+
+  useEffect(_ => {
+    getApiUrl()
+  }, [])
+
+  function getApiUrl() {
+    const queryData = {};
+    promiseAjax(api, queryData).then(resp => {
+      if (resp && resp.code === 200) {
+        setItems(resp.data)
+      } else {
+        console.error("获取api path 数据失败")
+      }
+    });
+  }
+
+
   /**
    * 页面配置
    */
   const config = {
-    items: items,
+    items: items && items.length > 0 ? items : [],
     layout: layout,
     ...rest
   };

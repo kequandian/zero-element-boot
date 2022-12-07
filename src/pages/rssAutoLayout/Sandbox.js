@@ -8,7 +8,7 @@ export default function Index(props) {
 
     let endpoint = 'http://static.smallsaas.cn'
 
-    let api = '/openapi/lc/apps/app'
+    let api = '/openapi/lc/autoApi/lowAutoPageStyles/rss/list/group/styleName'
 
     const [items, setItems] = useState('')
 
@@ -53,6 +53,7 @@ export default function Index(props) {
         }
     ]
     return (
-        <RssAutoLayout items={itemsaa}  {...data} />
+        items && items.length > 0 ?
+        <RssAutoLayout items={items}  {...data} />:<></>
     )
 }
