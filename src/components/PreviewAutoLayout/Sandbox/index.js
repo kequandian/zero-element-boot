@@ -43,6 +43,7 @@ export default function (props) {
   //
   let apiName = params.apiName || ''
   let testLayoutName = params.testLayoutName || ''
+  let testBindingName = params.testBindingName || ''
   
   // 获取layoutJson的本地接口
   // let layoutJsonApi = '/api/layoutJson'
@@ -69,6 +70,7 @@ export default function (props) {
         <PreviewAutoLayout api={apiPath} apiName={apiName} 
           layoutData={layoutData} layoutApi={layoutJsonApi} layoutName={layoutName} layoutId={layoutId} allComponents={allComponents} 
           testLayoutName={testLayoutName}
+          testBindingName={testBindingName}
         />
     </>
   )
