@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import RssAutoLayout from './index';
+import appList from './index';
 const promiseAjax = require('@/components/utils/request');
 import { getEndpoint } from '@/components/config/common';
 
@@ -29,6 +29,6 @@ export default function Index(props) {
     // }
 
     return (
-        <RssAutoLayout />
+        <appList />
     )
 }

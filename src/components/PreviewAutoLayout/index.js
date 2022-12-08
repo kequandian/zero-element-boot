@@ -28,7 +28,7 @@ export default function PreAutoLayout (props) {
 
   // 从api获取显示数据
   const [ data ] = useTokenRequest({ api: api || apiNameData.api });
-  const records = data && data.records;
+  const records = (data && data.records) ? data.records : (data || [] );
 
   // 从layoutApi获取layoutJson
   const respLayoutData = useTokenRequest({ api: localLayoutApi });

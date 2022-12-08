@@ -50,7 +50,6 @@ import RightIconRadioDefault from '@/pages/SelectListDemo/indicator/RightIconRad
 //presenter
 import ItemImg from '@/pages/SelectListDemo/presenter/ItemImg'
 import ItemTitle from '@/pages/SelectListDemo/presenter/ItemTitle'
-import RssAutoLayout from '@/pages/rssAutoLayout/item'
 
 import OnDeleteIndicator from '@/components/indicator/OnDeleteIndicator';
 import SelectAvatar from '@/components/indicator/SelectAvatar';
@@ -126,7 +125,6 @@ NamedPresenterSet({
   //NamedPresenterSet({
     ItemImg,
     ItemTitle,
-    RssAutoLayout,
     Text
   //})
 })

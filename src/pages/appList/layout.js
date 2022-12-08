@@ -27,13 +27,15 @@ module.exports = {
     ],
   },
   // container: "SelectList",
+ 
   container: {
     xname: 'ManageList',
+    // xname: 'PlainList',
     props: {
-      addnew: ' '
+      addnew: '',
+      margin:'8px'
     }
   },
-
   cart: {
     xname: "Cart",
     props: {
@@ -66,24 +68,10 @@ module.exports = {
     }
   },
 
-  // indicator:
-  // {
-  //   xname: "ShadowIndicator",
-  //   props: {
-  //   }
-  // }, //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
-  // selector: {
-  //   xname: "SelectedCartUpperRightIcon",
-  //   props: {
-  //     state: 'selected',
-  //     padding: '0'
-  //   }
-  // },
-
   navigation: {
     model: {
       api: {
-        createAPI: '/api/u/lc/apps',
+        createAPI: '/openapi/crud/lc_low_auto_app/lowAutoApp/lowAutoApps',
         getAPI: '/openapi/crud/lc_low_auto_app/lowAutoApp/lowAutoApps/(id)',
         updateAPI: '/openapi/crud/lc_low_auto_app/lowAutoApp/lowAutoApps/(id)',
         deleteAPI: '/openapi/crud/lc_low_auto_app/lowAutoApp/lowAutoApps/(id)'

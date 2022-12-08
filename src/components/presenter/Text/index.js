@@ -12,7 +12,8 @@ import { Text } from "@chakra-ui/react";
 export default function Index(props) {
 
     const { content, ...others } = props;
-
+console.log('content =',content)
+console.log('props =',props)
     return (
         <Text {...others}>{content}</Text>
     )

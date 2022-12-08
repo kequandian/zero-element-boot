@@ -60,7 +60,7 @@ import AutoCartSet from '@/pages/AutoCartSet/Presenter'
 import AutoComponentSet from './AutoComponentSet'
 import RouterParamsDemo from './GetRouterPath/demo'
 import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
-import RssAutoLayout from '@/pages/rssAutoLayout/Sandbox'
+import RssAutoLayout from '@/pages/rssStyle'
 import AvatarSelected from '@/pages/AvatarSelected/Sandbox'
 import TestGroupedList from './TestGroupedList';
 //nav-ui
@@ -80,9 +80,14 @@ import TestIndicator from './ATestIndicator'
 
 import CssCart from '@/components/cart/CssCart'
 import TestCart from '@/pages/TestCart'
-import ManageCart from '@/pages/ManageCart'
+import ManageCart from '@/pages/ManageCart/Sandbox'
 import ManagePage from '@/pages/ManagePage/Sandbox'
-import AppList from '@/pages/appList/Sandbox'
+import AppList from '@/pages/appList'
+import AlbumList from '@/pages/AlbumList'
+import RssList from '@/pages/rssList'
+import RssContent from '@/pages/rssContent'
+import ImageManage from '@/pages/ImageManage'
+import RssCssAutoLayout from '@/pages/rssCssAutoLayout'
 
 
 export default function Index(props) {
@@ -134,11 +139,17 @@ export default function Index(props) {
 
   // return <AvatarSelected />
   // return <ManageCart />
+  // return <RssCssAutoLayout />
   // return <AppList />
   // return <ManagePage />
   // return <TestCRUDList />
   // return <TestCRUDList />
-  return <RssAutoLayout/>
+  // return <RssAutoLayout/>
+  // return <ImageManage/>
+  // return <AlbumList/>
+  // return <RssContent/>
+  return <RssList/>
+
 
 
 }

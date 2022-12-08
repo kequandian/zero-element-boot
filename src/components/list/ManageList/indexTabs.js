@@ -45,12 +45,12 @@ const formItemMap = {
  * 
  * @param { path: 跳转页面, model: 弹出模态框 } navigation 
  * @param { 回调方法 } cb 
- * @param { 切换CRUD开关 } isSwtich
+ * @param { 切换CRUD开关 } isSwitch
  * 
  */
 export default function ManageList(props) {
 
-  const { children, layout, items, dataSource = items, navigation, onItemClick, cb, isSwtich = true, ...rest } = props;
+  const { children, layout, items, dataSource = items, navigation, onItemClick, cb, isSwitch = true, ...rest } = props;
 
   const { 
     api: { createAPI, getAPI, updateAPI, deleteAPI },
@@ -109,7 +109,7 @@ export default function ManageList(props) {
             }
           })
         }
-      } else if (navigation.model && isSwtich) {
+      } else if (navigation.model && isSwitch) {
         console.log('item === ', item)
         getData(item.id)
         setModelTitle('编辑')
@@ -378,7 +378,7 @@ export default function ManageList(props) {
                 }
               </div>
               {
-                isSwtich ? (
+                isSwitch ? (
 
                   <div style={{
                     position: 'absolute',
@@ -401,7 +401,7 @@ export default function ManageList(props) {
         })}
         {/* </ContainerContext.Provider> */}
         {
-          navigation && isSwtich ? (
+          navigation && isSwitch ? (
             <div className='footerContent' >
               <div className='footerBtn' onClick={() => clickAddAction(navigation)}>
                 <div className='addBtn'>
