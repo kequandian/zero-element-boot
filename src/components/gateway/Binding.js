@@ -9,8 +9,8 @@ export default function Binding({ children, binding={}, dataSource, ...rest}) {
 
   const childrenList = React.Children.toArray(children);
   return childrenList.map(child => React.cloneElement(child, {
-    ...data,
     ...rest,
+    ...data,
   }))
 }
 
