@@ -37,7 +37,7 @@ export default function Index(props) {
         layoutData = { path: layoutJsonPath};
     }else{
         layoutData = localLayoutJson;
-        layoutData.indicator.props.op = op
+        layoutData.indicator.props.isDisabled = op
     }
 
     const config = {
