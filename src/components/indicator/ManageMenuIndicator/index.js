@@ -65,7 +65,7 @@ export default function Index(props) {
     const [isDelOpen, setIsDelOpen] = useState(false)
     const [isLoading, setLoading] = useState(false)
 
-    const { setClickState, showEditModal } = useContext(ContainerContext)
+    const { clickAction, showEditModal } = useContext(ContainerContext)
 
     function updateAction(){
         if(showEditModal){
@@ -116,14 +116,18 @@ export default function Index(props) {
 
     return (
         <div className='menu_indicator_container' style={{width:'100%'}}>
-            {
-                React.Children.map(children, child => (
-                    child
-                ))
-            }
+
+            <div onClick={()=>clickAction(indicatorData, 'itemClick')}>
+                {
+                    React.Children.map(children, child => (
+                        child
+                    ))
+                }
+            </div>
+            
             <div className='menu_icon_container' style={{...rest}}>
                 <Menu>
-                    <MenuButton onClick={()=>setClickState('')}>
+                    <MenuButton onClick={()=>clickAction(indicatorData, 'menuClick')}>
                         <div className='menu_icon'>
                             <MoreIcon />
                         </div>

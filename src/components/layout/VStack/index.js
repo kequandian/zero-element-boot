@@ -14,10 +14,10 @@ export default forwardRef(function VStack(props, ref) {
     const _Container = __ ? NextIndicator : Container
 
     return (
-        <_Container>
-            <Flexbox direction='column' spacing={spacing} {...data}>
+         <_Container>
+            <Flexbox direction='column' spacing={spacing} {...data} ref={ref}>
                 {children}
             </Flexbox>
-        </_Container>
+         </_Container>
     )
 })

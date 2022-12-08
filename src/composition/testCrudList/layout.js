@@ -1,7 +1,7 @@
 module.exports = {
-  xname: 'Gridbox',
+  xname: 'Wrap',
   props: {
-    columns: 6 //列数
+    direction: 'row',
   },
   presenter: {
     xname: 'Flexbox',
@@ -14,14 +14,6 @@ module.exports = {
         presenter: 'DefaultAvatar',
         binding: {
           path: 'url'
-        },
-        indicator:{
-          xname:'ClickIndicator',
-          binding: {
-            "id":"id",
-            "path":"path",
-            "name":"name",
-          }
         },
       },
       {

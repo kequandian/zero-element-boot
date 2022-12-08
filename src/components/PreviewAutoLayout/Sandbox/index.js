@@ -5,6 +5,7 @@ const promiseAjax = require('@/components/utils/request');
 import PreviewAutoLayout from '../index'
 import PreviewItem from './PreviewItem';
 // import { useSetState } from 'ahooks';
+import testLayout from './testLayout'
 
 export default function (props) {
 
@@ -63,7 +64,7 @@ export default function (props) {
 
   const allComponents = { PreviewItem }
 
-  const layoutData = {}
+  const layoutData = testLayout
 
   return (
     <>
