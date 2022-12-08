@@ -94,7 +94,6 @@ export default forwardRef(function ManageList(props) {
 
   // 列表 item 点击事件
   function clickAction(item, state) {
-    console.log('item == ', item)
     setCurrentItemData(item)
     if (state == 'menuClick') {
       return
