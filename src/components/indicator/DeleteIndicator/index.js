@@ -1,11 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { 
     Stack,
     Button,
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
     
     Modal,
     ModalOverlay,
@@ -16,24 +12,21 @@ import {
     ModalCloseButton,
     useToast,
 } from '@chakra-ui/react';
-require('./index.less');
-
-import { MoreIcon, UpdateIcon, DelIcon } from './icons';
 import { formatParams } from '@/components/utils/tools';
-import { getEndpoint } from '@/components/config/common';
-import ContainerContext from '@/components/AutoX/ContainerContext';
 const promiseAjax = require('@/components/utils/request');
+require('./index.less')
 
 /**
  * 使用例子
  * cart:{},
    indicator:{
-    xname:'DownloadIndicator',
+    xname:'DeleteIndicator',
     props:{
-      action: '/dev/logs/down/log?fileName=(fieldName)'
+      action: '/openapi/lc/apis/(id)',
+      op: 'edit'
     },
     binding: {
-      "value":"fieldName"
+      "id":"id",
     }
    },
    container:{}
@@ -43,7 +36,7 @@ const promiseAjax = require('@/components/utils/request');
  * @param { function } onItemChanged 修改
  * @param { function } onItemDeleted 删除
  * @param { function } onItemIndicated 自定义传参, 例子： onItemIndicated("indicator": 'MangeMenuList', id: 'deleted',  data{})
- * @param { object } action 传访问API 参数为： createAPI, getAPI, updateAPI, deleteAPI
+ * @param { object } action 删除API  
  * 
  */
 
@@ -51,27 +44,17 @@ export default function Index(props) {
 
     const { 
         children, 
-        action = {},
+        action,
         indicatorData,
         onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
+        op,
+        ...rest
     } = props;
 
-    const { 
-        createAPI, getAPI, updateAPI, deleteAPI,
-    } = action;
 
     const toast = useToast()
-    const endpoint = getEndpoint()
     const [isDelOpen, setIsDelOpen] = useState(false)
     const [isLoading, setLoading] = useState(false)
-
-    const { clickAction, showEditModal } = useContext(ContainerContext)
-
-    function updateAction(){
-        if(showEditModal){
-            showEditModal()
-        }
-    }
 
     function showDelModel () {
         setIsDelOpen(true)
@@ -79,8 +62,8 @@ export default function Index(props) {
 
     //删除
     function delAction () {
-        setLoading(true)
-        const api = formatParams(deleteAPI, indicatorData);
+        // setLoading(true) 
+        const api = formatParams(action, indicatorData);
         const queryData = {};
         promiseAjax(api, queryData, { method: 'DELETE' }).then(resp => {
             if (resp && resp.code === 200) {
@@ -115,34 +98,23 @@ export default function Index(props) {
     }
 
     return (
-        <div className='menu_indicator_container' style={{width:'100%'}}>
-
-
-            <div onClick={()=>clickAction(indicatorData, 'itemClick')}>
-                {
-                    React.Children.map(children, child => (
-                        child
-                    ))
-                }
-            </div>
-            
-            <div className='menu_icon_container' style={{...rest}}>
-                <Menu>
-                    <MenuButton onClick={()=>clickAction(indicatorData, 'menuClick')}>
-                        <div className='menu_icon'>
-                            <MoreIcon />
+        <div className='del_indicator_container' style={{width:'100%'}}>
+            {
+                React.Children.map(children, child => (
+                    child
+                ))
+            }
+            {
+                op ? (
+                    <div className='del_icon_container' style={{...rest}}>
+                        <div className='del_icon' onClick={()=>showDelModel()}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#5E6267" className="bi bi-trash3" viewBox="0 0 16 16">
+                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                            </svg>
                         </div>
-                    </MenuButton>
-                    <MenuList minWidth={120}>
-                        <MenuItem icon={<UpdateIcon />} onClick={()=> updateAction()}>
-                            编辑
-                        </MenuItem>
-                        <MenuItem icon={<DelIcon />} onClick={()=>showDelModel()}>
-                            删除
-                        </MenuItem>
-                    </MenuList>
-                </Menu>
-            </div>
+                    </div>
+                ):<></>
+            }
 
             {/* 删除提示模态框 */}
             <Modal isOpen={isDelOpen} onClose={() => setIsDelOpen(false)}>

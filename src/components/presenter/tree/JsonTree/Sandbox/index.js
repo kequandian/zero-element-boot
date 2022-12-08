@@ -16,8 +16,13 @@ export default function index(props) {
     // const api = `/api/ContentTest`
     // const [data] = useTokenRequest({ api })
 
+    const [ urlNull, setUrlNull ] = useState(false)
+    const [ errMsg, setErrMsg ] = useState('')
+
     useEffect(_ => {
         setJsonData('')
+        setErrMsg('')
+        setUrlNull(false)
         if((params && params.api) || api){
             if(params && params.api){
                 setIsLoading(true)
@@ -27,6 +32,9 @@ export default function index(props) {
         }else if(params && params.apiName){
             setIsLoading(true)
             getApiUrlByApiName()
+        }else{
+            setUrlNull(true)
+            setErrMsg('api 或 apiName 参数为空')
         }
     },[params, api]);
 
@@ -34,18 +42,26 @@ export default function index(props) {
     function getApiUrlByApiName(){
         promiseAjax(`/openapi/lc/apis/${params.apiName}`)
             .then(res => {
+                setIsLoading(false)
                 if (res && res.code === 200) {
                     let data = res.data
-                    let apiValue = data.api
-                    if(apiValue.indexOf('{') != -1 && params.layoutName){
-                        apiValue = convertApiUrl(apiValue, params.layoutName)
-                        getJsonDataByLayoutName(apiValue)
-                        setIsLoading(false)
+                    if(data){
+                        let apiValue = data.api
+                        if(apiValue.indexOf('{') != -1 && params.layoutName){
+                            apiValue = convertApiUrl(apiValue, params.layoutName)
+                            getJsonDataByLayoutName(apiValue)
+                            setIsLoading(false)
+                        }else{
+                            getJsonDataByApi(apiValue)
+                        }
                     }else{
-                        getJsonDataByApi(apiValue)
+                        setUrlNull(true)
+                        setErrMsg(`没有找到 apiName 为 ${params.apiName} 的 api`)
                     }
-                }else{
                     
+                }else{
+                    setUrlNull(true)
+                    setErrMsg(`api 访问异常`)
                 }
             })
     }
@@ -67,7 +83,7 @@ export default function index(props) {
             .then(res => {
                 if (res && res.code === 200) {
                     let data = res.data
-                    console.log('getJsonDataByLayoutName data = ', data)
+                    // console.log('getJsonDataByLayoutName data = ', data)
                     setJsonData(data)
                 }
             })
@@ -79,10 +95,16 @@ export default function index(props) {
             .then(res => {
                 if (res && res.code === 200) {
                     let data = res.data
-                    data = Array.isArray(data)? data[0] : typeof data === 'object' ? data : {}
-                    setJsonData(data)
+                    if(data){
+                        data = Array.isArray(data)? data[0] : typeof data === 'object' ? data : {}
+                        setJsonData(data)
+                    }else{
+                        setUrlNull(true)
+                        setErrMsg(`api 数据异常`)
+                    }
                 }else{
-                    
+                    setUrlNull(true)
+                    setErrMsg(`api 数据异常`)
                 }
                 setIsLoading(false)
             })
@@ -90,13 +112,17 @@ export default function index(props) {
 
     return (
         <>
+        
             {/* <TreeItem keyName="xname" {...data}/> */}
-            {isLoading ? (
-                <Loading styles={{marginTop: '10px', marginLeft: '5px'}}/>
+            { urlNull ? (
+                <div style={{margin: '10px'}}>{errMsg}</div>
             ):(
-                jsonData && JSON.stringify(jsonData) !== '{}' && <Tree {...jsonData} />
+                isLoading ? (
+                    <Loading styles={{marginTop: '10px', marginLeft: '5px'}}/>
+                ):(
+                    jsonData && JSON.stringify(jsonData) !== '{}' && <Tree {...jsonData} />
+                )
             )}
-            
         </>
     )
 

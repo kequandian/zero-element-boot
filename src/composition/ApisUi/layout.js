@@ -1,21 +1,8 @@
 module.exports = {
   xname: 'Flexbox',
   props: {
-    align: 'between',
-    direction: 'row',
+    direction: 'column', 
   },
-  // gateway: {
-  //   xname: 'Binding',
-  //   props: {
-  //     binding: {
-  //       url: 'url',
-  //       title: 'title',
-  //       describe: 'describe',
-  //       adType: 'adType',
-  //       createTime: 'createTime'
-  //     }
-  //   }
-  // },
   cart: {
     xname: 'Cart',
     props: {
@@ -23,7 +10,7 @@ module.exports = {
       margin: '0',
       corner: 0,
       linewidth: '0',
-      padding: '10px 25px',
+      padding: '10px 32px 10px 25px',
       isOnHover:false
     }
   },
@@ -31,38 +18,30 @@ module.exports = {
   presenter:{
     xname: 'Flexbox',
     props: {
-      direction: 'column', 
-      justify: 'center row'
+      align: 'start',
+      direction: 'column',
+      flexWidth: 'auto-full'
     },
     children: [
       {
-        presenter: {
-          xname: 'Flexbox',
-          props: {
-            align: 'start',
-            direction: 'column',
-            flexWidth: 'auto-full'
-          },
-          presenter: 'SwaggerItem',
-          cart: {
-            xname: 'Cart',
-            props: {
-              margin: '0px 0px 12px 0px',
-              linewidth: 0,
-              padding: '0px'
-            }
-          },
-          container: 'ItemClickList',
-        },
-        gateway: {
-          xname: 'Binding',
-          props: {
-            binding: {
-              items: 'items'
-            }
+        presenter: 'SwaggerItem',
+        indicator:{
+          xname:'ClickIndicator',
+          binding: {
+            id:"id",
+            api:"api",
           }
-        }
+        },
       },
     ]
+  },
+  indicator:{
+    xname:'DeleteIndicator',
+    props:{
+      action: '/openapi/lc/apis/(id)'
+    },
+    binding: {
+      "id":"id"
+    }
   }
 }
