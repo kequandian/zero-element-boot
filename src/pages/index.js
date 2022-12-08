@@ -147,9 +147,8 @@ export default function Index(props) {
   // return <RssAutoLayout/>
   // return <ImageManage/>
   // return <AlbumList/>
-  // return <RssContent/>
-  return <RssList/>
-
+  return <RssContent/>
+  // return <RssList/>
   // return <RssAutoLayout/>
 
 

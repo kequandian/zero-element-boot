@@ -126,7 +126,4 @@ export default function index(props) {
         </>
     )
 
-
-
-
 }

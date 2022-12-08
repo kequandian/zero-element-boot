@@ -349,7 +349,7 @@ export default forwardRef(function ManageList(props) {
               {
                 React.isValidElement(Child) ?
                   React.cloneElement(Child, {
-                    ...rest,
+                    ... rest ? rest : {},
                     ...item,
                     // layout: layout,
                     key: i,
@@ -357,7 +357,7 @@ export default forwardRef(function ManageList(props) {
                     // isLastItem: dataSource.length == (i + 1) ? true : false,
                     index: i,
                   })
-                  : <Child {...rest} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
+                  : <Child {... rest ? rest : {}} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
               }
               {/* {
               isSwitch ? (

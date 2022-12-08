@@ -18,7 +18,7 @@ module.exports = {
       {
         xname: 'Text',
         binding: {
-          "name": 'content1'
+          "content": 'content'
         },
         props: {
           display: 'flex',
@@ -99,5 +99,4 @@ module.exports = {
       ]
     }
   }
-
 }

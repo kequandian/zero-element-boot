@@ -53,7 +53,7 @@ export default function Index(props) {
         children, 
         action = {},
         indicatorData,
-        onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
+        onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,...rest
     } = props;
 
     const { 
