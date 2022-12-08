@@ -66,7 +66,7 @@ export default forwardRef(function ManageList(props) {
   const [modelTitle, setModelTitle] = useState('Title');
   const [formData, setFormData] = useState({})
   //item click state
-  const [clickState, setClickState] = useState('')
+  const [clickState, setClickState] = useState('listItemClick')
 
   const containerRef = useRef();
   //list 容器 宽，高
@@ -93,12 +93,13 @@ export default forwardRef(function ManageList(props) {
   }
 
   // 列表 item 点击事件
-  function clickAction(item) {
+  function clickAction(item, state) {
+    console.log('item == ', item)
     setCurrentItemData(item)
-    if (!clickState) {
+    if (state == 'menuClick') {
       return
     }
-    setClickState('listItemClick')
+    // setClickState('listItemClick')
     if (navigation) {
       if (navigation.path) {
         const nav = navigation.detail;
@@ -341,11 +342,11 @@ export default forwardRef(function ManageList(props) {
     className={getClassName()}
     ref={containerRef}
   >
-    <ContainerContext.Provider value={{ setClickState, showEditModal }}>
+    <ContainerContext.Provider value={{ clickAction, showEditModal }}>
       {dataSource.map((item, i) => {
         return (
           <div style={{ position: 'relative' }} key={i}>
-            <div onClick={() => clickAction(item)}>
+            {/* <div onClick={() => clickAction(item, 'item')}> */}
               {
                 React.isValidElement(Child) ?
                   React.cloneElement(Child, {
@@ -376,7 +377,7 @@ export default forwardRef(function ManageList(props) {
                 </div>
               ) : null
             } */}
-            </div>
+            {/* </div> */}
           </div>
 
         )

@@ -15,7 +15,7 @@ export default forwardRef(function Stack(props, ref) {
 
   return (
     <_Container>
-      <Flexbox align='start' direction='row' flexFlow='no-wrap' spacing={spacing} {...data}>
+      <Flexbox align='start' direction='row' flexFlow='no-wrap' spacing={spacing} {...data} ref={ref}>
         {children}
       </Flexbox>
     </_Container>

@@ -93,18 +93,18 @@ export default function Index(props) {
         // console.log('id = ', id)
         // alert(`选择的用户id为: ${id}`)
         //点击跳转页面
-        if (item.path.indexOf('http') != -1) {
+        if (item.url.indexOf('http') != -1) {
           // window.location.replace(item.path)
     
           // history.push(url);
           const w = window.open('about:blank');
-          w.location.href = item.path
+          w.location.href = item.url
         //   console.log(item.path);
     
         } else {
           const w = window.open('about:blank');
           const host = getEndpoint || location.host
-          w.location.href = host + item.path
+          w.location.href = host + item.url
     
         //   console.log(host);
     
@@ -192,7 +192,7 @@ export default function Index(props) {
     return (
         <ChakraProvider>
 
-            <div style={{ maxWidth: '670px' }}>
+            <div style={{ maxWidth: '1000px' }}>
                 <VStack align='stretch' spacing='-2'>
                     <Box style={{ margin: '10px 10px 30px 10px', paddingLeft: '8px' }}>
                         <FormControl display='flex' alignItems='center'>
@@ -236,7 +236,7 @@ export default function Index(props) {
                             <>
                                 <TabsCompox items={navCateListData} currentTabIndex={tabIndex} onSwitchTab={switchTab} isSwitch={switchStatus} cb={tabscallback}/>
                                 
-                                <div style={{marginTop:'20px'}}>
+                                <div style={{marginTop:'10px'}}>
                                     {isLoading ? (
                                         <Spinner />
                                     ) : (
