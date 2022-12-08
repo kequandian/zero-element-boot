@@ -59,14 +59,13 @@ import AutoCartSet from '@/pages/AutoCartSet/Presenter'
 
 import AutoComponentSet from './AutoComponentSet'
 import RouterParamsDemo from './GetRouterPath/demo'
-import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
 import RssAutoLayout from '@/pages/rssAutoLayout/Sandbox'
 import AvatarSelected from '@/pages/AvatarSelected/Sandbox'
 import TestGroupedList from './TestGroupedList';
 //nav-ui
 import TestCRUDList from '@/composition/testCrudList';
 //preview-ui
-import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
+import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
 //jsontree-ui
 import JsonTreeDemo from '@/components/presenter/tree/JsonTree/Sandbox'
 //apis-ui
@@ -80,6 +79,7 @@ import TestIndicator from './ATestIndicator'
 
 import CssCart from '@/components/cart/CssCart'
 import TestCart from '@/pages/TestCart'
+import AlbumList from '@/pages/AlbumList'
 
 
 export default function Index(props) {
@@ -106,7 +106,7 @@ export default function Index(props) {
 
   // return <Connection/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  return <TestCRUDList {...props}/> 
+  return <ApisUi {...props}/> 
 
   // return (
   // <CssCart width='300px' margin='40px'>
@@ -129,10 +129,7 @@ export default function Index(props) {
   // }
   // return <TestCRUDList />
 
-  // return <AvatarSelected />
-  // return <TestCRUDList />
-
-  // return <RssAutoLayout/>
+  // return <AlbumList/>
 
 
 }

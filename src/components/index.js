@@ -1,3 +1,5 @@
+import { Image } from "@chakra-ui/react";
+
 import NamedLayout from './NamedLayout';
 import NamedList from './NamedList';
 import NamedCart from './NamedCart';
@@ -13,6 +15,7 @@ import AutoLayout from './AutoLayout';
 import AutoComponent from './AutoComponent';
 
 import APIContainer from './container/APIContainer';
+import TabContainer from './container/TabContainer';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -134,7 +137,8 @@ NamedPresenterSet({
   DownloadButton,
   ItemPlaceholder,
   AddNewButton,
-  Text
+  Text,
+  Image
 })
 
 NamedListSet({
@@ -176,5 +180,6 @@ export {
     NextIndicator,
     
     //
-    APIContainer
+    APIContainer,
+    TabContainer
 };
