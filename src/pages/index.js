@@ -66,7 +66,6 @@ import TestGroupedList from './TestGroupedList';
 //nav-ui
 import TestCRUDList from '@/composition/testCrudList';
 //preview-ui
-import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
 //jsontree-ui
 import JsonTreeDemo from '@/components/presenter/tree/JsonTree/Sandbox'
 //apis-ui
@@ -104,7 +103,7 @@ export default function Index(props) {
   // function onItemClickHandle(data) {
   //   console.log('data111111 = ', data)
   // }
-  
+
 
   // history.push('/TestUserListDemo');
   //通过跳转进入单选页面
@@ -138,7 +137,7 @@ export default function Index(props) {
   // }
   // return <TestCRUDList />
   // return <AvatarSelected />
-  // return <SelectCart />
+  return <SelectCart />
   // return <RssCssAutoLayout />
   // return <AppList />
   // return <ManagePage />
@@ -149,9 +148,14 @@ export default function Index(props) {
   // return <AlbumList/>
   // return <RssContent/>
   // return <SelectLayout/>
-  return <SelectModulesCart/>
+  // return <SelectModulesCart/>
 
   // return <RssList/>
+  // return (
+  //   <CssCart width='300px' margin='40px'>
+  //     <TestCart />
+  //   </CssCart>
+  // )
   // return <RssAutoLayout/>
 
 

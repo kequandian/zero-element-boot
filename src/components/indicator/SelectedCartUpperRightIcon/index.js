@@ -54,6 +54,7 @@ export default forwardRef(function SelectedCartUpperRightIcon(props, ref) {
     }
 
     console.log('state = ', state)
+    console.log('props = ', props)
 
     if(state == 'selected'){
       bgColor = activeColor;

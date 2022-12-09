@@ -8,8 +8,8 @@ export default function Index(props) {
 
     let endpoint='http://static.smallsaas.cn'
 
-    // let api =  '/openapi/lc/components/components/cart'
     let api =  '/openapi/lc/module/modules/cart'
+    // let api =  '/openapi/lc/components/components/gateway'
     // let api =  '/openapi/lc/components/components/layout'
 
     const [items, setItems] = useState('')

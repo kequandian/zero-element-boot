@@ -8,8 +8,8 @@ export default function Index(props) {
 
     let endpoint='http://static.smallsaas.cn'
 
-    // let api =  '/openapi/lc/components/components/cart'
-    let api =  '/openapi/lc/components/components/gateway'
+    let api =  '/openapi/lc/components/components/cart'
+    // let api =  '/openapi/lc/components/components/gateway'
     // let api =  '/openapi/lc/components/components/layout'
 
     const [items, setItems] = useState('')
@@ -27,7 +27,6 @@ export default function Index(props) {
                 console.error("获取api path 数据失败")
             }
         });
-
     }
     
     const data = {

@@ -18,8 +18,10 @@ module.exports = {
           alignItems: "center",
           justifyContent: "center",
           w: '100%',
-          fontWeight:'bold',
-          lineHeight:'3px'
+          fontWeight: 'bold',
+          lineHeight: '34px',
+      fontSize: '18px'
+
         }
       },
 
@@ -38,11 +40,10 @@ module.exports = {
 
       width: '',
       height: '',
-      padding: '10px 0 20px',
+      padding: '10px 20px 20px',
       margin: '0',
       linewidth: 0,
-      fill: '#edf2f7'
-
+      fill: '#edf2f7',
     }
   },
 
