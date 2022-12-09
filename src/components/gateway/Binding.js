@@ -5,11 +5,18 @@ import React from 'react';
  * 
  */
 export default function Binding({ children, binding={}, dataSource, ...rest}) {
-  const data = doBind(binding, (dataSource ? dataSource : rest) )
+  //旧代码
+  // const data = doBind(binding, (dataSource ? dataSource : rest) )
 
+  //只获取 binding数据 或 数据源
+  const data = binding && JSON.stringify(binding) !== '{}' ? doBind(binding, (dataSource ? dataSource : rest) ) : rest
+
+  /**
+   * 注释了 ...rest 
+   */
   const childrenList = React.Children.toArray(children);
   return childrenList.map(child => React.cloneElement(child, {
-    ...rest,
+    // ...rest,
     ...data,
   }))
 }

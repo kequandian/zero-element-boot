@@ -106,7 +106,7 @@ export default function Index(props) {
 
   // return <Connection/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  return <ApisUi {...props}/> 
+  return <PreviewAutoLayout {...props}/> 
 
   // return (
   // <CssCart width='300px' margin='40px'>

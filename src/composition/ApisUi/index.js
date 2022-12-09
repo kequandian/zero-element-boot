@@ -118,6 +118,12 @@ export default function Index(props) {
         setIsShowList(false)
     }
 
+    const handlePageClick = (event) => {
+        console.log(
+            event
+        );
+    };
+
     return (
         <ChakraProvider>
             <Flex>
@@ -166,7 +172,15 @@ export default function Index(props) {
                                     <AutoLayout {...config} onItemClick={onApiItemClick} onItemDeleted={onDelAction}>
                                     </AutoLayout>
                                     <div style={{margin:'15px 0 15px 0'}}>
-                                        <Pagintion/>
+                                        <Pagintion
+                                            breakLabel="..."
+                                            nextLabel="next >"
+                                            onPageChange={handlePageClick}
+                                            pageRangeDisplayed={5}
+                                            pageCount={23}
+                                            previousLabel="< previous"
+                                            renderOnZeroPageCount={null}
+                                        />
                                     </div>
                                 </>
                             ): <></>
