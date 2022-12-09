@@ -10,7 +10,6 @@ export default function Index(props) {
 
   const { ...rest } = props;
 
-
   let api = '/api/u/rss/master'
 
   const [items, setItems] = useState('')

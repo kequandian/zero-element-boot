@@ -8,13 +8,15 @@ export default function Index(props) {
 
     let endpoint='http://static.smallsaas.cn'
 
-    let api =  '/openapi/lc/components/components/cart'
+    // let api =  '/openapi/lc/components/components/cart'
+    let api =  '/openapi/lc/components/components/gateway'
+    // let api =  '/openapi/lc/components/components/layout'
 
     const [items, setItems] = useState('')
 
     useEffect(_ => {
         getApiUrl()
-    })
+    },[])
 
     function getApiUrl() {
         const queryData = {};
@@ -27,27 +29,14 @@ export default function Index(props) {
         });
 
     }
-    // console.log('items1111111111111111111===', items)
-
-    const itemaa=[
-        {
-            componentName:"Cart"
-        },
-        {
-            componentName:"HCenter"
-        },
-        {
-            componentName:"HCenter"
-        }
-    ]
-
+    
     const data = {
         direction: "column",
         // avatarUrl: 'https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png'
     }
     return (
         items && items.length> 0?(
-        <RssAutoLayout items={itemaa}  />)
+        <RssAutoLayout items={items}  />)
         :<></>
     )
 }

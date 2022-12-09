@@ -14,7 +14,7 @@ export default function Index(props) {
    * 页面配置
    */
   const config = {
-    items: items,
+    items: items && items.length> 0? items :[],
     layout: layout,
     ...rest
   };

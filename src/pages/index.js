@@ -80,12 +80,14 @@ import TestIndicator from './ATestIndicator'
 
 import CssCart from '@/components/cart/CssCart'
 import TestCart from '@/pages/TestCart'
-import ManageCart from '@/pages/ManageCart/Sandbox'
+import SelectCart from '@/pages/ManageCompoents/SelectCart/Sandbox'
 import ManagePage from '@/pages/ManagePage/Sandbox'
 import AppList from '@/pages/appList'
 import AlbumList from '@/pages/AlbumList'
 import RssList from '@/pages/rssList'
-import RssContent from '@/pages/rssContent'
+import RssContent from '@/pages/RssContent'
+import SelectLayout from '@/pages/ManageCompoents/SelectLayout'
+import SelectModulesCart from '@/pages/ManageModules/SelectModulesCart/Sandbox'
 import ImageManage from '@/pages/ImageManage'
 import RssCssAutoLayout from '@/pages/rssCssAutoLayout'
 
@@ -138,7 +140,7 @@ export default function Index(props) {
   // return <TestCRUDList />
 
   // return <AvatarSelected />
-  // return <ManageCart />
+  // return <SelectCart />
   // return <RssCssAutoLayout />
   // return <AppList />
   // return <ManagePage />
@@ -147,7 +149,10 @@ export default function Index(props) {
   // return <RssAutoLayout/>
   // return <ImageManage/>
   // return <AlbumList/>
-  return <RssContent/>
+  // return <RssContent/>
+  // return <SelectLayout/>
+  return <SelectModulesCart/>
+
   // return <RssList/>
   // return <RssAutoLayout/>
 

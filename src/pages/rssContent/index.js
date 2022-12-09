@@ -11,7 +11,7 @@ export default function Index(props) {
   const { ...rest } = props;
 
 
-  let api = '/api/u/rss/master/81'
+  let api = '/api/u/rss/master/80'
 
   const [items, setItems] = useState('')
 

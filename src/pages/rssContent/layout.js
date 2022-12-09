@@ -1,7 +1,7 @@
 module.exports = {
   xname: 'Gridbox',
   props: {
-    columns: "4",
+    columns: "1",
     gridRowGapSize: '20px',
     gridColumnGapSize: '20px'
 
@@ -11,16 +11,15 @@ module.exports = {
       {
         xname: 'Text',
         binding: {
-          "content": 'content'
+          "title": 'content'
         },
         props: {
           display: 'flex',
           alignItems: "center",
           justifyContent: "center",
           w: '100%',
-          textAlign: 'center',
-          marginTop: '10px',
-          fontWeight:'bold'
+          fontWeight:'bold',
+          lineHeight:'3px'
         }
       },
 
@@ -34,15 +33,15 @@ module.exports = {
     }
   },
   cart: {
-    xname: "CssCart",
+    xname: "Cart",
     props: {
 
-      width: '160px',
-      height: '90px',
+      width: '',
+      height: '',
       padding: '10px 0 20px',
       margin: '0',
       linewidth: 0,
-      backgroundColor: '#edf2f7'
+      fill: '#edf2f7'
 
     }
   },
