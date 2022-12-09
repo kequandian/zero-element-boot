@@ -47,6 +47,9 @@ import RightIconRadioHoverIndicator from '@/pages/SelectListDemo/indicator/Right
 import RightIconRadioSelectedIndicator from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Selected';
 import RightIconRadioDefault from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Default';
 
+import SelectedCartUpperRightIcon from '@/components/indicator/SelectedCartUpperRightIcon';
+import SelectedCartRightIcon from '@/components/indicator/SelectedCartRightIcon';
+
 //presenter
 import ItemImg from '@/pages/SelectListDemo/presenter/ItemImg'
 import ItemTitle from '@/pages/SelectListDemo/presenter/ItemTitle'
@@ -97,7 +100,10 @@ NamedIndicatorSet({
   DownloadIndicator,
   ClickIndicator,
   ManageMenuIndicator,
-  TagIndicator
+  TagIndicator,
+  
+  SelectedCartUpperRightIcon,
+  SelectedCartRightIcon,
 })
 
 NamedPresenterSet({

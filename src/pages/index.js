@@ -80,6 +80,7 @@ import TestIndicator from './ATestIndicator'
 import CssCart from '@/components/cart/CssCart'
 import TestCart from '@/pages/TestCart'
 import AlbumList from '@/pages/AlbumList'
+import SelectCart from '@/pages/SelectCart/Sandbox'
 
 
 export default function Index(props) {
@@ -106,7 +107,7 @@ export default function Index(props) {
 
   // return <Connection/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  return <PreviewAutoLayout {...props}/> 
+  return <SelectCart {...props}/> 
 
   // return (
   // <CssCart width='300px' margin='40px'>

@@ -24,12 +24,12 @@ export default function PreAutoLayout (props) {
   }
 
   //testLayoutName
-  const testLayoutJsonUrl = testLayoutName ? `http://192.168.3.224/previewautolayout/${testLayoutName}/layout.json` : ''
+  const testLayoutJsonUrl = testLayoutName ? `http://192.168.3.207/previewautolayout/${testLayoutName}/layout.json` : ''
   const testLayoutJsonObj = useTokenRequest({ api:testLayoutJsonUrl });
   const testLayoutJsonData = testLayoutJsonObj && testLayoutJsonObj[0] || {}
 
   //testBindingName
-  const testBindingJsonUrl = testBindingName ? `http://192.168.3.224/previewautolayout/${testBindingName}/binding.json` : ''
+  const testBindingJsonUrl = testBindingName ? `http://192.168.3.207/previewautolayout/${testBindingName}/binding.json` : ''
   const testBindingJsonObj = useTokenRequest({ api:testBindingJsonUrl });
   const testBindingJsonData = testBindingJsonObj && testBindingJsonObj[0] && { binding : testBindingJsonObj[0] } || {}
 
