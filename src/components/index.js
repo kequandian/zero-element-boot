@@ -111,8 +111,6 @@ NamedCartSet({
   // Page,
   // Rectangle,
   // Round: RoundCart,
-  SelectedCartUpperRightIcon,
-  SelectedCartRightIcon,
 })
 
 NamedIndicatorSet({
@@ -122,11 +120,13 @@ NamedIndicatorSet({
   // RightIconIndicatorDefault,
   // RightIconIndicatorHover,
   // RightIconIndicatorSelected
+  SelectedCartUpperRightIcon,
+  SelectedCartRightIcon,
   DownloadIndicator,
   ClickIndicator,
   ManageMenuIndicator,
   ShadowIndicator,
-  DeleteIndicator
+  DeleteIndicator,
 })
 
 NamedPresenterSet({
