@@ -65,7 +65,7 @@ export default function (props) {
 
   const allComponents = { PreviewItem }
 
-  const layoutData = testLayout
+  const layoutData = {}
 
   return (
     <>
