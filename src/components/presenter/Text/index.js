@@ -4,9 +4,8 @@ import { Text } from "@chakra-ui/react";
 
 /**
  * 
- * @param { string } comment 展示的数据
- * @param { object } others Text样式，通过 props:{} 设置
- * 
+ * @param { string } content 展示的数据
+ * 其他参数，参考chakra-ui/Text 的组件参数说明: https://chakra-ui.com/docs/components/text
  */
 
 export default function Index(props) {

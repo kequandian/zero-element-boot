@@ -48,7 +48,7 @@ export default function PreAutoLayout (props) {
   const respLayoutData = useTokenRequest({ api: localLayoutApi });
   const respLayoutDataRecords = respLayoutData && respLayoutData[0]
 
-  let bindingApi = `/openapi/lc/module/getAutoLayout/${bindingName}`
+  let bindingApi =  bindingName ? `/openapi/lc/bindings/${bindingName}` : ''
   // 从bindingApi获取bindingJson
   const respBindingData = useTokenRequest({ api: bindingApi });
   const respBindingJsonData = respBindingData && respBindingData[0]
@@ -80,7 +80,7 @@ export default function PreAutoLayout (props) {
     records && records.length > 0 && layoutJson && JSON.stringify(layoutJson) !== '{}' ? (
       <ChakraProvider>
         <Box spacing='3px'>
-          <AutoLayout {...config} onItemClick={onPreviewItemClick} {...bindingJson}/>
+          <AutoLayout {...config} onItemClick={onPreviewItemClick} binding={bindingJson}/>
         </Box>
       </ChakraProvider>
     ):<></>

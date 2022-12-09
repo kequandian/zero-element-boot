@@ -66,7 +66,7 @@ import TestGroupedList from './TestGroupedList';
 //nav-ui
 import TestCRUDList from '@/composition/testCrudList';
 //preview-ui
-import PreviewAutoLayoutDemo from '@/components/PreviewAutoLayout/Sandbox'
+import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
 //jsontree-ui
 import JsonTreeDemo from '@/components/presenter/tree/JsonTree/Sandbox'
 //apis-ui
@@ -116,7 +116,6 @@ export default function Index(props) {
 
   // return <Connection/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  // return <TestCRUDList {...props}/> 
 
   // return (
   // <CssCart width='300px' margin='40px'>
@@ -138,7 +137,6 @@ export default function Index(props) {
   //   ]
   // }
   // return <TestCRUDList />
-
   // return <AvatarSelected />
   // return <SelectCart />
   // return <RssCssAutoLayout />

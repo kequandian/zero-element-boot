@@ -32,10 +32,7 @@ require('./index.less')
    container:{}
  * 
  * @param { object } indicatorData 为上述 binding 处理的参数
- * @param { function } onItemAdded 新增
- * @param { function } onItemChanged 修改
  * @param { function } onItemDeleted 删除
- * @param { function } onItemIndicated 自定义传参, 例子： onItemIndicated("indicator": 'MangeMenuList', id: 'deleted',  data{})
  * @param { object } action 删除API  
  * 
  */
@@ -46,8 +43,8 @@ export default function Index(props) {
         children, 
         action,
         indicatorData,
-        onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
-        op,
+        onItemDeleted,
+        isDisabled,
         ...rest
     } = props;
 
@@ -105,7 +102,7 @@ export default function Index(props) {
                 ))
             }
             {
-                op ? (
+                isDisabled ? (
                     <div className='del_icon_container' style={{...rest}}>
                         <div className='del_icon' onClick={()=>showDelModel()}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#5E6267" className="bi bi-trash3" viewBox="0 0 16 16">
