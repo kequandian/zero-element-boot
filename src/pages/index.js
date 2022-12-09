@@ -137,7 +137,7 @@ export default function Index(props) {
   // }
   // return <TestCRUDList />
   // return <AvatarSelected />
-  return <SelectCart />
+  // return <SelectCart />
   // return <RssCssAutoLayout />
   // return <AppList />
   // return <ManagePage />
@@ -145,7 +145,7 @@ export default function Index(props) {
   // return <TestCRUDList />
   // return <RssAutoLayout/>
   // return <ImageManage/>
-  // return <AlbumList/>
+  return <AlbumList/>
   // return <RssContent/>
   // return <SelectLayout/>
   // return <SelectModulesCart/>

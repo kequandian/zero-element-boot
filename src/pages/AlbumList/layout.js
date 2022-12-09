@@ -1,10 +1,7 @@
 module.exports = {
   xname: 'Gridbox',
   props: {
-    columns: "8",
-    gridRowGapSize: '20px',
-    gridColumnGapSize: '20px'
-
+    columns: "12",
   },
   presenter: {
     children: [
@@ -17,17 +14,6 @@ module.exports = {
           "size": "100"
         }
       },
-      // {
-      //   xname: 'Text',
-      //   binding: {
-      //     "name": 'content'
-      //   },
-      //   props: {
-      //     w: '100%',
-      //     textAlign: 'center',
-      //     marginTop: '10px'
-      //   }
-      // },
       {
         xname: 'Gridbox',
         props: {
@@ -52,11 +38,6 @@ module.exports = {
             xname: 'Text',
             binding: {
               "imageNumber": 'content',
-
-              // imageNumber: { content: 0 },
-              // _: {
-              //   content: "{共0张}"
-              // }
             },
             props: {
               w: '30px',
@@ -83,7 +64,7 @@ module.exports = {
       width: '100px',
       height: '30px',
       padding: '10px 0 4px',
-      margin: '0 0 0 10px',
+      margin: '10px 0 0 10px',
       linewidth: 0,
       fill: '#edf2f7'
 

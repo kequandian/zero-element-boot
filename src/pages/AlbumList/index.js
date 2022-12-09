@@ -46,7 +46,7 @@ export default function Index(props) {
 
   return (
     <ChakraProvider>
-      <Box padding='30px 20px' w='1000px'  >
+      <Box padding='30px 20px' w=''  >
         <AutoLayout {...config} isSwitch={true} />
       </Box>
     </ChakraProvider>

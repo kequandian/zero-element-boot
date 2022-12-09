@@ -1,7 +1,7 @@
 module.exports = {
   xname: 'Gridbox',
   props: {
-    columns: "4"
+    columns: "3"
   },
   presenter: {
     children: [
@@ -37,9 +37,10 @@ module.exports = {
     }
   },
   cart: {
-    xname: "Cart",
+    xname: "CssCart",
     props: {
-      linewidth: '0',
+      width:'130px',
+      backgroundColor: '',
       fill: '#edf2f7',
       padding: '30px 40px',
       margin: '0'
