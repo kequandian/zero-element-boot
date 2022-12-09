@@ -111,7 +111,7 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
   const _layoutBinding = layoutBinding || binding
   const _layoutGateway = layoutGateway || gateway
   const _gateway = _layoutGateway ? (typeof _layoutGateway==='string' ? { xname: _layoutGateway } : sugarGateway(_layoutGateway)) : undefined
-  const _NamedGateway = _gateway ? NamedGateway : NextIndicator;
+  const _NamedGateway = _layoutBinding || _gateway ? NamedGateway : NextIndicator;
 
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
@@ -155,7 +155,6 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
 
       const __NamedCart = _data_cart ? NamedCart : NextIndicator;
       const __NamedGateway = (_data_binding || _data_gateway) ? NamedGateway : NextIndicator;
-
       const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
       return (
         <__NamedGateway binding={_data_binding} gateway={_data_gateway} {..._rest}>
@@ -171,7 +170,6 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
 
  // xname use for layout, use default VStack
   const __xname = xname || 'VStack'
-    
   return layoutChildren ? (
     <Container {..._container} {...data} navigation={navigation}>
         <NamedLayout xname={__xname} props={props} __>
