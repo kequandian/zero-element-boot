@@ -1,16 +1,12 @@
 import { Box, Center, Flex, Stack } from '@chakra-ui/layout';
 import React from 'react';
-import PageSection from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSectionTitle';
-import TagIndicator from '@/components/indicator/TagIndicator'
+import PageSection from './PageSection';
 
 export default function index(props) {
 
     const { keyName, ...data } = props
 
     const values = data[keyName]
-
-    // console.log('props ==', props)
-    // console.log('keyNamessss ==', keyName)
 
     return (
         <>
