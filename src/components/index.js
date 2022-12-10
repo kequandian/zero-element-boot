@@ -14,8 +14,7 @@ import AutoLayout from './AutoLayout';
 // import  { CloneAutoLayout }  from './CloneAutoLayout';
 import AutoComponent from './AutoComponent';
 
-import APIContainer from './container/APIContainer';
-import TabContainer from './container/TabContainer';
+import {APIContainer, Container, TabContainer, WxPage} from './container';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -181,5 +180,8 @@ export {
     
     //
     APIContainer,
-    TabContainer
+    Container,
+    TabContainer,
+    WxPage,
 };
+

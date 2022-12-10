@@ -134,11 +134,11 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
       const _data_binding = _layoutBinding || _binding
       const _data_presenter = presenter || _presenter
 
-      // all props (xname, props, binding, cart, indicator) from within presenter
+      // all props (xname, props) from within presenter
       const _____presenterName = _data_presenter ? ((typeof _data_presenter === 'string')? _data_presenter : _data_presenter.xname) : undefined  //local presenter
-      const _____presenter = ((_data_presenter && _data_presenter.props) ? _data_presenter.props : {}) || {}
+      const _____presenter = ((_data_presenter && _data_presenter.props) ? _data_presenter.props : undefined) || undefined
 
-      // TODO, should not support
+      // TODO, should not support, keep it
       // const _____presenterCart = ((_data_presenter && _data_presenter.cart) ? _data_presenter.cart : undefined) || undefined
       // const _____presenterIndicator = ((_data_presenter && _data_presenter.indicator) ? _data_presenter.indicator : undefined) || undefined
       // const _____presenterBinding = ((_data_presenter && _data_presenter.binding) ? _data_presenter.binding : {}) || {}
@@ -151,7 +151,8 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
       // deprecated
 
       const __presenterName = _xname || _____presenterName ||  tips(_xname);
-      const __presenter = _props || _____presenter || {};
+      const __presenter = _____presenter || _props;
+      console.log('AutoLayout.__presenter=', __presenter)
 
       const __NamedCart = _data_cart ? NamedCart : NextIndicator;
       const __NamedGateway = (_data_binding || _data_gateway) ? NamedGateway : NextIndicator;
