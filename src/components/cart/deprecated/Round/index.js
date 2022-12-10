@@ -57,7 +57,7 @@ export default forwardRef(function Round(props, ref) {
       </div>
 
     <svg ref={containerRef}>
-        <rect x="5" y="5" rx={radiusSize} ry={radiusSize} width={size.width} height={size} style="fill:red;stroke:black;stroke-width:5;opacity:0.5">
+        <rect x="5" y="5" rx={radiusSize} ry={radiusSize} width={size.width} height={size} style="fill:red;stroke:black;strokeWidth:5;opacity:0.5">
          {child}
         </rect>
       </svg>

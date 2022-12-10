@@ -7,12 +7,9 @@ import React from 'react';
  * 
  * @returns 
  */
-export default function index(props) {
-
+export default function CssCart(props) {
 
   const { children, ...style }=props;
-
-
 
   return React.Children.map(children, child => {
     return <div  style={{ ...style}} >

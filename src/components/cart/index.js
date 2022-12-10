@@ -6,8 +6,9 @@ import HoverShadowCart from './HoverShadowCart';
 // import HightlightCart from './deprecated/HightlightCart';
 import SelectCart from './SelectCart';
 // import Circle from './deprecated/Circle';
-import PageCart from './PageCart';
-// import Page from './deprecated/Page';
+import HCenter from './HCenter';
+import PageCenter from './PageCenter';
+
 
 // indicator
 import SelectIndicatorCart from '../indicator/SelectIndicatorCart';
@@ -21,7 +22,8 @@ export {
     // HightlightCart,
     SelectCart,
     // Circle,
-    PageCart,
+    HCenter,
+    PageCenter,
     // Page,
 
     SelectIndicatorCart,

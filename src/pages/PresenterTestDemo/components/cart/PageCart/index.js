@@ -1,7 +1,7 @@
 import React,{forwardRef, useState } from 'react';
 
 
-export default forwardRef(function PageCart(props, ref){
+export default forwardRef(function PageCenter(props, ref){
 
 
     const {display='flex',alignItems='center',backgroundColor='#D2E9FF' ,children,width='100%',height='1000px',cursor='pointer'}=props

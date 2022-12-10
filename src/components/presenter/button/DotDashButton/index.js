@@ -28,7 +28,7 @@ export default function Index(props) {
     return (
         <div style={baseStyle} onClick={onDashClick} >
             <svg width='100%' height='100%' >
-                <circle cx="50%" cy="50%" r={0.3 * size} stroke={borderColor} stroke-width="1.2" fill={fill} />
+                <circle cx="50%" cy="50%" r={0.3 * size} stroke={borderColor} strokeWidth="1.2" fill={fill} />
                 <line x1="50%" y1="35%" x2="50%" y2="65%" stroke={color} strokeWidth='1.2' />
                 <line x1="35%" y1="50%" x2="65%" y2="50%" stroke={color} strokeWidth='1.2' />
 

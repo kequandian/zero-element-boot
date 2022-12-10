@@ -23,7 +23,7 @@ export default function Index(props) {
     <div style={styles}>
         <svg  width='100%' height='100%'>
             <rect width="50%" height="50%" x="15%" y="25%" fill={fill}></rect>
-            {/* <circle cx="40%" cy="50%" r="28%" stroke="transparent" stroke-width="3" fill={fill}/> */}
+            {/* <circle cx="40%" cy="50%" r="28%" stroke="transparent" strokeWidth="3" fill={fill}/> */}
             <line x1="39.7%" y1="33.5%" x2="57%" y2="43%" stroke="#7cbf16" strokeWidth='2.27%' />
             <line x1="40.8%" y1="33.5%" x2="22.3%" y2="43%" stroke="#7cbf16" strokeWidth='2.27%' />
             <line x1="26%" y1="41.4%" x2="26%" y2="64.38%" stroke="#7cbf16 "strokeWidth='3.67%' />

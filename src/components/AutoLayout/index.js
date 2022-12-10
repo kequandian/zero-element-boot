@@ -152,7 +152,6 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
 
       const __presenterName = _xname || _____presenterName ||  tips(_xname);
       const __presenter = _____presenter || _props;
-      console.log('AutoLayout.__presenter=', __presenter)
 
       const __NamedCart = _data_cart ? NamedCart : NextIndicator;
       const __NamedGateway = (_data_binding || _data_gateway) ? NamedGateway : NextIndicator;

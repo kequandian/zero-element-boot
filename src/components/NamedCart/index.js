@@ -41,7 +41,8 @@ export default function NamedCart(nameCartPropsx) {
   const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
 
   const cartName = (typeof cart === 'string') ? cart : cart.xname
-  const _Cart = _CartSet[cartName] || NextIndicator;
+  const _Cart = cartName ? (_CartSet[cartName] || tips(cartName)) : NextIndicator;
+  const _cart = cart.props || {}
 
   // get indicator
   const _indicator = cart.indicator
@@ -67,7 +68,7 @@ export default function NamedCart(nameCartPropsx) {
   const unselectorName = _unselector ? ((typeof _unselector === 'string') ? _unselector : ((typeof _unselector === 'object') ? _unselector.xname : '')) : ''
   const _Unselector  = unselectorName ? _IndicatorSet[unselectorName] : undefined
   const unselectorProps = (unselectorName && (typeof _unselector === 'object')) ? _unselector.props : {}
-  
+
   return (
     <>
       {
@@ -88,7 +89,7 @@ export default function NamedCart(nameCartPropsx) {
                              hoverIndicator={_Indicator}  hoverIndicatorProps = {indicatorProps}
                              indicatorData={_indicatorData} 
                  isSelected={isSelected} >
-                <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
+                <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
             </OverlaySelector>
         ) : 
         (
@@ -100,11 +101,11 @@ export default function NamedCart(nameCartPropsx) {
                 onItemChanged={onItemChanged} 
                 onItemIndicated={onItemIndicated}
               >
-                  <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
+                  <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
               </NamedIndicator>
             ):
             (
-              <_CartModule children={children} Cart={_Cart} props={cart.props} data={rest} /> 
+              <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
             )
         )
       }
