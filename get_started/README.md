@@ -71,13 +71,10 @@ import Clean from '@/presenter/default/Clean'
 import Pink from '@/presenter/default/Pink'
 import Flexbox from '@/components/layout/Flexbox'
 import Container from '@/components/container/Container'
-import PageCart from '@/components/cart/PageCart';
-
 
 
 export default function TestCart(props){
     return(
-        <PageCart>
         <Container>
             <Flexbox align="around" justify="center">
                 <Butter />
@@ -85,7 +82,6 @@ export default function TestCart(props){
                 <Pink />
             </Flexbox>
         </Container>
-        </PageCart>
     )
 }
 ```
@@ -97,7 +93,6 @@ import Butter from '@/presenter/default/Butter'
 import Clean from '@/presenter/default/Clean'
 import Pink from '@/presenter/default/Pink'
 import NamedLayout from '@/components/NamedLayout'
-
 
 
 export default function TestCart(props){
