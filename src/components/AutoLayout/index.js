@@ -94,24 +94,32 @@ export default function (props) {
 //2021-11-10
 //新增 layout 新增 navigation 属性
 
-function AutoLayout({ children, layout, binding, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource, 
-  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, ...rest }) {
+function AutoLayout({ children, layout, binding, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource={}, 
+  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, alternative, alternativeActive, onAlternativeBack, ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
   const { xname, props, container, binding:layoutBinding, gateway:layoutGateway, cart, indicator, selector, unselector, presenter, navigation, children: layoutChildren,
-    alternativeActive=false, alternative,
+    alternative:layoutAlternative, alternativeActive:layoutAlternativeActive,
   } = sugarLayout(layout) || {};
-  const data = dataSource || rest || {}
-  // console.log('AutoLayout.container=', container)
 
-  if(alternativeActive){
-    const notnull_alternative = alternative || tips('alternative')
+  // const data = dataSource || rest || {}
+  const data = {...dataSource, ...rest}
+
+  if(alternativeActive || layoutAlternativeActive){
+    const notnull_alternative = alternative || layoutAlternative || tips('alternative')
     const alternative_layout = (typeof notnull_alternative ==='string') ? ({xname: notnull_alternative}) : (notnull_alternative.layout ?  notnull_alternative.layout : notnull_alternative)
 
     // exclude layout
     const {layout, dataSource, ...alternativeOthers} = notnull_alternative
 
-    return <AutoLayout layout={alternative_layout} dataSource={dataSource} {...alternativeOthers} />
+    // alternativeBack
+    const { _Component: _AlternativeBack, _component: _alternativeBack} = getComponent(alternative.alternativeBack, DefaultIndicatorGet())
+
+    return (
+      <_AlternativeBack {..._alternativeBack} onBack={onAlternativeBack} >
+        <AutoLayout layout={alternative_layout} dataSource={data} {...alternativeOthers} />
+      </_AlternativeBack>
+    )
   }
   
   // Cart
@@ -352,4 +360,15 @@ function sugarGateway(gateway){
 //   return (obj && typeof (obj) == "object" && obj.xname) && 
 //          (obj.presenter || (obj.children && Object.prototype.toString.call(obj.children).toLowerCase() == "[object array]" && obj.children.length > 0 ))
 // }
+
+function getComponent(component, componentSet){
+  const notnull_component = component || {}
+  const componentName = (typeof notnull_component==='string') ? notnull_component : notnull_component.xname
+
+  const _Component = componentName ? (componentSet[componentName] || tips(componentName)) : NextIndicator
+  
+  const _component = (typeof notnull_component==='string') ? {} : notnull_component.props
+
+  return {_Component, _component}
+}
 

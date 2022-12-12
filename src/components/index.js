@@ -58,6 +58,7 @@ import ClickIndicator from './indicator/ClickIndicator'
 import ManageMenuIndicator from './indicator/ManageMenuIndicator'
 import ShadowIndicator from './indicator/ShadowIndicator';
 import DeleteIndicator from './indicator/DeleteIndicator';
+import BackIndicator from './indicator/BackIndicator';
 
 // import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
 // import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
@@ -129,6 +130,7 @@ NamedIndicatorSet({
   ManageMenuIndicator,
   ShadowIndicator,
   DeleteIndicator,
+  BackIndicator
 })
 
 NamedPresenterSet({

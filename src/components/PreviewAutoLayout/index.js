@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ChakraProvider, Box } from "@chakra-ui/react";
 import  AutoLayout  from '@/components/AutoLayout';
 import useTokenRequest from '@/components/hooks/useTokenRequest';
@@ -14,6 +14,10 @@ export default function PreAutoLayout (props) {
     testLayoutName, testBindingName, 
     ...rest
   } = props;
+
+  
+  const [dataSource, setDataSource] = useState('')
+  const [ alternativeActive, setAlternativeActive ] = useState(false)
 
   // 判断 layoutApi 是否为空，如果为空，则用 layoutName 拼接api路径
   let localLayoutApi = ''
@@ -70,17 +74,36 @@ export default function PreAutoLayout (props) {
   const onPreviewItemClick = (item) => {
     //TODO
     console.log(item, ' === item')
+    setDataSource(item)
+    setAlternativeActive(true)
   }
 
   //binding
   const bindingJson = (testBindingJsonData && JSON.stringify(testBindingJsonData) !== '{}' && testBindingJsonData) || 
     (respBindingJsonData && JSON.stringify(respBindingJsonData) !== '{}' && respBindingJsonData) || {}
 
+    
+  const alternative = {
+      alternativeBack: 'BackIndicator',
+      xname: "ItemPlaceholder"
+  }
+
+  const onAlterNavBack = () => {
+      console.log('返回')
+      setDataSource('')
+      setAlternativeActive(false)
+  }
+
   return (
     records && records.length > 0 && layoutJson && JSON.stringify(layoutJson) !== '{}' ? (
       <ChakraProvider>
         <Box spacing='3px'>
-          <AutoLayout {...config} onItemClick={onPreviewItemClick} binding={bindingJson}/>
+          <AutoLayout {...config} onItemClick={onPreviewItemClick} binding={bindingJson}
+            alternativeActive={alternativeActive}
+            alternative={alternative}
+            dataSource={dataSource}
+            onAlternativeBack={onAlterNavBack}
+          />
         </Box>
       </ChakraProvider>
     ):<></>

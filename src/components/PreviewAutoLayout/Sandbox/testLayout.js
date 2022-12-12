@@ -39,9 +39,6 @@ const testPlainList =
             }
         ],
     },
-    // alternative:{
-    //     "xname":"ItemPlaceholder"
-    // }
 }
 
 const doubleList = {

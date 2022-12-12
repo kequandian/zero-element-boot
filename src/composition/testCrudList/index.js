@@ -89,25 +89,15 @@ export default function Index(props) {
 
     //列表item点击事件
     const onNavItemClick = (item) => {
-        const id = item.id;
-        // console.log('id = ', id)
-        // alert(`选择的用户id为: ${id}`)
+        // const id = item.id;
         //点击跳转页面
         if (item.url.indexOf('http') != -1) {
-          // window.location.replace(item.path)
-    
-          // history.push(url);
           const w = window.open('about:blank');
           w.location.href = item.url
-        //   console.log(item.path);
-    
         } else {
           const w = window.open('about:blank');
           const host = getEndpoint || location.host
           w.location.href = host + item.url
-    
-        //   console.log(host);
-    
         }
     }
 
@@ -248,7 +238,7 @@ export default function Index(props) {
                                                 onItemAdded={addAction}
                                                 onItemChanged={updateAction}
                                                 onItemIndicated={indicatedAction}
-                                                isSwitch={switchStatus} 
+                                                isSwitch={switchStatus}
                                             />
                                         </Box>
                                     )}

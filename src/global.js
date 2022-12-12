@@ -26,6 +26,7 @@ import ShadowIndicator from '@/components/indicator/ShadowIndicator';
 import DownloadIndicator from '@/components/indicator/DownloadIndicator'
 import ClickIndicator from '@/components/indicator/ClickIndicator'
 import ManageMenuIndicator from '@/components/indicator/ManageMenuIndicator'
+import BackIndicator from '@/components/indicator/BackIndicator';
 
 //presenter
 import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvatar'
@@ -101,6 +102,7 @@ NamedIndicatorSet({
   ClickIndicator,
   ManageMenuIndicator,
   TagIndicator,
+  BackIndicator,
   
   SelectedCartUpperRightIcon,
   SelectedCartRightIcon,
