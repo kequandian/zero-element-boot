@@ -101,16 +101,16 @@ export default forwardRef(function ManageList(props) {
     // setClickState('listItemClick')
     if (navigation) {
       if (navigation.path) {
-        const nav = navigation.detail;
-        if (nav.indexOf('(id)') === -1) {
+        const nav = navigation.path;
+        if (nav.indexOf('(') === -1) {
           history.push({
             pathname: nav,
             query: {
               itemData: item
             }
           })
-        } else if (nav.indexOf('(id)') > -1) {
-          const formatNav = nav.replace('(id)', item.id);
+        } else if (nav.indexOf('(') !== -1) {
+          const formatNav = formatParams(nav, item);
           history.push({
             pathname: formatNav,
             query: {
