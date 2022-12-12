@@ -23,6 +23,7 @@ import {
   Spinner,
   useToast,
 } from "@chakra-ui/react";
+import { getEndpoint } from '@/components/config/common';
 
 const promiseAjax = require('@/components/utils/request');
 const formItemTypeMap = require('@/components/config/formItemTypeConfig').get();
@@ -117,6 +118,14 @@ export default forwardRef(function ManageList(props) {
             }
           })
         }
+      } else if(navigation.link){
+        const link = navigation.link;
+        let linkStr = link.indexOf('(') !== -1 ? formatParams(link, item) : link;
+        if (!linkStr.startsWith('http')) {
+          linkStr = getEndpoint() + linkStr
+        } 
+        const w = window.open('about:blank');
+        w.location.href = linkStr
       } else if (onItemClick) {
         onItemClick(item)
       }
