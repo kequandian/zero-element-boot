@@ -184,7 +184,7 @@ export default forwardRef(function ManageList(props) {
     setLoading(true)
     promiseAjax(api, queryData).then(resp => {
       if (resp && resp.code === 200) {
-        setCurrentData(resp.data)
+        setCurrentData(resp.data || {})
       } else {
         console.error("获取数据失败")
       }

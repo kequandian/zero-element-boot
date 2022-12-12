@@ -98,9 +98,21 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
   onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
-  const { xname, props, container, binding:layoutBinding, gateway:layoutGateway, cart, indicator, selector, unselector, presenter, navigation, children: layoutChildren } = sugarLayout(layout) || {};
+  const { xname, props, container, binding:layoutBinding, gateway:layoutGateway, cart, indicator, selector, unselector, presenter, navigation, children: layoutChildren,
+    alternativeActive=false, alternative,
+  } = sugarLayout(layout) || {};
   const data = dataSource || rest || {}
   // console.log('AutoLayout.container=', container)
+
+  if(alternativeActive){
+    const notnull_alternative = alternative || tips('alternative')
+    const alternative_layout = (typeof notnull_alternative ==='string') ? ({xname: notnull_alternative}) : (notnull_alternative.layout ?  notnull_alternative.layout : notnull_alternative)
+
+    // exclude layout
+    const {layout, dataSource, ...alternativeOthers} = notnull_alternative
+
+    return <AutoLayout layout={alternative_layout} dataSource={dataSource} {...alternativeOthers} />
+  }
   
   // Cart
   const _align_cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || undefined
