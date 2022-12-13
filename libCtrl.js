@@ -12,3 +12,16 @@ fs.copy(`${srcPath}/assets`, `${distPath}/assets`)
 fs.remove(`${distPath}/pages`) 
   .then(() => console.log("pages folder deleted")) 
   .catch((e) => console.log(e));
+
+fs.remove(`${distPath}/plugins`) 
+  .then(() => console.log("plugins folder deleted")) 
+  .catch((e) => console.log(e));
+
+fs.remove(`${distPath}/presenter`) 
+  .then(() => console.log("presenter folder deleted")) 
+  .catch((e) => console.log(e));
+
+  
+fs.remove(`${distPath}/models`) 
+  .then(() => console.log("models folder deleted")) 
+  .catch((e) => console.log(e));

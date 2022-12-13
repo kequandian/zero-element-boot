@@ -1,7 +1,7 @@
 import React from 'react';
 const AutoComponent = require('@/components/AutoComponent');
 
-const { Title, Description } = require('@/presenter/demo');
+const { Title, Description } = require('@/components/presenter');
 
 export default function TextContent(props) {
 

@@ -29,6 +29,10 @@ import JsonTree from './tree/JsonTree'
 import TopBar from './app/TopBar'
 
 import Text from './Text'
+import Title from './Title'
+import Subtitle from './Subtitle';
+import Description from './Description'
+import ImageAnimation from './ImageAnimation'
 
 
 export {
@@ -64,5 +68,9 @@ export {
   // app
   TopBar,
 
-  Text
+  Text,
+  Title,
+  Subtitle,
+  Description,
+  ImageAnimation
 }

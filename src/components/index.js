@@ -69,8 +69,7 @@ import BackIndicator from './indicator/BackIndicator';
 // import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
 
 
-import {Avatar, DefaultAvatar, DownloadButton, ItemPlaceholder,AddNewButton, Text} from '@/components/presenter';
-import {Title, Subtitle} from '@/presenter/demo';
+import {Avatar, DefaultAvatar, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle} from '@/components/presenter';
 
 import { 
   AutoLoadList,
