@@ -1,8 +1,8 @@
 // default
 import Clean from './default/Clean';
-import Butter from './default/Butter/butter';
-import Pink from './default/Pink/pink';
-import Clear from './default/Clear/clear';
+import Butter from './default/Butter';
+import Pink from './default/Pink';
+import Clear from './default/Clear';
 // shape
 import Rectangle from './shape/Rectangle';
 import Circle from './shape/Circle';

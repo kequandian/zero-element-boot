@@ -52,6 +52,12 @@ import SelectedCartUpperRightIcon from '@/components/indicator/SelectedCartUpper
 import SelectedCartRightIcon from '@/components/indicator/SelectedCartRightIcon';
 
 //presenter
+import {
+Clean,
+Butter, 
+Pink,
+Clear } from '@/components/presenter'
+
 import ItemImg from '@/pages/SelectListDemo/presenter/ItemImg'
 import ItemTitle from '@/pages/SelectListDemo/presenter/ItemTitle'
 import RssAutoLayout from '@/pages/rssAutoLayout/item'
@@ -110,6 +116,12 @@ NamedIndicatorSet({
 
 NamedPresenterSet({
   ItemPlaceholder,
+
+  //default
+  Clean,
+  Clear,
+  Butter,
+  Pink,
 
   Avatar,
   Title,
