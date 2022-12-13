@@ -199,9 +199,11 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
             const __presenter = isJsonObject(child)? {layout: {...child}} : {}
 
             return (
-                <__Presenter {...__presenter} allComponents={allComponents}  key={i} 
-                  onItemClick={onItemClick}
-                />
+              <_NamedCart key={i} {...__cart} >
+                  <__Presenter {...__presenter} allComponents={allComponents}  key={i} 
+                    onItemClick={onItemClick}
+                  />
+              </_NamedCart>
             )
 
           }) : (

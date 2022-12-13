@@ -128,7 +128,9 @@
 {
     "children": [
         "Butter",
-        "Clean"
+        "Clean",
+        "Clear",
+        "Pink"
     ]
 }
 ```
@@ -141,7 +143,7 @@
         {
             "xname": "Avatar",
             "props":{
-                "url": "https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+                "url": "http://local.webtools.io/pepsi.png",
             }
         },
         {
@@ -149,9 +151,60 @@
             "props":{
                 "url": "https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
             }
-        },
+        }
+    ]
+}
+```
+
+### 为每个子组件增加统一的`Cart`
+
+```json
+{
+    "children": [
+        "Butter",
+        "Clean",
+        "Clear",
+        "Pink"
+    ],
+    "cart": "Cart"
+}
+```
+
+### 为每个子组件配置不同的`Cart`
+
+```json
+{
+    "cart": "Cart",
+    "children": [
         {
             "xname": "Butter"
+        },
+        {
+            "xname": "Clean",
+            "cart": {
+                "xname": "CssCart",
+                "props": {
+                    "background": "blue"
+                }
+            }
+        },
+        {
+            "xname": "Clear",
+            "cart": {
+                "xname": "CssCart",
+                "props": {
+                    "background": "green"
+                }
+            }
+        },
+        {
+            "xname": "Pink",
+            "cart": {
+                "xname": "CssCart",
+                "props": {
+                    "background": "black"
+                }
+            }
         }
     ]
 }
@@ -164,21 +217,10 @@
 {
     "xname": "Wrap",
     "children": [
-        {
-            "xname": "Avatar",
-            "props":{
-                "url": "https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
-            }
-        },
-        {
-            "xname": "Avatar",
-            "props":{
-                "url": "https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
-            }
-        },
-        {
-            "xname": "Butter"
-        }
+        "Butter",
+        "Clean",
+        "Clear",
+        "Pink"
     ]
 }
 ```
@@ -188,24 +230,13 @@
 {
     "xname": "Flexbox",
     "props": {
-		"direction":"column"
+		"direction":"row"
     },
     "children": [
-        {
-            "xname": "Avatar",
-            "props":{
-                "url": "https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
-            }
-        },
-        {
-            "xname": "Avatar",
-            "props":{
-                "url": "https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
-            }
-        },
-        {
-            "xname": "Butter"
-        }
+        "Butter",
+        "Clean",
+        "Clear",
+        "Pink"
     ]
 }
 ```
@@ -221,18 +252,16 @@
     },
     "children": [
         {
-            "presenter": {
-                "xname": "Avatar",
-                "props": {
-    				"size":"90"
-                }
+            "xname": "Avatar",
+            "props": {
+                "size":"90"
             },
             "binding":{
                 "avatarUrl":"url"
             }
         },
         {
-            "xname": "Butter",
+            "xname": "Clear",
             "binding":{
                 "color":"color"
             }
@@ -240,6 +269,10 @@
     ]
 }
 ```
+
+
+## 列表组件部分
+
 
 ### 配置`AutoLayout`列表组件
 > 带有 `presenter`, 并且`container`是一个列表组件, 即`presenter`是容器组件的子组件
@@ -584,4 +617,11 @@
   }
   ```
 
+
+## 单选或多选
   
+
+### 由多个子组件组成的单选组件
+
+### 由多个子组件组成的复选组件
+
