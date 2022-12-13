@@ -107,7 +107,11 @@ export default function Index(props) {
 
   // return <Connection/>
   // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  return <PreviewAutoLayout {...props}/> 
+  return (
+    <ChakraProvider>
+      <PreviewAutoLayout {...props} />
+    </ChakraProvider>
+  )
 
   // return (
   // <CssCart width='300px' margin='40px'>

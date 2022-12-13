@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import qs from 'qs';
-const promiseAjax = require('@/components/utils/request');
+// const promiseAjax = require('@/components/utils/request');
 
 import PreviewAutoLayout from '../index'
 import PreviewItem from './PreviewItem';
 // import { useSetState } from 'ahooks';
-import testLayout from './testLayout'
+// import testLayout from './testLayout'
 
 export default function (props) {
 

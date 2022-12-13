@@ -99,21 +99,21 @@ function AutoLayout({ children, layout, binding, gateway, allComponents = {}, on
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
   const { xname, props, container, binding:layoutBinding, gateway:layoutGateway, cart, indicator, selector, unselector, presenter, navigation, children: layoutChildren,
-    alternative:layoutAlternative, alternativeActive:layoutAlternativeActive,
+    alternative:layoutAlternative,
   } = sugarLayout(layout) || {};
 
   // const data = dataSource || rest || {}
   const data = {...dataSource, ...rest}
 
-  if(alternativeActive || layoutAlternativeActive){
-    const notnull_alternative = alternative || layoutAlternative || tips('alternative')
+  if(alternativeActive){
+    const notnull_alternative = (alternative && JSON.stringify(alternative) !== '{}' && alternative) || (layoutAlternative && JSON.stringify(layoutAlternative) !== '{}' && layoutAlternative) || tips('alternative')
     const alternative_layout = (typeof notnull_alternative ==='string') ? ({xname: notnull_alternative}) : (notnull_alternative.layout ?  notnull_alternative.layout : notnull_alternative)
 
     // exclude layout
-    const {layout, dataSource, ...alternativeOthers} = notnull_alternative
+    const {layout, ...alternativeOthers} = notnull_alternative
 
     // alternativeBack
-    const { _Component: _AlternativeBack, _component: _alternativeBack} = getComponent(alternative.alternativeBack, DefaultIndicatorGet())
+    const { _Component: _AlternativeBack, _component: _alternativeBack} = getComponent(notnull_alternative.alternativeBack, DefaultIndicatorGet())
 
     return (
       <_AlternativeBack {..._alternativeBack} onBack={onAlternativeBack} >

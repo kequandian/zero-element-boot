@@ -46,7 +46,7 @@ export default forwardRef(function ManageList(props) {
 
   const { children, layout,
     items, dataSource = items, currentTabItem,
-    navigation, addnew, onItemClick, cb, isSwitch = false, 
+    navigation, addnew, onItemClick, cb, isSwitch = true, 
     onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
     ...rest } = props;
 
@@ -342,9 +342,8 @@ export default forwardRef(function ManageList(props) {
 
   return <div
     style={{
-      overflow: 'auto',
+      overflowX: 'hidden',
       position: 'relative',
-      // alignItems: 'center'
       minHeight: '200px'
     }}
     className={getClassName()}
