@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import  AutoLayout  from '@/components/AutoLayout';
 import useTokenRequest from '@/components/hooks/useTokenRequest';
+const promiseAjax = require('@/components/utils/request');
 
 export default function PreAutoLayout (props) {
 
   // 参数
   const {
-    api, apiName, layoutData, layoutApi='', 
+    api, 
+    apiName, mockName,
+    layoutData, layoutApi='', 
     layoutName, 
     bindingName,
     layoutId, 
@@ -17,6 +20,24 @@ export default function PreAutoLayout (props) {
   
   const [dataSource, setDataSource] = useState('')
   const [ alternativeActive, setAlternativeActive ] = useState(false)
+
+  const [ mockData, setMockData ] = useState('')
+
+  useEffect(_=>{
+    if(mockName){
+      getLayouByMockName(mockName)
+    }
+  }, [mockName])
+
+
+  function getLayouByMockName(mockName){
+    const api = `http://192.168.3.223/previewautolayout/mock/${mockName}.json`
+      promiseAjax(api).then(resp => {
+          setMockData(resp)
+      }).finally(_ => {
+      });
+  }
+  
 
   // 判断 layoutApi 是否为空，如果为空，则用 layoutName 拼接api路径
   let localLayoutApi = ''
@@ -29,7 +50,7 @@ export default function PreAutoLayout (props) {
   //testLayoutName
   const testLayoutJsonUrl = testLayoutName ? `http://192.168.3.207/previewautolayout/${testLayoutName}/layout.json` : ''
   const testLayoutJsonObj = useTokenRequest({ api:testLayoutJsonUrl });
-  const testLayoutJsonData = testLayoutJsonObj && testLayoutJsonObj[0] || {}
+  const testLayoutJsonData = (testLayoutJsonObj && testLayoutJsonObj[0]) || {}
 
   //testBindingName
   const testBindingJsonUrl = testBindingName ? `http://192.168.3.207/previewautolayout/${testBindingName}/binding.json` : ''
@@ -37,15 +58,13 @@ export default function PreAutoLayout (props) {
   const testBindingJsonData = testBindingJsonObj && testBindingJsonObj[0] && { binding : testBindingJsonObj[0] } || {}
 
   //根据apiName 获取 API url
-  const apiNameUrl = apiName ? `/openapi/lc/apis/${apiName}`: ' '
+  const apiNameUrl = apiName ? `/openapi/lc/apis/${apiName}`: ''
   const resApiNameData = useTokenRequest({ api:apiNameUrl });
   const apiNameData = resApiNameData && resApiNameData[0]
 
   // 从api获取显示数据
-  const [ data ] = useTokenRequest({ api: api || apiNameData.api });
-  const records = data && data.records ? data.records : data && data.items ? data.items : (data || []);
-
-  const dataX = [{items: records}]
+  const [ data ] = useTokenRequest({ api: api || (apiNameData && apiNameData.api)  || '' });
+  const records = data && data.records ? data.records : data && data.items ? data.items : (data || mockData || []);
 
   // 从layoutApi获取layoutJson
   const respLayoutData = useTokenRequest({ api: localLayoutApi });
@@ -73,9 +92,12 @@ export default function PreAutoLayout (props) {
   const onPreviewItemClick = (item) => {
     //TODO
     console.log(item, ' === item')
-    setDataSource(item)
-    setAlternativeActive(true)
+    if(alternative && JSON.stringify(alternative) !== '{}' || layoutJson.alternative && JSON.stringify(layoutJson.alternative) !== '{}'){
+      setDataSource(item)
+      setAlternativeActive(true)
+    }
   }
+
 
   //binding
   const bindingJson = (testBindingJsonData && JSON.stringify(testBindingJsonData) !== '{}' && testBindingJsonData) || 

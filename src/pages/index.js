@@ -105,8 +105,7 @@ export default function Index(props) {
 
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
 
-  // return <Connection/>
-  // return <AutoComponentSet onItemClick={onItemClickHandle}/>
+  // return <TestCRUDList {...props} />
   return (
     <ChakraProvider>
       <PreviewAutoLayout {...props} />
