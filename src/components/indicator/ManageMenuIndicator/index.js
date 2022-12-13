@@ -126,7 +126,7 @@ export default function Index(props) {
             </div>
             
             <div className='menu_icon_container' style={{...rest}}>
-                <Menu>
+                <Menu offset={[1,1]}>
                     <MenuButton onClick={()=>clickAction(indicatorData, 'menuClick')}>
                         <div className='menu_icon'>
                             <MoreIcon />

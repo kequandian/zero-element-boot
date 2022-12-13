@@ -52,7 +52,7 @@ export default function Index(props) {
         let newNavCateList = []
         return promiseAjax(api, queryData).then(resp => {
             if (resp && resp.code === 200) {
-                newNavCateList = resp.data.records;
+                newNavCateList = resp.data && Array.isArray(resp.data) ? resp.data : resp.data.records;
 
                 //-1:新增  -2删除
                 newNavCateList.push({id:'-1'})
@@ -76,7 +76,7 @@ export default function Index(props) {
         setLoading(true)
         return promiseAjax(api, queryData).then(resp => {
             if (resp && resp.code === 200) {
-                const list = resp.data.records;
+                const list = resp.data && Array.isArray(resp.data) ? resp.data : resp.data.records;
                 setListData(list);
                 setLoading(false)
             } else {

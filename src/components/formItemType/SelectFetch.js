@@ -26,7 +26,8 @@ export default function SelectFetch(props) {
         setLoading(true)
         promiseAjax(api, queryData).then(resp => {
             if (resp && resp.code === 200) {
-                setData(resp.data.records)
+                const list = resp.data && Array.isArray(resp.data) ? resp.data : resp.data.records;
+                setData(list)
                 // if(onChange){
                 //     onChange(resp.data.records)
                 // }

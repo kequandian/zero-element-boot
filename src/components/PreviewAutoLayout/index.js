@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ChakraProvider, Box } from "@chakra-ui/react";
 import  AutoLayout  from '@/components/AutoLayout';
 import useTokenRequest from '@/components/hooks/useTokenRequest';
 
@@ -84,8 +83,8 @@ export default function PreAutoLayout (props) {
 
     
   const alternative = {
-      alternativeBack: 'BackIndicator',
-      xname: "ItemPlaceholder"
+      // alternativeBack: 'BackIndicator',
+      // xname: "ItemPlaceholder"
   }
 
   const onAlterNavBack = () => {
@@ -96,16 +95,12 @@ export default function PreAutoLayout (props) {
 
   return (
     records && records.length > 0 && layoutJson && JSON.stringify(layoutJson) !== '{}' ? (
-      <ChakraProvider>
-        <Box spacing='3px'>
-          <AutoLayout {...config} onItemClick={onPreviewItemClick} binding={bindingJson}
-            alternativeActive={alternativeActive}
-            alternative={alternative}
-            dataSource={dataSource}
-            onAlternativeBack={onAlterNavBack}
-          />
-        </Box>
-      </ChakraProvider>
+        <AutoLayout {...config} onItemClick={onPreviewItemClick} binding={bindingJson}
+          alternativeActive={alternativeActive}
+          alternative={alternative}
+          dataSource={dataSource}
+          onAlternativeBack={onAlterNavBack}
+        />
     ):<></>
   )
 }
