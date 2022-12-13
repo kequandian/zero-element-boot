@@ -1,12 +1,12 @@
 import React from 'react';
 const AutoComponent = require('@/components/AutoComponent');
 
-const { Author } = require('@/presenter/demo');
+const { Text } = require('@/components/presenter');
 
 export default function FootContent(props) {
 
   const allComponents = {
-    Author
+    Text
   }
 
   const config = {
@@ -17,7 +17,7 @@ export default function FootContent(props) {
       },
       children: [
         {
-          presenter: 'Author',
+          presenter: 'Text',
           gateway: {
             xname: 'Binding',
             props: {
@@ -28,7 +28,7 @@ export default function FootContent(props) {
           }
         },
         {
-          presenter: 'Author',
+          presenter: 'Text',
           gateway: {
             xname: 'Binding',
             props: {
