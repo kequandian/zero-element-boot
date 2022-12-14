@@ -113,6 +113,7 @@ NamedCartSet({
   // Page,
   // Rectangle,
   // Round: RoundCart,
+  NamedCart
 })
 
 NamedIndicatorSet({
