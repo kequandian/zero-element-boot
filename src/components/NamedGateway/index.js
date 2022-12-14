@@ -1,6 +1,7 @@
 const { bind } = require('lodash');
 const React = require('react');
 const DefaultGatewaySet = require('../gateway');
+const { default: NextIndicator } = require('../NextIndicator');
 
 /**
  * @param {可能是一个字符串名称} gateway
@@ -14,8 +15,7 @@ module.exports = function NamedGateway({children, xname, props, binding={}, chai
   const t_chain = Object.keys(chain).length==0? undefined : chain
   
   const gatewayName = (t_binding || t_chain) ? (t_binding?'Binding':"Chain") : ( (typeof gateway === 'string')? gateway : gateway.xname )
-  const Gateway =  GatewaySet[gatewayName] || tips(gatewayName);
-
+  const Gateway =  gatewayName ? (GatewaySet[gatewayName]||tips(gatewayName)) : NextIndicator;
 
   // __gateway means gateway props
   const ____gateway = (t_binding ? {binding: binding} : (t_chain? {chain: chain} : undefined)) || ((gateway && gateway.props) ? gateway.props : undefined ) || {}

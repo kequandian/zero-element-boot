@@ -107,7 +107,7 @@ export default function Index(props) {
   // return <TestCRUDList {...props} />
   return (
     <ChakraProvider>
-      <LogsUi {...props} />
+      <ApisUi {...props} />
     </ChakraProvider>
   )
 

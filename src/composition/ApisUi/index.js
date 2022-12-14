@@ -175,8 +175,7 @@ export default function Index(props) {
                             <AutoLayout {...config} onItemClick={onApiItemClick} onItemDeleted={onDelAction}>
                             </AutoLayout>
                             {/* <div style={{margin:'15px 0 15px 0'}}>
-                                <Pagintion totalPage={23}
-                                />
+                                <Pagintion total={23} current={1}/>
                             </div> */}
                         </>
                     ): <></>
