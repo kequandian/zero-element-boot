@@ -2,8 +2,8 @@ import React from 'react';
 
 /**
  * 多次数据转换
- * @param {string} dataField 读取的 props
- * 
+ * @param {array} chain 连续转换规则
+ * @param {objec} dataSource 数据源
  **/
 
 export default function Chain({ children, chain=[], dataSource, ...rest }) {
@@ -18,43 +18,56 @@ export default function Chain({ children, chain=[], dataSource, ...rest }) {
   }))
 }
 
-
 function doChain(chain, dataSource) {
+  // final result
   let chaindata = {}
 
-  chain.map(item =>{
+  chain.map(rule =>{
     // 
-    let itemData = {}
+    const itemData = {}
 
-    Object.keys(item).forEach(key => {
-       const data = (Object.keys(chaindata).length>0 ? chaindata : undefined) || dataSource
+    Object.keys(rule).forEach(key => {
 
-      // if key == _, means get item
+      // use new chaindata instead of dataSource
+      const data = (Object.keys(chaindata).length>0 ? chaindata : undefined) || dataSource
+
+      // if key == _, means get item, and general the first rule
       if(key === '_' && Array.isArray(data)){
-        const dataIndex = item[key]
+         //e.g.  "_": 0
+        const dataIndex = rule['_']
         const dataItem = data[dataIndex]
         itemData = {...dataItem, ...itemData}
         chaindata = itemData
 
       } else {
-        const keyValue = item[key]
+        const keyValue = rule[key]
 
-        if(Array.isArray(keyValue) && keyValue.length==0){
-          // if empty [], means only get the array expand the array 
-          itemData = data[key]
-          // clean up chaindata
-          chaindata = Array.isArray(chaindata) ?  (chaindata.concat(itemData)) : itemData
+          if(Array.isArray(keyValue) && keyValue.length==0){
+              //
+              // if empty [], means only get the array expand the array 
+
+              itemData = data[key]
+              // clean up chaindata
+              chaindata = Array.isArray(chaindata) ?  (chaindata.concat(itemData)) : itemData
           
         }else if(typeof keyValue === 'object' && Object.keys(keyValue).length==0){
-          // if empty {}, means get all the object
-          const dataKey = data[key]
-          itemData = {...dataKey, ...itemData}
+              //
+              // if empty {}, means get all the object
 
+              const dataKey = data[key]
+              itemData = {...dataKey, ...itemData}
+  
         }else if(typeof keyValue === 'string'){
-           // doBinding
-           itemData[keyValue] = data[key]
+              
+              // 
+              // do binding
 
-           delete chaindata[key];
+              // if index from chain data is null, then index from dataSource
+              itemData[keyValue] = data[key] || dataSource[key]
+  
+              if(chaindata[key]){
+                  delete chaindata[key];
+              }
         }
       }
 
@@ -64,6 +77,5 @@ function doChain(chain, dataSource) {
     chaindata =  Array.isArray(chaindata) ?  chaindata : {...itemData, ...chaindata}
   })
 
-  
   return { ...chaindata };
 }
