@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-    Flex, Center, Box, Stack, Spacer, VStack, Container, Button,
+    Center, Box, Stack, VStack, Button,
     InputGroup, Input, InputRightElement
 } from "@chakra-ui/react";
 import { AutoLayout } from '@/components';
@@ -91,6 +91,7 @@ export default function Index(props) {
 
     //搜索
     function searchApiList(searchValue) {
+        setIsLoading(true)
         //通过apiName获取API路径
         const api = `/openapi/crud/lc_low_auto_apis/lowAutoApis/lowAutoApises`;
         const queryData = {
@@ -107,6 +108,7 @@ export default function Index(props) {
                 console.error("获取 api 列表失败")
             }
         }).finally(_ => {
+            setIsLoading(false)
         });
     }
 
@@ -118,89 +120,83 @@ export default function Index(props) {
         setIsShowList(false)
     }
 
-    const handlePageClick = (event) => {
-        console.log(
-            event
-        );
-    };
+    function onKeyDown(e){
+        if(e.keyCode === 13){
+            handleSearchClick()
+        }
+    }
 
     return (
-            <Flex>
-                
-                <Box>
-                    <VStack spacing='3px'>
-                        <div style={{minWidth: '500px', width: '100%', height: '60px', lineHeight: '60px', backgroundColor: '#ffffff', padding:'20px 10px 10px 25px'}}>
-                            <Stack direction={['row']} w="500px" h='40px' spacing='10px' align='center'>
-                                <div style={{widht: '100px', height:'40px'}}>
-                                    <Center>
-                                        <Button w='100px' h="40px" colorScheme='blue' onClick={() => goHome()}>Home</Button>
-                                    </Center>
-                                </div>
-                                {
-                                    isShowList && (
-                                        <InputGroup size='md'>
-                                            <Input
-                                                pr='4.5rem'
-                                                type='text'
-                                                value={searchValue}
-                                                placeholder='Please Enter'
-                                                onChange={handleSearchValue}
-                                            />
-                                            <InputRightElement width='4.5rem'>
-                                                <Button h='1.75rem' size='sm' onClick={handleSearchClick}>
-                                                    Search
-                                                </Button>
-                                            </InputRightElement>
-                                        </InputGroup>
-                                    )
-                                }
-                                {
-                                    !isShowList && isShowBackBtn && listData.length > 0 && <Button w='100px' h="40px" colorScheme='blue' onClick={() => goBack()}>Back</Button>
-                                }
-                                {
-                                    isShowData && showApiDetail && (
-                                        <Button w='100px' h="40px" colorScheme='blue' onClick={() => getApiDetail()}>查看API</Button>
-                                    )
-                                }
-                            </Stack>
-                        </div>
-                        
-                        {
-                            isShowList ? (
-                                <>
-                                    <AutoLayout {...config} onItemClick={onApiItemClick} onItemDeleted={onDelAction}>
-                                    </AutoLayout>
-                                    {/* <div style={{margin:'15px 0 15px 0'}}>
-                                        <Pagintion
-                                            breakLabel="..."
-                                            nextLabel="next >"
-                                            onPageChange={handlePageClick}
-                                            pageRangeDisplayed={5}
-                                            pageCount={23}
-                                            previousLabel="< previous"
-                                            renderOnZeroPageCount={null}
-                                        />
-                                    </div> */}
-                                </>
-                            ): <></>
-                        }
-                        
-                        {
-                            isLoading ? (
-                                    <Loading styles={{marginTop: '60px'}}/>
-                            )
-                             : isShowData && showApiDetail ? (
-                                <div style={{width: '100%', paddingLeft:'25px'}}>
-                                    <Box flex='1'>
-                                        <div style={{background:'#ffffff', width:'100%', paddingTop: '15px'}}>
-                                            <JsonTree api={showApiDetail}/>
-                                        </div>
-                                    </Box>
-                                </div>
-                            ): <></>
-                        }
-                    </VStack>
-                </Box>
-            </Flex>
+        <VStack spacing='3px'>
+            <div style={{minWidth: '500px', width: '100%', height: '60px', lineHeight: '60px', backgroundColor: '#ffffff', padding:'20px 10px 10px 25px'}}>
+                <Stack direction={['row']} w="500px" h='40px' spacing='10px' align='center'>
+                    {
+                        isShowList && (
+                            <InputGroup size='md'>
+                                <Input
+                                    pr='4.5rem'
+                                    type='text'
+                                    value={searchValue}
+                                    placeholder='Please Enter'
+                                    onChange={handleSearchValue}
+                                    onKeyDown={onKeyDown}
+                                />
+                                <InputRightElement width='4.5rem'>
+                                    <Button h='1.75rem' size='sm' onClick={handleSearchClick}>
+                                        Search
+                                    </Button>
+                                </InputRightElement>
+                            </InputGroup>
+                        )
+                    }
+                    {
+                        !isShowList && isShowBackBtn && listData.length > 0 && <Button w='100px' h="35px" colorScheme='facebook' onClick={() => goBack()}>返回</Button>
+                    }
+                    {
+                        isShowData && showApiDetail && (
+                            <Button w='100px' h="35px" colorScheme='facebook' onClick={() => getApiDetail()}>查看API</Button>
+                        )
+                    }
+                    
+                    <Center>
+                        <Button w="35px" h="35px" borderRadius="4px" padding="9px" colorScheme='facebook' onClick={() => goHome()}>
+                            <svg t="1670998813604" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2149" fill="#ffffff" width="128" height="128"><path d="M960 416V192l-73.056 73.056a447.712 447.712 0 0 0-373.6-201.088C265.92 63.968 65.312 264.544 65.312 512S265.92 960.032 513.344 960.032a448.064 448.064 0 0 0 415.232-279.488 38.368 38.368 0 1 0-71.136-28.896 371.36 371.36 0 0 1-344.096 231.584C308.32 883.232 142.112 717.024 142.112 512S308.32 140.768 513.344 140.768c132.448 0 251.936 70.08 318.016 179.84L736 416h224z" p-id="2150"></path></svg>
+                        </Button>
+                    </Center>
+                </Stack>
+            </div>
+            
+            {
+                isLoading ? (
+                    <Loading styles={{marginTop: '60px'}}/>
+                ):(
+                    isShowList ? (
+                        <>
+                            <AutoLayout {...config} onItemClick={onApiItemClick} onItemDeleted={onDelAction}>
+                            </AutoLayout>
+                            {/* <div style={{margin:'15px 0 15px 0'}}>
+                                <Pagintion totalPage={23}
+                                />
+                            </div> */}
+                        </>
+                    ): <></>
+                )
+            }
+            
+            {
+                isLoading ? (
+                        <Loading styles={{marginTop: '60px'}}/>
+                )
+                    : isShowData && showApiDetail ? (
+                    <div style={{width: '100%', paddingLeft:'25px'}}>
+                        <Box flex='1'>
+                            <div style={{background:'#ffffff', width:'100%', paddingTop: '15px'}}>
+                                <JsonTree api={showApiDetail}/>
+                            </div>
+                        </Box>
+                    </div>
+                ): <></>
+            }
+        </VStack>
     )
 }
