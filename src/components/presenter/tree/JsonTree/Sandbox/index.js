@@ -50,7 +50,6 @@ export default function index(props) {
                         if(apiValue.indexOf('{') != -1 && params.layoutName){
                             apiValue = convertApiUrl(apiValue, params.layoutName)
                             getJsonDataByLayoutName(apiValue)
-                            setIsLoading(false)
                         }else{
                             getJsonDataByApi(apiValue)
                         }
