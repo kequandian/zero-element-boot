@@ -79,7 +79,6 @@ import TestIndicator from './ATestIndicator'
 
 import CssCart from '@/components/cart/CssCart'
 import TestCart from '@/pages/TestCart'
-import AlbumList from '@/pages/AlbumList'
 import SelectCart from '@/pages/SelectCart/Sandbox'
 
 
@@ -108,7 +107,7 @@ export default function Index(props) {
   // return <TestCRUDList {...props} />
   return (
     <ChakraProvider>
-      <PreviewAutoLayout {...props} />
+      <ApisUi {...props} />
     </ChakraProvider>
   )
 

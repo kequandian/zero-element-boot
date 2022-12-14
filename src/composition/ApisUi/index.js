@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-    ChakraProvider, Flex, Center, Box, Stack, Spacer, VStack, Container, Button,
+    Flex, Center, Box, Stack, Spacer, VStack, Container, Button,
     InputGroup, Input, InputRightElement
 } from "@chakra-ui/react";
 import { AutoLayout } from '@/components';
@@ -125,7 +125,6 @@ export default function Index(props) {
     };
 
     return (
-        <ChakraProvider>
             <Flex>
                 
                 <Box>
@@ -171,7 +170,7 @@ export default function Index(props) {
                                 <>
                                     <AutoLayout {...config} onItemClick={onApiItemClick} onItemDeleted={onDelAction}>
                                     </AutoLayout>
-                                    <div style={{margin:'15px 0 15px 0'}}>
+                                    {/* <div style={{margin:'15px 0 15px 0'}}>
                                         <Pagintion
                                             breakLabel="..."
                                             nextLabel="next >"
@@ -181,7 +180,7 @@ export default function Index(props) {
                                             previousLabel="< previous"
                                             renderOnZeroPageCount={null}
                                         />
-                                    </div>
+                                    </div> */}
                                 </>
                             ): <></>
                         }
@@ -203,6 +202,5 @@ export default function Index(props) {
                     </VStack>
                 </Box>
             </Flex>
-        </ChakraProvider>
     )
 }
