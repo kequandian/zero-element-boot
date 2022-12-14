@@ -74,9 +74,14 @@ export default function Index(props) {
     //获取列表信息
     const fetchData = (api, queryData) => {
         setLoading(true)
-        return promiseAjax(api, queryData).then(resp => {
+        const query = {
+            ...queryData,
+            sort: 'sortNum',
+            orderBy: 'ASC'
+        }
+        return promiseAjax(api, query).then(resp => {
             if (resp && resp.code === 200) {
-                const list = resp.data && Array.isArray(resp.data) ? resp.data : resp.data.records;
+                const list = resp.data && Array.isArray(resp.data) ? resp.data : resp.data.records;;
                 setListData(list);
                 setLoading(false)
             } else {
@@ -182,7 +187,7 @@ export default function Index(props) {
     return (
         <ChakraProvider>
 
-            <div style={{ maxWidth: '1000px' }}>
+            <div style={{ }}>
                 <VStack align='stretch' spacing='-2'>
                     <Box style={{ margin: '10px 10px 30px 10px', paddingLeft: '8px' }}>
                         <FormControl display='flex' alignItems='center'>

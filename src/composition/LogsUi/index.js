@@ -37,7 +37,7 @@ export default function Index (props) {
   };
 
   const onJarItemClick = (item) => {
-    // console.log(item, ' === item')
+    console.log(item, ' === item')
     let name = item.value;
 
     if (name.indexOf('@') > -1) {
@@ -217,6 +217,7 @@ export default function Index (props) {
 
 
             {/* <Input placeholder='请输入搜索内容' onChange={(e) => setSearchContent(SearchContent, 2)} /> */}
+
 
 
             {/* <Select placeholder='medium size' size='md' /> */}
