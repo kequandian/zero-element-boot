@@ -21,6 +21,7 @@ export default function Chain({ children, chain=[], dataSource, ...rest }) {
 function doChain(chain, dataSource) {
   // final result
   let chaindata = {}
+  //let skipBinding = {}
 
   chain.map(rule =>{
     // 
@@ -68,14 +69,22 @@ function doChain(chain, dataSource) {
               if(chaindata[key]){
                   delete chaindata[key];
               }
+
+              // record skipBinding
+              //skipBinding[key] = key
         }
       }
-
     })
 
     // end up array for chaindata
-    chaindata =  Array.isArray(chaindata) ?  chaindata : {...itemData, ...chaindata}
+    chaindata =  Array.isArray(chaindata) ?  chaindata : Object.assign(itemData, chaindata)
   })
 
-  return { ...chaindata };
+  // // return { ...chaindata, ...dataSource };
+  // let lastDataSource = dataSource
+  // Object.keys(skipBinding).forEach(key => {
+  //     delete lastDataSource[key]
+  // })
+  // return Object.assign(chaindata, lastDataSource)
+  return Object.assign(chaindata, dataSource)
 }
