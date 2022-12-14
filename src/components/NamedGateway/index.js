@@ -6,11 +6,12 @@ const DefaultGatewaySet = require('../gateway');
  * @param {可能是一个字符串名称} gateway
  * @param {field, filter, converter} props 
  */
-module.exports = function NamedGateway({children, xname, props, binding, gateway={xname, props}, gatewaySet, ...rest }) {
+module.exports = function NamedGateway({children, xname, props, binding, chain, gateway={xname, props}, gatewaySet, ...rest }) {
 
   const GatewaySet = gatewaySet || DefaultGatewaySet
 
-  const gatewayName = binding ? 'Binding' : ( (typeof gateway === 'string')? gateway : gateway.xname )
+  
+  const gatewayName = (binding || chain) ? (binding?'Binding':"Chain") : ( (typeof gateway === 'string')? gateway : gateway.xname )
   const Gateway =  GatewaySet[gatewayName] || tips(gatewayName);
 
   // __gateway means gateway props
