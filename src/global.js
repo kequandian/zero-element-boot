@@ -36,7 +36,7 @@ import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/I
 import {Avatar, DownloadButton, ItemPlaceholder, AddNewButton, Text } from '@/components/presenter';
 import {Title, Subtitle, StatisticsList, StatisticalDescription} from '@/presenter/demo';
 
-import JarItem from '@/composition/Standalone/JarItem';
+import JarItem from '@/composition/LogsUi/Sandbox/JarItem';
 import SwaggerItem from '@/composition/ApisUi/SwaggerItem';
 
 import { InputCompx, SelectFetch } from '@/components/formItemType';

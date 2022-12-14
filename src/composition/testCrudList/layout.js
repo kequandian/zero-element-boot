@@ -13,7 +13,7 @@ module.exports = {
       {
         presenter: 'DefaultAvatar',
         binding: {
-          path: 'url'
+          url: 'url'
         },
       },
       {
@@ -125,6 +125,17 @@ module.exports = {
           placeholder: '描述属性'
         }
       },
+      {
+        label: '排序号',
+        field: 'sortNum',
+        type: 'input',
+        rules: {
+          isRequired: false
+        },
+        props:{
+          placeholder: '请输入',
+        }
+      }
       
       // {
       //   label: '复选框',
