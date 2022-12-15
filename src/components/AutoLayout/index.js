@@ -178,12 +178,13 @@ function AutoLayout({ children, layout, binding, chain, gateway, allComponents =
       const __presenterName = _xname
       const __presenter = _props || {}
 
+      // selected={true} 仅用于单组件测试
       const __NamedCart = _data_cart ? NamedCart : NextIndicator;
       const __NamedGateway = (_data_binding || _data_chain || _data_gateway) ? NamedGateway : NextIndicator;
       const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
       return (
         <__NamedGateway binding={_data_binding} chain={_data_chain} gateway={_data_gateway} {..._rest}>
-          <__NamedCart {..._data_cart} 
+          <__NamedCart {..._data_cart} selected={true}
               onItemClick={onItemClick}
           >
               <__Presenter {...__presenter} allComponents={allComponents}

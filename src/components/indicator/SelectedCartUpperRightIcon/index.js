@@ -17,14 +17,7 @@ export default forwardRef(function SelectedCartUpperRightIcon(props, ref) {
 
   const { children, line = {}, state = 'unselected'} = props;
 
-  const [onHover, setOnHover] = useState(false);
-
   return React.Children.map(children, child => {
-
-    const toggleHover = () => {
-      const result = !onHover;
-      setOnHover(result)
-    }
 
     const fill = 'transparent';
     const margin = '';
@@ -65,7 +58,6 @@ export default forwardRef(function SelectedCartUpperRightIcon(props, ref) {
       <>
         <div className={`i-SelectedCartUpperRightIcon`}
           style={styles}
-          onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
         >
           {state == 'selected' ? (
             <div className="upperRightIcon">
