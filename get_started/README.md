@@ -7,7 +7,44 @@ export default function App(){
 ```
 
 #### 如何渲染一个`React`组件
+> 首先生成 `public/index.html` 文件
 
+```xml
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>React App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+```
+
+> 初始化 `package.json` 包文件, 并安装依赖
+
+```json
+{
+  "name": "hello",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+    }
+}
+```
+
+> 渲染一个组件
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -17,6 +54,10 @@ ReactDOM.render(
     <App />,
     document.getElementById('root')
 );
+
+// 渲染的另一种写法
+// const root = ReactDOM.createRoot(document.getElementById('root'))
+// root.render(<App/>)
 ```
 
 
@@ -50,7 +91,7 @@ function Welcome({name}) {
 }
 ```
 
-> `children`是`React`组件的保留参数，每一个组件都会接收`children`子组件参数
+> `children` 是 `React` 组件的保留参数，每一个组件都会接收 `children` 子组件参数
 
 ```js
 import React from 'react'
@@ -61,7 +102,7 @@ function Welcome(props) {
 }
 ```
 
-> 理解 `...` 参数, 下里 `rest`是指获取的`children`,`name`参数外，剩余的参数
+> 理解 `...` 参数, 下面 `rest` 是指获取的 `children`, `name`参数外，剩余的参数
 
 ```js
 import React from 'react'
@@ -89,7 +130,29 @@ export default function Father(props){
 }
 ```
 
-> 使用容器组件
+
+#### 如何写一个可以传递参数的容器组件
+
+```js
+import React from 'react';
+
+export default function NextIndicator(props) {
+    const {children, ...rest}  = props
+
+    return (<>
+        {
+            React.Children.map(children, child => {
+                    return React.cloneElement(child, {
+                        ...rest
+                    })
+                })
+        }
+    </>)
+}
+```
+
+#### 如何使用容器组件
+
 ```js
 import Father from './Father'
 import HelloWorld from './HelloWorld'
@@ -103,8 +166,62 @@ export default function ComsumeFather(props){
 }
 ```
 
+#### 如何理解容器组件
+`div` 本身就是一个容器
 
-## 使用`zero-element-boot`标准组件
+```js
+import HelloWorld from './HelloWorld'
+
+export default function Index(props){
+    return <div style={{color:'red'}}>
+        <HelloWorld />
+    </div>
+}
+```
+
+#### 如何使用钩子`hook`
+
+```js
+import React, { useState, useEffect } from 'react';
+
+import React from 'react'
+
+export default function Index(props) {
+    const [count, setCount] = useState(0)
+
+    useEffect(() => {
+        console.log('do nothing, but will update UI !')
+    }, [count]);
+
+    return (
+        <div>
+            <p>You clicked {count} times</p>
+            <button onClick={() => setCount(count + 1)}>
+                Click me
+            </button>
+        </div>
+  );
+}
+```
+
+
+## 使用 `zero-element-boot` 框架的标准组件
+自由布局组件 `AutoLayout` 由以下几种类型的基础组件构成多种组合的新组件
+
+- `presenter` 基础展示组件，代表最基础的组件元素
+- `cart` 对基础组件进行修饰的容器组件
+- `children` 由多个子组件组成的新组件的子组件列表,与单个子组件`presenter`相对，只选其一
+- `layout` 布局组件, 对多个子组件进行布局
+- `container` 顶层容器组件, 控制一定的组件逻辑实现
+- `gateway` 数据网关组件，负责对数据进行转换与并与组件属性进行绑定展示
+
+除以上几大组件概念外，还包括基于上述主要组件的派生组件，包括：
+- `indicator` 派生自`cart`组件, 用于响应组件事件与用户操作，与鼠标`hover`事件，用户菜单选择事件
+- `selector`  派生自`cart`组件, 用于响应用户选择子组件的事件
+- `unselector` 派生自`cart`组件, 用于响应用户取消选择子组件的事件，或正常的组件状态，会叠加在`cart`组件之上
+- `binding` 派生自`gateway`组件, 用于数据源字段与组件属性之间的绑定, 其他未绑定数据保留并继续往下子组件传递
+- `filter` 派生自`gateway`组件, 只传递过滤的数据, 其他未被过滤的数据，不继续往下传递
+- `chain` 派生自`gateway`组件, 是一个列表，多层数据处理；上一层的数据处理结果传递给下一层，绑定前的原数据保留并继续往下子组件传递
 
 
 #### 如何通过一个`Cart`修饰一个组件
