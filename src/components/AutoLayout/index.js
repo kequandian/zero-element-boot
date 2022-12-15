@@ -143,22 +143,22 @@ function AutoLayout({ children, layout, binding, chain, gateway, allComponents =
   const _allComponents = { ...allComponents, ...defaultPresenterGet}
 
   // Presenter,  means presenter is AutoLayout
-  const Presenter = ((presenter && typeof presenter === 'string') ? _allComponents[presenter]: (isJsonObject(presenter)? AutoLayout : undefined)) || tips(presenter)
-  const _presenter = isJsonObject(presenter)? {layout: {...presenter}} : {}
+  const Presenter = (presenter && typeof presenter === 'string') ? (_allComponents[presenter] || tips(presenter)) : (isJsonObject(presenter)? AutoLayout : undefined)
+  const _presenter = (Presenter && isJsonObject(presenter))? {layout: presenter} : {}
 
-  // handle simple presenter, from data
-  if (!layoutChildren && !container){
+
+  // handle simple presenter, from {xname,props}
+  if (!Presenter && !layoutChildren && !container){
       // support component from data, not from layout, with dash _  for xname,props,cart,binding,gateway,presenter
-      const {_xname = xname, _props = {...props}, _cart, _binding = {..._layoutBinding}, _chain = {..._layoutChain}, _gateway, _presenter, ..._rest } = data
+      const {_xname = xname, _props = {...props}, _cart, _binding = {..._layoutBinding}, _chain = {..._layoutChain}, _gateway, ..._rest } = data
       const _data_cart = __cart || _cart || {}
       const _data_gateway = _layoutGateway || _gateway
       const _data_binding = _layoutBinding || _binding
       const _data_chain = _layoutChain || _chain
-      const _data_presenter = presenter || _presenter
 
       // all props (xname, props) from within presenter
-      const _____presenterName = _data_presenter ? ((typeof _data_presenter === 'string')? _data_presenter : _data_presenter.xname) : undefined  //local presenter
-      const _____presenter = ((_data_presenter && _data_presenter.props) ? _data_presenter.props : undefined) || undefined
+      // const _____presenterName = _presenter ? ((typeof _presenter === 'string')? _presenter : _presenter.xname) : undefined  //local presenter
+      // const _____presenter = ((_presenter && _presenter.props) ? _presenter.props : undefined) || undefined
 
       // TODO, should not support, keep it
       // const _____presenterCart = ((_data_presenter && _data_presenter.cart) ? _data_presenter.cart : undefined) || undefined
@@ -172,8 +172,11 @@ function AutoLayout({ children, layout, binding, chain, gateway, allComponents =
       // const __gateway = _data_gateway ? ((typeof _data_gateway ==='string')? undefined : _data_gateway.props ) : undefined || _____presenterGateway
       // deprecated
 
-      const __presenterName = _xname || _____presenterName ||  tips(_xname);
-      const __presenter = _____presenter || _props;
+      // const __presenterName = _xname || _____presenterName ||  tips(_xname);
+      // const __presenter = _____presenter || _props;
+
+      const __presenterName = _xname
+      const __presenter = _props || {}
 
       const __NamedCart = _data_cart ? NamedCart : NextIndicator;
       const __NamedGateway = (_data_binding || _data_chain || _data_gateway) ? NamedGateway : NextIndicator;
