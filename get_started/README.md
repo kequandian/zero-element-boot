@@ -1,35 +1,115 @@
-#### 如何写一个React组件
+#### 如何写一个`React`组件
+
+```js
+export default function App(){
+    return <div> Hello React! </div>
+}
 ```
+
+#### 如何渲染一个`React`组件
+
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+);
+```
+
+
+#### 如何写一个带参数的`React`组件
+
+```js
 import React from 'react'
 
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
+```
 
-export default function Index(){
-    return <div> Hello React! </div>
+> 或
+```js
+import React from 'react'
+
+function Welcome(props) {
+   const { name }  = props
+  
+   return <h1>Hello, {name}</h1>;
+}
+```
+
+> 或
+```js
+import React from 'react'
+
+function Welcome({name}) {
+   return <h1>Hello, {name}</h1>;
+}
+```
+
+> `children`是`React`组件的保留参数，每一个组件都会接收`children`子组件参数
+
+```js
+import React from 'react'
+
+function Welcome(props) {
+    const {children, name } = props
+    return <h1>Hello, {name}</h1>;
+}
+```
+
+> 理解 `...` 参数, 下里 `rest`是指获取的`children`,`name`参数外，剩余的参数
+
+```js
+import React from 'react'
+
+function Welcome(props) {
+    const {children, name, ...rest } = props
+    return <h1>Hello, {name}</h1>;
 }
 ```
 
 #### 如何写一个容器组件
+> `children` 是 `React` 组件的默认参数, 代表组件的所有子组件
 
-```
+```js
 import React from "react";
+
 export default function Father(props){
-    const {children} = props
+    const {children, ...rest} = props
+
     return children.map(child =>{
-        return (<div style={{color:'red'}}>我是一个父组件
+        return (<div style={{color:'red'}}>
             {child}
         </div>)
     })
 }
 ```
 
+> 使用容器组件
+```js
+import Father from './Father'
+import HelloWorld from './HelloWorld'
 
-
-#### 如何通过一个Cart修饰一个组件
-
+export default function ComsumeFather(props){
+    return (
+        <Father>
+            <HelloWorld />
+        </Father>
+    )
+}
 ```
+
+
+## 使用`zero-element-boot`标准组件
+
+
+#### 如何通过一个`Cart`修饰一个组件
+
+```js
 import React from 'react';
 import Butter from '@/presenter/default/Butter'
 import Cart from '@/components/cart/Cart'
@@ -44,7 +124,8 @@ export default function TestCart(props){
 ```
 
 #### 如何通过NamedCart 修饰一个组件
-```
+
+```js
 import React from 'react';
 import Butter from '@/presenter/default/Butter'
 import NamedCart from '@/components/NamedCart'
@@ -64,7 +145,8 @@ export default function TestNamedCart(props) {
 ```
 
 #### 如何对多个React组件进行布局
-```
+
+```js
 import React from 'react';
 import Butter from '@/presenter/default/Butter'
 import Clean from '@/presenter/default/Clean'
@@ -87,7 +169,8 @@ export default function TestCart(props){
 ```
 
 #### 如何通过NamedLayout对多个组件进行布局
-```
+
+```js
 import React from 'react';
 import Butter from '@/presenter/default/Butter'
 import Clean from '@/presenter/default/Clean'
@@ -107,7 +190,8 @@ export default function TestCart(props){
 ```
 
 #### 如何向React组件传递数据
-```
+
+```js
 import React from 'react';
 import Butter from '@/presenter/default/Butter'
 import NamedCart from '@/components/NamedCart'
@@ -129,7 +213,8 @@ export default function TestNamedCart(props){
 ```
 
 #### 如何通过Gateway向React组件传递并绑定数据
-```
+
+```js
 import React from 'react';
 import Butter from '@/presenter/default/Butter'
 import NamedCart from '@/components/NamedCart'
@@ -151,7 +236,8 @@ export default function TestNamedCart(props){
 ```
 
 #### 如何通过NamedGateway向React组件传递并绑定数据
-```
+
+```js
 import React from 'react';
 import Butter from '@/presenter/default/Butter'
 import NamedCart from '@/components/NamedCart'
@@ -173,7 +259,8 @@ export default function TestNamedCart(props){
 ```
 
 #### 如何通过AutoLayout对多个组件进行布局
-```
+
+```js
     xname:'Flexbox',
     props:{
         align:'start',
@@ -183,7 +270,8 @@ export default function TestNamedCart(props){
 ```
 
 #### 如何通过AutoLayout对多个组件进行布局传递数据
-```
+
+```js
 module.exports={
     xname:'Flexbox',
     props:{
@@ -231,8 +319,9 @@ module.exports={
 ```
 
 ### 全局定义 layout 使用方法
-  - 在项目 src/global.js 里使用 (如没有 global.js 文件可以直接在src目录下创建即可)
-```
+- 在项目 src/global.js 里使用 (如没有 global.js 文件可以直接在src目录下创建即可)
+
+```js
 //set namedcart
 import { set as NamedLayoutSet } from '@/config/NamedLayoutConfig';
 
@@ -241,13 +330,13 @@ import Flexbox from '@/components/layout/Flexbox';
 NamedLayoutSet({
   Flexbox,
 })
-
 ```
 
 
 ### 全局定义 car 和 persenter 使用方法
-  - 在项目 src/global.js 里使用
-```
+- 在项目 src/global.js 里使用
+
+```js
 //set namedcart
 import { set as NamedCartSet } from '@/config/NamedCartConfig';
 
