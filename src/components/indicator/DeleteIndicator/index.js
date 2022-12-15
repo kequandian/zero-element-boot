@@ -23,7 +23,7 @@ require('./index.less')
     xname:'DeleteIndicator',
     props:{
       action: '/openapi/lc/apis/(id)',
-      op: 'edit'
+      isDisabled: 'edit'
     },
     binding: {
       "id":"id",
@@ -33,7 +33,8 @@ require('./index.less')
  * 
  * @param { object } indicatorData 为上述 binding 处理的参数
  * @param { function } onItemDeleted 删除
- * @param { object } action 删除API  
+ * @param { string } action 删除API  
+ * @param { string } isDisabled 显示删除按钮
  * 
  */
 
