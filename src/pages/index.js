@@ -81,6 +81,9 @@ import CssCart from '@/components/cart/CssCart'
 import TestCart from '@/pages/TestCart'
 import SelectCart from '@/pages/SelectCart/Sandbox'
 
+//rss-ui
+import RssUi from '@/composition/RssUi/Sandbox'
+
 
 export default function Index(props) {
 
@@ -107,7 +110,7 @@ export default function Index(props) {
   // return <TestCRUDList {...props} />
   return (
     <ChakraProvider>
-      <PreviewAutoLayout {...props} />
+      <RssUi {...props} />
     </ChakraProvider>
   )
 
