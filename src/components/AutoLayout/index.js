@@ -94,11 +94,11 @@ export default function (props) {
 //2021-11-10
 //新增 layout 新增 navigation 属性
 
-function AutoLayout({ children, layout, binding, chain, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource={}, 
+function AutoLayout({ children, layout, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource={}, 
   onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, alternative, alternativeActive, onAlternativeBack, ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
-  const { xname, props, container, binding:layoutBinding, chain:layoutChain, gateway:layoutGateway, cart, indicator, selector, unselector, presenter, navigation, children: layoutChildren,
+  const { xname, props, container, binding:layoutBinding, filter:layoutFilter, chain:layoutChain, gateway:layoutGateway, cart, indicator, selector, unselector, presenter, navigation, children: layoutChildren,
     alternative:layoutAlternative,
   } = sugarLayout(layout) || {};
 
@@ -129,10 +129,11 @@ function AutoLayout({ children, layout, binding, chain, gateway, allComponents =
 
   // Gateway
   const _layoutBinding = layoutBinding || binding
+  const _layoutFilter = layoutFilter || filter
   const _layoutChain   = layoutChain || chain
   const _layoutGateway = layoutGateway || gateway
   const _gateway = _layoutGateway ? (typeof _layoutGateway==='string' ? { xname: _layoutGateway } : sugarGateway(_layoutGateway)) : undefined
-  const _NamedGateway = _layoutBinding || _gateway ? NamedGateway : NextIndicator;
+  const _NamedGateway = (_layoutBinding || _layoutFilter || _layoutChain || _gateway) ? NamedGateway : NextIndicator;
 
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
@@ -150,10 +151,11 @@ function AutoLayout({ children, layout, binding, chain, gateway, allComponents =
   // handle simple presenter, from {xname,props}
   if (!Presenter && !layoutChildren && !container){
       // support component from data, not from layout, with dash _  for xname,props,cart,binding,gateway,presenter
-      const {_xname = xname, _props = {...props}, _cart, _binding = {..._layoutBinding}, _chain = {..._layoutChain}, _gateway, ..._rest } = data
+      const {_xname = xname, _props = {...props}, _cart, _binding = {..._layoutBinding}, _filter={..._layoutFilter}, _chain = {..._layoutChain}, _gateway, ..._rest } = data
       const _data_cart = __cart || _cart || {}
       const _data_gateway = _layoutGateway || _gateway
       const _data_binding = _layoutBinding || _binding
+      const _data_filter = _layoutFilter || _filter
       const _data_chain = _layoutChain || _chain
 
       // all props (xname, props) from within presenter
@@ -178,12 +180,13 @@ function AutoLayout({ children, layout, binding, chain, gateway, allComponents =
       const __presenterName = _xname
       const __presenter = _props || {}
 
+      // selected={true} 仅用于单组件测试
       const __NamedCart = _data_cart ? NamedCart : NextIndicator;
-      const __NamedGateway = (_data_binding || _data_chain || _data_gateway) ? NamedGateway : NextIndicator;
+      const __NamedGateway = (_data_binding||_data_filter||_data_chain||_data_gateway) ? NamedGateway : NextIndicator;
       const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
       return (
-        <__NamedGateway binding={_data_binding} chain={_data_chain} gateway={_data_gateway} {..._rest}>
-          <__NamedCart {..._data_cart} 
+        <__NamedGateway binding={_data_binding} filter={_data_filter} chain={_data_chain} gateway={_data_gateway} {..._rest}>
+          <__NamedCart {..._data_cart} selected={true}
               onItemClick={onItemClick}
           >
               <__Presenter {...__presenter} allComponents={allComponents}
@@ -229,7 +232,7 @@ function AutoLayout({ children, layout, binding, chain, gateway, allComponents =
       onItemIndicated={onItemIndicated}
     >
       <NamedLayout xname={__xname} props={props} __>
-          <_NamedGateway binding={_layoutBinding} chain={_layoutChain} gateway={_gateway}>
+          <_NamedGateway binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}>
                 <_NamedCart {...__cart} 
                   onItemDeleted={onItemDeleted}
                   onItemAdded={onItemAdded}

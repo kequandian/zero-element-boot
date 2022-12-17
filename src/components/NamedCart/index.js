@@ -28,14 +28,15 @@ import NextIndicator from '@/components/NextIndicator';
  * @param {ComponentSet} cartSet  cart 组件集
  * @param {ComponentSet} indicatorSet  indicator 组件集
  * @param {boolean} isSelected  传递是否选中状态
+ * @param {boolean} selected 代表 OverlaySelector 的 selected 参数, 仅用于单组件测试，由AutoLayout的配置决定
  * indicated
  */
 export default function NamedCart(nameCartPropsx) {
-    const { children, xname, props, indicator, selector, unselector, cart = { xname, props, indicator, selector, unselector}, cartSet, indicatorSet, 
+    const { children, xname, props, indicator, selector, unselector, selected, cart = { xname, props, indicator, selector, unselector}, cartSet, indicatorSet, 
     indicatorData={}, onItemClick, isSelected,
     onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
     ...rest } = nameCartPropsx
-    
+
   const _CartSet = cartSet ? cartSet : DefaultCartSet()
   //2021-10-28 新增 selector 模块
   const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
@@ -88,7 +89,8 @@ export default function NamedCart(nameCartPropsx) {
                              selectedIndicator={_Selector}  selectedIndicatorProps = {selectorProps} 
                              hoverIndicator={_Indicator}  hoverIndicatorProps = {indicatorProps}
                              indicatorData={_indicatorData} 
-                 isSelected={isSelected} >
+                             selected={selected}
+                      isSelected={isSelected} >
                 <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
             </OverlaySelector>
         ) : 

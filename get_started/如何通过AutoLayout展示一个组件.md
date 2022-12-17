@@ -622,6 +622,65 @@
   
 
 ### 由多个子组件组成的单选组件
+用SelectList 对一个列表 进行管理 绑定参数 
+  ```json
+  {
+   "xname": "Flexbox",
+   "presenter": {
+     "children": [
+      {
+        "xname": "Avatar",
+        "binding": {
+          "avatarUrl": "url",
+          "size": "size"
+        },
+      },
+      {
+        "xname": "Text",
+        "binding": {
+          "title": "content"
+        },
+        "props": {
+          "w": "100%",
+          "textAlign": "center",
+          "marginTop": "10px"
+        }
+      }
+    ],
+  },
+   "container": "SelectList",
+   "cart": {
+    "xname": "Cart",
+    "props": {
+      "linewidth": "0",
+      "padding":"0"
+    }
+  },
+  //默认状态
+  "unselector": {
+    "xname": "SelectAvatar",
+    "props": {
+      "state": "unselected"
+    }
+  },
+  //hover状态
+  "indicator":{
+    "xname": "TagIndicator",
+    "props": {
+      "color": "#d4237a",
+      "none": "any",
+      "outline": "any"
+    }
+  },
+  //选中状态
+  "selector": {
+    "xname": "SelectAvatar",
+    "props": {
+      "state": "selected"
+    }
+   }
+ }
+  ```
 
 ### 由多个子组件组成的复选组件
 
