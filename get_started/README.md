@@ -77,7 +77,6 @@ import React from 'react'
 
 function Welcome(props) {
    const { name }  = props
-  
    return <h1>Hello, {name}</h1>;
 }
 ```
@@ -182,16 +181,10 @@ export default function Index(props){
 #### 如何使用钩子`hook`
 
 ```js
-import React, { useState, useEffect } from 'react';
-
-import React from 'react'
+import React, { useState } from 'react';
 
 export default function Index(props) {
     const [count, setCount] = useState(0)
-
-    useEffect(() => {
-        console.log('do nothing, but will update UI !')
-    }, [count]);
 
     return (
         <div>
