@@ -1,5 +1,5 @@
 import React from 'react';
-
+import doFilter from './doFilter'
 
 /**
  * 过滤数据, 多种规侧
@@ -38,43 +38,9 @@ export default function Filter({ children, filter={}, dataSource, __, ...rest })
   // end test
 
   // dataSource present, just filter the dataSource,  no dataSource, filter the rest
-  const finalData = dataSource ? {...filtereddata, ...rest} : filtereddata
+  const finalData = dataSource ? {...rest, ...filtereddata} : filtereddata
 
   return React.Children.toArray(children).map(child => React.cloneElement(child, {
       ...finalData
   }))
-}
-
-
-function doFilter(filter={}, data={}){
-    let filterData = {}
-  
-    Object.keys(filter).forEach(key => {
-      const filterValue = filter[key]
-
-      // 1. the same as binding
-      if(typeof filterValue==='string'){
-        // just convert the data field if normal value
-        filterData[filterValue] = data[key];
-
-      }else if(Array.isArray(filterValue)) {
-        // just get its array without change, only get the array makes no sense
-
-        // filterValue can be any type of value, string or empty array []
-        filterData[key] = data[key];
-
-      }else if(typeof filterValue == 'object'){
-
-        // check if filterValue is empty object:{} or string
-        if(typeof filterValue==='string'){
-            filterData[key] = data[key];
-        }else if(Object.keys(filterValue).length==0){
-            // expand the data within {}
-            const filteredObject = data[key]
-            Object.assign(filterData, {...filteredObject})
-        }
-      }
-    })
-
-    return filterData
 }
