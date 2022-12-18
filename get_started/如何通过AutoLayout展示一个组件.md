@@ -15,7 +15,7 @@
 {
     "xname": "Avatar",
     "props": {
-		"url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+		   "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
     }
 }
 ```
@@ -49,11 +49,11 @@
     "props": {
         "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
     },
-    "cart": "HCenter"
+    "cart": "Cart"
 }
 ```
 
-> 或
+> 或更多可配置的风格
 ```json
 {
     "presenter":{
@@ -65,20 +65,19 @@
     "cart": {
         "xname": "CssCart",
         "props": {
-			"padding":"10px",
-			"border":"1px #ff000 solid",
-            "backgroundColor":"red"
+			     "padding":"10px",
+			     "border":"1px #ff000 solid",
+           "backgroundColor":"red"
         }
     }
 }
 ```
 
 
-
-### 为组件增加数据绑定
-> 数据作为参数传入组件
-
-`avatar_url` 为新组件参数, `url`内部组件`Avatar`的参数
+### 为`AutoLayout`设置参数
+- 绑定的键即为组件参数 
+- 以下`avatar_url` 为新组件参数
+- `url`为新组件内部子组件`Avatar`的参数，对新组件消费者透明
 
 ```json
 {
@@ -86,9 +85,9 @@
     "cart": {
         "xname": "CssCart",
         "props": {
-			"margin":"10px",
-			"padding":"10px",
-			"border":"1px #ff000 solid"
+			      "margin":"10px",
+			      "padding":"10px",
+			      "border":"1px #ff000 solid"
         }
     },
     "binding": {
@@ -106,9 +105,9 @@
     "cart": {
         "xname": "CssCart",
         "props": {
-			"margin":"10px",
-			"padding":"10px",
-			"border":"1px #ff000 solid"
+			     "margin":"10px",
+			     "padding":"10px",
+			     "border":"1px #ff000 solid"
         }
     },
     "binding": {
@@ -118,9 +117,7 @@
 ```
 
 
-
 ## 多组件部分
-
 
 ### 由多个子组件组成的`AutoLayout`新组件
 
@@ -248,7 +245,7 @@
 {
     "xname": "Flexbox",
     "props": {
-		"direction":"column"
+		   "direction":"column"
     },
     "children": [
         {
@@ -290,7 +287,7 @@
     "presenter": {
         "xname": "ItemPlaceholder",
         "props":{
-			"fill":"#FF0000"
+			      "fill":"#FF0000"
         }
     },
     "container": "PlainList"
@@ -303,7 +300,7 @@
     "presenter": {
         "xname": "ItemPlaceholder",
         "props":{
-			"fill":"#FF0000"
+			      "fill":"#FF0000"
         }
     },
     "container": "PlainList",
@@ -318,7 +315,7 @@
     "presenter": {
         "xname": "ItemPlaceholder",
         "props":{
-			"fill":"#ff0000"
+			      "fill":"#ff0000"
         }
     },
     "cart": "Cart",
@@ -333,7 +330,7 @@
     "presenter": {
         "xname": "Avatar",
         "props":{
-			"size": "80"
+			      "size": "80"
         }
     },
     "cart": "Cart",
@@ -356,7 +353,7 @@
             "presenter": {
                 "xname": "Avatar",
                 "props":{
-					"size":"90"
+					          "size":"90"
                 }
             },
             "container": "PlainList",
@@ -372,9 +369,9 @@
     ],
    "xname": "Flexbox",
    "props":{
-	  "direction":"column"
+	    "direction":"column"
    },
-    "container": "Container"
+   "container": "Container"
 }
 ```
 
@@ -386,7 +383,7 @@
         {
             "xname": "Avatar",
             "props":{
-				"size":"90"
+				        "size":"90"
             }
         },
         {
@@ -406,7 +403,7 @@
                 "presenter": {
                     "xname": "Avatar",
                     "props":{
-						"size":"90"
+						            "size":"90"
                     }
                 },
                 "container": "PlainList",
@@ -422,7 +419,7 @@
         ],
         "xname": "Flex",
         "props":{
-            "direction":"column"
+           "direction":"column"
         },
         "container": "Container"
     },
@@ -434,9 +431,11 @@
 }
 ```
 
+## 数据绑定与组件参数部分
+
 
 > 对多个子组件 绑定参数 ，同时传入参数
-> title 为 `AutoLayout` 新属性
+> title为 `AutoLayout` 新属性
 
 ```json
 {
@@ -475,24 +474,24 @@
           "title": "content"
         },
         "props": {
-          "textAlign": "center",
-          "marginTop": "10px",
-          "fontWeight":"bold"
+           "textAlign": "center",
+           "marginTop": "10px",
+           "fontWeight":"bold"
         }
       },
 	  {
 	  	"xname": "Avatar",
 	    "binding": {
-	        "avatarUrl": "url"
+	       "avatarUrl": "url"
 	    },
 	    "props": {
-			"size":"90"
+			   "size":"90"
 	    }
 	  },
     ],
   },
    "container": {
-        "xname": "PlainList",
+      "xname": "PlainList",
    },
    "cart":"Cart",
   }
@@ -511,7 +510,6 @@
     };
   
     const onHandleItemClick = (data) => {
-		//TODO
       console.log("data == ", data)
       if (data.isSelected) {
         console.log('执行事件')
@@ -523,7 +521,6 @@
         <AutoLayout {...config} onItemClick={onHandleItemClick} />
       </Box>
     )
-	
 ```
 
 
@@ -538,13 +535,13 @@
     "children": [
       {
 		  "xname": "Text",
-          "binding": {
-             "content": "content"
+        "binding": {
+           "content": "content"
         },
         "props": {
-          "textAlign": "center",
-          "marginTop": "10px",
-          "fontWeight":"bold"
+           "textAlign": "center",
+           "marginTop": "10px",
+           "fontWeight":"bold"
         }
       },
     ],
