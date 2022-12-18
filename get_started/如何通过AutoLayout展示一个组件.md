@@ -227,7 +227,7 @@
 {
     "xname": "Flexbox",
     "props": {
-		"direction":"row"
+		   "direction":"row"
     },
     "children": [
         "Butter",
@@ -323,23 +323,6 @@
 }
 ```
 
-> 绑定容器传递过来的数据源数据
-```json
-{
-    "xname":"Wrap",
-    "presenter": {
-        "xname": "Avatar",
-        "props":{
-			      "size": "80"
-        }
-    },
-    "cart": "Cart",
-    "container": "PlainList",
-    "binding": {
-        "imageUrl": "url"
-    }
-}
-```
 
 ## 复合嵌套组件部分
 
@@ -431,16 +414,87 @@
 }
 ```
 
-## 数据绑定与组件参数部分
+## 数据绑定与组件属性部分
 
-
-> 对多个子组件 绑定参数 ，同时传入参数
-> title为 `AutoLayout` 新属性
+### 数据源字段绑定子组件属性
+- `avatarUrl`为数据源字段
+- 也可以认为是新的`AutoLayout`的组件属性
 
 ```json
 {
-  "presenter": {
+    "xname": "Avatar",
+    "binding": {
+        "avatarUrl": "url"
+    }
+}
+```
+
+### 设定`AutoLayout`新组件属性
+- `avatarUrl`仍然为数据源字段
+- `url`为`presentr`子组件属性
+- 新`AutoLayout`属性设定为`imageUrl`
+
+```json
+{
+    "xname":"Wrap",
+    "presenter": {
+        "xname": "Avatar",
+        "props":{
+			      "size": "80"
+        }
+    },
+    "cart": "Cart",
+    "container": "PlainList",
+    "binding": {
+        "imageUrl": "url"
+    }
+}
+```
+
+### 数据源绑定`AutoLayout`属性
+- 以上`AutoLayout`配置为作为子组件定义在以下配置组件的`presenter`
+- 数据源字段`avatarUrl`绑定组件属性`imageUrl`
+
+```json
+{
+  "presenter":{
+    "xname":"Wrap",
+    "presenter": {
+        "xname": "Avatar",
+        "props":{
+			      "size": "80"
+        }
+    },
+    "cart": "Cart",
+    "container": "PlainList",
+    "binding": {
+        "imageUrl": "url"
+    }
+  },
+  "binding": {
+      "avatarUrl": "imageUrl"
+  }
+}
+```
+
+### 多个子组件数据绑定
+- 需在各个`children`子组内绑定
+- `title`为数据源字段, `content`为子组件属性
+- `avatarUrl`为数据源字段, `url`为子组件属性
+- 可以认为新配置组件属性为 `avatarUrl`,`title`, 也可以设定组件属性, 然后通过外加一层`binding`绑定数据源字段
+
+```json
+{
     "children": [
+      {
+        "xname": "Avatar",
+        "props": {
+          "size":"90"
+        },
+        "binding": {
+          "avatarUrl": "url"
+        }
+      },
       {
         "presenter": {
             "xname": "Text",
@@ -455,52 +509,86 @@
         },
       }
     ],
-  }
 }
-  
-  ```
+```
 
-> 对多个子组件 绑定参数 
-> `avatarUrl` ，`title` 为 `AutoLayout` 新属性
-> `url` 为 `Avatar` 的属性 ，`content` 为 `Text` 的属性
+### 基于`filter`的数据绑定
+- 与`binding`不同的是，`filter` 只传递过滤字段至子组件，数据源其他字段不传递
+- 如数据源除`avatarUrl`外，还有`title`, 则`title` 不会传递至 `Avatar` 组件
 
 ```json
 {
-  "presenter": {
-    "children": [
+    "xname": "Avatar",
+    "filter": {
+        "avatarUrl": "url"
+    }
+}
+```
+
+### 基于`chain`的多层次数据绑定
+- `chain`是一个数组, 数组内每一项数据当作`binding`逻辑进行处理
+- "-" 代表如果数据源是一个数组，获取第`[1]`项数据项传递到下一个`chain`项
+- "|" 代表过滤数据绑定逻辑, "|" 后面的值`{profile:{}}`是过滤条件
+- 过滤条件`[]`代表数据源字段`users`展开为列表往下一个`chain`项传递
+- 过滤条件`{}`代表数据源字段`profile`内的所有字段展开后往下一个`chain`项传递,如果`{}`有绑定字段，则按`fiter`逻辑处理
+
+> 数据源
+```json
+{
+   "users":[
+       {
+          "name":"Bob",
+          "profile": {
+              "avatarUrl":"https://",
+              "age": 15
+          }
+       },
       {
-		  "xname": "Text",
-          "binding": {
-          "title": "content"
-        },
-        "props": {
-           "textAlign": "center",
-           "marginTop": "10px",
-           "fontWeight":"bold"
+          "name":"Jose",
+          "profile": {
+              "avatarUrl":"https://avatars/jose.png",
+              "age": 21
+          }
+       }
+   ]
+}
+```
+
+```json
+{
+    "xname": "Avatar",
+    "chain": [
+      {
+        "|": {
+           "users":[]
         }
+      }
+      {
+         "_": 1
       },
-	  {
-	  	"xname": "Avatar",
-	    "binding": {
-	       "avatarUrl": "url"
-	    },
-	    "props": {
-			   "size":"90"
-	    }
-	  },
-    ],
-  },
-   "container": {
-      "xname": "PlainList",
-   },
-   "cart":"Cart",
-  }
+      {
+        "|": {
+           "profile": {}
+        }
+      }
+      {
+        "avatarUrl": "url"
+      }
+    ]
+}
+```
+
+通过以上`chain`绑定后，最后绑定到组件的数据为 `{"url": "https://avatars/jose.png"`
+
+
+
+### 自定义数据绑定
+
+
+## 组件事件响应部分
   
-  ```
-  
-  
-  >  `SelectList` 响应事件
-  >  打印传回来的`item` , `item` 里面会多返回一个 `isSelected` 点击状态 true or false
+### `SelectList` 响应事件
+>  打印传回来的`item` , `item` 里面会多返回一个 `isSelected` 点击状态 true or false
 
 ``` js
   const config = {
