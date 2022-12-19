@@ -1,5 +1,6 @@
 /**
  * 过滤数据, 多种规侧
+ * 
  * 规则#1 绑定, 变更数据源字段名称
  * {
  *    "gentle": "sex"
@@ -14,31 +15,45 @@
  *        "name": "title"
  *     }
  * }
+* 规则#4 提取数据源数数据域并展开为数据
+ * {
+ *    "users": []
+ * } 
  * **/
 export default function doFilter(filter, dataSource){
   const filterData = {}
   
   Object.keys(filter).forEach(key => {
-    const filterKey = filter[key]
+    // the key value as to filtered key
+    const filteredKey = filter[key]
 
-    if(typeof filterKey == 'object'){
-
+    if(typeof filteredKey == 'object'){
         // dataSource key value
         const filteredObject = dataSource[key]
 
-        if(Object.keys(filterKey).length==0){
+        if(Object.keys(filteredKey).length==0){
             // expand the data within {}
             Object.assign(filterData, filteredObject)
 
         }else{
             // 
-            const bind = doFilter(filterKey, filteredObject)
+            const bind = doFilter(filteredKey, filteredObject)
             Object.assign(filterData, bind)
+        }
+        
+    }else if(typeof filteredKey == 'array'){
+        // dataSource key value
+        const filteredObject = dataSource[key]
+        if(typeof 'filteredObject'==='array'){
+          /// directly return as array
+          return filteredObject
+        }else{
+          console.log('invalid data source, should be []: ', filteredObject)
         }
 
     }else{
         // just convert the data field if normal value
-        filterData[filterKey] = dataSource[key];
+        filterData[filteredKey] = dataSource[key];
     }
 
   })

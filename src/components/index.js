@@ -18,11 +18,12 @@ import {APIContainer, Container, TabContainer, WxPage} from './container';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
+import { set as NamedGatewaySet } from '@/components/config/NamedGatewayConfig';
 import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
-import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import { set as NamedIndicatorSet } from '@/components/config/NamedIndicatorConfig';
-import { set as FormItemTypeSet } from '@/components/config/formItemTypeConfig';
+import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import { set as NamedListSet } from '@/components/config/NamedListConfig';
+import { set as FormItemTypeSet } from '@/components/config/formItemTypeConfig';
 
 //layout
 import Flexbox from '@/components/layout/Flexbox';
@@ -32,6 +33,11 @@ import Wrap from '@/components/layout/Wrap';
 import Stack from '@/components/layout/Stack';
 import VStack from '@/components/layout/VStack';
 import Round from '@/components/layout/Round';
+
+//gateway
+import Binding from '@/components/gateway/Binding';
+import Filter from '@/components/gateway/Filter';
+import Chain from '@/components/gateway/Chain';
 
 //cart 
 import Cart from './cart/Cart';
@@ -96,6 +102,14 @@ NamedLayoutSet({
   VStack,
   Round
 })
+
+
+NamedGatewaySet({
+  Binding,
+  Filter,
+  Chain
+})
+
 
 NamedCartSet({
   Cart,

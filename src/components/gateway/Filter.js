@@ -1,5 +1,5 @@
 import React from 'react';
-import doFilter from './doFilter'
+import doFilter from './doFilter.mjs'
 
 /**
  * 过滤数据, 多种规侧

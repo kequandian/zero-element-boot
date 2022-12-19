@@ -1,4 +1,4 @@
-import doFilter from './doFilter';
+import doFilter from './doFilter.mjs';
 
 /**
  * 多次数据转换,并保留原数据不变
@@ -19,12 +19,16 @@ export default function doChain(chain, dataSource) {
     Object.keys(rule).forEach(key => {
 
       // if key == _, means get item, and general the first rule
-      if(key==='_' && Array.isArray(chaindata)){
-
-         //e.g.  "_": 0
-        const dataIndex = rule[key]
-        chaindata = chaindata[dataIndex]
-
+      if(key==='_'){
+        // if(Array.isArray(chaindata)){
+           //e.g.  "_": 0
+          const dataIndex = rule[key]
+          chaindata = chaindata[dataIndex]
+        // }else{
+        //   const dataIndex = rule[key]
+        //   chaindata = chaindata[dataIndex]
+        // }
+        
       }else if(key==='|'){
           // means filter, just update chaindata by filter
           const filter = rule[key]
