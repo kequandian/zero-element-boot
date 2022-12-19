@@ -2,27 +2,29 @@ import React, { useState, useEffect } from 'react';
 import queryMethod from '@/components/utils/promiseAjax';
 
 /**
- * 
- * @param {boolean} extend 从 API 获取的数据, 是展开后传给子组件, 还是作为 data 传给子组件
+ * @param {string} api 获取数据源的 API
+ * @param {object} queryData 访问参数
+ * @param {string} token 授权凭证
  */
 export default function APIContainer(props) {
   const [data, setData] = useState({});
-  const { API, queryData={}, extend = true, token, children, ...rest } = props;
+  const { API, api=API, queryData={}, token, children, ...rest } = props;
 
   useEffect(_ => {
-    queryMethod(API, queryData, token)
+    queryMethod(api, queryData, token)
       .then(responseData => {
         if (responseData && responseData.code === 200) {
-          setData(responseData.data);
+          setData(responseData.data || responseData);
         }
       })
   }, []);
 
   return React.cloneElement(children, {
-    ...(extend ? { ...data } : { data }),
     ...rest,
+    ...data,
   })
 }
+
 
 function regQueryMethod(func) {
   queryMethod = func;

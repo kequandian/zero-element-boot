@@ -514,8 +514,17 @@
 
 ### 基于`filter`的数据绑定
 - 与`binding`不同的是，`filter` 只传递过滤字段至子组件，数据源其他字段不传递
-- 如数据源除`avatarUrl`外，还有`title`, 则`title` 不会传递至 `Avatar` 组件
+- 如数据源除`avatarUrl`外，还有`name`, 则`name`不会传递至`Avatar`组件
 
+> 数据源
+```json
+{
+  "avatarUrl":"https://",
+  "name": "Bob"
+}
+```
+
+> 组件配置
 ```json
 {
     "xname": "Avatar",
@@ -554,6 +563,7 @@
 }
 ```
 
+> 组件配置
 ```json
 {
     "xname": "Avatar",
@@ -562,7 +572,7 @@
         "|": {
            "users":[]
         }
-      }
+      },
       {
          "_": 1
       },
@@ -570,7 +580,7 @@
         "|": {
            "profile": {}
         }
-      }
+      },
       {
         "avatarUrl": "url"
       }
@@ -578,44 +588,175 @@
 }
 ```
 
-通过以上`chain`绑定后，最后绑定到组件的数据为 `{"url": "https://avatars/jose.png"`
+通过以上`chain`绑定后，最后绑定到组件的数据为
+> 最后一项的`chain`是`binding`逻辑, 数据源中的`age`未被过滤
 
-
-
-### 自定义数据绑定
-
-
-## 组件事件响应部分
-  
-### `SelectList` 响应事件
->  打印传回来的`item` , `item` 里面会多返回一个 `isSelected` 点击状态 true or false
-
-``` js
-  const config = {
-      items: items,
-      layout: layout,
-      ...rest
-    };
-  
-    const onHandleItemClick = (data) => {
-      console.log("data == ", data)
-      if (data.isSelected) {
-        console.log('执行事件')
-      }
-    }
-  
-    return (
-      <Box spacing='3px'>
-        <AutoLayout {...config} onItemClick={onHandleItemClick} />
-      </Box>
-    )
+```json
+{ 
+  "url": "https://avatars/jose.png", 
+  "age": 21 
+}
 ```
 
 
+### 自定义数据绑定
+- 除`binding`,`filter`,`chain`外，还可以自定义数据传递逻辑 `Gateway`,
+- `ChartData` 为命名的数据网关, 需要增加到数据网关集合
 
-> 用ManageList对一个列表 进行管理 绑定参数 
->
-> ManageList配置的 layout ，执行完事件之后不能自动刷新页面，需要回调出去再执行刷新事件
+> 全局增加自定义`Gateway`
+```js
+NamedGatewaySet({
+  ChartConvertData
+})
+```
+
+```json
+{
+    "presenter": "Avatar",
+    "gateway": {
+      "xname": "ChartConvertData",
+      "props": {
+          "chart":"pie"
+      }
+    }
+}
+```
+
+## 组件事件响应部分
+  
+### 通过代码响应事件
+> `SelectList` 单选容器组件
+> `itemData` 是选择后触发的返回的事件数据项, 里面会多返回一个状态 `isSelected`, 选择还是反选
+
+```json
+{
+    "presenter": "Avatar",
+    "Container": "SelectList"
+}
+```
+
+> 通过代码响应事件
+```js
+export default function UserSelect(props){
+  const {items, ...rest} = props
+
+  const onHandleItemClick = (itemData) => {
+      if (itemData.isSelected) {
+        console.log('选择执行事件')
+      }
+  }
+  
+  return (
+      <Box spacing='3px'>
+        <AutoLayout layout={layout} dataSource={items} {...rest} onItemClick={onHandleItemClick} />
+      </Box>
+  )
+```
+
+
+### 响应鼠标移动事件
+> 鼠标触发`hover`事件时, 响应`ShadowIndicator`效果
+
+```json
+{
+    "presenter": "Avatar",
+    "Container": "PlainList",
+    "indicator": "ShadowIndicator"
+}
+```
+
+### 响应选择事件
+
+```json
+{
+    "presenter": "Avatar",
+    "Container": "SelectList",
+    "indicator": "ShadowIndicator",
+    "selector": {
+      "xname": "SelectedCartUpperRightIcon",
+      "props":{
+         "state": "selected"
+      }
+    },
+    "unselector": {
+      "xname": "SelectedCartUpperRightIcon"
+    }
+}
+```
+
+
+## 单选或多选
+
+### 由列表组成的单选组件
+- 由列表组件 `SelectList` 实现单选逻辑
+- 可以变更列表组件 `MultiSelectList` 切换为复选组件
+
+```json
+{
+   "xname": "Flexbox",
+   "presenter": {
+     "children": [
+      {
+        "xname": "Avatar",
+        "binding": {
+          "avatarUrl": "url",
+          "size": "size"
+        }
+      },
+      {
+        "xname": "Text",
+        "props": {
+          "w": "100%",
+          "textAlign": "center",
+          "marginTop": "10px"
+        },
+        "binding": {
+          "title": "content"
+        }        
+      }
+    ],
+  },
+  "cart": {
+      "xname": "Cart",
+      "props": {
+        "linewidth": "0",
+        "padding":"0"
+      }
+  },  
+  "container": "SelectList",
+  "unselector": {
+    "xname": "SelectAvatar",
+    "props": {
+      "state": "unselected"
+    }
+  },
+  "indicator":{
+    "xname": "TagIndicator",
+    "props": {
+      "color": "#d4237a",
+      "none": "any",
+      "outline": "any"
+    }
+  },
+  "selector": {
+    "xname": "SelectAvatar",
+    "props": {
+      "state": "selected"
+    }
+   }
+ }
+  ```
+
+### 由多个子组件组成的单选组件
+
+
+
+
+## 管理组件部分
+
+### 标准增删改查管理组件
+- `ManageList` 对一个列表 进行管理 绑定参数 
+- ManageList配置的 layout ，执行完事件之后不能自动刷新页面，需要回调出去再执行刷新事件
 
 ```json
 {
@@ -701,71 +842,3 @@
 	   }
   }
   ```
-
-
-## 单选或多选
-  
-
-### 由多个子组件组成的单选组件
-用SelectList 对一个列表 进行管理 绑定参数 
-  ```json
-  {
-   "xname": "Flexbox",
-   "presenter": {
-     "children": [
-      {
-        "xname": "Avatar",
-        "binding": {
-          "avatarUrl": "url",
-          "size": "size"
-        },
-      },
-      {
-        "xname": "Text",
-        "binding": {
-          "title": "content"
-        },
-        "props": {
-          "w": "100%",
-          "textAlign": "center",
-          "marginTop": "10px"
-        }
-      }
-    ],
-  },
-   "container": "SelectList",
-   "cart": {
-    "xname": "Cart",
-    "props": {
-      "linewidth": "0",
-      "padding":"0"
-    }
-  },
-  //默认状态
-  "unselector": {
-    "xname": "SelectAvatar",
-    "props": {
-      "state": "unselected"
-    }
-  },
-  //hover状态
-  "indicator":{
-    "xname": "TagIndicator",
-    "props": {
-      "color": "#d4237a",
-      "none": "any",
-      "outline": "any"
-    }
-  },
-  //选中状态
-  "selector": {
-    "xname": "SelectAvatar",
-    "props": {
-      "state": "selected"
-    }
-   }
- }
-  ```
-
-### 由多个子组件组成的复选组件
-

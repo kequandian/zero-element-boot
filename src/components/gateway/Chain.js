@@ -1,5 +1,5 @@
 import React from 'react';
-import doChain from   './doChain'
+import doChain from   './doChain.mjs'
 
 /**
  * 多次数据转换,并保留原数据不变
