@@ -53,12 +53,38 @@ export default function doChain(chain, dataSource) {
       } else {
           const bindingKey = rule[key]
 
-          if(typeof bindingKey === 'object' && Object.keys(bindingKey).length==0){
+          if(Array.isArray(bindingKey)){
+            if(bindingKey.length===0){
+              // items:[], directly return array 
+              chaindata =  chaindata[key]
+            }else{
+              // foreach binding item key
+              // item={name: title}
+              bindingKey.forEach(item=>{
+                // console.log('item=',item)
+
+                Object.keys(item).forEach(itemKey=>{
+                  // console.log('itemKey=',itemKey)
+                  // console.log('chaindata.key=',key)
+                  const itemKeyValue = item[itemKey]
+
+                  // update dataSource
+                  chaindata[key].forEach( (dataItem, i)=> {
+                    // console.log('chaindata.dataItem=',dataItem, 'i=', i)
+                    dataItem[itemKeyValue] = dataItem[itemKey]
+                    delete dataItem[itemKey]
+                    // console.log('chaindata.dataItem=',dataItem, 'i=', i)
+                  })
+                })
+              })
+            }
+
+          }else if(typeof bindingKey === 'object' && Object.keys(bindingKey).length==0){
                 //
                 // if empty {}, means get all the object
 
                 const dataKey = chaindata[key]
-                itemData = {...dataKey, ...itemData}
+                // itemData = {...dataKey, ...itemData}
     
           }else if(typeof bindingKey === 'string'){
                 
@@ -73,7 +99,7 @@ export default function doChain(chain, dataSource) {
     })
 
     // end up array for chaindata
-    // chaindata =  Array.isArray(chaindata) ? chaindata : Object.assign(itemData, chaindata)
+    chaindata =  Array.isArray(chaindata) ? chaindata : Object.assign(itemData, chaindata)
   })
 
   return Object.assign(chaindata, processDataSource)
