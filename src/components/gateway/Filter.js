@@ -25,20 +25,14 @@ import doFilter from './doFilter.mjs'
  * }
  * @param {object} filter  过滤的数据域 
  * @param {object} dataSource  过滤的数据源
- * @param {string} _  仅过滤数据, 用于测试目的
  */
-export default function Filter({ children, filter={}, dataSource, __, ...rest }) {
+export default function Filter({ children, filter={}, dataSource, ...rest }) {
   const data = dataSource || rest || {}
+
   const filtereddata =  (typeof filter==='string') ? data[filter] : doFilter(filter, data)
 
-  // for test purpose
-  if(__){
-    return filtereddata
-  }
-  // end test
-
   // dataSource present, just filter the dataSource,  no dataSource, filter the rest
-  const finalData = dataSource ? {...rest, ...filtereddata} : filtereddata
+  const finalData = dataSource ?  filtereddata :  {...rest, ...filtereddata}
 
   return React.Children.toArray(children).map(child => React.cloneElement(child, {
       ...finalData

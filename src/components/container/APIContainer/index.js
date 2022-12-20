@@ -7,8 +7,9 @@ import queryMethod from '@/components/utils/promiseAjax';
  * @param {string} token 授权凭证
  */
 export default function APIContainer(props) {
-  const [data, setData] = useState({});
   const { API, api=API, queryData={}, token, children, ...rest } = props;
+
+  const [data, setData] = useState({});
 
   useEffect(_ => {
     queryMethod(api, queryData, token)
@@ -17,11 +18,11 @@ export default function APIContainer(props) {
           setData(responseData.data || responseData);
         }
       })
-  }, []);
+  }, [api]);
 
   return React.cloneElement(children, {
-    ...rest,
-    ...data,
+    dataSource: data,
+    ...rest
   })
 }
 

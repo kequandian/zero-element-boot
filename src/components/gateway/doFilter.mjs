@@ -22,7 +22,7 @@
  * **/
 export default function doFilter(filter, dataSource){
   const filterData = {}
-  
+
   Object.keys(filter).forEach(key => {
     // the key value as to filtered key
     const filteredKey = filter[key]
@@ -31,31 +31,35 @@ export default function doFilter(filter, dataSource){
         // dataSource key value
         const filteredObject = dataSource[key]
 
-        if(Object.keys(filteredKey).length==0){
-            // expand the data within {}
-            Object.assign(filterData, filteredObject)
+        if(filteredObject){
+          if(Object.keys(filteredKey).length==0){
+              // expand the data within {}
+              Object.assign(filterData, filteredObject)
 
-        }else{
-            // 
-            const bind = doFilter(filteredKey, filteredObject)
-            Object.assign(filterData, bind)
+          }else{
+              // 
+              const bind = doFilter(filteredKey, filteredObject)
+              Object.assign(filterData, bind)
+          }
         }
         
     }else if(typeof filteredKey == 'array'){
         // dataSource key value
         const filteredObject = dataSource[key]
-        if(typeof 'filteredObject'==='array'){
-          /// directly return as array
-          return filteredObject
-        }else{
-          console.log('invalid data source, should be []: ', filteredObject)
+
+        if(filteredObject){
+          if(typeof 'filteredObject'==='array'){
+            /// directly return as array
+            return filteredObject
+          }else{
+            console.log('invalid data source, should be []: ', filteredObject)
+          }
         }
 
     }else{
         // just convert the data field if normal value
         filterData[filteredKey] = dataSource[key];
     }
-
   })
 
   return filterData
