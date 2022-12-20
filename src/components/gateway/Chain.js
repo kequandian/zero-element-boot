@@ -14,9 +14,8 @@ export default function Chain({ children, chain=[], dataSource, ...rest }) {
 
   const chaindata = chain.length>0 ? (doChain(chain, data)) : {}
 
-  const finalData = dataSource ? {...rest, ...chaindata} : chaindata
-
   return React.Children.toArray(children).map(child => React.cloneElement(child, {
-    ...finalData
+    ...chaindata,
+    ...rest
   }))
 }

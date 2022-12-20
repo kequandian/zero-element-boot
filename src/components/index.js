@@ -75,7 +75,7 @@ import BackIndicator from './indicator/BackIndicator';
 // import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
 
 
-import {Avatar, DefaultAvatar, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle} from '@/components/presenter';
+import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle} from '@/components/presenter';
 
 import { 
   AutoLoadList,
@@ -150,6 +150,7 @@ NamedIndicatorSet({
 NamedPresenterSet({
   Avatar,
   DefaultAvatar,
+  Avatars,
   Title,
   Subtitle,
   DownloadButton,

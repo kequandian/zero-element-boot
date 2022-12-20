@@ -102,6 +102,8 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
     alternative:layoutAlternative,
   } = sugarLayout(layout) || {};
 
+  console.log('AutoLayout.layout=',layout)
+
   // const data = dataSource || rest || {}
   const data = {...dataSource, ...rest}
 
@@ -132,7 +134,9 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
   const _layoutFilter = layoutFilter || filter
   const _layoutChain   = layoutChain || chain
   const _layoutGateway = layoutGateway || gateway
-  const _gateway = _layoutGateway ? (typeof _layoutGateway==='string' ? { xname: _layoutGateway } : sugarGateway(_layoutGateway)) : undefined
+  const _1_gateway = _layoutGateway ? (typeof _layoutGateway==='string' ? { xname: _layoutGateway } 
+                : sugarGateway(_layoutGateway)) : undefined
+  const _gateway = _1_gateway ||  (_layoutBinding ? {xname:"Binding"} : (_layoutFilter?{xname:"Filter"}:(_layoutChain?{xname:"Chain"}:undefined)) )    
   const _NamedGateway = (_layoutBinding || _layoutFilter || _layoutChain || _gateway) ? NamedGateway : NextIndicator;
 
   // handle container
@@ -194,7 +198,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
           </__NamedCart>
         </__NamedGateway>
       )
- }
+  }
 
  // xname use for layout, use default VStack
   const __xname = xname || 'VStack'
@@ -231,7 +235,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
       onItemChanged={onItemChanged}
       onItemIndicated={onItemIndicated}
     >
-      <NamedLayout xname={__xname} props={props} __>
+      <NamedLayout xname={__xname} props={props} >
           <_NamedGateway binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}>
                 <_NamedCart {...__cart} 
                   onItemDeleted={onItemDeleted}

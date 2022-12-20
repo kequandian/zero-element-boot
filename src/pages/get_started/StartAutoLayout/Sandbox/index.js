@@ -11,14 +11,14 @@ export default function Sandbox(props){
     //         {avatarUrl : "http://local.webtools.io/pepsi.png"},
     //     ]
     // }
-    const data = {
-        avatarUrl : "http://local.webtools.io/pepsi.png"
-    }
+    // const data = {
+    //     avatarUrl : "http://local.webtools.io/pepsi.png"
+    // }
 
     return (
     
     <ContainerContext.Provider>
-        <StartAutoLayout {...data} />
+        <StartAutoLayout/>
     </ContainerContext.Provider>
 
     )

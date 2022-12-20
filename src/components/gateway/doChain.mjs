@@ -11,9 +11,10 @@ import doFilter from './doFilter.mjs';
 export default function doChain(chain, dataSource) {
   // final result
   let chaindata = dataSource
-  const processDataSource = dataSource
+  let processDataSource = dataSource
 
   chain.map(rule =>{
+
     const itemData = {}
 
     Object.keys(rule).forEach(key => {
@@ -36,16 +37,18 @@ export default function doChain(chain, dataSource) {
           // filter must be object
           if(typeof filter==='object'){
               chaindata = doFilter(filter, chaindata) 
+              // filter all
+              processDataSource = chaindata
           }else{
-            console.log('invalid filter=', filter)
+              console.log('invalid filter=', filter)
           }
 
           // remove the filter file keys from dataSource
-          Object.keys(filter).forEach(key2 => {
-              if(processDataSource[key2]){
-                delete processDataSource[key2];
-              }
-          })
+          // Object.keys(filter).forEach(key2 => {
+          //     if(processDataSource[key2]){
+          //       delete processDataSource[key2];
+          //     }
+          // })
 
       } else {
           const bindingKey = rule[key]
@@ -56,13 +59,12 @@ export default function doChain(chain, dataSource) {
 
                 const dataKey = chaindata[key]
                 itemData = {...dataKey, ...itemData}
-                
     
           }else if(typeof bindingKey === 'string'){
                 
               // if index from chain data is null, then index from dataSource
               itemData[bindingKey] = chaindata[key] || processDataSource[key]
-  
+
               if(chaindata[key]){
                   delete chaindata[key];
               }
@@ -71,7 +73,7 @@ export default function doChain(chain, dataSource) {
     })
 
     // end up array for chaindata
-    chaindata =  Array.isArray(chaindata) ?  chaindata : Object.assign(itemData, chaindata)
+    // chaindata =  Array.isArray(chaindata) ? chaindata : Object.assign(itemData, chaindata)
   })
 
   return Object.assign(chaindata, processDataSource)
