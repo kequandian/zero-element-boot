@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { history } from 'umi';
 import { useSize } from 'ahooks';
 import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/AutoX/ContainerContext';
@@ -13,6 +12,8 @@ import ContainerContext from '@/components/AutoX/ContainerContext';
  */
 export default function PlainList(props) {
   const { children, layout, items, dataSource=items, navigation, onItemClick, ...rest } = props;
+  // console.log('PlainList.dataSource=', dataSource)
+  // console.log('PlainList.rest=', rest)
 
   const [layoutRef, { getClassName }] = useLayout();
 
@@ -24,7 +25,7 @@ export default function PlainList(props) {
 
   // 检查数据是否有效
   if(!(dataSource && Array.isArray(dataSource))){
-     return tips(dataSource)
+     return loading(dataSource)
   }
 
   /**
@@ -49,6 +50,7 @@ export default function PlainList(props) {
                   React.cloneElement(Child, {
                       ...rest,
                       ...item,
+                      dataSource: item,
                       layout:layout,
                       // key: i,
                       ref: layoutRef,
@@ -63,6 +65,10 @@ export default function PlainList(props) {
         })}
     </ContainerContext.Provider>
   </div>
+}
+
+function loading(dataSource) {
+  return <div>数据加载中...</div>;
 }
 
 function tips(dataSource) {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import queryMethod from '@/components/utils/promiseAjax';
+const useLayout = require('@/components/hooks/useLayout');
 
 /**
  * @param {string} api 获取数据源的 API
@@ -8,6 +9,8 @@ import queryMethod from '@/components/utils/promiseAjax';
  */
 export default function APIContainer(props) {
   const { API, api=API, queryData={}, token, children, ...rest } = props;
+
+  const [layoutRef, { getClassName }] = useLayout();
 
   const [data, setData] = useState({});
 
@@ -20,10 +23,17 @@ export default function APIContainer(props) {
       })
   }, [api]);
 
-  return React.cloneElement(children, {
-    dataSource: data,
-    ...rest
-  })
+  return <div
+      className={getClassName()}
+    >
+      {React.Children.toArray(children).map(child => {
+        return React.cloneElement(child, {
+          ref: layoutRef, 
+          dataSource: data,
+          ...rest
+        })
+      })}
+  </div>
 }
 
 

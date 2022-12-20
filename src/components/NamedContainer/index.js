@@ -3,7 +3,9 @@ const DefaultContainerSet = require('../container');
 
 import { get as DefaultListSet } from '@/components/config/NamedListConfig';
 
-export default function NamedContainer({children, xname, props, container={xname, props}, containerSet,  ...rest}) {
+export default function NamedContainer({children, xname, props, container={xname, props}, containerSet, dataSource, ...rest}) {
+  // console.log('NamedContainer.dataSource=', dataSource)
+  // console.log('NamedContainer.rest=', rest)
 
   const newDefaultContainerSet = {
     ...DefaultContainerSet,

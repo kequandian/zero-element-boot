@@ -9,21 +9,23 @@ export default function Binding({ children, binding={}, dataSource, ...rest}) {
   const data = dataSource || rest || {}
   const bindindData = doBind(binding, data)
 
-  const finalData = dataSource ? {...rest, ...bindindData} : bindindData
+  // const finalData = dataSource ? {...rest, ...bindindData} : bindindData
 
   const childrenList = React.Children.toArray(children);
   return childrenList.map(child => React.cloneElement(child, {
-      ...finalData
+      ...rest,
+      ...bindindData
   }))
 }
 
+
+// doBind
 function doBind(binding, data) {
   const bindingData = {}
 
   Object.keys(binding).forEach(key => {
       const bindingKey = binding[key]
       bindingData[bindingKey] = data[key];
-
       delete data[key]
   })
 

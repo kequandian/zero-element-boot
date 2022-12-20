@@ -94,7 +94,7 @@ export default function (props) {
 //2021-11-10
 //新增 layout 新增 navigation 属性
 
-function AutoLayout({ children, layout, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource={}, 
+function AutoLayout({ children, layout, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource, 
   onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, alternative, alternativeActive, onAlternativeBack, ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
@@ -102,10 +102,11 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
     alternative:layoutAlternative,
   } = sugarLayout(layout) || {};
 
-  console.log('AutoLayout.layout=',layout)
-
-  // const data = dataSource || rest || {}
-  const data = {...dataSource, ...rest}
+  const data = dataSource || rest || {}
+  // const data = {...dataSource, ...rest}
+  // debug datasource
+  // console.log('AutoLayout.dataSource=',dataSource)
+  // console.log('AutoLayout.rest=',rest)
 
   if(alternativeActive){
     const notnull_alternative = (alternative && JSON.stringify(alternative) !== '{}' && alternative) || (layoutAlternative && JSON.stringify(layoutAlternative) !== '{}' && layoutAlternative) || tips('alternative')
@@ -119,7 +120,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
 
     return (
       <_AlternativeBack {..._alternativeBack} onBack={onAlternativeBack} >
-        <AutoLayout layout={alternative_layout} dataSource={data} {...alternativeOthers} />
+        <AutoLayout layout={alternative_layout} {...dataSource} {...rest} {...alternativeOthers} />
       </_AlternativeBack>
     )
   }
@@ -203,7 +204,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
  // xname use for layout, use default VStack
   const __xname = xname || 'VStack'
   return layoutChildren ? (
-    <Container {..._container} {...data} navigation={navigation}>
+    <Container {..._container} {...dataSource} {...rest} navigation={navigation}>
         <NamedLayout xname={__xname} props={props} __>
           {layoutChildren ? layoutChildren.map((child, i) => {
 
@@ -228,7 +229,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
         </NamedLayout>
     </Container>
   ) : (
-    <Container {..._container} {...data} 
+    <Container {..._container} {...dataSource} {...rest} 
       onItemClick={onItemClick} navigation={navigation}
       onItemDeleted={onItemDeleted}
       onItemAdded={onItemAdded}
