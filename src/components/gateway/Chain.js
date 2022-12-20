@@ -11,11 +11,14 @@ import doChain from   './doChain.mjs'
 
 export default function Chain({ children, chain=[], dataSource, ...rest }) {
   const data = dataSource || rest || {}
+  // console.log('Chain.dataSource=', dataSource)
+  // console.log('Chain.rest=', rest)
 
   const chaindata = chain.length>0 ? (doChain(chain, data)) : {}
+  const processedDataSource = dataSource ? {dataSource: chaindata} : chaindata
 
   return React.Children.toArray(children).map(child => React.cloneElement(child, {
-    ...chaindata,
+    ...processedDataSource,
     ...rest
   }))
 }

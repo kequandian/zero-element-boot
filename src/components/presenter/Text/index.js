@@ -9,8 +9,12 @@ import { Text } from "@chakra-ui/react";
  */
 
 export default function Index(props) {
+    // remove useless
+    const { allComponents, onItemClick, onItemAdded,onItemDeleted,onItemChanged, dataSource, ...data} = props
 
-    const { content, ...others } = props;
+    // main
+    const { content, ...others } = data;
+    // console.log('Text.data=',data)
 
     return (
         <Text {...others}>{content}</Text>

@@ -9,6 +9,8 @@ const { default: NextIndicator } = require('../NextIndicator');
  */
 module.exports = function NamedGateway({children, xname, props, binding={}, filter={}, chain=[], gateway={xname, props}, gatewaySet, dataSource, ...rest }) {
   const GatewaySet = gatewaySet || DefaultGatewaySet
+  // console.log('NamedGateway.dataSource=', dataSource)
+  // console.log('NamedGateway.rest=', rest)
 
   const t_binding = Object.keys(binding).length==0? undefined : binding
   const t_filter = Object.keys(filter).length==0? undefined : filter
