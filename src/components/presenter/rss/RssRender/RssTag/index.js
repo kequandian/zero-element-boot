@@ -22,8 +22,13 @@ export default function Index(props) {
     const cName = getCssName(data)
     console.log('cName = ', cName)
 
+    const s = {
+        margin: 0,
+        ...styles
+    }
+
     return (
-        <div className='tag_container' style={{...styles}}>
+        <div className='tag_container' style={s}>
             {
                 getTags(data).map((item, index) => {
                     return <div key={index} style={{marginRight:'4px'}}>{item}</div>
