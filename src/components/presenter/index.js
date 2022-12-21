@@ -17,6 +17,7 @@ import Progress from './chart/Progress';
 // element
 import Avatar from './Avatar';
 import DefaultAvatar from './Avatar/DefaultAvatar';
+import Avatars from './Avatar/Avatars';
 
 // button
 import AddNewButton from './button/AddNewButton'
@@ -45,7 +46,8 @@ export {
   // element
   Avatar,
   DefaultAvatar,
-
+  Avatars,
+  
   // tree
   JsonTree,
 

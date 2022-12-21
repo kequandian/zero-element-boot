@@ -1,5 +1,5 @@
 import React from 'react';
-import doFilter from './doFilter'
+import doFilter from './doFilter.mjs'
 
 /**
  * 过滤数据, 多种规侧
@@ -19,28 +19,30 @@ import doFilter from './doFilter'
  * {
  *    "profile":{}
  * }
- * 规则#5 提取数据源数数据域数组不变, 展开没有意义,与规则#3一致
+ * 规则#5 提取数据源数数据域数组,并返回数据
  * {
  *    "items":[]
  * }
+ * 规则#6 过滤掉所有数据,仅传递"|"键值filter过滤的数据
+ * {
+ *    "_": {"profile":{}}
+ * }
  * @param {object} filter  过滤的数据域 
  * @param {object} dataSource  过滤的数据源
- * @param {string} _  仅过滤数据, 用于测试目的
  */
-export default function Filter({ children, filter={}, dataSource, __, ...rest }) {
+export default function Filter({ children, filter={}, dataSource, ...rest }) {
   const data = dataSource || rest || {}
-  const filtereddata =  (typeof filter==='string') ? data[filter] : doFilter(filter, data)
+  // console.log('Filter.dataSource=', dataSource)
+  // console.log('Filter.rest=', rest)
 
-  // for test purpose
-  if(__){
-    return filtereddata
-  }
-  // end test
+  const isPureFilter = filter["_"] 
+  const _filter = filter["_"]  || filter
 
-  // dataSource present, just filter the dataSource,  no dataSource, filter the rest
-  const finalData = dataSource ? {...rest, ...filtereddata} : filtereddata
+  const filtereddata =  (typeof filter==='string') ? data[_filter] : doFilter(_filter, data)
+
+  const configData = isPureFilter? filtereddata : {...rest, ...filtereddata, dataSource: filtereddata}
 
   return React.Children.toArray(children).map(child => React.cloneElement(child, {
-      ...finalData
+      ...configData
   }))
 }
