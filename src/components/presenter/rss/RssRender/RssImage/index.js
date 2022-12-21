@@ -12,6 +12,11 @@ export default function Index(props) {
         url = getImgUrl(data)
     }
 
+    const s = {
+        margin: 0,
+        ...styles || {}
+    }
+
     //获取括号内容 
     function getImgUrl(str){
         if(str && str.indexOf('(') !== -1){
@@ -23,6 +28,6 @@ export default function Index(props) {
     }
 
     return (
-        <Image src={imgEndpoint + url} />
+        <Image src={imgEndpoint + url} style={s}/>
     )
 }
