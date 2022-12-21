@@ -1,4 +1,5 @@
-import React, { useRef, useSize } from 'react';
+import React, { useRef } from 'react';
+import { useSize } from 'ahooks';
 import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/AutoX/ContainerContext';
 
@@ -15,13 +16,14 @@ export default function HCenter(props) {
     
     const containerRef = useRef();
     const size = useSize(containerRef);
-    console.log('size = ', size)
+    // console.log('size = ', size)
 
-    // const getWidth = size.width < 1920 ? '65vh' : size.width < 1024 ? '80vh' : ''
+    const getWidth = size.width < 1024 ? '80vh' : size.width < 1920 ? '65vh' : ''
 
-    // const bodyWidth = getWidth ? { width : getWidth} : {}
+    // console.log('getWidth = ', getWidth)
+    const bodyWidth = getWidth ? { width : getWidth} : {}
 
-    console.log('bodyWidy = ', bodyWidth)
+    // console.log('bodyWidy = ', bodyWidth)
 
     return (
         React.Children.map(children, child => {
