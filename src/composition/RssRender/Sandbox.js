@@ -13,12 +13,9 @@ export default function (props) {
 
     const rsp = useTokenRequest({ api });
 
-    // const data = rsp && (Array.isArray(rsp[0]) && rsp[0] || ( rsp[0].records && rsp[0].records.length > 0 && rsp[0].records)) || []
-
     const data = rsp && rsp[0] || ""
-
     
-    console.log('data == ', data)
+    // console.log('data == ', data)
 
     return (
         data ? (
