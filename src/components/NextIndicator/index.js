@@ -1,5 +1,5 @@
-const React = require('react');
-
+// const React = require('react');
+import React from 'react'
 
 /**
  * 用于将接收到的所有参数传递给子组件
