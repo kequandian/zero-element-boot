@@ -9,7 +9,7 @@ export default function (props) {
     const { } = props;
 
     //25, 6
-    let api = '/api/u/rss/master/25';
+    let api = '/api/u/rss/master/6';
 
     const rsp = useTokenRequest({ api });
 

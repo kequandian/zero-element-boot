@@ -10,14 +10,15 @@ export default function Index(props) {
         return
     }
     
-    let url = ''
+    let list = ''
     const imgEndpoint = 'https://house.cloud.smallsaas.cn'
     if(data.indexOf('[-]') != -1){
-        url = getImgUrl(data)
+        list = getImgUrl(data)
     }
 
     const s = {
         margin: 0,
+        width: '100%',
         ...styles || {}
     }
 
@@ -26,12 +27,20 @@ export default function Index(props) {
         if(str && str.indexOf('(') !== -1){
             let regex = /\((.*?)\)/g; 
             let arr = str.match(regex); 
-            return arr[0].substr(1, arr[0].length-2)
+            const imgStr = arr[0].substr(1, arr[0].length-2)
+            if(imgStr.indexOf(',') !== -1){
+                return imgStr.split(',')
+            }
+            return imgStr
         }
         return ''
     }
 
     return (
-        <Image src={imgEndpoint + url} style={s}/>
+        list && Array.isArray(list) ? list.map((item, index) => {
+            return <Image src={imgEndpoint + item} style={s} key={index}/>
+        }) : (
+            <Image src={imgEndpoint + list} style={s} />
+        )
     )
 }
