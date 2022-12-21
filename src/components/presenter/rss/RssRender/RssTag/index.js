@@ -1,4 +1,7 @@
 import React from 'react';
+import { getEndpoint } from '@/components/config/common';
+import promiseAjax from '@/components/utils/promiseAjax';
+import useTokenRequest from '@/components/hooks/useTokenRequest';
 require('./index.less')
 
 export default function Index(props) {
@@ -21,6 +24,21 @@ export default function Index(props) {
 
     const cName = getCssName(data)
     console.log('cName = ', cName)
+
+    const api = `${getEndpoint()}/openapi/lc/autoApi/lowAutoPageStyles/rss/json/${cName}`;
+    const styleObj = useTokenRequest({ api });
+    const styleData = (styleObj && styleObj[0]) || {}
+
+    console.log('styleData == ', styleData)
+
+    function getCss(styleName){
+        const api = `${getEndpoint()}/openapi/lc/autoApi/lowAutoPageStyles/rss/json${styleName}`
+        promiseAjax(api).then(rsp => {
+
+        }).finally(_=>{
+
+        })
+    }
 
     const s = {
         margin: 0,

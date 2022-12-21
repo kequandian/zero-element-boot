@@ -5,6 +5,10 @@ import { getEndpoint } from '@/components/config/common';
 export default function Index(props) {
 
     const { data, styles } = props;
+
+    if(!data){
+        return
+    }
     
     let url = ''
     const imgEndpoint = 'https://house.cloud.smallsaas.cn'
