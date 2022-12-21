@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { Flex, Center, Box, Stack, Spacer, VStack, Container, Button  } from "@chakra-ui/react";
-import { AutoLayout } from '@/components';
-import Loading from '@/components/loading';
-const promiseAjax = require('@/components/utils/request');
+import { VStack  } from "@chakra-ui/react";
 import _ from 'lodash'
 import {getTypeContent} from '@/components/utils/tools'
 
@@ -11,11 +8,11 @@ import RssText from '@/components/presenter/rss/RssRender/RssText'
 import RssSpace from '@/components/presenter/rss/RssRender/RssSpace'
 import RssImage from '@/components/presenter/rss/RssRender/RssImage'
 import RssTag from '@/components/presenter/rss/RssRender/RssTag'
+import RssParagraph from '@/components/presenter/rss/RssRender/RssParagraph'
 
 export default function Index(props) {
 
     const { data='' } = props;
-
     console.log('data == ', data.split('\n'))
 
     const dataList = data.indexOf('\n') !== -1 ? data.split('\n') : data
@@ -29,8 +26,15 @@ export default function Index(props) {
                     switch (keyStr) {
                         case '<':
                             return <RssText key={index} type={getTypeContent(item)} content={item} />
+                        case '#':
+                            return <RssText key={index} type={getTypeContent(item)} content={item} />
                         case '>':
-                            return <RssSpace key={index} data={item}/>
+                            if(item.startsWith('>>>')){
+                                return <RssSpace key={index} data={item}/>
+                            }
+                            if(item.startsWith('> ')){
+                                return <RssParagraph data={item} key={index}/>
+                            }
                         case '[':
                             return <RssImage key={index} data={item}/>
                         case ';':

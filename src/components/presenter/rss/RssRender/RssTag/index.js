@@ -28,7 +28,7 @@ export default function Index(props) {
     }
 
     function getTags(str){
-        const listStr = str.split('>>')[1]
+        const listStr = str.indexOf('>>') != -1 ? str.split('>>')[1] : str.indexOf(' ') ? str.replace(';;; ', '') : str.replace(';;;', '')
         return listStr.indexOf(',') !== -1 ? listStr.split(',') : listStr
     }
 
@@ -42,7 +42,7 @@ export default function Index(props) {
         <div className='tag_container' style={{margin: 0}}>
             {
                 getTags(data).map((item, index) => {
-                    return <div key={index} style={{...styles, marginRight:'4px'}}>{item}</div>
+                    return <div key={index} style={{...styles, marginRight:'4px', marginBottom:'4px'}}>{item}</div>
                 })
             }
         </div>

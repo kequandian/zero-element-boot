@@ -16,10 +16,13 @@ function formatParams(url, data){
 
 //获取尖括号内容 
 function getTypeContent(str){
-    if(str && str.indexOf('<') !== -1){
+    if(str && str.indexOf('<') != -1){
         let regex = /\<(.*?)\>/g; //匹配<*> 尖括号里面任意内容的正则
         let arr = str.match(regex); //字符串匹配出来的数组
         return arr[0].substring(1, arr[0].length - 1)
+    }else if(str && str.startsWith('#')){
+        const value = str.split(' ')[0]
+        return value
     }
     return ''
 }
