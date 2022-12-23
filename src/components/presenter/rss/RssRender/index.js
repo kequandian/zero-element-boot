@@ -4,11 +4,11 @@ import _ from 'lodash'
 import {getTypeContent} from '@/components/utils/tools'
 
 require('./index.less')
-import RssText from '@/components/presenter/rss/RssText'
-import RssSpace from '@/components/presenter/rss/RssSpace'
-import RssImage from '@/components/presenter/rss/RssImage'
-import RssTag from '@/components/presenter/rss/RssTag'
-import RssParagraph from '@/components/presenter/rss/RssParagraph'
+import RssText from '../RssText'
+import RssSpace from '../RssSpace'
+import RssImage from '../RssImage'
+import RssTag from '../RssTag'
+import RssParagraph from '../RssParagraph'
 
 export default function Index(props) {
 
