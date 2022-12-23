@@ -82,7 +82,7 @@ import TestCart from '@/pages/TestCart'
 import SelectCart from '@/pages/SelectCart/Sandbox'
 
 //rss-ui
-import RssRender from '@/composition/RssRender/Sandbox'
+import RssRender from '@/components/presenter/rss/RssRender/Sandbox'
 
 
 export default function Index(props) {

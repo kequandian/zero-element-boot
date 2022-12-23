@@ -30,8 +30,8 @@ export default function Index(props) {
     }
 
     //图片数据源
-    // let list = ''
     let [ list, setList ] = useState('')
+
     //图片集名
     let imgListName = ''
     const imgEndpoint = 'https://house.cloud.smallsaas.cn'
