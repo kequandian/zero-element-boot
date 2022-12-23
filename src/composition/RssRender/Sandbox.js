@@ -8,7 +8,7 @@ export default function (props) {
 
     const { } = props;
 
-    //25, 6
+    //25, 6， 76
     let api = '/api/u/rss/master/6';
 
     const rsp = useTokenRequest({ api });

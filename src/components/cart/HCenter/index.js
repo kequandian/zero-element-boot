@@ -22,7 +22,7 @@ export default function HCenter(props) {
         //移动端
      } else {
          //pc端
-         getWidth = size.width < 1024 ? '40vh' : size.width < 1920 ? '50vh' : '60vh'
+         getWidth = size.width < 1024 ? '40vh' : size.width < 1920 ? '50vh' : '52vh'
      }
 
     const bodyWidth = getWidth ? { width : getWidth} : {}
