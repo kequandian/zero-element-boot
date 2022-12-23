@@ -29,10 +29,10 @@ export default function Index(props) {
                         case '#':
                             return <RssText key={index} type={getTypeContent(item)} content={item} />
                         case '>':
-                            if(item.startsWith('>>>')){
+                            if(item.startsWith('>>>') || item.startsWith('>>> ')){
                                 return <RssSpace key={index} data={item}/>
                             }
-                            if(item.startsWith('> ')){
+                            if(item.startsWith('> ') || item.startsWith('>')){
                                 return <RssParagraph data={item} key={index}/>
                             }
                         case '[':
