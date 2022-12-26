@@ -1,6 +1,7 @@
 import React from 'react';
 import { getEndpoint } from '@/components/config/common';
 import useTokenRequest from '@/components/hooks/useTokenRequest';
+import {getTypeContent} from '@/components/utils/tools'
 
 const typeMap = {
     '#': 'H1',
@@ -17,6 +18,9 @@ export default function Index(props) {
 
     function handleContent(value){
         if(type.startsWith('#')){
+            if(content.indexOf('<') != -1 && content.indexOf('>') != -1){
+                return value.split('>')[1]
+            }
             return value.replace(`${type} `, '')
         }
         return value.replace(`<${type}>`, '')
@@ -27,13 +31,20 @@ export default function Index(props) {
         paramStr = typeMap[type]
     }
     
+    //系统样式
     const api = `${getEndpoint()}/openapi/lc/autoApi/lowAutoPageStyles/rss/json/${paramStr}`;
     const styleObj = useTokenRequest({ api });
     const styles = (styleObj && styleObj[0]) || {}
 
+    //自定义样式
+    const customStyleName = content.indexOf('<') != -1 && content.indexOf('>') != -1 ? getTypeContent(content.replace(`${type}`, '')):''
+    const styleApi = customStyleName ? `${getEndpoint()}/openapi/lc/autoApi/lowAutoPageStyles/rss/json/${customStyleName}` : '';
+    const styleObj2 = useTokenRequest({ api:styleApi });
+    const styles2 = (styleObj2 && styleObj2[0]) || {}
+
     const s = {
         margin: 0,
-        ...styles
+        ...customStyleName ? styles2 : styles,
     }
     return (
         <div style={s}>

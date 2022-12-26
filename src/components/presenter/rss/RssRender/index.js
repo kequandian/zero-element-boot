@@ -23,6 +23,7 @@ export default function Index(props) {
 
                 if(!item.startsWith('<!>')){
                     const keyStr = item.substr(0, 1)
+                    console.log('keyStr = ', keyStr)
                     switch (keyStr) {
                         case '<':
                             return <RssText key={index} type={getTypeContent(item)} content={item} />
