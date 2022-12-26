@@ -4,6 +4,7 @@ import { getEndpoint } from '@/components/config/common';
 import { getContentName } from '../utils/tools';
 import useTokenRequest from '@/components/hooks/useTokenRequest';
 import _ from 'lodash'
+import GridImage from '@/components/presenter/Avatar/DefaultAvatar'
 
 export default function Index(props) {
 
@@ -25,6 +26,7 @@ export default function Index(props) {
         if(layoutStr){
             if(layoutStr.indexOf('#') !== -1){
                 layoutType = '#'
+                gridColumns = JSON.parse(layoutStr.replace('#',''))[0]
             }
         }
     }
@@ -95,11 +97,8 @@ export default function Index(props) {
         width: '100%'
     }
 
-    
-    console.log('list1111 == ', list)
-
     return (
-        <div style={{margin: 0}}>
+        <div style={{margin: 0, width:'100%'}}>
             {
                 //常规布局
                 !layoutType ? (
@@ -111,10 +110,14 @@ export default function Index(props) {
                 ):(
                     // 宫格布局
                     layoutType === '#' ? (
-                        <div style={{display: 'grid', gridTemplateColumns: "repeat(3, 1fr)", gap: '4px 4px'}}>
+                        <div style={{display: 'grid', gridTemplateColumns: `repeat(${gridColumns}, 1fr)`, gap: '4px 4px'}}>
                             {
                                 list && Array.isArray(list) && list.map((item, index) => {
-                                    return <Image id={`grid_${index}`} src={splicingUrl(item.albumUrl || item)} style={{height: item.height}} key={index} onLoad={imageLoad}/>
+                                    return (
+                                        <div key={item.id} style={{width: '100%', height:item.height, overflow: 'hidden'}}>
+                                            <Image id={`grid_${item.id}`} src={splicingUrl(item.albumUrl || item)} style={{width: '100%', height: '100%'}} onLoad={imageLoad}/>
+                                        </div>
+                                    )
                                 })
                             }
                         </div>
