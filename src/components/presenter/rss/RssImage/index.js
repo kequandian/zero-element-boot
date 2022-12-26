@@ -4,7 +4,7 @@ import { getEndpoint } from '@/components/config/common';
 import { getContentName } from '../utils/tools';
 import useTokenRequest from '@/components/hooks/useTokenRequest';
 import _ from 'lodash'
-import GridImage from '@/components/presenter/Avatar/DefaultAvatar'
+require('./index.less')
 
 export default function Index(props) {
 
@@ -22,11 +22,16 @@ export default function Index(props) {
     //图片布局
     let layoutType = ''
     if(data.indexOf('[[') !== -1 && data.indexOf(']]') !== -1){
-        const layoutStr = getLayoutContent(data.replace(' ', ''))
+        const layoutStr = getLayoutContent(data.indexOf(' ') != -1 ? data.replace(' ', ''): data)
+        console.log('layoutStr == ', layoutStr)
         if(layoutStr){
             if(layoutStr.indexOf('#') !== -1){
                 layoutType = '#'
                 gridColumns = JSON.parse(layoutStr.replace('#',''))[0]
+            }else if(layoutStr.indexOf('=-') !== -1){
+                layoutType = '=-'
+            }else if(layoutStr.indexOf('-=') !== -1){
+                layoutType = '-='
             }
         }
     }
@@ -71,7 +76,10 @@ export default function Index(props) {
         if(str && str.indexOf('[[') !== -1){
             let regex = /\[\[(.*?)\]\]/g; 
             let arr = str.match(regex); 
-            const content = arr[0].substr(2, arr[0].length-3)
+            // const content = arr[0].substr(2, arr[0].length-3)
+            const left = arr[0].replace('[[', '')
+            const right = left.replace(']', '')
+            const content = right
             return content
         }
         return ''
@@ -122,7 +130,23 @@ export default function Index(props) {
                             }
                         </div>
                     ):(
-                        <></>
+                        layoutStr === '-=' ? (
+                            <div class="flex_row" >
+                                <div style="flex: 1;">
+                                    <image id="type_two_left" class="big_img"  src={splicingUrl(list[0])} />
+                                </div>
+                                <div class="flex_col" style="flex: 1;">
+                                    <div>
+                                        <image class="small_img"  src={splicingUrl(list[1])}/>
+                                    </div>
+                                    <div>
+                                        <image class="small_img"  src={splicingUrl(list[2])}/>
+                                    </div>
+                                </div>
+                            </div>
+                        ):(
+                            <></>
+                        )
                     )
                 )
             }
