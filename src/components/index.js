@@ -51,6 +51,7 @@ import CheckBoxIndicatorCart from './indicator/CheckBoxIndicatorCart';
 // import indicator from './cart/indicator';
 import HCenter from './cart/HCenter';
 import PageCenter from './cart/PageCenter';
+import { WxPage } from "./container";
 // import Rectangle from './cart/deprecated/Rectangle';
 // import RoundCart from './cart/deprecated/Round';
 // import Page from './cart/deprecated/Page';
@@ -124,6 +125,7 @@ NamedCartSet({
   // indicator,
   HCenter,
   PageCenter,
+  WxPage,
   // Page,
   // Rectangle,
   // Round: RoundCart,
