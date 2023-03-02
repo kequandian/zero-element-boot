@@ -17,6 +17,9 @@ gulp.task('copy-less', function () {
 gulp.task('copy-png', function () {
   return gulp.src('./src/**/*.png').pipe(gulp.dest('./lib'));
 });
+gulp.task('copy-assets', function () {
+  return gulp.src('./src/assets/').pipe(gulp.dest('./lib'));
+});
 
 const copyResources = gulp.parallel('copy-css', 'copy-less', 'copy-png');
 
