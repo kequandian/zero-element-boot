@@ -1,6 +1,6 @@
 import React, { useImperativeHandle, forwardRef, useState } from 'react';
 
-import selectedIcon from '@/../assets/selected2-icon.svg';
+import selectedIcon from '@/assets/selected2-icon.svg';
 
 require('./index.less');
 
