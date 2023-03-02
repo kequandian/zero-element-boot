@@ -3,6 +3,7 @@ node_modules/
 package-lock.json
 yarn.lock
 .umi
+.vs/
 
 /dist
 /my_first_webpack
