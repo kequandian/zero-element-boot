@@ -152,7 +152,6 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
   const Presenter = (presenter && typeof presenter === 'string') ? (_allComponents[presenter] || tips(presenter)) : (isJsonObject(presenter)? AutoLayout : undefined)
   const _presenter = (Presenter && isJsonObject(presenter))? {layout: presenter} : {}
 
-
   // handle simple presenter, from {xname,props}
   if (!Presenter && !layoutChildren && !container){
       // support component from data, not from layout, with dash _  for xname,props,cart,binding,gateway,presenter
@@ -311,6 +310,7 @@ function sugarCart({cart, indicator, selector, unselector}){
  * @returns 
  */
 function sugarLayout(layout){
+  // console.log('layout 1111111111111 = ', layout)
     // layout is array
     if(Array.isArray(layout)){
         return {

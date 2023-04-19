@@ -11,7 +11,8 @@ import {
     ModalCloseButton,
     FormErrorMessage,
     useToast,
-    Radio, RadioGroup
+    Radio, RadioGroup,
+    Grid, GridItem
 } from "@chakra-ui/react";
 import { useForm } from 'react-hook-form';
 
@@ -370,13 +371,17 @@ export default function Index(props) {
                                 <FormControl>
                                     <FormLabel>类别</FormLabel>
                                     <RadioGroup onChange={setDelValue} value={delValue}>
-                                        <Stack direction='row'>
+                                        <Grid templateColumns='repeat(2, 1fr)' gap={2}>
                                             {items && items.map((item, index) => {
                                                 if(item.id != '-1' && item.id != '-2'){
-                                                   return <Radio value={item.id} key={`${index}_radio`}>{item.name}</Radio>
+                                                   return (
+                                                        <GridItem w='100%'>
+                                                            <Radio value={item.id} key={`${index}_radio`}>{item.name}</Radio>
+                                                        </GridItem>
+                                                   ) 
                                                 }
                                             })}
-                                        </Stack>
+                                        </Grid>
                                     </RadioGroup>
                                 </FormControl>
                                 <Stack direction='row' spacing={4} align='center'>
