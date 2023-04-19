@@ -85,8 +85,7 @@ import SelectCart from '@/pages/SelectCart/Sandbox'
 import RssRender from '@/components/presenter/rss/RssRender/Sandbox'
 
 //test
-import TestStandalone from '@/test/Standalone/Sandbox'
-
+import NewStandalone from '@/pages/NewStandalone/Sandbox'
 
 export default function Index(props) {
 
@@ -113,7 +112,7 @@ export default function Index(props) {
   // return <TestCRUDList {...props} />
   return (
     <ChakraProvider>
-      <TestStandalone {...props} />
+      <TestCRUDList {...props} />
     </ChakraProvider>
   )
 

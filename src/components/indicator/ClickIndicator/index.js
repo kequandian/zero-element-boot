@@ -21,8 +21,11 @@ import React from 'react';
 export default function Index(props) {
 
     const { children, onItemClick, indicatorData, ...rest } = props;
+
+    console.log('12312412')
     
     function itemClick(){
+        console.log('indicatorData = ', onItemClick)
         if(onItemClick){
             onItemClick(indicatorData)
         }
