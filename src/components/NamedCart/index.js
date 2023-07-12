@@ -69,7 +69,7 @@ export default function NamedCart(nameCartPropsx) {
   const unselectorName = _unselector ? ((typeof _unselector === 'string') ? _unselector : ((typeof _unselector === 'object') ? _unselector.xname : '')) : ''
   const _Unselector  = unselectorName ? _IndicatorSet[unselectorName] : undefined
   const unselectorProps = (unselectorName && (typeof _unselector === 'object')) ? _unselector.props : {}
-
+  
   return (
     <>
       {
