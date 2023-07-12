@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChakraProvider, Flex, Center, Box, Stack, Spacer, VStack, Container, Button  } from "@chakra-ui/react";
+import { Flex, Box, Stack, VStack, Container, Button  } from "@chakra-ui/react";
 import { AutoLayout } from '@/components';
 import Loading from '@/components/loading';
 const promiseAjax = require('@/components/utils/request');
@@ -7,11 +7,9 @@ import JarItem from '@/composition/Standalone/JarItem';
 
 import layout from './layout';
 
-import StandaloneBody from './StandaloneBody';
-
 export default function Index(props) {
 
-    const { data=[] } = props;
+    const { data=[], sign='' } = props;
 
     const [ isShowList, setIsShowList ] = useState(true);
     const [ isShowData, setIsShowData ] = useState(false);
@@ -23,12 +21,7 @@ export default function Index(props) {
     const layoutJsonPath = '';
     const localLayoutJson = layout;
 
-    // let api = '/dev/dependency/decompile/json';
     let api = '/dev/dependency/json';
-
-    // if (process.env.NODE_ENV === 'development') {
-    //   api = `http://192.168.3.121:8080${api}`;
-    // }
 
     if(layoutJsonPath){
         layoutData = { path: layoutJsonPath};
@@ -66,7 +59,7 @@ export default function Index(props) {
         // const api = `http://localhost:8080/api/dev/dependency/decompile`;
         setIsShowList(false)
         setIsLoading(true)
-        promiseAjax(api, {pattern:name}, {})
+        promiseAjax(api, {pattern:name, sign}, {})
             .then(responseData => {
                 if (responseData && responseData.code === 200) {
                     let respData = responseData.data;
@@ -122,47 +115,44 @@ export default function Index(props) {
 
 
     return (
-        <ChakraProvider>
-            <Flex>
-                
-                <Box>
-                    <VStack spacing='3px'>
-                        <div style={{minWidth: '500px', width: '100%', height: '60px', lineHeight: '60px', backgroundColor: '#ffffff', padding:'20px 10px 10px 25px'}}>
-                            <Stack direction={['column', 'row']} w="100%" spacing='10px'>
-                                <Button h="35px" colorScheme='blue' onClick={() => goBack()}>Home</Button>
-                                { currentItemName ? (
-                                    <Button h="35px" colorScheme='blue' onClick={() => getDetailFetch(currentItemName, 1)}>{currentItemName}</Button>
-                                ):<></>}
-                            </Stack>
-                        </div>
-                        
-                        {
-                            isShowList ? (
-                                <AutoLayout {...config} onItemClick={onJarItemClick}>
-                                    {/* <StandaloneBody  onItemClick={onJarItemClick}/> */}
-                                </AutoLayout>
-                            ): <></>
-                        }
-                        
-                        {
-                            isLoading ? (
-                                    <Loading styles={{marginTop: '60px'}}/>
-                            )
-                             : isShowData && showDetail ? (
-                                <div style={{width: '100%', paddingLeft:'25px'}}>
-                                    <Box flex='1'>
-                                        { showDetail && showDetail.length > 0 ? (
-                                            <div style={{background:'#ffffff', width:'100%', paddingTop: '10px'}}>
-                                                {handleContent(showDetail)}
-                                            </div>
-                                        ): null}
-                                    </Box>
-                                </div>
-                            ): <></>
-                        }
-                    </VStack>
-                </Box>
-            </Flex>
-        </ChakraProvider>
+        <Flex>
+            
+            <Box>
+                <VStack spacing='3px'>
+                    <div style={{minWidth: '500px', width: '100%', height: '60px', lineHeight: '60px', backgroundColor: '#ffffff', padding:'20px 10px 10px 25px', marginBottom: '8px'}}>
+                        <Stack direction={['column', 'row']} w="100%" spacing='10px'>
+                            <Button h="35px" colorScheme='blue' onClick={() => goBack()}>Home</Button>
+                            { currentItemName ? (
+                                <Button h="35px" colorScheme='blue' onClick={() => getDetailFetch(currentItemName, 1)}>{currentItemName}</Button>
+                            ):<></>}
+                        </Stack>
+                    </div>
+                    
+                    {
+                        isShowList ? (
+                            <AutoLayout {...config} onItemClick={onJarItemClick}>
+                            </AutoLayout>
+                        ): <></>
+                    }
+                    
+                    {
+                        isLoading ? (
+                                <Loading styles={{marginTop: '60px'}}/>
+                        )
+                            : isShowData && showDetail ? (
+                            <div style={{width: '100%', paddingLeft:'25px'}}>
+                                <Box flex='1'>
+                                    { showDetail && showDetail.length > 0 ? (
+                                        <div style={{background:'#ffffff', width:'100%', paddingTop: '10px'}}>
+                                            {handleContent(showDetail)}
+                                        </div>
+                                    ): null}
+                                </Box>
+                            </div>
+                        ): <></>
+                    }
+                </VStack>
+            </Box>
+        </Flex>
     )
 }
