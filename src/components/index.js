@@ -77,6 +77,8 @@ import BackIndicator from './indicator/BackIndicator';
 
 import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle} from '@/components/presenter';
 
+import ImageView from './presenter/image';
+
 import { 
   AutoLoadList,
   LoadMoreList,
@@ -204,5 +206,6 @@ export {
     Container,
     TabContainer,
     WxPage,
+    ImageView
 };
 
