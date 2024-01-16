@@ -2,10 +2,9 @@ export default {
     "GET /api/layoutJson": {
         "code": 200,
         "data": {
-            "xname": "Flexbox",
+            "xname": "Gridbox",
             "props": {
-                "align": "start",
-                "direction": "row"
+                "columns": 8
             },
             "cart": {
                 "xname": "Cart",
@@ -27,9 +26,10 @@ export default {
                 "children": [
                     {
                         "presenter": {
-                            "xname": "Gridbox",
+                            "xname": "Flexbox",
                             "props": {
-                                "columns": 8
+                                "align": "start",
+                                "direction": "row"
                             },
                             // 方法 一 gateway 绑定组件需要用的字段并赋值 =================
                             "presenter": {
@@ -56,18 +56,18 @@ export default {
                             // 方法二 组件内部自行调用 item 字段====================
                             //presenter: "remoteItem" 
                             // ==========================
-                            "cart": {
-                                "xname": "Cart",
-                                "props": {
-                                    "isOnHover": true,
-                                    "margin": "0px 0px 2px 0px",
-                                    "linewidth": "1px",
-                                    "padding": "10px",
-                                    "shadow": "0 2px 5px rgba(0, 0, 0, 0.15)",
-                                    "fill": "#E5E500"
-                                }
-                            },
-                            "container": "ItemClickList",
+                            // "cart": {
+                            //     "xname": "Cart",
+                            //     "props": {
+                            //         "isOnHover": true,
+                            //         "margin": "0px 0px 2px 0px",
+                            //         "linewidth": "1px",
+                            //         "padding": "10px",
+                            //         "shadow": "0 2px 5px rgba(0, 0, 0, 0.15)",
+                            //         "fill": "#E5E500"
+                            //     }
+                            // },
+                            // "container": "ItemClickList",
                         },
                         "gateway": {
                             "xname": "Binding",
