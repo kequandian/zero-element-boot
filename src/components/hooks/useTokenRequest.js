@@ -58,6 +58,8 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}}, c
                     if (useId) {
                         callBack(data);
                     }
+                }else { 
+                    setRespData(responseData);
                 }
             })
     }

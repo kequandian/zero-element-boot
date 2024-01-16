@@ -31,7 +31,7 @@ export default function PreAutoLayout (props) {
 
 
   function getLayouByMockName(mockName){
-    const api = `http://192.168.3.223/previewautolayout/mock/${mockName}.json`
+    const api = `/previewautolayout/mock/${mockName}.json`
       promiseAjax(api).then(resp => {
           setMockData(resp)
       }).finally(_ => {
@@ -48,12 +48,12 @@ export default function PreAutoLayout (props) {
   }
 
   //testLayoutName
-  const testLayoutJsonUrl = testLayoutName ? `http://192.168.3.207/previewautolayout/${testLayoutName}/layout.json` : ''
+  const testLayoutJsonUrl = testLayoutName ? `/previewautolayout/${testLayoutName}/layout.json` : ''
   const testLayoutJsonObj = useTokenRequest({ api:testLayoutJsonUrl });
   const testLayoutJsonData = (testLayoutJsonObj && testLayoutJsonObj[0]) || {}
 
   //testBindingName
-  const testBindingJsonUrl = testBindingName ? `http://192.168.3.207/previewautolayout/${testBindingName}/binding.json` : ''
+  const testBindingJsonUrl = testBindingName ? `/previewautolayout/${testBindingName}/binding.json` : ''
   const testBindingJsonObj = useTokenRequest({ api:testBindingJsonUrl });
   const testBindingJsonData = testBindingJsonObj && testBindingJsonObj[0] && { binding : testBindingJsonObj[0] } || {}
 
@@ -78,7 +78,7 @@ export default function PreAutoLayout (props) {
   const layoutJson = (layoutData && typeof layoutData === 'object'  && JSON.stringify(layoutData) !== '{}' && layoutData) 
     || (respLayoutDataRecords && typeof respLayoutDataRecords === 'object' && JSON.stringify(respLayoutDataRecords) !== '{}' && respLayoutDataRecords) 
     || testLayoutJsonData
-
+    
   /**
    * 页面配置
    */

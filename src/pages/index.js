@@ -112,7 +112,7 @@ export default function Index(props) {
   // return <TestCRUDList {...props} />
   return (
     <ChakraProvider>
-      <Standalone {...props} />
+      <PreviewAutoLayout {...props} />
     </ChakraProvider>
   )
 
