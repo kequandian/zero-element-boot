@@ -64,7 +64,9 @@ import RssAutoLayout from '@/pages/rssAutoLayout/item'
 
 import OnDeleteIndicator from '@/components/indicator/OnDeleteIndicator';
 import SelectAvatar from '@/components/indicator/SelectAvatar';
-import TagIndicator from '@/components/indicator/TagIndicator'
+import TagIndicator from '@/components/indicator/TagIndicator';
+
+import testModuleItem from '@/composition/moduleListPage/moduleItem'
 
 
 // NamedCartSet({
@@ -75,8 +77,8 @@ import TagIndicator from '@/components/indicator/TagIndicator'
 if(process.env.NODE_ENV == 'development'){
   // setEndpoint('http://app1.console.smallsaas.cn:8001');
   // setEndpoint('http://lowcode.smallsaas.cn');
-  // setEndpoint('https://house.cloud.smallsaas.cn');
-    setEndpoint('http://local.static.smallsaas.cn')
+  setEndpoint('http://local.components.cn');
+    // setEndpoint('http://local.static.smallsaas.cn')
     // setEndpoint('http://192.168.3.33:8000')
   
   // setToken('eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzAsInVzZXJJZCI6MzE4LCJhY2NvdW50IjoiYjQxYTg2OTRhNjM4NDIyNWJmNWMxOTQyZjdmZjIyNTYiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjoxNDYxLCJpYXQiOjE2NjkxMTMzMTQsImp0aSI6IjMxOCIsInN1YiI6ImI0MWE4Njk0YTYzODQyMjViZjVjMTk0MmY3ZmYyMjU2IiwiZXhwIjoxNjY5MzcyNTE0fQ.HnIuikkC0ugUeZAoqhtVgl4wYiJUgkuL9v8kd46YNIBpdCj-DujDVfHIUgfCqjp0mP23o-3hP697swHrP2qPiQ')
@@ -145,8 +147,10 @@ NamedPresenterSet({
     ItemImg,
     ItemTitle,
     RssAutoLayout,
-    Text
+    Text,
   //})
+
+  testModuleItem
 })
 
 FormItemTypeSet({
