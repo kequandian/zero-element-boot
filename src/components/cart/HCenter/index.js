@@ -9,7 +9,7 @@ import useSize from '@/components/hooks/useSize';
  */
 export default function HCenter(props) {
 
-    const { children, fill='transparent', offset = 0 } = props
+    const { children, fill='transparent', offset = '0' } = props
 
     //获取屏幕宽高
     const size = useSize()

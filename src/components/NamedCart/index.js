@@ -32,7 +32,7 @@ import NextIndicator from '@/components/NextIndicator';
  * indicated
  */
 export default function NamedCart(nameCartPropsx) {
-    const { children, xname, props, indicator, selector, unselector, selected, cart = { xname, props, indicator, selector, unselector}, cartSet, indicatorSet, 
+    const { children, xname, props, indicator, selector, unselector, selected, __cart = { xname, props, indicator, selector, unselector}, cart = __cart, cartSet, indicatorSet, 
     indicatorData={}, onItemClick, isSelected,
     onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
     ...rest } = nameCartPropsx

@@ -9,10 +9,10 @@ import React from 'react';
  */
 export default function CssCart(props) {
 
-  const { children, ...style }=props;
+  const { children, style }=props;
 
   return React.Children.map(children, child => {
-    return <div  style={{ ...style}} >
+    return <div  style={{ flex:1,  ...style}} >
       {child}
     </div>
   })
