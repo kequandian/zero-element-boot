@@ -48,7 +48,6 @@ function doBind(binding, data) {
       delete data[key]
   })
 
-  console.log('bindingData == ', bindingData)
   return { ...bindingData, ...data };
 }
 

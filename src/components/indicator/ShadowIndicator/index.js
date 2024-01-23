@@ -12,7 +12,6 @@ export default  function Index(props) {
 
   const { children, ...defaultHoverStyles } = props;
 
-
   const styles = {
     position: 'relative',
     borderColor: 'transparent',
