@@ -14,7 +14,8 @@ export default function Index(props) {
 
     // main
     const { content, ...others } = data;
-    // console.log('Text.data=',data)
+
+    // console.log('Text content = ',content)
 
     return (
         <Text {...others}>{content}</Text>
