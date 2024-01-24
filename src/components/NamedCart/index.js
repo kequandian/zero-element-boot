@@ -32,11 +32,10 @@ import NextIndicator from '@/components/NextIndicator';
  * indicated
  */
 export default function NamedCart(nameCartPropsx) {
-    const { children, xname, props, indicator, __indicator_, selector, unselector, selected, __cart = { xname, props, indicator, selector, unselector}, cart = __cart, cartSet, indicatorSet, 
+    const { children, xname, props, indicator, selector, unselector, selected, __cart = { xname, props, indicator, selector, unselector}, cart = __cart, cartSet, indicatorSet, 
     indicatorData={}, onItemClick, isSelected,
-    onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, 
+    onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, __indicator,
     ...rest } = nameCartPropsx
-
   const _CartSet = cartSet ? cartSet : DefaultCartSet()
   //2021-10-28 新增 selector 模块
   const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
@@ -44,14 +43,9 @@ export default function NamedCart(nameCartPropsx) {
   const cartName = (typeof cart === 'string') ? cart : cart.xname
   const _Cart = cartName ? (_CartSet[cartName] || tips(cartName)) : NextIndicator;
   const _cart = cart.props || {}
-
+  
   // get indicator
   let _indicator = cart.indicator 
-  //测试代码 ========
-  // _indicator = _indicator.xname ? _indicator : { ..._indicator, ...__indicator_}
-  // console.log('__indicator_ = ', __indicator_)
-  // console.log('_indicator = ', _indicator)
-  // ==============
   const indicatorName = _indicator ? ((typeof _indicator === 'string') ? _indicator : (typeof _indicator === 'object') ? _indicator.xname : '') : ''
   const _Indicator  = indicatorName ? (_IndicatorSet[indicatorName] || tips(indicatorName) ) : undefined  
   const indicatorProps = (_indicator && typeof _indicator === 'object') ? _indicator.props : {}
@@ -74,7 +68,7 @@ export default function NamedCart(nameCartPropsx) {
   const unselectorName = _unselector ? ((typeof _unselector === 'string') ? _unselector : ((typeof _unselector === 'object') ? _unselector.xname : '')) : ''
   const _Unselector  = unselectorName ? _IndicatorSet[unselectorName] : undefined
   const unselectorProps = (unselectorName && (typeof _unselector === 'object')) ? _unselector.props : {}
-
+  
   return (
     <>
       {
@@ -96,13 +90,13 @@ export default function NamedCart(nameCartPropsx) {
                              indicatorData={_indicatorData} 
                              selected={selected}
                       isSelected={isSelected} >
-                <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
+                <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator} /> 
             </OverlaySelector>
         ) : 
         (
             (_indicator) ? 
             (
-              <NamedIndicator indicator={_indicator} indicatorData={_indicatorData} onItemClick={onItemClick}
+              <NamedIndicator indicator={_indicator} __indicator={__indicator} indicatorData={_indicatorData} onItemClick={onItemClick}
                 onItemDeleted={onItemDeleted}
                 onItemAdded={onItemAdded} 
                 onItemChanged={onItemChanged} 
@@ -120,11 +114,13 @@ export default function NamedCart(nameCartPropsx) {
   )
 }
 
-function _CartModule({children, Cart, props, data}){
+function _CartModule({children, Cart, props, data, __indicator}){
+  
   return (<Cart {...props}>
             {React.Children.toArray(children).map(child => {
               return React.cloneElement(child, {
-                ...data
+                ...data,
+                __indicator:__indicator
               })
             })}
         </Cart>)

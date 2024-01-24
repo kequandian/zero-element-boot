@@ -107,7 +107,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
   // debug datasource
   // console.log('AutoLayout.dataSource=',dataSource)
   // console.log('AutoLayout.rest=',rest)
-
+  
   if(alternativeActive){
     const notnull_alternative = (alternative && JSON.stringify(alternative) !== '{}' && alternative) || (layoutAlternative && JSON.stringify(layoutAlternative) !== '{}' && layoutAlternative) || tips('alternative')
     const alternative_layout = (typeof notnull_alternative ==='string') ? ({xname: notnull_alternative}) : (notnull_alternative.layout ?  notnull_alternative.layout : notnull_alternative)

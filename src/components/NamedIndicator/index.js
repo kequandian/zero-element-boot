@@ -26,13 +26,17 @@ export default function NamedIndicator( { children, Indicator, xname, props, tri
     const toggleHoverLeaved = () => {
       setOnHover(false)
     }
+
     const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
 
-    const indicatorName = Indicator ? '' : ( (typeof indicator=='string')? indicator : indicator.xname )
+    //2024-01-24 新增代码
+    const __indicator_ = {...__indicator, ...indicator }
+
+    const indicatorName = Indicator ? '' : ( (typeof __indicator_=='string')? __indicator_ : __indicator_.xname )
     // 1. both Indicator & indicator, means  indicator for Indicator
     // 2. only Indicator, none 
     // 3. only indicator, indicator.props
-    const _indicator =  (Indicator && indicator) ? indicator : ( Indicator ? {} : (indicator ? ( (typeof indicator=='string')?{} : (indicator.props?indicator.props:{}) ) : {}) )
+    const _indicator =  (Indicator && __indicator_) ? __indicator_ : ( Indicator ? {} : (__indicator_ ? ( (typeof __indicator_=='string')?{} : (__indicator_.props?__indicator_.props:{}) ) : {}) )
 
     const _Indicator = Indicator || _IndicatorSet[indicatorName] || tips(indicatorName)
 
