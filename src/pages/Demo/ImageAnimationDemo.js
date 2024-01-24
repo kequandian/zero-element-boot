@@ -47,14 +47,14 @@ export default function ImageAnimationDemo(props) {
     const config = {
         items: userList.length > 0 ? userList : [],
         layout: {
-            name: 'Flexbox',
+            xname: 'Flexbox',
             props: {
                 align: 'start',
                 direction: 'row',
             },
         },
         cart: {
-            name: 'HoverShadowCart',
+            xname: 'HoverShadowCart',
             props: {
             },
         },

@@ -7,9 +7,6 @@ export default function NamedList({ xname, props, children, ...data}) {
 
   const _List = NamedListSet[xname] || tips(xname);
 
-  console.log('xname = ', xname)
-  console.log('_List = ', _List)
-
   // function handleQuery(queryData) {
   //   return promiseAjax(API, queryData).then(response => {
   //     return formatData(response.data);

@@ -10,6 +10,7 @@ import React from 'react';
  * @param {margin} margin 外距
  * @param {height} height 高度
  * @param {borderRadius} corner 圆角
+ * @param {border} border 边框
  * 
  * 
  */
@@ -18,8 +19,9 @@ import React from 'react';
 export default function Rectangle(props) {
     const{
          fill='',color='#18e1d1',width='',padding='',margin='' ,height='',corner='',
+         border=''
      }=props;
-
+     
     return (
         <div  style={
             {
@@ -29,6 +31,7 @@ export default function Rectangle(props) {
               margin:`${margin}`,
               height:`${height}`,
               borderRadius: `${corner}`,
+              border: `${border}`
               
             }
         }>

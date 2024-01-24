@@ -75,7 +75,10 @@ import BackIndicator from './indicator/BackIndicator';
 // import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
 
 
-import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle} from '@/components/presenter';
+import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle,
+  Rectangle,
+  Circle,
+} from '@/components/presenter';
 
 import ImageView from './presenter/image';
 
@@ -160,7 +163,9 @@ NamedPresenterSet({
   ItemPlaceholder,
   AddNewButton,
   Text,
-  Image
+  Image,
+  Rectangle,
+  Circle,
 })
 
 NamedListSet({
