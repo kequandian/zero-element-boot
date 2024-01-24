@@ -20,8 +20,8 @@ module.exports = {
     binding: {
       "moduleName": "label",
       "items": "value",
-      "componentType": "__indicator_.xname",
-      "componentProps": "__indicator_.props"
+      "componentType": "__indicator.xname",
+      "componentProps": "__indicator.props"
     },
     cart: {
       xname: 'Cart',
@@ -39,8 +39,6 @@ module.exports = {
       {
         xname: "ShadowIndicator",
         props: {
-          borderColor: 'transparent',
-          boxShadow: '0 0px 4px rgba(0, 0, 0, 0.1)',
         }
       }, //hover 时用, 第一次向子组件转递时,  更名为 hoverIndicator
       selector: {
