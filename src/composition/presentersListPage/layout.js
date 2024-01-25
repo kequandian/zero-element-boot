@@ -3,9 +3,7 @@ module.exports = {
     props: {
         columns: 8
     },
-    
     presenter: {
-        presenter: {},
     },
     binding: {
       "name": "content",

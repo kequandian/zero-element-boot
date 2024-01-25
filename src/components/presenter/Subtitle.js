@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function (props) {
 
-    const { contentTxt } = props;
+    const { content } = props;
 
-    return <div style={{marginLeft:'6px', color: "#787878"}}>{contentTxt}</div>
+    return <div style={{marginLeft:'6px', color: "#787878"}}>{content}</div>
 }
