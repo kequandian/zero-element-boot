@@ -48,7 +48,7 @@ module.exports = {
           height: '25px',
           fill: '',
           corner: '8px',
-          border: '1px solid #d1d1d1',
+          border: '1px solid #d1d1d1'
         }
       },
       container: 'PlainList',

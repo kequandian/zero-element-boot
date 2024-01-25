@@ -98,7 +98,8 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
   onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, alternative, alternativeActive, onAlternativeBack, ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
-  const { xname, props, container, binding:layoutBinding, filter:layoutFilter, chain:layoutChain, gateway:layoutGateway, cart, indicator, selector, unselector, presenter, navigation, children: layoutChildren,
+  const { xname, props, container, binding:layoutBinding, filter:layoutFilter, chain:layoutChain, gateway:layoutGateway, cart, indicator, selector, unselector, 
+    presenter, navigation, children: layoutChildren,
     alternative:layoutAlternative,
   } = sugarLayout(layout) || {};
 
@@ -107,6 +108,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
   // debug datasource
   // console.log('AutoLayout.dataSource=',dataSource)
   // console.log('AutoLayout.rest=',rest)
+  // console.log('___presenter=',rest.___presenter, rest)
   
   if(alternativeActive){
     const notnull_alternative = (alternative && JSON.stringify(alternative) !== '{}' && alternative) || (layoutAlternative && JSON.stringify(layoutAlternative) !== '{}' && layoutAlternative) || tips('alternative')
@@ -150,7 +152,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
 
   // Presenter,  means presenter is AutoLayout
   const Presenter = (presenter && typeof presenter === 'string') ? (_allComponents[presenter] || tips(presenter)) : (isJsonObject(presenter)? AutoLayout : undefined)
-  const _presenter = (Presenter && isJsonObject(presenter))? {layout: presenter} : {}
+  const _presenter = (Presenter && isJsonObject(presenter)) ? {layout: {...presenter, ...rest.___presenter}} :   {}
 
   // handle simple presenter, from {xname,props}
   if (!Presenter && !layoutChildren && !container){
@@ -199,7 +201,6 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
         </__NamedGateway>
       )
   }
-
  // xname use for layout, use default VStack
   const __xname = xname || 'VStack'
   return layoutChildren ? (
