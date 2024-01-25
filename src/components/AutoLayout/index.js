@@ -108,7 +108,6 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
   // debug datasource
   // console.log('AutoLayout.dataSource=',dataSource)
   // console.log('AutoLayout.rest=',rest)
-  // console.log('___presenter=',rest.___presenter, rest)
   
   if(alternativeActive){
     const notnull_alternative = (alternative && JSON.stringify(alternative) !== '{}' && alternative) || (layoutAlternative && JSON.stringify(layoutAlternative) !== '{}' && layoutAlternative) || tips('alternative')
@@ -157,7 +156,10 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
   // handle simple presenter, from {xname,props}
   if (!Presenter && !layoutChildren && !container){
       // support component from data, not from layout, with dash _  for xname,props,cart,binding,gateway,presenter
-      const {_xname = xname, _props = {...props}, _cart, _binding = {..._layoutBinding}, _filter={..._layoutFilter}, _chain = {..._layoutChain}, _gateway, ..._rest } = data
+      /**
+       * ___presenter 由外部api 提供的参数
+       */
+      const { ___presenter={}, _xname = xname, _props = {...props}, _cart, _binding = {..._layoutBinding}, _filter={..._layoutFilter}, _chain = {..._layoutChain}, _gateway, ..._rest } = data
       const _data_cart = __cart || _cart || {}
       const _data_gateway = _layoutGateway || _gateway
       const _data_binding = _layoutBinding || _binding
@@ -183,19 +185,19 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
       // const __presenterName = _xname || _____presenterName ||  tips(_xname);
       // const __presenter = _____presenter || _props;
 
-      const __presenterName = _xname
-      const __presenter = _props || {}
+      const _t_presenterName = _xname || ___presenter.xname || tips(_xname);
+      const _t_presenter = _props || ___presenter.props || tips(_props);
 
       // selected={true} 仅用于单组件测试
       const __NamedCart = _data_cart ? NamedCart : NextIndicator;
       const __NamedGateway = (_data_binding||_data_filter||_data_chain||_data_gateway) ? NamedGateway : NextIndicator;
-      const __Presenter = _allComponents[__presenterName] || tips(__presenterName)
+      const __Presenter = _allComponents[_t_presenterName] || tips(_t_presenterName)
       return (
         <__NamedGateway binding={_data_binding} filter={_data_filter} chain={_data_chain} gateway={_data_gateway} {..._rest}>
           <__NamedCart {..._data_cart} selected={true}
               onItemClick={onItemClick}
           >
-              <__Presenter {...__presenter} allComponents={allComponents}
+              <__Presenter {..._t_presenter} allComponents={allComponents}
               />
           </__NamedCart>
         </__NamedGateway>
