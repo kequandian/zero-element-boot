@@ -34,7 +34,7 @@ import ContentText from '@/pages/PresenterTestDemo/plugins/TodoList/TodoItem/Con
 import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/ItemIconAction'
 
 import {Avatar, DownloadButton, ItemPlaceholder, AddNewButton, Text } from '@/components/presenter';
-import {Title, Subtitle, StatisticsList, StatisticalDescription} from '@/presenter/demo';
+// import {Title, Subtitle, StatisticsList, StatisticalDescription} from '@/presenter/demo';
 
 import JarItem from '@/composition/LogsUi/Sandbox/JarItem';
 import SwaggerItem from '@/composition/ApisUi/SwaggerItem';
@@ -76,8 +76,8 @@ import testModuleItem from '@/composition/moduleListPage/moduleItem'
 //开发模式设置endpoint, token
 if(process.env.NODE_ENV == 'development'){
   // setEndpoint('http://app1.console.smallsaas.cn:8001');
-  // setEndpoint('http://lowcode.smallsaas.cn');
-  setEndpoint('http://local.components.cn');
+  setEndpoint('http://local.zero.boot.cn');
+  // setEndpoint('http://local.components.cn');
     // setEndpoint('http://local.static.smallsaas.cn')
     // setEndpoint('http://192.168.3.33:8000')
   
@@ -126,7 +126,6 @@ NamedPresenterSet({
   Pink,
 
   Avatar,
-  Title,
   ImageAnimation,
 
   ContentText,
@@ -134,9 +133,10 @@ NamedPresenterSet({
 
   JarItem,
   SwaggerItem,
-  Subtitle, 
-  StatisticsList, 
-  StatisticalDescription,
+  // Title,
+  // Subtitle, 
+  // StatisticsList, 
+  // StatisticalDescription,
 
   DownloadButton,
   TableCompx,
