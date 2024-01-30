@@ -14,6 +14,7 @@ import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorCo
 import OverlaySelector from '@/components/OverlaySelector';
 import NamedIndicator from '@/components/NamedIndicator';
 import NextIndicator from '@/components/NextIndicator';
+import CssCart from '../cart/CssCart';
 
 
 /**
@@ -29,10 +30,12 @@ import NextIndicator from '@/components/NextIndicator';
  * @param {ComponentSet} indicatorSet  indicator 组件集
  * @param {boolean} isSelected  传递是否选中状态
  * @param {boolean} selected 代表 OverlaySelector 的 selected 参数, 仅用于单组件测试，由AutoLayout的配置决定
+ * @param {object} __cart 用于接收由api传递过来的数据
+ * @param {object} bounding 用于限定组件的渲染区域, 支持css属性, 默认为 padding, e.g. bounding: '10px'; bounding: {marginLeft: '10px', marginTop: '5px', padding: '10px'}
  * indicated
  */
 export default function NamedCart(nameCartPropsx) {
-    const { children, xname, props, indicator, selector, unselector, selected, __cart = { xname, props, indicator, selector, unselector}, cart = __cart, cartSet, indicatorSet, 
+    const { children, xname, props, indicator, selector, unselector, bounding, selected, __cart = { xname, props, indicator, selector, unselector, bounding}, cart = __cart, cartSet, indicatorSet, 
     indicatorData={}, onItemClick, isSelected,
     onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, __indicator,
     ...rest } = nameCartPropsx
@@ -45,17 +48,24 @@ export default function NamedCart(nameCartPropsx) {
   const _cart = cart.props || {}
   
   // get indicator
-  let _indicator = cart.indicator 
+  const _indicator = cart.indicator 
   const indicatorName = _indicator ? ((typeof _indicator === 'string') ? _indicator : (typeof _indicator === 'object') ? _indicator.xname : '') : ''
   const _Indicator  = indicatorName ? (_IndicatorSet[indicatorName] || tips(indicatorName) ) : undefined  
   const indicatorProps = (_indicator && typeof _indicator === 'object') ? _indicator.props : {}
   const _indicatorData = (_indicator && _indicator.binding) ? doBind(_indicator.binding, rest) : {}
   
   // get selector
-  const _selector = selector || cart.selector
+  const _selector = cart.selector
   const selectorName =  _selector ? ((typeof _selector === 'string') ? _selector : (typeof _selector === 'object') ? _selector.xname : '') : ''
   const _Selector  = selectorName ? _IndicatorSet[selectorName] : undefined
   const selectorProps = (_selector && typeof _selector === 'object') ? _selector.props : {}
+
+  //@when 2024-01-30
+  //@what add bounding
+  // get bounding
+  const _bounding = (typeof cart.bounding == 'string') ? {padding: cart.bounding} : cart.bounding;
+  const _Bounding = _bounding ? CssCart : NextIndicator;
+  
 
   // 2022-11-24 defaultIndicator 更名为 unselector
   // //2021-10-28 新增 defaultIndicator 模块
@@ -83,31 +93,36 @@ export default function NamedCart(nameCartPropsx) {
             //     })}
             //   </_Cart>
             // </_Indicator>
-
-            <OverlaySelector defaultIndicator={_Unselector} defaultIndicatorProps={unselectorProps} 
-                             selectedIndicator={_Selector}  selectedIndicatorProps = {selectorProps} 
-                             hoverIndicator={_Indicator}  hoverIndicatorProps = {indicatorProps}
-                             indicatorData={_indicatorData} 
-                             selected={selected}
-                      isSelected={isSelected} >
-                <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator} /> 
-            </OverlaySelector>
-        ) : 
+            <_Bounding style={{..._bounding}}>
+                <OverlaySelector defaultIndicator={_Unselector} defaultIndicatorProps={unselectorProps} 
+                                selectedIndicator={_Selector}  selectedIndicatorProps = {selectorProps} 
+                                hoverIndicator={_Indicator}  hoverIndicatorProps = {indicatorProps}
+                                indicatorData={_indicatorData} 
+                                selected={selected}
+                          isSelected={isSelected} >
+                    <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator} /> 
+                </OverlaySelector>
+            </_Bounding>
+        ) :
         (
             (_indicator) ? 
             (
-              <NamedIndicator indicator={_indicator} __indicator={__indicator} indicatorData={_indicatorData} onItemClick={onItemClick}
-                onItemDeleted={onItemDeleted}
-                onItemAdded={onItemAdded} 
-                onItemChanged={onItemChanged} 
-                onItemIndicated={onItemIndicated}
-              >
-                  <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
-              </NamedIndicator>
+              <_Bounding style={{..._bounding}}>
+                  <NamedIndicator indicator={_indicator} __indicator={__indicator} indicatorData={_indicatorData} onItemClick={onItemClick}
+                    onItemDeleted={onItemDeleted}
+                    onItemAdded={onItemAdded} 
+                    onItemChanged={onItemChanged} 
+                    onItemIndicated={onItemIndicated}
+                  >
+                      <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
+                  </NamedIndicator>
             ):
             (
-              <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
+              <_Bounding style={{..._bounding}}>
+                <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
+              </_Bounding>
             )
+            </_Bounding>
         )
       }
     </>

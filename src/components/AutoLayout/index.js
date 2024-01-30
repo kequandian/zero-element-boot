@@ -98,7 +98,8 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
   onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, alternative, alternativeActive, onAlternativeBack, ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
-  const { xname, props, container, binding:layoutBinding, filter:layoutFilter, chain:layoutChain, gateway:layoutGateway, cart, indicator, selector, unselector, 
+  const { xname, props, container, binding:layoutBinding, filter:layoutFilter, chain:layoutChain, gateway:layoutGateway, 
+    cart, indicator, selector, unselector, bounding, 
     presenter, navigation, children: layoutChildren,
     alternative:layoutAlternative,
   } = sugarLayout(layout) || {};
@@ -128,7 +129,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
   
   // Cart
   const _align_cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || undefined
-  const __cart = sugarCart({ cart: _align_cart, indicator: indicator, selector:selector, unselector:unselector})
+  const __cart = sugarCart({ cart: _align_cart, indicator: indicator, selector:selector, unselector:unselector, bounding:bounding })
   const _NamedCart = cart ? NamedCart : NextIndicator;
 
   // Gateway
