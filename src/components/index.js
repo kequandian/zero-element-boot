@@ -44,6 +44,7 @@ import Cart from './cart/Cart';
 import CssCart from './cart/CssCart';
 import HoverShadowCart from './cart/HoverShadowCart';
 import SelectCart from './cart/SelectCart';
+import ItemCart from './cart/ItemCart';
 import SelectIndicatorCart from './indicator/SelectIndicatorCart';
 import CheckBoxIndicatorCart from './indicator/CheckBoxIndicatorCart';
 // import Circle from './cart/deprecated/Circle';
@@ -80,7 +81,7 @@ import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewBu
   Circle,
 } from '@/components/presenter';
 
-import ImageView from './presenter/image';
+// import ImageView from './presenter/image';
 
 import { 
   AutoLoadList,
@@ -122,6 +123,7 @@ NamedCartSet({
   // HightlightCart,
   HoverShadowCart,
   SelectCart,
+  ItemCart,
   SelectIndicatorCart,
   CheckBoxIndicatorCart,
   // Circle,
@@ -210,7 +212,6 @@ export {
     APIContainer,
     Container,
     TabContainer,
-    WxPage,
-    ImageView
+    WxPage
 };
 

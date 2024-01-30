@@ -3,7 +3,6 @@ import { Box } from "@chakra-ui/react";
 import { AutoLayout } from '@/components';
 import layout from './layout';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
-import PresentersItem from './presentersItem'
 
 
 export default function Index(props) {
@@ -19,11 +18,6 @@ export default function Index(props) {
     layout: layout,
     ...rest
   };
-
-  /**
-   * set item
-   */
-  NamedPresenterSet({PresentersItem})
 
   const itemClick = (item) =>{
     console.log('item == ', item)
