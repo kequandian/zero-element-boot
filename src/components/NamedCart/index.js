@@ -31,7 +31,7 @@ import CssCart from '../cart/CssCart';
  * @param {boolean} isSelected  传递是否选中状态
  * @param {boolean} selected 代表 OverlaySelector 的 selected 参数, 仅用于单组件测试，由AutoLayout的配置决定
  * @param {object} __cart 用于接收由api传递过来的数据
- * @param {object} bounding 用于限定组件的渲染区域, 支持css属性, 默认为 padding, e.g. bounding: '10px'; bounding: {marginLeft: '10px', marginTop: '5px', padding: '10px'}
+ * @param {object} bounding 用于限定组件的渲染区域, 支持css属性, 默认为 margin, e.g. margin: '10px'; bounding: {marginLeft: '10px', marginTop: '5px', padding: '10px'}
  * indicated
  */
 export default function NamedCart(nameCartPropsx) {
@@ -63,7 +63,7 @@ export default function NamedCart(nameCartPropsx) {
   //@when 2024-01-30
   //@what add bounding
   // get bounding
-  const _bounding = (typeof cart.bounding == 'string') ? {padding: cart.bounding} : cart.bounding;
+  const _bounding = (typeof cart.bounding == 'string') ? {margin: cart.bounding} : cart.bounding;
   const _Bounding = _bounding ? CssCart : NextIndicator;
   
 
@@ -100,7 +100,7 @@ export default function NamedCart(nameCartPropsx) {
                                 indicatorData={_indicatorData} 
                                 selected={selected}
                           isSelected={isSelected} >
-                    <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator} /> 
+                        <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator} /> 
                 </OverlaySelector>
             </_Bounding>
         ) :
@@ -116,13 +116,13 @@ export default function NamedCart(nameCartPropsx) {
                   >
                       <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
                   </NamedIndicator>
+              </_Bounding>
             ):
             (
               <_Bounding style={{..._bounding}}>
                 <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
               </_Bounding>
             )
-            </_Bounding>
         )
       }
     </>
