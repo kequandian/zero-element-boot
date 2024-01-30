@@ -8,6 +8,7 @@ import SelectCart from './SelectCart';
 // import Circle from './deprecated/Circle';
 import HCenter from './HCenter';
 import PageCenter from './PageCenter';
+import ItemCart from './ItemCart';
 
 
 // indicator
@@ -22,6 +23,7 @@ export {
     // HightlightCart,
     SelectCart,
     // Circle,
+    ItemCart,
     HCenter,
     PageCenter,
     // Page,
