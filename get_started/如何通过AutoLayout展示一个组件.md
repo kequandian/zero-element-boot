@@ -15,7 +15,36 @@
 {
     "xname": "Avatar",
     "props": {
-		   "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+        "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+    }
+}
+```
+
+### 为组件增加风格
+
+```json
+{
+    "xname": "Avatar",
+    "props": {
+        "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+    },
+    "cart": "Cart"
+}
+```
+
+>
+> 同时支持 `indicator`
+```json
+{
+    "xname": "Avatar",
+    "props": {
+        "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+    },
+    "indicator": {
+       "xname": "OutlineIndicator",
+       "props": {
+           "color": "#804040"
+       }
     }
 }
 ```
@@ -41,18 +70,6 @@
 ```
 
 
-### 为组件增加风格
-
-```json
-{
-    "xname": "Avatar",
-    "props": {
-        "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
-    },
-    "cart": "Cart"
-}
-```
-
 > 或更多可配置的风格
 ```json
 {
@@ -65,10 +82,30 @@
     "cart": {
         "xname": "CssCart",
         "props": {
-			     "padding":"10px",
-			     "border":"1px #ff000 solid",
-           "backgroundColor":"red"
+            "padding":"10px",
+	    "border":"1px #ff000 solid",
+            "backgroundColor":"red"
         }
+    }
+}
+```
+
+> 同时支持下面描述
+```json
+{
+    "presenter":{
+       "xname": "Avatar",
+       "props": {
+           "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+       }
+       "cart": {
+          "xname": "CssCart",
+          "props": {
+              "padding":"10px",
+	      "border":"1px #ff000 solid",
+              "backgroundColor":"red"
+          }
+       }
     }
 }
 ```
@@ -85,9 +122,9 @@
     "cart": {
         "xname": "CssCart",
         "props": {
-			      "margin":"10px",
-			      "padding":"10px",
-			      "border":"1px #ff000 solid"
+            "margin":"10px",
+	    "padding":"10px",
+	    "border":"1px #ff000 solid"
         }
     },
     "binding": {
@@ -105,9 +142,9 @@
     "cart": {
         "xname": "CssCart",
         "props": {
-			     "margin":"10px",
-			     "padding":"10px",
-			     "border":"1px #ff000 solid"
+	    "margin":"10px",
+	    "padding":"10px",
+	    "border":"1px #ff000 solid"
         }
     },
     "binding": {
@@ -116,10 +153,9 @@
 }
 ```
 
-
 ## 多组件部分
 
-### 由多个子组件组成的`AutoLayout`新组件
+### 由多个子组件组成的 `AutoLayout` 新组件
 
 ```json
 {
@@ -131,6 +167,20 @@
     ]
 }
 ```
+
+> 直接指定布局 `HStack`
+```json
+{
+    "xname": "HStack",
+    "children": [
+        "Butter",
+        "Clean",
+        "Clear",
+        "Pink"
+    ]
+}
+```
+
 
 ###  由多个带参数的子组件组成的`AutoLayout`新组件
 
@@ -227,7 +277,7 @@
 {
     "xname": "Flexbox",
     "props": {
-		   "direction":"row"
+       "direction":"row"
     },
     "children": [
         "Butter",
@@ -245,7 +295,7 @@
 {
     "xname": "Flexbox",
     "props": {
-		   "direction":"column"
+       "direction": "column"
     },
     "children": [
         {
@@ -270,7 +320,6 @@
 
 ## 列表组件部分
 
-
 ### 配置`AutoLayout`列表组件
 > 带有 `presenter`, 并且`container`是一个列表组件, 即`presenter`是容器组件的子组件
 
@@ -287,7 +336,7 @@
     "presenter": {
         "xname": "ItemPlaceholder",
         "props":{
-			      "fill":"#FF0000"
+           "fill":"#FF0000"
         }
     },
     "container": "PlainList"
@@ -300,7 +349,7 @@
     "presenter": {
         "xname": "ItemPlaceholder",
         "props":{
-			      "fill":"#FF0000"
+           "fill": "#FF0000"
         }
     },
     "container": "PlainList",
@@ -315,7 +364,7 @@
     "presenter": {
         "xname": "ItemPlaceholder",
         "props":{
-			      "fill":"#ff0000"
+           "fill":"#ff0000"
         }
     },
     "cart": "Cart",
@@ -336,7 +385,7 @@
             "presenter": {
                 "xname": "Avatar",
                 "props":{
-					          "size":"90"
+                    "size":"90"
                 }
             },
             "container": "PlainList",
@@ -352,7 +401,7 @@
     ],
    "xname": "Flexbox",
    "props":{
-	    "direction":"column"
+       "direction":"column"
    },
    "container": "Container"
 }
@@ -366,7 +415,7 @@
         {
             "xname": "Avatar",
             "props":{
-				        "size":"90"
+               "size":"90"
             }
         },
         {
@@ -386,7 +435,7 @@
                 "presenter": {
                     "xname": "Avatar",
                     "props":{
-						            "size":"90"
+                        "size":"90"
                     }
                 },
                 "container": "PlainList",
@@ -440,7 +489,7 @@
     "presenter": {
         "xname": "Avatar",
         "props":{
-			      "size": "80"
+	    "size": "80"
         }
     },
     "cart": "Cart",
@@ -462,7 +511,7 @@
     "presenter": {
         "xname": "Avatar",
         "props":{
-			      "size": "80"
+	     "size": "80"
         }
     },
     "cart": "Cart",
@@ -472,7 +521,7 @@
     }
   },
   "binding": {
-      "avatarUrl": "imageUrl"
+     "avatarUrl": "imageUrl"
   }
 }
 ```
@@ -519,8 +568,8 @@
 > 数据源
 ```json
 {
-  "avatarUrl":"https://",
-  "name": "Bob"
+   "avatarUrl":"https://",
+   "name": "Bob"
 }
 ```
 
@@ -688,6 +737,9 @@ export default function UserSelect(props){
 ## 单选或多选
 
 ### 由列表组成的单选组件
+- `indicator` 响应鼠标状态，`hover`, 菜单等, 也可以不响应任何事件，作为`Selector`组件的纯风格叠加组件
+- `unselector` 默认状态的 `indicator`
+- `selector` 选中状态的 `indicator`
 - 由列表组件 `SelectList` 实现单选逻辑
 - 可以变更列表组件 `MultiSelectList` 切换为复选组件
 
@@ -724,18 +776,18 @@ export default function UserSelect(props){
       }
   },  
   "container": "SelectList",
-  "unselector": {
-    "xname": "SelectAvatar",
-    "props": {
-      "state": "unselected"
-    }
-  },
   "indicator":{
     "xname": "TagIndicator",
     "props": {
       "color": "#d4237a",
       "none": "any",
       "outline": "any"
+    }
+  },
+  "unselector": {
+    "xname": "SelectAvatar",
+    "props": {
+      "state": "unselected"
     }
   },
   "selector": {
@@ -745,10 +797,9 @@ export default function UserSelect(props){
     }
    }
  }
-  ```
+```
 
 ### 由多个子组件组成的单选组件
-
 
 
 
@@ -758,12 +809,12 @@ export default function UserSelect(props){
 - `ManageList` 对一个列表 进行管理 绑定参数 
 - ManageList配置的 layout ，执行完事件之后不能自动刷新页面，需要回调出去再执行刷新事件
 
-```json
+```js
 {
   "presenter": {
     "children": [
       {
-		  "xname": "Text",
+        "xname": "Text",
         "binding": {
            "content": "content"
         },
@@ -777,7 +828,6 @@ export default function UserSelect(props){
   },
    "container": {
      "xname": "ManageList",
-	 
 	 // 增加按钮 ，不填用默认样式
 	 // 使用增加按钮需要从外部传 isSwitch={true} 
      "props": {
@@ -837,8 +887,8 @@ export default function UserSelect(props){
 	           "placeholder": "描述",
 	         }
 	       }
-	       ]
-	     }
-	   }
+	    ]
+	}
+     }
   }
   ```
