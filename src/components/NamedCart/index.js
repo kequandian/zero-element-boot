@@ -43,9 +43,9 @@ export default function NamedCart(nameCartPropsx) {
   //2021-10-28 新增 selector 模块
   const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
 
-  const cartName = (typeof cart === 'string') ? cart : cart.xname
+  const cartName = (typeof cart === 'string') ? cart : cart.xname ? cart.xname : __cart.xname
   const _Cart = cartName ? (_CartSet[cartName] || tips(cartName)) : NextIndicator;
-  const _cart = cart.props || {}
+  const _cart = cart.props || __cart.props || {}
   
   // get indicator
   const _indicator = cart.indicator 
@@ -66,6 +66,8 @@ export default function NamedCart(nameCartPropsx) {
   const _bounding = (typeof cart.bounding == 'string') ? {margin: cart.bounding} : cart.bounding;
   const _Bounding = _bounding ? CssCart : NextIndicator;
   
+  // console.log('cart = ', cart)
+  // console.log('bounding = ', bounding, cart, __cart)
 
   // 2022-11-24 defaultIndicator 更名为 unselector
   // //2021-10-28 新增 defaultIndicator 模块
@@ -93,7 +95,7 @@ export default function NamedCart(nameCartPropsx) {
             //     })}
             //   </_Cart>
             // </_Indicator>
-            <_Bounding style={{..._bounding}}>
+            <_Bounding style={_bounding}>
                 <OverlaySelector defaultIndicator={_Unselector} defaultIndicatorProps={unselectorProps} 
                                 selectedIndicator={_Selector}  selectedIndicatorProps = {selectorProps} 
                                 hoverIndicator={_Indicator}  hoverIndicatorProps = {indicatorProps}
@@ -107,7 +109,7 @@ export default function NamedCart(nameCartPropsx) {
         (
             (_indicator) ? 
             (
-              <_Bounding style={{..._bounding}}>
+              <_Bounding style={_bounding}>
                   <NamedIndicator indicator={_indicator} __indicator={__indicator} indicatorData={_indicatorData} onItemClick={onItemClick}
                     onItemDeleted={onItemDeleted}
                     onItemAdded={onItemAdded} 
@@ -119,7 +121,7 @@ export default function NamedCart(nameCartPropsx) {
               </_Bounding>
             ):
             (
-              <_Bounding style={{..._bounding}}>
+              <_Bounding style={_bounding}>
                 <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
               </_Bounding>
             )

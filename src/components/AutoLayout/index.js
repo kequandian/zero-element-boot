@@ -95,11 +95,11 @@ export default function (props) {
 //新增 layout 新增 navigation 属性
 
 function AutoLayout({ children, layout, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource, 
-  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, alternative, alternativeActive, onAlternativeBack, ...rest }) {
+  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, alternative, alternativeActive, onAlternativeBack , ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
   const { xname, props, container, binding:layoutBinding, filter:layoutFilter, chain:layoutChain, gateway:layoutGateway, 
-    cart, indicator, selector, unselector, bounding, 
+    cart, indicator, selector, unselector, bounding,
     presenter, navigation, children: layoutChildren,
     alternative:layoutAlternative,
   } = sugarLayout(layout) || {};
@@ -204,6 +204,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
         </__NamedGateway>
       )
   }
+  
  // xname use for layout, use default VStack
   const __xname = xname || 'VStack'
   return layoutChildren ? (
@@ -293,14 +294,15 @@ function isFilter(gateway){
  * @param {xname: cart} cart 
  * @returns 
  */
-function sugarCart({cart, indicator, selector, unselector}){
+function sugarCart({cart, indicator, selector, unselector, bounding}){
     if(indicator || selector){
       return {
         cart: {
           ...cart, 
           indicator: indicator,
           selector: selector,
-          unselector: unselector
+          unselector: unselector,
+          bounding: bounding
         }
       }
     }

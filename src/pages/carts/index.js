@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ChakraProvider, Spinner } from '@chakra-ui/react';
-import ModuleListPage from '@/composition/moduleListPage/index';
+import ModuleListPage from '@/composition/cartsListPage/Sandbox';
 const promiseAjax = require('@/components/utils/request');
 
 export default function Index (props) {
@@ -9,7 +9,7 @@ export default function Index (props) {
   const [isLoading, setLoading] = useState(false);
 
   useEffect(_=>{
-    setContent('cart', 0)
+    // setContent('cart', 0)
   },[])
 
   function setContent(type, tabIndex){
@@ -35,11 +35,12 @@ export default function Index (props) {
   return (
     <ChakraProvider>
       <div style={{padding: '8px'}}>
-        {
+        {/* {
           isLoading
           ? <Spinner/>
-          : items && items.length > 0 && <ModuleListPage items={items}/>
-        }
+          : items && items.length > 0 && <ModuleListPage/>
+        } */}
+        <ModuleListPage/>
         </div>
     </ChakraProvider>
   )
