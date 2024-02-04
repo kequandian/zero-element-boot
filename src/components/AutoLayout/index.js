@@ -94,17 +94,17 @@ export default function (props) {
 //2021-11-10
 //新增 layout 新增 navigation 属性
 
-function AutoLayout({ children, layout, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, mock, dataSource=mock,
+function AutoLayout({ children, layout, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource,
   onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, alternative, alternativeActive, onAlternativeBack , ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
   const { xname, props, container, binding:layoutBinding, filter:layoutFilter, chain:layoutChain, gateway:layoutGateway, 
     cart, indicator, selector, unselector, bounding,
-    presenter, navigation, children: layoutChildren,
+    presenter, navigation, children: layoutChildren, mock,
     alternative:layoutAlternative,
   } = sugarLayout(layout) || {};
 
-  const _dataSource = ((typeof dataSource === 'array')? {items: dataSource} : dataSource) || {}
+  const _dataSource = ( Array.isArray(dataSource) ? {items: dataSource} : dataSource) ||  ( Array.isArray(mock) ? {items: mock} : mock) || {}
   //const data = dataSource || rest || {}
   
   if(alternativeActive){
@@ -119,7 +119,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
 
     return (
       <_AlternativeBack {..._alternativeBack} onBack={onAlternativeBack} >
-        <AutoLayout layout={alternative_layout} {..._dataSource} {...rest} {...alternativeOthers} />
+        <AutoLayout layout={alternative_layout} {...rest} {..._dataSource} {...alternativeOthers} />
       </_AlternativeBack>
     )
   }
@@ -205,7 +205,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
  // xname use for layout, use default VStack
   const __xname = xname || 'VStack'
   return layoutChildren ? (
-    <Container {..._container} {..._dataSource} {...rest} navigation={navigation}>
+    <Container {..._container} {...rest} {..._dataSource} navigation={navigation}>
         <NamedLayout xname={__xname} props={props} __>
           {layoutChildren ? layoutChildren.map((child, i) => {
 
@@ -230,7 +230,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
         </NamedLayout>
     </Container>
   ) : (
-    <Container {..._container} {..._dataSource} {...rest} 
+    <Container {..._container} {...rest} {..._dataSource}
       onItemClick={onItemClick} navigation={navigation}
       onItemDeleted={onItemDeleted}
       onItemAdded={onItemAdded}

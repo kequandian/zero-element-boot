@@ -13,7 +13,8 @@ export default function Index(props) {
    * 页面配置
    */
   const config = {
-    items: items && items.length> 0? items :[],
+    // items: items && items.length> 0? items :[],
+    items: [],
     layout: layout,
     ...rest
   };
