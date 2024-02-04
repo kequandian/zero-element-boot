@@ -14,7 +14,6 @@ export default function Index(props) {
    */
   const config = {
     // items: items && items.length> 0? items :[],
-    items: [],
     layout: layout,
     ...rest
   };

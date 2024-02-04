@@ -9,7 +9,9 @@ import DefaultContainer from '@/components/container/Container'
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 import { get as DefaultIndicatorGet } from '@/components/config/NamedIndicatorConfig';
 
-import loadingPage from '@/components/loading';
+import LoadingPage from '@/components/loading';
+const { getEndpoint, getToken } = require('@/components/config/common');
+
 // import { Filter } from '../gateway';
 // import { bind } from 'lodash';
 
@@ -41,8 +43,9 @@ import loadingPage from '@/components/loading';
 export default function (props) {
   const { layout } = props;
   const { dataset } = layout ? layout : {};
-  const [ dataSource, setDataSource] = useState({});
+  const [ dataSource, setDataSource] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (typeof dataset === 'string') {
       fetchData();
@@ -51,7 +54,8 @@ export default function (props) {
 
   //根据 path 异步获取 layout json
   const fetchData = async () => {
-    const result = await fetch(dataset, {
+    const url = dataset.indexOf('http') != -1 ? dataset : getEndpoint() + dataset;
+    const result = await fetch(url, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -64,14 +68,14 @@ export default function (props) {
         return data;
       });
     //保存layout json 数据
-    setDataSource(dataSource);
+    setDataSource(result.data);
     //更改loading状态
     setLoading(false);
   }
 
-  if (typeof dataset == 'string') {
+  if (typeof dataset === 'string') {
     if (loading) {
-      return loadingPage();
+      return <LoadingPage/>;
     } else {
       if (dataSource && dataSource.length > 0) {
         const p = { ...props, dataSource: dataSource };
