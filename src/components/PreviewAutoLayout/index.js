@@ -14,6 +14,7 @@ export default function PreAutoLayout (props) {
     bindingName,
     layoutId, 
     testLayoutName, testBindingName, 
+    onPreviewItemClick,
     ...rest
   } = props;
 
@@ -76,7 +77,7 @@ export default function PreAutoLayout (props) {
   const respBindingJsonData = respBindingData && respBindingData[0]
 
   const layoutJson = (layoutData && typeof layoutData === 'object'  && JSON.stringify(layoutData) !== '{}' && layoutData) 
-    || (respLayoutDataRecords && typeof respLayoutDataRecords === 'object' && JSON.stringify(respLayoutDataRecords) !== '{}' && respLayoutDataRecords) 
+    || (respLayoutDataRecords && typeof respLayoutDataRecords === 'object' && JSON.stringify(respLayoutDataRecords) !== '{}' && ( respLayoutDataRecords.descriptor ? JSON.parse(respLayoutDataRecords.descriptor) : respLayoutDataRecords)) 
     || testLayoutJsonData
     
   /**
@@ -89,9 +90,12 @@ export default function PreAutoLayout (props) {
   };
 
   // 控制台输出信息
-  const onPreviewItemClick = (item) => {
+  const onPItemClick = (item) => {
     //TODO
-    console.log(item, ' === item')
+    // console.log(item, ' === item')
+    if(onPreviewItemClick){
+      onPreviewItemClick(item)
+    }
     if(alternative && JSON.stringify(alternative) !== '{}' || layoutJson.alternative && JSON.stringify(layoutJson.alternative) !== '{}'){
       setDataSource(item)
       setAlternativeActive(true)
@@ -117,7 +121,7 @@ export default function PreAutoLayout (props) {
 
   return (
     records && records.length > 0 && layoutJson && JSON.stringify(layoutJson) !== '{}' ? (
-        <AutoLayout {...config} onItemClick={onPreviewItemClick} binding={bindingJson}
+        <AutoLayout {...config} onItemClick={onPItemClick} binding={bindingJson}
           alternativeActive={alternativeActive}
           alternative={alternative}
           dataSource={dataSource}

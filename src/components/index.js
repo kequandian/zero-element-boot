@@ -97,7 +97,7 @@ import {
 } from './list';
 
 // Form 组件
-import { InputCompx, SelectFetch, CheckboxFetch, CheckboxModalFetch } from '@/components/formItemType';
+import { InputCompx, SelectFetch, CheckboxFetch, CheckboxModalFetch, OneMany, SelectCompx } from '@/components/formItemType';
 
 NamedLayoutSet({
   Flexbox,
@@ -188,7 +188,9 @@ FormItemTypeSet({
   "input": InputCompx, 
   "select-fetch": SelectFetch,
   "checkbox-fetch": CheckboxFetch,
-  "checkbox-modal-fetch": CheckboxModalFetch
+  "checkbox-modal-fetch": CheckboxModalFetch,
+  "one-many": OneMany,
+  "select": SelectCompx
 })
 
 

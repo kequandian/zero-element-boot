@@ -1,46 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Spinner, Select } from "@chakra-ui/react";
 import { useForceUpdate } from '@/components/hooks/lifeCycle';
-const promiseAjax = require('@/components/utils/request');
-import { formatParams } from '@/components/utils/tools';
 
 export default function SelectFetch(props) {
 
     const { field, register, currentData, defaultValue, options, saveData, onChange, props: optProps, rules } = props;
-    const { api: optionAPI, label, value } = options;
+    const { label, value, option:mapList } = options;
 
 
-    const [data, setData] = useState('')
+    const [data, setData] = useState(mapList)
     const [loading, setLoading] = useState(false)
     const [selectedValue, setSelectedValue] = useState('')
 
     const forceUpdate =  useForceUpdate()
 
-    useEffect(_ => {
-        getSelectList()
-    }, [])
-
-    //获取下拉框列表
-    function getSelectList() {
-
-        const api = formatParams(optionAPI, currentData);
-        const queryData = {};
-        setLoading(true)
-        promiseAjax(api, queryData).then(resp => {
-            if (resp && resp.code === 200) {
-                const list = resp.data && Array.isArray(resp.data) ? resp.data : resp.data.records;
-                setData(list)
-                // if(onChange){
-                //     onChange(resp.data.records)
-                // }
-            } else {
-                console.error("select 获取数据失败")
-            }
-        }).finally(_ => {
-            setLoading(false)
-            forceUpdate()
-        });
-    }
 
     //处理额外提交的字段和值
     function selectedChange(s) {
@@ -78,7 +51,7 @@ export default function SelectFetch(props) {
                     onChange={selectedChange}
                 >
                     {data && data.length > 0 && data.map((item, index) => (
-                        <option key={`${index}_option`} value={item[value]}>{item[label]}</option>
+                        <option key={`${index}_option`} value={item.value}>{item.label}</option>
                     ))}
                 </Select>
             )}

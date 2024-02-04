@@ -87,6 +87,9 @@ import RssRender from '@/components/presenter/rss/RssRender/Sandbox'
 //test
 import NewStandalone from '@/pages/NewStandalone/Sandbox'
 
+//实例组件
+import CartsManage from '@/composition/cartsManage'
+
 export default function Index(props) {
 
   // pre-init. presenter set 
@@ -112,7 +115,7 @@ export default function Index(props) {
   // return <TestCRUDList {...props} />
   return (
     <ChakraProvider>
-      <PreviewAutoLayout {...props} />
+      <CartsManage {...props} />
     </ChakraProvider>
   )
 
