@@ -33,6 +33,90 @@ module.exports = {
         },
       ]
     },
+    mock: [
+      {
+        "bindingName": null,
+        "componentId": "59",
+        "componentName": null,
+        "componentOption": "cart",
+        "componentProps": {
+            "padding": "10px 30px",
+            "margin": "0",
+            "corner": "8px",
+            "fill": "#edf2f7",
+            "linewidth": "1px"
+        },
+        "componentType": "Cart",
+        "containerStyleName": null,
+        "descriptor": null,
+        "id": "99",
+        "moduleData": null,
+        "moduleKey": "",
+        "moduleName": "Cart",
+        "moduleProps": [
+            {
+                "assembledAs": null,
+                "dataType": "TEXT",
+                "id": "255",
+                "moduleId": "99",
+                "moduleKey": null,
+                "moduleName": null,
+                "propDataType": null,
+                "propName": "padding",
+                "propValue": "10px 30px"
+            },
+            {
+                "assembledAs": null,
+                "dataType": "STRING",
+                "id": "256",
+                "moduleId": "99",
+                "moduleKey": null,
+                "moduleName": null,
+                "propDataType": null,
+                "propName": "margin",
+                "propValue": "0"
+            },
+            {
+                "assembledAs": null,
+                "dataType": "STRING",
+                "id": "257",
+                "moduleId": "99",
+                "moduleKey": null,
+                "moduleName": null,
+                "propDataType": null,
+                "propName": "corner",
+                "propValue": "8px"
+            },
+            {
+                "assembledAs": null,
+                "dataType": "STRING",
+                "id": "258",
+                "moduleId": "99",
+                "moduleKey": null,
+                "moduleName": null,
+                "propDataType": null,
+                "propName": "fill",
+                "propValue": "#edf2f7"
+            },
+            {
+                "assembledAs": null,
+                "dataType": "STRING",
+                "id": "259",
+                "moduleId": "99",
+                "moduleKey": null,
+                "moduleName": null,
+                "propDataType": null,
+                "propName": "linewidth",
+                "propValue": "1px"
+            }
+        ],
+        "name": "Cart",
+        "pageId": null,
+        "pid": "129",
+        "referenceGatewayName": null,
+        "referenceStyleName": null
+    },
+    ],
     binding: {
       "moduleName": "content",
       "componentType": "__cart.xname",

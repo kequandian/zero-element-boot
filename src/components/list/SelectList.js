@@ -13,7 +13,7 @@ import ContainerContext from '@/components/AutoX/ContainerContext';
 
 export default function SelectList(props) {
   const { 
-    children, items, 
+    children, items=[], 
     // layout, 
     cart, navigation,  onItemClick= () => {console.log('未设置SelectionList onItemClick点击事件')} } = props;
 
