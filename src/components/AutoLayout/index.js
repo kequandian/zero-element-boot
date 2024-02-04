@@ -40,18 +40,18 @@ import loadingPage from '@/components/loading';
 
 export default function (props) {
   const { layout } = props;
-  const { path } = layout ? layout : {};
-  const [layoutJson, setLayoutJson] = useState({});
+  const { dataset } = layout ? layout : {};
+  const [ dataSource, setDataSource] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    if (path) {
+    if (typeof dataset === 'string') {
       fetchData();
     }
   }, [])
 
   //根据 path 异步获取 layout json
   const fetchData = async () => {
-    const result = await fetch(path, {
+    const result = await fetch(dataset, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -60,21 +60,21 @@ export default function (props) {
       .then(function (resp) {
         return resp.json();
       })
-      .then(function (layoutJson) {
-        return layoutJson;
+      .then(function (data) {
+        return data;
       });
     //保存layout json 数据
-    setLayoutJson(result.layout);
+    setDataSource(dataSource);
     //更改loading状态
     setLoading(false);
   }
 
-  if (path) {
+  if (typeof dataset == 'string') {
     if (loading) {
       return loadingPage();
     } else {
-      if (layoutJson && JSON.stringify(layoutJson) != '{}') {
-        const p = { ...props, layout: layoutJson };
+      if (dataSource && dataSource.length > 0) {
+        const p = { ...props, dataSource: dataSource };
         return AutoLayout(p);
       } else {
         console.error('获取配置数据异常')

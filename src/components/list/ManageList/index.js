@@ -46,7 +46,7 @@ export default forwardRef(function ManageList(props) {
 
   const { children, layout,
     items, dataSource = items, currentTabItem,
-    navigation, addnew, onItemClick, cb, isSwitch = true, 
+    navigation, addnew, onItemClick, cb, isSwitch = false, 
     onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
     ...rest } = props;
 
@@ -313,7 +313,7 @@ export default forwardRef(function ManageList(props) {
 
       return <FormControl isRequired={rules.isRequired} isInvalid={rules.isRequired && errors[field]} key={`${index}_i`}>
         <FormLabel htmlFor={field}>{label}</FormLabel>
-        <C {...item} register={register} errors={errors} defaultValue={currentData[field] || defaultValue} onChange={handleFormData} />
+        <C {...item} register={register} errors={errors} currentData={currentData} defaultValue={currentData[field] || defaultValue} onChange={handleFormData} />
         <FormErrorMessage>
           {errors[field] && errors[field].message}
         </FormErrorMessage>
@@ -405,9 +405,10 @@ export default forwardRef(function ManageList(props) {
         finalFocusRef={finalRef}
         isOpen={isOpen}
         onClose={onClose}
+        size='xl'
       >
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent >
           <ModalHeader>{modelTitle}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>

@@ -40,7 +40,6 @@ const toggleHover = () => {
 
 const toggleSelected = () => {
   const result = !onSelected;
-  console.log('result == ', result)
   setSelected(result)
 }
 

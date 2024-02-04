@@ -108,7 +108,7 @@ NamedIndicatorSet({
  SelectAvatar,
   DownloadIndicator,
   ClickIndicator,
-  ManageMenuIndicator,
+  // ManageMenuIndicator,
   TagIndicator,
   BackIndicator,
   

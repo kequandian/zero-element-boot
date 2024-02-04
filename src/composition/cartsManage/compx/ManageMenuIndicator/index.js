@@ -17,10 +17,10 @@ import {
     useToast,
 } from '@chakra-ui/react';
 import { MoreIcon, UpdateIcon, DelIcon } from './icons';
-import { formatParams } from '@/components/utils/tools';
-import { getEndpoint } from '@/components/config/common';
-import ContainerContext from '@/components/AutoX/ContainerContext';
-const promiseAjax = require('@/components/utils/request');
+import { formatParams } from 'zero-element-boot/lib/components/utils/tools';
+import { getEndpoint } from 'zero-element-boot/lib/components/config/common';
+import ContainerContext from 'zero-element-boot/lib/components/AutoX/ContainerContext';
+const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 require('./index.less')
 
 /**
@@ -59,6 +59,7 @@ export default function Index(props) {
     const { 
         createAPI, getAPI, updateAPI, deleteAPI,
     } = action;
+
     const toast = useToast()
     const endpoint = getEndpoint()
     const [isDelOpen, setIsDelOpen] = useState(false)
@@ -135,12 +136,12 @@ export default function Index(props) {
                         <MenuItem icon={<UpdateIcon />} onClick={()=> updateAction()}>
                             编辑
                         </MenuItem>
-                        { deleteAPI ? (
-                            <MenuItem icon={<DelIcon />} onClick={()=>showDelModel()}>
+                        <MenuItem icon={<UpdateIcon />} onClick={()=> updateAction()}>
+                            编辑页面
+                        </MenuItem>
+                        <MenuItem icon={<DelIcon />} onClick={()=>showDelModel()}>
                             删除
-                            </MenuItem>
-                        ):<></>}
-                        
+                        </MenuItem>
                     </MenuList>
                 </Menu>
             </div>
