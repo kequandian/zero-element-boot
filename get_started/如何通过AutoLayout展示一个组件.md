@@ -526,6 +526,64 @@
 }
 ```
 
+### 为`AutoLayout`组件提供模拟数据
+```json
+{
+  "presenter":{
+    "xname":"Wrap",
+    "presenter": {
+        "xname": "Avatar",
+        "props":{
+	     "size": "80"
+        }
+    },
+    "cart": "Cart",
+    "container": "PlainList",
+    "binding": {
+        "imageUrl": "url"
+    }
+  },
+  "binding": {
+     "avatarUrl": "imageUrl"
+  },
+  "mock": {
+     "avatarUrl": "http://"
+  }
+}
+```
+
+### 为`AutoLayout`组件提供外层数据源
+```json
+{
+    "layout": {
+        "presenter":{
+            "xname":"Wrap",
+            "presenter": {
+                "xname": "Avatar",
+                "props":{
+                "size": "80"
+                }
+            },
+            "cart": "Cart",
+            "container": "PlainList",
+            "binding": {
+                "imageUrl": "url"
+            }
+        },
+        "binding": {
+            "avatarUrl": "imageUrl"
+        }
+    },
+    "binding": {
+        "userImg": "avatarUrl"
+    },
+    "dataSource": {
+        "userImg": "http://",
+        "userName": "Bob"
+    }
+}
+```
+
 ### 多个子组件数据绑定
 - 需在各个`children`子组内绑定
 - `title`为数据源字段, `content`为子组件属性
@@ -670,6 +728,8 @@ NamedGatewaySet({
     }
 }
 ```
+
+
 
 ## 组件事件响应部分
   
