@@ -89,6 +89,7 @@ import NewStandalone from '@/pages/NewStandalone/Sandbox'
 
 //实例组件
 import CartsManage from '@/composition/cartsManage'
+import PresentersListPage from '@/pages/Demo/presentersListPage/Sandbox'
 
 export default function Index(props) {
 
@@ -115,7 +116,7 @@ export default function Index(props) {
   // return <TestCRUDList {...props} />
   return (
     <ChakraProvider>
-      <CartsManage {...props} />
+      <PresentersListPage {...props} />
     </ChakraProvider>
   )
 
