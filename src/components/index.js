@@ -66,6 +66,10 @@ import ManageMenuIndicator from './indicator/ManageMenuIndicator'
 import ShadowIndicator from './indicator/ShadowIndicator';
 import DeleteIndicator from './indicator/DeleteIndicator';
 import BackIndicator from './indicator/BackIndicator';
+import MaskIndicator from './indicator/MaskIndicator';
+
+// selector
+import OutlineSelector from './selector/OutlineSelector'
 
 // import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
 // import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
@@ -152,7 +156,10 @@ NamedIndicatorSet({
   ManageMenuIndicator,
   ShadowIndicator,
   DeleteIndicator,
-  BackIndicator
+  BackIndicator,
+  MaskIndicator,
+  // selector
+  OutlineSelector
 })
 
 NamedPresenterSet({
