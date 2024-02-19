@@ -197,7 +197,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
 
       return (
         <__NamedGateway binding={_data_binding} filter={_data_filter} chain={_data_chain} gateway={_data_gateway} {..._rest}>
-          <__NamedCart {..._data_cart} selected={true}
+          <__NamedCart {..._data_cart}
               onItemClick={onItemClick}
           >
               <__Presenter {..._t_presenter} allComponents={allComponents}/>
@@ -248,6 +248,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
                   onItemAdded={onItemAdded}
                   onItemChanged={onItemChanged}
                   onItemIndicated={onItemIndicated}
+                  // selected={true}
                 >
                   {
                     presenter ?<Presenter {..._presenter} allComponents={allComponents} 

@@ -123,7 +123,7 @@ export default function NamedCart(nameCartPropsx) {
                         onItemIndicated={onItemIndicated}
                         _isSelected={isSelected}
                 >
-                    <_NamedSelector selector={_selector} __selector={__selector} isSelected={isSelected}>  
+                    <_NamedSelector selector={_selector} selected={selected} __selector={__selector} isSelected={isSelected}>  
                          <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
                     </_NamedSelector>
                </_NamedIndicator>
