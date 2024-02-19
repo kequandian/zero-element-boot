@@ -7,13 +7,17 @@ import React, { useState } from 'react';
  * @param {String} selected            边框颜色
  * @returns 
  */
-export default function OutlineSelector( { children, isSelected=false, selected=true, lineWidth=2, lineColor='#D9FF00'}) {
+export default function OutlineSelector(props) {
 
+  const  { children, isSelected=false, selected=true, lineWidth=2, lineColor='#D9FF00'} = props
 const [ onSelected, setSelected ] = useState(false);
 
+console.log('selected = ', selected, isSelected)
 const toggleSelected = () => {
-  const result = !onSelected;
-  setSelected(result)
+  if( selected === true || selected === 'true'){
+    const result = !onSelected;
+    setSelected(result)
+  }
 }
 
 const _isSelected = ( selected === true || selected === 'true') ? onSelected : (isSelected === true || isSelected === 'true' ? true : false)

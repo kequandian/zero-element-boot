@@ -4,6 +4,7 @@ import { setEndpoint, setToken } from '@/components/config/common';
 import { set as NamedIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import { set as FormItemTypeSet } from '@/components/config/formItemTypeConfig';
+import { set as NamedSelector } from '@/components/config/NamedSelectorConfig';
 
 // //cart
 // import Cart from '@/components/cart/Cart';
@@ -50,6 +51,8 @@ import RightIconRadioDefault from '@/pages/SelectListDemo/indicator/RightIconRad
 
 import SelectedCartUpperRightIcon from '@/components/indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from '@/components/indicator/SelectedCartRightIcon';
+// selector
+import OutlineSelector from '@/components/selector/OutlineSelector';
 
 //presenter
 import {
@@ -151,6 +154,10 @@ NamedPresenterSet({
   //})
 
   testModuleItem
+})
+
+NamedSelector({
+  OutlineSelector
 })
 
 FormItemTypeSet({

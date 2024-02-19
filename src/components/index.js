@@ -24,6 +24,7 @@ import { set as NamedIndicatorSet } from '@/components/config/NamedIndicatorConf
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import { set as NamedListSet } from '@/components/config/NamedListConfig';
 import { set as FormItemTypeSet } from '@/components/config/formItemTypeConfig';
+import { set as NamedSelector } from '@/components/config/NamedSelectorConfig';
 
 //layout
 import Flexbox from '@/components/layout/Flexbox';
@@ -69,7 +70,8 @@ import BackIndicator from './indicator/BackIndicator';
 import MaskIndicator from './indicator/MaskIndicator';
 
 // selector
-import OutlineSelector from './selector/OutlineSelector'
+import OutlineSelector from './selector/OutlineSelector';
+import CornerCheckboxSelector from './selector/CornerCheckboxSelector';
 
 // import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
 // import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
@@ -158,8 +160,6 @@ NamedIndicatorSet({
   DeleteIndicator,
   BackIndicator,
   MaskIndicator,
-  // selector
-  OutlineSelector
 })
 
 NamedPresenterSet({
@@ -189,6 +189,11 @@ NamedListSet({
   MultiSelectList,
   ManageList,
   GroupedList,
+})
+
+NamedSelector({
+  OutlineSelector,
+  CornerCheckboxSelector
 })
 
 FormItemTypeSet({

@@ -12,44 +12,44 @@ import { get as DefaultSelectorSet } from '@/components/config/NamedSelectorConf
  * @param {Boolean} selected      是否响应Click事件切换选中状态, 用于测试
  * @returns 
  */
- export default function NamedSelector( { children, Selector, xname, props, __selector = {xname, props}, selector = __selector,
-                                                    isSelected=false, selected=false}) {
+export default function NamedSelector(namedSelectorProps) {
 
-const [onSelected, setSelected] = useState(false);
+  const { children, Selector, xname, props, __selector = { xname, props }, selector = __selector,
+    isSelected = false, selected = selector.selected } = namedSelectorProps;
 
-// 用于测试
-const toggleSelected = () => {
-  if(selected){
-    const result = !onSelected;
-    setSelected(result)
-  }
-}
+  // const [onSelected, setSelected] = useState(false);
+  // // 用于测试
+  // const toggleSelected = () => {
+  //   console.log('NamedSelector click ' )
+  //   if (selected) {
+  //     const result = !onSelected;
+  //     setSelected(result)
+  //   }
+  // }
 
-const _isSelected = selected ? onSelected : isSelected
+  // const _isSelected = selected ? onSelected : isSelected
 
-// selector
-const {_Selector0, _selector} = getComponent(selector);
-const _Selector = _isSelected ? (_Selector0||Selector) : NextIndicator
+  // selector
+  const { Component: _Selector0, props: _selector } = getComponent(selector);
+  const _Selector = isSelected ? (_Selector0 || Selector) : NextIndicator
 
-return React.Children.map(children, child => {
-  return (
-    <div style={{flex: 1}} onClick={()=>toggleSelected()}>
-              <_Selector {..._selector}>
-                {child}
-              </_Selector>
-    </div>
+  return React.Children.map(children, child => {
+    return (
+      <div style={{ flex: 1 }} >
+        <_Selector {..._selector} selected={selected}>
+          {child}
+        </_Selector>
+      </div>
     )
   })
 }
 
 
-
-function getComponent(data){
-    const xname = data? (typeof data == 'string' ? data : data.xname ) : undefined
-    const props = (data && typeof data =='object') ? data.props : undefined
-    const Component = xname ? (DefaultSelectorSet[xname] || tips(xname)) : undefined
-
-    return {Component, props}
+function getComponent(data) {
+  const xname = data ? (typeof data == 'string' ? data : data.xname) : undefined
+  const props = (data && typeof data == 'object') ? data.props : undefined
+  const Component = xname ? (DefaultSelectorSet()[xname] || tips(xname)) : undefined
+  return { Component, props }
 }
 
 function tips(name) {
