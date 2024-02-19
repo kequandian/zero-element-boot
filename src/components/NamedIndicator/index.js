@@ -8,10 +8,11 @@ import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorCo
  * @param {Object} indicator     Indicator 组件参数
  * @param {Component} indicatorSet  Indicator 组件集
  * @param {Object} indicatorData  Indicator 数据
- * @param {{'hover','always','none'}} trigger 触发 indicator 的事件, 不配置为 hover
- * @returns 
+ * @param {{'hover','always','none','overlay'}} trigger 触发 indicator 的事件, 不配置即默认为 hover， trigger='overlay': _isSelected为真时触发，当trigger='hover'，_isSelected=true不触发
+ * @param {boolean} _isSelected  组件内部传递参数， 用于selector选中状态下, indicator的决定
+ * @returns
  */
-export default function NamedIndicator( { children, Indicator, xname, props, trigger='hover',  __indicator = {xname, props, trigger}, indicator = __indicator,
+export default function NamedIndicator( { children, Indicator, xname, props, trigger='hover', _isSelected,  __indicator = {xname, props, trigger}, indicator = __indicator,
     indicatorData, indicatorSet,  onItemClick, onItemDeleted, onItemAdded, onItemChanged, onItemIndicated } ) {
 
     const [onHover, setOnHover] = useState(false);
@@ -41,7 +42,7 @@ export default function NamedIndicator( { children, Indicator, xname, props, tri
     const _Indicator = Indicator || _IndicatorSet[indicatorName] || tips(indicatorName)
 
     const _trigger = indicator.trigger || trigger
-    const triggered = (_trigger=='hover' && onHover) || _trigger=='always'
+    const triggered = (_trigger=='hover' && onHover && !_isSelected) || (_trigger=='overlay' && onHover && _isSelected) || _trigger=='always'
     const ___Indicator = triggered ? _Indicator : NextIndicator
 
     return React.Children.map(children, child => {
