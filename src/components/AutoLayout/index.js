@@ -130,7 +130,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
   
   // Cart
   const _align_cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || undefined
-  const __cart = sugarCart({ cart: _align_cart, indicator: indicator, selector:selector, unselector:unselector, bounding:bounding })
+  const __cart = sugarCart({ cart: _align_cart, indicator:indicator, selector:selector, unselector:unselector, bounding:bounding })
   const _NamedCart = cart ? NamedCart : NextIndicator;
 
   // Gateway
@@ -296,7 +296,19 @@ function isFilter(gateway){
  * @returns 
  */
 function sugarCart({cart, indicator, selector, unselector, bounding}){
-    if(indicator || selector){
+    if(indicator || selector || unselector || bounding){
+      
+      // if only selector, just return selector, the same case for indicator
+      // if(indicator && selector===undefined && bounding===undefined){
+      //     return {
+      //       indicator: indicator
+      //     }
+      // }else if(selector && indicator===undefined && bounding===undefined){
+      //   return {
+      //       selector: selector
+      //   }
+      // }
+
       return {
         cart: {
           ...cart, 
@@ -317,7 +329,6 @@ function sugarCart({cart, indicator, selector, unselector, bounding}){
  * @returns 
  */
 function sugarLayout(layout){
-  // console.log('layout 1111111111111 = ', layout)
     // layout is array
     if(Array.isArray(layout)){
         return {

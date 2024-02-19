@@ -1,9 +1,4 @@
 import React, { useState } from 'react';
-// import useLayout from '@/components/hooks/useLayout';
-
-// 无效果，仅传递数据
-import NextIndicator from '@/components/NextIndicator';
-
 
 /**
  * @param {Boolean} isSelected          是否选中状态，由父组件传递此参数
@@ -12,14 +7,7 @@ import NextIndicator from '@/components/NextIndicator';
  * @param {String} selected            边框颜色
  * @returns 
  */
- export default function OverlaySelector( { children, isSelected=false, selected=true, lineWidth=2, lineColor='#D9FF00'}) {
-
-/**
- * 用于返回React内原生组件的属性集合, 通过ref引用
- */
-// const [defaultRef, { getClassName }] = useLayout();
-// const [selectRef, { getSelectStyles }] = useLayout();
-// const [hoverRef, { getHoverStyles }] = useLayout();
+export default function OutlineSelector( { children, isSelected=false, selected=true, lineWidth=2, lineColor='#D9FF00'}) {
 
 const [ onSelected, setSelected ] = useState(false);
 
@@ -29,7 +17,6 @@ const toggleSelected = () => {
 }
 
 const _isSelected = ( selected === true || selected === 'true') ? onSelected : (isSelected === true || isSelected === 'true' ? true : false)
-// TODO: change div style base on _isSelected state
 
 const styles = {
   flex: 1,
