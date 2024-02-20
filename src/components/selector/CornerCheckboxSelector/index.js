@@ -15,7 +15,19 @@ require('./index.less');
 
 export default forwardRef(function CornerCheckboxSelector(props, ref) {
 
-  const { children, line = {}, state = 'unselected'} = props;
+  const { children, isSelected = false, selected = false,  line = {}, state = 'unselected'} = props;
+
+  const [onSelected, setSelected] = useState(false);
+
+  const toggleSelected = () => {
+    if (selected === true || selected === 'true') {
+      const result = !onSelected;
+      setSelected(result)
+    }
+  }
+
+  const _isSelected = (selected === true || selected === 'true') ? onSelected : (isSelected === true || isSelected === 'true' ? true : false)
+
 
   return React.Children.map(children, child => {
 
@@ -47,7 +59,7 @@ export default forwardRef(function CornerCheckboxSelector(props, ref) {
     }
 
 
-    if(state == 'selected'){
+    if(_isSelected){
       bgColor = activeColor;
       // linewidth = activeLeftLine;
       styles.borderColor = '#aab1dc';
@@ -57,8 +69,9 @@ export default forwardRef(function CornerCheckboxSelector(props, ref) {
     return (
         <div className={`i-CornerCheckboxSelector`}
           style={styles}
+          onClick={() => toggleSelected()}
         >
-          {state == 'selected' ? (
+          {_isSelected ? (
             <div className="upperRightIcon">
               <img src={selectedIcon} />
             </div>

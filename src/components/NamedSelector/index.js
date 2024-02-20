@@ -31,12 +31,12 @@ export default function NamedSelector(namedSelectorProps) {
 
   // selector
   const { Component: _Selector0, props: _selector } = getComponent(selector);
-  const _Selector = isSelected ? (_Selector0 || Selector) : NextIndicator
+  const _Selector = Selector || _Selector0 || NextIndicator
 
-  return React.Children.map(children, child => {
+  return  React.Children.map(children, child => {
     return (
       <div style={{ flex: 1 }} >
-        <_Selector {..._selector} selected={selected}>
+        <_Selector {..._selector} isSelected={isSelected} selected={selected}>
           {child}
         </_Selector>
       </div>

@@ -30,7 +30,6 @@ export default function SelectList(props) {
   
 
   function onSelected (item, index) {
-
     list.map((item, i) => {
       if(i === index && currIndex === -1){
         item.isSelected = true
@@ -70,36 +69,68 @@ export default function SelectList(props) {
       onItemClick(itemData)
     }
   }
-  
-  return <div
-    style={{
-      overflow: 'auto',
-      position: 'relative',
-    }}
-    className={getClassName()}
-    ref={containerRef}
-  >
-    <ContainerContext.Provider value={size}>
-        {list.map((item, i) => {
 
-          return <div key={i} onClick={() => onSelected(item, i)} >
-            {
-              React.isValidElement(Child) ?
-              React.cloneElement(Child, {
-                  ...item,
-                  // ...layout,
-                  // layout:layout,
-                  // cart:cart,
-                  key: i,
-                  ref: layoutRef,
-                  isLastItem: list.length == (i+1) ? true : false,
-              })
-              : <Child key={i} {...item } {...layout} layout={layout} ref={layoutRef}/>
-            }
-          </div>
-           
-        })}
-    </ContainerContext.Provider>
-  </div>
+  return (
+    // <div
+    //   style={{
+    //     overflowX: 'hidden',
+    //     position: 'relative',
+    //   }}
+    //   className={getClassName()}
+    //   ref={containerRef}
+    // >
+    //   <ContainerContext.Provider value={size}>
+    //       {list.map((item, i) => {
+
+    //         return <div key={i} onClick={() => onSelected(item, i)} >
+    //           {
+    //             React.isValidElement(Child) ?
+    //             React.cloneElement(Child, {
+    //                 ...item,
+    //                 // ...layout,
+    //                 // layout:layout,
+    //                 // cart:cart,
+    //                 key: i,
+    //                 ref: layoutRef,
+    //                 isLastItem: list.length == (i+1) ? true : false,
+    //             })
+    //             : <Child key={i} {...item } {...layout} layout={layout} ref={layoutRef}/>
+    //           }
+    //         </div>
+            
+    //       })}
+    //   </ContainerContext.Provider>
+    // </div>
+    <div
+      style={{
+        overflowX: 'hidden',
+        position: 'relative',
+      }}
+      className={getClassName()}
+      ref={containerRef}
+    >
+      <ContainerContext.Provider value={size}>
+          {list.map((item, i) => {
+
+            return <div key={i} onClick={() => onSelected(item, i)} >
+              {
+                React.isValidElement(Child) ?
+                React.cloneElement(Child, {
+                    ...item,
+                    // ...layout,
+                    // layout:layout,
+                    // cart:cart,
+                    key: i,
+                    ref: layoutRef,
+                    isLastItem: list.length == (i+1) ? true : false,
+                })
+                : <Child key={i} {...item } {...layout} layout={layout} ref={layoutRef}/>
+              }
+            </div>
+            
+          })}
+      </ContainerContext.Provider>
+    </div>
+  )
 }
 
