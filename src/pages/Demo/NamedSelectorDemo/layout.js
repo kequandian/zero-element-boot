@@ -14,18 +14,17 @@ module.exports = {
         corner: '8px',
         isHover: false
       },
-      indicator: {
-        xname: 'ShadowIndicator',
-        props: {
-        }
-      }, 
+    //   indicator: {
+    //     xname: 'ShadowIndicator',
+    //     props: {
+    //     }
+    //   }, 
       selector: {
         xname: 'OutlineSelector',
         props: {
             lineWidth: 2,
             lineColor: '#D9FF00'
-        },
-        selected: true
+        }
       },
     },
     container: 'SelectList',

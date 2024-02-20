@@ -2,6 +2,7 @@ import React from 'react';
 
 import { ChakraProvider, HStack, Box, Button  } from '@chakra-ui/react';
 import OutlineSelector from "@/components/selector/OutlineSelector";
+import CornerCheckboxSelector from '@/components/selector/CornerCheckboxSelector';
 import Title from '@/components/presenter/Text/index';
 import { ItemPlaceholder } from '@/components/presenter';
 
@@ -19,9 +20,13 @@ export default function Index(props) {
     const lineColor = '#D9FF00'
 
     return (
-        <OutlineSelector isSelected={"false"} selected={"true"} lineWidth={lineWidth} lineColor={lineColor} >
+        // <OutlineSelector isSelected={"false"} selected={"true"} lineWidth={lineWidth} lineColor={lineColor} >
+        //     <ItemPlaceholder/>
+        // </OutlineSelector>
+
+        <CornerCheckboxSelector isSelected={"false"} selected={"true"}>
             <ItemPlaceholder/>
-        </OutlineSelector>
+        </CornerCheckboxSelector>
        
     )
 }
