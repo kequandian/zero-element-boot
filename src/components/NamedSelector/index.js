@@ -35,11 +35,19 @@ export default function NamedSelector(namedSelectorProps) {
 
   return  React.Children.map(children, child => {
     return (
-      <div style={{ flex: 1 }} >
-        <_Selector {..._selector} isSelected={isSelected} selected={selected}>
-          {child}
-        </_Selector>
-      </div>
+      !selected ? (
+        <div style={{ flex: 1 }} >
+          <_Selector {..._selector} isSelected={isSelected} >
+            {child}
+          </_Selector>
+        </div>
+      ):(
+        <div style={{ flex: 1 }} >
+          <_Selector {..._selector} isSelected={true} >
+            {child}
+          </_Selector>
+        </div>
+      )
     )
   })
 }

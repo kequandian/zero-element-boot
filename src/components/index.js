@@ -73,6 +73,8 @@ import MaskIndicator from './indicator/MaskIndicator';
 import OutlineSelector from './selector/OutlineSelector';
 import CornerCheckboxSelector from './selector/CornerCheckboxSelector';
 
+import { ImageSize } from './presenter'
+
 // import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
 // import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
 // import RightIconCheckboxIndicatorSelected from './indicator/RightIconCheckboxIndicator/Selected';
@@ -175,6 +177,7 @@ NamedPresenterSet({
   Image,
   Rectangle,
   Circle,
+  ImageSize,
 })
 
 NamedListSet({
