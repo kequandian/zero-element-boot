@@ -49,7 +49,7 @@ export default function NamedIndicator( { children, Indicator, xname, props, tri
       return (_trigger=='hover')?
       (
         <div style={{flex: 1}} onMouseEnter={() => toggleHoverEntered()} onMouseLeave={() => toggleHoverLeaved()}>
-          <___Indicator {..._indicator} indicatorData={indicatorData} 
+          <___Indicator {..._indicator} __indicator={__indicator} indicatorData={indicatorData} 
             onItemClick={onItemClick}
             onItemDeleted={onItemDeleted}
             onItemAdded={onItemAdded} 

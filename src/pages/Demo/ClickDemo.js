@@ -2,7 +2,6 @@ import React from 'react';
 import { ChakraProvider  } from '@chakra-ui/react';
 import SelectList from '@/components/list/SelectList';
 import OutlineSelector from '@/components/selector/OutlineSelector';
-import CornerCheckboxSelector from '@/components/selector/CornerCheckboxSelector';
 import { ItemPlaceholder } from '@/components/presenter';
 import { AutoLayout } from '@/components'
 import NamedSelector from '@/components/NamedSelector';
@@ -55,8 +54,9 @@ export default function ClickDemo(props) {
   
   return (
     <ChakraProvider>
+        {/* <AutoLayout {...config}  onItemClick={itemClick} /> */}
         <SelectList items={testItems} onItemClick={selectItemClick}>
-            <NamedSelector xname="CornerCheckboxSelector" selected={false}>
+            <NamedSelector xname="OutlineSelector" selected={false}>
                 <ItemPlaceholder/>
             </NamedSelector>
         </SelectList>

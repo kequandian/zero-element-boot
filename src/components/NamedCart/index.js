@@ -90,8 +90,6 @@ export default function NamedCart(nameCartPropsx) {
   const _Unselector  = unselectorName ? _IndicatorSet[unselectorName] : undefined
   const unselectorProps = (unselectorName && (typeof _unselector === 'object')) ? _unselector.props : {}
 
-
-
   // 2024-02-19, no OverlaySelector, NamedSelector instead.
   const _NamedIndicator = _indicator ? NamedIndicator : NextIndicator
   const _NamedSelector = _selector ? NamedSelector : NextIndicator
@@ -124,7 +122,7 @@ export default function NamedCart(nameCartPropsx) {
                         _isSelected={isSelected}
                 >
                     <_NamedSelector selector={_selector} selected={selected} __selector={__selector} isSelected={isSelected}>  
-                         <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
+                         <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator} /> 
                     </_NamedSelector>
                </_NamedIndicator>
             )

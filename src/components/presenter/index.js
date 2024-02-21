@@ -35,6 +35,9 @@ import Subtitle from './Subtitle';
 import Description from './Description'
 import ImageAnimation from './ImageAnimation'
 
+// image
+import ImageSize from './image/ImageSize'
+
 
 export {
   //default
@@ -74,5 +77,8 @@ export {
   Title,
   Subtitle,
   Description,
-  ImageAnimation
+  ImageAnimation,
+
+  // image
+  ImageSize
 }
