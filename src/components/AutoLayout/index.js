@@ -237,10 +237,6 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
   ) : (
     <Container {..._container}  {..._dataSource} {...rest}
       onItemClick={onItemClick} navigation={navigation}
-      onItemDeleted={onItemDeleted}
-      onItemAdded={onItemAdded}
-      onItemChanged={onItemChanged}
-      onItemIndicated={onItemIndicated}
     >
       <NamedLayout xname={__xname} props={props} >
           <_NamedGateway binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}>
