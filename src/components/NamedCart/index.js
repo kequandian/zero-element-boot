@@ -122,7 +122,7 @@ export default function NamedCart(nameCartPropsx) {
                         _isSelected={isSelected}
                 >
                     <_NamedSelector selector={_selector} selected={selected} __selector={__selector} isSelected={isSelected}>  
-                         <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator} /> 
+                         <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator}  __selector={__selector}/> 
                     </_NamedSelector>
                </_NamedIndicator>
             )
@@ -137,13 +137,14 @@ export default function NamedCart(nameCartPropsx) {
 }
 
 
-function _CartModule({children, Cart, props, data, __indicator}){
+function _CartModule({children, Cart, props, data, __indicator,  __selector}){
   
   return (<Cart {...props}>
             {React.Children.toArray(children).map(child => {
               return React.cloneElement(child, {
                 ...data,
-                __indicator:__indicator
+                __indicator:__indicator,
+                __selector: __selector
               })
             })}
         </Cart>)
