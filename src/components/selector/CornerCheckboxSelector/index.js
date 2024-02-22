@@ -76,7 +76,6 @@ export default forwardRef(function CornerCheckboxSelector(props, ref) {
               <img src={selectedIcon} />
             </div>
           ): null}
-
           {child}
         </div>
     )

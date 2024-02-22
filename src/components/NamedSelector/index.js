@@ -15,7 +15,7 @@ import { get as DefaultSelectorSet } from '@/components/config/NamedSelectorConf
 export default function NamedSelector(namedSelectorProps) {
 
   const { children, Selector, xname, props, __selector = { xname, props }, selector = __selector,
-    isSelected = false, selected = selector.selected } = namedSelectorProps;
+    isSelected = false, selected = selector.selected, ...rest } = namedSelectorProps;
 
   // const [onSelected, setSelected] = useState(false);
   // // 用于测试
@@ -29,8 +29,10 @@ export default function NamedSelector(namedSelectorProps) {
 
   // const _isSelected = selected ? onSelected : isSelected
 
+  const __selector_ = selector && selector.xname ? selector : { ...selector, ...__selector};
+
   // selector
-  const { Component: _Selector0, props: _selector } = getComponent(selector);
+  const { Component: _Selector0, props: _selector } = getComponent(__selector_);
   const _Selector = Selector || _Selector0 || NextIndicator
 
   return  React.Children.map(children, child => {
@@ -38,13 +40,13 @@ export default function NamedSelector(namedSelectorProps) {
       !selected ? (
         <div style={{ flex: 1 }} >
           <_Selector {..._selector} isSelected={isSelected} >
-            {child}
+            { child }
           </_Selector>
         </div>
       ):(
         <div style={{ flex: 1 }} >
-          <_Selector {..._selector} isSelected={true} >
-            {child}
+          <_Selector {..._selector} isSelected={true}>
+          { child }
           </_Selector>
         </div>
       )

@@ -5,11 +5,14 @@ import OutlineSelector from '@/components/selector/OutlineSelector';
 import { ItemPlaceholder } from '@/components/presenter';
 import { AutoLayout } from '@/components'
 import NamedSelector from '@/components/NamedSelector';
+import testSelectorLayout from './testLayout.json';
 
 const testItems = [
-    { id: 1, name: 'AAA' },
-    { id: 2, name: 'BBB' },
-    { id: 3, name: 'CCC' },
+    { id: 1, name: 'AAA', "componentType": "OutlineSelector", "componentProps": {
+        "isSelected": "false",
+        "selected": "false"
+    }, },
+    // { id: 2, name: 'BBB', "componentType": "CornerCheckboxSelector","componentProps": null}
 ]
 
 const layout = {
@@ -17,19 +20,22 @@ const layout = {
     props: {
         columns: 8,
     },
+    "binding": {
+        "componentType": "__selector.xname",
+        "componentProps": "__selector.props"
+    },
     container: 'SelectList',
     presenter: {
         xname: 'ItemPlaceholder',
-        props:{
-    }
+        props:{ }
     },
     selector: {
-        xname: 'OutlineSelector',
-        props: {
-            lineWidth: 2,
-            lineColor: '#D9FF00'
-        },
-        selected: false
+        // xname: 'OutlineSelector',
+        // props: {
+        //     lineWidth: 2,
+        //     lineColor: '#D9FF00'
+        // },
+        selected: true
     },
   }
 
@@ -45,7 +51,7 @@ export default function ClickDemo(props) {
 
     const config = {
         items: testItems,
-        layout: layout
+        layout: testSelectorLayout
     }
 
     function itemClick () {
@@ -54,12 +60,12 @@ export default function ClickDemo(props) {
   
   return (
     <ChakraProvider>
-        {/* <AutoLayout {...config}  onItemClick={itemClick} /> */}
-        <SelectList items={testItems} onItemClick={selectItemClick}>
+        <AutoLayout {...config}  onItemClick={itemClick} />
+        {/* <SelectList items={testItems} onItemClick={selectItemClick}>
             <NamedSelector xname="OutlineSelector" selected={false}>
                 <ItemPlaceholder/>
             </NamedSelector>
-        </SelectList>
+        </SelectList> */}
     </ChakraProvider>
   )
 
