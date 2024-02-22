@@ -36,6 +36,7 @@ import NamedSelector from '../NamedSelector';
  * @param {object} __indicator 用于接收由api传递过来的应用于Indicator的数据
  * @param {object} __selector 用于接收由api传递过来的应用于Selector的数据
  * @param {object} bounding 用于限定组件的渲染区域, 支持css属性, 默认为 margin, e.g. margin: '10px'; bounding: {marginLeft: '10px', marginTop: '5px', padding: '10px'}
+ * @param {string} tag 用于标识与测试
  * indicated
  */
 export default function NamedCart(nameCartPropsx) {
@@ -44,9 +45,12 @@ export default function NamedCart(nameCartPropsx) {
             __cart = { xname, props, indicator, selector, unselector, bounding}, cart = __cart,
             __indicator, indicatorData={}, onItemClick, isSelected, onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, 
             __selector, selectorData={},
+            tag,
             ...rest } = nameCartPropsx
-
-            console.log('NamedCart __selector, rest = ', __selector, rest)
+  
+            tagged(tag, rest)
+            //console.log('NamedCart __selector, rest = ', __selector, rest)\
+            
 
   const _CartSet = cartSet ? cartSet : DefaultCartSet()
   //2021-10-28 新增 selector 模块
@@ -165,4 +169,14 @@ function doBind(binding, data={}) {
 
 function tips(name) {
   return _ => `NamedCart ${name} 未定义`;
+}
+
+function tagged(tag, data) {
+  if(tag) { 
+    console.log(`TAG-NamedCart-${tag}`) 
+  }
+  
+  if(data) {
+    console.log('userdata=', data.userdata ? data.userdata : data) 
+  }
 }

@@ -4,11 +4,11 @@ const React = require('react');
 import { get as DefaultListSet } from '@/components/config/NamedListConfig';
 import { get as DefaultContainerSet } from '@/components/config/NamedContainerConfig';
 
-export default function NamedContainer({children, xname, props, container={xname, props}, containerSet, dataSource, ...rest}) {
-  // console.log('NamedContainer.dataSource=', dataSource)
-  // console.log('NamedContainer.rest=', rest)
+export default function NamedContainer({children, xname, props, container={xname, props}, containerSet, dataSource, tag, ...rest}) {
 
-  console.log('NamedContainer rest = ', rest)
+  tagged(tag, rest)
+  //console.log('NamedContainer rest = ', rest)
+
 
   const newDefaultContainerSet = {
     ...DefaultContainerSet(),
@@ -29,4 +29,14 @@ export default function NamedContainer({children, xname, props, container={xname
 
 function tips(name) {
   return _ => `NamedContainer ${name} 未定义`;
+}
+
+function tagged(tag, data) {
+  if(tag) { 
+    console.log(`TAG-NamedContainer-${tag}`) 
+  }
+  
+  if(data) {
+    console.log('userdata=', data.userdata ? data.userdata : data) 
+  }
 }
