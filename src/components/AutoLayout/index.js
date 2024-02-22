@@ -161,6 +161,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
       /**
        * ___presenter 由外部api 提供的参数
        */
+      
       const { ___presenter={}, _xname = xname, _props = {...props}, _cart, _binding = {..._layoutBinding}, _filter={..._layoutFilter}, _chain = {..._layoutChain}, _gateway, ..._rest } = rest
       const _data_cart = __cart || _cart || {}
       const _data_gateway = _layoutGateway || _gateway
@@ -215,7 +216,7 @@ function AutoLayout({ children, layout, binding, filter, chain, gateway, allComp
 
             const __Presenter = ((typeof child === 'string') ? _allComponents[child] : AutoLayout) || tips(presenter)
             const __presenter = isJsonObject(child)? {layout: {...child}} : {}
-
+            
             return (
               <_NamedCart key={i} {...__cart} >
                   <__Presenter {...__presenter} allComponents={allComponents}  key={i} 

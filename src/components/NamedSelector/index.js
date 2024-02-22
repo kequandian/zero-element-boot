@@ -17,6 +17,8 @@ export default function NamedSelector(namedSelectorProps) {
   const { children, Selector, xname, props, __selector = { xname, props }, selector = __selector,
     isSelected = false, selected = selector.selected, ...rest } = namedSelectorProps;
 
+    // console.log('NamedSelector = ', selector, __selector)
+
   // const [onSelected, setSelected] = useState(false);
   // // 用于测试
   // const toggleSelected = () => {

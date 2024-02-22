@@ -14,7 +14,7 @@ import AutoLayout from './AutoLayout';
 // import  { CloneAutoLayout }  from './CloneAutoLayout';
 import AutoComponent from './AutoComponent';
 
-import {APIContainer, Container, TabContainer, WxPage} from './container';
+import {APIContainer, Container, TabContainer, WxPage, TitledContainer} from './container';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -25,6 +25,7 @@ import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConf
 import { set as NamedListSet } from '@/components/config/NamedListConfig';
 import { set as FormItemTypeSet } from '@/components/config/formItemTypeConfig';
 import { set as NamedSelector } from '@/components/config/NamedSelectorConfig';
+import { set as NameContainerSet } from '@/components/config/NamedContainerConfig';
 
 //layout
 import Flexbox from '@/components/layout/Flexbox';
@@ -56,6 +57,7 @@ import PageCenter from './cart/PageCenter';
 // import Rectangle from './cart/deprecated/Rectangle';
 // import RoundCart from './cart/deprecated/Round';
 // import Page from './cart/deprecated/Page';
+import Box from './cart/Box';
 
 //indicator
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
@@ -143,7 +145,8 @@ NamedCartSet({
   // Page,
   // Rectangle,
   // Round: RoundCart,
-  NamedCart
+  NamedCart,
+  Box
 })
 
 NamedIndicatorSet({
@@ -192,6 +195,14 @@ NamedListSet({
   MultiSelectList,
   ManageList,
   GroupedList,
+})
+
+NameContainerSet({
+  APIContainer,
+  Container,
+  TabContainer,
+  WxPage,
+  TitledContainer
 })
 
 NamedSelector({

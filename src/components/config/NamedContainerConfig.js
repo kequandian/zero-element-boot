@@ -1,20 +1,20 @@
 import React from 'react';
 
 
-const namedListSet = {};
+const NamedContainerConfig = {};
 
 function set(NodeObj) {
   Object.keys(NodeObj).forEach(key => {
-    namedListSet[key] = NodeObj[key];
+    NamedContainerConfig[key] = NodeObj[key];
   })
 }
 
 function get() {
-  return namedListSet;
+  return NamedContainerConfig;
 }
 
 const Render = ({ n, ...restProps }) => {
-  const Component = namedListSet[n] || (() => <div>未定义的 namedList: {n}</div>);
+  const Component = NamedContainerConfig[n] || (() => <div>未定义的 namedContainer: {n}</div>);
   return <Component {...restProps} />
 }
 

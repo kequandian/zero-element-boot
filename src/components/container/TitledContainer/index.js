@@ -1,26 +1,23 @@
 import React from 'react';
-
+import { VStack, Text, Box } from '@chakra-ui/react'
   
 /**
- * 
- * @param {title} title 文字内容
- * @param {style} style 文字样式
  * 
  * 
  */
 export default function TitledContainer(props) {
-    const { children, title='', style }=props;
+    const { children, title='' }=props;
 
-
-return React.Children.map(children,child=>{
-  
-
+    const Child = React.Children.only(children);
+    
     return (
-        <div style={{ ...style}}
-        >
-        {title}
-           {child}
-        </div>
-          )
-        } )
+      <VStack>
+        <Box w={'100%'} p={10} display={'flex'} alignItems={'start'}>
+          <Text p={0} m={0} fontWeight={'bold'} fontSize={20}>{title}</Text>
+        </Box>
+        <Box>
+          { Child }
+        </Box>
+      </VStack>
+    )
 }

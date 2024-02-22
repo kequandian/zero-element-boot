@@ -1,7 +1,8 @@
 import APIContainer from './APIContainer';
 import Container from './Container';
-import TabContainer from './TabContainer'
-import WxPage from './WxPage'
+import TabContainer from './TabContainer';
+import WxPage from './WxPage';
+import TitledContainer from './TitledContainer';
 
 // import PlainList from '../list/PlainList';
 // import SelectList from '../list/SelectList';
@@ -16,6 +17,7 @@ export {
     Container,
     TabContainer,
     WxPage,
+    TitledContainer
         // list type of container
     // PlainList,
     // MultiSelectList,

@@ -4,6 +4,8 @@ const useLayout = require('@/components/hooks/useLayout');
 export default function Container({children, ...rest}) {
   const [layoutRef, { getClassName }] = useLayout();
 
+  // console.log('Default container rest = ', rest)
+
   return <div
       className={getClassName()}
     >
