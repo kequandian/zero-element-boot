@@ -8,6 +8,8 @@ export default function NamedContainer({children, xname, props, container={xname
   // console.log('NamedContainer.dataSource=', dataSource)
   // console.log('NamedContainer.rest=', rest)
 
+  console.log('NamedContainer rest = ', rest)
+
   const newDefaultContainerSet = {
     ...DefaultContainerSet(),
     ...DefaultListSet()

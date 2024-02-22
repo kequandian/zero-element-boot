@@ -10,6 +10,9 @@ export default function Binding({ children, binding={}, dataSource, ...rest}) {
   const data = dataSource || rest || {}
   const bindindData = doBind(binding, data)
 
+  console.log('binding dataSource  == ', dataSource, rest)
+  console.log('binding binding  == ', binding)
+  console.log('binding data  == ', data)
   // const finalData = dataSource ? {...rest, ...bindindData} : bindindData
 
   const childrenList = React.Children.toArray(children);
@@ -47,6 +50,7 @@ function doBind(binding, data) {
       }
       delete data[key]
   })
+  console.log('binding bindingData  == ', bindingData)
   
   return { ...bindingData, ...data };
 }

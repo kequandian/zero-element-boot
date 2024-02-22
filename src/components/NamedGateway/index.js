@@ -25,6 +25,8 @@ module.exports = function NamedGateway({children, xname, props, binding={}, filt
   //   gateway.props = {chain: gateway.props}
   // }
 
+  console.log('NamedGateway rest = ', rest)
+
   // let Gateway, ... to handle data, not by NamedGateway
   return <Gateway {...____gateway} dataSource={dataSource} {...rest}>
     {children}

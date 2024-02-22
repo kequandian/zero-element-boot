@@ -20,7 +20,7 @@ export default forwardRef(function NamedLayout({children, xname, props, navigati
   // custom layoutSet first
   const LayoutSet = layoutSet || DefaultLayoutSet
   // console.log('NamedLayout.dataSource=', dataSource)
-  // console.log('NamedLayout.rest=', rest)
+  console.log('NamedLayout.rest=', rest)
   
   // retrieve isLastItem for layout
   // const isLastItemConfig = {isLastItem: isLastItem}
