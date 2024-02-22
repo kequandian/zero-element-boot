@@ -46,6 +46,8 @@ export default function NamedCart(nameCartPropsx) {
             __selector, selectorData={},
             ...rest } = nameCartPropsx
 
+            console.log('NamedCart __selector, rest = ', __selector, rest)
+
   const _CartSet = cartSet ? cartSet : DefaultCartSet()
   //2021-10-28 新增 selector 模块
   const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
