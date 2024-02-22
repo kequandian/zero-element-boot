@@ -12,7 +12,7 @@ export default function TitledContainer(props) {
     
     return (
       <VStack>
-        <Box w={'100%'} p={10} display={'flex'} alignItems={'start'}>
+        <Box w={'100%'} p={'10px 10px 3px 10px'} display={'flex'} alignItems={'start'}>
           <Text p={0} m={0} fontWeight={'bold'} fontSize={20}>{title}</Text>
         </Box>
         <Box>
