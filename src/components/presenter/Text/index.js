@@ -18,6 +18,6 @@ export default function Index(props) {
     // console.log('Text content = ',content)
 
     return (
-        <Text {...others}>{content}</Text>
+        <Text m={0} {...others}>{content}</Text>
     )
 }
