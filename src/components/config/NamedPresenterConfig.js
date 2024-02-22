@@ -14,7 +14,7 @@ function get() {
 }
 
 const Render = ({ n, ...restProps }) => {
-  const Component = namedPresenterSet[n] || (() => <div>未定义的 namedCart: {n}</div>);
+  const Component = namedPresenterSet[n] || (() => <div>未定义的 namedPresenter: {n}</div>);
   return <Component {...restProps} />
 }
 

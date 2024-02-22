@@ -7,6 +7,7 @@ import React from 'react'
  * 
  * */
 export default function NextIndicator({ children, ...rest }) {
+
     return React.Children.map(children, child => {
                 return React.cloneElement(child, {
                     ...rest
