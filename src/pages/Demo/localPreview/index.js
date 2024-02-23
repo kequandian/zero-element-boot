@@ -4,6 +4,11 @@ import layout from './layout.js'
 
 
 const data = { 
+  __indicator2:{
+    xname: "ShadowIndicator",
+    props: {
+    }
+  },
   __selector2:{
     xname: "CornerCheckboxSelector",
     props: {

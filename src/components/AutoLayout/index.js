@@ -184,8 +184,6 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
     const _data_filter = _layoutFilter || _filter
     const _data_chain = _layoutChain || _chain
 
-    console.log('layoutChildren.Presenter rest = ', rest)
-
     // all props (xname, props) from within presenter
     // const _____presenterName = _presenter ? ((typeof _presenter === 'string')? _presenter : _presenter.xname) : undefined  //local presenter
     // const _____presenter = ((_presenter && _presenter.props) ? _presenter.props : undefined) || undefined
@@ -242,9 +240,9 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
           const __presenter = isJsonObject(child) ? { layout: {...child} } : {}
 
           return (
-            <_NamedGateway binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway} 
+            <_NamedGateway key={i} binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway} 
                            tag={`${itemTag}-gateway[${_gatewayName}]`}>
-              <_NamedCart key={i} {...__cart} 
+              <_NamedCart {...__cart} 
                           onItemDeleted={onItemDeleted}
                           onItemAdded={onItemAdded}
                           onItemChanged={onItemChanged}

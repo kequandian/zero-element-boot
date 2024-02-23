@@ -15,9 +15,10 @@ export default function SelectList(props) {
   const { 
     children, items=[], 
     // layout, 
-    cart, navigation,  onItemClick= () => {console.log('未设置SelectionList onItemClick点击事件')} } = props;
+    cart, navigation,  onItemClick= () => {console.log('未设置SelectionList onItemClick点击事件')},
+    ...rest
+  } = props;
 
-    // items.map(item => item.checked=false)
     
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
@@ -87,6 +88,7 @@ export default function SelectList(props) {
                 React.isValidElement(Child) ?
                 React.cloneElement(Child, {
                     ...item,
+                    ...rest,
                     // ...layout,
                     // layout:layout,
                     // cart:cart,
