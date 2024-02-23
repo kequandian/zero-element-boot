@@ -25,7 +25,7 @@ module.exports = {
                 "margin": "0px",
                 "linewidth": "0",
                 "corner": "8px"
-              }
+              },
             },
             "binding": {
               "__indicator2": "__indicator",

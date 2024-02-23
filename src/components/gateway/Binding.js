@@ -19,6 +19,10 @@ export default function Binding({ children, binding={}, dataSource, ...rest}) {
   }))
 }
 
+export const bindingConvert = (binding, data) => {
+  return doBind(binding, data)
+}
+
 
 // doBind
 function doBind(binding, data) {
