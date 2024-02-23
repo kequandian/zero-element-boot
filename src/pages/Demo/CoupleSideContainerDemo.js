@@ -17,10 +17,14 @@ export default function Index(props) {
         "__selector":"__selector2"
     }
 
+    const addNewClick = () => {
+        console.log('addNewClick')
+    }
+
     return (
         <ChakraProvider>
             <CoupleSideContainer converter={converter}>
-                <PreviewAutoLayout layoutApi={layoutApi} api={api} />
+                <PreviewAutoLayout layoutApi={layoutApi} api={api} onAddNewClick={addNewClick} isSwitch={true} />
                 <LocalPreview  />
             </CoupleSideContainer>
         </ChakraProvider>
