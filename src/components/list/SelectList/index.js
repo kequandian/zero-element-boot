@@ -1,8 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { history } from 'umi';
 import { useSize } from 'ahooks';
+import { VStack, Box, Button } from '@chakra-ui/react';
 import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/AutoX/ContainerContext';
+const namedPresenterGet = require("@/components/config/NamedPresenterConfig").get();
+
+require('./index.less');
 
 /**
  * @param {*} props 
@@ -16,10 +20,12 @@ export default function SelectList(props) {
     children, items=[], 
     // layout, 
     cart, navigation,  onItemClick= () => {console.log('未设置SelectionList onItemClick点击事件')},
+    onAddNewClick= () => {console.log('未设置SelectionList onAddNewClick点击事件')},
+    isSwitch=false,
+    addnew='',
     ...rest
   } = props;
 
-    
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -71,38 +77,58 @@ export default function SelectList(props) {
     }
   }
 
-  return (
-    <div
-      style={{
-        overflowX: 'hidden',
-        position: 'relative',
-      }}
-      className={getClassName()}
-      ref={containerRef}
-    >
-      <ContainerContext.Provider value={size}>
-          {list.map((item, i) => {
+  //列表添加按钮
+  function addNewButton() {
+    const btnName = addnew || 'AddNewButton'
+    const BC = namedPresenterGet[btnName]
+    return <BC />
+  }
 
-            return <div key={i} onClick={() => onSelected(item, i)} >
-              {
-                React.isValidElement(Child) ?
-                React.cloneElement(Child, {
-                    ...item,
-                    ...rest,
-                    // ...layout,
-                    // layout:layout,
-                    // cart:cart,
-                    key: i,
-                    ref: layoutRef,
-                    isLastItem: list.length == (i+1) ? true : false,
-                })
-                : <Child key={i} {...item } {...layout} layout={layout} ref={layoutRef}/>
-              }
+
+  return (
+    <VStack>
+      {
+        isSwitch ? (
+          <div className='btnContainer' >
+            <div className='selectListaddBtn' onClick={() => onAddNewClick()}>
             </div>
-            
-          })}
-      </ContainerContext.Provider>
-    </div>
+          </div>
+        ) : <></>
+      }
+
+      <div
+        style={{
+          overflowX: 'hidden',
+          position: 'relative',
+        }}
+        className={getClassName()}
+        ref={containerRef}
+      >
+        <ContainerContext.Provider value={size}>
+            {list.map((item, i) => {
+
+              return <div key={i} onClick={() => onSelected(item, i)} >
+                {
+                  React.isValidElement(Child) ?
+                  React.cloneElement(Child, {
+                      ...item,
+                      ...rest,
+                      // ...layout,
+                      // layout:layout,
+                      // cart:cart,
+                      key: i,
+                      ref: layoutRef,
+                      isLastItem: list.length == (i+1) ? true : false,
+                  })
+                  : <Child key={i} {...item } {...layout} layout={layout} ref={layoutRef}/>
+                }
+              </div>
+              
+            })}
+        </ContainerContext.Provider>
+      </div>
+      
+    </VStack>
   )
 }
 
