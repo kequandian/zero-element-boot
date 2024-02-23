@@ -14,7 +14,7 @@ export default function PreAutoLayout (props) {
     bindingName,
     layoutId, 
     testLayoutName, testBindingName, 
-    onPreviewItemClick,
+    onItemClick,
     ...rest
   } = props;
 
@@ -93,8 +93,8 @@ export default function PreAutoLayout (props) {
   const onPItemClick = (item) => {
     //TODO
     // console.log(item, ' === item')
-    if(onPreviewItemClick){
-      onPreviewItemClick(item)
+    if(onItemClick){
+      onItemClick(item)
     }
     if(alternative && JSON.stringify(alternative) !== '{}' || layoutJson.alternative && JSON.stringify(layoutJson.alternative) !== '{}'){
       setDataSource(item)

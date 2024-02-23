@@ -9,16 +9,16 @@ const data = {
     props: {
     }
   },
-  __selector2:{
-    xname: "CornerCheckboxSelector",
-    props: {
-    }
-  }
+  // __selector2:{
+  //   xname: "CornerCheckboxSelector",
+  //   props: {
+  //   }
+  // }
 }
 
 export default function Index(props) {
 
-  const { ...rest } = props;
+  const { configData, ...rest } = props;
   /**
    * 页面配置
    */
@@ -31,6 +31,6 @@ export default function Index(props) {
   }
 
   return (
-    <AutoLayout {...data} {...config} onItemClick={itemClick}/>
+    <AutoLayout {...configData} {...config} onItemClick={itemClick}/>
   )
 }

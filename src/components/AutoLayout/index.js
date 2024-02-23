@@ -263,7 +263,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   ) : (
     <Container {..._container}  {..._dataSource} {...rest} navigation={navigation} 
                tag={`${_tag}-standard-container[${_containerName}]`}
-    // onItemClick={onItemClick} 
+    onItemClick={onItemClick} 
     // onItemDeleted={onItemDeleted}
     // onItemAdded={onItemAdded}
     // onItemChanged={onItemChanged}

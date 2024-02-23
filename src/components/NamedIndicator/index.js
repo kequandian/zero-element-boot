@@ -39,7 +39,7 @@ export default function NamedIndicator( { children, Indicator, xname, props, tri
     // 3. only indicator, indicator.props
     const _indicator =  (Indicator && __indicator_) ? __indicator_ : ( Indicator ? {} : (__indicator_ ? ( (typeof __indicator_=='string')?{} : (__indicator_.props?__indicator_.props:{}) ) : {}) )
 
-    const _Indicator = Indicator || _IndicatorSet[indicatorName] || tips(indicatorName)
+    const _Indicator = Indicator || _IndicatorSet[indicatorName] || NextIndicator
 
     const _trigger = indicator.trigger || trigger
     const triggered = (_trigger=='hover' && onHover && !_isSelected) || (_trigger=='overlay' && onHover && _isSelected) || _trigger=='always'

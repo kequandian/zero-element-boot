@@ -57,6 +57,7 @@ export default function doFilter(filter, dataSource){
         }
 
     }else{
+      console.log('do filter key  = ',  filteredKey, dataSource, 'key = ', key)
         // just convert the data field if normal value
         filterData[filteredKey] = dataSource[key];
     }
