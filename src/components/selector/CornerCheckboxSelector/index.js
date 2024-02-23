@@ -55,7 +55,7 @@ export default forwardRef(function CornerCheckboxSelector(props, ref) {
       borderRadius: '8px',
       borderWidth: '2px',
       borderStyle: 'solid',
-      borderColor: '#E7E8EB'
+      borderColor: 'transparent'
     }
 
 

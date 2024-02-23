@@ -2,11 +2,11 @@ import React from 'react';
 import { VStack, Text, Box } from '@chakra-ui/react'
   
 /**
- * 
+ * @param {string} title 标题 
  * 
  */
 export default function TitledContainer(props) {
-    const { children, title='' }=props;
+    const { children, title='', ...rest }=props;
 
     const Child = React.Children.only(children);
     
@@ -16,7 +16,11 @@ export default function TitledContainer(props) {
           <Text p={0} m={0} fontWeight={'bold'} fontSize={20}>{title}</Text>
         </Box>
         <Box>
-          { Child }
+          { 
+            React.cloneElement(Child, {
+              ...rest,
+           })
+          }
         </Box>
       </VStack>
     )
