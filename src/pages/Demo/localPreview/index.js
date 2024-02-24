@@ -4,11 +4,11 @@ import layout from './layout.js'
 
 
 const data = { 
-  __indicator2:{
-    xname: "ShadowIndicator",
-    props: {
-    }
-  },
+  // __indicator2:{
+  //   xname: "ShadowIndicator",
+  //   props: {
+  //   }
+  // },
   // __selector2:{
   //   xname: "CornerCheckboxSelector",
   //   props: {
@@ -18,7 +18,7 @@ const data = {
 
 export default function Index(props) {
 
-  const { configData, ...rest } = props;
+  const { previewData, ...rest } = props;
   /**
    * 页面配置
    */
@@ -30,7 +30,9 @@ export default function Index(props) {
     console.log('item == ', item)
   }
 
+  console.log('local preview = ', previewData, config)
+
   return (
-    <AutoLayout {...configData} {...config} onItemClick={itemClick}/>
+    <AutoLayout {...previewData} {...config} onItemClick={itemClick}/>
   )
 }
