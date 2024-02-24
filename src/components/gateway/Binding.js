@@ -51,7 +51,7 @@ function doBind(binding, data) {
       }
       delete data[key]
   })
-  
+
   return { ...bindingData, ...data };
 }
 

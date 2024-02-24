@@ -203,7 +203,6 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
     // const __presenterName = _xname || _____presenterName ||  tips(_xname);
     // const __presenter = _____presenter || _props;
 
-    
     const _t_presenterName = _xname || ___presenter.xname || tips(_xname);
     const nextTag = tag ? { tag: `${tag}-native-${_t_presenterName}` } : {}
     const _t_presenter = (_t_presenterName === 'autolayout' ? { layout: {...___presenter.props, ...nextTag} } : ___presenter.props) || _props || tips(_props);
@@ -229,8 +228,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   const __xname = xname || 'VStack'
   return layoutChildren ? (
     <Container {..._container}  {..._dataSource} {...rest} navigation={navigation} tag={`${_tag}-children-container[${_containerName}]`} >
-      <NamedLayout xname={__xname} props={props} __ tag={`${_tag}-children-layout[${__xname}]`}>
-
+      <NamedLayout xname={__xname} props={props} tag={`${_tag}-children-layout[${__xname}]`}>
         {layoutChildren.map((child, i) => {
 
           // show tag to trace the data flow
@@ -263,7 +261,8 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   ) : (
     <Container {..._container}  {..._dataSource} {...rest} navigation={navigation} 
                tag={`${_tag}-standard-container[${_containerName}]`}
-    onItemClick={onItemClick} 
+               onItemClick={onItemClick}
+    // onItemClick={onItemClick} 
     // onItemDeleted={onItemDeleted}
     // onItemAdded={onItemAdded}
     // onItemChanged={onItemChanged}

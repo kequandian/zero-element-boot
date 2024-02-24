@@ -21,11 +21,13 @@ export default forwardRef(function NamedLayout({children, xname, props, navigati
   const LayoutSet = layoutSet || DefaultLayoutSet
 
   tagged(tag, rest)
-  
+
+  console.log('NamedLayout = = ',  xname, props, layout, __layout, rest)
+
   // retrieve isLastItem for layout
   // const isLastItemConfig = {isLastItem: isLastItem}
 
-  const layoutName = (typeof layout === 'string') ? layout : layout.xname
+  const layoutName = (typeof layout === 'string') ? layout : ( typeof layout.xname === 'object' && __layout.xname ) ? __layout.xname: layout.xname
   const Layout = LayoutSet[layoutName] || tips(layoutName);
 
   const seperatorName = layout.props ? ((layout.props.seperator && typeof layout.props.seperator === 'object') ? layout.props.seperator.name : layout.props.seperator) : null
@@ -33,7 +35,7 @@ export default forwardRef(function NamedLayout({children, xname, props, navigati
   const Seperator = seperatorName ? NamedSeperator({name: seperatorName}) : null
 
   // just forward ref to the specified layout (e.g. Flexbox)
-  return <Layout {...layout.props} isLastItem={isLastItem} navigation={navigation} Seperator={Seperator} ref={ref}>
+  return <Layout {...layout.props} { ...__layout.props} isLastItem={isLastItem} navigation={navigation} Seperator={Seperator} ref={ref}>
     {React.Children.toArray(children).map(child => {
       let element = React.cloneElement(child, {
         dataSource: dataSource,
