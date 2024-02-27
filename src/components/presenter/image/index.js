@@ -1,11 +1,21 @@
 import React from 'react';
 import { Image, Box } from '@chakra-ui/react';
 
-export function Index() {
+/**
+ * 
+ * @param { number } width 宽度
+ * @param { number } height 高度
+ * @param {url} url 图片链接
+ * 
+ */
+
+const _url = 'https://bit.ly/dan-abramov'
+
+export default function Index(props) {
+
+    const { width=144, height=192, url = _url } = props;
 
     return (
-        <Box boxSize='sm'>
-          <Image src='https://bit.ly/dan-abramov' alt='Dan Abramov' />
-        </Box>
+        <Image w={width+'px'} height={height+'px'} src={url} />
     )
 }
