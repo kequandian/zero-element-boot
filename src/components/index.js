@@ -1,4 +1,4 @@
-import { Image } from "@chakra-ui/react";
+// import { Image } from "@chakra-ui/react";
 
 import NamedLayout from './NamedLayout';
 import NamedList from './NamedList';
@@ -75,7 +75,7 @@ import MaskIndicator from './indicator/MaskIndicator';
 import OutlineSelector from './selector/OutlineSelector';
 import CornerCheckboxSelector from './selector/CornerCheckboxSelector';
 
-import { ImageSize } from './presenter'
+import { Image, ImageSize } from './presenter'
 
 // import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
 // import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';

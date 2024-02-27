@@ -36,6 +36,7 @@ import Description from './Description'
 import ImageAnimation from './ImageAnimation'
 
 // image
+import Image from './image'
 import ImageSize from './image/ImageSize'
 
 
@@ -80,5 +81,6 @@ export {
   ImageAnimation,
 
   // image
+  Image,
   ImageSize
 }
