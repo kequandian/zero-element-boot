@@ -13,16 +13,20 @@ require('./index.less');
  * @param {array}} items api数据
  * @param {Object}} navigation 导航
  * @param {Object}} onItemClick 点击事件
+ * @param {number or string}} containerHeight 容器高度
+ * @param {boolean}} isSwitch 是否显示新增按钮
  */
 
 export default function SelectList(props) {
   const { 
     children, items=[], 
     // layout, 
-    cart, navigation,  onItemClick= () => {console.log('未设置SelectionList onItemClick点击事件')},
-    onAddNewClick= () => {console.log('未设置SelectionList onAddNewClick点击事件')},
+    cart, navigation,  onItemClick= () => {console.log('未设置SelectList onItemClick点击事件')},
+    onAddNewClick= () => {console.log('未设置SelectList onAddNewClick点击事件')},
     isSwitch=false,
     addnew='',
+    containerHeight= '',
+    isScroll=false,
     ...rest
   } = props;
 
@@ -97,9 +101,12 @@ export default function SelectList(props) {
       }
 
       <div
+        id='select-list'
         style={{
           overflowX: 'hidden',
           position: 'relative',
+          overflowY: 'scroll',
+          height: `${containerHeight || (isScroll && window.innerHeight)}px`
         }}
         className={getClassName()}
         ref={containerRef}

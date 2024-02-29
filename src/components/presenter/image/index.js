@@ -13,7 +13,7 @@ const _url = 'https://bit.ly/dan-abramov'
 
 export default function Index(props) {
 
-    const { width=144, height=192, url = _url } = props;
+    const { width=144, height='auto', url = _url } = props;
 
     return (
         <Image w={width+'px'} height={height+'px'} src={url} />
