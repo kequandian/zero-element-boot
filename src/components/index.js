@@ -87,8 +87,8 @@ import { Image, ImageSize } from './presenter'
 
 
 import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle,
-  Rectangle,
-  Circle,
+  Rectangle, 
+  Circle, Description,
 } from '@/components/presenter';
 
 // import ImageView from './presenter/image';
@@ -181,6 +181,7 @@ NamedPresenterSet({
   Rectangle,
   Circle,
   ImageSize,
+  Description
 })
 
 NamedListSet({
