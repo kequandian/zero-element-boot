@@ -4,7 +4,7 @@ require("./index.less");
 
 export default function (props) {
 
-    const { TextValue } = props;
+    const { content } = props;
 
-    return <div className="description" style={{marginLeft:'6px'}}>{TextValue}</div>
+    return <div className="description" style={{marginLeft:'6px'}}>{content}</div>
 }
