@@ -6,5 +6,5 @@ export default function (props) {
 
     const { content } = props;
 
-    return <div className="description" style={{marginLeft:'6px'}}>{content}</div>
+    return <div className="description">{content}</div>
 }
