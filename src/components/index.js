@@ -70,6 +70,8 @@ import ShadowIndicator from './indicator/ShadowIndicator';
 import DeleteIndicator from './indicator/DeleteIndicator';
 import BackIndicator from './indicator/BackIndicator';
 import MaskIndicator from './indicator/MaskIndicator';
+import LabelIndicator from './indicator/LabelIndicator';
+import TipsIndicator from './indicator/TipsIndicator';
 
 // selector
 import OutlineSelector from './selector/OutlineSelector';
@@ -165,6 +167,8 @@ NamedIndicatorSet({
   DeleteIndicator,
   BackIndicator,
   MaskIndicator,
+  LabelIndicator,
+  TipsIndicator
 })
 
 NamedPresenterSet({
