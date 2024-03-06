@@ -104,7 +104,7 @@ export default function SelectList(props) {
         id='select-list'
         style={{
           overflowX: 'hidden',
-          position: 'relative',
+          // position: 'relative',
           overflowY: 'scroll',
           height: `${containerHeight || (isScroll && window.innerHeight)}px`
         }}
