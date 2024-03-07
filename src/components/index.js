@@ -77,7 +77,7 @@ import TipsIndicator from './indicator/TipsIndicator';
 import OutlineSelector from './selector/OutlineSelector';
 import CornerCheckboxSelector from './selector/CornerCheckboxSelector';
 
-import { Image, ImageSize } from './presenter'
+import { Image, CozeImage } from './presenter'
 
 // import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
 // import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
@@ -184,7 +184,7 @@ NamedPresenterSet({
   Image,
   Rectangle,
   Circle,
-  ImageSize,
+  CozeImage,
   Description
 })
 

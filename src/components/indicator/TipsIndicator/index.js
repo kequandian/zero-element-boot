@@ -37,7 +37,7 @@ export default function TipsIndicator(props) {
 
 
     return (
-        <div className={styles.tipsIndicatorContainer}>
+        <div className='tipsIndicatorContainer'>
             <Popover trigger='hover' placement='right'>
                 <PopoverTrigger>
                     <div>
@@ -51,8 +51,8 @@ export default function TipsIndicator(props) {
                 <PopoverContent bg={'#F7F7FA'}>
                     <PopoverArrow />
                     {/* <PopoverCloseButton /> */}
-                    <PopoverHeader fontWeight={'bold'} >{indicatorData.title}</PopoverHeader>
-                    <PopoverBody>{indicatorData.content}</PopoverBody>
+                    <PopoverHeader fontWeight={'bold'} >{indicatorData.title || 'Title'}</PopoverHeader>
+                    <PopoverBody>{indicatorData.content || "Content"}</PopoverBody>
                 </PopoverContent>
             </Popover>
         </div>
