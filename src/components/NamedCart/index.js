@@ -116,7 +116,9 @@ export default function NamedCart(nameCartPropsx) {
         : 
         ( (_indicator || _selector) ?
           (
-                // only indicator handle item event
+            <_NamedSelector selector={_selector} selected={selected} __selector={__selector} isSelected={isSelected}>  
+
+                {/* only indicator handle item event */}
                 <_NamedIndicator indicator={_indicator} __indicator={__indicator} indicatorData={_indicatorData} 
                         onItemClick={onItemClick}
                         onItemDeleted={onItemDeleted}
@@ -125,10 +127,10 @@ export default function NamedCart(nameCartPropsx) {
                         onItemIndicated={onItemIndicated}
                         _isSelected={isSelected}
                 >
-                    <_NamedSelector selector={_selector} selected={selected} __selector={__selector} isSelected={isSelected}>  
                          <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator}  __selector={__selector}/> 
-                    </_NamedSelector>
                </_NamedIndicator>
+               </_NamedSelector>
+
             )
             :
             (

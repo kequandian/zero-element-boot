@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './index.less'
+require('./index.less');
 
 /**
  * 使用例子
@@ -26,13 +26,13 @@ export default function LabelIndicator(props) {
     } = props;
 
     return (
-        <div className={styles.labelIndicatorContainer}>
+        <div className='labelIndicatorContainer'>
             {
                 React.Children.map(children, child => (
                     child
                 ))
             }
-            <div className={styles.labelContent}>
+            <div className='labelContent'>
                 {indicatorData.label || ''}
             </div>
         </div>

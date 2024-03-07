@@ -111,7 +111,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   } = sugarLayout(layout) || {};
 
   // show tag for AutoLayout
-  const _tag= tag || layoutTag || 'UNDEFINED'
+  const _tag = tag || layoutTag || 'UNDEFINED'
   tagged(_tag, rest)
 
 
@@ -126,9 +126,9 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
     const { layout, ...alternativeOthers } = notnull_alternative
 
     // add tag 
-    const alternativeTag = tag? {tag: `${tag}-alternative`} : {}
-    const config = {...alternative_layout, ...alternativeTag}
-    const layoutConfig = {layout: config}
+    const alternativeTag = tag ? { tag: `${tag}-alternative` } : {}
+    const config = { ...alternative_layout, ...alternativeTag }
+    const layoutConfig = { layout: config }
 
     // alternativeBack
     const { _Component: _AlternativeBack, _component: _alternativeBack } = getComponent(notnull_alternative.alternativeBack, DefaultIndicatorGet())
@@ -155,7 +155,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
     : sugarGateway(_layoutGateway)) : undefined
   const _gateway = _1_gateway || (_layoutBinding ? { xname: "Binding" } : (_layoutFilter ? { xname: "Filter" } : (_layoutChain ? { xname: "Chain" } : undefined)))
   const _NamedGateway = (_layoutBinding || _layoutFilter || _layoutChain || _gateway) ? NamedGateway : NextIndicator;
-  const _gatewayName =  (_layoutBinding || _layoutFilter || _layoutChain || _gateway) ? 'NamedGateway' : 'NextIndicator'
+  const _gatewayName = (_layoutBinding || _layoutFilter || _layoutChain || _gateway) ? 'NamedGateway' : 'NextIndicator'
 
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
@@ -205,7 +205,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
 
     const _t_presenterName = _xname || ___presenter.xname || tips(_xname);
     const nextTag = tag ? { tag: `${tag}-native-${_t_presenterName}` } : {}
-    const _t_presenter = (_t_presenterName === 'autolayout' ? { layout: {...___presenter.props, ...nextTag} } : ___presenter.props) || _props || tips(_props);
+    const _t_presenter = (_t_presenterName === 'autolayout' ? { layout: { ...___presenter.props, ...nextTag } } : ___presenter.props) || _props || tips(_props);
 
     // selected={true} 仅用于单组件测试
     const __NamedCart = _data_cart ? NamedCart : NextIndicator;
@@ -228,40 +228,44 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   const __xname = xname || 'VStack'
   return layoutChildren ? (
     <Container {..._container}  {..._dataSource} {...rest} navigation={navigation} tag={`${_tag}-children-container[${_containerName}]`} >
-      <NamedLayout xname={__xname} props={props} tag={`${_tag}-children-layout[${__xname}]`}>
-        {layoutChildren.map((child, i) => {
 
-          // show tag to trace the data flow
-          const itemTag = `${_tag}-children[${i}]`
+      <_NamedCart {...__cart}
+        onItemDeleted={onItemDeleted}
+        onItemAdded={onItemAdded}
+        onItemChanged={onItemChanged}
+        onItemIndicated={onItemIndicated}
+        tag={`${_tag}-cart[${_cartName}]`}
+      >
+        <NamedLayout xname={__xname} props={props} tag={`${_tag}-children-layout[${__xname}]`}>
 
-          const __Presenter = ((typeof child === 'string') ? _allComponents[child] : AutoLayout) || tips(presenter)
-          const __presenter = isJsonObject(child) ? { layout: {...child} } : {}
 
-          return (
-            <_NamedGateway key={i} binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway} 
-                           tag={`${itemTag}-gateway[${_gatewayName}]`}>
-              <_NamedCart {...__cart} 
-                          onItemDeleted={onItemDeleted}
-                          onItemAdded={onItemAdded}
-                          onItemChanged={onItemChanged}
-                          onItemIndicated={onItemIndicated}
-                          tag={`${itemTag}-cart[${_cartName}]`}
-              >
-                <__Presenter {...__presenter} allComponents={allComponents} key={i} 
-                             tag={`${itemTag}-presenter-NEXT`}
+          {layoutChildren.map((child, i) => {
+
+            // show tag to trace the data flow
+            const itemTag = `${_tag}-children[${i}]`
+
+            const __Presenter = ((typeof child === 'string') ? _allComponents[child] : AutoLayout) || tips(presenter)
+            const __presenter = isJsonObject(child) ? { layout: { ...child } } : {}
+
+            return (
+              <_NamedGateway key={i} binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
+                tag={`${itemTag}-gateway[${_gatewayName}]`}>
+
+                <__Presenter {...__presenter} allComponents={allComponents} key={i}
+                  tag={`${itemTag}-presenter-NEXT`}
                   onItemClick={onItemClick}
                 />
-              </_NamedCart>
-            </_NamedGateway>
-          )
+              </_NamedGateway>
+            )
 
-        })}
-      </NamedLayout>
+          })}
+        </NamedLayout>
+      </_NamedCart>
     </Container>
   ) : (
-    <Container {..._container}  {..._dataSource} {...rest} navigation={navigation} 
-               tag={`${_tag}-standard-container[${_containerName}]`}
-               onItemClick={onItemClick}
+    <Container {..._container}  {..._dataSource} {...rest} navigation={navigation}
+      tag={`${_tag}-standard-container[${_containerName}]`}
+      onItemClick={onItemClick}
     // onItemClick={onItemClick} 
     // onItemDeleted={onItemDeleted}
     // onItemAdded={onItemAdded}
@@ -270,7 +274,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
     >
       <NamedLayout xname={__xname} props={props} tag={`${_tag}-standard-layout[${__xname}]`}>
         <_NamedGateway binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
-                      tag={`${_tag}-gateway[${_gatewayName}]`}>
+          tag={`${_tag}-gateway[${_gatewayName}]`}>
           <_NamedCart {...__cart}
             onItemDeleted={onItemDeleted}
             onItemAdded={onItemAdded}
@@ -299,12 +303,12 @@ function tips(name) {
 }
 
 function tagged(tag, data) {
-  if(tag) { 
-    console.log(`TAG-AutoLayout-${tag}`) 
+  if (tag) {
+    console.log(`TAG-AutoLayout-${tag}`)
   }
-  
-  if(data) {
-    console.log('userdata=', data.userdata ? data.userdata : data) 
+
+  if (data) {
+    console.log('userdata=', data.userdata ? data.userdata : data)
   }
 }
 

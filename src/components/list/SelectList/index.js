@@ -26,7 +26,7 @@ export default function SelectList(props) {
     isSwitch=false,
     addnew='',
     containerHeight= '',
-    isScroll=false,
+    isScroll=true,
     ...rest
   } = props;
 

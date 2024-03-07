@@ -230,13 +230,14 @@ const testLayout = {
         "children": [
             {
                 "presenter": {
+                    "xname": "CozeImage",
+                    "props": {
+                        "w":  "36",
+                        "h": "36"
+                    },
                     "binding": {
                         "imageUrl": "url"
                     },
-                    "xname": "Image",
-                    "props": {
-                        "width": "36"
-                    }
                 },
                 "cart": {
                     "xname": "Cart",
@@ -317,6 +318,10 @@ const testLayout = {
     //         "label":"label",
     //     }
     // },
+    "selector": {
+        "xname": "CornerCheckboxSelector",
+        "props": {}
+    },
     "indicator":{
         "xname": "TipsIndicator",
         "props":{
@@ -333,6 +338,102 @@ const testLayout = {
         "spacing": "8"
     }
 }
+
+// const testLayout = {
+//     "container": {
+//         "xname": "SelectList"
+//     },
+    
+//     "indicator":{
+//         "xname": "TipsIndicator",
+//         "props":{
+//         },
+//         "trigger": "always",
+//         "binding": {
+//             "title":"title",
+//             "description":"content",
+//         }
+//     },
+//     "presenter": {
+//             "children": [
+//                 {
+//                     "presenter": {
+//                         "binding": {
+//                             "imageUrl": "url"
+//                         },
+//                         "xname": "CozeImage",
+//                         "props": {
+//                             "w": "36",
+//                             "h": "36"
+//                         }
+//                     },
+//                     "cart": {
+//                         "xname": "Cart",
+//                         "props": {
+//                             "padding": "0px",
+//                             "margin": "0",
+//                             "corner": "6px",
+//                             "lineColor": "#EFEFEF",
+//                             "fill": "#fff",
+//                             "linewidth": "1px"
+//                         }
+//                     }
+//                 },
+//                 {
+//                     "binding": {
+//                         "title": "content"
+//                     },
+//                     "xname": "Title"
+//                 },
+//                 {
+//                     "binding": {
+//                         "subtitle": "content"
+//                     },
+//                     "xname": "Subtitle"
+//                 },
+//                 {
+//                     "binding": {
+//                         "description": "content"
+//                     },
+//                     "xname": "Description"
+//                 }
+//             ],
+//             "mock": {
+//                 "subtitle": "扣子官方",
+//                 "imageUrl": "https://p9-flow-product-sign.byteimg.com/tos-cn-i-13w3uml6bg/e854fe2917f043719bffa4f6cc73d0ff~tplv-13w3uml6bg-resize:128:128.image?rk3s=2e2596fd&x-expires=1712136802&x-signature=m8VSvCKz89%2BY4wbRnITJmY%2BiIcY%3D",
+//                 "description": "从Bing搜索任何信息和网页URL。",
+//                 "title": "必应搜索"
+//             },
+//             "xname": "VStack",
+//             "props": {
+//                 "spacing": "5"
+//             }
+//     },
+//     "mock": [
+//         {
+//             "subtitle": "扣子官方",
+//             "imageUrl": "https://p9-flow-product-sign.byteimg.com/tos-cn-i-13w3uml6bg/e854fe2917f043719bffa4f6cc73d0ff~tplv-13w3uml6bg-resize:128:128.image?rk3s=2e2596fd&x-expires=1712136802&x-signature=m8VSvCKz89%2BY4wbRnITJmY%2BiIcY%3D",
+//             "description": "从Bing搜索任何信息和网页URL。",
+//             "title": "必应搜索"
+//         },
+//         {
+//             "subtitle": "扣子官方",
+//             "imageUrl": "https://p9-flow-product-sign.byteimg.com/tos-cn-i-13w3uml6bg/c76063938be84bbaa6a8ab979c947941~tplv-13w3uml6bg-resize:128:128.image?rk3s=2e2596fd&x-expires=1712136802&x-signature=Tx%2BfIv3ql5rgeFYrQ9ClLf02nQU%3D",
+//             "description": "根据文本描述生成图像，可指定图像数量和大小。",
+//             "title": "ByteArtist"
+//         }
+//     ],
+//     "xname": "Flexbox",
+//     "props": {
+//         "align": "start",
+//         "direction": "row",
+//         "spacing": "8"
+//     },
+//     "selector": {
+//         "xname": "CornerCheckboxSelector",
+//         "props": {}
+//     },
+// }
 
 export default function ClickDemo(props) {
 
@@ -363,19 +464,6 @@ export default function ClickDemo(props) {
                 <ItemPlaceholder/>
             </NamedSelector>
         </SelectList> */}
-        <div style={{width: "120px"}}>
-        <Popover trigger='hover'>
-             <PopoverTrigger>
-                 <div>Popover</div>
-             </PopoverTrigger>
-             <PopoverContent>
-                 <PopoverArrow />
-                 <PopoverCloseButton />
-                 <PopoverHeader>Confirmation!</PopoverHeader>
-                 <PopoverBody>Are you sure you want to have that milkshake?</PopoverBody>
-             </PopoverContent>
-         </Popover>
-        </div>
          
     </ChakraProvider>
   )

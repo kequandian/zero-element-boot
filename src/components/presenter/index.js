@@ -37,7 +37,7 @@ import ImageAnimation from './ImageAnimation'
 
 // image
 import Image from './image'
-import ImageSize from './image/ImageSize'
+import CozeImage from './image/CozeImage'
 
 
 export {
@@ -82,5 +82,5 @@ export {
 
   // image
   Image,
-  ImageSize
+  CozeImage
 }
