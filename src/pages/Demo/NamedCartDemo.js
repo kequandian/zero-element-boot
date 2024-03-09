@@ -6,23 +6,26 @@ const { Text } = require('@/components/presenter')
 
 export default function NamedCartDemo(props) {
 
-    const config = { 
-        content: 'title',
-        __cart:{
-            xname:'CssCart',
-            props:{
-                "style": {
-                    "borderWidth": "1px",
-                    "borderColor": "#1E1E1E",
-                    "borderStyle": "solid"
-                  }
+    const config = {
+        __cart: {
+            xname: 'SquareCart',
+            props: {
+                fill: '#ccc',
+                corner: '10px',
+                margin: '0px'
             }
         }
     }
 
     return (
-        <NamedCart {...config}>
-            <Text />
-        </NamedCart>
+        <div style={{ width: '100px' }}>
+            <NamedCart {...config}>
+                <>
+                 <Text content='title1' />
+                    <Text content='title2' />
+                </>
+            </NamedCart>
+        </div>
+
     )
 }

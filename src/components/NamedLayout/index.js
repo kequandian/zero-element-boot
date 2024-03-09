@@ -22,7 +22,7 @@ export default forwardRef(function NamedLayout({children, xname, props, navigati
 
   tagged(tag, rest)
 
-  console.log('NamedLayout = = ',  xname, props, layout, __layout, rest)
+  // console.log('NamedLayout = = ',  xname, props, layout, __layout, rest)
 
   // retrieve isLastItem for layout
   // const isLastItemConfig = {isLastItem: isLastItem}

@@ -103,6 +103,7 @@ export default function SelectList(props) {
       <div
         id='select-list'
         style={{
+          width: '100%',
           overflowX: 'hidden',
           // position: 'relative',
           overflowY: 'scroll',

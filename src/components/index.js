@@ -58,6 +58,7 @@ import PageCenter from './cart/PageCenter';
 // import RoundCart from './cart/deprecated/Round';
 // import Page from './cart/deprecated/Page';
 import Box from './cart/Box';
+import SquareCart from './cart/SquareCart'
 
 //indicator
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
@@ -148,7 +149,8 @@ NamedCartSet({
   // Rectangle,
   // Round: RoundCart,
   NamedCart,
-  Box
+  Box,
+  SquareCart
 })
 
 NamedIndicatorSet({
