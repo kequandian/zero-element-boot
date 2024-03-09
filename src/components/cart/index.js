@@ -9,6 +9,7 @@ import SelectCart from './SelectCart';
 import HCenter from './HCenter';
 import PageCenter from './PageCenter';
 import ItemCart from './ItemCart';
+import SquareCart from './SquareCart';
 
 
 // indicator
@@ -27,6 +28,7 @@ export {
     HCenter,
     PageCenter,
     // Page,
+    SquareCart,
 
     SelectIndicatorCart,
 }
