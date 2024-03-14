@@ -16,9 +16,7 @@ export default function NamedContainerDemo(props) {
             moduleId: 251,
         },
         newValueBinding: 'propName',
-        converter: {
-            "propName": "content",
-        }
+        converter: {"propName": "content"}
     }
 
     const _cartConfig = {
