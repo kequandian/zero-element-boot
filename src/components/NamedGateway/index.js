@@ -25,6 +25,10 @@ module.exports = function NamedGateway({children, xname, props, binding={}, filt
   //   gateway.props = {chain: gateway.props}
   // }
 
+  console.log('auto layout Gateway = ', Gateway)
+  console.log('auto layout ____gateway = ', ____gateway)
+  console.log('auto layout dataSource = ', dataSource)
+  console.log('auto layout rest = ', rest)
 
   // let Gateway, ... to handle data, not by NamedGateway
   return <Gateway {...____gateway} dataSource={dataSource} {...rest}>

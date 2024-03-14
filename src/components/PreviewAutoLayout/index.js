@@ -43,7 +43,7 @@ export default function PreAutoLayout (props) {
   // 判断 layoutApi 是否为空，如果为空，则用 layoutName 拼接api路径
   let localLayoutApi = ''
   if(layoutApi || layoutName){
-    localLayoutApi = layoutApi || '/openapi/lc/module/getAutoLayout/' + layoutName
+    localLayoutApi = layoutApi || '/openapi/lc/module/autolayout/' + layoutName
   }else if(layoutId){
     localLayoutApi = `/form?id=${layoutId}`
   }
@@ -83,11 +83,24 @@ export default function PreAutoLayout (props) {
   /**
    * 页面配置
    */
-  const config = {
-    items: records && records.length > 0 ? records : [],
-    layout: layoutJson,
+  let config = {
+    // items: records && records.length > 0 ? records : [],
+    // layout: layoutJson,
     ...rest
   };
+
+  if(records && records.length > 0){
+    config.items = records
+  }
+
+  if(layoutJson && layoutJson['layout']){
+    config = {
+      ...config,
+      ...layoutJson
+    }
+  }else if(layoutJson && typeof layoutJson === 'object'){
+    config.layout = layoutJson
+  }
 
   // 控制台输出信息
   const onPItemClick = (item) => {
@@ -120,7 +133,7 @@ export default function PreAutoLayout (props) {
   }
 
   return (
-    records && records.length > 0 && layoutJson && JSON.stringify(layoutJson) !== '{}' ? (
+    layoutJson && JSON.stringify(layoutJson) !== '{}' ? (
         <AutoLayout {...config} onItemClick={onPItemClick} binding={bindingJson}
           alternativeActive={alternativeActive}
           alternative={alternative}
