@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 
 require('./index.less');
 
@@ -11,30 +11,43 @@ require('./index.less');
  */
 export default function SquareCart(props) {
 
-  const { 
-    children, fill='#fff', corner = '8px', margin = '0px' } = props;
+  const {
+    children, fill = '#fff', corner = '8px', margin = '0px' } = props;
 
-
-  // const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-  const ref = useRef(null);
+  const parentRef = useRef(null);
+  const [parentWidth, setParentWidth] = useState(null);
 
   useEffect(() => {
-    // setWidth(ref.current.offsetWidth);
-    setHeight(ref.current.offsetWidth);
+    const resizeHandler = () => {
+      if (parentRef.current) {
+        const width = parentRef.current.getBoundingClientRect().width;
+        console.log(' SquareCart width = ', width)
+        setParentWidth(width);
+      }
+    };
+
+    const handleFirstRender = () => {
+      setTimeout(resizeHandler, 0);
+    };
+
+    window.addEventListener('resize', resizeHandler);
+    handleFirstRender(); // Delay the first render
+    return () => {
+      window.removeEventListener('resize', resizeHandler);
+    };
   }, []);
 
   return React.Children.map(children, child => {
     return (
-        <div ref={ref} className='c-square-cart-item' style={{
-          margin: `${margin}`,
-          borderRadius: `${corner}`,
-          background: `${fill}`,
-          height: `${height}px`
-        }}
-        >
-          {child}
-        </div>
+      <div ref={parentRef} className='c-square-cart-item' style={{
+        margin: `${margin}`,
+        borderRadius: `${corner}`,
+        background: `${fill}`,
+        height: `${parentWidth}px`
+      }}
+      >
+        {child}
+      </div>
     )
   })
 }

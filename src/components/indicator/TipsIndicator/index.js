@@ -7,7 +7,7 @@ import {
     PopoverBody,
     PopoverArrow,
 } from '@chakra-ui/react';
-import styles from './index.less'
+require('./index.less')
 
 /**
  * 使用例子
@@ -48,7 +48,7 @@ export default function TipsIndicator(props) {
                         }
                     </div>
                 </PopoverTrigger>
-                <PopoverContent bg={'#F7F7FA'}>
+                <PopoverContent bg={'#F7F7FA'} maxWidth={220}>
                     <PopoverArrow />
                     {/* <PopoverCloseButton /> */}
                     <PopoverHeader fontWeight={'bold'} >{indicatorData.title || 'Title'}</PopoverHeader>

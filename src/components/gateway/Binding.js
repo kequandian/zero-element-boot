@@ -20,6 +20,12 @@ export default function Binding({ children, binding={}, dataSource, ...rest}) {
 }
 
 export const bindingConvert = (binding, data) => {
+  if(!binding){
+    return data
+  }
+  if(binding && Array.isArray(data)) {
+    return data.map(item => doBind(binding, item))
+  }
   return doBind(binding, data)
 }
 
