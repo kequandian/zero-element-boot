@@ -17,7 +17,7 @@ export {
     Container,
     TabContainer,
     WxPage,
-    TitledContainer
+    TitledContainer,
         // list type of container
     // PlainList,
     // MultiSelectList,

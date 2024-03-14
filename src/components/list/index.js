@@ -8,6 +8,7 @@ import SelectList from './SelectList';
 import AddMoreList from './AddMoreList';
 import ItemClickList from './ItemClickList';
 import ManageList from '../list/ManageList';
+import PlainManageList from '../list/PlainManageList';
 
 /**
  * List 属于抽象组件类型 container,容器 
@@ -22,5 +23,6 @@ export {
   SelectList,
   AddMoreList,
   ItemClickList,
-  ManageList
+  ManageList,
+  PlainManageList
 }

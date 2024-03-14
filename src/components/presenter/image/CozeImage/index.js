@@ -22,6 +22,6 @@ export default function CozeImage(props) {
     const c = typeof corner === 'number' ? corner + 'px' : corner.indexOf('%') > -1 ? corner : corner + 'px'
 
     return (
-        <Avatar w={width} h={height} borderRadius={c} src={url} />
+        <Avatar background={'transparent'} w={width} h={height} borderRadius={c} src={url} />
     )
 }

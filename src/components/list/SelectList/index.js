@@ -27,6 +27,7 @@ export default function SelectList(props) {
     addnew='',
     containerHeight= '',
     isScroll=true,
+    btnPisition='top',
     ...rest
   } = props;
 
@@ -92,7 +93,7 @@ export default function SelectList(props) {
   return (
     <VStack>
       {
-        isSwitch ? (
+        isSwitch && btnPisition == 'top' ? (
           <div className='btnContainer' >
             <div className='selectListaddBtn' onClick={() => onAddNewClick()}>
             </div>
@@ -107,7 +108,7 @@ export default function SelectList(props) {
           overflowX: 'hidden',
           // position: 'relative',
           overflowY: 'scroll',
-          height: `${containerHeight || (isScroll && window.innerHeight)}px`
+          height: `${containerHeight || (isScroll && (isSwitch && btnPisition ?  window.innerHeight - 75 :  window.innerHeight ))}px`
         }}
         className={getClassName()}
         ref={containerRef}
@@ -135,6 +136,15 @@ export default function SelectList(props) {
             })}
         </ContainerContext.Provider>
       </div>
+
+      {
+        isSwitch && btnPisition == 'bottom' ? (
+          <div className='btnContainer' >
+            <div className='selectListaddBtn' onClick={() => onAddNewClick()}>
+            </div>
+          </div>
+        ) : <></>
+      }
       
     </VStack>
   )

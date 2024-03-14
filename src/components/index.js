@@ -106,7 +106,8 @@ import {
   SelectList,
   AddMoreList,
   ItemClickList,
-  ManageList
+  ManageList,
+  PlainManageList
 } from './list';
 
 // Form 组件
@@ -202,6 +203,7 @@ NamedListSet({
   MultiSelectList,
   ManageList,
   GroupedList,
+  PlainManageList,
 })
 
 NameContainerSet({
