@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { NamedContainer, NamedLayout, NamedGateway, NamedCart, NextIndicator } from '@/components';
 
 import DefaultContainer from '@/components/container/Container'
+import { useReplacing } from '../gateway/Replacing';
 
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 import { get as DefaultIndicatorGet } from '@/components/config/NamedIndicatorConfig';
@@ -156,9 +157,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   const _gateway = _1_gateway || (_layoutBinding ? { xname: "Binding" } : (_layoutFilter ? { xname: "Filter" } : (_layoutChain ? { xname: "Chain" } : undefined)))
   const _NamedGateway = (_layoutBinding || _layoutFilter || _layoutChain || _gateway) ? NamedGateway : NextIndicator;
   const _gatewayName = (_layoutBinding || _layoutFilter || _layoutChain || _gateway) ? 'NamedGateway' : 'NextIndicator'
-
-// console.log('auto layout _NamedGateway = ', _NamedGateway)
-// console.log('auto layout _gatewayName = ', _gatewayName)
+  const _useReplacing = _gateway && typeof _gateway === 'object' && _gateway.xname === 'Replacing' ? useReplacing : null
 
   // handle container
   const Container = container ? NamedContainer : DefaultContainer
@@ -230,7 +229,9 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   // __ means NamedLayout used internal within AutoLayout, or be used seperately
   const __xname = xname || 'VStack'
   return layoutChildren ? (
-    <Container {..._container}  {..._dataSource} {...rest} navigation={navigation} tag={`${_tag}-children-container[${_containerName}]`} >
+    <Container {..._container}  {..._dataSource} {...rest} 
+      navigation={navigation} tag={`${_tag}-children-container[${_containerName}]`} 
+    >
 
       <_NamedCart {...__cart}
         onItemDeleted={onItemDeleted}
@@ -266,38 +267,38 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
       </_NamedCart>
     </Container>
   ) : (
-    <_NamedGateway
-      binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}  {..._dataSource} {...rest}
-      tag={`${_tag}-gateway[${_gatewayName}]`}
+    <Container {..._container}  {..._dataSource} {...rest} navigation={navigation}
+      useReplacing={_useReplacing}
+      tag={`${_tag}-standard-container[${_containerName}]`}
+      onItemClick={onItemClick}
+    // onItemClick={onItemClick} 
+    // onItemDeleted={onItemDeleted}
+    // onItemAdded={onItemAdded}
+    // onItemChanged={onItemChanged}
+    // onItemIndicated={onItemIndicated}
     >
-      <Container {..._container} navigation={navigation}
-        tag={`${_tag}-standard-container[${_containerName}]`}
-        onItemClick={onItemClick}
-      // onItemDeleted={onItemDeleted}
-      // onItemAdded={onItemAdded}
-      // onItemChanged={onItemChanged}
-      // onItemIndicated={onItemIndicated}
-      >
-        <NamedLayout xname={__xname} props={props} tag={`${_tag}-standard-layout[${__xname}]`}>
-            <_NamedCart {...__cart}
-              onItemDeleted={onItemDeleted}
-              onItemAdded={onItemAdded}
-              onItemChanged={onItemChanged}
-              onItemIndicated={onItemIndicated}
-              tag={`${_tag}-cart[${_cartName}]`}
-            >
-              {
-                presenter ? <Presenter {..._presenter} allComponents={allComponents}
-                  onItemClick={onItemClick}
-                  tag={`${_tag}-presenter-NEXT`}
-                />
-                  :
-                  React.Children.toArray(children)
-              }
-            </_NamedCart>
-        </NamedLayout>
-      </Container>
-    </_NamedGateway>
+      <NamedLayout xname={__xname} props={props} tag={`${_tag}-standard-layout[${__xname}]`}>
+        <_NamedGateway binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
+          tag={`${_tag}-gateway[${_gatewayName}]`}>
+          <_NamedCart {...__cart}
+            onItemDeleted={onItemDeleted}
+            onItemAdded={onItemAdded}
+            onItemChanged={onItemChanged}
+            onItemIndicated={onItemIndicated}
+            tag={`${_tag}-cart[${_cartName}]`}
+          >
+            {
+              presenter ? <Presenter {..._presenter} allComponents={allComponents}
+                onItemClick={onItemClick}
+                tag={`${_tag}-presenter-NEXT`}
+              />
+                :
+                React.Children.toArray(children)
+            }
+          </_NamedCart>
+        </_NamedGateway>
+      </NamedLayout>
+    </Container>
   )
 }
 

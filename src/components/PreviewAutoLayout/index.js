@@ -89,8 +89,10 @@ export default function PreAutoLayout (props) {
     ...rest
   };
 
-  if(records && records.length > 0){
+  if( api && records && records.length > 0){
     config.items = records
+  }else if(!layoutName && api) {
+    return <></>
   }
 
   if(layoutJson && layoutJson['layout']){
@@ -115,7 +117,6 @@ export default function PreAutoLayout (props) {
     }
   }
 
-
   //binding
   const bindingJson = (testBindingJsonData && JSON.stringify(testBindingJsonData) !== '{}' && testBindingJsonData) || 
     (respBindingJsonData && JSON.stringify(respBindingJsonData) !== '{}' && respBindingJsonData) || {}
@@ -133,7 +134,7 @@ export default function PreAutoLayout (props) {
   }
 
   return (
-    layoutJson && JSON.stringify(layoutJson) !== '{}' ? (
+    layoutJson && JSON.stringify(layoutJson) != '{}' ? (
         <AutoLayout {...config} onItemClick={onPItemClick} binding={bindingJson}
           alternativeActive={alternativeActive}
           alternative={alternative}

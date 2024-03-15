@@ -68,7 +68,7 @@ export default function PlainList(props) {
 }
 
 function loading(dataSource) {
-  return <div>数据加载中...</div>;
+  return <div>暂无更多数据</div>;
 }
 
 function tips(dataSource) {

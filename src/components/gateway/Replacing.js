@@ -10,9 +10,6 @@ export default function Replacing({ children, dataSource, ...rest}) {
   const data = dataSource || rest || {}
   const convertData = doReplace(data)
 
-  console.log('Replacing data = ', data)
-  console.log('Replacing convertData = ', convertData)
-
   const childrenList = React.Children.toArray(children);
   return childrenList.map(child => React.cloneElement(child, {
       ...rest,
@@ -20,16 +17,27 @@ export default function Replacing({ children, dataSource, ...rest}) {
   }))
 }
 
+export const useReplacing = (data) => {
+    return doReplace(data)
+}
+
 // doBind
 function doReplace(data) {
   const convertData = {}
 
   Object.keys(data).forEach(key => {
-    
-    if(data[key].indexOf('(') != -1){
+    if(data[key] && typeof data[key] === 'string' && data[key].indexOf('(') != -1 && data[key].indexOf(')') != -1){
         convertData[key] = formatParams(data[key], data);
+    } else if(data[key] && typeof data[key] === 'object'){
+        const childObject = {}
+        Object.keys(data[key]).forEach(k => {
+            if(data[key][k] && typeof data[key][k] === 'string' && data[key][k].indexOf('(') != -1 && data[key][k].indexOf(')') != -1){
+              const childConvertValue = formatParams(data[key][k], data);
+              childObject[k] = childConvertValue
+              convertData[key] = childObject
+            }
+        })
     }
-      
   })
 
   return { ...data, ...convertData  };
