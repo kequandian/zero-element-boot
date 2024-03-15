@@ -9,6 +9,7 @@ import AddMoreList from './AddMoreList';
 import ItemClickList from './ItemClickList';
 import ManageList from '../list/ManageList';
 import PlainManageList from '../list/PlainManageList';
+import KeyValueManageList from '../list/KeyValueManageList';
 
 /**
  * List 属于抽象组件类型 container,容器 
@@ -24,5 +25,6 @@ export {
   AddMoreList,
   ItemClickList,
   ManageList,
-  PlainManageList
+  PlainManageList,
+  KeyValueManageList
 }

@@ -5,9 +5,12 @@ import { NextIndicator } from '@/components';
 import { get as DefaultListSet } from '@/components/config/NamedListConfig';
 import { get as DefaultContainerSet } from '@/components/config/NamedContainerConfig';
 
-export default function NamedContainer({children, xname, props, container={xname, props}, containerSet, dataSource, tag, ...rest}) {
+export default function NamedContainer({children, xname, props, container={xname, props}, containerSet, dataSource, tag, useReplacing, ...rest}) {
 
   tagged(tag, rest, containerName)
+
+  const data = dataSource || rest || {}
+  const replacedData = useReplacing ? useReplacing(data) : data
 
   const newDefaultContainerSet = {
     ...DefaultContainerSet(),
@@ -20,7 +23,7 @@ export default function NamedContainer({children, xname, props, container={xname
   const NamedContainer = _ContainerSet[containerName] || tips(containerName);
   
   return (
-      <NamedContainer {...container.props} {...rest} >
+      <NamedContainer {...container.props} {...replacedData} >
          {children}
       </NamedContainer>
   )

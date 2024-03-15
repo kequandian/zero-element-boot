@@ -1,17 +1,17 @@
 //替换括号内容
-function formatParams(url, data){
+function formatParams(str, data){
 
-    if(url && url.indexOf('(') !== -1){
+    if(str && str.indexOf('(') !== -1){
         let regex = /\((.*?)\)/g; //匹配(*) 小括号里面任意内容的正则
-        let arr = url.match(regex); //字符串匹配出来的数组
-        let formatString = url
+        let arr = str.match(regex); //字符串匹配出来的数组
+        let formatString = str
         arr.map(item => {
             const str = item.substring(1, item.length - 1)
             formatString = formatString.replace(`${item}`, data[str])
         })
         return formatString
     }
-    return url
+    return str
 }
 
 //获取尖括号内容 
