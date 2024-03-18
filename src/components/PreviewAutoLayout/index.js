@@ -108,6 +108,7 @@ export default function PreAutoLayout (props) {
   const onPItemClick = (item) => {
     //TODO
     // console.log(item, ' === item')
+      console.log('=== PreAutoLayout onItemClick == ', onItemClick)
     if(onItemClick){
       onItemClick(item)
     }

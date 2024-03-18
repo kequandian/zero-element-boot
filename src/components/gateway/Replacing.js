@@ -8,6 +8,8 @@ import { formatParams } from '@/components/utils/tools'
 export default function Replacing({ children, dataSource, ...rest}) {
   
   const data = dataSource || rest || {}
+
+  console.log('Replacing data = ', data, rest)
   const convertData = doReplace(data)
 
   const childrenList = React.Children.toArray(children);

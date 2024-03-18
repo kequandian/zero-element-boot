@@ -49,9 +49,12 @@ export default function NamedContainerDemo(props) {
     }
 
     function TextKeyValueManageList() {
+
+        // const propsList = '/openapi/lc/module-props/278'
+        const propsList = '/openapi/lc/module/assembly/KeyValueManageConverter'
         
         const config = {
-            listApi: '/openapi/lc/module-props/278', 
+            listApi: propsList, 
             addApi: '/openapi/crud/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps',
             addApiBody: {
                 moduleId: 278,
@@ -96,8 +99,8 @@ export default function NamedContainerDemo(props) {
 
     return (
         <ChakraProvider>
-            <TextPlainMenegeList/>
-            {/* <TextKeyValueManageList/> */}
+            {/* <TextPlainMenegeList/> */}
+            <TextKeyValueManageList/>
         </ChakraProvider>
 
     )

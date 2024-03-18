@@ -19,14 +19,14 @@ require('./index.less');
 
 export default function SelectList(props) {
   const { 
-    children, items=[], 
+    children, items=[], dataSource=items, 
     // layout, 
     cart, navigation,  onItemClick= () => {console.log('未设置SelectList onItemClick点击事件')},
     onAddNewClick= () => {console.log('未设置SelectList onAddNewClick点击事件')},
     isSwitch=false,
     addnew='',
     containerHeight= '',
-    isScroll=true,
+    isScroll=false,
     btnPisition='top',
     ...rest
   } = props;
@@ -37,10 +37,9 @@ export default function SelectList(props) {
 
   const Child = React.Children.only(children);
 
-  const [ list, setList ] = useState(items)
+  const [ list, setList ] = useState(dataSource)
   const [currIndex, setCurrIndex] = useState(-1)
   
-
   function onSelected (item, index) {
     list.map((item, i) => {
       if(i === index && currIndex === -1){
