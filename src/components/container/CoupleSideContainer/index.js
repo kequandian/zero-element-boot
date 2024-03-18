@@ -22,6 +22,7 @@ export default function CoupleSideContainer(props) {
     const [layoutRef, { getClassName }] = useLayout();
 
     const firstChildItemClick = (item) => {
+
         console.log('firstChildItemClick = ', item)
         if (item.isSelected) {
             if (converter) {
@@ -34,17 +35,35 @@ export default function CoupleSideContainer(props) {
         }
     }
 
-    return (
-        React.Children.toArray(children).map((child, childIndex) => {
-            console.log('child = ', child)
+
+    function renderChildren(children) {
+        return React.Children.map(children, (child, childIndex) => {
+          if (React.isValidElement(child)) {
             const newConfigData = childIndex === 1 ? configData : {}
+            console.log('renderChildren newConfigData = ', newConfigData)
             return React.cloneElement(child, {
-                ref: layoutRef, 
                 ...rest,
                 onItemClick: childIndex === 0 ? firstChildItemClick : '',
                 ...newConfigData
-            })
+            });
+          } else {
+            return child;
+          }
+        });
+    }
+    
+    return (
+        
+        React.Children.toArray(children).map((child, childIndex) => {
+            if (React.isValidElement(child)) {
+                return React.cloneElement(child, {
+                    children: renderChildren(child.props.children),
+                    ...rest,
+                })
+            }
+            
         })
+        
     )
 
 }

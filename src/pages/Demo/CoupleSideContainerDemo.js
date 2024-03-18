@@ -36,8 +36,8 @@ export default function Index(props) {
             <CoupleSideContainer >
                 <HStack>
                     <PreviewAutoLayout layoutName="PropertyManage" moduleId={moduleId} />
-                    <div>子组件属性列表</div>
-                    {/* <PreviewAutoLayout layoutName="PropKeyValueManage"  /> */}
+                    {/* <div>子组件属性列表</div> */}
+                    <PreviewAutoLayout layoutName="PropKeyValueManage"  />
                 </HStack>
             </CoupleSideContainer>
         </ChakraProvider>
