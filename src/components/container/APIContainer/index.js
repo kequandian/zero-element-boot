@@ -13,7 +13,7 @@ export default function APIContainer(props) {
 
   const [layoutRef, { getClassName }] = useLayout();
 
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
 
   useEffect(_ => {
     if(!api){
@@ -33,11 +33,10 @@ export default function APIContainer(props) {
   return <div
       className={getClassName()}
     >
-      {React.Children.toArray(children).map(child => {
+      { data && JSON.stringify(data) != "{}" && JSON.stringify(data) != "[]" && React.Children.toArray(children).map(child => {
         return React.cloneElement(child, {
           ref: layoutRef, 
           dataSource: data,
-          items:data,
           ...rest
         })
       })}

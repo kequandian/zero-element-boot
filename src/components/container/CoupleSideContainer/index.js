@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { HStack, Box } from '@chakra-ui/react'
 import { bindingConvert } from '@/components/gateway/Binding'
 import doFilter from '@/components/gateway/doFilter.mjs';
+const useLayout = require('@/components/hooks/useLayout');
 
 /**
  * 
@@ -14,30 +15,36 @@ import doFilter from '@/components/gateway/doFilter.mjs';
 export default function CoupleSideContainer(props) {
     const { children, currentside, anotherside, converter, ...rest } = props;
 
-    const docList = React.Children.toArray(children)
+    const childList = React.Children.toArray(children)
+    const newChildren = childList.length === 1 ?  childList[0].props.children : childList
 
-    const [ configData, setConfigData ] = useState('')
-    
-    const firstChild = docList[0]
-    const secondChind = docList[1]
+    const [configData, setConfigData] = useState({})
+    const [layoutRef, { getClassName }] = useLayout();
 
-    const itemClick = (item) => {
-        if(item.isSelected){
-            const bindingData = bindingConvert(converter, item)
-            const filterData = doFilter(converter, bindingData)
-            setConfigData(filterData)
+    const firstChildItemClick = (item) => {
+        console.log('firstChildItemClick = ', item)
+        if (item.isSelected) {
+            if (converter) {
+                const bindingData = bindingConvert(converter, item)
+                const filterData = doFilter(converter, bindingData)
+                setConfigData(filterData)
+            } else {
+                setConfigData(item)
+            }
         }
     }
 
     return (
-        <HStack>
-            <Box style={{ height: '100vh', padding: '8px', background: '#fff' }}>
-                { React.cloneElement(firstChild, { onItemClick: itemClick }) }
-            </Box>
-            <Box style={{ width: '100%', height: '100vh', padding: '8px' }} background={'#EDECF1'}>
-                { configData && React.cloneElement(secondChind, { configData }) }
-            </Box>
-        </HStack>
-
+        React.Children.toArray(children).map((child, childIndex) => {
+            console.log('child = ', child)
+            const newConfigData = childIndex === 1 ? configData : {}
+            return React.cloneElement(child, {
+                ref: layoutRef, 
+                ...rest,
+                onItemClick: childIndex === 0 ? firstChildItemClick : '',
+                ...newConfigData
+            })
+        })
     )
+
 }

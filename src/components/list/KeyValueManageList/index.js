@@ -16,7 +16,7 @@ import {
 import { useForm } from 'react-hook-form';
 import { APIContainer, NamedLayout } from '@/components';
 import promiseAjax from '@/components/utils/request';
-import PlainList from '@/components/list/PlainList';
+import SelectList from '@/components/list/SelectList';
 import PlainAddNew from '@/components/presenter/button/PlainAddNew';
 
 /**
@@ -29,7 +29,7 @@ import PlainAddNew from '@/components/presenter/button/PlainAddNew';
  * @param {string}} newValueBinding 输入的值， 作为新增api提交字段
  */
 
-export default function PlainManageList(props) {
+export default function KeyValueManageList(props) {
 
     const {
         children,
@@ -39,6 +39,7 @@ export default function PlainManageList(props) {
         addApiBody={},
         newKeyBinding = '',
         newValueBinding = '',
+        onItemClick,
         ...rest
     } = props
 
@@ -132,6 +133,16 @@ export default function PlainManageList(props) {
         });
     }
 
+    const KVMItemClick = (item) => {
+        console.log('KeyValueManageList onItemClick === ', onItemClick)
+        if(onItemClick){
+            onItemClick(item)
+        }else{
+            // TODO 组件内部处理点击事件
+        }
+    }
+
+    // 删除事件
     const itemDeleted = (status) => {
         if(status){
             setLsApi('')
@@ -155,9 +166,9 @@ export default function PlainManageList(props) {
         <>
             <APIContainer api={lsApi} converter={converter}>
                 <NamedLayout xname="VStack">
-                    <PlainList onItemDeleted={itemDeleted}>
+                    <SelectList onItemDeleted={itemDeleted} onItemClick={KVMItemClick}>
                         {children}
-                    </PlainList>
+                    </SelectList>
                     <PlainAddNew onAddNew={onAddNewClick} />
                 </NamedLayout>
             </APIContainer>
