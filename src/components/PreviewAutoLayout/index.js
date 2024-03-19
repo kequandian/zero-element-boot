@@ -108,7 +108,6 @@ export default function PreAutoLayout (props) {
   const onPItemClick = (item) => {
     //TODO
     // console.log(item, ' === item')
-      console.log('=== PreAutoLayout onItemClick == ', onItemClick)
     if(onItemClick){
       onItemClick(item)
     }
@@ -133,6 +132,8 @@ export default function PreAutoLayout (props) {
       setDataSource('')
       setAlternativeActive(false)
   }
+  
+  console.log('=== PreAutoLayout onItemClick == ', onItemClick)
 
   return (
     layoutJson && JSON.stringify(layoutJson) != '{}' ? (

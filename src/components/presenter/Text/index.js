@@ -8,9 +8,9 @@ import { Text } from "@chakra-ui/react";
  * 其他参数，参考chakra-ui/Text 的组件参数说明: https://chakra-ui.com/docs/components/text
  */
 
-export default function Index(props) {
+export default function TextIndex(props) {
     // remove useless
-    const { allComponents, onItemClick, onItemAdded,onItemDeleted,onItemChanged, dataSource, ...data} = props
+    const { ...data} = props
 
     // main
     const { content, ...others } = data;

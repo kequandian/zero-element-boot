@@ -30,6 +30,8 @@ export default forwardRef(function NamedLayout({children, xname, props, navigati
   const layoutName = (typeof layout === 'string') ? layout : ( typeof layout.xname === 'object' && __layout.xname ) ? __layout.xname: layout.xname
   const Layout = LayoutSet[layoutName] || tips(layoutName);
 
+  console.log('namedLayout xname = ', xname, layout, children)
+
   const seperatorName = layout.props ? ((layout.props.seperator && typeof layout.props.seperator === 'object') ? layout.props.seperator.name : layout.props.seperator) : null
 
   const Seperator = seperatorName ? NamedSeperator({name: seperatorName}) : null

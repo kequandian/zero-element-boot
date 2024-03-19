@@ -19,7 +19,7 @@ require('./index.less');
 
 export default function SelectList(props) {
   const { 
-    children, items=[], dataSource=items, 
+    children, items, dataSource=items, 
     // layout, 
     cart, navigation,  onItemClick= () => {console.log('未设置SelectList onItemClick点击事件')},
     onAddNewClick= () => {console.log('未设置SelectList onAddNewClick点击事件')},
@@ -31,6 +31,11 @@ export default function SelectList(props) {
     ...rest
   } = props;
 
+   // 检查数据是否有效
+   if(!(dataSource && Array.isArray(dataSource))){
+      return loading(dataSource)
+  }
+
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -39,6 +44,8 @@ export default function SelectList(props) {
 
   const [ list, setList ] = useState(dataSource)
   const [currIndex, setCurrIndex] = useState(-1)
+
+  console.log('select list onItemClick = ', onItemClick)
   
   function onSelected (item, index) {
     list.map((item, i) => {
@@ -88,9 +95,8 @@ export default function SelectList(props) {
     return <BC />
   }
 
-
   return (
-    <VStack>
+    <VStack flex={1}>
       {
         isSwitch && btnPisition == 'top' ? (
           <div className='btnContainer' >
@@ -103,6 +109,7 @@ export default function SelectList(props) {
       <div
         id='select-list'
         style={{
+          flex: 1,
           width: '100%',
           overflowX: 'hidden',
           // position: 'relative',
@@ -148,4 +155,9 @@ export default function SelectList(props) {
     </VStack>
   )
 }
+
+function loading() {
+  return <div>暂无更多数据</div>;
+}
+
 

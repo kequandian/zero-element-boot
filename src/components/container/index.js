@@ -3,6 +3,7 @@ import Container from './Container';
 import TabContainer from './TabContainer';
 import WxPage from './WxPage';
 import TitledContainer from './TitledContainer';
+import CoupleSideContainer from './CoupleSideContainer';
 
 // import PlainList from '../list/PlainList';
 // import SelectList from '../list/SelectList';
@@ -18,6 +19,7 @@ export {
     TabContainer,
     WxPage,
     TitledContainer,
+    CoupleSideContainer,
         // list type of container
     // PlainList,
     // MultiSelectList,

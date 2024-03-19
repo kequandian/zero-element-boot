@@ -134,7 +134,6 @@ export default function KeyValueManageList(props) {
     }
 
     const KVMItemClick = (item) => {
-        console.log('KeyValueManageList onItemClick === ', onItemClick)
         if(onItemClick){
             onItemClick(item)
         }else{
@@ -162,9 +161,10 @@ export default function KeyValueManageList(props) {
         })
     }
 
+
     return (
         <>
-            <APIContainer api={lsApi} converter={converter}>
+            <APIContainer api={lsApi} converter={converter} {...rest}>
                 <NamedLayout xname="VStack">
                     <SelectList onItemDeleted={itemDeleted} onItemClick={KVMItemClick}>
                         {children}

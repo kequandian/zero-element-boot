@@ -66,3 +66,13 @@ export default function doFilter(filter, dataSource){
   return filterData
 }
 
+export const handleFilter = (filter, data) => {
+  if(!filter){
+    return data
+  }
+  if(filter && Array.isArray(data)) {
+    return data.map(item => doFilter(filter, item))
+  }
+  return doFilter(filter, data)
+}
+
