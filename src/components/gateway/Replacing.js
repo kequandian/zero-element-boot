@@ -3,13 +3,13 @@ import _ from 'lodash';
 import { formatParams } from '@/components/utils/tools'
 
 /**
- * 
+ * @string replacing 替换掉所有属性的包含字符串，如 {"api": "/api/modules/(moduleId)", "moduleId": 100}, api属性值被替换后为 /api/modules/100
  */
-export default function Replacing({ children, dataSource, ...rest}) {
+export default function Replacing({ children, replacing, dataSource, ...rest}) {
   
   const data = dataSource || rest || {}
 
-  const convertData = doReplace(data)
+  const convertData = doReplace(replacing, data)
 
   const childrenList = React.Children.toArray(children);
   return childrenList.map(child => React.cloneElement(child, {
@@ -19,11 +19,17 @@ export default function Replacing({ children, dataSource, ...rest}) {
 }
 
 export const useReplacing = (data) => {
-    return doReplace(data)
+    // {} means for all
+    return doReplace({}, data)
 }
 
 // doBind
-function doReplace(data) {
+function doReplace(replacing, data) {
+  const replacement = replacing || {}
+
+  //TODO, {} for all, else just the specific key
+  
+
   const convertData = {}
 
   Object.keys(data).forEach(key => {
