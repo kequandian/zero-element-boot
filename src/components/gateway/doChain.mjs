@@ -1,4 +1,5 @@
 import doFilter from './doFilter.mjs';
+import { useReplacing } from './Replacing';
 
 /**
  * 多次数据转换,并保留原数据不变
@@ -22,7 +23,7 @@ export default function doChain(chain, dataSource) {
       // if key == _, means get item, and general the first rule
       if(key==='[]' || key==='indexing'){
         // if(Array.isArray(chaindata)){
-           //e.g.  "_": 0
+           //e.g.  "[]": 0
           const dataIndex = rule[key]
           chaindata = chaindata[dataIndex]
         // }else{
@@ -49,6 +50,11 @@ export default function doChain(chain, dataSource) {
           //       delete processDataSource[key2];
           //     }
           // })
+      }else if(key==='~' || key==='replacing'){
+        const replacing = rule[key]
+        chaindata = useReplacing(chaindata)
+
+        //TODO, has not yet tested...
 
       } else {
           const bindingKey = rule[key]
