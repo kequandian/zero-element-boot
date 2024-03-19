@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HStack, Box } from '@chakra-ui/react'
 import { bindingConvert } from '@/components/gateway/Binding'
 import doFilter from '@/components/gateway/doFilter.mjs';
@@ -13,18 +13,32 @@ const useLayout = require('@/components/hooks/useLayout');
  * 
  */
 export default function CoupleSideContainer(props) {
-    const { children, currentside, anotherside, converter, ...rest } = props;
+    const { 
+        children, 
+        currentside, anotherside, converter, 
+        // minW='200px',
+        // maxW='300px',
+        ...rest 
+    } = props;
 
     const childList = React.Children.toArray(children)
-    const newChildren = childList.length === 1 ?  childList[0].props.children : childList
+    // const newChildren = childList.length === 1 ? childList[0].props.children : childList
 
+    const [onRefresh, setOnRefresh] = useState(false);
     const [configData, setConfigData] = useState({})
     const [layoutRef, { getClassName }] = useLayout();
 
-    const firstChildItemClick = (item) => {
+    useEffect(() => {
+        if(onRefresh){
+            setOnRefresh(false)
+        }
+    },[onRefresh])
 
-        console.log('firstChildItemClick = ', item)
+    const firstChildItemClick = (item) => {
+        setConfigData('')
         if (item.isSelected) {
+            console.log('选中 = ', item)
+            setOnRefresh(true)
             if (converter) {
                 const bindingData = bindingConvert(converter, item)
                 const filterData = doFilter(converter, bindingData)
@@ -35,35 +49,57 @@ export default function CoupleSideContainer(props) {
         }
     }
 
-
     function renderChildren(children) {
+        console.log('CoupleSideContainer renderChildren = ', children)
         return React.Children.map(children, (child, childIndex) => {
-          if (React.isValidElement(child)) {
-            const newConfigData = childIndex === 1 ? configData : {}
-            console.log('renderChildren newConfigData = ', newConfigData)
-            return React.cloneElement(child, {
-                ...rest,
-                onItemClick: childIndex === 0 ? firstChildItemClick : '',
-                ...newConfigData
-            });
-          } else {
-            return child;
-          }
+            if (React.isValidElement(child)) {
+                if (childIndex === 0) {
+                    return (
+                        React.cloneElement(child, {
+                            ...rest,
+                            onItemClick: firstChildItemClick,
+                        })
+                    )
+                } else {
+                    if (childIndex === 1 && !onRefresh) {
+                        return (
+                            React.cloneElement(child, {
+                                ...configData,
+                                ...rest
+                            })
+                        )
+                    } else {
+                        return <div></div>
+                    }
+                }
+
+            } else {
+                return child;
+            }
         });
     }
-    
+
+
     return (
+        <div 
+            style={{flex:1}}
+            className={getClassName()}
+        >
+            {
+                React.Children.toArray(children).map((child, childIndex) => {
+                    if (React.isValidElement(child)) {
+                        return React.cloneElement(child, {
+                            ref: layoutRef, 
+                            children: renderChildren(child.props.children),
+                            ...rest,
+                        })
+                    }
         
-        React.Children.toArray(children).map((child, childIndex) => {
-            if (React.isValidElement(child)) {
-                return React.cloneElement(child, {
-                    children: renderChildren(child.props.children),
-                    ...rest,
                 })
             }
-            
-        })
+        </div>
         
+
     )
 
 }

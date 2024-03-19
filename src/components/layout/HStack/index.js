@@ -9,13 +9,13 @@ import NextIndicator from '@/components/NextIndicator';
  * 
  */
 
-export default forwardRef(function VStack(props, ref) {
+export default forwardRef(function HStack(props, ref) {
     const { children,  __, spacing, ...data } = props;
     const _Container = __ ? NextIndicator : Container
 
     return (
         //  <_Container>
-            <Flexbox direction='column' spacing={spacing} {...data} ref={ref}>
+            <Flexbox direction='row' spacing={spacing} {...data} ref={ref}>
                 {children}
             </Flexbox>
         //  </_Container>

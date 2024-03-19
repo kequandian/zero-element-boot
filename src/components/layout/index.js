@@ -7,6 +7,7 @@ import Wrap from './Wrap';
 import Stack from './Stack';
 import VStack from './VStack';
 import Round from "./Round";
+import HStack from './HStack';
 
 export {
   Flexbox,
@@ -16,5 +17,6 @@ export {
   Wrap,
   Stack,
   VStack,
-  Round
+  Round,
+  HStack
 }

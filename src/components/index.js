@@ -14,7 +14,7 @@ import AutoLayout from './AutoLayout';
 // import  { CloneAutoLayout }  from './CloneAutoLayout';
 import AutoComponent from './AutoComponent';
 
-import {APIContainer, Container, TabContainer, WxPage, TitledContainer} from './container';
+import {APIContainer, Container, TabContainer, WxPage, TitledContainer, CoupleSideContainer} from './container';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -35,6 +35,7 @@ import Wrap from '@/components/layout/Wrap';
 import Stack from '@/components/layout/Stack';
 import VStack from '@/components/layout/VStack';
 import Round from '@/components/layout/Round';
+import HStack from '@/components/layout/HStack';
 
 //gateway
 import Binding from '@/components/gateway/Binding';
@@ -94,6 +95,8 @@ import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewBu
   Circle, Description,
 } from '@/components/presenter';
 
+import PreviewAutoLayout from '@/components/PreviewAutoLayout';
+
 // import ImageView from './presenter/image';
 
 import { 
@@ -121,7 +124,8 @@ NamedLayoutSet({
   Wrap,
   Stack,
   VStack,
-  Round
+  Round,
+  HStack
 })
 
 
@@ -189,7 +193,8 @@ NamedPresenterSet({
   Rectangle,
   Circle,
   CozeImage,
-  Description
+  Description,
+  PreviewAutoLayout
 })
 
 NamedListSet({
@@ -213,7 +218,8 @@ NameContainerSet({
   Container,
   TabContainer,
   WxPage,
-  TitledContainer
+  TitledContainer,
+  CoupleSideContainer
 })
 
 NamedSelector({

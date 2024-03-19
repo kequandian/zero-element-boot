@@ -111,11 +111,11 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
     alternative: layoutAlternative,
   } = sugarLayout(layout) || {};
 
+  
   // show tag for AutoLayout
   const _tag = tag || layoutTag || 'UNDEFINED'
   tagged(_tag, rest)
-
-
+  
   const _dataSource = (Array.isArray(dataSource) ? { items: dataSource } : dataSource) || (Array.isArray(mock) ? { items: mock } : mock) || {}
   //const data = dataSource || rest || {}
 
@@ -214,12 +214,11 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
     const __NamedGateway = (_data_binding || _data_filter || _data_chain || _data_gateway) ? NamedGateway : NextIndicator;
     const __Presenter = _allComponents[_t_presenterName] || (_t_presenterName === 'autolayout' && AutoLayout) || tips(_t_presenterName)
 
+    // <__Presenter/> 新增onItemClick 
     return (
       <__NamedGateway binding={_data_binding} filter={_data_filter} chain={_data_chain} gateway={_data_gateway} {..._rest}>
-        <__NamedCart {..._data_cart}
-          onItemClick={onItemClick}
-        >
-          <__Presenter {..._t_presenter} allComponents={allComponents} />
+        <__NamedCart {..._data_cart}>
+          <__Presenter {..._t_presenter} allComponents={allComponents} onItemClick={onItemClick} />
         </__NamedCart>
       </__NamedGateway>
     )
@@ -228,19 +227,17 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   // xname use for layout, use default VStack
   // __ means NamedLayout used internal within AutoLayout, or be used seperately
   const __xname = xname || 'VStack'
+
+  // <
+
   return layoutChildren ? (
     <Container {..._container}  {..._dataSource} {...rest} 
-      navigation={navigation} tag={`${_tag}-children-container[${_containerName}]`} 
+      navigation={navigation} 
+      tag={`${_tag}-children-container[${_containerName}]`} 
     >
 
-      <_NamedCart {...__cart}
-        onItemDeleted={onItemDeleted}
-        onItemAdded={onItemAdded}
-        onItemChanged={onItemChanged}
-        onItemIndicated={onItemIndicated}
-        tag={`${_tag}-cart[${_cartName}]`}
-      >
-        <NamedLayout xname={__xname} props={props} tag={`${_tag}-children-layout[${__xname}]`}>
+        <NamedLayout xname={__xname} props={props} 
+        tag={`${_tag}-children-layout[${__xname}]`}>
 
 
           {layoutChildren.map((child, i) => {
@@ -251,20 +248,27 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
             const __Presenter = ((typeof child === 'string') ? _allComponents[child] : AutoLayout) || tips(presenter)
             const __presenter = isJsonObject(child) ? { layout: { ...child } } : {}
 
+            // < _NamedCart /> onItem事件传递给indicated使用
             return (
               <_NamedGateway key={i} binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
                 tag={`${itemTag}-gateway[${_gatewayName}]`}>
-
-                <__Presenter {...__presenter} allComponents={allComponents} key={i}
-                  tag={`${itemTag}-presenter-NEXT`}
-                  onItemClick={onItemClick}
-                />
-              </_NamedGateway>
+                <_NamedCart {...__cart}
+                  onItemDeleted={onItemDeleted}
+                  onItemAdded={onItemAdded}
+                  onItemChanged={onItemChanged}
+                  onItemIndicated={onItemIndicated}
+                  tag={`${_tag}-cart[${_cartName}]`}
+                >
+                  <__Presenter {...__presenter} allComponents={allComponents} key={i}
+                    tag={`${itemTag}-presenter-NEXT`}
+                    onItemClick={onItemClick}
+                  />
+                 </_NamedCart>
+               </_NamedGateway>
             )
 
           })}
         </NamedLayout>
-      </_NamedCart>
     </Container>
   ) : (
     <Container {..._container}  {..._dataSource} {...rest} navigation={navigation}
@@ -277,7 +281,8 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
     // onItemChanged={onItemChanged}
     // onItemIndicated={onItemIndicated}
     >
-      <NamedLayout xname={__xname} props={props} tag={`${_tag}-standard-layout[${__xname}]`}>
+      <NamedLayout xname={__xname} props={props} 
+        tag={`${_tag}-standard-layout[${__xname}]`}>
         <_NamedGateway binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
           tag={`${_tag}-gateway[${_gatewayName}]`}>
           <_NamedCart {...__cart}

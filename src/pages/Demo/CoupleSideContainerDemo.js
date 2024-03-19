@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ChakraProvider, HStack, Box, Button } from '@chakra-ui/react';
-import { NamedLayout } from '@/components'
+import { AutoLayout } from '@/components'
 import CoupleSideContainer from '@/components/container/CoupleSideContainer';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout'
@@ -24,6 +24,28 @@ export default function Index(props) {
 
 
     const moduleId = '284'
+    const converter = {
+        assembledAs:"assembledAs"
+    }
+
+    const layoutJson = {
+        children: [
+            {
+                xname: 'PreviewAutoLayout',
+                props: {
+                    layoutName:"PropertyManage"
+                }
+            },
+            {
+                xname: 'PreviewAutoLayout',
+                props: {
+                    layoutName:"PropKeyValueManage"
+                }
+            },
+        ],
+        xname:'HStack',
+        container: "CoupleSideContainer"
+    }
 
 
     return (
@@ -33,13 +55,14 @@ export default function Index(props) {
                 <LocalPreview  />
             </CoupleSideContainer> */}
 
-            <CoupleSideContainer >
+            <AutoLayout layout={layoutJson} moduleId={moduleId} converter={converter} />
+
+            {/* <CoupleSideContainer moduleId={moduleId} converter={converter}>
                 <HStack>
-                    <PreviewAutoLayout layoutName="PropertyManage" moduleId={moduleId} />
-                    {/* <div>子组件属性列表</div> */}
+                    <PreviewAutoLayout layoutName="PropertyManage"  />
                     <PreviewAutoLayout layoutName="PropKeyValueManage"  />
                 </HStack>
-            </CoupleSideContainer>
+            </CoupleSideContainer> */}
         </ChakraProvider>
 
     )
