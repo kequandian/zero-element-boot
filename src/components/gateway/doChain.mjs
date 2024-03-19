@@ -2,8 +2,8 @@ import doFilter from './doFilter.mjs';
 
 /**
  * 多次数据转换,并保留原数据不变
- * "_": 0,  如果数据源是数组, 值代表数据下标
- * “|”: {}, 过滤数据源, 仅传递过滤字段, 其他字段不传递
+ * "[]": 0,  如果数据源是数组, 值代表数据下标, "[]", "indexing"
+ * “|”: {}, 过滤数据源, 仅传递过滤字段, 其他字段不传递, "|", "filter"
  * @param {array} chain 连续转换规则
  * @param {objec} dataSource 数据源
  **/
@@ -20,7 +20,7 @@ export default function doChain(chain, dataSource) {
     Object.keys(rule).forEach(key => {
 
       // if key == _, means get item, and general the first rule
-      if(key==='_'){
+      if(key==='[]' || key==='indexing'){
         // if(Array.isArray(chaindata)){
            //e.g.  "_": 0
           const dataIndex = rule[key]
@@ -30,7 +30,7 @@ export default function doChain(chain, dataSource) {
         //   chaindata = chaindata[dataIndex]
         // }
         
-      }else if(key==='|'){
+      }else if(key==='|' || key==='filter'){
           // means filter, just update chaindata by filter
           const filter = rule[key]
 

@@ -9,8 +9,8 @@ import React from 'react';
  * @param {int} _ 索引，同itemIndex
  * 
  */
-export default function GetItem({ children, dataSource, items = dataSource, _, itemIndex=_, ...rest }) {
-  const data = (items ? items[itemIndex] : rest[itemIndex]) || {}
+export default function Indexing({ children, indexing, dataSource, items = dataSource, ...rest }) {
+  const data = (items ? items[indexing] : rest[indexing]) || {}
 
   const childrenList = React.Children.toArray(children);
   return childrenList.map(child => React.cloneElement(child, {
