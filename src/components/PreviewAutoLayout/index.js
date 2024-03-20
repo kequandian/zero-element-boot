@@ -133,7 +133,7 @@ export default function PreAutoLayout (props) {
       setAlternativeActive(false)
   }
   
-  console.log('=== PreAutoLayout onItemClick == ', onItemClick)
+  // console.log('=== PreAutoLayout onItemClick == ', onItemClick)
 
   return (
     layoutJson && JSON.stringify(layoutJson) != '{}' ? (
