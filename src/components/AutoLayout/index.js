@@ -101,8 +101,10 @@ export default function (props) {
 
 //2024-02-22 新增 tag 属性，用于调试跟踪数据流
 
-function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('未设置onItemClick点击事件') }, dataSource,
-  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, alternative, alternativeActive, onAlternativeBack, ...rest }) {
+function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('AutoLayout-未设置onItemClick点击事件') }, dataSource,
+  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, 
+  // alternative, alternativeActive, onAlternativeBack,   // use container instead. e.g. AlternativeContainer
+  ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
   const { xname, props, container, binding: layoutBinding, filter: layoutFilter, chain: layoutChain, gateway: layoutGateway,
@@ -113,13 +115,15 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
 
   
   // show tag for AutoLayout
-  const _tag = tag || layoutTag || 'UNDEFINED'
+  const _tag = tag || layoutTag || 'UNDEFINED-TAG'
   tagged(_tag, rest)
   
   const _dataSource = (Array.isArray(dataSource) ? { items: dataSource } : dataSource) || (Array.isArray(mock) ? { items: mock } : mock) || {}
   //const data = dataSource || rest || {}
 
-  if (alternativeActive) {
+  // @when 2023-03-18 
+  // @what no alternative, use container instead.
+  if (undefined && alternativeActive) {
     const notnull_alternative = (alternative && JSON.stringify(alternative) !== '{}' && alternative) || (layoutAlternative && JSON.stringify(layoutAlternative) !== '{}' && layoutAlternative) || tips('alternative')
     const alternative_layout = (typeof notnull_alternative === 'string') ? ({ xname: notnull_alternative }) : (notnull_alternative.layout ? notnull_alternative.layout : notnull_alternative)
 
@@ -140,6 +144,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
       </_AlternativeBack>
     )
   }
+  
 
   // Cart
   const _align_cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || undefined
@@ -169,8 +174,10 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   const _allComponents = { ...allComponents, ...defaultPresenterGet }
 
   // Presenter,  means presenter is AutoLayout
+  const _presenterName = presenter ? (typeof presenter === 'string' ? presenter : 'AutoLayout') : undefined
   const Presenter = (presenter && typeof presenter === 'string') ? (_allComponents[presenter] || tips(presenter)) : (isJsonObject(presenter) ? AutoLayout : undefined)
   const _presenter = (Presenter && isJsonObject(presenter)) ? { layout: { ...presenter, ...rest.___presenter } } : {}
+  
 
   // handle simple presenter, from {xname,props}
   if (!Presenter && !layoutChildren && !container) {
@@ -248,23 +255,14 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
             const __Presenter = ((typeof child === 'string') ? _allComponents[child] : AutoLayout) || tips(presenter)
             const __presenter = isJsonObject(child) ? { layout: { ...child } } : {}
 
-            // < _NamedCart /> onItem事件传递给indicated使用
             return (
               <_NamedGateway key={i} binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
                 tag={`${itemTag}-gateway[${_gatewayName}]`}>
-                <_NamedCart {...__cart}
-                  onItemDeleted={onItemDeleted}
-                  onItemAdded={onItemAdded}
-                  onItemChanged={onItemChanged}
-                  onItemIndicated={onItemIndicated}
-                  tag={`${_tag}-cart[${_cartName}]`}
-                >
-                  <__Presenter {...__presenter} allComponents={allComponents} key={i}
-                    tag={`${itemTag}-presenter-NEXT`}
-                    onItemClick={onItemClick}
-                  />
-                 </_NamedCart>
-               </_NamedGateway>
+                <__Presenter {...__presenter} allComponents={allComponents} key={i}
+                  tag={`${itemTag}-presenter[${_presenterName}]`}
+                  onItemClick={onItemClick}
+                />
+              </_NamedGateway>
             )
 
           })}
@@ -273,7 +271,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   ) : (
     <Container {..._container}  {..._dataSource} {...rest} navigation={navigation}
       useReplacing={_useReplacing}
-      tag={`${_tag}-standard-container[${_containerName}]`}
+      tag={`${_tag}-presenter-container[${_containerName}]`}
       onItemClick={onItemClick}
     // onItemClick={onItemClick} 
     // onItemDeleted={onItemDeleted}
@@ -294,8 +292,8 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
           >
             {
               presenter ? <Presenter {..._presenter} allComponents={allComponents}
-                onItemClick={onItemClick}
-                tag={`${_tag}-presenter-NEXT`}
+                            onItemClick={onItemClick}
+                            tag={`${_tag}-presenter[${_presenterName}]`}
               />
                 :
                 React.Children.toArray(children)
