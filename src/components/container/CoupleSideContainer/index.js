@@ -37,7 +37,6 @@ export default function CoupleSideContainer(props) {
     const firstChildItemClick = (item) => {
         setConfigData('')
         if (item.isSelected) {
-            console.log('选中 = ', item)
             setOnRefresh(true)
             if (converter) {
                 const bindingData = bindingConvert(converter, item)
@@ -50,7 +49,6 @@ export default function CoupleSideContainer(props) {
     }
 
     function renderChildren(children) {
-        console.log('CoupleSideContainer renderChildren = ', children)
         return React.Children.map(children, (child, childIndex) => {
             if (React.isValidElement(child)) {
                 if (childIndex === 0) {

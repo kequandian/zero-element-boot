@@ -161,6 +161,8 @@ export default function KeyValueManageList(props) {
         })
     }
 
+    console.log('lsApi = ', lsApi, converter, rest)
+
 
     return (
         <>

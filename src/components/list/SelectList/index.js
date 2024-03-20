@@ -45,8 +45,6 @@ export default function SelectList(props) {
   const [ list, setList ] = useState(dataSource)
   const [currIndex, setCurrIndex] = useState(-1)
 
-  console.log('select list onItemClick = ', onItemClick)
-  
   function onSelected (item, index) {
     list.map((item, i) => {
       if(i === index && currIndex === -1){
