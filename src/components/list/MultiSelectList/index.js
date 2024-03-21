@@ -6,7 +6,11 @@ import ContainerContext from '@/components/AutoX/ContainerContext';
 import checkBoxTool from '@/components/utils/checkBoxTool';
 
 export default function SelectCheckboxList(props) {
-  const { children, items, layout, cart, onItemClick, onOkClick } = props;
+  const { children, items, layout, cart, onItemClick, 
+    onOkClick,
+    containerHeight= '',
+    isScroll=false,
+  } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
   const size = useSize(containerRef);
@@ -78,9 +82,11 @@ export default function SelectCheckboxList(props) {
         ) : <></>
       }
       <div
+        id='multi-select-list'
         style={{
+          width: '100%',
           overflow: 'auto',
-          position: 'relative',
+          height: `${(containerHeight && containerHeight - 32) || ( window.innerHeight )}px`
         }}
         className={getClassName()}
         ref={containerRef}

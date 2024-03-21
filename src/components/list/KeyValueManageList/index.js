@@ -161,19 +161,17 @@ export default function KeyValueManageList(props) {
         })
     }
 
-    console.log('lsApi = ', lsApi, converter, rest)
-
-
     return (
         <>
-            <APIContainer api={lsApi} converter={converter} {...rest}>
-                <NamedLayout xname="VStack">
-                    <SelectList onItemDeleted={itemDeleted} onItemClick={KVMItemClick}>
-                        {children}
-                    </SelectList>
-                    <PlainAddNew onAddNew={onAddNewClick} />
-                </NamedLayout>
-            </APIContainer>
+                <APIContainer api={lsApi} converter={converter} {...rest}>
+                    <NamedLayout xname="VStack">
+                        <SelectList onItemDeleted={itemDeleted} onItemClick={KVMItemClick}>
+                            {children}
+                        </SelectList>
+                        <PlainAddNew onAddNew={onAddNewClick} />
+                    </NamedLayout>
+                </APIContainer>
+            
 
             {/* 编辑模态框 */}
             <Modal

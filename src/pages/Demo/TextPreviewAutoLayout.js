@@ -12,10 +12,10 @@ export default function TextPreviewAutoLayout(props) {
 
         <ChakraProvider>
             <PreviewAutoLayout 
-                layoutName="PropsManage" 
-                moduleId="278"
-                // layoutApi={layoutApi} 
-                // api={api} 
+                // layoutName="PropsManage" 
+                // moduleId="278"
+                layoutApi={layoutApi} 
+                api={api} 
             />
         </ChakraProvider>
        

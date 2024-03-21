@@ -41,6 +41,7 @@ export default function CoupleSideContainer(props) {
             if (converter) {
                 const bindingData = bindingConvert(converter, item)
                 const filterData = doFilter(converter, bindingData)
+                console.log('选中 = ', item, converter, bindingData, filterData)
                 setConfigData(filterData)
             } else {
                 setConfigData(item)

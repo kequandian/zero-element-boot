@@ -223,9 +223,9 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
 
     // <__Presenter/> 新增onItemClick 
     return (
-      <__NamedGateway binding={_data_binding} filter={_data_filter} chain={_data_chain} gateway={_data_gateway} {..._rest}>
-        <__NamedCart {..._data_cart}>
-          <__Presenter {..._t_presenter} allComponents={allComponents} onItemClick={onItemClick} />
+      <__NamedGateway tag={`${_tag}-__NamedGateway__[${_gatewayName}]`}  binding={_data_binding} filter={_data_filter} chain={_data_chain} gateway={_data_gateway} {..._rest}>
+        <__NamedCart tag={`${_tag}-__NamedCart__`} {..._data_cart}>
+          <__Presenter tag={`${_tag}-__Presenter__`} {..._t_presenter} allComponents={allComponents} onItemClick={onItemClick} />
         </__NamedCart>
       </__NamedGateway>
     )
@@ -234,8 +234,6 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   // xname use for layout, use default VStack
   // __ means NamedLayout used internal within AutoLayout, or be used seperately
   const __xname = xname || 'VStack'
-
-  // <
 
   return layoutChildren ? (
     <Container {..._container}  {..._dataSource} {...rest} 
@@ -257,8 +255,8 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
 
             return (
               <_NamedGateway key={i} binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
-                tag={`${itemTag}-gateway[${_gatewayName}]`}>
-                <__Presenter {...__presenter} allComponents={allComponents} key={i}
+                tag={`${itemTag}-gateway[${_gatewayName}]`} >
+                <__Presenter {...__presenter} allComponents={allComponents} key={i} 
                   tag={`${itemTag}-presenter[${_presenterName}]`}
                   onItemClick={onItemClick}
                 />
