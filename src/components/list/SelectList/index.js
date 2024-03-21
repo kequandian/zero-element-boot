@@ -107,7 +107,6 @@ export default function SelectList(props) {
       <div
         id='select-list'
         style={{
-          flex: 1,
           width: '100%',
           overflowX: 'hidden',
           // position: 'relative',

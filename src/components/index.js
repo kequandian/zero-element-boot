@@ -14,7 +14,7 @@ import AutoLayout from './AutoLayout';
 // import  { CloneAutoLayout }  from './CloneAutoLayout';
 import AutoComponent from './AutoComponent';
 
-import {APIContainer, Container, TabContainer, WxPage, TitledContainer, CoupleSideContainer} from './container';
+import {APIContainer, Container, TabContainer, WxPage, TitledContainer, DataFlowContainer} from './container';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -74,6 +74,7 @@ import BackIndicator from './indicator/BackIndicator';
 import MaskIndicator from './indicator/MaskIndicator';
 import LabelIndicator from './indicator/LabelIndicator';
 import TipsIndicator from './indicator/TipsIndicator';
+import TitleIndicator from './indicator/TitleIndicator';
 
 // selector
 import OutlineSelector from './selector/OutlineSelector';
@@ -176,7 +177,8 @@ NamedIndicatorSet({
   BackIndicator,
   MaskIndicator,
   LabelIndicator,
-  TipsIndicator
+  TipsIndicator,
+  TitleIndicator
 })
 
 NamedPresenterSet({
@@ -219,7 +221,7 @@ NameContainerSet({
   TabContainer,
   WxPage,
   TitledContainer,
-  CoupleSideContainer
+  DataFlowContainer
 })
 
 NamedSelector({

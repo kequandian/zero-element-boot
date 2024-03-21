@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ChakraProvider, HStack, Box, Button } from '@chakra-ui/react';
 import { AutoLayout } from '@/components'
-import CoupleSideContainer from '@/components/container/CoupleSideContainer';
+import DataFlowContainer from '@/components/container/DataFlowContainer';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout'
 import LocalPreview from './localPreview'
@@ -38,31 +38,34 @@ export default function Index(props) {
             },
             {
                 xname: 'PreviewAutoLayout',
+                tag: "secound_children_tag",
                 props: {
-                    layoutName:"PropKeyValueManage"
+                    layoutName:"PropKeyValueManage",
+                    tag: "PropKeyValueManage_tag"
                 }
             },
         ],
         xname:'HStack',
-        container: "CoupleSideContainer"
+        tag: "autolayout_tag",
+        container: "DataFlowContainer"
     }
 
 
     return (
         <ChakraProvider>
-            {/* <CoupleSideContainer converter={converter}>
+            {/* <DataFlowContainer converter={converter}>
                 <PreviewAutoLayout layoutApi={layoutApi} api={api} onAddNewClick={addNewClick} isSwitch={true} />
                 <LocalPreview  />
-            </CoupleSideContainer> */}
+            </DataFlowContainer> */}
 
             <AutoLayout layout={layoutJson} moduleId={moduleId} converter={converter} />
 
-            {/* <CoupleSideContainer moduleId={moduleId} converter={converter}>
+            {/* <DataFlowContainer moduleId={moduleId} converter={converter}>
                 <HStack>
                     <PreviewAutoLayout layoutName="PropertyManage"  />
                     <PreviewAutoLayout layoutName="PropKeyValueManage"  />
                 </HStack>
-            </CoupleSideContainer> */}
+            </DataFlowContainer> */}
         </ChakraProvider>
 
     )

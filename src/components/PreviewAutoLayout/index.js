@@ -86,7 +86,7 @@ export default function PreAutoLayout (props) {
   let config = {
     // items: records && records.length > 0 ? records : [],
     // layout: layoutJson,
-    ...rest
+    
   };
 
   if( api && records && records.length > 0){
@@ -98,10 +98,15 @@ export default function PreAutoLayout (props) {
   if(layoutJson && layoutJson['layout']){
     config = {
       ...config,
-      ...layoutJson
+      ...layoutJson,
+      ...rest
     }
   }else if(layoutJson && typeof layoutJson === 'object'){
-    config.layout = layoutJson
+    config = {
+      ...config,
+      layout:layoutJson,
+      ...rest,
+    }
   }
 
   // 控制台输出信息
@@ -133,7 +138,7 @@ export default function PreAutoLayout (props) {
       setAlternativeActive(false)
   }
   
-  // console.log('=== PreAutoLayout onItemClick == ', onItemClick)
+  console.log('=== PreAutoLayout config == ', config)
 
   return (
     layoutJson && JSON.stringify(layoutJson) != '{}' ? (
