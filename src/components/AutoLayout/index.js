@@ -114,8 +114,8 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   } = sugarLayout(layout) || {};
 
   
-  // show tag for AutoLayout
-  const _tag = tag || layoutTag || 'UNDEFINED-TAG'
+  // show tag for AutoLayout, layoutTag first
+  const _tag = layoutTag || tag || 'UNDEFINED-TAG'
   tagged(_tag, rest)
   
   const _dataSource = (Array.isArray(dataSource) ? { items: dataSource } : dataSource) || (Array.isArray(mock) ? { items: mock } : mock) || {}
