@@ -71,7 +71,7 @@ export default function PreAutoLayout (props) {
   const respLayoutData = useTokenRequest({ api: localLayoutApi });
   const respLayoutDataRecords = respLayoutData && respLayoutData[0]
 
-  let bindingApi =  bindingName ? `/openapi/lc/bindings/${bindingName}` : ''
+  let bindingApi =  bindingName ? `/openapi/lc/binding/${bindingName}` : ''
   // 从bindingApi获取bindingJson
   const respBindingData = useTokenRequest({ api: bindingApi });
   const respBindingJsonData = respBindingData && respBindingData[0]
@@ -138,7 +138,7 @@ export default function PreAutoLayout (props) {
       setAlternativeActive(false)
   }
   
-  console.log('=== PreAutoLayout config == ', config)
+  // console.log('=== PreAutoLayout config == ', config)
 
   return (
     layoutJson && JSON.stringify(layoutJson) != '{}' ? (

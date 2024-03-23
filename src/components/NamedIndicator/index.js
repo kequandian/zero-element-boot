@@ -12,10 +12,14 @@ import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorCo
  * @param {boolean} _isSelected  组件内部传递参数， 用于selector选中状态下, indicator的决定
  * @returns
  */
-export default function NamedIndicator( { children, Indicator, xname, props, trigger='hover', _isSelected,  __indicator = {xname, props, trigger}, indicator = __indicator,
-    indicatorData, indicatorSet,  onItemClick, onItemDeleted, onItemAdded, onItemChanged, onItemIndicated } ) {
-
-    const [onHover, setOnHover] = useState(false);
+export default function NamedIndicator(namedIndicatorprops) {
+    const { children, Indicator, xname, props, trigger='hover', _isSelected,  __indicator = {xname, props, trigger}, indicator = __indicator,
+      indicatorData, indicatorProps={}, indicatorSet,  
+      onItemClick, onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, ...rest } = namedIndicatorprops;
+      
+      // console.log('NamedIndicator rest = ', rest)
+    
+      const [onHover, setOnHover] = useState(false);
 
     // const toggleHover = () => {
     //     const result = !onHover;
@@ -37,7 +41,7 @@ export default function NamedIndicator( { children, Indicator, xname, props, tri
     // 1. both Indicator & indicator, means  indicator for Indicator
     // 2. only Indicator, none 
     // 3. only indicator, indicator.props
-    const _indicator =  (Indicator && __indicator_) ? __indicator_ : ( Indicator ? {} : (__indicator_ ? ( (typeof __indicator_=='string')?{} : (__indicator_.props?__indicator_.props:{}) ) : {}) )
+    const _indicator =  (Indicator && __indicator_) ? __indicator_ : ( Indicator ? {} : (__indicator_ ? ( (typeof __indicator_=='string')?{} : (__indicator_.props?{...__indicator_.props, ...indicatorProps}:{}) ) : {}) )
 
     const _Indicator = Indicator || _IndicatorSet[indicatorName] || NextIndicator
 

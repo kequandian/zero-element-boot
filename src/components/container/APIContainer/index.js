@@ -23,6 +23,8 @@ export default function APIContainer(props) {
   const [data, setData] = useState([]);
   let _newData = {}
 
+  // console.log('APIContainer rest = ', rest)
+
   useEffect(_ => {
     if (!api) {
       console.error('APIContainer api 为空')
@@ -31,7 +33,7 @@ export default function APIContainer(props) {
     queryMethod(api, queryData, token)
       .then(responseData => {
         if (responseData && responseData.code === 200) {
-          const originData = responseData.data || responseData
+          const originData = (responseData.data && responseData.data.records) || responseData.data || responseData
           if(converterOption === 'binding' && converter){
             _newData = bindingConvert(converter, originData)
           }else if(converterOption === 'filter' && converter){
@@ -39,6 +41,7 @@ export default function APIContainer(props) {
           }else{
             _newData = originData
           }
+          console.log('APIContainer _newData = ', _newData)
           setData(_newData);
         }
       })

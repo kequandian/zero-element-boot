@@ -142,14 +142,15 @@ export default function PlainManageList(props) {
         })
     }
 
+    
     return (
         <>
-            <APIContainer api={lsApi} converter={converter}>
+            <APIContainer api={lsApi} converter={converter} {...rest}>
                 <NamedLayout xname="VStack">
                     <PlainList onItemDeleted={itemDeleted}>
                         {children}
                     </PlainList>
-                    <PlainAddNew onAddNew={onAddNewClick} />
+                    {addApi ? <PlainAddNew onAddNew={onAddNewClick} /> : <></>}
                 </NamedLayout>
             </APIContainer>
 

@@ -35,20 +35,27 @@ export default function CoupleSideContainer(props) {
     },[onRefresh])
 
     const firstChildItemClick = (item) => {
+        // console.log('first child item click = ', item)
         setConfigData('')
         if (item.isSelected) {
             setOnRefresh(true)
-            if (converter) {
+            if (converter && JSON.stringify(converter) != '{}') {
                 const bindingData = bindingConvert(converter, item)
                 const filterData = doFilter(converter, bindingData)
-                console.log('选中 = ', item, converter, bindingData, filterData)
                 setConfigData(filterData)
             } else {
                 setConfigData(item)
             }
+            
         }
     }
 
+    const secondChildItemClick = (item) => {
+        console.log('second child item click = ', item)
+    }
+
+    console.log('CoupleSideContainer configData= ', configData)
+    
     function renderChildren(children) {
         return React.Children.map(children, (child, childIndex) => {
             if (React.isValidElement(child)) {
@@ -64,7 +71,8 @@ export default function CoupleSideContainer(props) {
                         return (
                             React.cloneElement(child, {
                                 ...configData,
-                                ...rest
+                                ...rest,
+                                onItemClick: secondChildItemClick,
                             })
                         )
                     } else {

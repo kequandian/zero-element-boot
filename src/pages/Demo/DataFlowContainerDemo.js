@@ -23,30 +23,74 @@ export default function Index(props) {
     }
 
 
-    const moduleId = '284'
+    const moduleId = '317'
     const converter = {
-        assembledAs:"assembledAs"
+        // assembledAs:"assembledAs"
     }
 
+    //查看属性列表组合页面
+    // const layoutJson = {
+    //     children: [
+    //         {
+    //             xname: 'PreviewAutoLayout',
+    //             props: {
+    //                 layoutName:"PropertyManage"
+    //             }
+    //         },
+    //         {
+    //             xname: 'PreviewAutoLayout',
+    //             props: {
+    //                 layoutName:"PropKeyValueManage",
+    //             }
+    //         },
+    //     ],
+    //     xname:'HStack',
+    //     container: "DataFlowContainer"
+    // }
+
+    //修改container组合页面
+    // const layoutJson = {
+    //     children: [
+    //         {
+    //             xname: 'PreviewAutoLayout',
+    //             props: {
+    //                 layoutName:"GetContainerAutoLayout"
+    //             }
+    //         },
+    //         {
+    //             xname: 'PreviewAutoLayout',
+    //             props: {
+    //                 layoutName:"ContainerListAutoLayout",
+    //             }
+    //         },
+    //     ],
+    //     xname:'HStack',
+    //     props:{
+    //         flexFlow: "no-wrap"
+    //     },
+    //     container: "DataFlowContainer"
+    // }
+
+    //binding组合页面
     const layoutJson = {
         children: [
             {
                 xname: 'PreviewAutoLayout',
                 props: {
-                    layoutName:"PropertyManage"
+                    layoutName:"BindingManageList"
                 }
             },
             {
                 xname: 'PreviewAutoLayout',
-                tag: "secound_children_tag",
                 props: {
-                    layoutName:"PropKeyValueManage",
-                    tag: "PropKeyValueManage_tag"
+                    layoutName:"ParentParameterListAutoLayout",
                 }
             },
         ],
         xname:'HStack',
-        tag: "autolayout_tag",
+        props:{
+            flexFlow: "no-wrap"
+        },
         container: "DataFlowContainer"
     }
 

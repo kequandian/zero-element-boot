@@ -52,11 +52,17 @@ function doBind(binding, data) {
         }else{
           bindingData[dataKey][childKey] = data[key]
         }
+        // delete data[key]
       }else{
-        bindingData[bindingKey] = data[key];
+        if(data[key]){
+          bindingData[bindingKey] = data[key];
+          // delete data[key]
+        }
       }
       delete data[key]
   })
+
+  // console.log('bindingData == ', binding, bindingData, data)
 
   return { ...bindingData, ...data };
 }

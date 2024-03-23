@@ -38,7 +38,7 @@ require('./index.less')
  * 
  */
 
-export default function Index(props) {
+export default function DeleteIndicator(props) {
 
     const { 
         children, 
@@ -64,6 +64,7 @@ export default function Index(props) {
     function delAction () {
         // setLoading(true) 
         const api = formatParams(action, indicatorData);
+
         const queryData = {};
         promiseAjax(api, queryData, { method: 'DELETE' }).then(resp => {
             if (resp && resp.code === 200) {
