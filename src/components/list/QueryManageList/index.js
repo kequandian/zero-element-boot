@@ -12,12 +12,14 @@ import {
     FormControl, // 未表单元素添加动态效果 如校验 禁用等
     FormLabel, // label
     FormErrorMessage,
+    Text
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { APIContainer, NamedLayout } from '@/components';
 import promiseAjax from '@/components/utils/request';
 import SelectList from '@/components/list/SelectList';
 import PlainAddNew from '@/components/presenter/button/PlainAddNew';
+import { formatParams } from '@/components/utils/tools';
 
 /**
  * @param {*} props 
@@ -25,20 +27,20 @@ import PlainAddNew from '@/components/presenter/button/PlainAddNew';
  * @param {object}} converter listApi绑定数据
  * @param {string}} addApi 新增api
  * @param {object}} addApiBody 新增api提交数据
- * @param {string}} newKeyBinding 输入的值， 作为新增api提交字段
- * @param {string}} newValueBinding 输入的值， 作为新增api提交字段
+ * @param {string}} addApi 编辑api
+ * @param {object}} addApiBody 编辑api提交数据
  */
 
-export default function KeyValueManageList(props) {
+export default function QueryManageList(props) {
 
     const {
         children,
-        listApi='',
-        converter={},
+        listApi = '',
+        converter = {},
         addApi = '',
-        addApiBody={},
-        newKeyBinding = '',
-        newValueBinding = '',
+        addApiBody = {},
+        editApi = '',
+        editApiBody = {},
         onItemClick,
         ...rest
     } = props
@@ -48,9 +50,10 @@ export default function KeyValueManageList(props) {
         { label: '键', field: 'newKey' },
         { label: '值', field: 'newValue' },
     ]
-    const [ lsApi, setLsApi ] = useState(listApi)
-    const [ isOpen, setIsOpen ] = useState(false)
-    const [ onRefresh, setOnRefresh ] = useState(false)
+    const [lsApi, setLsApi] = useState(listApi)
+    const [isOpen, setIsOpen] = useState(false)
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false)
+    const [onRefresh, setOnRefresh] = useState(false)
 
     const {
         handleSubmit,
@@ -64,7 +67,7 @@ export default function KeyValueManageList(props) {
     const toast = useToast()
 
     useEffect(_ => {
-        if(onRefresh){
+        if (onRefresh) {
             setOnRefresh(false)
             setLsApi(listApi)
         }
@@ -85,6 +88,11 @@ export default function KeyValueManageList(props) {
         setIsOpen(false)
     }
 
+    function onConfirmClose(){
+        reset()
+        setIsConfirmOpen(false)
+    }
+
     function validateData(values) {
 
         return new Promise((resolve) => {
@@ -97,31 +105,16 @@ export default function KeyValueManageList(props) {
 
     //新增数据
     function createData(values) {
-        
-        if(!addApi){
+
+        if (!addApi) {
             toastTips('未设置 addApi ', 'warning')
             return
         }
 
-        if(!newKeyBinding){
-            toastTips('未设置 newKeyBinding 提交字段', 'warning')
-            return
-        }
-
-        if(!newValueBinding){
-            toastTips('未设置 newValueBinding 提交字段', 'warning')
-            return
-        }
-        
         const queryData = {
             ...addApiBody,
         }
-        if(newKeyBinding){
-            queryData[newKeyBinding]=values.newKey
-        }
-        if(newValueBinding){
-            queryData[newValueBinding]=values.newValue
-        }
+
         promiseAjax(addApi, queryData, { method: 'POST' }).then(resp => {
             if (resp && resp.code === 200) {
                 toastTips('新增成功')
@@ -137,17 +130,42 @@ export default function KeyValueManageList(props) {
         });
     }
 
-    const KVMItemClick = (item) => {
-        if(onItemClick){
-            onItemClick(item)
-        }else{
-            // TODO 组件内部处理点击事件
+    //编辑数据
+    const editData = (values) => {
+
+        if (!editApi) {
+            toastTips('未设置 editApi ', 'warning')
+            return
         }
+
+        const convertBodyData = formatParams(editApiBody, values)
+
+        const queryData = {
+            ...convertBodyData,
+        }
+
+        promiseAjax(editApi, queryData, { method: 'POST ' }).then(resp => {
+            if (resp && resp.code === 200) {
+                toastTips('编辑成功')
+                setLsApi('')
+                setOnRefresh(true)
+                setIsConfirmOpen(false)
+            } else {
+                console.error("编辑失败 === ", resp)
+                toastTips('编辑失败', 'error')
+            }
+        });
+    }
+
+    const KVMItemClick = (item) => {
+        //
+        setIsConfirmOpen(true)
+        
     }
 
     // 删除事件
     const itemDeleted = (status) => {
-        if(status){
+        if (status) {
             setLsApi('')
             setOnRefresh(true)
         }
@@ -175,7 +193,7 @@ export default function KeyValueManageList(props) {
                     {addApi ? <PlainAddNew onAddNew={onAddNewClick} /> : <></>}
                 </NamedLayout>
             </APIContainer>
-            
+
 
             {/* 编辑模态框 */}
             <Modal
@@ -217,6 +235,27 @@ export default function KeyValueManageList(props) {
                             </Stack>
                         </form>
                     </ModalBody>
+                </ModalContent>
+            </Modal>
+
+            {/* 确认模态框 */}
+            <Modal isOpen={isConfirmOpen} onClose={onConfirmClose}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>提示</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <Text fontWeight='bold' mb='1rem'>
+                            确认绑定参数吗？
+                        </Text>
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button colorScheme='blue' mr={3} onClick={onConfirmClose}>
+                            取消
+                        </Button>
+                        <Button variant='ghost' onClick={editData}>确认</Button>
+                    </ModalFooter>
                 </ModalContent>
             </Modal>
         </>

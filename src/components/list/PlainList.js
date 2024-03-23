@@ -12,7 +12,7 @@ import ContainerContext from '@/components/AutoX/ContainerContext';
  */
 export default function PlainList(props) {
   const { children, layout, items, dataSource=items, navigation, onItemClick, ...rest } = props;
-  // console.log('PlainList.dataSource=', dataSource)
+  console.log('PlainList.dataSource=', dataSource)
   // console.log('PlainList.rest=', rest)
 
   const [layoutRef, { getClassName }] = useLayout();

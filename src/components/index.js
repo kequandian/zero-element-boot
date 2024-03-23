@@ -14,7 +14,8 @@ import AutoLayout from './AutoLayout';
 // import  { CloneAutoLayout }  from './CloneAutoLayout';
 import AutoComponent from './AutoComponent';
 
-import {APIContainer, Container, TabContainer, WxPage, TitledContainer, DataFlowContainer} from './container';
+import {APIContainer, Container, TabContainer, WxPage, TitledContainer, 
+  DataFlowContainer} from './container';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -112,7 +113,8 @@ import {
   ItemClickList,
   ManageList,
   PlainManageList,
-  KeyValueManageList
+  KeyValueManageList,
+  QueryManageList
 } from './list';
 
 // Form 组件
@@ -212,7 +214,8 @@ NamedListSet({
   ManageList,
   GroupedList,
   PlainManageList,
-  KeyValueManageList
+  KeyValueManageList,
+  QueryManageList
 })
 
 NameContainerSet({

@@ -17,6 +17,7 @@ import NamedIndicator from '@/components/NamedIndicator';
 import NextIndicator from '@/components/NextIndicator';
 import CssCart from '../cart/CssCart';
 import NamedSelector from '../NamedSelector';
+import { formatParams } from '@/components/utils/tools';
 
 
 /**
@@ -64,7 +65,7 @@ export default function NamedCart(nameCartPropsx) {
   const _indicator = cart.indicator 
   const indicatorName = _indicator ? ((typeof _indicator === 'string') ? _indicator : (typeof _indicator === 'object') ? _indicator.xname : '') : ''
   const _Indicator  = indicatorName ? (_IndicatorSet[indicatorName] || tips(indicatorName) ) : undefined  
-  const indicatorProps = (_indicator && typeof _indicator === 'object') ? _indicator.props : {}
+  const indicatorProps = (_indicator && typeof _indicator === 'object') ? {...rest, ..._indicator.props} : {}
   const _indicatorData = (_indicator && _indicator.binding) ? doBind(_indicator.binding, rest) : {}
   
   // get selector
@@ -120,6 +121,7 @@ export default function NamedCart(nameCartPropsx) {
 
                 {/* only indicator handle item event */}
                 <_NamedIndicator indicator={_indicator} __indicator={__indicator} indicatorData={_indicatorData} 
+                        indicatorProps={indicatorProps}
                         onItemClick={onItemClick}
                         onItemDeleted={onItemDeleted}
                         onItemAdded={onItemAdded} 

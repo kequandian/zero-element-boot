@@ -10,6 +10,7 @@ import ItemClickList from './ItemClickList';
 import ManageList from '../list/ManageList';
 import PlainManageList from '../list/PlainManageList';
 import KeyValueManageList from '../list/KeyValueManageList';
+import QueryManageList from '../list/QueryManageList';
 
 /**
  * List 属于抽象组件类型 container,容器 
@@ -26,5 +27,6 @@ export {
   ItemClickList,
   ManageList,
   PlainManageList,
-  KeyValueManageList
+  KeyValueManageList,
+  QueryManageList
 }

@@ -1,16 +1,28 @@
 //替换括号内容
 function formatParams(str, data){
 
-    if(str && str.indexOf('(') !== -1){
-        let regex = /\((.*?)\)/g; //匹配(*) 小括号里面任意内容的正则
-        let arr = str.match(regex); //字符串匹配出来的数组
-        let formatString = str
-        arr.map(item => {
-            const str = item.substring(1, item.length - 1)
-            formatString = formatString.replace(`${item}`, data[str])
+    if(typeof str === 'string'){
+        if(str && str.indexOf('(') !== -1){
+            let regex = /\((.*?)\)/g; //匹配(*) 小括号里面任意内容的正则
+            let arr = str.match(regex); //字符串匹配出来的数组
+            let formatString = str
+            arr.map(item => {
+                const cutStr = item.substring(1, item.length - 1)
+                if(data[cutStr]){
+                    formatString = formatString.replace(`${item}`, data[cutStr])
+                }
+            })
+            return formatString
+        }
+    }else if(typeof str === 'object'){
+        Object.keys(str).map(key => {
+            if(str[key]){
+                str[key] = formatParams(str[key], data)
+            }
         })
-        return formatString
+        return str
     }
+    
     return str
 }
 
