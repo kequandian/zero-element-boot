@@ -54,6 +54,7 @@ export default function QueryManageList(props) {
     const [isOpen, setIsOpen] = useState(false)
     const [isConfirmOpen, setIsConfirmOpen] = useState(false)
     const [onRefresh, setOnRefresh] = useState(false)
+    const [selectData, setSelectData] = useState({})
 
     const {
         handleSubmit,
@@ -125,26 +126,26 @@ export default function QueryManageList(props) {
                 reset()
             } else {
                 console.error("新增失败 === ", resp)
-                toastTips('新增失败', 'error')
+                toastTips(resp.message, 'error')
             }
         });
     }
 
     //编辑数据
-    const editData = (values) => {
+    const editData = () => {
 
         if (!editApi) {
             toastTips('未设置 editApi ', 'warning')
             return
         }
 
-        const convertBodyData = formatParams(editApiBody, values)
+        const convertBodyData = formatParams(editApiBody, selectData)
 
         const queryData = {
             ...convertBodyData,
         }
 
-        promiseAjax(editApi, queryData, { method: 'POST ' }).then(resp => {
+        promiseAjax(editApi, queryData, { method: 'POST' }).then(resp => {
             if (resp && resp.code === 200) {
                 toastTips('编辑成功')
                 setLsApi('')
@@ -152,14 +153,19 @@ export default function QueryManageList(props) {
                 setIsConfirmOpen(false)
             } else {
                 console.error("编辑失败 === ", resp)
-                toastTips('编辑失败', 'error')
+                toastTips(resp.message, 'error')
             }
+        }).finally(_=>{
+            reset()
+            setSelectData({})
         });
     }
 
     const KVMItemClick = (item) => {
+        setSelectData(item)
         //
         setIsConfirmOpen(true)
+        
         
     }
 
