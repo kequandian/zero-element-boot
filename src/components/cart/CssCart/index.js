@@ -4,18 +4,17 @@ import React from 'react';
 /**
  * CssCart to receive the native css style
  * @param {object} style css样式
- * @param {array} csshain 多个 CssCart 风格叠加到一个 CssCart 中
+ * @param {array} assembly 多个 CssCart 风格叠加到一个 CssCart 中
  * @returns 
  */
 export default function CssCart(props) {
 
-  const { children, style, csshain = [], ...rest }=props;
+  const { children, style, assembly = [], ...rest }=props;
 
   let allStyles = {}
-
-  csshain.forEach(function(css) {
-      const {children, style:chainStyle, ...chainrest}  = css.props;
-      allStyles = {...allStyles, ...chainStyle, ...chainrest}  
+  assembly.forEach(function(item) {
+      const {children, style:itemStyle, ...itemRest}  = item.props;
+      allStyles = {...allStyles, ...itemStyle, ...itemRest}  
   });
 
   return React.Children.map(children, child => {
