@@ -15,7 +15,7 @@ import AutoLayout from './AutoLayout';
 import AutoComponent from './AutoComponent';
 
 import {APIContainer, Container, TabContainer, WxPage, TitledContainer, 
-  DataFlowContainer} from './container';
+  DataFlowContainer, DrawerContainer} from './container';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -114,7 +114,7 @@ import {
   ManageList,
   PlainManageList,
   KeyValueManageList,
-  QueryManageList
+  QueryManageList,
 } from './list';
 
 // Form 组件
@@ -215,7 +215,7 @@ NamedListSet({
   GroupedList,
   PlainManageList,
   KeyValueManageList,
-  QueryManageList
+  QueryManageList,
 })
 
 NameContainerSet({
@@ -224,7 +224,8 @@ NameContainerSet({
   TabContainer,
   WxPage,
   TitledContainer,
-  DataFlowContainer
+  DataFlowContainer,
+  DrawerContainer
 })
 
 NamedSelector({

@@ -54,7 +54,7 @@ export default function CoupleSideContainer(props) {
         console.log('second child item click = ', item)
     }
 
-    console.log('CoupleSideContainer configData= ', configData)
+    // console.log('CoupleSideContainer configData= ', configData, rest)
     
     function renderChildren(children) {
         return React.Children.map(children, (child, childIndex) => {

@@ -24,6 +24,7 @@ export default function Index(props) {
 
 
     const moduleId = '320'
+    const componentId = '284'
     const converter = {
         // assembledAs:"assembledAs"
     }
@@ -72,24 +73,45 @@ export default function Index(props) {
     // }
 
     //binding组合页面
+    // const layoutJson = {
+    //     children: [
+    //         {
+    //             xname: 'PreviewAutoLayout',
+    //             props: {
+    //                 layoutName:"BindingManageList"
+    //             }
+    //         },
+    //         {
+    //             xname: 'PreviewAutoLayout',
+    //             props: {
+    //                 layoutName:"ParentParameterListAutoLayout",
+    //             }
+    //         },
+    //     ],
+    //     xname:'HStack',
+    //     props:{
+    //         flexFlow: "no-wrap"
+    //     },
+    //     container: "DataFlowContainer"
+    // }
+
+    //组件类型列表+详情组合页面
     const layoutJson = {
         children: [
             {
                 xname: 'PreviewAutoLayout',
                 props: {
-                    layoutName:"BindingManageList"
+                    layoutName:"ComponentTypeList"
                 }
             },
             {
                 xname: 'PreviewAutoLayout',
                 props: {
-                    layoutName:"ParentParameterListAutoLayout",
                 }
             },
         ],
-        xname:'HStack',
+        xname:'VStack',
         props:{
-            flexFlow: "no-wrap"
         },
         container: "DataFlowContainer"
     }
@@ -102,7 +124,10 @@ export default function Index(props) {
                 <LocalPreview  />
             </DataFlowContainer> */}
 
-            <AutoLayout layout={layoutJson} moduleId={moduleId} converter={converter} />
+            <AutoLayout layout={layoutJson} 
+                moduleId={moduleId} converter={converter} 
+                componentId={componentId}
+            />
 
             {/* <DataFlowContainer moduleId={moduleId} converter={converter}>
                 <HStack>

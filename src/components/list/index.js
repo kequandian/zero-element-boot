@@ -28,5 +28,5 @@ export {
   ManageList,
   PlainManageList,
   KeyValueManageList,
-  QueryManageList
+  QueryManageList,
 }
