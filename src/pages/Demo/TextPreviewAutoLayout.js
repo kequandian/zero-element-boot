@@ -1,7 +1,10 @@
 import React from 'react';
 
 import { ChakraProvider, HStack, Box, Button  } from '@chakra-ui/react';
-import PreviewAutoLayout from '@/components/PreviewAutoLayout'
+import PreviewAutoLayout from '@/components/PreviewAutoLayout';
+
+import { WxPage } from '@/components/container';
+import { HCenter } from '@/components/cart';
 
 export default function TextPreviewAutoLayout(props) {
 
@@ -11,7 +14,7 @@ export default function TextPreviewAutoLayout(props) {
     return (
 
         <ChakraProvider>
-            <PreviewAutoLayout 
+            {/* <PreviewAutoLayout 
                 // layoutName="PropsManage" 
                 // moduleId="320"
                 // layoutApi={layoutApi} 
@@ -20,7 +23,13 @@ export default function TextPreviewAutoLayout(props) {
                 // moduleId="320"
                 layoutName="ParentParameterListAutoLayout"
                 moduleId="320"
-            />
+            /> */}
+            <HCenter>
+                <WxPage title='组件按钮' device="pc">
+                    <PreviewAutoLayout layoutName="ComponentTypeList" />
+                </WxPage>
+            </HCenter>
+            
         </ChakraProvider>
        
     )

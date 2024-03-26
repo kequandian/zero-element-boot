@@ -2,7 +2,9 @@ import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
 import PlainManageList from "@/components/list/PlainManageList";
 import KeyValueManageList from '@/components/list/KeyValueManageList';
+import DrawerContainer from '@/components/container/DrawerContainer';
 import { APIContainer, NamedLayout, NamedContainer, NamedCart } from '@/components';
+import PreviewAutoLayout from '@/components/PreviewAutoLayout';
 
 
 const { Text, Subtitle } = require('@/components/presenter')
@@ -97,10 +99,28 @@ export default function NamedContainerDemo(props) {
         )
     }
 
+    function TextDrawerContainer() {
+        const config = {
+            layoutName: 'ComponentTypeList',
+            moduleId: '320',
+            converter: {
+                api:'api',
+                layoutApi: 'layoutApi',
+                layoutName: 'layoutName',
+            }
+        }
+        return (
+            <DrawerContainer  {...config} >
+                {/* <PreviewAutoLayout/> */}
+            </DrawerContainer>
+        )
+    }
+
     return (
         <ChakraProvider>
             {/* <TextPlainMenegeList/> */}
-            <TextKeyValueManageList/>
+            {/* <TextKeyValueManageList/> */}
+            <TextDrawerContainer/>
         </ChakraProvider>
 
     )
