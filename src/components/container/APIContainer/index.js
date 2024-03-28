@@ -41,7 +41,7 @@ export default function APIContainer(props) {
           }else{
             _newData = originData
           }
-          console.log('APIContainer _newData = ', _newData)
+          // console.log('APIContainer _newData = ', _newData)
           setData(_newData);
         }
       })

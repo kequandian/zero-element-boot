@@ -22,6 +22,7 @@ import Avatars from './Avatar/Avatars';
 // button
 import AddNewButton from './button/AddNewButton'
 import DownloadButton from './button/DownloadButton';
+import SquareAddNewButton from './button/SquareAddNew';
 
 // tree
 import JsonTree from './tree/JsonTree'
@@ -38,6 +39,9 @@ import ImageAnimation from './ImageAnimation'
 // image
 import Image from './image'
 import CozeImage from './image/CozeImage'
+
+//
+import PaletteColor from './PaletteColor';
 
 
 export {
@@ -66,6 +70,7 @@ export {
   // button
   AddNewButton,
   DownloadButton,
+  SquareAddNewButton,
 
   // other
   Counter,
@@ -82,5 +87,8 @@ export {
 
   // image
   Image,
-  CozeImage
+  CozeImage,
+
+  //
+  PaletteColor,
 }

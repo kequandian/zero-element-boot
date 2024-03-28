@@ -5,6 +5,7 @@ import WxPage from './WxPage';
 import TitledContainer from './TitledContainer';
 import DataFlowContainer from './DataFlowContainer';
 import DrawerContainer from './DrawerContainer';
+import AddNewContainer from './AddNewContainer';
 
 // import PlainList from '../list/PlainList';
 // import SelectList from '../list/SelectList';
@@ -22,6 +23,7 @@ export {
     TitledContainer,
     DataFlowContainer,
     DrawerContainer,
+    AddNewContainer,
         // list type of container
     // PlainList,
     // MultiSelectList,
