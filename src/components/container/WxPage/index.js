@@ -14,6 +14,8 @@ import {
   PopoverAnchor,
 } from '@chakra-ui/react'
 
+require('./index.less')
+
 
 /**
  * 
@@ -48,9 +50,9 @@ let stylePropsData = {
 }
 
 
-export default function Index(props) {
+export default function WxPage(props) {
 
-  const { children, title = '', deviceModel = 'iPhoneSE', device = 'wx', ...rest } = props;
+  const { children, title = '',  deviceModel = 'iPhoneSE', device = 'wx', ...rest } = props;
   const [modelName, setModelName] = useState(deviceModel)
   const [styleProps, setStyleProps] = useState(stylePropsData)
 
@@ -67,7 +69,9 @@ export default function Index(props) {
       stylePropsData = {
         ...stylePropsData,
         borderRadius: '6px',
-        ...map['window']
+        background: '#fff',
+        ...map['window'],
+        overflowX: 'auto',
       }
       setStyleProps(stylePropsData)
     }
@@ -79,10 +83,8 @@ export default function Index(props) {
     setModelName(value)
   }
 
-  console.log('styleProps = ', styleProps)
-
   return (
-    <div style={styleProps}>
+    <div id="wx-page" style={styleProps}>
       {device === 'wx' ? (
         <Cart fill='#ffffff' linewidth='0' corner='10px 10px 0 0' padding='auto auto 60px auto' margin='0' >
           <Flex justify='end'>
@@ -166,14 +168,16 @@ export default function Index(props) {
           </Cart>
         ) : <></>
       )}
-
-      {
-        React.Children.map(children, child => {
-          return React.cloneElement(child, {
-            ...rest
+      <div style={{padding: '10px'}}>
+        {
+          React.Children.map(children, child => {
+            return React.cloneElement(child, {
+              ...rest
+            })
           })
-        })
-      }
+        }
+      </div>
+      
     </div>
   )
 }

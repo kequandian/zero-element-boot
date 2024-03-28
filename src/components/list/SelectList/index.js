@@ -5,6 +5,7 @@ import { VStack, Box, Button } from '@chakra-ui/react';
 import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/AutoX/ContainerContext';
 const namedPresenterGet = require("@/components/config/NamedPresenterConfig").get();
+import SquareAddNew from '@/components/presenter/button/SquareAddNew';
 
 require('./index.less');
 
@@ -97,10 +98,7 @@ export default function SelectList(props) {
     <VStack flex={1}>
       {
         isSwitch && btnPisition == 'top' ? (
-          <div className='btnContainer' >
-            <div className='selectListaddBtn' onClick={() => onAddNewClick()}>
-            </div>
-          </div>
+          <SquareAddNew onAddNew={onAddNewClick} />
         ) : <></>
       }
 
@@ -137,17 +135,21 @@ export default function SelectList(props) {
               </div>
               
             })}
+
+            {
+              isSwitch && btnPisition == 'bottom' ? (
+                // <div className='btnContainer' >
+                //   <div className='selectListaddBtn' onClick={() => onAddNewClick()}>
+                //   </div>
+                // </div>
+                <SquareAddNew onAddNew={onAddNewClick} />
+              ) : <></>
+            }
+
         </ContainerContext.Provider>
       </div>
 
-      {
-        isSwitch && btnPisition == 'bottom' ? (
-          <div className='btnContainer' >
-            <div className='selectListaddBtn' onClick={() => onAddNewClick()}>
-            </div>
-          </div>
-        ) : <></>
-      }
+      
       
     </VStack>
   )

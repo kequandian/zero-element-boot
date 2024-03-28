@@ -1,17 +1,19 @@
 import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
-import PlainManageList from "@/components/list/PlainManageList";
-import KeyValueManageList from '@/components/list/KeyValueManageList';
-import DrawerContainer from '@/components/container/DrawerContainer';
+import { HCenter } from '@/components/cart'
+import { DrawerContainer, WxPage, AddNewContainer } from '@/components/container';
 import { APIContainer, NamedLayout, NamedContainer, NamedCart } from '@/components';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
+import { PlainManageList, KeyValueManageList,  DefaultGridLayoutList } from '@/components/list';
+import { PaletteColor } from '@/components/presenter';
+import ColorForm from '@/components/formComponent/colorForm';
 
 
 const { Text, Subtitle } = require('@/components/presenter')
 
 export default function NamedContainerDemo(props) {
 
-    function TextPlainMenegeList() {
+    function TesttPlainMenegeList() {
         const config = {
             listApi: '/openapi/lc/module/parameter/278', 
             addApi: '/openapi/crud/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps',
@@ -50,7 +52,7 @@ export default function NamedContainerDemo(props) {
         )
     }
 
-    function TextKeyValueManageList() {
+    function TestKeyValueManageList() {
 
         // const propsList = '/openapi/lc/module-props/278'
         const propsList = '/openapi/lc/module/assembly/KeyValueManageConverter'
@@ -99,7 +101,7 @@ export default function NamedContainerDemo(props) {
         )
     }
 
-    function TextDrawerContainer() {
+    function TestDrawerContainer() {
         const config = {
             layoutName: 'ComponentTypeList',
             moduleId: '320',
@@ -116,11 +118,126 @@ export default function NamedContainerDemo(props) {
         )
     }
 
+    function TestDefaultGridLayoutList () {
+        
+        const items=[
+            {
+                id:'1',
+                color:"#2C88D9",
+                name:"Blue",
+                dark: "white"
+            },
+            {
+                id:'2',
+                color:"#6558F5",
+                name:"Indigo",
+                dark: "white"
+            },
+            {
+                id:'3',
+                color:"#730FC3",
+                name:"Purple",
+                dark: "white"
+            },
+            {
+                id:'4',
+                color:"#BD34D1",
+                name:"Pink",
+                dark: "white"
+            },
+            {
+                id:'5',
+                color:"#1AAE9F",
+                name:"Mint",
+                dark: "white"
+            },
+            {
+                id:'6',
+                color:"#207868",
+                name:"Green",
+                dark: "white"
+            }
+        ]
+        return (
+            <HCenter>
+                <WxPage device="pc">
+                    <DefaultGridLayoutList items={items}>
+                        <PaletteColor/>
+                    </DefaultGridLayoutList>
+                </WxPage>
+            </HCenter>
+        )
+    }
+
+    function TestAddNewContainer () {
+        
+        const items=[
+            {
+                id:'1',
+                color:"#2C88D9",
+                name:"Blue",
+                dark: "white"
+            },
+            {
+                id:'2',
+                color:"#6558F5",
+                name:"Indigo",
+                dark: "white"
+            },
+            {
+                id:'3',
+                color:"#730FC3",
+                name:"Purple",
+                dark: "white"
+            },
+            {
+                id:'4',
+                color:"#BD34D1",
+                name:"Pink",
+                dark: "white"
+            },
+            {
+                id:'5',
+                color:"#1AAE9F",
+                name:"Mint",
+                dark: "white"
+            },
+            {
+                id:'6',
+                color:"#207868",
+                name:"Green",
+                dark: "white"
+            }
+        ]
+
+        const config = {
+            listApi: '/openapi/lc/palette?pageNum=1&pageSize=100&paletteName=palette_1',
+            addnewApi: '/openapi/lc/palette',
+            saveApi: '/openapi/lc/palette/(id)'
+        } 
+
+        return (
+            <HCenter>
+                <WxPage device="pc">
+                    <AddNewContainer {...config}>
+                        <DefaultGridLayoutList>
+                            <PaletteColor/>
+                        </DefaultGridLayoutList>
+                        <ColorForm/>
+                    </AddNewContainer>
+                </WxPage>
+            </HCenter>
+        )
+    }
+    
+
     return (
         <ChakraProvider>
-            {/* <TextPlainMenegeList/> */}
-            {/* <TextKeyValueManageList/> */}
-            <TextDrawerContainer/>
+            {/* <TestPlainMenegeList/> */}
+            {/* <TestKeyValueManageList/> */}
+            {/* <TestDrawerContainer/> */}
+            {/* <TestDefaultGridLayoutList/> */}
+            <TestAddNewContainer/>
         </ChakraProvider>
 
     )

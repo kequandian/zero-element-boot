@@ -7,12 +7,13 @@ require('./index.less');
  * @param { string } margin 外边距
  * @param { string } fill 背景色
  * @param { string } corner 圆角
+ * @param { number } ratio 高宽比参数(默认 1.0)
  * 
  */
 export default function SquareCart(props) {
 
   const {
-    children, fill = '#fff', corner = '8px', margin = '0px' } = props;
+    children, fill = '#fff', corner = '8px', margin = '0px', ratio=1.0 } = props;
 
   const parentRef = useRef(null);
   const [parentWidth, setParentWidth] = useState(null);
@@ -21,7 +22,6 @@ export default function SquareCart(props) {
     const resizeHandler = () => {
       if (parentRef.current) {
         const width = parentRef.current.getBoundingClientRect().width;
-        console.log(' SquareCart width = ', width)
         setParentWidth(width);
       }
     };
@@ -43,7 +43,7 @@ export default function SquareCart(props) {
         margin: `${margin}`,
         borderRadius: `${corner}`,
         background: `${fill}`,
-        height: `${parentWidth}px`
+        height: `${parentWidth*ratio}px`
       }}
       >
         {child}

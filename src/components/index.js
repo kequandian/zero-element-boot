@@ -15,7 +15,7 @@ import AutoLayout from './AutoLayout';
 import AutoComponent from './AutoComponent';
 
 import {APIContainer, Container, TabContainer, WxPage, TitledContainer, 
-  DataFlowContainer, DrawerContainer} from './container';
+  DataFlowContainer, DrawerContainer, AddNewContainer} from './container';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -94,7 +94,7 @@ import { Image, CozeImage } from './presenter'
 
 import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle,
   Rectangle, 
-  Circle, Description,
+  Circle, Description, PaletteColor, SquareAddNewButton,
 } from '@/components/presenter';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
@@ -115,6 +115,7 @@ import {
   PlainManageList,
   KeyValueManageList,
   QueryManageList,
+  DefaultGridLayoutList,
 } from './list';
 
 // Form 组件
@@ -198,7 +199,9 @@ NamedPresenterSet({
   Circle,
   CozeImage,
   Description,
-  PreviewAutoLayout
+  PreviewAutoLayout,
+  PaletteColor,
+  SquareAddNewButton
 })
 
 NamedListSet({
@@ -216,6 +219,7 @@ NamedListSet({
   PlainManageList,
   KeyValueManageList,
   QueryManageList,
+  DefaultGridLayoutList
 })
 
 NameContainerSet({
@@ -225,7 +229,8 @@ NameContainerSet({
   WxPage,
   TitledContainer,
   DataFlowContainer,
-  DrawerContainer
+  DrawerContainer,
+  AddNewContainer
 })
 
 NamedSelector({
