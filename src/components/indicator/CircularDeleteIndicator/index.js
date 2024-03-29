@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { 
+import {
     Stack,
     Button,
-    
+
     Modal,
     ModalOverlay,
     ModalContent,
@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { formatParams } from '@/components/utils/tools';
 const promiseAjax = require('@/components/utils/request');
+import { LightingCart } from '@/components/cart'
 require('./index.less')
 
 /**
@@ -40,8 +41,8 @@ require('./index.less')
 
 export default function CircularDeleteIndicator(props) {
 
-    const { 
-        children, 
+    const {
+        children,
         action,
         indicatorData,
         onItemDeleted,
@@ -53,15 +54,15 @@ export default function CircularDeleteIndicator(props) {
     const [isDelOpen, setIsDelOpen] = useState(false)
     const [isLoading, setLoading] = useState(false)
 
-    function showDelModel (e) {
+    function showDelModel(e) {
         // 阻止事件冒泡到父组件
-        e.stopPropagation(); 
+        e.stopPropagation();
         // 打开删除提示
         setIsDelOpen(true)
     }
 
     //删除
-    function delAction () {
+    function delAction() {
         // setLoading(true) 
         const api = formatParams(action, indicatorData);
 
@@ -70,20 +71,20 @@ export default function CircularDeleteIndicator(props) {
             if (resp && resp.code === 200) {
                 toastTips('删除成功')
                 setIsDelOpen(false)
-                if(onItemDeleted){
+                if (onItemDeleted) {
                     onItemDeleted(true)
                 }
             } else {
                 console.error("删除失败 == ", resp)
-                if(onItemDeleted){
+                if (onItemDeleted) {
                     onItemDeleted(false)
                 }
                 toastTips('删除失败', 'error')
             }
         })
-        .finally(_=>{
-            setLoading(false)
-        });
+            .finally(_ => {
+                setLoading(false)
+            });
     }
 
     // tips
@@ -99,7 +100,7 @@ export default function CircularDeleteIndicator(props) {
     }
 
     return (
-        <div className='del_indicator_container' style={{width:'100%'}}>
+        <div className='del_indicator_container' style={{ width: '100%' }}>
             {
                 React.Children.map(children, child => (
                     child
@@ -107,37 +108,41 @@ export default function CircularDeleteIndicator(props) {
             }
             {
                 isDisabled ? (
-                    <div className='del_icon_container' style={{...rest}}>
-                        <div className='del_icon' onClick={(e)=>showDelModel(e)}>
-                            <svg t="1711613887763" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5148" width="20" height="20">
-                                <path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#8F9EAC" p-id="5149"></path>
-                                <path d="M512 466.752l158.4-158.4 45.248 45.248L557.248 512l158.4 158.4-45.248 45.248L512 557.248l-158.4 158.4-45.248-45.248L466.752 512 308.352 353.6l45.248-45.248L512 466.752z" fill="#FFFFFF" p-id="5150"></path>
-                            </svg>
+                    <LightingCart>
+                        <div className='del_icon_container' style={{ ...rest }}>
+                            <div className='del_icon' onClick={(e) => showDelModel(e)}>
+                                
+
+                                <svg t="1711613887763" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5148" width="20" height="20">
+                                    <path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#8F9EAC" p-id="5149"></path>
+                                    <path d="M512 466.752l158.4-158.4 45.248 45.248L557.248 512l158.4 158.4-45.248 45.248L512 557.248l-158.4 158.4-45.248-45.248L466.752 512 308.352 353.6l45.248-45.248L512 466.752z" fill="#FFFFFF" p-id="5150"></path>
+                                </svg>
+                            </div>
                         </div>
-                    </div>
-                ):<></>
+                    </LightingCart>
+                ) : <></>
             }
 
             {/* 删除提示模态框 */}
             <Modal isOpen={isDelOpen} onClose={() => setIsDelOpen(false)}>
-            <ModalOverlay />
-            <ModalContent>
-                <ModalHeader>提示</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                <div>确定删除吗?</div>
-                </ModalBody>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>提示</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <div>确定删除吗?</div>
+                    </ModalBody>
 
-                <ModalFooter>
+                    <ModalFooter>
 
-                <Stack direction='row' spacing={4} align='center'>
-                    <Button isLoading={isLoading} variant='ghost' onClick={() => setIsDelOpen(false)}>取消</Button>
-                    <Button isLoading={isLoading} colorScheme='blue' mr={3} onClick={() => delAction()}>
-                        确定
-                    </Button>
-                </Stack>
-                </ModalFooter>
-            </ModalContent>
+                        <Stack direction='row' spacing={4} align='center'>
+                            <Button isLoading={isLoading} variant='ghost' onClick={() => setIsDelOpen(false)}>取消</Button>
+                            <Button isLoading={isLoading} colorScheme='blue' mr={3} onClick={() => delAction()}>
+                                确定
+                            </Button>
+                        </Stack>
+                    </ModalFooter>
+                </ModalContent>
             </Modal>
         </div>
     )
