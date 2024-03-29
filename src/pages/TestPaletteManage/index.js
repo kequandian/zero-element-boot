@@ -3,10 +3,11 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { HCenter } from '@/components/cart'
 import { WxPage, AddNewContainer } from '@/components/container';
 import { APIContainer, AutoLayout } from '@/components';
-import ColorForm from '@/components/formComponent/colorForm';
+import ColorModal from '@/components/modalComponent/colorModal';
+import TestPaletteList from '@/pages/TestPaletteList';
 
 
-export default function TextPaletteManage(props) {
+export default function TestPaletteManage(props) {
 
     const layoutJson = {
         "xname": "Gridbox",
@@ -19,12 +20,12 @@ export default function TextPaletteManage(props) {
             }
         },
         "cart": {
-            "xname": "SquareCart",
+            "xname": "Cart",
             "props": {
-                "margin": "5px",
-                "corner": "8px",
-                "fill": "#fff",
-                "ratio": 0.5,
+                "padding": "5px",
+                "margin": "0",
+                "linewidth": 0,
+                "corner": "0px"
             }
         },
         "indicator": {
@@ -39,14 +40,23 @@ export default function TextPaletteManage(props) {
         "presenter": {
             "xname": "Text",
             "binding": {
-                "paletteName1": "content"
+                "paletteName": "content"
             },
             "indicator":{
                 "xname": "CircularDeleteIndicator",
                 "props": {
                     "isDisabled": true,
                 },
-                "binding": { "id": "id" },
+                "binding": { "paletteName": "paletteName" },
+            },
+            "cart": {
+                "xname": "SquareCart",
+                "props": {
+                    "margin": "0px",
+                    "corner": "8px",
+                    "fill": "",
+                    "ratio": 0.5,
+                }
             },
                 
         }
@@ -62,24 +72,25 @@ export default function TextPaletteManage(props) {
     function TestPalettemManage() {
 
         const api = "/openapi/lc/palette/palette-name-list"
+        const deleteApi = "/openapi/lc/palette/(paletteName)"
 
         const config = {
-            // listApi: `/openapi/lc/palette/palette-name-list`,
             addnewApi: '/openapi/lc/palette',
             saveApi: '/openapi/lc/palette/(id)',
-            // action: `/openapi/lc/palette/(id)`
         }
 
         return (
-            <APIContainer API={api} layout={layoutJson} onItemClick={itemClick}>
-                <AutoLayout  />
-            </APIContainer>
-            // <AddNewContainer {...config}>
-            //      <APIContainer API={api}>
-            //         <AutoLayout layout={layoutJson} onItemClick={itemClick} />
-            //     </APIContainer>
-            //     <ColorForm/>
-            // </AddNewContainer>
+            // <APIContainer API={api} action={deleteApi} layout={layoutJson} onItemClick={itemClick}>
+            //     <AutoLayout  />
+            // </APIContainer>
+            <AddNewContainer {...config}>
+                 <APIContainer API={api}>
+                    <AutoLayout layout={layoutJson} action={deleteApi} />
+                </APIContainer>
+                <ColorModal>
+                    <TestPaletteList/>
+                </ColorModal>
+            </AddNewContainer>
         )
     }
 

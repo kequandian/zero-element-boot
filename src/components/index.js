@@ -61,6 +61,7 @@ import PageCenter from './cart/PageCenter';
 // import Page from './cart/deprecated/Page';
 import Box from './cart/Box';
 import SquareCart from './cart/SquareCart'
+import LightingCart from './cart/LightingCart';
 
 //indicator
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
@@ -95,7 +96,7 @@ import { Image, CozeImage } from './presenter'
 
 import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle,
   Rectangle, 
-  Circle, Description, PaletteColor, SquareAddNewButton,
+  Circle, Description, PaletteColor, SquareAddNewButton,GoogleAvatar,
 } from '@/components/presenter';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
@@ -161,7 +162,8 @@ NamedCartSet({
   // Round: RoundCart,
   NamedCart,
   Box,
-  SquareCart
+  SquareCart,
+  LightingCart
 })
 
 NamedIndicatorSet({
@@ -203,7 +205,8 @@ NamedPresenterSet({
   Description,
   PreviewAutoLayout,
   PaletteColor,
-  SquareAddNewButton
+  SquareAddNewButton,
+  GoogleAvatar
 })
 
 NamedListSet({

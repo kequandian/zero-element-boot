@@ -42,6 +42,7 @@ import CozeImage from './image/CozeImage'
 
 //
 import PaletteColor from './PaletteColor';
+import GoogleAvatar from './GoogleAvatar';
 
 
 export {
@@ -91,4 +92,5 @@ export {
 
   //
   PaletteColor,
+  GoogleAvatar,
 }

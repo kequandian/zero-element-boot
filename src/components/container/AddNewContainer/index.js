@@ -142,6 +142,8 @@ export default function AddNewContainer(props) {
         })
     }
 
+    console.log('childList[1] = ', childList[1])
+
     return (
 
         <>

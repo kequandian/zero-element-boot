@@ -7,10 +7,15 @@ import { PaletteColor } from '@/components/presenter';
 import ColorForm from '@/components/formComponent/colorForm';
 
 
-export default function TextPaletteManage(props) {
+export default function TestPaletteList(props) {
 
-    const { paletteName='palette_1'  } = props.location && (props.location.query ||  qs.parse(props.location.search.split('?')[1])) 
+    // const { paletteName='palette_1'  } = props.location && (props.location.query ||  qs.parse(props.location.search.split('?')[1])) 
 
+    const { paletteName } = props
+
+    if(!paletteName){
+        return <></>
+    }
 
     function TestPaletteList () {
 
