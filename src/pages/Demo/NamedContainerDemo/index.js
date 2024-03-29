@@ -170,50 +170,12 @@ export default function NamedContainerDemo(props) {
     }
 
     function TestAddNewContainer () {
-        
-        const items=[
-            {
-                id:'1',
-                color:"#2C88D9",
-                name:"Blue",
-                dark: "white"
-            },
-            {
-                id:'2',
-                color:"#6558F5",
-                name:"Indigo",
-                dark: "white"
-            },
-            {
-                id:'3',
-                color:"#730FC3",
-                name:"Purple",
-                dark: "white"
-            },
-            {
-                id:'4',
-                color:"#BD34D1",
-                name:"Pink",
-                dark: "white"
-            },
-            {
-                id:'5',
-                color:"#1AAE9F",
-                name:"Mint",
-                dark: "white"
-            },
-            {
-                id:'6',
-                color:"#207868",
-                name:"Green",
-                dark: "white"
-            }
-        ]
 
         const config = {
             listApi: '/openapi/lc/palette?pageNum=1&pageSize=100&paletteName=palette_1',
             addnewApi: '/openapi/lc/palette',
-            saveApi: '/openapi/lc/palette/(id)'
+            saveApi: '/openapi/lc/palette/(id)',
+            action: `/openapi/lc/palette/(id)`
         } 
 
         return (
@@ -229,7 +191,6 @@ export default function NamedContainerDemo(props) {
             </HCenter>
         )
     }
-    
 
     return (
         <ChakraProvider>

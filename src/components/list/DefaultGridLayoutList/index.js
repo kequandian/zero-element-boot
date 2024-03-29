@@ -43,16 +43,16 @@ export default function DefaultGridLayoutList(props) {
                 "margin": "5px",
                 "corner": "8px",
                 "fill": "#fff",
+                "ratio": 0.5,
             }
         },
-        // "indicator":{
-        //     "xname": "DeleteIndicator",
-        //     "props":{
-        //         "isDisabled": true,
-        //         // "action": `/openapi/crud/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps/(id)`
-        //     },
-        //     "binding": { "id":"id" }
-        // }
+        "indicator":{
+            "xname": "CircularDeleteIndicator",
+            "props":{
+                "isDisabled": true,
+            },
+            "binding": { "id":"id" }
+        }
     }
 
     const config = {

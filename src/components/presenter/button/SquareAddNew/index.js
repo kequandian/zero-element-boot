@@ -9,7 +9,7 @@ require('./index.less');
 
 export default function SquareAddNew(props) {
 
-    const { onAddNew } = props;
+    const { onAddNew, ratio=1.0 } = props;
 
     const parentRef = useRef(null);
     const [parentWidth, setParentWidth] = useState(null);
@@ -37,7 +37,7 @@ export default function SquareAddNew(props) {
         <div className='SquareAddNewContainer' 
         ref={parentRef}
         style={{
-            height: `${parentWidth}px`
+            height: `${parentWidth*ratio}px`
         }}
         onClick={onAddNew} >
             <div className='SquareAddNewBtn'>

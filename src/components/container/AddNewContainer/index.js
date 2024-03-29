@@ -53,6 +53,12 @@ export default function AddNewContainer(props) {
         setItemData('')
     }
 
+    const firstChildDelete = (status) => {
+        if(status){
+            setOnFirstRefresh(true)
+        }
+    }
+
     const secondChildFromAddNew = (data) => {
         // console.log('second child from add new = ')
         addNewData(data)
@@ -147,7 +153,8 @@ export default function AddNewContainer(props) {
                         React.cloneElement(childList[0], {
                             ...rest,
                             onItemClick: firstChildItemClick,
-                            onAddNewClick: firstChildAddNew
+                            onAddNewClick: firstChildAddNew,
+                            onItemDeleted: firstChildDelete
                         })
                     ) : <></>
                 ) : <></>

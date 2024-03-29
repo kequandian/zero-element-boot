@@ -142,7 +142,7 @@ export default function SelectList(props) {
                 //   <div className='selectListaddBtn' onClick={() => onAddNewClick()}>
                 //   </div>
                 // </div>
-                <SquareAddNew onAddNew={onAddNewClick} />
+                <SquareAddNew onAddNew={onAddNewClick} ratio={0.5} />
               ) : <></>
             }
 
