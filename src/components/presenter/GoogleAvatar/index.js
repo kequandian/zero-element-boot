@@ -1,8 +1,14 @@
 import React from 'react';
 
+/**
+ * 
+ * @param {string} name 显示的名称 
+ * @param {array} palette 色板数组 
+ */
+
 export default function GoogleAvatar(props) {
 
-    const { name, palette } = props;
+    const { name, palette=[] } = props;
 
     //获取name的第一个字母
     function getFirstLetter(name) {
