@@ -1,5 +1,6 @@
 import React from 'react';
 import { GoogleAvatar } from '@/components/presenter';
+import useLowCodePalette from '@/components/hooks/useLowCodePalette'
 
 export default function TestPresenterDemo (props) {
 
@@ -12,6 +13,8 @@ export default function TestPresenterDemo (props) {
             '#00c853',
         ]
     }
+
+    console.log('GoogleAvatarProps', useLowCodePalette('palette_1'))
 
     return (
         <>
