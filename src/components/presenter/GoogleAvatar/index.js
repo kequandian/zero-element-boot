@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import useLowCodePalette from '@/components/hooks/useLowCodePalette';
+
 
 /**
  * 
@@ -9,6 +11,10 @@ import React from 'react';
 export default function GoogleAvatar(props) {
 
     const { name, palette=[] } = props;
+
+    const keysMap = {
+        "name": "color"
+    }
 
     //获取name的第一个字母
     function getFirstLetter(name) {
@@ -24,31 +30,46 @@ export default function GoogleAvatar(props) {
 
     //根据索引获取对应颜色
     function getColorByIndex(palette, index) {
+        if(palette && palette.length === 0){
+            return ''
+        }
         if(index >= palette.length) {
             index = index % palette.length;
             if(index ===0) {
                 index = palette.length -1;
             }
         }
-        return palette[index]
+        let color = ''
+        //获取对应索引的颜色
+        Object.entries(palette[index]).map(([key, value], idx) => (
+            color = value
+        ))
+        return color
     }
+
+    const paletteList = useLowCodePalette('palette_1', keysMap)
 
     let firstLetter = getFirstLetter(name);
     //获取字母在字母表中的索引
     let index = letterToIndex(firstLetter);
+
+    if(!paletteList || !paletteList.length === 0 || !palette || !palette.length === 0 ){
+        return
+    }
+
     //获取对应索引的颜色
-    let color = getColorByIndex(palette, index);
+    let color = getColorByIndex(paletteList || palette, index);
 
     return (
         <div style={{ 
-                width: '65px',
-                height: '65px',
+                width: '45px',
+                height: '45px',
                 backgroundColor: color,
                 borderRadius: '50%',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                fontSize: '30px',
+                fontSize: '25px',
                 color: 'white',
                 fontWeight: 'bold',
             }}
