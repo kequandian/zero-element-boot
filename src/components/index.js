@@ -118,6 +118,7 @@ import {
   KeyValueManageList,
   QueryManageList,
   DefaultGridLayoutList,
+  LowCodeDatasetManageList,
 } from './list';
 
 // Form 组件
@@ -224,7 +225,8 @@ NamedListSet({
   PlainManageList,
   KeyValueManageList,
   QueryManageList,
-  DefaultGridLayoutList
+  DefaultGridLayoutList,
+  LowCodeDatasetManageList
 })
 
 NameContainerSet({

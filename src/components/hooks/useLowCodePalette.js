@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import useLocalStorage from './useLocalStorage';
+import useNormalize from './useNormalize';
 const promiseAjax = require('@/components/utils/request');
 
 
-export default function useLowCodePalette(paletteName) {
+export default function useLowCodePalette(paletteName, keysMap) {
 
     const [palette, setPalette] = useState([]);
     const [localPalette, setLocalPalette] = useLocalStorage('palette', '');
@@ -35,13 +36,14 @@ export default function useLowCodePalette(paletteName) {
     }
 
     const getPalette = () => {
+        
         const api = `/openapi/lc/palette?paletteName=${paletteName}&pageNum=1&pageSize=100`;
         const reqData = {};
         promiseAjax(api, reqData)
             .then(respData => {
                 if (respData && respData.code === 200) {
                     const data = respData.data && (respData.data.records || respData.data);
-                    const list = convertData(data);
+                    const list = useNormalize(data, keysMap);
                     setLocalPalette(list);
                     setPalette(list);
                 }
