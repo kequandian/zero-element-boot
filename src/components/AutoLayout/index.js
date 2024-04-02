@@ -256,10 +256,20 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
             return (
               <_NamedGateway key={i} binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
                 tag={`${itemTag}-gateway[${_gatewayName}]`} >
-                <__Presenter {...__presenter} allComponents={allComponents} key={i} 
-                  tag={`${itemTag}-presenter[${_presenterName}]`}
-                  onItemClick={onItemClick}
-                />
+                  
+                  <_NamedCart {...__cart}
+                    onItemDeleted={onItemDeleted}
+                    onItemAdded={onItemAdded}
+                    onItemChanged={onItemChanged}
+                    onItemIndicated={onItemIndicated}
+                    tag={`${_tag}-cart[${_cartName}]`}
+                  >
+                    <__Presenter {...__presenter} allComponents={allComponents} key={i} 
+                      tag={`${itemTag}-presenter[${_presenterName}]`}
+                      onItemClick={onItemClick}
+                    />
+                
+                  </_NamedCart>
               </_NamedGateway>
             )
 

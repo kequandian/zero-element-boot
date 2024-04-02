@@ -11,6 +11,29 @@ export default function TextPreviewAutoLayout(props) {
     const api = '/openapi/lc/module?componentOption=presenter&pageNum=1&pageSize=100&moduleType=card'
     const layoutApi= '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/160'
     
+    const TestIndicatorAutoLayout = () => {
+        const api = '/openapi/lc/module?componentOption=indicator'
+        const layoutApi= '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/161'
+        return (
+            <PreviewAutoLayout 
+                layoutApi={layoutApi} 
+                api={api} 
+            />
+        )
+    }
+
+    const TestContainerAutoLayout = () => {
+        const api = '/openapi/lc/module/childModuleList/332?componentOption=container'
+        const layoutApi= '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/333'
+        return (
+            <PreviewAutoLayout 
+                moduleId="332"
+                layoutApi={layoutApi} 
+                api={api} 
+            />
+        )
+    }
+
     return (
 
         <ChakraProvider>
@@ -24,11 +47,14 @@ export default function TextPreviewAutoLayout(props) {
                 layoutName="ParentParameterListAutoLayout"
                 moduleId="320"
             /> */}
-            <HCenter>
+            {/* <HCenter>
                 <WxPage title='组件按钮' device="pc">
                     <PreviewAutoLayout layoutName="ComponentTypeList" />
                 </WxPage>
-            </HCenter>
+            </HCenter> */}
+
+            {/* <TestIndicatorAutoLayout /> */}
+            <TestContainerAutoLayout/>
             
         </ChakraProvider>
        

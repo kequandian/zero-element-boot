@@ -100,7 +100,7 @@ export default function CircularDeleteIndicator(props) {
     }
 
     return (
-        <div className='del_indicator_container' style={{ width: '100%' }}>
+        <div className='circular_del_indicator_container' style={{ width: '100%' }}>
             {
                 React.Children.map(children, child => (
                     child
@@ -109,8 +109,8 @@ export default function CircularDeleteIndicator(props) {
             {
                 isDisabled ? (
                     <LightingCart>
-                        <div className='del_icon_container' style={{ ...rest }}>
-                            <div className='del_icon' onClick={(e) => showDelModel(e)}>
+                        <div className='circular_del_icon_container' style={{ ...rest }}>
+                            <div className='circular_del_icon' onClick={(e) => showDelModel(e)}>
                                 
 
                                 <svg t="1711613887763" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5148" width="20" height="20">

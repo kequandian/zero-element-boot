@@ -101,6 +101,7 @@ export default function ConfirmContainer(props) {
         })
     }
 
+    console.log('ConfirmContainer = ', rest)
 
     return (
         <>
