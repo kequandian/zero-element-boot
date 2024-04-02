@@ -25,6 +25,7 @@ export default function LowCodeDatasetManageList(props) {
         "xname": "VStack",
         "props": {
             "spacing": 3,
+            "flexFlow": "inherit"
         },
         "container": {
             "xname": "SelectList",
@@ -70,17 +71,7 @@ export default function LowCodeDatasetManageList(props) {
             "props": {
                 "spacing": 8,
                 "justify": "center column"
-            },
-            "cart": {
-                "xname": "SquareCart",
-                "props": {
-                    "margin": "0px",
-                    "corner": "8px",
-                    "fill": "",
-                    "ratio": 0.5,
-                }
-            },
-                
+            }
         }
 
     }
@@ -91,7 +82,7 @@ export default function LowCodeDatasetManageList(props) {
         ...rest
     }
 
-    // console.log('DefaultGridLayoutList = ', config)
+    console.log('LowCodeDatasetManageList = ', config)
 
 
     return (

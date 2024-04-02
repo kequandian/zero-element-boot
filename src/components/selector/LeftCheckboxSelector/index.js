@@ -54,19 +54,19 @@ export default function LeftCheckboxSelector(props) {
       padding: `${padding}`,
       backgroundColor: `${bgColor}`,
       borderRadius: '8px',
-      borderWidth: '2px',
-      borderStyle: 'solid',
-      borderColor: 'transparent',
+      // borderWidth: '2px',
+      // borderStyle: 'solid',
+      // borderColor: 'transparent',
       paddingLeft: '30px',
     }
 
 
-    if(_isSelected){
-      bgColor = activeColor;
-      // linewidth = activeLeftLine;
-      styles.borderColor = '#aab1dc';
-      styles.boxShadow = '0 0px 6px rgba(170, 177, 220, 1)';
-    }
+    // if(_isSelected){
+    //   bgColor = activeColor;
+    //   // linewidth = activeLeftLine;
+    //   styles.borderColor = '#aab1dc';
+    //   styles.boxShadow = '0 0px 6px rgba(170, 177, 220, 1)';
+    // }
 
     return (
         <div className={`i-LeftCheckboxSelector`}

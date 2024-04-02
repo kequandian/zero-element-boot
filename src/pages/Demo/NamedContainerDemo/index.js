@@ -202,7 +202,8 @@ export default function NamedContainerDemo(props) {
             saveApi: '/openapi/lc/module/add-dataset/(moduleId)',
             saveApiBody:{
                 datasetName: '(datasetName)'
-            }
+            },
+            containerHeight: 880
         }
 
         return (
