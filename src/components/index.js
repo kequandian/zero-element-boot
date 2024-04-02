@@ -15,7 +15,7 @@ import AutoLayout from './AutoLayout';
 import AutoComponent from './AutoComponent';
 
 import {APIContainer, Container, TabContainer, WxPage, TitledContainer, 
-  DataFlowContainer, DrawerContainer, AddNewContainer} from './container';
+  DataFlowContainer, DrawerContainer, AddNewContainer, ConfirmContainer} from './container';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -82,6 +82,7 @@ import CircularDeleteIndicator from './indicator/CircularDeleteIndicator';
 // selector
 import OutlineSelector from './selector/OutlineSelector';
 import CornerCheckboxSelector from './selector/CornerCheckboxSelector';
+import LeftCheckboxSelector from './selector/LeftCheckboxSelector';
 
 import { Image, CozeImage } from './presenter'
 
@@ -237,12 +238,14 @@ NameContainerSet({
   TitledContainer,
   DataFlowContainer,
   DrawerContainer,
-  AddNewContainer
+  AddNewContainer,
+  ConfirmContainer
 })
 
 NamedSelector({
   OutlineSelector,
-  CornerCheckboxSelector
+  CornerCheckboxSelector,
+  LeftCheckboxSelector
 })
 
 FormItemTypeSet({

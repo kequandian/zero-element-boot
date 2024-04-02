@@ -26,7 +26,7 @@ export default function TestPaletteManage(props) {
             "xname": "Cart",
             "props": {
                 "padding": "5px",
-                "margin": "6px",
+                "margin": "6px 0px",
                 "linewidth": 0,
                 "corner": "0px"
             }
@@ -69,14 +69,12 @@ export default function TestPaletteManage(props) {
     }
 
     function TestPalettemManage() {
-
-        const api = "/openapi/lc/palette/palette-name-list"
+        
+        const api = "/openapi/crud/lc_low_auto_module_dataset/module_dataset/dataset-name-list"
         const deleteApi = "/openapi/lc/palette?paletteName=(paletteName)"
 
         const config = {
             listApi: api,
-            addnewApi: '',
-            saveApi: '',
         }
 
         return (

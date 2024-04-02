@@ -37,24 +37,29 @@ export default function LowCodeDatasetManageList(props) {
         "cart": {
             "xname": "Cart",
             "props": {
-                "padding": "5px",
-                "margin": "6px",
+                "padding": "6px",
+                "margin": "6px 0px",
                 "linewidth": 0,
                 "corner": "0px"
             }
+        },
+        "selector":{
+            "xname": "LeftCheckboxSelector",
+            "props": {
+            },
         },
         "presenter": {
             "children": [
                 {
                     "xname": "GoogleAvatar",
                     "binding":{
-                        "paletteName": "name"
+                        "datasetName": "name"
                     }
                 },
                 {
                     "xname": "Text",
                     "binding":{
-                        "paletteName": "content"
+                        "datasetName": "content"
                     },
                     "props":{
                         "fontSize": "20px",

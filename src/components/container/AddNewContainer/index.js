@@ -142,7 +142,7 @@ export default function AddNewContainer(props) {
         })
     }
 
-    console.log('childList[1] = ', childList[1])
+    // console.log('childList[1] = ', childList[1])
 
     return (
 
@@ -150,7 +150,7 @@ export default function AddNewContainer(props) {
 
             {
 
-                !onFirstRefresh ? (
+                !onFirstRefresh && childList[0] ? (
                     React.isValidElement(childList[0]) ? (
                         React.cloneElement(childList[0], {
                             ...rest,
@@ -163,7 +163,7 @@ export default function AddNewContainer(props) {
             }
 
             {
-                !onSecondRefresh ? (
+                !onSecondRefresh && childList[1] ? (
                     React.isValidElement(childList[1]) ? (
                         React.cloneElement(childList[1], {
                             ...itemData,
