@@ -1,12 +1,13 @@
 import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
 import { HCenter } from '@/components/cart'
-import { DrawerContainer, WxPage, AddNewContainer } from '@/components/container';
+import { DrawerContainer, WxPage, AddNewContainer, ConfirmContainer } from '@/components/container';
 import { APIContainer, NamedLayout, NamedContainer, NamedCart } from '@/components';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
 import { PlainManageList, KeyValueManageList,  DefaultGridLayoutList } from '@/components/list';
 import { PaletteColor } from '@/components/presenter';
 import ColorForm from '@/components/formComponent/colorForm';
+import LowCodeDatasetManageList from '@/components/list/LowCodeDatasetManageList';
 
 
 const { Text, Subtitle } = require('@/components/presenter')
@@ -192,13 +193,33 @@ export default function NamedContainerDemo(props) {
         )
     }
 
+    function TestConfirmContainer () {
+
+        const moduleId = '330'
+
+        const config = {
+            listApi: '/openapi/crud/lc_low_auto_module_dataset/module_dataset/dataset-name-list',
+            saveApi: '/openapi/lc/module/add-dataset/(moduleId)',
+            saveApiBody:{
+                datasetName: '(datasetName)'
+            }
+        }
+
+        return (
+            <ConfirmContainer {...config} moduleId={moduleId}>
+                <LowCodeDatasetManageList/>
+            </ConfirmContainer>
+        )
+    }
+
     return (
         <ChakraProvider>
             {/* <TestPlainMenegeList/> */}
             {/* <TestKeyValueManageList/> */}
             {/* <TestDrawerContainer/> */}
             {/* <TestDefaultGridLayoutList/> */}
-            <TestAddNewContainer/>
+            {/* <TestAddNewContainer/> */}
+            <TestConfirmContainer/>
         </ChakraProvider>
 
     )

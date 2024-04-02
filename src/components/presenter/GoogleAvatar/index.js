@@ -12,6 +12,8 @@ export default function GoogleAvatar(props) {
 
     const { name, palette=[] } = props;
 
+    console.log('name = ', name)
+
     const keysMap = {
         "name": "color"
     }
@@ -56,6 +58,8 @@ export default function GoogleAvatar(props) {
     if(!paletteList || !paletteList.length === 0 || !palette || !palette.length === 0 ){
         return
     }
+
+    // console.log('paletteList = ', paletteList)
 
     //获取对应索引的颜色
     let color = getColorByIndex(paletteList || palette, index);
