@@ -122,8 +122,8 @@ export default function SelectList(props) {
                 {
                   React.isValidElement(Child) ?
                   React.cloneElement(Child, {
-                      ...item,
                       ...rest,
+                      ...item,
                       // ...layout,
                       // layout:layout,
                       // cart:cart,

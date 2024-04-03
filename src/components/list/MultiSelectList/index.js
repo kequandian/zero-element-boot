@@ -10,6 +10,7 @@ export default function SelectCheckboxList(props) {
     onOkClick,
     containerHeight= '',
     isScroll=false,
+    ...rest
   } = props;
   const [layoutRef, { getClassName }] = useLayout();
   const containerRef = useRef();
@@ -97,9 +98,10 @@ export default function SelectCheckboxList(props) {
               {
                 React.isValidElement(Child) ?
                 React.cloneElement(Child, {
+                    ...rest,
                     ...item,
-                    ...layout,
-                    layout:layout,
+                    // ...layout,
+                    // layout:layout,
                     // cart:cart,
                     key: i,
                     ref: layoutRef,

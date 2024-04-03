@@ -41,7 +41,8 @@ const map = {
 }
 
 let stylePropsData = {
-  background: '#f0f0f0',
+  // background: '#f0f0f0',
+  background: '#ffffff',
   padding: ' 0',
   margin: '20px',
   borderRadius: '10px',

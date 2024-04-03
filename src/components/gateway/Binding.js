@@ -57,7 +57,7 @@ function doBind(binding, data) {
           bindingData[bindingKey] = data[key];
         }
       }
-      // delete data[key]
+      delete data[key]
   })
 
   // console.log('bindingData == ', binding, bindingData, data)

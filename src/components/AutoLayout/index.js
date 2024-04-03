@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { NamedContainer, NamedLayout, NamedGateway, NamedCart, NextIndicator } from '@/components';
 
 import DefaultContainer from '@/components/container/Container'
+import OutlineCart from '@/components/cart/OutlineCart'
 import { useReplacing } from '../gateway/Replacing';
 
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
@@ -102,7 +103,7 @@ export default function (props) {
 //2024-02-22 新增 tag 属性，用于调试跟踪数据流
 
 function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('AutoLayout-未设置onItemClick点击事件') }, dataSource,
-  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, 
+  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, ___,
   // alternative, alternativeActive, onAlternativeBack,   // use container instead. e.g. AlternativeContainer
   ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
@@ -113,11 +114,10 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
     alternative: layoutAlternative,
   } = sugarLayout(layout) || {};
 
-  
   // show tag for AutoLayout, layoutTag first
   const _tag = layoutTag || tag || 'UNDEFINED-TAG'
   tagged(_tag, rest)
-  
+
   const _dataSource = (Array.isArray(dataSource) ? { items: dataSource } : dataSource) || (Array.isArray(mock) ? { items: mock } : mock) || {}
   //const data = dataSource || rest || {}
 
@@ -144,7 +144,9 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
       </_AlternativeBack>
     )
   }
-  
+
+  //最外层cart
+  const ___Cart = ___ ? OutlineCart : NextIndicator
 
   // Cart
   const _align_cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || undefined
@@ -177,7 +179,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   const _presenterName = presenter ? (typeof presenter === 'string' ? presenter : 'AutoLayout') : undefined
   const Presenter = (presenter && typeof presenter === 'string') ? (_allComponents[presenter] || tips(presenter)) : (isJsonObject(presenter) ? AutoLayout : undefined)
   const _presenter = (Presenter && isJsonObject(presenter)) ? { layout: { ...presenter, ...rest.___presenter } } : {}
-  
+
 
   // handle simple presenter, from {xname,props}
   if (!Presenter && !layoutChildren && !container) {
@@ -223,7 +225,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
 
     // <__Presenter/> 新增onItemClick 
     return (
-      <__NamedGateway tag={`${_tag}-__NamedGateway__[${_gatewayName}]`}  binding={_data_binding} filter={_data_filter} chain={_data_chain} gateway={_data_gateway} {..._rest}>
+      <__NamedGateway tag={`${_tag}-__NamedGateway__[${_gatewayName}]`} binding={_data_binding} filter={_data_filter} chain={_data_chain} gateway={_data_gateway} {..._rest}>
         <__NamedCart tag={`${_tag}-__NamedCart__`} {..._data_cart}>
           <__Presenter tag={`${_tag}-__Presenter__`} {..._t_presenter} allComponents={allComponents} onItemClick={onItemClick} />
         </__NamedCart>
@@ -236,80 +238,82 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   const __xname = xname || 'VStack'
 
   return layoutChildren ? (
-    <Container {..._container}  {..._dataSource} {...rest} 
-      navigation={navigation} 
-      tag={`${_tag}-children-container[${_containerName}]`} 
+    <Container ___={___} {..._container}  {..._dataSource} {...rest}
+      navigation={navigation}
+      tag={`${_tag}-children-container[${_containerName}]`}
     >
 
-        <NamedLayout xname={__xname} props={props} 
+      <NamedLayout xname={__xname} props={props}
         tag={`${_tag}-children-layout[${__xname}]`}>
 
 
-          {layoutChildren.map((child, i) => {
+        {layoutChildren.map((child, i) => {
 
-            // show tag to trace the data flow
-            const itemTag = `${_tag}-children[${i}]`
+          // show tag to trace the data flow
+          const itemTag = `${_tag}-children[${i}]`
 
-            const __Presenter = ((typeof child === 'string') ? _allComponents[child] : AutoLayout) || tips(presenter)
-            const __presenter = isJsonObject(child) ? { layout: { ...child } } : {}
+          const __Presenter = ((typeof child === 'string') ? _allComponents[child] : AutoLayout) || tips(presenter)
+          const __presenter = isJsonObject(child) ? { layout: { ...child } } : {}
 
-            return (
-              <_NamedGateway key={i} binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
-                tag={`${itemTag}-gateway[${_gatewayName}]`} >
-                  
-                  <_NamedCart {...__cart}
-                    onItemDeleted={onItemDeleted}
-                    onItemAdded={onItemAdded}
-                    onItemChanged={onItemChanged}
-                    onItemIndicated={onItemIndicated}
-                    tag={`${_tag}-cart[${_cartName}]`}
-                  >
-                    <__Presenter {...__presenter} allComponents={allComponents} key={i} 
-                      tag={`${itemTag}-presenter[${_presenterName}]`}
-                      onItemClick={onItemClick}
-                    />
-                
-                  </_NamedCart>
-              </_NamedGateway>
-            )
+          return (
+            <_NamedGateway key={i} binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
+              tag={`${itemTag}-gateway[${_gatewayName}]`} >
 
-          })}
-        </NamedLayout>
-    </Container>
-  ) : (
-    <Container {..._container}  {..._dataSource} {...rest} navigation={navigation}
-      useReplacing={_useReplacing}
-      tag={`${_tag}-presenter-container[${_containerName}]`}
-      onItemClick={onItemClick}
-    // onItemClick={onItemClick} 
-    // onItemDeleted={onItemDeleted}
-    // onItemAdded={onItemAdded}
-    // onItemChanged={onItemChanged}
-    // onItemIndicated={onItemIndicated}
-    >
-      <NamedLayout xname={__xname} props={props} 
-        tag={`${_tag}-standard-layout[${__xname}]`}>
-        <_NamedGateway binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
-          tag={`${_tag}-gateway[${_gatewayName}]`}>
-          <_NamedCart {...__cart}
-            onItemDeleted={onItemDeleted}
-            onItemAdded={onItemAdded}
-            onItemChanged={onItemChanged}
-            onItemIndicated={onItemIndicated}
-            tag={`${_tag}-cart[${_cartName}]`}
-          >
-            {
-              presenter ? <Presenter {..._presenter} allComponents={allComponents}
-                            onItemClick={onItemClick}
-                            tag={`${_tag}-presenter[${_presenterName}]`}
-              />
-                :
-                React.Children.toArray(children)
-            }
-          </_NamedCart>
-        </_NamedGateway>
+              <_NamedCart {...__cart}
+                onItemDeleted={onItemDeleted}
+                onItemAdded={onItemAdded}
+                onItemChanged={onItemChanged}
+                onItemIndicated={onItemIndicated}
+                tag={`${_tag}-cart[${_cartName}]`}
+              >
+                <__Presenter {...__presenter} allComponents={allComponents} key={i}
+                  tag={`${itemTag}-presenter[${_presenterName}]`}
+                  onItemClick={onItemClick}
+                />
+
+              </_NamedCart>
+            </_NamedGateway>
+          )
+
+        })}
       </NamedLayout>
     </Container>
+  ) : (
+    <___Cart lineColor='#007ACC'>
+      <Container ___={___} {..._container}  {..._dataSource} {...rest} navigation={navigation}
+        useReplacing={_useReplacing}
+        tag={`${_tag}-presenter-container[${_containerName}]`}
+        onItemClick={onItemClick}
+      // onItemClick={onItemClick} 
+      // onItemDeleted={onItemDeleted}
+      // onItemAdded={onItemAdded}
+      // onItemChanged={onItemChanged}
+      // onItemIndicated={onItemIndicated}
+      >
+        <NamedLayout xname={__xname} props={props}
+          tag={`${_tag}-standard-layout[${__xname}]`}>
+          <_NamedGateway binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
+            tag={`${_tag}-gateway[${_gatewayName}]`}>
+            <_NamedCart {...__cart}
+              onItemDeleted={onItemDeleted}
+              onItemAdded={onItemAdded}
+              onItemChanged={onItemChanged}
+              onItemIndicated={onItemIndicated}
+              tag={`${_tag}-cart[${_cartName}]`}
+            >
+              {
+                presenter ? <Presenter {..._presenter} allComponents={allComponents}
+                  onItemClick={onItemClick}
+                  tag={`${_tag}-presenter[${_presenterName}]`}
+                />
+                  :
+                  React.Children.toArray(children)
+              }
+            </_NamedCart>
+          </_NamedGateway>
+        </NamedLayout>
+      </Container>
+    </___Cart>
   )
 }
 

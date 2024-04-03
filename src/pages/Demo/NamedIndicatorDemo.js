@@ -19,6 +19,7 @@ export default function NamedIndicatorDemo(props) {
         __indicator:{
             xname:'TitleIndicator',
             props:{
+                scale: 1,
             },
             indicatorData:{
                 titleContent: '111111',
@@ -27,8 +28,8 @@ export default function NamedIndicatorDemo(props) {
     }
 
     return (
-        <div style={{ width: '350px', margin: "10px"}}>
-            <TitleIndicator indicatorData={{titleContent: '111111'}}>
+        <div style={{ width: '350px', height: '350px', background: '#ccc'}}>
+            <TitleIndicator indicatorData={{titleContent: 'Title'}}>
                 <Text content={"content"}/>
             </TitleIndicator>
         </div>
