@@ -4,10 +4,6 @@ import { AutoLayout, APIContainer } from '@/components';
 /**
  * @param {*} props 
  * @param {string}} listApi 列表api
- * @param {object}} converter listApi绑定数据
- * @param {string}} addApi 新增api
- * @param {object}} addApiBody 新增api提交数据
- * @param {string}} newValueBinding 输入的值， 作为新增api提交字段
  */
 
 export default function DefaultGridLayoutList(props) {

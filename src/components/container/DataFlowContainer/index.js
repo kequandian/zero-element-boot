@@ -12,7 +12,7 @@ const useLayout = require('@/components/hooks/useLayout');
  * @param   converter      item数据转换器，相当于 binding
  * 
  */
-export default function CoupleSideContainer(props) {
+export default function DataFlowContainer(props) {
     const { 
         children, 
         currentside, anotherside, converter, 
@@ -54,7 +54,7 @@ export default function CoupleSideContainer(props) {
         console.log('second child item click = ', item)
     }
 
-    // console.log('CoupleSideContainer configData= ', configData, rest)
+    console.log('CoupleSideContainer configData= ', configData, rest)
     
     function renderChildren(children) {
         return React.Children.map(children, (child, childIndex) => {
