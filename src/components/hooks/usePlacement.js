@@ -1,72 +1,84 @@
 import { useState, useEffect } from 'react';
 
-function usePlacement(targetRef, overlayRef, alignment = 'right', offsetX = 0, offsetY = 0) {
-  const [styles, setStyles] = useState({});
+const usePosition = (alignment = 'left') => {
+  const [position, setPosition] = useState({ top: 0, left: 0 });
 
   useEffect(() => {
     const updatePosition = () => {
-      if (targetRef.current && overlayRef.current) {
-        const targetRect = targetRef.current.getBoundingClientRect();
-        const overlayRect = overlayRef.current.getBoundingClientRect();
 
-        let top, left;
+      let style = {}
 
-        switch (alignment) {
-          case 'left':
-            top = targetRect.top + targetRect.height / 2 - overlayRect.height / 2;
-            left = targetRect.left - overlayRect.width - offsetX;
-            break;
-          case 'right':
-            top = targetRect.top + targetRect.height / 2 - overlayRect.height / 2;
-            left = targetRect.right + offsetX;
-            break;
-          case 'top':
-            top = targetRect.top - overlayRect.height - offsetY;
-            left = targetRect.left + targetRect.width / 2 - overlayRect.width / 2;
-            break;
-          case 'bottom':
-            top = targetRect.bottom + offsetY;
-            left = targetRect.left + targetRect.width / 2 - overlayRect.width / 2;
-            break;
-          case 'topleft':
-            top = targetRect.top - offsetY;
-            left = targetRect.left - offsetX;
-            break;
-          case 'topright':
-            top = targetRect.top - offsetY;
-            left = targetRect.right - overlayRect.width + offsetX;
-            break;
-          case 'bottomleft':
-            top = targetRect.bottom - overlayRect.height + offsetY;
-            left = targetRect.left - offsetX;
-            break;
-          case 'bottomright':
-            top = targetRect.bottom - overlayRect.height + offsetY;
-            left = targetRect.right - overlayRect.width + offsetX;
-            break;
-          default:
-            top = targetRect.top + targetRect.height / 2 - overlayRect.height / 2;
-            left = targetRect.right + offsetX;
-        }
+      switch (alignment) {
 
-        setStyles({
-          position: 'absolute',
-          top: `${top}px`,
-          left: `${left}px`,
-          zIndex: 1000, // Adjust as needed
-        });
+        case 'top':
+          style = {
+            top: 0,
+            left: '50%',
+            transform: 'translate(-50%)'
+          }
+          break;
+        case 'right':
+          style = {
+            top: ' 50%',
+            right: 0,
+            transform: 'translateY(-50%)'
+          }
+          break;
+        case 'left':
+          style = {
+            top: ' 50%',
+            left: 0,
+            transform: 'translateY(-50%)'
+          }
+          break;
+        case 'bottom':
+          style = {
+            bottom: 0,
+            left: '50%',
+            transform: 'translate(-50%)'
+          }
+          break;
+        case 'topLeft':
+          style = {
+            top: 0,
+            left: 0
+          };
+          break;
+        case 'topRight':
+          style = {
+            top: 0,
+            right: 0,
+          }
+          break;
+        case 'bottomLeft':
+          style = {
+            bottom: 0,
+            left: 0,
+          }
+          break;
+        case 'bottomRight':
+          style = {
+            bottom: 0,
+            right: 0,
+          }
+          break;
+        default:
+          break;
       }
+
+      setPosition({
+        position: 'absolute',
+        ...style,
+      });
     };
 
     updatePosition();
 
     window.addEventListener('resize', updatePosition);
-    return () => {
-      window.removeEventListener('resize', updatePosition);
-    };
-  }, [targetRef, overlayRef, alignment, offsetX, offsetY]);
+    return () => window.removeEventListener('resize', updatePosition);
+  }, [alignment]);
 
-  return styles;
-}
+  return position;
+};
 
-export default usePlacement;
+export default usePosition;
