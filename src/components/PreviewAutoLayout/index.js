@@ -138,7 +138,7 @@ export default function PreAutoLayout (props) {
       setAlternativeActive(false)
   }
   
-  console.log('=== PreAutoLayout config == ', config)
+  // console.log('=== PreAutoLayout config == ', JSON.stringify(config))
 
   return (
     layoutJson && JSON.stringify(layoutJson) != '{}' ? (

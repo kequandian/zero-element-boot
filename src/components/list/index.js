@@ -12,6 +12,7 @@ import PlainManageList from '../list/PlainManageList';
 import KeyValueManageList from '../list/KeyValueManageList';
 import QueryManageList from '../list/QueryManageList';
 import DefaultGridLayoutList from '../list/DefaultGridLayoutList';
+import LowCodeDatasetManageList from '../list/LowCodeDatasetManageList';
 
 /**
  * List 属于抽象组件类型 container,容器 
@@ -30,5 +31,6 @@ export {
   PlainManageList,
   KeyValueManageList,
   QueryManageList,
-  DefaultGridLayoutList
+  DefaultGridLayoutList,
+  LowCodeDatasetManageList
 }

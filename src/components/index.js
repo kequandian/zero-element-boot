@@ -15,7 +15,7 @@ import AutoLayout from './AutoLayout';
 import AutoComponent from './AutoComponent';
 
 import {APIContainer, Container, TabContainer, WxPage, TitledContainer, 
-  DataFlowContainer, DrawerContainer, AddNewContainer} from './container';
+  DataFlowContainer, DrawerContainer, AddNewContainer, ConfirmContainer} from './container';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -61,6 +61,7 @@ import PageCenter from './cart/PageCenter';
 // import Page from './cart/deprecated/Page';
 import Box from './cart/Box';
 import SquareCart from './cart/SquareCart'
+import LightingCart from './cart/LightingCart';
 
 //indicator
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
@@ -81,6 +82,7 @@ import CircularDeleteIndicator from './indicator/CircularDeleteIndicator';
 // selector
 import OutlineSelector from './selector/OutlineSelector';
 import CornerCheckboxSelector from './selector/CornerCheckboxSelector';
+import LeftCheckboxSelector from './selector/LeftCheckboxSelector';
 
 import { Image, CozeImage } from './presenter'
 
@@ -95,7 +97,7 @@ import { Image, CozeImage } from './presenter'
 
 import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle,
   Rectangle, 
-  Circle, Description, PaletteColor, SquareAddNewButton,
+  Circle, Description, PaletteColor, SquareAddNewButton,GoogleAvatar,
 } from '@/components/presenter';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
@@ -117,6 +119,7 @@ import {
   KeyValueManageList,
   QueryManageList,
   DefaultGridLayoutList,
+  LowCodeDatasetManageList,
 } from './list';
 
 // Form 组件
@@ -161,7 +164,8 @@ NamedCartSet({
   // Round: RoundCart,
   NamedCart,
   Box,
-  SquareCart
+  SquareCart,
+  LightingCart
 })
 
 NamedIndicatorSet({
@@ -203,7 +207,8 @@ NamedPresenterSet({
   Description,
   PreviewAutoLayout,
   PaletteColor,
-  SquareAddNewButton
+  SquareAddNewButton,
+  GoogleAvatar
 })
 
 NamedListSet({
@@ -221,7 +226,8 @@ NamedListSet({
   PlainManageList,
   KeyValueManageList,
   QueryManageList,
-  DefaultGridLayoutList
+  DefaultGridLayoutList,
+  LowCodeDatasetManageList
 })
 
 NameContainerSet({
@@ -232,12 +238,14 @@ NameContainerSet({
   TitledContainer,
   DataFlowContainer,
   DrawerContainer,
-  AddNewContainer
+  AddNewContainer,
+  ConfirmContainer
 })
 
 NamedSelector({
   OutlineSelector,
-  CornerCheckboxSelector
+  CornerCheckboxSelector,
+  LeftCheckboxSelector
 })
 
 FormItemTypeSet({

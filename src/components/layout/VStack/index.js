@@ -15,7 +15,7 @@ export default forwardRef(function VStack(props, ref) {
 
     return (
         //  <_Container>
-            <Flexbox direction='column' spacing={spacing} {...data} ref={ref}>
+            <Flexbox direction='column' flexFlow=" " spacing={spacing} {...data} ref={ref}>
                 {children}
             </Flexbox>
         //  </_Container>

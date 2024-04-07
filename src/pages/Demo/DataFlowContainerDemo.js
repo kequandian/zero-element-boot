@@ -23,7 +23,7 @@ export default function Index(props) {
     }
 
 
-    const moduleId = '320'
+    const moduleId = '339'
     const componentId = '284'
     const converter = {
         // assembledAs:"assembledAs"
@@ -73,48 +73,48 @@ export default function Index(props) {
     // }
 
     //binding组合页面
-    // const layoutJson = {
-    //     children: [
-    //         {
-    //             xname: 'PreviewAutoLayout',
-    //             props: {
-    //                 layoutName:"BindingManageList"
-    //             }
-    //         },
-    //         {
-    //             xname: 'PreviewAutoLayout',
-    //             props: {
-    //                 layoutName:"ParentParameterListAutoLayout",
-    //             }
-    //         },
-    //     ],
-    //     xname:'HStack',
-    //     props:{
-    //         flexFlow: "no-wrap"
-    //     },
-    //     container: "DataFlowContainer"
-    // }
-
-    //组件类型列表+详情组合页面
     const layoutJson = {
         children: [
             {
                 xname: 'PreviewAutoLayout',
                 props: {
-                    layoutName:"ComponentTypeList"
+                    layoutName:"BindingManageList"
                 }
             },
             {
                 xname: 'PreviewAutoLayout',
                 props: {
+                    layoutName:"ParentParameterListAutoLayout",
                 }
             },
         ],
-        xname:'VStack',
+        xname:'HStack',
         props:{
+            flexFlow: "no-wrap"
         },
         container: "DataFlowContainer"
     }
+
+    //组件类型列表+详情组合页面
+    // const layoutJson = {
+    //     children: [
+    //         {
+    //             xname: 'PreviewAutoLayout',
+    //             props: {
+    //                 layoutName:"ComponentTypeList"
+    //             }
+    //         },
+    //         {
+    //             xname: 'PreviewAutoLayout',
+    //             props: {
+    //             }
+    //         },
+    //     ],
+    //     xname:'VStack',
+    //     props:{
+    //     },
+    //     container: "DataFlowContainer"
+    // }
 
 
     return (
@@ -126,7 +126,7 @@ export default function Index(props) {
 
             <AutoLayout layout={layoutJson} 
                 moduleId={moduleId} converter={converter} 
-                componentId={componentId}
+                // componentId={componentId}
             />
 
             {/* <DataFlowContainer moduleId={moduleId} converter={converter}>

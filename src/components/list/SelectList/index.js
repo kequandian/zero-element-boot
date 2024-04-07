@@ -29,6 +29,7 @@ export default function SelectList(props) {
     containerHeight= '',
     isScroll=false,
     btnPisition='top',
+    selectBtnRatio=0.5,
     ...rest
   } = props;
 
@@ -121,8 +122,8 @@ export default function SelectList(props) {
                 {
                   React.isValidElement(Child) ?
                   React.cloneElement(Child, {
-                      ...item,
                       ...rest,
+                      ...item,
                       // ...layout,
                       // layout:layout,
                       // cart:cart,
@@ -142,7 +143,7 @@ export default function SelectList(props) {
                 //   <div className='selectListaddBtn' onClick={() => onAddNewClick()}>
                 //   </div>
                 // </div>
-                <SquareAddNew onAddNew={onAddNewClick} ratio={0.5} />
+                <SquareAddNew onAddNew={onAddNewClick} ratio={selectBtnRatio} />
               ) : <></>
             }
 

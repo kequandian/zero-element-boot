@@ -6,6 +6,7 @@ import TitledContainer from './TitledContainer';
 import DataFlowContainer from './DataFlowContainer';
 import DrawerContainer from './DrawerContainer';
 import AddNewContainer from './AddNewContainer';
+import ConfirmContainer from './ConfirmContainer';
 
 // import PlainList from '../list/PlainList';
 // import SelectList from '../list/SelectList';
@@ -24,6 +25,7 @@ export {
     DataFlowContainer,
     DrawerContainer,
     AddNewContainer,
+    ConfirmContainer
         // list type of container
     // PlainList,
     // MultiSelectList,
