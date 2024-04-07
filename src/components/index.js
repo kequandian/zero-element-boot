@@ -78,6 +78,7 @@ import LabelIndicator from './indicator/LabelIndicator';
 import TipsIndicator from './indicator/TipsIndicator';
 import TitleIndicator from './indicator/TitleIndicator';
 import CircularDeleteIndicator from './indicator/CircularDeleteIndicator';
+import PlacementIndicator from './indicator/PlacementIndicator'
 
 // selector
 import OutlineSelector from './selector/OutlineSelector';
@@ -187,7 +188,8 @@ NamedIndicatorSet({
   LabelIndicator,
   TipsIndicator,
   TitleIndicator,
-  CircularDeleteIndicator
+  CircularDeleteIndicator,
+  PlacementIndicator
 })
 
 NamedPresenterSet({
