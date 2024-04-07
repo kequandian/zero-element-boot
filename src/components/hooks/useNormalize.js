@@ -1,3 +1,8 @@
+// this hook used as a data gateway, to normalize the source data to as 
+// a key/value mapping.  
+// given the keysMap, use the key to index the source data, get its value as the new key,
+// use the value to index the source data, get its value as the new value
+
 const useNormalize = (rawData, keysMap) => {
     if (rawData && keysMap) {
         const ls = rawData.records || (Array.isArray(rawData) && rawData)
