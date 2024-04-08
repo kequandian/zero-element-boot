@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const usePosition = (alignment = 'left') => {
+const usePosition = (alignment = 'left', offsetx = 0, offsety = 0) => {
   const [position, setPosition] = useState({ top: 0, left: 0 });
 
   useEffect(() => {
@@ -12,54 +12,54 @@ const usePosition = (alignment = 'left') => {
 
         case 'top':
           style = {
-            top: 0,
-            left: '50%',
-            transform: 'translate(-50%)'
+            top: `${offsety || 0}px`,
+            left: `calc(50% + ${offsetx}px)`,
+            transform: `translateX(-50%)`,
           }
           break;
         case 'right':
           style = {
-            top: ' 50%',
-            right: 0,
-            transform: 'translateY(-50%)'
+            top: `calc(50% + ${offsety}px)`,
+            right: `${offsetx || 0}px`,
+            transform: `translateY(-50%)`,
           }
           break;
         case 'left':
           style = {
-            top: ' 50%',
-            left: 0,
-            transform: 'translateY(-50%)'
+            top: `calc(50% + ${offsety}px)`,
+            left: `${offsetx || 0}px`,
+            transform: `translateY(-50%)`,
           }
           break;
         case 'bottom':
           style = {
-            bottom: 0,
-            left: '50%',
-            transform: 'translate(-50%)'
+            bottom: `${offsety || 0}px`,
+            left: `calc(50% + ${offsetx}px)`,
+            transform: `translateX(-50%)`,
           }
           break;
         case 'topLeft':
           style = {
-            top: 0,
-            left: 0
+            top: `${offsety || 0}px`,
+            left: `${offsetx || 0}px`
           };
           break;
         case 'topRight':
           style = {
-            top: 0,
-            right: 0,
+            top: `${offsety || 0}px`,
+            right:`${offsetx || 0}px`,
           }
           break;
         case 'bottomLeft':
           style = {
-            bottom: 0,
-            left: 0,
+            bottom: `${offsety || 0}px`,
+            left: `${offsetx || 0}px`,
           }
           break;
         case 'bottomRight':
           style = {
-            bottom: 0,
-            right: 0,
+            bottom: `${offsety || 0}px`,
+            right: `${offsetx || 0}px`,
           }
           break;
         default:

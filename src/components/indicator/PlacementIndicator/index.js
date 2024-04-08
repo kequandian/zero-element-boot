@@ -1,16 +1,23 @@
 import React from 'react';
-import configMap from './map'
+import configMap from './map';
+import NextIndicator from '@/components/NextIndicator';
+import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorConfig';
+
 
 export default function PlacementIndicaor  (props) {
 
-    const { children, alignment="left", indicatorData={} } = props
+    const { children, Indicator, indicator, alignment="left", offset=0, indicatorData={} } = props
+
+    const _Indicator = Indicator || (indicator ? DefaultIndicatorSet[indicator.xname] : NextIndicator)
 
     const paramStyle = {
-        display: 'flex',
-        ...configMap[alignment].paramStyle
+        display: 'inline-flex',
+        ...configMap[alignment].paramStyle,
+        gap: `${offset || 0}px`
     };
 
-    const boxA = {
+    const boxStyle = {
+        flex:1,
         display: 'flex',
         ...configMap[alignment].childStyle
     }
@@ -18,8 +25,8 @@ export default function PlacementIndicaor  (props) {
     return (
 
         <div style={{ ...paramStyle }}>
-            <div style={boxA}>
-                <div style={{ width: '20px', height: '20px', background: 'red' }}></div>
+            <div style={boxStyle}>
+                <_Indicator />
             </div>
             {
                 React.Children.map(children, child => (

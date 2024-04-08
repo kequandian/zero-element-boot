@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ChakraProvider, HStack, Button } from '@chakra-ui/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ChakraProvider, HStack, Grid, Button } from '@chakra-ui/react';
 import usePlacement from '@/components/hooks/usePlacement';
 
 const bottonList = [
@@ -17,7 +17,9 @@ export default function TestHooks() {
 
     const BuiltInPosition = () => {
 
-        const [ alignment, setAlignment ] = useState('left')
+        const [alignment, setAlignment] = useState('left')
+        const targetRef = useRef(null);
+        const overlayRef = useRef(null);
 
         const paramStyle = {
             width: '200px',
@@ -29,8 +31,11 @@ export default function TestHooks() {
             alignItems: 'center',
             marginTop: '10px'
         };
-    
-        const styles = usePlacement(alignment);
+
+        function hanleStyles (alignment) {
+            const styles = usePlacement(alignment);
+            return styles
+        }
 
         return (
             <div style={{
@@ -38,7 +43,7 @@ export default function TestHooks() {
                 alignItems: 'center',
                 flexDirection: 'column',
             }}>
-                <HStack spacing={4}>
+                {/* <HStack spacing={4}>
                     {bottonList.map((item, index) => (
                         <Button
                             key={index}
@@ -49,9 +54,21 @@ export default function TestHooks() {
                             {item}
                         </Button>
                     ))}
-                </HStack>
-                
-                <div style={paramStyle}>
+                </HStack> */}
+
+                <Grid templateColumns='repeat(4, 1fr)' gap={6}>
+                    {bottonList.map((item, index) => (
+                        <div ref={targetRef} key={index} style={paramStyle}>
+                            <div ref={overlayRef} style={hanleStyles(item)}>
+                                <div style={{ width: '20px', height: '20px', background: 'red' }}>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    ))}
+                </Grid>
+
+                {/* <div style={paramStyle}>
                     <div style={styles}>
                     <div style={{ width: '20px', height: '20px', background: 'red' }}></div>
                     </div>
@@ -59,14 +76,14 @@ export default function TestHooks() {
                         width: '100px', height: '100px', background: 'black',
                     }}>
                     </div>
-                </div>
+                </div> */}
             </div>
         )
     }
 
     return (
         <ChakraProvider>
-            <BuiltInPosition/>
+            <BuiltInPosition />
         </ChakraProvider>
     );
 }
