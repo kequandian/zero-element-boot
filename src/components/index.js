@@ -29,14 +29,17 @@ import { set as NamedSelector } from '@/components/config/NamedSelectorConfig';
 import { set as NameContainerSet } from '@/components/config/NamedContainerConfig';
 
 //layout
-import Flexbox from '@/components/layout/Flexbox';
-import Itembox from '@/components/layout/Itembox';
-import Gridbox from '@/components/layout/Gridbox';
-import Wrap from '@/components/layout/Wrap';
-import Stack from '@/components/layout/Stack';
-import VStack from '@/components/layout/VStack';
-import Round from '@/components/layout/Round';
-import HStack from '@/components/layout/HStack';
+// import Flexbox from '@/components/layout/Flexbox';
+// import Itembox from '@/components/layout/Itembox';
+// import Gridbox from '@/components/layout/Gridbox';
+// import Wrap from '@/components/layout/Wrap';
+// import Stack from '@/components/layout/Stack';
+// import VStack from '@/components/layout/VStack';
+// import Round from '@/components/layout/Round';
+// import HStack from '@/components/layout/HStack';
+
+import { Flexbox, Itembox, Gridbox, Wrap, Stack, VStack, Round, 
+  HStack, Center, HCenter as HCenterLayout, VCenter, Between } from '@/components/layout'
 
 //gateway
 import Binding from '@/components/gateway/Binding';
@@ -134,7 +137,11 @@ NamedLayoutSet({
   Stack,
   VStack,
   Round,
-  HStack
+  HStack,
+  Center,
+  HCenterLayout,
+  VCenter,
+  Between
 })
 
 

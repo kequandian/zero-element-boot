@@ -10,14 +10,14 @@ import NextIndicator from '@/components/NextIndicator';
  */
 
 export default forwardRef(function VStack(props, ref) {
-    const { children,  __, spacing, ...data } = props;
+    const { children,  __, direction,  spacing, ...data } = props;
     const _Container = __ ? NextIndicator : Container
 
     return (
-        //  <_Container>
-            <Flexbox direction='column' flexFlow=" " spacing={spacing} {...data} ref={ref}>
+         <_Container>
+            <Flexbox align={direction} direction='column' flexFlow=" " spacing={spacing} {...data} ref={ref}>
                 {children}
             </Flexbox>
-        //  </_Container>
+         </_Container>
     )
 })

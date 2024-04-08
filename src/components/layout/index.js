@@ -8,6 +8,10 @@ import Stack from './Stack';
 import VStack from './VStack';
 import Round from "./Round";
 import HStack from './HStack';
+import Center from './Center';
+import HCenter from './HCenter';
+import VCenter from './VCenter';
+import Between from './Between';
 
 export {
   Flexbox,
@@ -18,5 +22,9 @@ export {
   Stack,
   VStack,
   Round,
-  HStack
+  HStack,
+  HCenter,
+  VCenter,
+  Center,
+  Between
 }
