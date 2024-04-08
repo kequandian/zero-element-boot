@@ -180,7 +180,6 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   const Presenter = (presenter && typeof presenter === 'string') ? (_allComponents[presenter] || tips(presenter)) : (isJsonObject(presenter) ? AutoLayout : undefined)
   const _presenter = (Presenter && isJsonObject(presenter)) ? { layout: { ...presenter, ...rest.___presenter } } : {}
 
-
   // handle simple presenter, from {xname,props}
   if (!Presenter && !layoutChildren && !container) {
     // support component from data, not from layout, with dash _  for xname,props,cart,binding,gateway,presenter
@@ -238,46 +237,49 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   const __xname = xname || 'VStack'
 
   return layoutChildren ? (
-    <Container ___={___} {..._container}  {..._dataSource} {...rest}
-      navigation={navigation}
-      tag={`${_tag}-children-container[${_containerName}]`}
-    >
+    
+    <___Cart lineColor='#007ACC'>
+      <Container ___={___} {..._container}  {..._dataSource} {...rest}
+        navigation={navigation}
+        tag={`${_tag}-children-container[${_containerName}]`}
+      >
 
-      <NamedLayout xname={__xname} props={props}
-        tag={`${_tag}-children-layout[${__xname}]`}>
+        <NamedLayout xname={__xname} props={props}
+          tag={`${_tag}-children-layout[${__xname}]`}>
 
 
-        {layoutChildren.map((child, i) => {
+          {layoutChildren.map((child, i) => {
 
-          // show tag to trace the data flow
-          const itemTag = `${_tag}-children[${i}]`
+            // show tag to trace the data flow
+            const itemTag = `${_tag}-children[${i}]`
 
-          const __Presenter = ((typeof child === 'string') ? _allComponents[child] : AutoLayout) || tips(presenter)
-          const __presenter = isJsonObject(child) ? { layout: { ...child } } : {}
+            const __Presenter = ((typeof child === 'string') ? _allComponents[child] : AutoLayout) || tips(presenter)
+            const __presenter = isJsonObject(child) ? { layout: { ...child } } : {}
 
-          return (
-            <_NamedGateway key={i} binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
-              tag={`${itemTag}-gateway[${_gatewayName}]`} >
+            return (
+              <_NamedGateway key={i} binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
+                tag={`${itemTag}-gateway[${_gatewayName}]`} >
 
-              <_NamedCart {...__cart}
-                onItemDeleted={onItemDeleted}
-                onItemAdded={onItemAdded}
-                onItemChanged={onItemChanged}
-                onItemIndicated={onItemIndicated}
-                tag={`${_tag}-cart[${_cartName}]`}
-              >
-                <__Presenter {...__presenter} allComponents={allComponents} key={i}
-                  tag={`${itemTag}-presenter[${_presenterName}]`}
-                  onItemClick={onItemClick}
-                />
+                <_NamedCart {...__cart}
+                  onItemDeleted={onItemDeleted}
+                  onItemAdded={onItemAdded}
+                  onItemChanged={onItemChanged}
+                  onItemIndicated={onItemIndicated}
+                  tag={`${_tag}-cart[${_cartName}]`}
+                >
+                  <__Presenter {...__presenter} allComponents={allComponents} key={i}
+                    tag={`${itemTag}-presenter[${_presenterName}]`}
+                    onItemClick={onItemClick}
+                  />
 
-              </_NamedCart>
-            </_NamedGateway>
-          )
+                </_NamedCart>
+              </_NamedGateway>
+            )
 
-        })}
-      </NamedLayout>
-    </Container>
+          })}
+        </NamedLayout>
+      </Container>
+    </___Cart>
   ) : (
     <___Cart lineColor='#007ACC'>
       <Container ___={___} {..._container}  {..._dataSource} {...rest} navigation={navigation}

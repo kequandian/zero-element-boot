@@ -18,44 +18,42 @@ export default function TestAutoLayout(props) {
                     "xname": "SelectList"
                 },
                 "presenter": {
-                    presenter:{
-                        "children": [
-                            {
-                                "binding": {
-                                    "imgUrl": "url"
-                                },
-                                "xname": "CozeImage",
-                                "props": {
-                                    "w": "36",
-                                    "h": "36"
-                                }
+                    "children": [
+                        {
+                            "binding": {
+                                "imgUrl": "url"
                             },
-                            {
-                                "children": [
-                                    {
-                                        "binding": {
-                                            "title": "content"
-                                        },
-                                        "xname": "Title"
-                                    },
-                                    {
-                                        "binding": {
-                                            "subtitle": "content"
-                                        },
-                                        "xname": "Subtitle"
-                                    }
-                                ],
-                                "binding": {
-                                    "address": "subtitle",
-                                    "name": "title"
-                                }
+                            "xname": "CozeImage",
+                            "props": {
+                                "w": "36",
+                                "h": "36"
                             }
-                        ],
-                        "xname": "HStack",
-                        "props": {
-                            "spacing": "6",
-                            "flexFlow": "no-wrap"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "binding": {
+                                        "title": "content"
+                                    },
+                                    "xname": "Title"
+                                },
+                                {
+                                    "binding": {
+                                        "subtitle": "content"
+                                    },
+                                    "xname": "Subtitle"
+                                }
+                            ],
+                            "binding": {
+                                "address": "subtitle",
+                                "name": "title"
+                            }
                         }
+                    ],
+                    "xname": "HStack",
+                    "props": {
+                        "spacing": "6",
+                        "flexFlow": "no-wrap"
                     }
                     
                 },

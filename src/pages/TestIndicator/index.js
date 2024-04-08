@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ChakraProvider, HStack, Button } from '@chakra-ui/react';
+import { ChakraProvider, HStack, Button, Grid } from '@chakra-ui/react';
 import usePlacement from '@/components/hooks/usePlacement';
-import PlacementIndicator from '@/components/indicator/PlacementIndicator'
-require('./index.less')
+import PlacementIndicator from '@/components/indicator/PlacementIndicator';
+import SelectedIcon from '@/assets/selected-icon.svg';
 
 const bottonList = [
     'top',
@@ -196,7 +196,6 @@ export default function TestIndicator() {
 
     const TestPlacementIndicator = () => {
 
-        
         const [alignment, setAlignment] = useState('left')
 
         const boxB = {
@@ -204,6 +203,13 @@ export default function TestIndicator() {
             height: '100px',
             background: 'black'
         }
+
+        const _indicator = () => {
+            return (
+                <img src={SelectedIcon} />
+            )
+        }
+
         return (
 
             <div style={{
@@ -212,7 +218,7 @@ export default function TestIndicator() {
                 flexDirection: 'column',
             }}>
 
-                <HStack spacing={4}>
+                {/* <HStack spacing={4} marginBottom={'20px'}>
                     {bottonList.map((item, index) => (
                         <Button
                             key={index}
@@ -224,9 +230,20 @@ export default function TestIndicator() {
                         </Button>
                     ))}
                 </HStack>
-                <PlacementIndicator alignment={alignment}>
+                <PlacementIndicator alignment={alignment} offset={6}>
                     <div style={boxB}></div>
-                </PlacementIndicator>
+                </PlacementIndicator> */}
+
+                <HStack spacing={10}>
+                    
+                    {bottonList.map((item, index) => (
+                        <PlacementIndicator key={index}  Indicator={_indicator} alignment={item} offset={0}>
+                            <div style={boxB}></div>
+                        </PlacementIndicator>
+                    ))}
+
+                </HStack>
+                
             </div>
         )
     }
