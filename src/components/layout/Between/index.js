@@ -4,7 +4,7 @@ import Flexbox from '@/components/layout/Flexbox';
 import Container from '@/components/container/Container';
 import NextIndicator from '@/components/NextIndicator';
 
-export default forwardRef(function Round(props, ref) {
+export default forwardRef(function Between(props, ref) {
 
   const {direction = 'row' } = props
 
@@ -13,7 +13,7 @@ export default forwardRef(function Round(props, ref) {
 
   return (
     <_Container>
-        <Flexbox align='around' direction={direction} flexWidth='auto-full' {...data}>
+        <Flexbox align='between' direction={direction} flexWidth='auto-full' {...data}>
           {children}
         </Flexbox>
     </_Container>

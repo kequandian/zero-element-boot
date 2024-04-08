@@ -26,11 +26,12 @@ export default forwardRef(function Flexbox(props, ref) {
 
   const { children, align = 'start', direction = '', flexFlow = 'row-wrap', justify = {}, spacing = 0, isLastItem, Seperator, flexWidth = '' } = props;
 
-  const width100 = align == 'between' || align.indexOf("between") != -1 ? 'width100' : '';
+  const width100 = (align == 'between' || align.indexOf("between") != -1)  ? 'width100' : '';
+  const height100 = direction === 'column' ? 'height100' : ''
   
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `l-FlexBox ${align} ${direction} ${flexFlow} ${width100} ${flexWidth}`;
+      return `l-FlexBox ${align} ${direction} ${flexFlow} ${width100} ${height100} ${flexWidth}`;
     }
   }));
 

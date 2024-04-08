@@ -4,7 +4,7 @@ import useLowCodePalette from '@/components/hooks/useLowCodePalette';
 
 /**
  * 
- * @param {string} name 显示的名称 
+ * @param {string or number} name 显示的名称 或 通过数字索引获取
  * @param {array} palette 色板数组 
  */
 
@@ -12,22 +12,25 @@ export default function GoogleAvatar(props) {
 
     const { name, palette=[] } = props;
 
-    console.log('name = ', name)
-
     const keysMap = {
         "name": "color"
     }
 
     //获取name的第一个字母
     function getFirstLetter(name) {
-        return name.charAt(0);
+        return /[a-zA-Z]/.test(name) ? name.charAt(0) : /\d/.test(name) ? parseInt(name) : 0;
     }
 
     //将字母转换为索引
     function letterToIndex(letter) {
-        letter = letter.toLowerCase();
-        const index = letter.charCodeAt(0) - 'a'.charCodeAt(0);
-        return index;
+        if(/[a-zA-Z]/.test(name)){
+            letter = letter.toLowerCase();
+            const index = letter.charCodeAt(0) - 'a'.charCodeAt(0);
+            return index;
+        }else{
+            return letter
+        }
+        
     }
 
     //根据索引获取对应颜色
@@ -78,7 +81,7 @@ export default function GoogleAvatar(props) {
                 fontWeight: 'bold',
             }}
         >
-            {firstLetter && firstLetter.toUpperCase()}
+            {firstLetter && typeof firstLetter === 'string'  &&  firstLetter.toUpperCase()}
         </div>
     )
 

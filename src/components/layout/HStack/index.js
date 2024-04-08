@@ -14,10 +14,10 @@ export default forwardRef(function HStack(props, ref) {
     const _Container = __ ? NextIndicator : Container
 
     return (
-        //  <_Container>
-            <Flexbox direction='row' spacing={spacing} {...data} ref={ref}>
+         <_Container>
+            <Flexbox direction='row' flexWidth='auto-full' spacing={spacing} {...data} ref={ref}>
                 {children}
             </Flexbox>
-        //  </_Container>
+          </_Container>
     )
 })

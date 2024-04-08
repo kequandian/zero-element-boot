@@ -5,19 +5,20 @@ require('./index.less');
 export default forwardRef(function OutlineCart(props, ref) {
 
   /**
-   * fill         背景
-   * corner       圆角
-   * stroke       边框
-   * linewidth    边框线框
-   * margin       边距
-   * padding      内距
+   * color 颜色，背景
    * 
-   * shadow       0 0px 10px rgba(0, 0, 0, 0.15)
+   * fill  dash tag 为状态值，
+   * fill 控制背景色 字体为黑色或白色，如fill为false 字体等于color的值
+   * dash 控制线框为虚线
+   * tag 控制背景为透明 默认透明背景色
+   * 
+   * shape （box， round,circle）
+   * corner 参数只有 shape = box 才生效
+   * 
    */
-
+// fill = true, dash = true， tag = true
   const {
-    children, fill = '#ffffff', corner = '4px', stroke = 'solid', linewidth = '1px',
-    margin = '0px', padding = '8px', shadow = '', lineColor = 'transparent',  } = props;
+    children, color= 'transparent', tag, dash,  shape, fill, linewidth = '1px' } = props;
 
   const [onHover, setOnHover] = useState(false);
 
@@ -34,11 +35,11 @@ export default forwardRef(function OutlineCart(props, ref) {
 
   let bgColor = `${fill}ff`;
   let showShadow = '';
-  let newLineColor = `${lineColor}`;
+  let newLineColor = `${color}`;
   if (onHover) {
     // bgColor = `${fill}80`;
     // showShadow = shadow;
-    newLineColor = lineColor
+    newLineColor = color
   } else {
     // bgColor = `${fill}ff`;
     // showShadow = '';
@@ -47,8 +48,6 @@ export default forwardRef(function OutlineCart(props, ref) {
 
   return React.Children.map(children, child => {
     return <div className='c-OutlineCart-item' style={{
-      margin: `${margin}`,
-      padding: `${padding}`,
       borderRadius: `${corner}`,
       background: `${bgColor}`,
       borderStyle: `${stroke}`,
