@@ -254,8 +254,33 @@ export default function TestIndicator() {
 
     const TestMultiActionIndicator = () => {
 
+        const _actions = [
+            {
+                DeleteAction:{
+                    indicator: {
+                        xname: 'Delete',
+                    },
+                    action: '/api',
+                    onItemDeleted:()=>{
+                        console.log('onItemDeleted delete')
+                    }
+                }
+            },
+            {
+                DownloadAction:{
+                    indicator: {
+                        xname: 'Download',
+                    }, 
+                    action: '/api',
+                    onItemDownloaded:()=>{
+                        console.log('download')
+                    }
+                }
+            }
+        ]
+
         return (
-            <MultiActionsIndicator alignment='topRight'>
+            <MultiActionsIndicator Actions={_actions} alignment='topRight'>
                 <div style={{ width: '200px', height: '100px', background: 'black' }}></div>
             </MultiActionsIndicator>
         )

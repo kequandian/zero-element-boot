@@ -11,31 +11,12 @@ export default function MultiActionsIndicator (props) {
     
     const _presenters = NamedPresenterGet();
 
-    const _actions = [
-        {
-            DeleteAction:{
-                indicator: {
-                    xname: 'Delete',
-                },
-                action: '/api',
-                onItemDeleted:()=>{
-                    console.log('onItemDeleted delete')
-                }
-            }
-        },
-        {
-            DownloadAction:{
-                indicator: {
-                    xname: 'Download',
-                }, 
-                action: '/api',
-                onItemDownloaded:()=>{
-                    console.log('download')
-                }
-            }
-        }
-    ]
+    const _actions = Actions
     function indicatorList() {
+
+        if(!_actions || !Array.isArray(_actions) || _actions.length === 0){
+            return <></>
+        }
 
         return (
             <HStack>
