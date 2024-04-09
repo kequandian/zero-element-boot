@@ -81,7 +81,8 @@ import LabelIndicator from './indicator/LabelIndicator';
 import TipsIndicator from './indicator/TipsIndicator';
 import TitleIndicator from './indicator/TitleIndicator';
 import CircularDeleteIndicator from './indicator/CircularDeleteIndicator';
-import PlacementIndicator from './indicator/PlacementIndicator'
+import PlacementIndicator from './indicator/PlacementIndicator';
+import MultiActionsIndicator from './indicator/MultiActionsIndicator';
 
 // selector
 import OutlineSelector from './selector/OutlineSelector';
@@ -101,7 +102,7 @@ import { Image, CozeImage } from './presenter'
 
 import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle,
   Rectangle, 
-  Circle, Description, PaletteColor, SquareAddNewButton,GoogleAvatar,
+  Circle, Description, PaletteColor, SquareAddNewButton,GoogleAvatar,Delete, Download
 } from '@/components/presenter';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
@@ -196,7 +197,8 @@ NamedIndicatorSet({
   TipsIndicator,
   TitleIndicator,
   CircularDeleteIndicator,
-  PlacementIndicator
+  PlacementIndicator,
+  MultiActionsIndicator,
 })
 
 NamedPresenterSet({
@@ -217,7 +219,9 @@ NamedPresenterSet({
   PreviewAutoLayout,
   PaletteColor,
   SquareAddNewButton,
-  GoogleAvatar
+  GoogleAvatar,
+  Delete,
+  Download
 })
 
 NamedListSet({

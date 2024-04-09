@@ -43,6 +43,8 @@ import CozeImage from './image/CozeImage'
 //
 import PaletteColor from './PaletteColor';
 import GoogleAvatar from './GoogleAvatar';
+import Delete from './button/DeleteBtn';
+import Download from './button/DownloadBtn';
 
 
 export {
@@ -93,4 +95,6 @@ export {
   //
   PaletteColor,
   GoogleAvatar,
+  Delete,
+  Download
 }

@@ -4,6 +4,8 @@ import usePlacement from '@/components/hooks/usePlacement';
 import PlacementIndicator from '@/components/indicator/PlacementIndicator';
 import SelectedIcon from '@/assets/selected-icon.svg';
 
+import MultiActionsIndicator from "@/components/indicator/MultiActionsIndicator";
+
 const bottonList = [
     'top',
     'right',
@@ -17,6 +19,7 @@ const bottonList = [
 
 
 export default function TestIndicator() {
+
 
     const BuiltOutPosition = () => {
 
@@ -248,11 +251,22 @@ export default function TestIndicator() {
         )
     }
 
+
+    const TestMultiActionIndicator = () => {
+
+        return (
+            <MultiActionsIndicator alignment='topRight'>
+                <div style={{ width: '200px', height: '100px', background: 'black' }}></div>
+            </MultiActionsIndicator>
+        )
+    }
+
     return (
         <ChakraProvider>
             {/* <BuiltOutPosition /> */}
             {/* <TestOutsidePosition/> */}
-            <TestPlacementIndicator />
+            {/* <TestPlacementIndicator /> */}
+            <TestMultiActionIndicator/>
         </ChakraProvider>
     )
 }
