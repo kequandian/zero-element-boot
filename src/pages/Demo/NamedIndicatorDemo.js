@@ -1,7 +1,9 @@
 import React from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
 
 import NamedIndicator from "@/components/NamedIndicator";
 import TitleIndicator from "@/components/indicator/TitleIndicator";
+import MultiActionsIndicator from "@/components/indicator/MultiActionsIndicator";
 
 const { Text } = require('@/components/presenter')
 
@@ -28,10 +30,13 @@ export default function NamedIndicatorDemo(props) {
     }
 
     return (
-        <div style={{ width: '350px', height: '350px', background: '#ccc'}}>
-            <TitleIndicator indicatorData={{titleContent: 'Title'}}>
-                <Text content={"content"}/>
-            </TitleIndicator>
-        </div>
+        <ChakraProvider>
+            <div style={{ width: '350px', height: '350px', background: '#ccc'}}>
+                <TitleIndicator indicatorData={{titleContent: 'Title'}}>
+                    <Text content={"content"}/>
+                </TitleIndicator>
+            </div>
+        </ChakraProvider>
+        
     )
 }

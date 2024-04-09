@@ -10,6 +10,8 @@ export default function PlacementIndicaor  (props) {
 
     const _Indicator = Indicator || (indicator ? DefaultIndicatorSet[indicator.xname] : NextIndicator)
 
+    const _indicatorProps = indicator && JSON.stringify(indicator) !== '{}' ? indicator.props : {}
+
     const paramStyle = {
         display: 'inline-flex',
         ...configMap[alignment].paramStyle,
@@ -18,7 +20,7 @@ export default function PlacementIndicaor  (props) {
 
     const boxStyle = {
         flex:1,
-        display: 'flex',
+        display: 'inline-flex',
         ...configMap[alignment].childStyle
     }
 
@@ -26,7 +28,7 @@ export default function PlacementIndicaor  (props) {
 
         <div style={{ ...paramStyle }}>
             <div style={boxStyle}>
-                <_Indicator />
+                <_Indicator {..._indicatorProps} />
             </div>
             {
                 React.Children.map(children, child => (
