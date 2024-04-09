@@ -13,14 +13,14 @@ export default function PlacementIndicaor  (props) {
     const _indicatorProps = indicator && JSON.stringify(indicator) !== '{}' ? indicator.props : {}
 
     const paramStyle = {
-        display: 'inline-flex',
+        display: 'flex',
         ...configMap[alignment].paramStyle,
         gap: `${offset || 0}px`
     };
 
     const boxStyle = {
         flex:1,
-        display: 'inline-flex',
+        display: 'flex',
         ...configMap[alignment].childStyle
     }
 

@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { NamedContainer, NamedLayout, NamedGateway, NamedCart, NextIndicator } from '@/components';
 
 import DefaultContainer from '@/components/container/Container'
-import OutlineCart from '@/components/cart/OutlineCart'
+import PreviewActionIndicator from '@/components/indicator/PreviewActionIndicator'
 import { useReplacing } from '../gateway/Replacing';
 
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
@@ -146,7 +146,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   }
 
   //最外层cart
-  const ___Cart = ___ ? OutlineCart : NextIndicator
+  const ___previewIndicator = ___ ? PreviewActionIndicator : NextIndicator
 
   // Cart
   const _align_cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || undefined
@@ -238,7 +238,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
 
   return layoutChildren ? (
     
-    <___Cart lineColor='#007ACC'>
+    <___previewIndicator lineColor='#007ACC'>
       <Container ___={___} {..._container}  {..._dataSource} {...rest}
         navigation={navigation}
         tag={`${_tag}-children-container[${_containerName}]`}
@@ -279,9 +279,9 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
           })}
         </NamedLayout>
       </Container>
-    </___Cart>
+    </___previewIndicator>
   ) : (
-    <___Cart lineColor='#007ACC'>
+    <___previewIndicator lineColor='#007ACC'>
       <Container ___={___} {..._container}  {..._dataSource} {...rest} navigation={navigation}
         useReplacing={_useReplacing}
         tag={`${_tag}-presenter-container[${_containerName}]`}
@@ -315,7 +315,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
           </_NamedGateway>
         </NamedLayout>
       </Container>
-    </___Cart>
+    </___previewIndicator>
   )
 }
 
