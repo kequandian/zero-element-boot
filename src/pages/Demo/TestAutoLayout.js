@@ -47,14 +47,16 @@ export default function TestAutoLayout(props) {
                             "binding": {
                                 "address": "subtitle",
                                 "name": "title"
-                            }
+                            },
+                            "xseq": "child2"
                         }
                     ],
                     "xname": "HStack",
                     "props": {
                         "spacing": "6",
                         "flexFlow": "no-wrap"
-                    }
+                    },
+                    "xseq": "child1"
                     
                 },
                 "mock": [
@@ -77,12 +79,17 @@ export default function TestAutoLayout(props) {
                 "xname": "VStack",
                 "props": {
                     "spacing": "5"
-                }
+                },
+                "xseq": "TitleAutoLayout"
             }
         }
 
+        const previewClick = (layoutName) => {
+            console.log('previewClick = ', layoutName)
+        }
+
         return (
-            <AutoLayout ___ {...config}/>
+            <AutoLayout ___ {...config} onPreviewTriggered={previewClick}/>
         )
     }
 

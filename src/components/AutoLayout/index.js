@@ -103,7 +103,7 @@ export default function (props) {
 //2024-02-22 新增 tag 属性，用于调试跟踪数据流
 
 function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('AutoLayout-未设置onItemClick点击事件') }, dataSource,
-  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, ___,
+  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, ___, onPreviewTriggered,
   // alternative, alternativeActive, onAlternativeBack,   // use container instead. e.g. AlternativeContainer
   ...rest }) {
   // handle layout, container, gateway, cart, presenter, navigation, children
@@ -111,7 +111,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   const { xname, props, container, binding: layoutBinding, filter: layoutFilter, chain: layoutChain, gateway: layoutGateway,
     cart, indicator, selector, unselector, bounding,
     presenter, navigation, children: layoutChildren, mock, tag: layoutTag,
-    alternative: layoutAlternative,
+    alternative: layoutAlternative, xseq
   } = sugarLayout(layout) || {};
 
   // show tag for AutoLayout, layoutTag first
@@ -238,9 +238,10 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
 
   return layoutChildren ? (
     
-    <___previewIndicator lineColor='#007ACC'>
-      <Container ___={___} {..._container}  {..._dataSource} {...rest}
+    <___previewIndicator lineColor='#007ACC' xseq={xseq} onPreviewTriggered={onPreviewTriggered}>
+      <Container ___={___}  xseq={xseq}  {..._container}  {..._dataSource} {...rest}
         navigation={navigation}
+        onPreviewTriggered={onPreviewTriggered}
         tag={`${_tag}-children-container[${_containerName}]`}
       >
 
@@ -281,11 +282,12 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
       </Container>
     </___previewIndicator>
   ) : (
-    <___previewIndicator lineColor='#007ACC'>
-      <Container ___={___} {..._container}  {..._dataSource} {...rest} navigation={navigation}
+    <___previewIndicator lineColor='#007ACC' xseq={xseq} onPreviewTriggered={onPreviewTriggered}>
+      <Container ___={___} xseq={xseq}  {..._container}  {..._dataSource} {...rest} navigation={navigation}
         useReplacing={_useReplacing}
         tag={`${_tag}-presenter-container[${_containerName}]`}
         onItemClick={onItemClick}
+        onPreviewTriggered={onPreviewTriggered}
       // onItemClick={onItemClick} 
       // onItemDeleted={onItemDeleted}
       // onItemAdded={onItemAdded}

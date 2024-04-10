@@ -55,7 +55,7 @@ export default function ConfirmContainer(props) {
         let data = {}
         if(originSaveBody && JSON.stringify(originSaveBody) != "{}"){
             const cloneOriginSaveBody = _.cloneDeep(originSaveBody)
-            data = formatParams(cloneOriginSaveBody, currentItem)
+            data = formatParams(cloneOriginSaveBody, {...rest, ...currentItem})
         }
 
         const queryData = {

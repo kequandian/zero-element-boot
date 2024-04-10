@@ -6,12 +6,11 @@ import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConf
 
 export default function MultiActionsIndicator (props) {
 
-    const { children, Actions=[], actions=[], alignment, offset, ...rest } = props;
+    const { children, Actions=[], actions=[], alignment, offset=5, indicatorData, ...rest } = props;
 
-    
     const _presenters = NamedPresenterGet();
 
-    const _actions = Actions
+    const _actions = actions
     function indicatorList() {
 
         if(!_actions || !Array.isArray(_actions) || _actions.length === 0){
@@ -22,16 +21,9 @@ export default function MultiActionsIndicator (props) {
             <HStack>
                 {
                     _actions.map((item, index) => {
-                        if(item.DeleteAction){
-                            const { indicator, action, onItemDeleted } = item.DeleteAction
-                            const _Indicator = indicator && indicator.xname ?  _presenters[indicator.xname] : _presenters['Delete']
-                            return <_Indicator key={index} action={action} onItemDeleted={onItemDeleted}/>
-                        }
-                        if(item.DownloadAction){
-                            const { indicator, action, onItemDownloaded } = item.DownloadAction
-                            const _Indicator = indicator && indicator.xname ?  _presenters[indicator.xname] : _presenters['Download']
-                            return <_Indicator key={index} action={action} onItemDownloaded={onItemDownloaded}/>
-                        }
+                        const { xname, ...rest } = item
+                        const _Indicator = xname ?  _presenters[xname] : _presenters['Delete']
+                        return <_Indicator key={index} indicatorData={indicatorData} {...rest}/>
                     })
                 }
             </HStack>
