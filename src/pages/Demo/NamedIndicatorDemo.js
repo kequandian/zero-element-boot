@@ -3,7 +3,6 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 import NamedIndicator from "@/components/NamedIndicator";
 import TitleIndicator from "@/components/indicator/TitleIndicator";
-import MultiActionsIndicator from "@/components/indicator/MultiActionsIndicator";
 
 const { Text } = require('@/components/presenter')
 

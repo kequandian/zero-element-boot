@@ -167,6 +167,15 @@ export default function TestPreviewAutoLayout(props) {
         )
     }
 
+    const TestPreviewTriggerd = () => {
+
+        return (
+            <div style={{ width: '100%' }}>
+                <PreviewAutoLayout ___ layoutName={'storeListAutoLayout'}  />
+            </div>
+        )
+    }
+
     return (
 
         <ChakraProvider>
@@ -189,7 +198,8 @@ export default function TestPreviewAutoLayout(props) {
             {/* <TestIndicatorAutoLayout /> */}
             {/* <TestContainerAutoLayout/> */}
             {/* <TestComponentAutoLayout/> */}
-            <TestDeleteComponent />
+            {/* <TestDeleteComponent /> */}
+            <TestPreviewTriggerd/>
             
         </ChakraProvider>
        

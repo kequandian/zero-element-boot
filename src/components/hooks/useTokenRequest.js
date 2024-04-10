@@ -9,7 +9,7 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}}, c
 
     const [postData, setPostData] = useState('');
 
-    const [mApi, setMApi] = useState(api);
+    const [mApi, setMApi] = useState('');
 
     useEffect(() => {
 
@@ -32,7 +32,7 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}}, c
     }, [api, useId, postData]);
 
     function query(api, reqData, options) {
-
+        
         if(!api){
             return
         }

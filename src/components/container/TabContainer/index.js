@@ -42,7 +42,7 @@ export default function Index(props) {
     const [isLoading, setLoading] = useState(false)
     const [currentId, setCurrentId] = useState('')
     const [currentData, setCurrentData] = useState({})
-    const [tabIndex, setTabIndex] = useState(currentTabIndex)
+    const [tabIndex, setTabIndex] = useState(0)
     const [isOpenEditTabModel, setIsOpenEditModel] = useState(false)
     const [isDelOpen, setIsDelOpen] = useState(false)
     const [modelTitle, setModelTitle] = useState('Title');

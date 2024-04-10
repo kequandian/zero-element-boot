@@ -15,12 +15,14 @@ export default function PreAutoLayout (props) {
     layoutId, 
     testLayoutName, testBindingName, 
     onItemClick,
+    ___,
     ...rest
   } = props;
 
   
   const [dataSource, setDataSource] = useState('')
   const [ alternativeActive, setAlternativeActive ] = useState(false)
+  const [ _layoutName, setLayoutName ] = useState(layoutName)
 
   const [ mockData, setMockData ] = useState('')
 
@@ -29,7 +31,6 @@ export default function PreAutoLayout (props) {
       getLayouByMockName(mockName)
     }
   }, [mockName])
-
 
   function getLayouByMockName(mockName){
     const api = `/previewautolayout/mock/${mockName}.json`
@@ -40,10 +41,10 @@ export default function PreAutoLayout (props) {
   }
   
 
-  // 判断 layoutApi 是否为空，如果为空，则用 layoutName 拼接api路径
+  // 判断 layoutApi 是否为空，如果为空，则用 _layoutName 拼接api路径
   let localLayoutApi = ''
-  if(layoutApi || layoutName){
-    localLayoutApi = layoutApi || '/openapi/lc/module/autolayout/' + layoutName
+  if(layoutApi || _layoutName){
+    localLayoutApi = layoutApi || '/openapi/lc/module/autolayout/' + _layoutName
   }else if(layoutId){
     localLayoutApi = `/form?id=${layoutId}`
   }
@@ -91,7 +92,7 @@ export default function PreAutoLayout (props) {
 
   if( api && records && records.length > 0){
     config.items = records
-  }else if(!layoutName && api) {
+  }else if(!_layoutName && api) {
     return <></>
   }
 
@@ -137,7 +138,11 @@ export default function PreAutoLayout (props) {
       setDataSource('')
       setAlternativeActive(false)
   }
-  
+
+  const previewClick = (layoutName) => {
+    setLayoutName(layoutName)
+  }
+
   // console.log('=== PreAutoLayout config == ', JSON.stringify(config))
 
   return (
@@ -147,6 +152,8 @@ export default function PreAutoLayout (props) {
           alternative={alternative}
           dataSource={dataSource}
           onAlternativeBack={onAlterNavBack}
+          ___={___}
+          onPreviewTriggered={previewClick}
         />
     ):<></>
   )
