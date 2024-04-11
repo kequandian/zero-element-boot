@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { ChakraProvider, HStack, Box, Button } from '@chakra-ui/react';
+import { ChakraProvider, HStack, Box, Button, VStack } from '@chakra-ui/react';
 import { AutoLayout } from '@/components'
 import DataFlowContainer from '@/components/container/DataFlowContainer';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout'
+import MultiActionsIndicator from '@/components/indicator/MultiActionsIndicator';
 import LocalPreview from './localPreview'
 
 export default function Index(props) {
@@ -116,6 +117,61 @@ export default function Index(props) {
     //     container: "DataFlowContainer"
     // }
 
+    function TestComponentView () {
+        
+        const _actions = [
+            {
+                xname: 'SelectAction',
+                props:{
+                    selection:{
+                        xname: 'PresenterAutolayout',
+                        content: 'Presenter',
+                        props:{
+                            api: '/openapi/lc/module?pageNum=1&pageSize=100&componentOption=presenter',
+                            binding: {
+                                moduleName: "content",
+                                componentType: "___presenter.xname",
+                                componentProps: "___presenter.props"
+                            },
+                        }
+                    }
+                    
+                },
+            },
+            {
+                xname: 'SelectAction',
+                props:{
+                    selection:{
+                        xname: 'CartsAutolayout',
+                        content: 'Cart',
+                        props:{
+                            api: '/openapi/lc/module?pageNum=1&pageSize=100&componentOption=cart',
+                            binding: {
+                                moduleName: "content",
+                                componentType: "__cart.xname",
+                                componentProps: "__cart.props"
+                            },
+                        }
+                    }
+                    
+                },
+            },
+            
+        ]
+
+        const converter = {
+        }
+
+        return (
+            <DataFlowContainer converter={converter} moduleId={''}>
+                <VStack alignItems={'flex-start'} spacing={5}>
+                    <MultiActionsIndicator  actions={_actions}  alignment='topLeft'/>
+                    <PreviewAutoLayout />
+                </VStack>
+            </DataFlowContainer>
+        )
+    }
+
 
     return (
         <ChakraProvider>
@@ -124,10 +180,9 @@ export default function Index(props) {
                 <LocalPreview  />
             </DataFlowContainer> */}
 
-            <AutoLayout layout={layoutJson} 
+            {/* <AutoLayout layout={layoutJson} 
                 moduleId={moduleId} converter={converter} 
-                // componentId={componentId}
-            />
+            /> */}
 
             {/* <DataFlowContainer moduleId={moduleId} converter={converter}>
                 <HStack>
@@ -135,6 +190,7 @@ export default function Index(props) {
                     <PreviewAutoLayout layoutName="PropKeyValueManage"  />
                 </HStack>
             </DataFlowContainer> */}
+            <TestComponentView/>
         </ChakraProvider>
 
     )

@@ -45,6 +45,9 @@ import PaletteColor from './PaletteColor';
 import GoogleAvatar from './GoogleAvatar';
 import Delete from './button/DeleteBtn';
 import Download from './button/DownloadBtn';
+import ActionButton from './button/ActionButton';
+import SelectAction from './button/SelectAction';
+import ChakraButton from './button/ChakraButton';
 
 
 export {
@@ -74,6 +77,9 @@ export {
   AddNewButton,
   DownloadButton,
   SquareAddNewButton,
+  ActionButton,
+  SelectAction,
+  ChakraButton,
 
   // other
   Counter,

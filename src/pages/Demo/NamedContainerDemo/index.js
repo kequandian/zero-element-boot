@@ -105,7 +105,7 @@ export default function NamedContainerDemo(props) {
     function TestDrawerContainer() {
         const config = {
             layoutName: 'ComponentTypeList',
-            moduleId: '320',
+            moduleId: '332',
             converter: {
                 api:'api',
                 layoutApi: 'layoutApi',
