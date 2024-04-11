@@ -19,7 +19,6 @@ export default function PreAutoLayout (props) {
     ...rest
   } = props;
 
-  
   const [dataSource, setDataSource] = useState('')
   const [ alternativeActive, setAlternativeActive ] = useState(false)
   const [ _layoutName, setLayoutName ] = useState(layoutName)
@@ -31,6 +30,12 @@ export default function PreAutoLayout (props) {
       getLayouByMockName(mockName)
     }
   }, [mockName])
+
+  useEffect(_=>{
+    if(layoutName){
+      setLayoutName(layoutName)
+    }
+  }, [layoutName])
 
   function getLayouByMockName(mockName){
     const api = `/previewautolayout/mock/${mockName}.json`
@@ -143,7 +148,7 @@ export default function PreAutoLayout (props) {
     setLayoutName(layoutName)
   }
 
-  // console.log('=== PreAutoLayout config == ', JSON.stringify(config))
+  // console.log('=== PreAutoLayout layoutJson == ', layoutJson)
 
   return (
     layoutJson && JSON.stringify(layoutJson) != '{}' ? (

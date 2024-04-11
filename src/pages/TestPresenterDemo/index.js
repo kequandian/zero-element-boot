@@ -1,7 +1,9 @@
 import React from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
 import { GoogleAvatar } from '@/components/presenter';
 import useLowCodePalette from '@/components/hooks/useLowCodePalette'
 import useNormalize from '@/components/hooks/useNormalize'
+import SelectAction from '@/components/presenter/button/SelectAction';
 
 export default function TestPresenterDemo(props) {
 
@@ -62,12 +64,32 @@ export default function TestPresenterDemo(props) {
         );
     };
 
+    const TestSelectAction = () => {
+
+        const _selection = {
+            xname: 'CartsAutolayout',
+            props:{
+                api: '/openapi/lc/module?pageNum=1&pageSize=100&componentOption=cart',
+                binding: {
+                    moduleName: "content",
+                    componentType: "__cart.xname",
+                    componentProps: "__cart.props"
+                },
+            }
+        }
+
+        return (
+            <SelectAction selection={_selection}/>
+        )
+    }
+
     return (
-        <>
-            <GoogleAvatar {...GoogleAvatarProps}/>
+        <ChakraProvider>
+            {/* <GoogleAvatar {...GoogleAvatarProps}/> */}
 
             {/* <AppTest /> */}
-        </>
+            <TestSelectAction/>
+        </ChakraProvider>
     )
 
 }

@@ -13,6 +13,7 @@ const useLayout = require('@/components/hooks/useLayout');
  * 
  */
 export default function DataFlowContainer(props) {
+
     const { 
         children, 
         currentside, anotherside, converter, 
@@ -50,11 +51,16 @@ export default function DataFlowContainer(props) {
         }
     }
 
+    const firstChildItemActionClick = (item) => {
+        console.log('first child item action click = ', item)
+        setConfigData(item)
+    }
+
     const secondChildItemClick = (item) => {
         console.log('second child item click = ', item)
     }
 
-    console.log('CoupleSideContainer configData= ', configData, rest)
+    // console.log('CoupleSideContainer configData= ', configData, rest)
     
     function renderChildren(children) {
         return React.Children.map(children, (child, childIndex) => {
@@ -64,6 +70,7 @@ export default function DataFlowContainer(props) {
                         React.cloneElement(child, {
                             ...rest,
                             onItemClick: firstChildItemClick,
+                            onActionCompleted: firstChildItemActionClick
                         })
                     )
                 } else {
