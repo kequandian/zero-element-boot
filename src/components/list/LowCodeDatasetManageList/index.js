@@ -15,10 +15,13 @@ export default function LowCodeDatasetManageList(props) {
     } = props
 
     
-    const [ lsApi, setLsApi ] = useState(listApi)
+    const [ lsApi, setLsApi ] = useState('')
 
     useEffect(_ => {
-    }, [])
+        if(listApi){
+            setLsApi(listApi)
+        }
+    }, [listApi])
 
 
     const layoutJson = {
@@ -82,11 +85,7 @@ export default function LowCodeDatasetManageList(props) {
         ...rest
     }
 
-    console.log('LowCodeDatasetManageList = ', config)
-
-
     return (
-        
         <APIContainer API={lsApi}>
             <AutoLayout {...config} >
                 {children}
