@@ -217,10 +217,10 @@ export default function NamedContainerDemo(props) {
         <ChakraProvider>
             {/* <TestPlainMenegeList/> */}
             {/* <TestKeyValueManageList/> */}
-            {/* <TestDrawerContainer/> */}
+            <TestDrawerContainer/>
             {/* <TestDefaultGridLayoutList/> */}
             {/* <TestAddNewContainer/> */}
-            <TestConfirmContainer/>
+            {/* <TestConfirmContainer/> */}
         </ChakraProvider>
 
     )
