@@ -1,0 +1,46 @@
+.plainAddNewContainer {
+    min-width: 200px;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .plainAddNewBtn {
+        display: inline-block;
+        width: 100%;
+        height: 48px;
+        color: #ccc;
+        border: 2px dashed;
+        transition: color .25s;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+    
+    .plainAddNewBtn:hover {
+        color: #34538b;
+    }
+    
+    .plainAddNewBtn::before,
+    .plainAddNewBtn::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+    
+    .plainAddNewBtn::before {
+        width: 20px;
+        border-top: 4px solid;
+        margin: -2px 0 0 -10px;
+    }
+    
+    .plainAddNewBtn::after {
+        height: 20px;
+        border-left: 4px solid;
+        margin: -10px 0 0 -2px;
+    }
+
+
+}

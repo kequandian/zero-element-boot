@@ -1,12 +1,16 @@
 .l-FlexBox {
   display  : flex;
-  flex-flow: row wrap;
+  // flex-flow: row wrap;
 }
 
 .l-FlexBox {
 
   &.width100{
     width: 100%;
+  }
+
+  &.height100 {
+    height: 100%;
   }
   
   &.start {
@@ -88,12 +92,24 @@
     flex-direction: column-reverse;
   }
 
+  &.align-items-center{
+    align-items: center;
+  }
+
   &.align-content-center{
     align-content: center;
   }
 
+  &.align-content-start{
+    align-content: flex-start;
+  }
+
   &.no-wrap{
     flex-flow: nowrap;
+  }
+
+  &.row-wrap{
+    flex-flow: row wrap;
   }
 
   &.auto-full{
