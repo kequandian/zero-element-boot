@@ -2,10 +2,10 @@ import { useSize } from 'ahooks';
 
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { NamedContainer, NamedLayout, NamedGateway, NamedCart, NextIndicator } from '@/components';
+import { NamedContainer, NamedLayout, NamedGateway, NamedCart, NextIndicator, NamedIndicator } from '@/components';
 
 import DefaultContainer from '@/components/container/Container'
-import PreviewActionIndicator from '@/components/indicator/PreviewActionIndicator'
+import AutoPreviewIndicator from '@/components/indicator/AutoPreviewIndicator'
 import { useReplacing } from '../gateway/Replacing';
 
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
@@ -145,8 +145,12 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
     )
   }
 
-  //最外层cart
-  const ___previewIndicator = ___ ? PreviewActionIndicator : NextIndicator
+  const PreviewIndicator = ({children}) => {
+    return <NamedIndicator trigger='hover' Indicator={AutoPreviewIndicator}>{children}</NamedIndicator>
+  }
+
+  //最外层indicator
+  const ___previewIndicator = ___ ? PreviewIndicator : NextIndicator
 
   // Cart
   const _align_cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || undefined
@@ -238,7 +242,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
 
   return layoutChildren ? (
     
-    <___previewIndicator lineColor='#007ACC' xseq={xseq} onPreviewTriggered={onPreviewTriggered}>
+    <___previewIndicator xseq={xseq} onPreviewTriggered={onPreviewTriggered}>
       <Container ___={___}  xseq={xseq}  {..._container}  {..._dataSource} {...rest}
         navigation={navigation}
         onPreviewTriggered={onPreviewTriggered}
@@ -282,7 +286,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
       </Container>
     </___previewIndicator>
   ) : (
-    <___previewIndicator lineColor='#007ACC' xseq={xseq} onPreviewTriggered={onPreviewTriggered}>
+    <___previewIndicator xseq={xseq} onPreviewTriggered={onPreviewTriggered}>
       <Container ___={___} xseq={xseq}  {..._container}  {..._dataSource} {...rest} navigation={navigation}
         useReplacing={_useReplacing}
         tag={`${_tag}-presenter-container[${_containerName}]`}

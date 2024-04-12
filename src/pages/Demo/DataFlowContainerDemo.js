@@ -24,31 +24,35 @@ export default function Index(props) {
     }
 
 
-    const moduleId = '339'
+    const moduleId = '284'
     const componentId = '284'
     const converter = {
         // assembledAs:"assembledAs"
     }
 
     //查看属性列表组合页面
-    // const layoutJson = {
-    //     children: [
-    //         {
-    //             xname: 'PreviewAutoLayout',
-    //             props: {
-    //                 layoutName:"PropertyManage"
-    //             }
-    //         },
-    //         {
-    //             xname: 'PreviewAutoLayout',
-    //             props: {
-    //                 layoutName:"PropKeyValueManage",
-    //             }
-    //         },
-    //     ],
-    //     xname:'HStack',
-    //     container: "DataFlowContainer"
-    // }
+    const layoutJson = {
+        children: [
+            {
+                xname: 'PreviewAutoLayout',
+                props: {
+                    layoutName:"PropertyManage"
+                }
+            },
+            {
+                xname: 'PreviewAutoLayout',
+                props: {
+                    layoutName:"PropKeyValueManage",
+                }
+            },
+        ],
+        xname:'HStack',
+        props:{
+          flexFlow: "no-wrap",
+          spacing: 8
+        },
+        container: "DataFlowContainer"
+    }
 
     //修改container组合页面
     // const layoutJson = {
@@ -74,27 +78,27 @@ export default function Index(props) {
     // }
 
     //binding组合页面
-    const layoutJson = {
-        children: [
-            {
-                xname: 'PreviewAutoLayout',
-                props: {
-                    layoutName:"BindingManageList"
-                }
-            },
-            {
-                xname: 'PreviewAutoLayout',
-                props: {
-                    layoutName:"ParentParameterListAutoLayout",
-                }
-            },
-        ],
-        xname:'HStack',
-        props:{
-            flexFlow: "no-wrap"
-        },
-        container: "DataFlowContainer"
-    }
+    // const layoutJson = {
+    //     children: [
+    //         {
+    //             xname: 'PreviewAutoLayout',
+    //             props: {
+    //                 layoutName:"BindingManageList"
+    //             }
+    //         },
+    //         {
+    //             xname: 'PreviewAutoLayout',
+    //             props: {
+    //                 layoutName:"ParentParameterListAutoLayout",
+    //             }
+    //         },
+    //     ],
+    //     xname:'HStack',
+    //     props:{
+    //         flexFlow: "no-wrap"
+    //     },
+    //     container: "DataFlowContainer"
+    // }
 
     //组件类型列表+详情组合页面
     // const layoutJson = {
@@ -165,7 +169,7 @@ export default function Index(props) {
         return (
             <DataFlowContainer converter={converter} moduleId={''}>
                 <VStack alignItems={'flex-start'} spacing={5}>
-                    <MultiActionsIndicator  actions={_actions}  alignment='topLeft'/>
+                    <MultiActionsIndicator  actions={_actions}  alignment='topleft'/>
                     <PreviewAutoLayout />
                 </VStack>
             </DataFlowContainer>
@@ -180,9 +184,9 @@ export default function Index(props) {
                 <LocalPreview  />
             </DataFlowContainer> */}
 
-            {/* <AutoLayout layout={layoutJson} 
+            <AutoLayout layout={layoutJson} 
                 moduleId={moduleId} converter={converter} 
-            /> */}
+            />
 
             {/* <DataFlowContainer moduleId={moduleId} converter={converter}>
                 <HStack>
@@ -190,7 +194,7 @@ export default function Index(props) {
                     <PreviewAutoLayout layoutName="PropKeyValueManage"  />
                 </HStack>
             </DataFlowContainer> */}
-            <TestComponentView/>
+            {/* <TestComponentView/> */}
         </ChakraProvider>
 
     )

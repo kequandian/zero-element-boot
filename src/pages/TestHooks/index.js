@@ -7,10 +7,10 @@ const bottonList = [
     'right',
     'bottom',
     'left',
-    'topLeft',
-    'topRight',
-    'bottomLeft',
-    'bottomRight',
+    'topleft',
+    'topright',
+    'bottomleft',
+    'bottomright',
 ]
 
 export default function TestHooks() {

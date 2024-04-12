@@ -38,25 +38,25 @@ const usePosition = (alignment = 'left', offsetx = 0, offsety = 0) => {
             transform: `translateX(-50%)`,
           }
           break;
-        case 'topLeft':
+        case 'topleft':
           style = {
             top: `${offsety || 0}px`,
             left: `${offsetx || 0}px`
           };
           break;
-        case 'topRight':
+        case 'topright':
           style = {
             top: `${offsety || 0}px`,
             right:`${offsetx || 0}px`,
           }
           break;
-        case 'bottomLeft':
+        case 'bottomleft':
           style = {
             bottom: `${offsety || 0}px`,
             left: `${offsetx || 0}px`,
           }
           break;
-        case 'bottomRight':
+        case 'bottomright':
           style = {
             bottom: `${offsety || 0}px`,
             right: `${offsetx || 0}px`,
@@ -69,6 +69,7 @@ const usePosition = (alignment = 'left', offsetx = 0, offsety = 0) => {
       setPosition({
         position: 'absolute',
         ...style,
+        zIndex: 1000,
       });
     };
 

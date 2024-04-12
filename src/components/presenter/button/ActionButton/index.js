@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@chakra-ui/react';
 
-export default function NavButton(props){
+export default function ActionButton(props){
 
     const { props: otherProps, onActionCompleted, ...rest } = props;
 

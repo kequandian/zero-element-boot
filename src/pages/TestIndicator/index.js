@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { ChakraProvider, HStack, Button, Grid } from '@chakra-ui/react';
+import { ChakraProvider, HStack, Button, 
+    Grid, GridItem, 
+    Box, background 
+} from '@chakra-ui/react';
 import usePlacement from '@/components/hooks/usePlacement';
 import PlacementIndicator from '@/components/indicator/PlacementIndicator';
 import SelectedIcon from '@/assets/selected-icon.svg';
+import UnSelectedIcon from '@/assets/unselected-icon.svg';
 
 import MultiActionsIndicator from "@/components/indicator/MultiActionsIndicator";
+
+import AlignmentIndicator from '@/components/indicator/AlignmentIndicator';
+import AutoPreviewIndicator from '@/components/indicator/AutoPreviewIndicator';
+
 
 const bottonList = [
     'top',
     'right',
     'bottom',
     'left',
-    'topLeft',
-    'topRight',
-    'bottomLeft',
-    'bottomRight',
+    'topleft',
+    'topright',
+    'bottomleft',
+    'bottomright',
 ]
 
 
@@ -56,7 +64,7 @@ export default function TestIndicator() {
                     'alignItems': 'center',
                 }
             },
-            'topLeft': {
+            'topleft': {
                 'paramStyle': {
                     'flexDirection': 'column',
                 },
@@ -64,7 +72,7 @@ export default function TestIndicator() {
                     'justifyContent': 'flex-start',
                 }
             },
-            'topRight': {
+            'topright': {
                 'paramStyle': {
                     'flexDirection': 'column',
                 },
@@ -72,7 +80,7 @@ export default function TestIndicator() {
                     'justifyContent': 'flex-end',
                 }
             },
-            'bottomLeft': {
+            'bottomleft': {
                 'paramStyle': {
                     'flexDirection': 'column-reverse',
                 },
@@ -80,7 +88,7 @@ export default function TestIndicator() {
                     'justifyContent': 'flex-start',
                 },
             },
-            'bottomRight': {
+            'bottomright': {
                 'paramStyle': {
                     'flexDirection': 'column-reverse',
                 },
@@ -148,13 +156,13 @@ export default function TestIndicator() {
             'right': 'rightCenter',
             'bottom': 'bottomCenter',
             'left': 'leftCenter',
-            'topLeft': 'topLeft',
-            'topRight': 'topRight',
-            'bottomLeft': 'bottomLeft',
-            'bottomRight': 'bottomRight',
+            'topleft': 'topleft',
+            'topright': 'topright',
+            'bottomleft': 'bottomleft',
+            'bottomright': 'bottomright',
         }
 
-        const [position, setPosition] = useState('topLeft');
+        const [position, setPosition] = useState('topleft');
 
         return (
             <>
@@ -182,14 +190,14 @@ export default function TestIndicator() {
                         <div className="parent">
                             父组件
                             <div className="controls">
-                                <button onClick={() => setPosition('topLeft')}>左上</button>
+                                <button onClick={() => setPosition('topleft')}>左上</button>
                                 <button onClick={() => setPosition('topCenter')}>上中</button>
-                                <button onClick={() => setPosition('topRight')}>右上</button>
+                                <button onClick={() => setPosition('topright')}>右上</button>
                                 <button onClick={() => setPosition('leftCenter')}>左中</button>
                                 <button onClick={() => setPosition('rightCenter')}>右中</button>
-                                <button onClick={() => setPosition('bottomLeft')}>左下</button>
+                                <button onClick={() => setPosition('bottomleft')}>左下</button>
                                 <button onClick={() => setPosition('bottomCenter')}>下中</button>
-                                <button onClick={() => setPosition('bottomRight')}>右下</button>
+                                <button onClick={() => setPosition('bottomright')}>右下</button>
                             </div>
                         </div>
                     </div>
@@ -276,18 +284,65 @@ export default function TestIndicator() {
         ]
 
         return (
-            <MultiActionsIndicator actions={_actions} alignment='topRight'>
+            <MultiActionsIndicator actions={_actions} alignment='topright'>
                 <div style={{ width: '200px', height: '100px', background: 'black' }}></div>
             </MultiActionsIndicator>
         )
     }
+
+    const TestAlignmentIndicator = () => {
+
+        const alignmentList = [
+            'top', 'right', 'bottom', 'left', 'topleft', 'topright', 'bottomleft', 'bottomright',
+        ]
+        
+        const _indicator = () => {
+            return (
+                <img src={SelectedIcon} />
+            )
+        }
+
+        return (
+            <Grid w={'500px'} margin={'auto'} templateColumns='repeat(4, 1fr)' gap={6} 
+            >
+                { 
+                    alignmentList.map((item, index) => (
+                        <GridItem key={index}>
+                            <AlignmentIndicator Indicator={_indicator} alignment={item}>
+                                <Box w={'100px'} h={'100px'} border={'1px solid #ccc'} background={'white'}></Box>
+                            </AlignmentIndicator>
+                        </GridItem>
+                    ))
+                }
+            </Grid>
+            
+            // <AlignmentIndicator Indicator={_indicator} alignment={'right'}>
+            //     <Box w={'100px'} h={'100px'} border={'1px solid #ccc'} background={'white'}></Box>
+            // </AlignmentIndicator>
+        )
+
+    }
+
+    const TestAutoPrevireIndicator = () => {
+        return (
+            <AutoPreviewIndicator>
+                <Box w={'200px'} h={'100px'} >
+                    Box
+                </Box>
+            </AutoPreviewIndicator>
+        )
+    }
+
+
 
     return (
         <ChakraProvider>
             {/* <BuiltOutPosition /> */}
             {/* <TestOutsidePosition/> */}
             {/* <TestPlacementIndicator /> */}
-            <TestMultiActionIndicator/>
+            {/* <TestMultiActionIndicator/> */}
+            {/* <TestAlignmentIndicator/> */}
+            <TestAutoPrevireIndicator/>
         </ChakraProvider>
     )
 }

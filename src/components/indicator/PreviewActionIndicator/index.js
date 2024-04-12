@@ -58,7 +58,7 @@ export default function PreviewActionIndicator(props) {
   }
 
   return (
-    <PlacementIndicator Indicator={_indicator} alignment="topRight">
+    <PlacementIndicator Indicator={_indicator} alignment="topright">
       <div className='i-PreviewActionIndicator' style={{
         borderStyle: `solid`,
         borderWidth: `1px`,

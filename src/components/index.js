@@ -6,6 +6,7 @@ import NamedCart from './NamedCart';
 import NamedContainer from './NamedContainer';
 import NamedSeperator from './NamedSeperator';
 import NamedGateway from './NamedGateway';
+import NamedIndicator from './NamedIndicator';
 
 import NextIndicator from './NextIndicator';
 
@@ -65,6 +66,7 @@ import PageCenter from './cart/PageCenter';
 import Box from './cart/Box';
 import SquareCart from './cart/SquareCart'
 import LightingCart from './cart/LightingCart';
+import Outline from './cart/OutlineCart';
 
 //indicator
 import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
@@ -175,7 +177,8 @@ NamedCartSet({
   NamedCart,
   Box,
   SquareCart,
-  LightingCart
+  LightingCart,
+  Outline
 })
 
 NamedIndicatorSet({
@@ -290,6 +293,7 @@ export {
 
     // 
     NextIndicator,
+    NamedIndicator,
     
     //
     APIContainer,
