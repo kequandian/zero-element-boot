@@ -11,6 +11,7 @@ import PageCenter from './PageCenter';
 import ItemCart from './ItemCart';
 import SquareCart from './SquareCart';
 import LightingCart from './LightingCart';
+import Outline from './OutlineCart';
 
 
 // indicator
@@ -31,6 +32,7 @@ export {
     // Page,
     SquareCart,
     LightingCart,
+    Outline,
 
     SelectIndicatorCart,
 }
