@@ -3,18 +3,38 @@ import AlignmentIndicator from '../AlignmentIndicator';
 import OutlineCart from '@/components/cart/OutlineCart';
 import IndicatingAction from '@/components/presenter/button/IndicatingAction';
 
+import ContainerContext from '@/components/AutoX/ContainerContext';
+
+
 export default function AutoPreviewIndicator(props) {
 
-    const { children } = props;
+    const colorValue = {
+        primary: '#037DFF',
+        secondary: '#008000',
+        accent: '#FFFF00',
+      };
+
+    return (
+        <ContainerContext.Provider value={{colors: colorValue}}>
+            <AutoPreviewComponent {...props}/>
+        </ContainerContext.Provider>
+    )
+}
+
+function AutoPreviewComponent (props) {
+
+    const { children, onAutoPreview } = props;
+
+    const {colors} = useContext(ContainerContext)
 
     const _Indicator = () => {
-        
         return (
-            <IndicatingAction/>
+            <IndicatingAction onAutoPreview={onAutoPreview}/>
         )
     }
 
     const outlineProps={
+        color: colors.secondary
     }
 
     return (
@@ -29,3 +49,4 @@ export default function AutoPreviewIndicator(props) {
         </AlignmentIndicator>
     )
 }
+

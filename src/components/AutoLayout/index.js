@@ -146,7 +146,17 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
   }
 
   const PreviewIndicator = ({children}) => {
-    return <NamedIndicator trigger='hover' Indicator={AutoPreviewIndicator}>{children}</NamedIndicator>
+    return (
+      <NamedIndicator trigger='hover' Indicator={AutoPreviewIndicator}>
+        {
+            React.Children.map(children, child => (
+                React.cloneElement(child, {
+                  ...rest,
+              })
+            ))
+        }
+      </NamedIndicator>
+    )
   }
 
   //最外层indicator
