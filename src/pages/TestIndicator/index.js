@@ -8,10 +8,13 @@ import PlacementIndicator from '@/components/indicator/PlacementIndicator';
 import SelectedIcon from '@/assets/selected-icon.svg';
 import UnSelectedIcon from '@/assets/unselected-icon.svg';
 
+import { NamedIndicator } from '@/components';
+
 import MultiActionsIndicator from "@/components/indicator/MultiActionsIndicator";
 
 import AlignmentIndicator from '@/components/indicator/AlignmentIndicator';
 import AutoPreviewIndicator from '@/components/indicator/AutoPreviewIndicator';
+import { GoogleAvatar } from '@/components/presenter';
 
 
 const bottonList = [
@@ -333,7 +336,33 @@ export default function TestIndicator() {
         )
     }
 
+    const TestNamedPreviewIndicator = () => {
+        return (
+            <NamedIndicator Indicator={AutoPreviewIndicator}>
+                <GoogleAvatar name={'5'} />
+            </NamedIndicator>
+        )
+    }
 
+    const TestNamedPreviewIndicator2 = () => {
+
+        return (
+            React.cloneElement(
+                NamedIndicator, {
+                    Indicator: AutoPreviewIndicator
+                }
+             )
+        )
+    }
+
+    const TestNamedPreviewIndicator3 = ({children}) => {
+        return (
+            <NamedIndicator Indicator={AutoPreviewIndicator}>
+                {children}
+            </NamedIndicator>
+        )
+    }
+    
 
     return (
         <ChakraProvider>
@@ -342,7 +371,16 @@ export default function TestIndicator() {
             {/* <TestPlacementIndicator /> */}
             {/* <TestMultiActionIndicator/> */}
             {/* <TestAlignmentIndicator/> */}
-            <TestAutoPrevireIndicator/>
+            {/* <TestAutoPrevireIndicator/> */}
+            {/* <TestNamedPreviewIndicator/> */}
+
+            {/* <TestNamedPreviewIndicator2>
+                <GoogleAvatar name={'5'} />
+            </TestNamedPreviewIndicator2> */}
+            
+            <TestNamedPreviewIndicator3>
+                <GoogleAvatar name={'5'} />
+            </TestNamedPreviewIndicator3>
         </ChakraProvider>
     )
 }
