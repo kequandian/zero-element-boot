@@ -4,6 +4,7 @@ import OutlineCart from '@/components/cart/OutlineCart';
 import IndicatingAction from '@/components/presenter/button/IndicatingAction';
 
 import ContainerContext from '@/components/AutoX/ContainerContext';
+import { HStack, Box } from '@chakra-ui/react';
 
 
 export default function AutoPreviewIndicator(props) {
@@ -23,13 +24,16 @@ export default function AutoPreviewIndicator(props) {
 
 function AutoPreviewComponent (props) {
 
-    const { children, onAutoPreview } = props;
+    const { children, xseq, onAutoPreview, ...rest } = props;
 
     const {colors} = useContext(ContainerContext)
 
     const _Indicator = () => {
         return (
-            <IndicatingAction onAutoPreview={onAutoPreview}/>
+            <HStack spacing={5}>
+                <Box>{xseq}</Box>
+                <IndicatingAction onAutoPreview={onAutoPreview}/>
+            </HStack>
         )
     }
 
@@ -42,7 +46,9 @@ function AutoPreviewComponent (props) {
             <OutlineCart {...outlineProps}>
             {
                 React.Children.map(children, child => (
-                    child
+                    React.cloneElement(child, {
+                        ...rest,
+                      })
                 ))
             }
             </OutlineCart>

@@ -171,7 +171,7 @@ export default function TestPreviewAutoLayout(props) {
 
         return (
             <div style={{ width: '100%' }}>
-                <PreviewAutoLayout ___ layoutName={'storeListAutoLayout'}  />
+                <PreviewAutoLayout ___={true} layoutName={'storeListAutoLayout'}  />
             </div>
         )
     }

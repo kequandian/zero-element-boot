@@ -5,7 +5,11 @@ import { NextIndicator } from '@/components';
 import { get as DefaultListSet } from '@/components/config/NamedListConfig';
 import { get as DefaultContainerSet } from '@/components/config/NamedContainerConfig';
 
-export default function NamedContainer({children, xname, props, container={xname, props}, containerSet, dataSource, tag, useReplacing, ...rest}) {
+export default function NamedContainer(namedContainerProps) {
+
+  const {children, xname, props, container={xname, props}, containerSet, dataSource, tag, useReplacing, ...rest} = namedContainerProps;
+
+  console.log('NamedContainer-namedContainerProps=', namedContainerProps)
 
   tagged(tag, rest, containerName)
 

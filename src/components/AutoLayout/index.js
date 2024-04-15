@@ -12,6 +12,7 @@ import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConf
 import { get as DefaultIndicatorGet } from '@/components/config/NamedIndicatorConfig';
 
 import LoadingPage from '@/components/loading';
+import OutlineCart from '../cart/OutlineCart';
 const { getEndpoint, getToken } = require('@/components/config/common');
 
 // import { Filter } from '../gateway';
@@ -102,10 +103,13 @@ export default function (props) {
 
 //2024-02-22 新增 tag 属性，用于调试跟踪数据流
 
-function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('AutoLayout-未设置onItemClick点击事件') }, dataSource,
-  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, ___, onPreviewTriggered,
+function AutoLayout(autoLayoutProps) {
+
+  const { children, layout, tag, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('AutoLayout-未设置onItemClick点击事件') }, dataSource,
+  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, ___, onAutoPreview,
   // alternative, alternativeActive, onAlternativeBack,   // use container instead. e.g. AlternativeContainer
-  ...rest }) {
+  ...rest } = autoLayoutProps;
+
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
   const { xname, props, container, binding: layoutBinding, filter: layoutFilter, chain: layoutChain, gateway: layoutGateway,
@@ -147,20 +151,16 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
 
   const PreviewIndicator = ({children}) => {
     return (
-      <NamedIndicator trigger='hover' Indicator={AutoPreviewIndicator}>
-        {
-            React.Children.map(children, child => (
-                React.cloneElement(child, {
-                  ...rest,
-              })
-            ))
-        }
+      <NamedIndicator Indicator={AutoPreviewIndicator}>
+          {
+            children
+          }
       </NamedIndicator>
     )
   }
 
   //最外层indicator
-  const ___previewIndicator = ___ ? PreviewIndicator : NextIndicator
+  const ___previewIndicator = ___ ? AutoPreviewIndicator : NextIndicator
 
   // Cart
   const _align_cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || undefined
@@ -252,10 +252,10 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
 
   return layoutChildren ? (
     
-    <___previewIndicator xseq={xseq} onPreviewTriggered={onPreviewTriggered}>
-      <Container ___={___}  xseq={xseq}  {..._container}  {..._dataSource} {...rest}
+    <___previewIndicator xseq={xseq} onAutoPreview={onAutoPreview}>
+      <Container  {..._container}  {..._dataSource} {...rest}
         navigation={navigation}
-        onPreviewTriggered={onPreviewTriggered}
+        onAutoPreview={onAutoPreview}
         tag={`${_tag}-children-container[${_containerName}]`}
       >
 
@@ -282,7 +282,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
                   onItemIndicated={onItemIndicated}
                   tag={`${_tag}-cart[${_cartName}]`}
                 >
-                  <__Presenter {...__presenter} allComponents={allComponents} key={i}
+                  <__Presenter ___={___} xseq={xseq} {...__presenter} allComponents={allComponents} key={i}
                     tag={`${itemTag}-presenter[${_presenterName}]`}
                     onItemClick={onItemClick}
                   />
@@ -296,12 +296,12 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
       </Container>
     </___previewIndicator>
   ) : (
-    <___previewIndicator xseq={xseq} onPreviewTriggered={onPreviewTriggered}>
-      <Container ___={___} xseq={xseq}  {..._container}  {..._dataSource} {...rest} navigation={navigation}
+    <___previewIndicator xseq={xseq} onAutoPreview={onAutoPreview}>
+      <Container  {..._container}  {..._dataSource} {...rest} navigation={navigation}
         useReplacing={_useReplacing}
         tag={`${_tag}-presenter-container[${_containerName}]`}
         onItemClick={onItemClick}
-        onPreviewTriggered={onPreviewTriggered}
+        onAutoPreview={onAutoPreview}
       // onItemClick={onItemClick} 
       // onItemDeleted={onItemDeleted}
       // onItemAdded={onItemAdded}
@@ -320,7 +320,7 @@ function AutoLayout({ children, layout, tag, binding, filter, chain, gateway, al
               tag={`${_tag}-cart[${_cartName}]`}
             >
               {
-                presenter ? <Presenter {..._presenter} allComponents={allComponents}
+                presenter ? <Presenter ___={___} xseq={xseq} {..._presenter} allComponents={allComponents}
                   onItemClick={onItemClick}
                   tag={`${_tag}-presenter[${_presenterName}]`}
                 />

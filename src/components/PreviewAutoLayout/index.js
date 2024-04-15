@@ -145,6 +145,7 @@ export default function PreAutoLayout (props) {
   }
 
   const previewClick = (layoutName) => {
+    console.log('layoutName = ', layoutName)
     setLayoutName(layoutName)
   }
 
@@ -158,7 +159,7 @@ export default function PreAutoLayout (props) {
           dataSource={dataSource}
           onAlternativeBack={onAlterNavBack}
           ___={___}
-          onPreviewTriggered={previewClick}
+          onAutoPreview={previewClick}
         />
     ):<></>
   )
