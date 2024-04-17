@@ -7,7 +7,7 @@ import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConf
 export default function MultiActionsIndicator (props) {
 
     const { children, Actions=[], actions=[], alignment, offset=5, 
-        indicatorData, onActionCompleted,
+        indicatorData,
         ...rest 
     } = props;
 
@@ -22,13 +22,13 @@ export default function MultiActionsIndicator (props) {
         }
 
         return (
-            <HStack spacing={3}>
+            <HStack>
                 {
                     _actions.map((item, index) => {
-                        const { xname, props: itemProps, ...rest } = item
+                        const { xname, props: itemProps } = item
                         const _Indicator = xname ?  _presenters[xname] : <></>
                         return (
-                            <_Indicator key={index} {...itemProps} onActionCompleted={onActionCompleted} indicatorData={indicatorData} {...rest}/>
+                            <_Indicator key={index} {...itemProps} indicatorData={indicatorData} {...rest}/>
                         )
                     })
                 }

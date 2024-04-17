@@ -55,7 +55,7 @@ export default function (props) {
     }
   }, [])
 
-  //根据 path 异步获取 layout json
+  //根据 dataset 异步获取列表数据
   const fetchData = async () => {
     const url = dataset.indexOf('http') != -1 ? dataset : getEndpoint() + dataset;
     const result = await fetch(url, {
@@ -70,8 +70,9 @@ export default function (props) {
       .then(function (data) {
         return data;
       });
-    //保存layout json 数据
-    setDataSource(result.data);
+    //保存列表数据
+    const datasource = result.data ? (result.data.records || result.data) : []
+    setDataSource(datasource);
     //更改loading状态
     setLoading(false);
   }

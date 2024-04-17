@@ -10,10 +10,14 @@ import {
     ModalCloseButton,
     useDisclosure
 } from '@chakra-ui/react';
+import { bindingConvert } from '@/components/gateway/Binding'
+import doFilter from '@/components/gateway/doFilter.mjs';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout'
 
 export default function SelectAction(props) {
-    const { Selection, selection } = props;
+    const { Selection, selection={}, onItemClick, onActionCompleted, ...rest } = props;
+
+    const { converter } = selection
 
     const initialRef = useRef()
     const finalRef = useRef()
@@ -25,18 +29,33 @@ export default function SelectAction(props) {
     // const _Selection = Selection || <PreviewAutoLayout layoutName={_selectionName} {..._selectionProps} />;
     const _selectionProps = typeof selection === 'object' && selection.props ? {...selection.props} : {}
 
-    const onActionCompleted = (item) => {
-    }
-
     const onBtnClick = () => {
         onOpen()
+    }
+
+    const itemClick = (item) => {
+
+        let data = item
+        if (converter && JSON.stringify(converter) != '{}') {
+            const bindingData = bindingConvert(converter, item)
+            data = doFilter(converter, bindingData)
+        } 
+
+        if(onItemClick){
+            onItemClick(data)
+        } else if(onActionCompleted){
+            onActionCompleted(data)
+        }else{
+            console.error('SelectAction 未设置 onActionCompleted 事件')
+        }
+        onClose()
     }
 
     return ( 
         <>
         
         <Button onClick={onBtnClick}>
-            {selection.content}
+            {selection.label}
         </Button>
 
         <Modal
@@ -51,8 +70,9 @@ export default function SelectAction(props) {
                 <ModalHeader>{modalTitle}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody pb={6}>
-                    {/* <_Selection onItemClick={onActionCompleted} /> */}
-                    <PreviewAutoLayout layoutName={_selectionName} {..._selectionProps} />
+                    <PreviewAutoLayout 
+                    layoutName={_selectionName} {..._selectionProps} 
+                    onItemClick={itemClick} />
                 </ModalBody>
             </ModalContent>
         </Modal>

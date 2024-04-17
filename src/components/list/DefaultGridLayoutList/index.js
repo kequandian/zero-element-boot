@@ -11,6 +11,10 @@ export default function DefaultGridLayoutList(props) {
     const {
         children,
         listApi='',
+        columns='5',
+        cartConfig={},
+        hasCart=true,
+        hasIndicator=true,
         ...rest
     } = props
 
@@ -24,7 +28,7 @@ export default function DefaultGridLayoutList(props) {
     const layoutJson = {
         "xname":"Gridbox",
         "props":{
-            "columns":"5"
+            "columns": columns
         },
         "container": {
             "xname": "SelectList",
@@ -33,16 +37,34 @@ export default function DefaultGridLayoutList(props) {
                 "btnPisition": "bottom"
             }
         },
-        "cart": {
+        // "cart": {
+        //     "xname": "SquareCart",
+        //     "props": {
+        //         "margin": "5px",
+        //         "corner": "8px",
+        //         "fill": "#fff",
+        //         "ratio": 0.5,
+        //         ...cartConfig
+        //     }
+        // },
+        
+    }
+
+    if(hasCart){
+        layoutJson.cart = {
             "xname": "SquareCart",
             "props": {
                 "margin": "5px",
                 "corner": "8px",
                 "fill": "#fff",
                 "ratio": 0.5,
+                ...cartConfig
             }
-        },
-        "indicator":{
+        }
+    }
+
+    if(hasIndicator){
+        layoutJson.indicator = {
             "xname": "CircularDeleteIndicator",
             "props":{
                 "isDisabled": true,
@@ -62,7 +84,7 @@ export default function DefaultGridLayoutList(props) {
 
     return (
         
-        <APIContainer API={lsApi}>
+        <APIContainer API={lsApi} converter={rest.converter}>
             <AutoLayout {...config} >
                 {children}
             </AutoLayout>

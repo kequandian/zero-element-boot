@@ -48,6 +48,10 @@ import Download from './button/DownloadBtn';
 import ActionButton from './button/ActionButton';
 import SelectAction from './button/SelectAction';
 import ChakraButton from './button/ChakraButton';
+import NewCartAction from './button/NewCartAction';
+import NewPresenterAction from './button/NewPresenterAction';
+import NewContainerAction from './button/NewContainerAction';
+import NewDatasetAction from './button/NewDatasetAction';
 
 
 export {
@@ -80,6 +84,10 @@ export {
   ActionButton,
   SelectAction,
   ChakraButton,
+  NewCartAction,
+  NewPresenterAction,
+  NewContainerAction,
+  NewDatasetAction,
 
   // other
   Counter,

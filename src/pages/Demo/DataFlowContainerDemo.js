@@ -8,6 +8,8 @@ import PreviewAutoLayout from '@/components/PreviewAutoLayout'
 import MultiActionsIndicator from '@/components/indicator/MultiActionsIndicator';
 import LocalPreview from './localPreview'
 
+import { LS } from 'zero-element/lib/utils/storage';
+
 export default function Index(props) {
 
     const api = '/openapi/lc/module?componentOption=selector'
@@ -122,52 +124,55 @@ export default function Index(props) {
     // }
 
     function TestComponentView () {
-        
+        LS.set("layoutName", 'PRESENTER_6a8b41eaaa0f4a89bc140ece1874a097')
         const _actions = [
             {
-                xname: 'SelectAction',
+                xname: 'NewPresenterAction',
                 props:{
                     selection:{
-                        xname: 'PresenterAutolayout',
-                        content: 'Presenter',
+                        xname: 'NewPresentersAutolayout',
                         props:{
-                            api: '/openapi/lc/module?pageNum=1&pageSize=100&componentOption=presenter',
-                            binding: {
-                                moduleName: "content",
-                                componentType: "___presenter.xname",
-                                componentProps: "___presenter.props"
-                            },
-                        }
+                        },
+                        label: 'NewPresenter',
                     }
-                    
                 },
             },
             {
-                xname: 'SelectAction',
+                xname: 'NewCartAction',
                 props:{
                     selection:{
-                        xname: 'CartsAutolayout',
-                        content: 'Cart',
+                        xname: 'NewCartsAutolayout',
                         props:{
-                            api: '/openapi/lc/module?pageNum=1&pageSize=100&componentOption=cart',
-                            binding: {
-                                moduleName: "content",
-                                componentType: "__cart.xname",
-                                componentProps: "__cart.props"
-                            },
-                        }
+                        },
+                        label: 'NewCart',
                     }
-                    
+                },
+            },
+            {
+                xname: 'NewContainerAction',
+                props:{
+                    selection:{
+                        xname: 'NewContainersAutolayout',
+                        props:{
+                        },
+                        label: 'NewContainer',
+                    }
+                },
+            },
+            {
+                xname: 'NewDatasetAction',
+                props:{
                 },
             },
             
         ]
 
         const converter = {
+            // moduleName: 'layoutName'
         }
 
         return (
-            <DataFlowContainer converter={converter} moduleId={''}>
+            <DataFlowContainer converter={converter}>
                 <VStack alignItems={'flex-start'} spacing={5}>
                     <MultiActionsIndicator  actions={_actions}  alignment='topleft'/>
                     <PreviewAutoLayout />
@@ -184,9 +189,9 @@ export default function Index(props) {
                 <LocalPreview  />
             </DataFlowContainer> */}
 
-            <AutoLayout layout={layoutJson} 
+            {/* <AutoLayout layout={layoutJson} 
                 moduleId={moduleId} converter={converter} 
-            />
+            /> */}
 
             {/* <DataFlowContainer moduleId={moduleId} converter={converter}>
                 <HStack>
@@ -194,7 +199,7 @@ export default function Index(props) {
                     <PreviewAutoLayout layoutName="PropKeyValueManage"  />
                 </HStack>
             </DataFlowContainer> */}
-            {/* <TestComponentView/> */}
+            <TestComponentView/>
         </ChakraProvider>
 
     )

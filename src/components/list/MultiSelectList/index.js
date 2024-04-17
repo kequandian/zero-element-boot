@@ -86,8 +86,9 @@ export default function SelectCheckboxList(props) {
         id='multi-select-list'
         style={{
           width: '100%',
-          overflow: 'auto',
-          height: `${(containerHeight && containerHeight - 32) || ( window.innerHeight )}px`
+          overflowX: 'hidden',
+          overflowY: 'scroll',
+          height: `${(containerHeight && containerHeight - 32) || ( isScroll && window.innerHeight )}px`
         }}
         className={getClassName()}
         ref={containerRef}

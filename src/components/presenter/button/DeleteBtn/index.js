@@ -31,11 +31,8 @@ const DeleteIcon = () => {
 
 export default function DeleteBtn(props) {
 
-    const { props: otherProps, onItemDeleted, indicatorData, ...rest  } = props;
+    const { action, onItemDeleted, indicatorData, ...rest  } = props;
 
-    const { action='' } = otherProps;
-
-    
     const toast = useToast()
     const [isDelOpen, setIsDelOpen] = useState(false)
     const [isLoading, setLoading] = useState(false)
@@ -86,7 +83,7 @@ export default function DeleteBtn(props) {
     }
 
     return (
-        <LightingCart>
+        <LightingCart color="">
             <div onClick={showDelModel}>
                 <DeleteIcon/>
             </div>

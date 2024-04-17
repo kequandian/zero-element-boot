@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import  AutoLayout  from '@/components/AutoLayout';
 import useTokenRequest from '@/components/hooks/useTokenRequest';
+import { VStack } from '@chakra-ui/react';
 const promiseAjax = require('@/components/utils/request');
+import SquareAddNew from '@/components/presenter/button/SquareAddNew';
+
+import { LS } from 'zero-element/lib/utils/storage';
 
 export default function PreAutoLayout (props) {
 
@@ -16,12 +20,15 @@ export default function PreAutoLayout (props) {
     testLayoutName, testBindingName, 
     onItemClick,
     ___,
+    previewAddNew,
     ...rest
   } = props;
 
+  console.log('PreAutoLayout layoutName = ', layoutName, LS.get('layoutName'))
+
   const [dataSource, setDataSource] = useState('')
   const [ alternativeActive, setAlternativeActive ] = useState(false)
-  const [ _layoutName, setLayoutName ] = useState(layoutName)
+  const [ _layoutName, setLayoutName ] = useState(layoutName || LS.get('layoutName'))
 
   const [ mockData, setMockData ] = useState('')
 
@@ -51,7 +58,7 @@ export default function PreAutoLayout (props) {
   if(layoutApi || _layoutName){
     localLayoutApi = layoutApi || '/openapi/lc/module/autolayout/' + _layoutName
   }else if(layoutId){
-    localLayoutApi = `/form?id=${layoutId}`
+    localLayoutApi = `/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/${layoutId}`
   }
 
   //testLayoutName
@@ -145,23 +152,34 @@ export default function PreAutoLayout (props) {
   }
 
   const previewClick = (layoutName) => {
-    console.log('layoutName = ', layoutName)
     setLayoutName(layoutName)
+  }
+
+  const addNewAction = () => {
+    //TODO
+    console.log('addNewAction')
   }
 
   // console.log('=== PreAutoLayout layoutJson == ', layoutJson)
 
   return (
-    layoutJson && JSON.stringify(layoutJson) != '{}' ? (
-        <AutoLayout {...config} onItemClick={onPItemClick} binding={bindingJson}
-          alternativeActive={alternativeActive}
-          alternative={alternative}
-          dataSource={dataSource}
-          onAlternativeBack={onAlterNavBack}
-          ___={___}
-          onAutoPreview={previewClick}
-        />
-    ):<></>
+    <VStack spacing={8}>
+      {
+            layoutJson && JSON.stringify(layoutJson) != '{}' ? (
+              <AutoLayout {...config} onItemClick={onPItemClick} binding={bindingJson}
+                alternativeActive={alternativeActive}
+                alternative={alternative}
+                dataSource={dataSource}
+                onAlternativeBack={onAlterNavBack}
+                ___={___}
+                onAutoPreview={previewClick}
+              />
+          ):<></>
+      }
+      {previewAddNew ? (
+        <SquareAddNew onAddNew={addNewAction} ratio={0.2}/>
+      ):<></>}
+    </VStack>
   )
 }
 

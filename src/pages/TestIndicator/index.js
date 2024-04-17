@@ -267,23 +267,34 @@ export default function TestIndicator() {
 
         const _actions = [
             {
-                xname: 'Delete',
+                xname: 'SelectAction',
                 props:{
-                    action: '/api',
+                    selection:{
+                        xname: 'NewCartsAutolayout',
+                        props:{
+                        },
+                        selectionName: 'Carts',
+                    }
                 },
-                onItemDeleted:()=>{
-                    console.log('onItemDeleted delete')
-                }
             },
-            {
-                xname: 'Download',
-                props:{
-                    action: '/api',
-                },
-                onItemDownloaded:()=>{
-                    console.log('download')
-                }
-            }
+            // {
+            //     xname: 'Delete',
+            //     props:{
+            //         action: '/api',
+            //     },
+            //     onItemDeleted:()=>{
+            //         console.log('onItemDeleted delete')
+            //     }
+            // },
+            // {
+            //     xname: 'Download',
+            //     props:{
+            //         action: '/api',
+            //     },
+            //     onItemDownloaded:()=>{
+            //         console.log('download')
+            //     }
+            // }
         ]
 
         return (
@@ -344,24 +355,6 @@ export default function TestIndicator() {
         )
     }
 
-    const TestNamedPreviewIndicator2 = () => {
-
-        return (
-            React.cloneElement(
-                NamedIndicator, {
-                    Indicator: AutoPreviewIndicator
-                }
-             )
-        )
-    }
-
-    const TestNamedPreviewIndicator3 = ({children}) => {
-        return (
-            <NamedIndicator Indicator={AutoPreviewIndicator}>
-                {children}
-            </NamedIndicator>
-        )
-    }
     
 
     return (
@@ -372,15 +365,7 @@ export default function TestIndicator() {
             {/* <TestMultiActionIndicator/> */}
             {/* <TestAlignmentIndicator/> */}
             {/* <TestAutoPrevireIndicator/> */}
-            {/* <TestNamedPreviewIndicator/> */}
-
-            {/* <TestNamedPreviewIndicator2>
-                <GoogleAvatar name={'5'} />
-            </TestNamedPreviewIndicator2> */}
-            
-            <TestNamedPreviewIndicator3>
-                <GoogleAvatar name={'5'} />
-            </TestNamedPreviewIndicator3>
+            <TestNamedPreviewIndicator/>
         </ChakraProvider>
     )
 }

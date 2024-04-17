@@ -2,7 +2,9 @@ import React from 'react';
 
 import { ChakraProvider, HStack, Box, Button  } from '@chakra-ui/react';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
-import { AutoLayout, APIContainer } from '@/components';
+import { AutoLayout, APIContainer, } from '@/components';
+import { AddNewContainer } from '@/components/container';
+import { DefaultGridLayoutList } from '@/components/list'
 
 import { WxPage } from '@/components/container';
 import { HCenter } from '@/components/cart';
@@ -24,13 +26,14 @@ export default function TestPreviewAutoLayout(props) {
     }
 
     const TestContainerAutoLayout = () => {
-        const api = '/openapi/lc/module/childModuleList/332?componentOption=container'
-        const layoutApi= '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/333'
+        const api = '/openapi/lc/module?pageNum=1&pageSize=100&componentOption=presenter'
+        const layoutApi= '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/197'
         return (
             <PreviewAutoLayout 
-                moduleId="332"
+                // moduleId="332"
                 layoutApi={layoutApi} 
                 api={api} 
+                containerHeight={900}
             />
         )
     }
@@ -169,12 +172,45 @@ export default function TestPreviewAutoLayout(props) {
 
     const TestPreviewTriggerd = () => {
 
+        // const layoutName = 'storeListAutoLayout'
+        const layoutName = 'NewCartsAutolayout'
+
         return (
             <div style={{ width: '100%' }}>
-                <PreviewAutoLayout ___={true} layoutName={'storeListAutoLayout'}  />
+                <PreviewAutoLayout ___={false} layoutName={layoutName}  />
             </div>
         )
     }
+
+
+    //TODO 添加多个item数据
+    const TestComponentList = () => {
+        
+
+        const config = {
+            listApi: "/openapi/lc/module?componentOption=presenter&pageNum=1&pageSize=100&moduleType=autolayout",
+            converter: {
+                moduleName: 'layoutName'
+            },
+            cartConfig: {
+                ratio: 1,
+                overflow: 'auto',
+            }
+        }
+
+        return (
+            <HCenter>
+                <AddNewContainer {...config}>
+                    <DefaultGridLayoutList columns={2} hasCart={false} hasIndicator={false}>
+                        <WxPage device="wx">
+                            <PreviewAutoLayout previewAddNew={true}/>
+                        </WxPage>
+                    </DefaultGridLayoutList>
+                </AddNewContainer>
+            </HCenter>
+        )
+    }
+
 
     return (
 
@@ -196,10 +232,13 @@ export default function TestPreviewAutoLayout(props) {
             </HCenter> */}
 
             {/* <TestIndicatorAutoLayout /> */}
-            {/* <TestContainerAutoLayout/> */}
+            {/* <Box overflow={'hidden'}>
+                <TestContainerAutoLayout/>
+            </Box> */}
             {/* <TestComponentAutoLayout/> */}
             {/* <TestDeleteComponent /> */}
             <TestPreviewTriggerd/>
+            {/* <TestComponentList/> */}
             
         </ChakraProvider>
        
