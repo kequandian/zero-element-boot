@@ -20,6 +20,7 @@
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@loadable/component": "^5.10.1",
+    "@uidotdev/usehooks": "^2.4.1",
     "ahooks": "^2.4.0",
     "framer-motion": "^4.1.17",
     "lodash": "^4.17.19",

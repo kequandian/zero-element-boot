@@ -73,7 +73,7 @@ export default function TextLayout() {
                 <HStack spacing={10}>
                     <div style={{ width: '200px', height: '200px', backgroundColor: '#ECEFF7' }}>
                         <VCenter direction={"start"}>
-                            <HStackLayout direction={"start"}>
+                            <HStackLayout direction={"start"} flexWidth='auto-full'>
                                 <GoogleAvatar name={'5'} />
                                 <GoogleAvatar name={'6'} />
                                 <GoogleAvatar name={'7'} />

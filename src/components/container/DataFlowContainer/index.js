@@ -3,6 +3,7 @@ import { HStack, Box } from '@chakra-ui/react'
 import { bindingConvert } from '@/components/gateway/Binding'
 import doFilter from '@/components/gateway/doFilter.mjs';
 const useLayout = require('@/components/hooks/useLayout');
+import { LS } from 'zero-element/lib/utils/storage';
 
 /**
  * 
@@ -17,13 +18,8 @@ export default function DataFlowContainer(props) {
     const { 
         children, 
         currentside, anotherside, converter, 
-        // minW='200px',
-        // maxW='300px',
         ...rest 
     } = props;
-
-    const childList = React.Children.toArray(children)
-    // const newChildren = childList.length === 1 ? childList[0].props.children : childList
 
     const [onRefresh, setOnRefresh] = useState(false);
     const [configData, setConfigData] = useState({})
@@ -51,9 +47,15 @@ export default function DataFlowContainer(props) {
         }
     }
 
-    const firstChildItemActionClick = (item) => {
-        console.log('first child item action click = ', item)
-        setConfigData(item)
+    const firstChildActionCompleted = (data) => {
+        console.log('first child item action click = ', data)
+        setConfigData('')
+        setTimeout(() => {
+            LS.set('layoutName', data)
+            setConfigData({layoutName: data})
+            setOnRefresh(true)
+        }, 100)
+        
     }
 
     const secondChildItemClick = (item) => {
@@ -70,15 +72,15 @@ export default function DataFlowContainer(props) {
                         React.cloneElement(child, {
                             ...rest,
                             onItemClick: firstChildItemClick,
-                            onActionCompleted: firstChildItemActionClick
+                            onActionCompleted: firstChildActionCompleted
                         })
                     )
                 } else {
                     if (childIndex === 1 && !onRefresh) {
                         return (
                             React.cloneElement(child, {
-                                ...configData,
                                 ...rest,
+                                ...configData,
                                 onItemClick: secondChildItemClick,
                             })
                         )

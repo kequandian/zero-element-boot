@@ -5,18 +5,16 @@ import IndicatingAction from '@/components/presenter/button/IndicatingAction';
 
 import ContainerContext from '@/components/AutoX/ContainerContext';
 import { HStack, Box } from '@chakra-ui/react';
+import { useHover } from "@uidotdev/usehooks";
+import NextIndicator from '@/components/NextIndicator';
+import { LS } from 'zero-element/lib/utils/storage';
+
 
 
 export default function AutoPreviewIndicator(props) {
 
-    const colorValue = {
-        primary: '#037DFF',
-        secondary: '#008000',
-        accent: '#FFFF00',
-      };
-
     return (
-        <ContainerContext.Provider value={{colors: colorValue}}>
+        <ContainerContext.Provider value={{colors: LS.get('colors')}}>
             <AutoPreviewComponent {...props}/>
         </ContainerContext.Provider>
     )
@@ -26,33 +24,45 @@ function AutoPreviewComponent (props) {
 
     const { children, xseq, onAutoPreview, ...rest } = props;
 
+    const [hoverRef, hovering] = useHover();
     const {colors} = useContext(ContainerContext)
+
+    const _AlignmentIndicator = hovering ? AlignmentIndicator : NextIndicator
+    const _OutlineCart = hovering ? OutlineCart : NextIndicator
+
+    const onAPClick = () => {
+        if(onAutoPreview){
+            onAutoPreview(xseq)
+        }
+    }
 
     const _Indicator = () => {
         return (
             <HStack spacing={5}>
-                <Box>{xseq}</Box>
-                <IndicatingAction onAutoPreview={onAutoPreview}/>
+                {/* <Box>{xseq}</Box> */}
+                <IndicatingAction onAutoPreview={onAPClick}/>
             </HStack>
         )
     }
 
     const outlineProps={
-        color: colors.secondary
+        color: colors.primary
     }
 
     return (
-        <AlignmentIndicator Indicator={_Indicator} alignment={'topright'}>
-            <OutlineCart {...outlineProps}>
-            {
-                React.Children.map(children, child => (
-                    React.cloneElement(child, {
-                        ...rest,
-                      })
-                ))
-            }
-            </OutlineCart>
-        </AlignmentIndicator>
+        <article ref={hoverRef}>
+            <_AlignmentIndicator Indicator={_Indicator} alignment={'topright'}>
+                <_OutlineCart {...outlineProps}>
+                {
+                    React.Children.map(children, child => (
+                        React.cloneElement(child, {
+                            ...rest,
+                        })
+                    ))
+                }
+                </_OutlineCart>
+            </_AlignmentIndicator>
+        </article>
     )
 }
 

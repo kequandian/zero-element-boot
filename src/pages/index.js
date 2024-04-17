@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { history } from 'umi';
 import { ChakraProvider } from "@chakra-ui/react";
 import { AutoLayout, NamedLayout } from '@/components';

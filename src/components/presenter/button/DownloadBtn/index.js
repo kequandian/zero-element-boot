@@ -14,10 +14,7 @@ const DownloadIcon = ({w = 25,h = 25}) => {
 
 export default function DownloadBtn(props) {
 
-    const { props: otherProps, onItemDownloaded, indicatorData  } = props;
-
-    const { action } = otherProps;
-
+    const { action, onItemDownloaded, indicatorData  } = props;
 
     // TODO 下载代码未测试
     const handleDownload = () => {
@@ -36,7 +33,7 @@ export default function DownloadBtn(props) {
     };
 
     return (
-        <LightingCart>
+        <LightingCart color="">
             <div onClick={handleDownload}>
                 <DownloadIcon/>
             </div>

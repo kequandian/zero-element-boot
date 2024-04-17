@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 /**
  * 
  * @param {number} opacity 透明度
+ * @param {string} color 背景色
  * 
  */
 export default function LightingCart(props) {
 
-  const { children, opacity='0.6' } = props;
+  const { children, opacity='0.7', color='#E1E1E2' } = props;
 
   const [onHover, setOnHover] = useState(false);
 
@@ -26,9 +27,10 @@ export default function LightingCart(props) {
 
   return React.Children.map(children, child => {
     return <div style={{
-      opacity: _opacity,
+      opacity: opacity,
+      background: color
     }}
-      onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
+      // onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
     >
       {child}
     </div>

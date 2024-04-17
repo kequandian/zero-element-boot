@@ -4,6 +4,7 @@ import { GoogleAvatar } from '@/components/presenter';
 import useLowCodePalette from '@/components/hooks/useLowCodePalette'
 import useNormalize from '@/components/hooks/useNormalize'
 import SelectAction from '@/components/presenter/button/SelectAction';
+import NewCartAction from '@/components/presenter/button/NewCartAction';
 
 export default function TestPresenterDemo(props) {
 
@@ -67,19 +68,34 @@ export default function TestPresenterDemo(props) {
     const TestSelectAction = () => {
 
         const _selection = {
-            xname: 'CartsAutolayout',
+            xname: 'NewCartsAutolayout',
             props:{
-                api: '/openapi/lc/module?pageNum=1&pageSize=100&componentOption=cart',
-                binding: {
-                    moduleName: "content",
-                    componentType: "__cart.xname",
-                    componentProps: "__cart.props"
-                },
-            }
+                // api: '/openapi/lc/module?pageNum=1&pageSize=100&componentOption=cart',
+                // binding: {
+                //     moduleName: "content",
+                //     componentType: "__cart.xname",
+                //     componentProps: "__cart.props"
+                // },
+            },
+            selectionName: 'Carts',
         }
 
         return (
             <SelectAction selection={_selection}/>
+        )
+    }
+
+    const TestNewCartAction = () => {
+
+        const _selection = {
+            xname: 'NewCartsAutolayout',
+            props:{
+            },
+            selectionName: 'NewCart',
+        }
+
+        return (
+            <NewCartAction selection={_selection} moduleId={'332'}/>
         )
     }
 
@@ -88,7 +104,8 @@ export default function TestPresenterDemo(props) {
             {/* <GoogleAvatar {...GoogleAvatarProps}/> */}
 
             {/* <AppTest /> */}
-            <TestSelectAction/>
+            {/* <TestSelectAction/> */}
+            <TestNewCartAction/>
         </ChakraProvider>
     )
 

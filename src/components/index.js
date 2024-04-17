@@ -105,7 +105,8 @@ import { Image, CozeImage } from './presenter'
 import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle,
   Rectangle, 
   Circle, Description, PaletteColor, SquareAddNewButton,GoogleAvatar,Delete, Download,
-  ActionButton, SelectAction, ChakraButton,
+  ActionButton, SelectAction, ChakraButton, NewCartAction, NewPresenterAction,NewContainerAction,
+  NewDatasetAction,
 } from '@/components/presenter';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
@@ -228,7 +229,11 @@ NamedPresenterSet({
   Download,
   ActionButton,
   SelectAction,
-  ChakraButton
+  ChakraButton,
+  NewCartAction,
+  NewPresenterAction,
+  NewContainerAction,
+  NewDatasetAction
 })
 
 NamedListSet({
