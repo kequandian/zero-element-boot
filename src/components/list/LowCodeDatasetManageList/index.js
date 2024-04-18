@@ -25,10 +25,9 @@ export default function LowCodeDatasetManageList(props) {
 
 
     const layoutJson = {
-        "xname": "VStack",
+        "xname": "Gridbox",
         "props": {
-            "spacing": 3,
-            "flexFlow": "inherit"
+            "columns": 4
         },
         "container": {
             "xname": "SelectList",

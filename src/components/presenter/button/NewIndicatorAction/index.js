@@ -4,7 +4,7 @@ import promiseAjax from '@/components/utils/request';
 import SelectAction from '@/components/presenter/button/SelectAction';
 import { LS } from 'zero-element/lib/utils/storage';
 
-export default function NewContainerAction(props) {
+export default function NewIndicatorAction(props) {
 
     const { selection, layoutName=LS.get('layoutName'), onActionCompleted } = props;
 
@@ -12,11 +12,11 @@ export default function NewContainerAction(props) {
     const toast = useToast()
 
     const itemClick = (item) => {
-        addNewContainer(item)
+        addNewIndicator(item)
     }
     
     //新增组件
-    const addNewContainer = (item) => {
+    const addNewIndicator = (item) => {
         const api = '/openapi/lc/module/presenter/based-on-presenter-create-presenter'
         const query = {
             "mainModuleName": typeof layoutName === 'object' ? LS.get('layoutName').layoutName : layoutName,

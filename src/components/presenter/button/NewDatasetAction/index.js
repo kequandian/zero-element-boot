@@ -16,7 +16,7 @@ import { LS } from 'zero-element/lib/utils/storage';
 
 export default function NewDatasetAction (props) {
 
-    const { layoutName, onActionCompleted } = props;
+    const { layoutName = LS.get('layoutName'), onActionCompleted } = props;
     
     const initialRef = useRef()
     const finalRef = useRef()
@@ -28,7 +28,7 @@ export default function NewDatasetAction (props) {
         isScroll: true,
         saveApi: '/openapi/lc/module/presenter/from-dataset-create',
         saveApiBody:{
-            mainModuleName: LS.get('layoutName') || '(layoutName)',
+            mainModuleName: typeof layoutName === 'object' ? LS.get('layoutName').layoutName : '(layoutName)',
             datasetName: '(datasetName)'
         }
     }

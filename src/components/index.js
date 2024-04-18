@@ -106,7 +106,7 @@ import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewBu
   Rectangle, 
   Circle, Description, PaletteColor, SquareAddNewButton,GoogleAvatar,Delete, Download,
   ActionButton, SelectAction, ChakraButton, NewCartAction, NewPresenterAction,NewContainerAction,
-  NewDatasetAction,
+  NewDatasetAction, NewIndicatorAction, PreviewSelectAction,
 } from '@/components/presenter';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
@@ -233,7 +233,9 @@ NamedPresenterSet({
   NewCartAction,
   NewPresenterAction,
   NewContainerAction,
-  NewDatasetAction
+  NewDatasetAction,
+  NewIndicatorAction,
+  PreviewSelectAction
 })
 
 NamedListSet({

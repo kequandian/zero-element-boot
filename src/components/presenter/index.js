@@ -52,6 +52,8 @@ import NewCartAction from './button/NewCartAction';
 import NewPresenterAction from './button/NewPresenterAction';
 import NewContainerAction from './button/NewContainerAction';
 import NewDatasetAction from './button/NewDatasetAction';
+import NewIndicatorAction from './button/NewIndicatorAction';
+import PreviewSelectAction from './button/PreviewSelectAction';
 
 
 export {
@@ -88,6 +90,8 @@ export {
   NewPresenterAction,
   NewContainerAction,
   NewDatasetAction,
+  NewIndicatorAction,
+  PreviewSelectAction,
 
   // other
   Counter,
