@@ -15,13 +15,11 @@ export default function NewCartAction(props) {
         addNewCart(item)
     }
     
-    console.log('NewCartAction layoutName = ', layoutName)
-
     //新增组件
     const addNewCart = (item) => {
         const api = '/openapi/lc/module/presenter/based-on-presenter-create-presenter'
         const query = {
-            "mainModuleName": layoutName,
+            "mainModuleName": typeof layoutName === 'object' ? LS.get('layoutName').layoutName : layoutName,
             "addModuleId": item.id,
         }
 

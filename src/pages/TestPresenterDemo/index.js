@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import { GoogleAvatar } from '@/components/presenter';
 import useLowCodePalette from '@/components/hooks/useLowCodePalette'
 import useNormalize from '@/components/hooks/useNormalize'
 import SelectAction from '@/components/presenter/button/SelectAction';
-import NewCartAction from '@/components/presenter/button/NewCartAction';
+import PreviewSelectAction from '@/components/presenter/button/PreviewSelectAction';
+import { useSearchParams, HashRouter, BrowserRouter } from 'react-router-dom'
+import { LS } from 'zero-element/lib/utils/storage';
 
 export default function TestPresenterDemo(props) {
+
+        
+    useEffect(_=>{
+    },[])
+
+    console.log('useSearchParams == ', useSearchParams, BrowserRouter)
 
     const GoogleAvatarProps = {
         name: 'KKJJ',
@@ -85,28 +93,46 @@ export default function TestPresenterDemo(props) {
         )
     }
 
-    const TestNewCartAction = () => {
+    const TestPreviewSelectAction = () => {
+
+        
+        const obj = {
+            layoutName: 'PresenterLayoutJson',
+        }
+        LS.set("commonData", obj)
 
         const _selection = {
             xname: 'NewCartsAutolayout',
             props:{
             },
-            selectionName: 'NewCart',
+            label: 'NewCart',
+        }
+        
+        const _actionProps = {
+            selection: _selection,
+            api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+            converter:{
+                "layoutName": "mainModuleName",
+                "id": "addModuleId"
+            },
+            layoutName: "PresenterLayoutJson"
         }
 
         return (
-            <NewCartAction selection={_selection} moduleId={'332'}/>
+            <PreviewSelectAction {..._actionProps}/>
         )
     }
 
     return (
+        <HashRouter>
         <ChakraProvider>
             {/* <GoogleAvatar {...GoogleAvatarProps}/> */}
 
             {/* <AppTest /> */}
             {/* <TestSelectAction/> */}
-            <TestNewCartAction/>
+            <TestPreviewSelectAction/>
         </ChakraProvider>
+        </HashRouter>
     )
 
 }

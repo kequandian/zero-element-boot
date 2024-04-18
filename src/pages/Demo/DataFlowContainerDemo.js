@@ -38,20 +38,20 @@ export default function Index(props) {
             {
                 xname: 'PreviewAutoLayout',
                 props: {
-                    layoutName:"PropertyManage"
+                    layoutName: "PropertyManage"
                 }
             },
             {
                 xname: 'PreviewAutoLayout',
                 props: {
-                    layoutName:"PropKeyValueManage",
+                    layoutName: "PropKeyValueManage",
                 }
             },
         ],
-        xname:'HStack',
-        props:{
-          flexFlow: "no-wrap",
-          spacing: 8
+        xname: 'HStack',
+        props: {
+            flexFlow: "no-wrap",
+            spacing: 8
         },
         container: "DataFlowContainer"
     }
@@ -123,58 +123,172 @@ export default function Index(props) {
     //     container: "DataFlowContainer"
     // }
 
-    function TestComponentView () {
-        LS.set("layoutName", 'PRESENTER_6a8b41eaaa0f4a89bc140ece1874a097')
+    function TestComponentView() {
+        const obj = {
+            layoutName: 'PresenterLayoutJson',
+        }
+        LS.set("commonData", obj)
         const _actions = [
             {
-                xname: 'NewPresenterAction',
-                props:{
-                    selection:{
+                xname: 'PreviewSelectAction',
+                props: {
+                    selection: {
                         xname: 'NewPresentersAutolayout',
-                        props:{
+                        props: {
                         },
                         label: 'NewPresenter',
-                    }
+                    },
+                    api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                        "id": "addModuleId"
+                    },
                 },
             },
             {
-                xname: 'NewCartAction',
-                props:{
-                    selection:{
+                xname: 'PreviewSelectAction',
+                props: {
+                    selection: {
                         xname: 'NewCartsAutolayout',
-                        props:{
+                        props: {
                         },
                         label: 'NewCart',
-                    }
+                    },
+                    api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                        "id": "addModuleId"
+                    },
                 },
             },
             {
-                xname: 'NewContainerAction',
-                props:{
-                    selection:{
+                xname: 'PreviewSelectAction',
+                props: {
+                    selection: {
+                        xname: 'NewIndicatorsAutolayout',
+                        props: {
+                        },
+                        label: 'NewIndicator',
+                    },
+                    api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                        "id": "addModuleId"
+                    },
+                },
+            },
+            {
+                xname: 'PreviewSelectAction',
+                props: {
+                    selection: {
                         xname: 'NewContainersAutolayout',
-                        props:{
+                        props: {
                         },
                         label: 'NewContainer',
-                    }
+                    },
+                    api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                        "id": "addModuleId"
+                    },
                 },
             },
             {
                 xname: 'NewDatasetAction',
-                props:{
+                props: {
                 },
             },
             
+            {
+                xname: 'PreviewSelectAction',
+                props: {
+                    selection: {
+                        xname: 'NewCartsAutolayout',
+                        props: {
+                        },
+                        label: 'ChangeCart',
+                    },
+                    api: '/openapi/lc/module/replace-add-child-module',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                        "id": "replaceModuleId"
+                    },
+                },
+            },
+            {
+                xname: 'PreviewSelectAction',
+                props: {
+                    selection: {
+                        xname: 'NewIndicatorsAutolayout',
+                        props: {
+                        },
+                        label: 'ChangeIndicator',
+                    },
+                    api: '/openapi/lc/module/replace-add-child-module',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                        "id": "replaceModuleId"
+                    },
+                },
+            },
+            {
+                xname: 'PreviewSelectAction',
+                props: {
+                    selection: {
+                        xname: 'NewContainersAutolayout',
+                        props: {
+                        },
+                        label: 'ChangeContainer',
+                    },
+                    api: '/openapi/lc/module/replace-add-child-module',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                        "id": "replaceModuleId"
+                    },
+                },
+            },
+            {
+                xname: 'PreviewSelectAction',
+                props: {
+                    selection: {
+                        xname: 'NewLayoutsAutolayout',
+                        props: {
+                        },
+                        label: 'ChangeLayout',
+                    },
+                    api: '/openapi/lc/module/replace-add-child-module',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                        "id": "replaceModuleId"
+                    },
+                },
+            },
+            {
+                xname: 'PreviewSelectAction',
+                props: {
+                    selection: {
+                        xname: 'NewSelectorsAutolayout',
+                        props: {
+                        },
+                        label: 'ChangeSelector',
+                    },
+                    api: '/openapi/lc/module/replace-add-child-module',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                        "id": "replaceModuleId"
+                    },
+                },
+            },
+
         ]
 
         const converter = {
-            // moduleName: 'layoutName'
         }
 
         return (
             <DataFlowContainer converter={converter}>
                 <VStack alignItems={'flex-start'} spacing={5}>
-                    <MultiActionsIndicator  actions={_actions}  alignment='topleft'/>
+                    <MultiActionsIndicator actions={_actions} alignment='topleft' />
                     <PreviewAutoLayout />
                 </VStack>
             </DataFlowContainer>
@@ -199,7 +313,7 @@ export default function Index(props) {
                     <PreviewAutoLayout layoutName="PropKeyValueManage"  />
                 </HStack>
             </DataFlowContainer> */}
-            <TestComponentView/>
+            <TestComponentView />
         </ChakraProvider>
 
     )

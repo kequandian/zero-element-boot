@@ -51,8 +51,8 @@ export default function DataFlowContainer(props) {
         console.log('first child item action click = ', data)
         setConfigData('')
         setTimeout(() => {
-            LS.set('layoutName', data)
-            setConfigData({layoutName: data})
+            LS.set('commonData', {layoutName: data.moduleName})
+            setConfigData({layoutName: data.moduleName})
             setOnRefresh(true)
         }, 100)
         

@@ -24,11 +24,9 @@ export default function PreAutoLayout (props) {
     ...rest
   } = props;
 
-  console.log('PreAutoLayout layoutName = ', layoutName, LS.get('layoutName'))
-
   const [dataSource, setDataSource] = useState('')
   const [ alternativeActive, setAlternativeActive ] = useState(false)
-  const [ _layoutName, setLayoutName ] = useState(layoutName || LS.get('layoutName'))
+  const [ _layoutName, setLayoutName ] = useState(layoutName || LS.get('commonData').layoutName)
 
   const [ mockData, setMockData ] = useState('')
 

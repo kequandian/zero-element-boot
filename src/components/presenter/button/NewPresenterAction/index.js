@@ -16,13 +16,11 @@ export default function NewPresenterAction(props) {
         addNewPresenter(item)
     }
 
-    console.log('NewPresenterAction layoutName = ', layoutName)
-
     //新增组件
     const addNewPresenter = (item) => {
         const api = '/openapi/lc/module/presenter/based-on-presenter-create-presenter'
         const query = {
-            "mainModuleName": layoutName,
+            "mainModuleName": typeof layoutName === 'object' ? LS.get('layoutName').layoutName : layoutName,
             "addModuleId": item.id,
         }
 
