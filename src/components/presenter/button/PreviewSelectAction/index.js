@@ -10,12 +10,14 @@ import { LS } from 'zero-element/lib/utils/storage';
  * 
  * @param {string} api 提交api
  * @param {object} converter 转换提交的body 
+ * @param {string} method 提交方式
+ * @param {function} onActionCompleted 访问完成后回调事件
  * 
  */
 
 export default function PreviewSelectAction(props) {
 
-    const { selection, api, converter, onActionCompleted } = props;
+    const { selection, api, method='POST', converter, onActionCompleted } = props;
 
     const toast = useToast()
 
@@ -25,7 +27,10 @@ export default function PreviewSelectAction(props) {
 
     //新增组件
     const submitData = (item) => {
-        // const api = '/openapi/lc/module/presenter/based-on-presenter-create-presenter'
+
+        // let message = method === 'POST' ? '新增' : method === 'DELETE'? '移除' : '操作'
+        let message = '操作'
+
         if(!api){
             toastTips('未设置api', 'error')
             return
@@ -33,8 +38,6 @@ export default function PreviewSelectAction(props) {
 
         const _api = api
         let query = {
-            // "mainModuleName": layoutName,
-            // "addModuleId": item.id,
         }
 
         const getStrogeData = LS.get('commonData') || {}
@@ -44,14 +47,14 @@ export default function PreviewSelectAction(props) {
             query = doFilter(converter, bindingData)
         }
 
-        return promiseAjax(_api, query, { method: 'POST' }).then(resp => {
+        return promiseAjax(_api, query, { method: method }).then(resp => {
             if (resp && resp.code === 200) {
-                toastTips('新增成功')
+                toastTips(`${message}成功`)
                 if(onActionCompleted){
                     onActionCompleted(resp.data)
                 }
             } else {
-                toastTips('新增失败')
+                toastTips(`${message}失败`, 'error')
             }
         }).finally(_ => {
         });

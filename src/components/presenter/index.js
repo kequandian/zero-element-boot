@@ -54,6 +54,10 @@ import NewContainerAction from './button/NewContainerAction';
 import NewDatasetAction from './button/NewDatasetAction';
 import NewIndicatorAction from './button/NewIndicatorAction';
 import PreviewSelectAction from './button/PreviewSelectAction';
+import ChangeDatasetAction from './button/ChangeDatasetAction';
+import DeleteAction from './button/DeleteAction';
+import NewParamAction from './button/NewParamAction';
+import PropsAction from './button/PropsAction';
 
 
 export {
@@ -92,6 +96,10 @@ export {
   NewDatasetAction,
   NewIndicatorAction,
   PreviewSelectAction,
+  ChangeDatasetAction,
+  DeleteAction,
+  NewParamAction,
+  PropsAction,
 
   // other
   Counter,
