@@ -59,9 +59,6 @@ export default function ConfirmContainer(props) {
             data = formatParams(cloneOriginSaveBody, {...rest, ...currentItem})
         }
 
-        
-        console.log('handleSaveData handleSaveData = ', originSaveBody, rest, currentItem)  
-
         const queryData = {
             ...data
         }
@@ -71,7 +68,7 @@ export default function ConfirmContainer(props) {
                 toastTips('操作成功')
                 onClose()
                 if(onActionCompleted){
-                    onActionCompleted(resp.data.moduleName)
+                    onActionCompleted(resp.data)
                 }
             } else {
                 console.error("操作失败 === ", resp)
