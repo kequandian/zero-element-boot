@@ -33,6 +33,7 @@ export default function ConfirmContainer(props) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [currentItem, setCurrentItem] = useState('')
     const [originSaveBody, setOriginSaveBody] = useState(saveApiBody)
+    const [isLoading, setLoading] = useState(false)
     const [onRefresh, setOnRefresh] = useState(false)
     const Child = children && React.Children.only(children);
 
@@ -122,7 +123,7 @@ export default function ConfirmContainer(props) {
             <AlertDialog
                 motionPreset='slideInBottom'
                 leastDestructiveRef={cancelRef}
-                onClose={onClose}
+                // onClose={onClose}
                 isOpen={isOpen}
                 isCentered
             >
@@ -130,15 +131,15 @@ export default function ConfirmContainer(props) {
 
                 <AlertDialogContent>
                     <AlertDialogHeader>提示</AlertDialogHeader>
-                    <AlertDialogCloseButton />
+                    {/* <AlertDialogCloseButton /> */}
                     <AlertDialogBody>
                         确定选择此项吗？
                     </AlertDialogBody>
                     <AlertDialogFooter>
-                        <Button ref={cancelRef} onClick={onClose}>
+                        <Button isLoading={isLoading} ref={cancelRef} onClick={onClose}>
                             取消
                         </Button>
-                        <Button colorScheme='blue' ml={3} onClick={handleSaveData}>
+                        <Button isLoading={isLoading} colorScheme='blue' ml={3} onClick={handleSaveData}>
                             确定
                         </Button>
                     </AlertDialogFooter>

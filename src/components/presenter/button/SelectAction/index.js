@@ -15,7 +15,8 @@ import doFilter from '@/components/gateway/doFilter.mjs';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout'
 
 export default function SelectAction(props) {
-    const { Selection, selection={}, onItemClick, onActionCompleted, ...rest } = props;
+    const { Selection, selection={}, onItemClick, 
+    onActionCompleted, onModalClose, ...rest } = props;
 
     const { converter } = selection
 
@@ -51,6 +52,13 @@ export default function SelectAction(props) {
         onClose()
     }
 
+    const handleModalClose = () => {
+        onClose()
+        if(onModalClose){
+            onModalClose()
+        }
+    }
+
     return ( 
         <>
         
@@ -62,7 +70,7 @@ export default function SelectAction(props) {
             initialFocusRef={initialRef}
             finalFocusRef={finalRef}
             isOpen={isOpen}
-            onClose={onClose}
+            onClose={handleModalClose}
             size='full'
         >
             <ModalOverlay />
@@ -72,7 +80,7 @@ export default function SelectAction(props) {
                 <ModalBody pb={6}>
                     <PreviewAutoLayout 
                     layoutName={_selectionName} {..._selectionProps} 
-                    onItemClick={itemClick} />
+                    onItemClick={itemClick} {...rest}/>
                 </ModalBody>
             </ModalContent>
         </Modal>

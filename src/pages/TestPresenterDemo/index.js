@@ -5,7 +5,6 @@ import useLowCodePalette from '@/components/hooks/useLowCodePalette'
 import useNormalize from '@/components/hooks/useNormalize'
 import SelectAction from '@/components/presenter/button/SelectAction';
 import PreviewSelectAction from '@/components/presenter/button/PreviewSelectAction';
-import { useSearchParams, HashRouter, BrowserRouter } from 'react-router-dom'
 import { LS } from 'zero-element/lib/utils/storage';
 
 export default function TestPresenterDemo(props) {
@@ -13,8 +12,6 @@ export default function TestPresenterDemo(props) {
         
     useEffect(_=>{
     },[])
-
-    console.log('useSearchParams == ', useSearchParams, BrowserRouter)
 
     const GoogleAvatarProps = {
         name: 'KKJJ',
@@ -124,7 +121,6 @@ export default function TestPresenterDemo(props) {
     }
 
     return (
-        <HashRouter>
         <ChakraProvider>
             {/* <GoogleAvatar {...GoogleAvatarProps}/> */}
 
@@ -132,7 +128,6 @@ export default function TestPresenterDemo(props) {
             {/* <TestSelectAction/> */}
             <TestPreviewSelectAction/>
         </ChakraProvider>
-        </HashRouter>
     )
 
 }

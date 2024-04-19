@@ -9,6 +9,7 @@ import MultiActionsIndicator from '@/components/indicator/MultiActionsIndicator'
 import LocalPreview from './localPreview'
 
 import { LS } from 'zero-element/lib/utils/storage';
+import { method } from 'lodash';
 
 export default function Index(props) {
 
@@ -125,10 +126,11 @@ export default function Index(props) {
 
     function TestComponentView() {
         const obj = {
-            layoutName: 'PRESENTER_33e7d49187e54df39d728fb26dacd347',
+            layoutName: 'PresenterLayoutJson',
         }
         LS.set("commonData", obj)
         const _actions = [
+            //new
             {
                 xname: 'PreviewSelectAction',
                 props: {
@@ -198,7 +200,19 @@ export default function Index(props) {
                 props: {
                 },
             },
+            {
+                xname: 'NewParamAction',
+                props: {
+                    selection: {
+                        xname: 'PropsManage',
+                        props: {
+                        },
+                        label: 'NewParam',
+                    },
+                },
+            },
             
+            //change
             {
                 xname: 'PreviewSelectAction',
                 props: {
@@ -279,6 +293,34 @@ export default function Index(props) {
                     },
                 },
             },
+            {
+                xname: 'ChangeDatasetAction',
+                props: {
+                },
+            },
+            
+            // no
+            {
+                xname: 'DeleteAction',
+                props: {
+                    api: '/openapi/lc/module/delete-child-module',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                    },
+                    apiBody:{
+                        removeModuleOption: 'cart'
+                    },
+                    label: 'NoCart'
+                },
+            },
+            
+            //props
+            {
+                xname: 'PropsAction',
+                props: {
+                },
+            },
+
 
         ]
 
