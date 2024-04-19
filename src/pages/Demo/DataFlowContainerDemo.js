@@ -125,7 +125,7 @@ export default function Index(props) {
 
     function TestComponentView() {
         const obj = {
-            layoutName: 'PresenterLayoutJson',
+            layoutName: 'PRESENTER_33e7d49187e54df39d728fb26dacd347',
         }
         LS.set("commonData", obj)
         const _actions = [
