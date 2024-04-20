@@ -126,7 +126,7 @@ export default function Index(props) {
 
     function TestComponentView() {
         const obj = {
-            layoutName: 'PresenterLayoutJson',
+            layoutName: 'PresenterLayoutJson2',
         }
         LS.set("commonData", obj)
         const _actions = [
@@ -303,7 +303,7 @@ export default function Index(props) {
             {
                 xname: 'DeleteAction',
                 props: {
-                    api: '/openapi/lc/module/delete-child-module',
+                    api: '/openapi/lc/module/presenter/remove-presenter-child-module',
                     converter: {
                         "layoutName": "mainModuleName",
                     },
@@ -313,10 +313,78 @@ export default function Index(props) {
                     label: 'NoCart'
                 },
             },
+            {
+                xname: 'DeleteAction',
+                props: {
+                    api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                    },
+                    apiBody:{
+                        removeModuleOption: 'indicator'
+                    },
+                    label: 'NoIndicator'
+                },
+            },
+            {
+                xname: 'DeleteAction',
+                props: {
+                    api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                    },
+                    apiBody:{
+                        removeModuleOption: 'container'
+                    },
+                    label: 'NoContainer'
+                },
+            },
+            {
+                xname: 'DeleteAction',
+                props: {
+                    api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                    },
+                    apiBody:{
+                        removeModuleOption: 'layout'
+                    },
+                    label: 'NoLayout'
+                },
+            },
+            {
+                xname: 'DeleteAction',
+                props: {
+                    api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                    },
+                    apiBody:{
+                        removeModuleOption: 'selector'
+                    },
+                    label: 'NoSelector'
+                },
+            },
+            {
+                xname: 'DeleteAction',
+                props: {
+                    api: '/openapi/lc/module/remove-child-module-of-presenter-option',
+                    converter: {
+                        "layoutName": "mainModuleName",
+                    },
+                    label: 'NoLastPresenter'
+                },
+            },
             
             //props
             {
                 xname: 'PropsAction',
+                props: {
+                },
+            },
+            //binding
+            {
+                xname: 'BindingAction',
                 props: {
                 },
             },
