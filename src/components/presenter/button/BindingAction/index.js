@@ -14,7 +14,7 @@ import {
 import { LS } from 'zero-element/lib/utils/storage';
 import { AutoLayout } from '@/components'
 
-export default function PropsAction(props) {
+export default function BindingAction(props) {
 
     const { onActionCompleted } = props;
 
@@ -30,13 +30,13 @@ export default function PropsAction(props) {
                 {
                     xname: 'PreviewAutoLayout',
                     props: {
-                        layoutName: "PropertyManage"
+                        layoutName:"BindingManageList"
                     }
                 },
                 {
                     xname: 'PreviewAutoLayout',
                     props: {
-                        layoutName: "PropKeyValueManage",
+                        layoutName:"ParentParameterListAutoLayout",
                     }
                 },
             ],
@@ -49,7 +49,6 @@ export default function PropsAction(props) {
             container: "DataFlowContainer"
         },
         converter: {
-            assembledAs: "assembledAs"
         },
     }
 
@@ -70,7 +69,7 @@ export default function PropsAction(props) {
     return (
         <>
             <Button onClick={onBtnClick}>
-                Props
+                Binding
             </Button>
 
             <Modal

@@ -58,6 +58,7 @@ import ChangeDatasetAction from './button/ChangeDatasetAction';
 import DeleteAction from './button/DeleteAction';
 import NewParamAction from './button/NewParamAction';
 import PropsAction from './button/PropsAction';
+import BindingAction from './button/BindingAction';
 
 
 export {
@@ -100,6 +101,7 @@ export {
   DeleteAction,
   NewParamAction,
   PropsAction,
+  BindingAction,
 
   // other
   Counter,
