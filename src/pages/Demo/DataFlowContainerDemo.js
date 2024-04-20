@@ -126,269 +126,290 @@ export default function Index(props) {
 
     function TestComponentView() {
         const obj = {
-            layoutName: 'PresenterLayoutJson2',
+            layoutName: 'PRESENTER_8508cf9c816d460bb0918b54f9d4fe1d',
         }
         LS.set("commonData", obj)
         const _actions = [
             //new
-            {
-                xname: 'PreviewSelectAction',
-                props: {
-                    selection: {
-                        xname: 'NewPresentersAutolayout',
-                        props: {
+            [
+                {
+                    xname: 'PreviewSelectAction',
+                    props: {
+                        selection: {
+                            xname: 'NewPresentersAutolayout',
+                            props: {
+                            },
+                            label: 'NewPresenter',
                         },
-                        label: 'NewPresenter',
-                    },
-                    api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                        "id": "addModuleId"
-                    },
-                },
-            },
-            {
-                xname: 'PreviewSelectAction',
-                props: {
-                    selection: {
-                        xname: 'NewCartsAutolayout',
-                        props: {
+                        api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                            "id": "addModuleId"
                         },
-                        label: 'NewCart',
-                    },
-                    api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                        "id": "addModuleId"
                     },
                 },
-            },
-            {
-                xname: 'PreviewSelectAction',
-                props: {
-                    selection: {
-                        xname: 'NewIndicatorsAutolayout',
-                        props: {
+                {
+                    xname: 'PreviewSelectAction',
+                    props: {
+                        selection: {
+                            xname: 'NewCartsAutolayout',
+                            props: {
+                            },
+                            label: 'NewCart',
                         },
-                        label: 'NewIndicator',
-                    },
-                    api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                        "id": "addModuleId"
-                    },
-                },
-            },
-            {
-                xname: 'PreviewSelectAction',
-                props: {
-                    selection: {
-                        xname: 'NewContainersAutolayout',
-                        props: {
+                        api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                            "id": "addModuleId"
                         },
-                        label: 'NewContainer',
-                    },
-                    api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                        "id": "addModuleId"
                     },
                 },
-            },
-            {
-                xname: 'NewDatasetAction',
-                props: {
-                },
-            },
-            {
-                xname: 'NewParamAction',
-                props: {
-                    selection: {
-                        xname: 'PropsManage',
-                        props: {
+                {
+                    xname: 'PreviewSelectAction',
+                    props: {
+                        selection: {
+                            xname: 'NewIndicatorsAutolayout',
+                            props: {
+                            },
+                            label: 'NewIndicator',
                         },
-                        label: 'NewParam',
-                    },
-                },
-            },
-            
-            //change
-            {
-                xname: 'PreviewSelectAction',
-                props: {
-                    selection: {
-                        xname: 'NewCartsAutolayout',
-                        props: {
+                        api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                            "id": "addModuleId"
                         },
-                        label: 'ChangeCart',
-                    },
-                    api: '/openapi/lc/module/replace-add-child-module',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                        "id": "replaceModuleId"
                     },
                 },
-            },
-            {
-                xname: 'PreviewSelectAction',
-                props: {
-                    selection: {
-                        xname: 'NewIndicatorsAutolayout',
-                        props: {
+                {
+                    xname: 'PreviewSelectAction',
+                    props: {
+                        selection: {
+                            xname: 'NewContainersAutolayout',
+                            props: {
+                            },
+                            label: 'NewContainer',
                         },
-                        label: 'ChangeIndicator',
-                    },
-                    api: '/openapi/lc/module/replace-add-child-module',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                        "id": "replaceModuleId"
-                    },
-                },
-            },
-            {
-                xname: 'PreviewSelectAction',
-                props: {
-                    selection: {
-                        xname: 'NewContainersAutolayout',
-                        props: {
+                        api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                            "id": "addModuleId"
                         },
-                        label: 'ChangeContainer',
-                    },
-                    api: '/openapi/lc/module/replace-add-child-module',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                        "id": "replaceModuleId"
                     },
                 },
-            },
-            {
-                xname: 'PreviewSelectAction',
-                props: {
-                    selection: {
-                        xname: 'NewLayoutsAutolayout',
-                        props: {
-                        },
-                        label: 'ChangeLayout',
+                {
+                    xname: 'NewDatasetAction',
+                    props: {
                     },
-                    api: '/openapi/lc/module/replace-add-child-module',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                        "id": "replaceModuleId"
-                    },
-                },
-            },
-            {
-                xname: 'PreviewSelectAction',
-                props: {
-                    selection: {
-                        xname: 'NewSelectorsAutolayout',
-                        props: {
-                        },
-                        label: 'ChangeSelector',
-                    },
-                    api: '/openapi/lc/module/replace-add-child-module',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                        "id": "replaceModuleId"
-                    },
-                },
-            },
-            {
-                xname: 'ChangeDatasetAction',
-                props: {
-                },
-            },
-            
-            // no
-            {
-                xname: 'DeleteAction',
-                props: {
-                    api: '/openapi/lc/module/presenter/remove-presenter-child-module',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                    },
-                    apiBody:{
-                        removeModuleOption: 'cart'
-                    },
-                    label: 'NoCart'
-                },
-            },
-            {
-                xname: 'DeleteAction',
-                props: {
-                    api: '/openapi/lc/module/presenter/remove-presenter-child-module',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                    },
-                    apiBody:{
-                        removeModuleOption: 'indicator'
-                    },
-                    label: 'NoIndicator'
-                },
-            },
-            {
-                xname: 'DeleteAction',
-                props: {
-                    api: '/openapi/lc/module/presenter/remove-presenter-child-module',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                    },
-                    apiBody:{
-                        removeModuleOption: 'container'
-                    },
-                    label: 'NoContainer'
-                },
-            },
-            {
-                xname: 'DeleteAction',
-                props: {
-                    api: '/openapi/lc/module/presenter/remove-presenter-child-module',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                    },
-                    apiBody:{
-                        removeModuleOption: 'layout'
-                    },
-                    label: 'NoLayout'
-                },
-            },
-            {
-                xname: 'DeleteAction',
-                props: {
-                    api: '/openapi/lc/module/presenter/remove-presenter-child-module',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                    },
-                    apiBody:{
-                        removeModuleOption: 'selector'
-                    },
-                    label: 'NoSelector'
-                },
-            },
-            {
-                xname: 'DeleteAction',
-                props: {
-                    api: '/openapi/lc/module/remove-child-module-of-presenter-option',
-                    converter: {
-                        "layoutName": "mainModuleName",
-                    },
-                    label: 'NoLastPresenter'
-                },
-            },
-            
-            //props
-            {
-                xname: 'PropsAction',
-                props: {
-                },
-            },
-            //binding
-            {
-                xname: 'BindingAction',
-                props: {
-                },
-            },
+                }
+            ],
 
+            //change
+            [
+                {
+                    xname: 'PreviewSelectAction',
+                    props: {
+                        selection: {
+                            xname: 'NewCartsAutolayout',
+                            props: {
+                            },
+                            label: 'ChangeCart',
+                        },
+                        api: '/openapi/lc/module/replace-add-child-module',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                            "id": "replaceModuleId"
+                        },
+                    },
+                },
+                {
+                    xname: 'PreviewSelectAction',
+                    props: {
+                        selection: {
+                            xname: 'NewIndicatorsAutolayout',
+                            props: {
+                            },
+                            label: 'ChangeIndicator',
+                        },
+                        api: '/openapi/lc/module/replace-add-child-module',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                            "id": "replaceModuleId"
+                        },
+                    },
+                },
+                {
+                    xname: 'PreviewSelectAction',
+                    props: {
+                        selection: {
+                            xname: 'NewContainersAutolayout',
+                            props: {
+                            },
+                            label: 'ChangeContainer',
+                        },
+                        api: '/openapi/lc/module/replace-add-child-module',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                            "id": "replaceModuleId"
+                        },
+                    },
+                },
+                {
+                    xname: 'PreviewSelectAction',
+                    props: {
+                        selection: {
+                            xname: 'NewLayoutsAutolayout',
+                            props: {
+                            },
+                            label: 'ChangeLayout',
+                        },
+                        api: '/openapi/lc/module/replace-add-child-module',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                            "id": "replaceModuleId"
+                        },
+                    },
+                },
+                {
+                    xname: 'PreviewSelectAction',
+                    props: {
+                        selection: {
+                            xname: 'NewSelectorsAutolayout',
+                            props: {
+                            },
+                            label: 'ChangeSelector',
+                        },
+                        api: '/openapi/lc/module/replace-add-child-module',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                            "id": "replaceModuleId"
+                        },
+                    },
+                },
+                {
+                    xname: 'ChangeDatasetAction',
+                    props: {
+                    },
+                }
+            ],
+
+            // no
+            [
+                {
+                    xname: 'DeleteAction',
+                    props: {
+                        api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                        },
+                        apiBody: {
+                            removeModuleOption: 'cart'
+                        },
+                        label: 'NoCart'
+                    },
+                },
+                {
+                    xname: 'DeleteAction',
+                    props: {
+                        api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                        },
+                        apiBody: {
+                            removeModuleOption: 'indicator'
+                        },
+                        label: 'NoIndicator'
+                    },
+                },
+                {
+                    xname: 'DeleteAction',
+                    props: {
+                        api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                        },
+                        apiBody: {
+                            removeModuleOption: 'container'
+                        },
+                        label: 'NoContainer'
+                    },
+                },
+                {
+                    xname: 'DeleteAction',
+                    props: {
+                        api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                        },
+                        apiBody: {
+                            removeModuleOption: 'layout'
+                        },
+                        label: 'NoLayout'
+                    },
+                },
+                {
+                    xname: 'DeleteAction',
+                    props: {
+                        api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                        },
+                        apiBody: {
+                            removeModuleOption: 'selector'
+                        },
+                        label: 'NoSelector'
+                    },
+                },
+
+                {
+                    xname: 'NoPresenterAction',
+                    props: {
+                        selection: {
+                            xname: 'GetPresentersAutolayout',
+                            props: {
+                            },
+                            label: 'NoPresenter',
+                        },
+                    },
+                },
+                {
+                    xname: 'DeleteAction',
+                    props: {
+                        api: '/openapi/lc/module/remove-child-module-of-presenter-option',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                        },
+                        label: 'NoLastPresenter'
+                    },
+                }
+            ],
+
+            //other
+            [
+                //params
+                {
+                    xname: 'NewParamAction',
+                    props: {
+                        selection: {
+                            xname: 'PropsManageAutolayout',
+                            props: {
+                            },
+                            label: 'Params',
+                        },
+                    },
+                },
+                //props
+                {
+                    xname: 'PropsAction',
+                    props: {
+                    },
+                },
+                //binding
+                {
+                    xname: 'BindingAction',
+                    props: {
+                    },
+                }
+            ],
 
         ]
 

@@ -165,6 +165,8 @@ export default function KeyValueManageList(props) {
         })
     }
 
+    console.log('KeyValueManageList = ', lsApi, converter, rest)
+
     return (
         <>
             <APIContainer api={lsApi} converter={converter} {...rest}>

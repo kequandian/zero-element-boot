@@ -4,33 +4,36 @@ import promiseAjax from '@/components/utils/request';
 import SelectAction from '@/components/presenter/button/SelectAction';
 import { LS } from 'zero-element/lib/utils/storage';
 
-export default function NewIndicatorAction(props) {
 
-    const { selection, layoutName=LS.get('layoutName'), onActionCompleted } = props;
+export default function NoPresenterAction(props) {
 
+    const { selection, layoutName=LS.get('commonData'), onActionCompleted } = props;
+
+    const _layoutName = typeof layoutName === 'object' ? LS.get('commonData').layoutName : layoutName
+    const presenterListApi = `/openapi/lc/module/childModuleList/${_layoutName}?componentOption=presenter`
     
     const toast = useToast()
 
     const itemClick = (item) => {
-        addNewIndicator(item)
+        delPresenter(item)
     }
-    
+
     //新增组件
-    const addNewIndicator = (item) => {
-        const api = '/openapi/lc/module/presenter/based-on-presenter-create-presenter'
+    const delPresenter = (item) => {
+        const api = '/openapi/lc/module/remove-child-module-of-presenter-option'
         const query = {
-            "mainModuleName": typeof layoutName === 'object' ? LS.get('layoutName').layoutName : layoutName,
-            "addModuleId": item.id,
+            "mainModuleName": _layoutName,
+            "removeModuleId": item.id,
         }
 
-        return promiseAjax(api, query, { method: 'POST' }).then(resp => {
+        return promiseAjax(api, query, { method: 'DELETE' }).then(resp => {
             if (resp && resp.code === 200) {
-                toastTips('新增成功')
+                toastTips('删除成功')
                 if(onActionCompleted){
                     onActionCompleted(resp.data.moduleName)
                 }
             } else {
-                toastTips('新增失败')
+                toastTips('删除失败', 'error')
             }
         }).finally(_ => {
         });
@@ -50,6 +53,6 @@ export default function NewIndicatorAction(props) {
     }
 
     return (
-        <SelectAction selection={selection} onItemClick={itemClick} />
+        <SelectAction selection={selection} onItemClick={itemClick} api={presenterListApi} />
     )
 }

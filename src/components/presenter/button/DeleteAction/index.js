@@ -65,7 +65,7 @@ export default function DeleteAction(props) {
                     onActionCompleted(resp.data)
                 }
             } else {
-                toastTips(`移除失败`, 'error')
+                toastTips(`移除失败, ${resp.message}`, 'error')
             }
         }).finally(_ => {
             setLoading(false)

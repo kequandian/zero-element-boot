@@ -142,6 +142,7 @@ export default function PlainManageList(props) {
         })
     }
 
+    console.log('PlainManageList = ', lsApi, converter, rest)
     
     return (
         <>

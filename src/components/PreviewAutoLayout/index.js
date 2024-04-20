@@ -50,7 +50,6 @@ export default function PreAutoLayout (props) {
       });
   }
   
-
   // 判断 layoutApi 是否为空，如果为空，则用 _layoutName 拼接api路径
   let localLayoutApi = ''
   if(layoutApi || _layoutName){
@@ -158,7 +157,7 @@ export default function PreAutoLayout (props) {
     console.log('addNewAction')
   }
 
-  // console.log('=== PreAutoLayout layoutJson == ', layoutJson)
+  console.log('=== PreAutoLayout config == ', config)
 
   return (
     <VStack spacing={8}>
