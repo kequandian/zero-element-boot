@@ -46,6 +46,9 @@ function doReplace(replacing, data) {
         })
     }
   })
+  
+
+  console.log('Replacing doReplace = ', data, convertData)
 
   return { ...data, ...convertData  };
 }
