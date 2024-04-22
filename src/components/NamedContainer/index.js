@@ -9,9 +9,7 @@ export default function NamedContainer(namedContainerProps) {
 
   const {children, xname, props, container={xname, props}, containerSet, dataSource, tag, useReplacing, ...rest} = namedContainerProps;
 
-  console.log('NamedContainer-namedContainerProps=', namedContainerProps)
-
-  tagged(tag, rest, containerName)
+  // console.log('NamedContainer-namedContainerProps=', namedContainerProps)
 
   const data = dataSource || rest || {}
   const replacedData = useReplacing ? useReplacing(data) : data
@@ -25,6 +23,8 @@ export default function NamedContainer(namedContainerProps) {
 
   const containerName = (typeof container === 'string') ? container : container.xname
   const NamedContainer = _ContainerSet[containerName] || tips(containerName);
+
+  tagged(tag, rest, containerName)
   
   return (
       <NamedContainer {...container.props} {...replacedData} >
