@@ -1,0 +1,16 @@
+/* 定义包含拖拽项的容器样式 */
+.items-container {
+    min-width: 250px;
+    display: flex;
+    // flex-wrap: wrap;
+    flex-direction: column; /* 垂直排列 */
+  }
+  
+  /* 定义拖拽项的样式 */
+  .draggable-item {
+    cursor: grab; /* 鼠标样式 */
+    margin-bottom: 5px; /* 底部外边距，用于分隔拖拽项 */
+    padding: 10px; /* 内边距，增加可点击区域 */
+    background-color: #ffffff; /* 背景色 */
+    border: 1px solid #ccc; /* 边框 */
+  }

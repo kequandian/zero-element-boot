@@ -126,7 +126,10 @@ export default function Index(props) {
 
     function TestComponentView() {
         const obj = {
-            layoutName: 'PRESENTER_3da024972c6a4af38204f3e09128f8b0',
+            layoutName: 'testListItem',
+            // layoutName: 'testListIAutolayout',
+            // layoutName: 'PropsManageAutolayout',
+            // layoutName: 'ParentParameterListAutoLayout'
         }
         LS.set("commonData", obj)
         const _actions = [
@@ -205,6 +208,23 @@ export default function Index(props) {
 
             //change
             [
+                {
+                    xname: 'PreviewSelectAction',
+                    props: {
+                        selection: {
+                            xname: 'NewPresentersAutolayout',
+                            props: {
+                            },
+                            label: 'AddPresenter',
+                        },
+                        api: '/openapi/lc/module/add-child-module',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                            "id": "addModuleId"
+                        },
+                        method:'PATCH'
+                    },
+                },
                 {
                     xname: 'PreviewSelectAction',
                     props: {
@@ -294,6 +314,28 @@ export default function Index(props) {
 
             // no
             [
+                
+                {
+                    xname: 'NoPresenterAction',
+                    props: {
+                        selection: {
+                            xname: 'GetPresentersAutolayout',
+                            props: {
+                            },
+                            label: 'NoPresenter',
+                        },
+                    },
+                },
+                {
+                    xname: 'DeleteAction',
+                    props: {
+                        api: '/openapi/lc/module/remove-child-module-of-presenter-option',
+                        converter: {
+                            "layoutName": "mainModuleName",
+                        },
+                        label: 'NoLastPresenter'
+                    },
+                },
                 {
                     xname: 'DeleteAction',
                     props: {
@@ -359,28 +401,6 @@ export default function Index(props) {
                         label: 'NoSelector'
                     },
                 },
-
-                {
-                    xname: 'NoPresenterAction',
-                    props: {
-                        selection: {
-                            xname: 'GetPresentersAutolayout',
-                            props: {
-                            },
-                            label: 'NoPresenter',
-                        },
-                    },
-                },
-                {
-                    xname: 'DeleteAction',
-                    props: {
-                        api: '/openapi/lc/module/remove-child-module-of-presenter-option',
-                        converter: {
-                            "layoutName": "mainModuleName",
-                        },
-                        label: 'NoLastPresenter'
-                    },
-                }
             ],
 
             //other
