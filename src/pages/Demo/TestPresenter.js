@@ -26,7 +26,7 @@ export default function TestPresenter(props) {
 
     const TestSortPresenterAction = () => {
         const obj = {
-            layoutName: 'testListItem',
+            layoutName: 'testListIAutolayout',
         }
         LS.set("commonData", obj)
         return (

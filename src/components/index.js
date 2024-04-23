@@ -107,7 +107,7 @@ import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewBu
   Circle, Description, PaletteColor, SquareAddNewButton,GoogleAvatar,Delete, Download,
   ActionButton, SelectAction, ChakraButton,
   NewDatasetAction, PreviewSelectAction, ChangeDatasetAction, DeleteAction, NewParamAction,
-  PropsAction, BindingAction, NoPresenterAction,
+  PropsAction, BindingAction, NoPresenterAction, SortPresenterAction,
 } from '@/components/presenter';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
@@ -238,7 +238,8 @@ NamedPresenterSet({
   NewParamAction,
   PropsAction,
   BindingAction,
-  NoPresenterAction
+  NoPresenterAction,
+  SortPresenterAction
 })
 
 NamedListSet({

@@ -56,6 +56,7 @@ import NewParamAction from './button/NewParamAction';
 import PropsAction from './button/PropsAction';
 import BindingAction from './button/BindingAction';
 import NoPresenterAction from './button/NoPresenterAction';
+import SortPresenterAction from './button/SortPresenterAction';
 
 
 export {
@@ -96,6 +97,7 @@ export {
   PropsAction,
   BindingAction,
   NoPresenterAction,
+  SortPresenterAction,
 
   // other
   Counter,
