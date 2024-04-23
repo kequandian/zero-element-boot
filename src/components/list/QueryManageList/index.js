@@ -131,7 +131,7 @@ export default function QueryManageList(props) {
         });
     }
 
-    //编辑数据
+    //变更数据
     const editData = () => {
 
         if (!editApi) {
@@ -147,12 +147,12 @@ export default function QueryManageList(props) {
 
         promiseAjax(editApi, queryData, { method: 'POST' }).then(resp => {
             if (resp && resp.code === 200) {
-                toastTips('编辑成功')
+                toastTips('操作成功')
                 setLsApi('')
                 setOnRefresh(true)
                 setIsConfirmOpen(false)
             } else {
-                console.error("编辑失败 === ", resp)
+                console.error("操作失败 === ", resp)
                 toastTips(resp.message, 'error')
             }
         }).finally(_=>{

@@ -126,8 +126,8 @@ export default function Index(props) {
 
     function TestComponentView() {
         const obj = {
-            layoutName: 'testListItem',
-            // layoutName: 'testListIAutolayout',
+            // layoutName: 'testListItem',
+            layoutName: 'testListIAutolayout',
             // layoutName: 'PropsManageAutolayout',
             // layoutName: 'ParentParameterListAutoLayout'
         }
@@ -426,6 +426,12 @@ export default function Index(props) {
                 //binding
                 {
                     xname: 'BindingAction',
+                    props: {
+                    },
+                },
+                //sort presenter
+                {
+                    xname: 'SortPresenterAction',
                     props: {
                     },
                 }

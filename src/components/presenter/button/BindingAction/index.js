@@ -16,14 +16,14 @@ import { AutoLayout } from '@/components'
 
 export default function BindingAction(props) {
 
-    const { onActionCompleted } = props;
+    const { layoutName = LS.get('commonData'), onActionCompleted } = props;
 
     const initialRef = useRef()
     const finalRef = useRef()
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [modalTitle, setModalTitle] = useState('')
-    const moduleName = LS.get('commonData').layoutName || ''
-
+    const _layoutName = typeof layoutName === 'object' ? LS.get('commonData').layoutName : layoutName
+    
     const config = {
         layout: {
             children: [
@@ -60,7 +60,7 @@ export default function BindingAction(props) {
         onClose()
         if (onActionCompleted) {
             const data = {
-                moduleName: moduleName
+                moduleName: _layoutName
             }
             onActionCompleted(data)
         }
@@ -84,7 +84,7 @@ export default function BindingAction(props) {
                     <ModalHeader>{modalTitle}</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody pb={6}>
-                        <AutoLayout moduleName={moduleName} {...config} />
+                        <AutoLayout moduleName={_layoutName} {...config} />
                     </ModalBody>
                 </ModalContent>
             </Modal>

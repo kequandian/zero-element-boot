@@ -157,7 +157,7 @@ export default function PreAutoLayout (props) {
     console.log('addNewAction')
   }
 
-  console.log('=== PreAutoLayout config == ', config)
+  // console.log('=== PreAutoLayout config == ', config)
 
   return (
     <VStack spacing={8}>

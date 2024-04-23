@@ -1,29 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { VStack, HStack, Button, useToast } from '@chakra-ui/react';
+import React, { useState, useEffect, useRef } from 'react';
+import {
+    VStack, HStack, Button, useToast,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure
+} from '@chakra-ui/react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { get as DefaultPresenterGet } from '@/components/config/NamedPresenterConfig';
 import { LS } from 'zero-element/lib/utils/storage';
 const promiseAjax = require('@/components/utils/request');
 require('./index.less')
 
-const initialItems = [
-    { id: 'item-1', componentProps: { "size": "50" }, componentType: 'Avatar' },
-    { id: 'item-2', componentProps: {}, componentType: 'Title' },
-    { id: 'item-3', componentProps: {}, componentType: 'Subtitle' },
-];
 
-const App = (props) => {
+export default function SortPresenterAction(props) {
 
-    const { layoutName = LS.get('commonData')  } = props;
-
-    const toast = useToast()
+    const { layoutName = LS.get('commonData'), onActionCompleted } = props;
     const _layoutName = typeof layoutName === 'object' ? LS.get('commonData').layoutName : layoutName
     const direction = 'vertical'; // vertical or horizontal
+    const listApi = `/openapi/lc/module/childModuleList?componentOption=presenter&moduleName=${_layoutName}`
+    const toast = useToast()
+    const initialRef = useRef()
+    const finalRef = useRef()
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [modalTitle, setModalTitle] = useState('')
     const [items, setItems] = useState([]);
     const [isLoading, setLoading] = useState(false)
 
     useEffect(() => {
-        const listApi = `/openapi/lc/module/childModuleList?componentOption=presenter&moduleName=${_layoutName}`
         getList(listApi)
     }, [])
 
@@ -37,15 +45,21 @@ const App = (props) => {
     };
 
     const handlePresenter = (item) => {
-        const _DefaultPresenterGet = DefaultPresenterGet();
-        const _Presenter = _DefaultPresenterGet[item.componentType];
-        return (
-            <_Presenter {...item.componentProps} content={item.componentType} />
-        )
+        // const _DefaultPresenterGet = DefaultPresenterGet();
+        // if(item.componentType === 'autolayout'){
+        //     return item.moduleName
+        // }else{
+        //     const _Presenter = _DefaultPresenterGet[item.componentType];
+        //     return (
+        //         <_Presenter {...item.componentProps} content={item.componentType} />
+        //     )
+        // }
+        return item.moduleName
+        
     }
 
     const getList = (listApi) => {
-        
+
         return promiseAjax(listApi, {}, { method: 'GET' }).then(resp => {
             if (resp && resp.code === 200) {
                 setItems(resp.data)
@@ -57,10 +71,10 @@ const App = (props) => {
     }
 
     const handleConfirm = () => {
-        
+
         setLoading(true)
         const _items = items.map(item => {
-            return { "id": item.id, }
+            return item.id
         })
 
         const api = '/openapi/lc/module/presenter/rearrangement-presenter'
@@ -69,24 +83,24 @@ const App = (props) => {
             "newOrder": _items,
         }
 
-        console.log(' query = ', query)
-
-        return 
-
         return promiseAjax(api, query, { method: 'PATCH' }).then(resp => {
             if (resp && resp.code === 200) {
-                toastTips('删除成功')
+                toastTips('操作成功')
                 if (onActionCompleted) {
                     onActionCompleted(resp.data)
                 }
             } else {
-                toastTips('删除失败', 'error')
+                console.error(resp.message)
+                toastTips('操作失败', 'error')
             }
         }).finally(_ => {
             setLoading(false)
         });
     }
 
+    const onBtnClick = () => {
+        onOpen()
+    }
 
     // tips
     function toastTips(text, status = 'success') {
@@ -99,43 +113,80 @@ const App = (props) => {
             position: 'top'
         })
     }
-    
+
+    const handleModalClose = () => {
+        onClose()
+        if (onActionCompleted) {
+            onActionCompleted()
+        }
+    }
+
+    console.log('items = items = ', items)
+
 
     return (
-        <VStack spacing={4}>
-            <DragDropContext onDragEnd={handleDragEnd}>
-                <Droppable droppableId="droppable" direction={direction}>
-                    {(provided) => (
-                        <div
-                            className="items-container"
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                        >
-                            {items.map((item, index) => (
-                                <Draggable key={item.id} draggableId={item.id} index={index}>
-                                    {(provided) => (
-                                        <div
-                                            className="draggable-item"
-                                            {...provided.draggableProps}
-                                            {...provided.dragHandleProps}
-                                            ref={provided.innerRef}
-                                        >
-                                            {handlePresenter(item)}
-                                        </div>
-                                    )}
-                                </Draggable>
-                            ))}
-                            {provided.placeholder}
-                        </div>
-                    )}
-                </Droppable>
-            </DragDropContext>
-            <HStack spacing={10}>
-                <Button isLoading={isLoading} onClick={() => setItems(initialItems)}>Reset</Button>
-                <Button isLoading={isLoading} onClick={() => handleConfirm()}>Confirm</Button>
-            </HStack>
-        </VStack>
+
+        <>
+
+            <Button onClick={onBtnClick}>
+                SortPresenter
+            </Button>
+
+            <Modal
+                initialFocusRef={initialRef}
+                finalFocusRef={finalRef}
+                isOpen={isOpen}
+                onClose={handleModalClose}
+                size='full'
+            >
+                <ModalOverlay />
+                <ModalContent >
+                    <ModalHeader>{modalTitle}</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody pb={6}>
+
+                        <VStack spacing={4}>
+                            {
+                                items ? (
+                                    <DragDropContext onDragEnd={handleDragEnd}>
+                                        <Droppable droppableId="droppable" direction={direction}>
+                                            {(provided) => (
+                                                <div
+                                                    className="items-container"
+                                                    {...provided.droppableProps}
+                                                    ref={provided.innerRef}
+                                                >
+                                                    {items.map((item, index) => (
+                                                        <Draggable key={item.id} draggableId={item.id} index={index}>
+                                                            {(provided) => (
+                                                                <div
+                                                                    className="draggable-item"
+                                                                    {...provided.draggableProps}
+                                                                    {...provided.dragHandleProps}
+                                                                    ref={provided.innerRef}
+                                                                >
+                                                                    {handlePresenter(item)}
+                                                                </div>
+                                                            )}
+                                                        </Draggable>
+                                                    ))}
+                                                    {provided.placeholder}
+                                                </div>
+                                            )}
+                                        </Droppable>
+                                    </DragDropContext>
+                                ) : <></>
+                            }
+
+                            <HStack spacing={10}>
+                                <Button isLoading={isLoading} onClick={() => getList(listApi)}>Reset</Button>
+                                <Button isLoading={isLoading} onClick={() => handleConfirm()}>Confirm</Button>
+                            </HStack>
+                        </VStack>
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
+        </>
     );
 };
 
-export default App;

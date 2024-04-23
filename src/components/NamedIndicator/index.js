@@ -49,7 +49,7 @@ export default function NamedIndicator(namedIndicatorprops) {
     const triggered = (_trigger=='hover' && onHover && !_isSelected) || (_trigger=='overlay' && onHover && _isSelected) || _trigger=='always'
     const ___Indicator = triggered ? _Indicator : NextIndicator
 
-    console.log('NamedIndicator namedIndicatorprops = ', namedIndicatorprops)
+    // console.log('NamedIndicator namedIndicatorprops = ', namedIndicatorprops)
 
     return React.Children.map(children, child => {
       return (_trigger=='hover')?

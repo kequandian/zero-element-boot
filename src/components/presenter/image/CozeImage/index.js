@@ -19,7 +19,7 @@ export default function CozeImage(props) {
 
     const width = typeof w === 'number' ? w + 'px' : w.indexOf('%') > -1 ? w : w + 'px';
     const height = typeof h === 'number' ? h + 'px' : h.indexOf('%') > -1 ? h : h + 'px';
-    const c = typeof corner === 'number' ? corner + 'px' : corner.indexOf('%') > -1 ? corner : corner + 'px'
+    const c = typeof corner === 'number' ? corner + 'px' : corner.indexOf('%') > -1 ? corner : corner
 
     return (
         <Avatar background={'transparent'} w={width} h={height} borderRadius={c} src={url} />
