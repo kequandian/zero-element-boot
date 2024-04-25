@@ -6,6 +6,8 @@ import useNormalize from '@/components/hooks/useNormalize'
 import SelectAction from '@/components/presenter/button/SelectAction';
 import PreviewSelectAction from '@/components/presenter/button/PreviewSelectAction';
 import { LS } from 'zero-element/lib/utils/storage';
+import BindingApiParamsAction from '@/components/presenter/button/BindingApiParamsAction';
+import DatasetBindingAction from '@/components/presenter/button/DatasetBindingAction';
 
 export default function TestPresenterDemo(props) {
 
@@ -120,13 +122,34 @@ export default function TestPresenterDemo(props) {
         )
     }
 
+    const TestBindingApiParamsAction = () => {
+
+        const datasetName = 'cozeCardItem'
+        const moduleName = 'testListItem'
+
+        return (
+            <BindingApiParamsAction datasetName={datasetName} moduleName={moduleName}/>
+        )
+    }
+
+    const TestDatasetBindingAction = () => {
+        
+        const layoutName = 'testListItem'
+
+        return (
+            <DatasetBindingAction layoutName={layoutName}/>
+        )
+    }
+
     return (
         <ChakraProvider>
             {/* <GoogleAvatar {...GoogleAvatarProps}/> */}
 
             {/* <AppTest /> */}
             {/* <TestSelectAction/> */}
-            <TestPreviewSelectAction/>
+            {/* <TestPreviewSelectAction/> */}
+            <TestBindingApiParamsAction/>
+            {/* <TestDatasetBindingAction/> */}
         </ChakraProvider>
     )
 

@@ -434,6 +434,12 @@ export default function Index(props) {
                     xname: 'SortPresenterAction',
                     props: {
                     },
+                },
+                //dataset binding
+                {
+                    xname: 'DatasetBindingAction',
+                    props: {
+                    },
                 }
             ],
 

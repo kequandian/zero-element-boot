@@ -15,7 +15,7 @@ export default function TextIndex(props) {
     // main
     const { content, ...others } = data;
 
-    // console.log('Text content = ',content)
+    // console.log('Text others = ',others)
 
     return (
         <Text m={0} {...others}>{content}</Text>
