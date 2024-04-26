@@ -44,10 +44,12 @@ let stylePropsData = {
   // background: '#f0f0f0',
   background: '#ffffff',
   padding: ' 0',
-  margin: '20px',
+  margin: '10px 20px',
   borderRadius: '10px',
   boxShadow: ' 0 2px 6px rgba(0, 0, 0, 0.1)',
-  width: '375px', height: '667px'
+  width: '375px', height: '667px',
+  overflow: 'hidden',
+  overflowY: 'auto'
 }
 
 

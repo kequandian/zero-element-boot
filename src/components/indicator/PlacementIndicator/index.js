@@ -6,7 +6,7 @@ import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorCo
 
 export default function PlacementIndicaor  (props) {
 
-    const { children, Indicator, indicator, alignment="left", offset=0, indicatorData={}, ...rest } = props
+    const { children, Indicator, indicator, alignment="left", offset=0, indicatorData={}, onPreviewTriggered, ...rest } = props
 
     const _Indicator = Indicator || (indicator ? DefaultIndicatorSet[indicator.xname] : NextIndicator)
 
@@ -24,10 +24,16 @@ export default function PlacementIndicaor  (props) {
         ...configMap[alignment].childStyle
     }
 
+    const indicatorClick = (e) => {
+        e.stopPropagation();
+        // 触发预览
+        onPreviewTriggered && onPreviewTriggered(rest);
+    }
+
     return (
 
         <div style={{ ...paramStyle }}>
-            <div style={boxStyle}>
+            <div style={boxStyle} onClick={indicatorClick || null}>
                 <_Indicator {..._indicatorProps} />
             </div>
             {
