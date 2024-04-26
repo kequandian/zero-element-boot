@@ -10,6 +10,7 @@ import LocalPreview from './localPreview'
 
 import { LS } from 'zero-element/lib/utils/storage';
 import { method } from 'lodash';
+import qs from 'qs';
 
 export default function Index(props) {
 
@@ -125,11 +126,14 @@ export default function Index(props) {
     // }
 
     function TestComponentView() {
+        
+        const { layoutName } = props.location.query ||  qs.parse(props.location.search.split('?')[1])
         const obj = {
             // layoutName: 'testListItem',
-            layoutName: 'testListIAutolayout',
+            // layoutName: 'testListIAutolayout',
             // layoutName: 'PropsManageAutolayout',
             // layoutName: 'ParentParameterListAutoLayout'
+            layoutName: layoutName
         }
         LS.set("commonData", obj)
         const _actions = [
