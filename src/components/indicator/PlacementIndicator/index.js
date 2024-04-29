@@ -38,7 +38,9 @@ export default function PlacementIndicaor  (props) {
             </div>
             {
                 React.Children.map(children, child => (
-                    child
+                    React.cloneElement(child, {
+                        ...rest,
+                    })
                 ))
             }
         </div>
