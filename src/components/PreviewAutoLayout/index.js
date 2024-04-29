@@ -23,6 +23,8 @@ export default function PreAutoLayout (props) {
     previewAddNew,
     ...rest
   } = props;
+  
+  console.log('=== PreAutoLayout props == ', props)
 
   const [dataSource, setDataSource] = useState('')
   const [ alternativeActive, setAlternativeActive ] = useState(false)

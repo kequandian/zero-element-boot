@@ -79,8 +79,7 @@ export default function DefaultGridLayoutList(props) {
         ...rest
     }
 
-    // console.log('DefaultGridLayoutList = ', config)
-
+    console.log('DefaultGridLayoutList children = ', children, config)
 
     return (
         

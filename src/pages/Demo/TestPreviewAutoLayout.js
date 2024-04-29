@@ -2,14 +2,14 @@ import React from 'react';
 
 import { ChakraProvider, HStack, Box, Button  } from '@chakra-ui/react';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
-import { AutoLayout, APIContainer, } from '@/components';
+import { AutoLayout, APIContainer, NamedContainer, NamedIndicator } from '@/components';
 import { AddNewContainer } from '@/components/container';
 import { DefaultGridLayoutList } from '@/components/list'
 
 import { WxPage } from '@/components/container';
 import { HCenter } from '@/components/cart';
 import PreviewActionIndicator from '@/components/indicator/PreviewActionIndicator';
-import PlacementIndicaor from '@/components/indicator/PlacementIndicator';
+import PlacementIndicator from '@/components/indicator/PlacementIndicator';
 
 import AddNewModal from '@/components/modalComponent/AddNewModal';
 
@@ -225,11 +225,11 @@ export default function TestPreviewAutoLayout(props) {
             <HCenter>
                 <AddNewContainer {...config}>
                     <DefaultGridLayoutList columns={2} hasCart={false} hasIndicator={false}>
-                        <PlacementIndicaor Indicator={_Indicator} alignment="topright" onPreviewTriggered={onPreviewClick}>
+                        <PlacementIndicator Indicator={_Indicator} alignment="topright" onPreviewTriggered={onPreviewClick}>
                             <WxPage device="wx">
                                 <PreviewAutoLayout previewAddNew={false}/>
                             </WxPage>
-                        </PlacementIndicaor>
+                        </PlacementIndicator>
                     </DefaultGridLayoutList>
                     <AddNewModal>
                         <div>add new modal</div>
