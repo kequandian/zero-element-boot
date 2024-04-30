@@ -79,8 +79,6 @@ export default function DefaultGridLayoutList(props) {
         ...rest
     }
 
-    console.log('DefaultGridLayoutList children = ', children, config)
-
     return (
         
         <APIContainer API={lsApi} converter={rest.converter}>
