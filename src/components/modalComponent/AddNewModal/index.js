@@ -19,7 +19,7 @@ import {
 
 export default function AddNewModal(props) {
 
-    const { children, isModalOpen, defaultData, } = props;
+    const { children, isModalOpen, defaultData, ...rest } = props;
 
     const initialRef = useRef()
     const finalRef = useRef()
@@ -53,9 +53,10 @@ export default function AddNewModal(props) {
                 {
                     React.isValidElement(Child) ?
                     React.cloneElement(Child, {
+                        ...rest,
                         ...defaultData
                     })
-                    : <Child key={i} {...defaultData }/>
+                    : <Child {...defaultData }/>
                 }
                 </ModalBody>
             </ModalContent>

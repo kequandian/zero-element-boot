@@ -59,7 +59,6 @@ export default function WxPage(props) {
   const [modelName, setModelName] = useState(deviceModel)
   const [styleProps, setStyleProps] = useState(stylePropsData)
 
-
   useEffect(_ => {
 
     if (modelName && device === 'wx') {

@@ -42,6 +42,10 @@ export default function AddNewContainer(props) {
     }, [onSecondRefresh])
 
     const firstChildItemClick = (item) => {
+        if(!saveApi){
+            console.warn('未设置 saveApi ')
+            return
+        }
         setIsModalOpen(true)
         setOnSecondRefresh(true)
         setItemData(item)
@@ -67,6 +71,12 @@ export default function AddNewContainer(props) {
     const secondChildonFormSaved = (data) => {
         // console.log('second child on form saved = ', data)
         saveData(data)
+    }
+
+    const secondChildActionCompleted = (data) => {
+        // console.log('second child action completed = ', data)
+        setOnFirstRefresh(true)
+        setIsModalOpen(false)
     }
 
     //新增数据
@@ -172,6 +182,7 @@ export default function AddNewContainer(props) {
                             ...rest,
                             onFormAddNew: secondChildFromAddNew,
                             onFormSaved: secondChildonFormSaved,
+                            onActionCompleted:secondChildActionCompleted,
                         })
                     ) : <></>
                 ) : <></>

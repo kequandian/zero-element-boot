@@ -189,9 +189,11 @@ export default function TestPreviewAutoLayout(props) {
 
     //TODO 添加多个item数据
     const TestComponentList = () => {
+
+        const moduleType = 'web'
         
         const config = {
-            listApi: "/openapi/lc/module?componentOption=presenter&pageNum=1&pageSize=100&moduleType=app",
+            listApi: `/openapi/lc/module?componentOption=presenter&pageNum=1&pageSize=100&moduleType=${moduleType}`,
             converter: {
                 moduleName: 'layoutName'
             },
@@ -224,18 +226,28 @@ export default function TestPreviewAutoLayout(props) {
         return (
             <HCenter>
                 <AddNewContainer {...config}>
-                    <DefaultGridLayoutList columns={2} hasCart={false} hasIndicator={false}>
+                    <DefaultGridLayoutList columns={1} hasCart={false} hasIndicator={false}>
                         <PlacementIndicator Indicator={_Indicator} alignment="topright" onPreviewTriggered={onPreviewClick}>
-                            <WxPage device="wx">
+                            <WxPage device="pc">
                                 <PreviewAutoLayout previewAddNew={false}/>
                             </WxPage>
                         </PlacementIndicator>
                     </DefaultGridLayoutList>
-                    <AddNewModal>
+                    <AddNewModal moduleType={moduleType}>
                         <div>add new modal</div>
                     </AddNewModal>
                 </AddNewContainer>
             </HCenter>
+        )
+    }
+
+    //修改组件属性
+    const TestEditComponentProps = () => {
+
+        const moduleName="CssCart"
+
+        return (
+            <PreviewAutoLayout layoutName="PropsListAutolayout"  moduleName={moduleName} />
         )
     }
 
@@ -266,7 +278,8 @@ export default function TestPreviewAutoLayout(props) {
             {/* <TestComponentAutoLayout/> */}
             {/* <TestDeleteComponent /> */}
             {/* <TestPreviewTriggerd/> */}
-            <TestComponentList/>
+            {/* <TestComponentList/> */}
+            <TestEditComponentProps/>
             
         </ChakraProvider>
        
