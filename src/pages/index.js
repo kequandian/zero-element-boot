@@ -84,7 +84,9 @@ import NewStandalone from '@/pages/NewStandalone/Sandbox'
 
 //实例组件
 import CartsManage from '@/composition/cartsManage'
-import PresentersListPage from '@/pages/Demo/presentersListPage/Sandbox'
+// import PresentersListPage from '@/pages/Demo/presentersListPage/Sandbox'
+
+import TestPreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox/TestPreviewAutoLayout';
 
 export default function Index(props) {
 
@@ -111,9 +113,10 @@ export default function Index(props) {
   // return <TestCRUDList {...props} />
   return (
     <ChakraProvider>
-      <PresentersListPage {...props} />
+      <TestPreviewAutoLayout {...props} />
     </ChakraProvider>
   )
+  
 
   // return (
   // <CssCart width='300px' margin='40px'>
