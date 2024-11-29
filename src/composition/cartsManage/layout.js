@@ -41,7 +41,7 @@ module.exports = {
     xname:'ManageMenuIndicator',
     props:{
       action: {
-        deleteAPI: '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/(id)'
+        deleteAPI: '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/(id)'
       }
     },
     binding: {
@@ -59,10 +59,10 @@ module.exports = {
   navigation: {
     model: {
       api: {
-        createAPI: '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules',
-        getAPI: '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/(id)',
-        updateAPI: '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/(id)',
-        deleteAPI: '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/(id)'
+        createAPI: '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules',
+        getAPI: '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/(id)',
+        updateAPI: '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/(id)',
+        deleteAPI: '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/(id)'
       },
       fields: [{
         label: '显示名称',

@@ -17,7 +17,7 @@ export default function Index(props) {
     function getData() {
         
         setItems([])
-        let api = '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/'+id
+        let api = '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/'+id
         const queryData = {};
         promiseAjax(api, queryData).then(resp => {
             setLoading(false)

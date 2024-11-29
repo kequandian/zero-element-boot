@@ -17,7 +17,7 @@ export default function Index (props) {
 
   const { id, status } = props
   const api = '/api/auto/module?componentOption=layout'
-  const layoutApi = '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/153'
+  const layoutApi = '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/153'
     
   const [ previewData, setPreviewData ] = useState('')
 

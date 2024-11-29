@@ -33,7 +33,7 @@ export default function DatasetBindingAction (props) {
     const [ datasetName, setDatasetName ] = useState('')
 
     const config = {
-        listApi:"/openapi/crud/lc_low_auto_module_dataset/module_dataset/dataset-name-list",
+        listApi:"/api/auto/lc_low_auto_module_dataset/module_dataset/dataset-name-list",
     }
 
     const onBtnClick = () => {

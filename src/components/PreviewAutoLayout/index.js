@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import  AutoLayout  from '@/components/AutoLayout';
-import useTokenRequest from '@/components/hooks/useTokenRequest';
 import { VStack } from '@chakra-ui/react';
-const promiseAjax = require('@/components/utils/request');
 import SquareAddNew from '@/components/presenter/button/SquareAddNew';
 
 import { LS } from 'zero-element/lib/utils/storage';
+import useTokenRequest from '@/components/hooks/useTokenRequest';
+const promiseAjax = require('@/components/utils/request');
 
-export default function PreAutoLayout (props) {
+export default function PreviewAutoLayout (props) {
 
   // 参数
   const {
@@ -24,7 +24,7 @@ export default function PreAutoLayout (props) {
     ...rest
   } = props;
   
-  console.log('=== PreAutoLayout props == ', props)
+  console.log('=== PreviewAutoLayout props == ', props)
 
   const [dataSource, setDataSource] = useState('')
   const [ alternativeActive, setAlternativeActive ] = useState(false)

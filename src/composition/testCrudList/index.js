@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-    ChakraProvider, Box, VStack, Spinner, Switch, FormControl, FormLabel, Tabs, TabList, TabPanels, Tab, TabPanel,
+    Box, VStack, Spinner, Switch, FormControl, FormLabel, Tabs, TabList, TabPanels, Tab, TabPanel,
     Button, useTab, useMultiStyleConfig, Image
 } from "@chakra-ui/react";
 import { useForm } from 'react-hook-form';
@@ -185,8 +185,6 @@ export default function Index(props) {
     }
 
     return (
-        <ChakraProvider>
-
             <div style={{ }}>
                 <VStack align='stretch' spacing='-2'>
                     <Box style={{ margin: '10px 10px 30px 10px', paddingLeft: '8px' }}>
@@ -200,37 +198,9 @@ export default function Index(props) {
                     </Box>
 
                     <Box>
-                        {/* {navCateListData && navCateListData.length > 0 ? (
-                            <Tabs variant='enclosed' style={{ width: '900px' }} defaultIndex={tabIndex}>
-                                <TabList>
-                                    {navCateListData.map((item, index) => {
-                                        if (item.id === '-1' && switchStatus) {
-                                            return <CustomTab key={`${index}_tab`} onClick={() => addNavItem()}></CustomTab>
-                                        }
-                                        return <Tab key={`${index}_tab`} onClick={() => switchTab(item, index)}>{item.name}</Tab>
-                                    })}
-                                </TabList>
-                                <TabPanels>
-                                    {navCateListData.map((item, index) => (
-                                        <TabPanel key={`${index}_tabPanel`} >
-                                            {isLoading ? (
-                                                <Spinner />
-                                            ) : (
-                                                <Box>
-                                                    <AutoLayout {...config} onItemClick={onNavItemClick} cb={callback} isSwitch={switchStatus} />
-                                                </Box>
-                                            )}
-                                        </TabPanel>
-                                    ))}
-
-                                </TabPanels>
-                            </Tabs>
-                        ) : null} */}
-
                         {navCateListData && navCateListData.length > 0 ? (
                             <>
                                 <TabsCompox items={navCateListData} currentTabIndex={tabIndex} onSwitchTab={switchTab} isSwitch={switchStatus} cb={tabscallback}/>
-                                
                                 <div style={{marginTop:'10px'}}>
                                     {isLoading ? (
                                         <Spinner />
@@ -250,13 +220,9 @@ export default function Index(props) {
                                 </div>
                             </>
                         ) : null}
-
                     </Box>
-
                 </VStack>
             </div>
-
-        </ChakraProvider>
     )
 
 }

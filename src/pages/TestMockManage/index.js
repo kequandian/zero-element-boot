@@ -70,7 +70,7 @@ export default function TestPaletteManage(props) {
 
     function TestPalettemManage() {
         
-        const api = "/openapi/crud/lc_low_auto_module_dataset/module_dataset/dataset-name-list"
+        const api = "/api/auto/lc_low_auto_module_dataset/module_dataset/dataset-name-list"
         const deleteApi = "/api/lc/palette?paletteName=(paletteName)"
 
         const config = {

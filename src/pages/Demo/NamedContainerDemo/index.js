@@ -17,7 +17,7 @@ export default function NamedContainerDemo(props) {
     function TesttPlainMenegeList() {
         const config = {
             listApi: '/api/auto/module/parameter/278', 
-            addApi: '/openapi/crud/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps',
+            addApi: '/api/auto/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps',
             addApiBody: {
                 moduleId: 278,
             },
@@ -37,7 +37,7 @@ export default function NamedContainerDemo(props) {
                 xname: "DeleteIndicator",
                 props:{
                     isDisabled: true,
-                    action: `/openapi/crud/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps/(id)`
+                    action: `/api/auto/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps/(id)`
                 },
                 binding: { id:"id" }
             }
@@ -60,7 +60,7 @@ export default function NamedContainerDemo(props) {
         
         const config = {
             listApi: propsList, 
-            addApi: '/openapi/crud/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps',
+            addApi: '/api/auto/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps',
             addApiBody: {
                 moduleId: 278,
             },
@@ -84,7 +84,7 @@ export default function NamedContainerDemo(props) {
                 xname: "DeleteIndicator",
                 props:{
                     isDisabled: true,
-                    action: `/openapi/crud/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps/(id)`
+                    action: `/api/auto/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps/(id)`
                 },
                 binding: { id:"id" }
             }
@@ -198,7 +198,7 @@ export default function NamedContainerDemo(props) {
         const moduleId = '330'
 
         const config = {
-            listApi: '/openapi/crud/lc_low_auto_module_dataset/module_dataset/dataset-name-list',
+            listApi: '/api/auto/lc_low_auto_module_dataset/module_dataset/dataset-name-list',
             saveApi: '/api/auto/module/add-dataset/(moduleId)',
             saveApiBody:{
                 datasetName: '(datasetName)'
