@@ -16,7 +16,7 @@ export default function NamedContainerDemo(props) {
 
     function TesttPlainMenegeList() {
         const config = {
-            listApi: '/openapi/lc/module/parameter/278', 
+            listApi: '/api/auto/module/parameter/278', 
             addApi: '/openapi/crud/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps',
             addApiBody: {
                 moduleId: 278,
@@ -55,8 +55,8 @@ export default function NamedContainerDemo(props) {
 
     function TestKeyValueManageList() {
 
-        // const propsList = '/openapi/lc/module-props/278'
-        const propsList = '/openapi/lc/module/assembly/KeyValueManageConverter'
+        // const propsList = '/api/auto/module-props/278'
+        const propsList = '/api/auto/module/assembly/KeyValueManageConverter'
         
         const config = {
             listApi: propsList, 
@@ -173,10 +173,10 @@ export default function NamedContainerDemo(props) {
     function TestAddNewContainer () {
 
         const config = {
-            listApi: '/openapi/lc/palette?pageNum=1&pageSize=100&paletteName=palette_1',
-            addnewApi: '/openapi/lc/palette',
-            saveApi: '/openapi/lc/palette/(id)',
-            action: `/openapi/lc/palette/(id)`
+            listApi: '/api/lc/palette?pageNum=1&pageSize=100&paletteName=palette_1',
+            addnewApi: '/api/lc/palette',
+            saveApi: '/api/lc/palette/(id)',
+            action: `/api/lc/palette/(id)`
         } 
 
         return (
@@ -199,7 +199,7 @@ export default function NamedContainerDemo(props) {
 
         const config = {
             listApi: '/openapi/crud/lc_low_auto_module_dataset/module_dataset/dataset-name-list',
-            saveApi: '/openapi/lc/module/add-dataset/(moduleId)',
+            saveApi: '/api/auto/module/add-dataset/(moduleId)',
             saveApiBody:{
                 datasetName: '(datasetName)'
             },

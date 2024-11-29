@@ -26,7 +26,7 @@ export default function NewDatasetAction (props) {
     const config = {
         listApi:"/openapi/crud/lc_low_auto_module_dataset/module_dataset/dataset-name-list",
         isScroll: true,
-        saveApi: '/openapi/lc/module/presenter/from-dataset-create',
+        saveApi: '/api/auto/module/presenter/from-dataset-create',
         saveApiBody:{
             mainModuleName: typeof layoutName === 'object' ? LS.get('commonData').layoutName : '(layoutName)',
             datasetName: '(datasetName)'

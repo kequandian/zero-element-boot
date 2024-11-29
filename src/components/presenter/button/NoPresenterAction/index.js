@@ -20,7 +20,7 @@ export default function NoPresenterAction(props) {
     const { selection, layoutName = LS.get('commonData'), onActionCompleted } = props;
 
     const _layoutName = typeof layoutName === 'object' ? LS.get('commonData').layoutName : layoutName
-    const presenterListApi = `/openapi/lc/module/childModuleList?componentOption=presenter&moduleName=${_layoutName}`
+    const presenterListApi = `/api/auto/module/childModuleList?componentOption=presenter&moduleName=${_layoutName}`
 
     const toast = useToast()
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -39,7 +39,7 @@ export default function NoPresenterAction(props) {
     //新增组件
     const delPresenter = () => {
         setLoading(true)
-        const api = '/openapi/lc/module/remove-child-module-of-presenter-option'
+        const api = '/api/auto/module/remove-child-module-of-presenter-option'
         const query = {
             "mainModuleName": _layoutName,
             "removeModuleId": currentItem.id,

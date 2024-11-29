@@ -23,7 +23,7 @@ require('./index.less')
    indicator:{
     xname:'CircularDeleteIndicator',
     props:{
-      action: '/openapi/lc/apis/(id)',
+      action: '/api/lc/apis/(id)',
       isDisabled: 'edit'
     },
     binding: {

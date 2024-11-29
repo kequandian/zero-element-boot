@@ -29,7 +29,7 @@ module.exports = {
             }
         },
         "mock": {
-            "imageUrl": "http://local.zero.boot.cn/autoapi/images/file.png",
+            "imageUrl": "http://192.168.3.210:8089/autoapi/images/file.png",
             "title": "文件"
         },
         "cart": {
@@ -44,13 +44,13 @@ module.exports = {
     "mock": [
         {
             "id": 1,
-            "imageUrl": "http://local.zero.boot.cn/autoapi/images/notice.png",
+            "imageUrl": "http://192.168.3.210:8089/autoapi/images/notice.png",
             "title": "公告",
             "description": "公告1"
         },
         {
             "id": 2,
-            "imageUrl": "http://local.zero.boot.cn/autoapi/images/file.png",
+            "imageUrl": "http://192.168.3.210:8089/autoapi/images/file.png",
             "title": "文件",
             "description": "公告2"
         }

@@ -12,7 +12,7 @@ export default function index(props) {
     const [ jsonData, setJsonData ] = useState('')
     const [ isLoading, setIsLoading ] = useState(false);
     
-    // const api = params.api || `/openapi/lc/apis/${params.apiName}`
+    // const api = params.api || `/api/lc/apis/${params.apiName}`
     // const api = `/api/ContentTest`
     // const [data] = useTokenRequest({ api })
 
@@ -40,7 +40,7 @@ export default function index(props) {
 
     //通过 apiName 获取 api路径
     function getApiUrlByApiName(){
-        promiseAjax(`/openapi/lc/apis/${params.apiName}`)
+        promiseAjax(`/api/lc/apis/${params.apiName}`)
             .then(res => {
                 setIsLoading(false)
                 if (res && res.code === 200) {

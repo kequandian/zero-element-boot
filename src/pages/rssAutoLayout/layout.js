@@ -38,7 +38,7 @@ module.exports = {
     xname:'ManageMenuIndicator',
     props:{
       action: {
-        deleteAPI: '/openapi/lc/autoApi/lowAutoPageStyles/rss/json/(styleName)'
+        deleteAPI: '/api/lc/autoApi/lowAutoPageStyles/rss/json/(styleName)'
       }
     },
     binding: {
@@ -60,10 +60,10 @@ module.exports = {
     model: {
       delConfirmTips: true,
       api: {
-        createAPI: '/openapi/lc/autoApi/lowAutoPageStyles/rss/json',
-        getAPI: '/openapi/lc/autoApi/lowAutoPageStyles/rss/json/(styleName)',
-        updateAPI: '/openapi/lc/autoApi/lowAutoPageStyles/rss/list/{id}',
-        deleteAPI: '/openapi/lc/autoApi/lowAutoPageStyles/rss/json/(styleName)'
+        createAPI: '/api/lc/autoApi/lowAutoPageStyles/rss/json',
+        getAPI: '/api/lc/autoApi/lowAutoPageStyles/rss/json/(styleName)',
+        updateAPI: '/api/lc/autoApi/lowAutoPageStyles/rss/list/{id}',
+        deleteAPI: '/api/lc/autoApi/lowAutoPageStyles/rss/json/(styleName)'
       },
       fields: [{
         label: '标题',

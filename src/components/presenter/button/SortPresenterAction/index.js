@@ -22,7 +22,7 @@ export default function SortPresenterAction(props) {
     const { layoutName = LS.get('commonData'), onActionCompleted } = props;
     const _layoutName = typeof layoutName === 'object' ? LS.get('commonData').layoutName : layoutName
     const direction = 'vertical'; // vertical or horizontal
-    const listApi = `/openapi/lc/module/childModuleList?componentOption=presenter&moduleName=${_layoutName}`
+    const listApi = `/api/auto/module/childModuleList?componentOption=presenter&moduleName=${_layoutName}`
     const toast = useToast()
     const initialRef = useRef()
     const finalRef = useRef()
@@ -77,7 +77,7 @@ export default function SortPresenterAction(props) {
             return item.id
         })
 
-        const api = '/openapi/lc/module/presenter/rearrangement-presenter'
+        const api = '/api/auto/module/presenter/rearrangement-presenter'
         const query = {
             "mainModuleName": _layoutName,
             "newOrder": _items,

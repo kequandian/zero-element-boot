@@ -15,11 +15,11 @@ import AddNewModal from '@/components/modalComponent/AddNewModal';
 
 export default function TestPreviewAutoLayout(props) {
 
-    const api = '/openapi/lc/module?componentOption=presenter&pageNum=1&pageSize=100&moduleType=card'
+    const api = '/api/auto/module?componentOption=presenter&pageNum=1&pageSize=100&moduleType=card'
     const layoutApi= '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/160'
     
     const TestIndicatorAutoLayout = () => {
-        const api = '/openapi/lc/module?componentOption=indicator'
+        const api = '/api/auto/module?componentOption=indicator'
         const layoutApi= '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/161'
         return (
             <PreviewAutoLayout 
@@ -30,7 +30,7 @@ export default function TestPreviewAutoLayout(props) {
     }
 
     const TestContainerAutoLayout = () => {
-        const api = '/openapi/lc/module?pageNum=1&pageSize=100&componentOption=presenter'
+        const api = '/api/auto/module?pageNum=1&pageSize=100&componentOption=presenter'
         const layoutApi= '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/197'
         return (
             <PreviewAutoLayout 
@@ -123,7 +123,7 @@ export default function TestPreviewAutoLayout(props) {
     }
 
     const TestDeleteComponent = () => {
-        const api = '/openapi/lc/module/childModuleList/332?componentOption=container'
+        const api = '/api/auto/module/childModuleList/332?componentOption=container'
         const config = {
             moduleId: "332",
             layout : {
@@ -147,7 +147,7 @@ export default function TestPreviewAutoLayout(props) {
                         "xname": "DeleteIndicator",
                         "props": {
                             "isDisabled": true,
-                            "action": "/openapi/lc/module/delete-child-module?mainModuleId=(mainModuleId)&removeModuleId=(removeModuleId)"
+                            "action": "/api/auto/module/delete-child-module?mainModuleId=(mainModuleId)&removeModuleId=(removeModuleId)"
                         },
                         "binding": {
                             "moduleId": "mainModuleId",
@@ -193,7 +193,7 @@ export default function TestPreviewAutoLayout(props) {
         const moduleType = 'web'
         
         const config = {
-            listApi: `/openapi/lc/module?componentOption=presenter&pageNum=1&pageSize=100&moduleType=${moduleType}`,
+            listApi: `/api/auto/module?componentOption=presenter&pageNum=1&pageSize=100&moduleType=${moduleType}`,
             converter: {
                 moduleName: 'layoutName'
             },

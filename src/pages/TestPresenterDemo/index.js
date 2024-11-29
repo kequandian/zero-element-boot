@@ -77,7 +77,7 @@ export default function TestPresenterDemo(props) {
         const _selection = {
             xname: 'NewCartsAutolayout',
             props:{
-                // api: '/openapi/lc/module?pageNum=1&pageSize=100&componentOption=cart',
+                // api: '/api/auto/module?pageNum=1&pageSize=100&componentOption=cart',
                 // binding: {
                 //     moduleName: "content",
                 //     componentType: "__cart.xname",
@@ -109,7 +109,7 @@ export default function TestPresenterDemo(props) {
         
         const _actionProps = {
             selection: _selection,
-            api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+            api: '/api/auto/module/presenter/based-on-presenter-create-presenter',
             converter:{
                 "layoutName": "mainModuleName",
                 "id": "addModuleId"

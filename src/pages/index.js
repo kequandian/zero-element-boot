@@ -38,7 +38,6 @@ import AdListDemo from '@/composition/AdList/Sandbox';
 import TableContainer from '@/pages/TableDemo/Sandbox';
 import SelectDemo from '@/pages/SelectList/Sandbox';
 import UserCheckboxDemo from '@/pages/UserCheckboxDemo/Sandbox';
-import UserRadioDemo from '@/pages/UserRadioDemo/Sandbox';
 import CheckBoxModalDemo from '@/pages/CheckBoxModalDemo';
 // import RadioModalDemo from '@/pages/RadioModalDemo';
 

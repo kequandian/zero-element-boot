@@ -14,7 +14,7 @@ import qs from 'qs';
 
 export default function Index(props) {
 
-    const api = '/openapi/lc/module?componentOption=selector'
+    const api = '/api/auto/module?componentOption=selector'
     const layoutApi = '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/163'
 
     // const converter = {
@@ -148,7 +148,7 @@ export default function Index(props) {
                             },
                             label: 'NewPresenter',
                         },
-                        api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+                        api: '/api/auto/module/presenter/based-on-presenter-create-presenter',
                         converter: {
                             "layoutName": "mainModuleName",
                             "id": "addModuleId"
@@ -164,7 +164,7 @@ export default function Index(props) {
                             },
                             label: 'NewCart',
                         },
-                        api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+                        api: '/api/auto/module/presenter/based-on-presenter-create-presenter',
                         converter: {
                             "layoutName": "mainModuleName",
                             "id": "addModuleId"
@@ -180,7 +180,7 @@ export default function Index(props) {
                             },
                             label: 'NewIndicator',
                         },
-                        api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+                        api: '/api/auto/module/presenter/based-on-presenter-create-presenter',
                         converter: {
                             "layoutName": "mainModuleName",
                             "id": "addModuleId"
@@ -196,7 +196,7 @@ export default function Index(props) {
                             },
                             label: 'NewContainer',
                         },
-                        api: '/openapi/lc/module/presenter/based-on-presenter-create-presenter',
+                        api: '/api/auto/module/presenter/based-on-presenter-create-presenter',
                         converter: {
                             "layoutName": "mainModuleName",
                             "id": "addModuleId"
@@ -221,7 +221,7 @@ export default function Index(props) {
                             },
                             label: 'AddPresenter',
                         },
-                        api: '/openapi/lc/module/add-child-module',
+                        api: '/api/auto/module/add-child-module',
                         converter: {
                             "layoutName": "mainModuleName",
                             "id": "addModuleId"
@@ -238,7 +238,7 @@ export default function Index(props) {
                             },
                             label: 'ChangeCart',
                         },
-                        api: '/openapi/lc/module/replace-add-child-module',
+                        api: '/api/auto/module/replace-add-child-module',
                         converter: {
                             "layoutName": "mainModuleName",
                             "id": "replaceModuleId"
@@ -254,7 +254,7 @@ export default function Index(props) {
                             },
                             label: 'ChangeIndicator',
                         },
-                        api: '/openapi/lc/module/replace-add-child-module',
+                        api: '/api/auto/module/replace-add-child-module',
                         converter: {
                             "layoutName": "mainModuleName",
                             "id": "replaceModuleId"
@@ -270,7 +270,7 @@ export default function Index(props) {
                             },
                             label: 'ChangeContainer',
                         },
-                        api: '/openapi/lc/module/replace-add-child-module',
+                        api: '/api/auto/module/replace-add-child-module',
                         converter: {
                             "layoutName": "mainModuleName",
                             "id": "replaceModuleId"
@@ -286,7 +286,7 @@ export default function Index(props) {
                             },
                             label: 'ChangeLayout',
                         },
-                        api: '/openapi/lc/module/replace-add-child-module',
+                        api: '/api/auto/module/replace-add-child-module',
                         converter: {
                             "layoutName": "mainModuleName",
                             "id": "replaceModuleId"
@@ -302,7 +302,7 @@ export default function Index(props) {
                             },
                             label: 'ChangeSelector',
                         },
-                        api: '/openapi/lc/module/replace-add-child-module',
+                        api: '/api/auto/module/replace-add-child-module',
                         converter: {
                             "layoutName": "mainModuleName",
                             "id": "replaceModuleId"
@@ -333,7 +333,7 @@ export default function Index(props) {
                 {
                     xname: 'DeleteAction',
                     props: {
-                        api: '/openapi/lc/module/remove-child-module-of-presenter-option',
+                        api: '/api/auto/module/remove-child-module-of-presenter-option',
                         converter: {
                             "layoutName": "mainModuleName",
                         },
@@ -343,7 +343,7 @@ export default function Index(props) {
                 {
                     xname: 'DeleteAction',
                     props: {
-                        api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                        api: '/api/auto/module/presenter/remove-presenter-child-module',
                         converter: {
                             "layoutName": "mainModuleName",
                         },
@@ -356,7 +356,7 @@ export default function Index(props) {
                 {
                     xname: 'DeleteAction',
                     props: {
-                        api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                        api: '/api/auto/module/presenter/remove-presenter-child-module',
                         converter: {
                             "layoutName": "mainModuleName",
                         },
@@ -369,7 +369,7 @@ export default function Index(props) {
                 {
                     xname: 'DeleteAction',
                     props: {
-                        api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                        api: '/api/auto/module/presenter/remove-presenter-child-module',
                         converter: {
                             "layoutName": "mainModuleName",
                         },
@@ -382,7 +382,7 @@ export default function Index(props) {
                 {
                     xname: 'DeleteAction',
                     props: {
-                        api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                        api: '/api/auto/module/presenter/remove-presenter-child-module',
                         converter: {
                             "layoutName": "mainModuleName",
                         },
@@ -395,7 +395,7 @@ export default function Index(props) {
                 {
                     xname: 'DeleteAction',
                     props: {
-                        api: '/openapi/lc/module/presenter/remove-presenter-child-module',
+                        api: '/api/auto/module/presenter/remove-presenter-child-module',
                         converter: {
                             "layoutName": "mainModuleName",
                         },

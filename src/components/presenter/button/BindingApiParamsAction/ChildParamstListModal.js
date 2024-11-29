@@ -43,7 +43,7 @@ export default function ChildParamstListModal(props) {
 
     const handleSubmit = (item) => {
 
-        const api = `/openapi/lc/module/add-binding-by-name/${moduleName}`
+        const api = `/api/auto/module/add-binding-by-name/${moduleName}`
 
         const query = {
             bindingKey: keyName,

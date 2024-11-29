@@ -12,7 +12,7 @@ export default function Index (props) {
 
     const cssName = getTypeContent(data)
 
-    const api = cssName ? `${getEndpoint()}/openapi/lc/autoApi/lowAutoPageStyles/rss/json/${cssName}`: ''
+    const api = cssName ? `${getEndpoint()}/api/lc/autoApi/lowAutoPageStyles/rss/json/${cssName}`: ''
     const styleObj = useTokenRequest({ api });
     const styles = (styleObj && styleObj[0]) || {}
 

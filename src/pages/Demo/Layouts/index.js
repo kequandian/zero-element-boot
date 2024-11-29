@@ -16,14 +16,14 @@ const routeMap = {
 export default function Index (props) {
 
   const { id, status } = props
-  const api = '/openapi/lc/module?componentOption=layout'
+  const api = '/api/auto/module?componentOption=layout'
   const layoutApi = '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/153'
     
   const [ previewData, setPreviewData ] = useState('')
 
   //保存数据
   function saveData(itemData) {
-    let api = '/openapi/lc/module/build-auto-layout/' + id
+    let api = '/api/auto/module/build-auto-layout/' + id
     const queryData = {
         addModuleId: itemData.id
     };
@@ -39,7 +39,7 @@ export default function Index (props) {
 
   //更换
   function editData(itemData) {
-      let api = '/openapi/lc/module/AutoLayout/replaceModule/' + id
+      let api = '/api/auto/module/AutoLayout/replaceModule/' + id
       const queryData = {
           replaceModuleId:itemData.id
       };
@@ -57,7 +57,7 @@ export default function Index (props) {
 
   //获取应该跳转到哪一页
   function getNextDataToPage(itemData) {
-    let api = '/openapi/lc/module/build-auto-layout/'+id
+    let api = '/api/auto/module/build-auto-layout/'+id
     const queryData = {
         skipComponentOptionList: ["cart"]
     };

@@ -20,7 +20,7 @@ export default function Index (props) {
   function getApiUrl(type) {
     setItems([])
     let api =  `/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules?componentType=${type}&pageSize=50`
-    // let api = '/openapi/lc/module?componentOption=cart&pageNum=1&pageSize=100'
+    // let api = '/api/auto/module?componentOption=cart&pageNum=1&pageSize=100'
     const queryData = {};
     promiseAjax(api, queryData).then(resp => {
         setLoading(false)

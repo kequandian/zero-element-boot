@@ -27,7 +27,7 @@ export default function (props) {
     }
     // else if(params.apiName){
     //   //通过apiName获取API路径
-    //   const api = `/openapi/lc/apis/${params.apiName}`;
+    //   const api = `/api/lc/apis/${params.apiName}`;
     //   const queryData = {};
     //   promiseAjax(api, queryData).then(resp => {
     //       if (resp && resp.code === 200) {
@@ -49,12 +49,12 @@ export default function (props) {
   // 获取layoutJson的本地接口
   // let layoutJsonApi = '/api/layoutJson'
 
-  // let layoutJsonApi = `/openapi/lc/module/getAutoLayout/autoLayOut`
+  // let layoutJsonApi = `/api/auto/module/getAutoLayout/autoLayOut`
 
   let layoutJsonApi = params.layoutJsonApi || ''
 
   // if (process.env.NODE_ENV === 'development') {
-  //   layoutJsonApi = 'http://192.168.3.112:8080/openapi/lc/module/getAutoLayout/autoLayOut'
+  //   layoutJsonApi = 'http://192.168.3.112:8080/api/auto/module/getAutoLayout/autoLayOut'
   // }
 
   // 获取layoutJson的api接口，如果本地接口为空，则会使用该接口请求api

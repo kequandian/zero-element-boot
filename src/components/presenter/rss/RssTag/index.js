@@ -27,7 +27,7 @@ export default function Index(props) {
 
     const cName = getContentName(data)
 
-    const api = `${getEndpoint()}/openapi/lc/autoApi/lowAutoPageStyles/rss/json/${cName}`;
+    const api = `${getEndpoint()}/api/lc/autoApi/lowAutoPageStyles/rss/json/${cName}`;
     const styleObj = useTokenRequest({ api });
     const styles = (styleObj && styleObj[0]) || tagItemDefaultStyle
 
