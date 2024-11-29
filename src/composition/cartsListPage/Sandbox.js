@@ -25,7 +25,7 @@ export default function Index(props) {
     function getData() {
         setLoading(true)
         setItems([])
-        let api = '/openapi/lc/module?componentOption=cart&pageNum=1&pageSize=100'
+        let api = '/api/auto/module?componentOption=cart&pageNum=1&pageSize=100'
         const queryData = {};
         promiseAjax(api, queryData).then(resp => {
             // console.log('cart = ', resp)
@@ -42,7 +42,7 @@ export default function Index(props) {
 
     //保存数据
     function saveData(itemData) {
-        let api = '/openapi/lc/module/build-auto-layout/'+id
+        let api = '/api/auto/module/build-auto-layout/'+id
         const queryData = {
             addModuleId:itemData.id,
         };
@@ -69,7 +69,7 @@ export default function Index(props) {
 
     //获取应该跳转到哪一页
     function getNextDataToPage(itemData) {
-        let api = '/openapi/lc/module/build-auto-layout/'
+        let api = '/api/auto/module/build-auto-layout/'
         const queryData = {
         };
         promiseAjax(api, queryData, {method: 'put'}).then(resp => {

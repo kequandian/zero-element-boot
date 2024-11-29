@@ -24,8 +24,8 @@ export default function Index(props) {
     const [categoryId, setCategoryId] = useState('')
     const [tabIndex, setTabIndex] = useState(0)
 
-    let navListApi = '/openapi/lc/module';
-    let navApi = '/openapi/lc/module/module-option-classify';
+    let navListApi = '/api/auto/module';
+    let navApi = '/api/auto/module/module-option-classify';
 
     useEffect(() => {
         console.log('首次加载')

@@ -8,7 +8,7 @@ import AddCarts from '@/composition/AddCarts'
 export default function Index(props) {
 
   const { id, status } = props.location && (props.location.query || qs.parse(props.location.search.split('?')[1]))
-  const api = '/openapi/lc/module?componentOption=cart'
+  const api = '/api/auto/module?componentOption=cart'
   const layoutApi = '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/129'
 
   const [previewData, setPreviewData] = useState('')

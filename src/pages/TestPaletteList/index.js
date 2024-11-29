@@ -20,10 +20,10 @@ export default function TestPaletteList(props) {
     function TestPaletteList () {
 
         const config = {
-            listApi: `/openapi/lc/palette?pageNum=1&pageSize=100&paletteName=${paletteName}`,
-            addnewApi: '/openapi/lc/palette',
-            saveApi: '/openapi/lc/palette/(id)',
-            action: `/openapi/lc/palette/(id)`
+            listApi: `/api/lc/palette?pageNum=1&pageSize=100&paletteName=${paletteName}`,
+            addnewApi: '/api/lc/palette',
+            saveApi: '/api/lc/palette/(id)',
+            action: `/api/lc/palette/(id)`
         } 
 
         return (

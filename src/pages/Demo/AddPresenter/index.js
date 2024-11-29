@@ -20,8 +20,8 @@ const apiIdMap = {
 export default function Index(props) {
 
   const { id, status, cb, combinationOption } = props
-  //   const api = '/openapi/lc/module?componentOption=cart'
-  const api = '/openapi/lc/module?pageNum=1&pageSize=100'
+  //   const api = '/api/auto/module?componentOption=cart'
+  const api = '/api/auto/module?pageNum=1&pageSize=100'
   const layoutApi = '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules'
 
   const [ currentApi, setCurrentApi ] = useState('')
@@ -44,7 +44,7 @@ export default function Index(props) {
 
   //处理数据
   function getPostSkipComponent(item, skipData) {
-    let api = '/openapi/lc/module/presenter/build-presenter'
+    let api = '/api/auto/module/presenter/build-presenter'
     const queryData = {
     };
     //

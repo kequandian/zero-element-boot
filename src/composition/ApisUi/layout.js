@@ -38,7 +38,7 @@ module.exports = {
   indicator:{
     xname:'DeleteIndicator',
     props:{
-      action: '/openapi/lc/apis/(id)'
+      action: '/api/lc/apis/(id)'
     },
     binding: {
       "id":"id"

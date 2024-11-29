@@ -8,7 +8,7 @@ export default function DataetBindingAction(props){
     const { datasetName='', moduleName='' } = props
     
     const datasetApi = `/openapi/crud/lc_low_auto_module_dataset/module_dataset/${datasetName}`;
-    const bindingApi = `/openapi/lc/module/binding/detail?moduleName=${moduleName}`
+    const bindingApi = `/api/auto/module/binding/detail?moduleName=${moduleName}`
 
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [onRefresh, setOnRefresh] = useState(false);

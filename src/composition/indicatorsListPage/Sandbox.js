@@ -16,7 +16,7 @@ export default function Index(props) {
     function getData() {
         
         setItems([])
-        let api = '/openapi/lc/module?componentOption=indicator&pageNum=1&pageSize=100'
+        let api = '/api/auto/module?componentOption=indicator&pageNum=1&pageSize=100'
         const queryData = {};
         promiseAjax(api, queryData).then(resp => {
             setLoading(false)

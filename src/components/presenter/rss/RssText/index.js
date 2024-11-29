@@ -32,13 +32,13 @@ export default function Index(props) {
     }
     
     //系统样式
-    const api = `${getEndpoint()}/openapi/lc/autoApi/lowAutoPageStyles/rss/json/${paramStr}`;
+    const api = `${getEndpoint()}/api/lc/autoApi/lowAutoPageStyles/rss/json/${paramStr}`;
     const styleObj = useTokenRequest({ api });
     const styles = (styleObj && styleObj[0]) || {}
 
     //自定义样式
     const customStyleName = content.indexOf('<') != -1 && content.indexOf('>') != -1 ? getTypeContent(content.replace(`${type}`, '')):''
-    const styleApi = customStyleName ? `${getEndpoint()}/openapi/lc/autoApi/lowAutoPageStyles/rss/json/${customStyleName}` : '';
+    const styleApi = customStyleName ? `${getEndpoint()}/api/lc/autoApi/lowAutoPageStyles/rss/json/${customStyleName}` : '';
     const styleObj2 = useTokenRequest({ api:styleApi });
     const styles2 = (styleObj2 && styleObj2[0]) || {}
 

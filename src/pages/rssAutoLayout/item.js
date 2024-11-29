@@ -24,7 +24,7 @@ export default function Index(props) {
     }
         console.log('detailStatus = ',detailStatus)
 
-    let api = `/openapi/lc/autoApi/lowAutoPageStyles/rss/json/${styleName}`
+    let api = `/api/lc/autoApi/lowAutoPageStyles/rss/json/${styleName}`
 
     function getDetail() {
         if (detailStatus) {

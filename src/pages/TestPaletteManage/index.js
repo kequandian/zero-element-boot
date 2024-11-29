@@ -71,12 +71,12 @@ export default function TestPaletteManage(props) {
 
     function TestPalettemManage() {
 
-        const api = "/openapi/lc/palette/palette-name-list"
-        const deleteApi = "/openapi/lc/palette?paletteName=(paletteName)"
+        const api = "/api/lc/palette/palette-name-list"
+        const deleteApi = "/api/lc/palette?paletteName=(paletteName)"
 
         const config = {
-            addnewApi: '/openapi/lc/palette',
-            saveApi: '/openapi/lc/palette/(id)',
+            addnewApi: '/api/lc/palette',
+            saveApi: '/api/lc/palette/(id)',
         }
 
         return (

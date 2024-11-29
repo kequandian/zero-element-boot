@@ -14,13 +14,13 @@ const routeMap = {
 export default function Index (props) {
 
   const { id } = props.location && (props.location.query ||  qs.parse(props.location.search.split('?')[1])) 
-  const api = '/openapi/lc/module?componentOption=selector'
+  const api = '/api/auto/module?componentOption=selector'
   const layoutApi = '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/163'
 
 
   //保存数据
   function saveData(itemData) {
-    let api = '/openapi/lc/module/build-auto-layout/'+id
+    let api = '/api/auto/module/build-auto-layout/'+id
     const queryData = {
         addModuleId:itemData.id,
     };

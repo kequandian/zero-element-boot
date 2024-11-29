@@ -11,8 +11,8 @@ export default function PreAutoLayout (props) {
 
   // 参数
   const {
-    api, 
-    apiName, mockName,
+    api,                        // 通过API获取数据
+    apiName, mockName,          // 通过API名称获取数据
     layoutData, layoutApi='', 
     layoutName, 
     bindingName,
@@ -55,9 +55,9 @@ export default function PreAutoLayout (props) {
   // 判断 layoutApi 是否为空，如果为空，则用 _layoutName 拼接api路径
   let localLayoutApi = ''
   if(layoutApi || _layoutName){
-    localLayoutApi = layoutApi || '/openapi/lc/module/autolayout/' + _layoutName
+    localLayoutApi = layoutApi || '/api/auto/module/autolayout/' + _layoutName
   }else if(layoutId){
-    localLayoutApi = `/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/${layoutId}`
+    localLayoutApi = `/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/${layoutId}`
   }
 
   //testLayoutName
@@ -71,7 +71,7 @@ export default function PreAutoLayout (props) {
   const testBindingJsonData = testBindingJsonObj && testBindingJsonObj[0] && { binding : testBindingJsonObj[0] } || {}
 
   //根据apiName 获取 API url
-  const apiNameUrl = apiName ? `/openapi/lc/apis/${apiName}`: ''
+  const apiNameUrl = apiName ? `/api/lc/apis/${apiName}`: ''
   const resApiNameData = useTokenRequest({ api:apiNameUrl });
   const apiNameData = resApiNameData && resApiNameData[0]
 
@@ -83,7 +83,7 @@ export default function PreAutoLayout (props) {
   const respLayoutData = useTokenRequest({ api: localLayoutApi });
   const respLayoutDataRecords = respLayoutData && respLayoutData[0]
 
-  let bindingApi =  bindingName ? `/openapi/lc/binding/${bindingName}` : ''
+  let bindingApi =  bindingName ? `/api/lc/binding/${bindingName}` : ''
   // 从bindingApi获取bindingJson
   const respBindingData = useTokenRequest({ api: bindingApi });
   const respBindingJsonData = respBindingData && respBindingData[0]
