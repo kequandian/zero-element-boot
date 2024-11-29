@@ -13,13 +13,13 @@ export default function PreviewAutoLayout (props) {
   const {
     api,                        // 通过API获取数据
     apiName, mockName,          // 通过API名称获取数据
-    layoutData, layoutApi='', 
+    layoutData, layoutApi='',   // 通过layout名称或直接通过 layoutApi 获取layout
     layoutName, 
-    bindingName,
+    bindingName,                // 通过数据绑定名称获取绑定
     layoutId, 
     testLayoutName, testBindingName, 
     onItemClick,
-    ___,
+    ___,                        // 内部值用
     previewAddNew,
     ...rest
   } = props;
@@ -83,15 +83,17 @@ export default function PreviewAutoLayout (props) {
   const respLayoutData = useTokenRequest({ api: localLayoutApi });
   const respLayoutDataRecords = respLayoutData && respLayoutData[0]
 
-  let bindingApi =  bindingName ? `/api/lc/binding/${bindingName}` : ''
   // 从bindingApi获取bindingJson
+  let bindingApi =  bindingName ? `/api/lc/binding/${bindingName}` : ''
   const respBindingData = useTokenRequest({ api: bindingApi });
   const respBindingJsonData = respBindingData && respBindingData[0]
 
   const layoutJson = (layoutData && typeof layoutData === 'object'  && JSON.stringify(layoutData) !== '{}' && layoutData) 
     || (respLayoutDataRecords && typeof respLayoutDataRecords === 'object' && JSON.stringify(respLayoutDataRecords) !== '{}' && ( respLayoutDataRecords.descriptor ? JSON.parse(respLayoutDataRecords.descriptor) : respLayoutDataRecords)) 
     || testLayoutJsonData
+
     
+
   /**
    * 页面配置
    */

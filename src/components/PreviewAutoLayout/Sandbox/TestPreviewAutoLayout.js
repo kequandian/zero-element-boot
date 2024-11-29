@@ -16,9 +16,9 @@ import AddNewModal from '@/components/modalComponent/AddNewModal';
 export default function TestPreviewAutoLayout(props) {
 
     // 数据接口
-    const api = '/api/auto/module?componentOption=presenter&pageNum=1&pageSize=100&moduleType=card'
+    //const api = '/api/auto/module?componentOption=presenter&pageNum=1&pageSize=100&moduleType=card'
     // 获取布局数据
-    const layoutApi= '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/160'
+    //const layoutApi= '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/160'
     
     const TestIndicatorAutoLayout = () => {
         const api = '/api/auto/module?componentOption=indicator'
@@ -255,8 +255,7 @@ export default function TestPreviewAutoLayout(props) {
 
 
     return (
-
-        <ChakraProvider>
+<>
             {/* <PreviewAutoLayout 
                 // layoutName="PropsManage" 
                 // moduleId="320"
@@ -273,7 +272,7 @@ export default function TestPreviewAutoLayout(props) {
                 </WxPage>
             </HCenter> */}
 
-            {/* <TestIndicatorAutoLayout /> */}
+            <TestIndicatorAutoLayout />
             {/* <Box overflow={'hidden'}>
                 <TestContainerAutoLayout/>
             </Box> */}
@@ -281,9 +280,8 @@ export default function TestPreviewAutoLayout(props) {
             {/* <TestDeleteComponent /> */}
             {/* <TestPreviewTriggerd/> */}
             {/* <TestComponentList/> */}
-            <TestEditComponentProps/>
+            {/* <TestEditComponentProps/> */}
             
-        </ChakraProvider>
-       
+</>
     )
 }
