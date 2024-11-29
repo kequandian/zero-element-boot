@@ -22,7 +22,7 @@ export default function Index(props) {
   const { id, status, cb, combinationOption } = props
   //   const api = '/api/auto/module?componentOption=cart'
   const api = '/api/auto/module?pageNum=1&pageSize=100'
-  const layoutApi = '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules'
+  const layoutApi = '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules'
 
   const [ currentApi, setCurrentApi ] = useState('')
   const [ currentLayoutApi, setCurrentLayoutApi ] = useState('')

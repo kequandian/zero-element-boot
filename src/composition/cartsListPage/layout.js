@@ -117,7 +117,7 @@ module.exports = {
     //     "referenceStyleName": null
     // },
     // ],
-    dataset: '/openapi/crud/lc_low_auto_module_dataset/module_dataset/cartsList',
+    dataset: '/api/auto/lc_low_auto_module_dataset/module_dataset/cartsList',
     binding: {
       "moduleName": "content",
       "componentType": "__cart.xname",

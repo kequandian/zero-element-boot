@@ -1,9 +1,6 @@
 import React from 'react';
-import { HStack, VStack, Text } from '@chakra-ui/react';
-import { Center, HCenter, VCenter, 
-    HStack as HStackLayout, VStack as VStackLayout,
-    Round, Between
-} from '@/components/layout';
+import { Text } from '@chakra-ui/react';
+import { Center, HCenter, VCenter, HStack, VStack, Round, Between } from '@/components/layout';
 import { GoogleAvatar } from '@/components/presenter'
 
 export default function TextLayout() {
@@ -73,11 +70,11 @@ export default function TextLayout() {
                 <HStack spacing={10}>
                     <div style={{ width: '200px', height: '200px', backgroundColor: '#ECEFF7' }}>
                         <VCenter direction={"start"}>
-                            <HStackLayout direction={"start"} flexWidth='auto-full'>
+                            <HStack direction={"start"} flexWidth='auto-full'>
                                 <GoogleAvatar name={'5'} />
                                 <GoogleAvatar name={'6'} />
                                 <GoogleAvatar name={'7'} />
-                            </HStackLayout>
+                            </HStack>
                         </VCenter>
                     </div>
                     <div style={{ width: '200px', height: '200px', backgroundColor: '#ECEFF7' }}>
@@ -111,11 +108,11 @@ export default function TextLayout() {
                     </div>
                     <div style={{ width: '200px', height: '200px', backgroundColor: '#ECEFF7' }}>
                         <HCenter>
-                            <VStackLayout direction={"end"}>
+                            <VStack direction={"end"}>
                                 <GoogleAvatar name={'5'} />
                                 <GoogleAvatar name={'6'} />
                                 <GoogleAvatar name={'7'} />
-                            </VStackLayout>
+                            </VStack>
                         </HCenter>
                     </div>
                 </HStack>

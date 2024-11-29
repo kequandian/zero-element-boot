@@ -26,7 +26,7 @@ import {
 import { getEndpoint } from '@/components/config/common';
 
 const promiseAjax = require('@/components/utils/request');
-const formItemTypeMap = require('@/components/config/formItemTypeConfig').get();
+const formItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
 
 require('./index.less');
 

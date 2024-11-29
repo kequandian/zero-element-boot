@@ -9,7 +9,7 @@ export default function Index(props) {
 
   const { id, status } = props.location && (props.location.query || qs.parse(props.location.search.split('?')[1]))
   const api = '/api/auto/module?componentOption=cart'
-  const layoutApi = '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/129'
+  const layoutApi = '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/129'
 
   const [previewData, setPreviewData] = useState('')
 

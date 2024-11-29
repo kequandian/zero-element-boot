@@ -15,12 +15,14 @@ import AddNewModal from '@/components/modalComponent/AddNewModal';
 
 export default function TestPreviewAutoLayout(props) {
 
+    // 数据接口
     const api = '/api/auto/module?componentOption=presenter&pageNum=1&pageSize=100&moduleType=card'
-    const layoutApi= '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/160'
+    // 获取布局数据
+    const layoutApi= '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/160'
     
     const TestIndicatorAutoLayout = () => {
         const api = '/api/auto/module?componentOption=indicator'
-        const layoutApi= '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/161'
+        const layoutApi= '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/161'
         return (
             <PreviewAutoLayout 
                 layoutApi={layoutApi} 
@@ -31,7 +33,7 @@ export default function TestPreviewAutoLayout(props) {
 
     const TestContainerAutoLayout = () => {
         const api = '/api/auto/module?pageNum=1&pageSize=100&componentOption=presenter'
-        const layoutApi= '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/197'
+        const layoutApi= '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/197'
         return (
             <PreviewAutoLayout 
                 // moduleId="332"

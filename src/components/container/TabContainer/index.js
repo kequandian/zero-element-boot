@@ -25,7 +25,7 @@ import pluOff from './icons/plus-off.png';
 import minusOn from './icons/minus-on.png';
 import minusOff from './icons/minus-off.png';
 
-const formItemTypeMap = require('@/components/config/formItemTypeConfig').get();
+const formItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
 
 export default function Index(props) {
 

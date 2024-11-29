@@ -16,10 +16,6 @@ import TestPageCart from './TestCart/TestPageCart'
 // TestComposition
 import AvatarItemDemo from './TestComposition/AvatarItemDemo'
 
-// TestSelector
-import TestDefaultHoverIndicator from './TestSelector/TestDefaultHoverIndicator'
-import TestSelector from './TestSelector/TestSelector'
-
 // ChakraSample
 import ChakraSample from './chakra'
 

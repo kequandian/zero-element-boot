@@ -25,7 +25,7 @@ import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
 import { set as NamedIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import { set as NamedListSet } from '@/components/config/NamedListConfig';
-import { set as FormItemTypeSet } from '@/components/config/formItemTypeConfig';
+import { set as FormItemTypeSet } from '@/components/config/FormItemTypeConfig';
 import { set as NamedSelector } from '@/components/config/NamedSelectorConfig';
 import { set as NameContainerSet } from '@/components/config/NamedContainerConfig';
 

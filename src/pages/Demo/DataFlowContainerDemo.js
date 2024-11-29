@@ -15,7 +15,7 @@ import qs from 'qs';
 export default function Index(props) {
 
     const api = '/api/auto/module?componentOption=selector'
-    const layoutApi = '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/163'
+    const layoutApi = '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/163'
 
     // const converter = {
     //     "componentType": "__selector.xname",

@@ -15,7 +15,7 @@ export default function Index (props) {
 
   const { id } = props.location && (props.location.query ||  qs.parse(props.location.search.split('?')[1])) 
   const api = '/api/auto/module?componentOption=selector'
-  const layoutApi = '/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules/163'
+  const layoutApi = '/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/163'
 
 
   //保存数据

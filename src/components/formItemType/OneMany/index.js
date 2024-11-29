@@ -14,7 +14,7 @@ import {
 import { useForceUpdate } from '@/components/hooks/lifeCycle';
 import { useForm } from 'react-hook-form';
 const promiseAjax = require('@/components/utils/request');
-const formItemTypeMap = require('@/components/config/formItemTypeConfig').get();
+const formItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
 
 
 export default function OneMany(props) {

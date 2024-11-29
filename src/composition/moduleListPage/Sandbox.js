@@ -6,7 +6,7 @@ const promiseAjax = require('@/components/utils/request');
 export default function Index(props) {
 
     const { type } = props;
-    let api =  `/openapi/crud/lc_low_auto_module/lowAutoModule/lowAutoModules?componentType=${type}`
+    let api =  `/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules?componentType=${type}`
 
     const [items, setItems] = useState('')
 

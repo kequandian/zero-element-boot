@@ -62,8 +62,6 @@ export default function GoogleAvatar(props) {
         return
     }
 
-    // console.log('paletteList = ', paletteList)
-
     //获取对应索引的颜色
     let color = getColorByIndex(paletteList || palette, index);
 
