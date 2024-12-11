@@ -1,6 +1,13 @@
 
 ## 单组件部分
 
+### 生成新组件 (`xkey` 为 uuid)
+```json
+{
+   "xkey": "c6fe946c-b786-11ef-9639-b3e576acf426"
+}
+```
+
 ### 通过`AutoLayout`展示一个组件 
 
 ```json
