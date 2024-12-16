@@ -5,9 +5,13 @@ yarn.lock
 .umi
 .vs/
 
+
 /dist
 /my_first_webpack
 /my_first_webpack/node_modules
 /my_first_webpack/package-lock.json
 
 lib/
+
+auto/run
+auto/logs
