@@ -1,9 +1,0 @@
-2024-12-15 05:34:58,688 INFO 97785 [Job#17342120986835054917022995303] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js executing by app
-2024-12-15 05:34:58,733 INFO 97785 [Job#17342120986835054917022995303] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js execute succeed, used 45ms. 
-2024-12-15 05:34:58,684 INFO 96037 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 82501317ms at 2024-12-16 04:30:00.001
-2024-12-16 00:00:00,950 INFO 97785 [Job#17342784009425717929458709784] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js executing by app
-2024-12-16 00:00:00,956 INFO 97785 [Job#17342784009425717929458709784] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js execute succeed, used 4ms. 
-2024-12-16 00:00:00,948 INFO 96037 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 86399055ms at 2024-12-17 00:00:00.002
-2024-12-16 00:00:01,943 INFO 97785 [Job#17342784019425717939460809064] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js executing by app
-2024-12-16 00:00:01,948 INFO 97785 [Job#17342784019425717939460809064] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js execute succeed, used 5ms. 
-2024-12-16 00:00:01,945 INFO 96037 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 86399058ms at 2024-12-17 00:00:01.003
