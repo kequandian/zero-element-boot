@@ -212,7 +212,8 @@
         "egg": "^3.17.5",
         "egg-redis": "^2.6.0",
         "egg-scripts": "2",
-        "jsonwebtoken": "^9.0.2"
+        "jsonwebtoken": "^9.0.2",
+        "uuid": "^11.0.3"
       },
       "devDependencies": {
         "egg-bin": "6",
@@ -546,7 +547,8 @@
         "egg": "^3.17.5",
         "egg-redis": "^2.6.0",
         "egg-scripts": "2",
-        "jsonwebtoken": "^9.0.2"
+        "jsonwebtoken": "^9.0.2",
+        "uuid": "^11.0.3"
       },
       "devDependencies": {
         "egg-bin": "6",

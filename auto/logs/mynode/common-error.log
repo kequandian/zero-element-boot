@@ -178,3 +178,43 @@ hostname: huangweideMacBook-Pro.local
 pid: 37224
 hostname: huangweideMacBook-Pro.local
 
+2024-12-16 11:35:32,042 ERROR 37327 [egg-redis] client error: Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:217:20)
+    at TCP.callbackTrampoline (node:internal/async_hooks:130:17) {
+  errno: -54,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2024-12-16 11:35:32,053 ERROR 37327 nodejs.ECONNRESETError: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:217:20)
+    at TCP.callbackTrampoline (node:internal/async_hooks:130:17)
+errno: -54
+code: "ECONNRESET"
+syscall: "read"
+pid: 37327
+hostname: huangweideMacBook-Pro.local
+
+2024-12-16 11:39:29,887 ERROR 37327 [egg-redis] client error: Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:217:20)
+    at TCP.callbackTrampoline (node:internal/async_hooks:130:17) {
+  errno: -54,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+2024-12-16 11:39:29,888 ERROR 37327 nodejs.ECONNRESETError: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:217:20)
+    at TCP.callbackTrampoline (node:internal/async_hooks:130:17)
+errno: -54
+code: "ECONNRESET"
+syscall: "read"
+pid: 37327
+hostname: huangweideMacBook-Pro.local
+
+2024-12-16 14:07:25,542 ERROR 35444 nodejs.ClusterClientNoResponseError: client no response in 7054640ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 35444
+hostname: huangweideMacBook-Pro.local
+

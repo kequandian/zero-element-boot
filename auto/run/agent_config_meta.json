@@ -194,7 +194,8 @@
       "egg": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
       "egg-redis": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
       "egg-scripts": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
-      "jsonwebtoken": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js"
+      "jsonwebtoken": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
+      "uuid": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js"
     },
     "devDependencies": {
       "egg-bin": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
