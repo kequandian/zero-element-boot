@@ -6,7 +6,7 @@ import { APIContainer, NamedLayout, NamedContainer, NamedCart } from '@/componen
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
 import { PlainManageList, KeyValueManageList,  DefaultGridLayoutList } from '@/components/list';
 import { PaletteColor } from '@/components/presenter';
-import ColorForm from '@/components/formComponent/colorForm';
+import ColorForm from '@/components/FormComponent/colorForm';
 import LowCodeDatasetManageList from '@/components/list/LowCodeDatasetManageList';
 
 
