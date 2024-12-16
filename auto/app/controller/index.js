@@ -4,62 +4,59 @@ const { v4: uuidv4 } = require('uuid');
 class IndexController extends Controller {
 
   // 1获取组件 descriptor,  即 json数据
-  async new() {
-
+  async preview() {
     const { ctx, app } = this;
 
-    // 获取请求参数
-    const { xkey } = ctx.request.body;
+    const json = await app.redis.get('json');
+    console.log('preview', json);
 
-    // 获取旧值
-    const oldRes = await app.redis.get(xkey);
-
-    // 设置新值
-    await app.redis.set(xkey, uuidv4());
-    const getRes = await app.redis.get(xkey);
-
-    // 将旧值存储到另一个键
-    if (oldRes) {
-      await app.redis.set(`xkey_old`, oldRes);
-    }
-    const txt = `
-          旧值：${oldRes}
-          新值：${getRes}
-        `;
-    ctx.body = txt;
+    ctx.body = {
+      code: 200,
+      data: JSON.parse(json)
+    };
   }
 
   // 2新建组件，即重置 descritpor 数据,  数据自动缓存至 redis
-  async preview() {
+  async new() {
     const { ctx, app } = this;
-    console.log(ctx.query);
-    const { xkey } = ctx.query;
 
-    const oldRes = await app.redis.get(xkey);
+    // console.log(ctx.query);
+    // const { xkey } = ctx.query;
 
-    console.log('oldRes', oldRes);
+    // 获取旧值
+    const josn_old = await app.redis.get('josn');
 
-    const txt = `
-          查询值：${oldRes}
-        `;
-    ctx.body = txt;
+    // 将旧值存储到另一个键
+    if (josn_old) {
+      await app.redis.set(`josn_old`, JSON.stringify(josn_old));
+    }
+
+    const josn = {
+      "xkey": uuidv4(),
+    }
+    // 设置新值
+    await app.redis.set('json', JSON.stringify(josn));
+
+    console.log('new', josn);
+
+    ctx.body = {
+      code: 200,
+      data: josn
+    };
   }
 
   // 3. POST /api/auto/boot/todo/centralize 页面居中
   async centralize() {
     const { ctx, app } = this;
+    const json = await app.redis.get('json');
+
+    josn.cart = 'PageCenter'
+
+    await app.redis.set('json', JSON.stringify(josn));
 
     ctx.body = {
       code: 200,
-      data: {
-        "presenter": {
-          "xname": "Avatar",
-          "props": {
-            "url": "/auto/app/public/log.svg"
-          }
-        },
-        "cart": "PageCenter"
-      }
+      data: josn
     }
   };
 
@@ -118,7 +115,7 @@ class IndexController extends Controller {
   // 17. POST /api/auto/boot/load/{:moduleName} 加载已入库组件
   async load() {
     const { ctx, app } = this;
-    console.log(ctx.params);
+
     ctx.body = {
       code: 200,
       data: {
@@ -132,38 +129,35 @@ class IndexController extends Controller {
   async zoomout() {
     const { ctx, app } = this;
 
+    const josn_old = await app.redis.get('josn_old');
 
-    const xkey_old = await app.redis.get('xkey_old');
-
-    console.log('xkey_old', xkey_old);
-
-    const txt = `
-          查询旧值：${xkey_old}
-        `;
-    ctx.body = txt;
-  }
-
-  // 19. POST /api/auto/boot/init  初始化为一个头像组件
-
-  async init() {
-    const { ctx, app } = this;
-
-    // const xkey = 'xkey';
-
-    // 设置新值
-    // await app.redis.set(xkey, uuidv4());
-    // const getRes = await app.redis.get(xkey);
-
+    console.log('josn_old', josn_old);
 
     ctx.body = {
       code: 200,
-      data: {
-        "xkey": "c6fe946c-b786-11ef-9639-b3e576acf426",
-        "xname": "Avatar",
-        "props": {
-          "url": "/auto/app/public/log.svg"
-        }
+      data: josn_old
+    };
+  }
+
+  // 19. POST /api/auto/boot/init  初始化为一个头像组件
+  async init() {
+    const { ctx, app } = this;
+
+    const json = await app.redis.get('json');
+    console.log('init', json);
+
+    const new_json = {
+      ...JSON.parse(json),
+      "xname": "Avatar",
+      "props": {
+        "url": "assets/moerdeng2.png"
       }
+    }
+    await app.redis.set('json', JSON.stringify(new_json));
+
+    ctx.body = {
+      code: 200,
+      data: new_json
     };
   }
 
