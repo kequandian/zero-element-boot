@@ -17,4 +17,8 @@ module.exports = app => {
   router.post('/api/auto/boot/zoomout', controller.index.zoomout);
 
 
+  // 19. POST /api/auto/boot/init  初始化为一个头像组件
+  router.post('/api/auto/boot/init', controller.index.init);
+
+
 };
