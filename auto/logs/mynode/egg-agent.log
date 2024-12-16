@@ -486,3 +486,78 @@ hostname: huangweideMacBook-Pro.local
 2024-12-16 14:48:43,804 WARN 44821 [agent:development] reload worker because /Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js change
 2024-12-16 14:48:43,547 INFO 44821 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js","stat":{"dev":16777222,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":54026311,"size":1122,"blocks":8,"atimeMs":1734331720346.4521,"mtimeMs":1734331723536.4473,"ctimeMs":1734331723536.4473,"birthtimeMs":1733994019081.8857,"atime":"2024-12-16T06:48:40.346Z","mtime":"2024-12-16T06:48:43.536Z","ctime":"2024-12-16T06:48:43.536Z","birthtime":"2024-12-12T09:00:19.082Z"},"remove":false,"isDirectory":false,"isFile":true}
 2024-12-16 14:48:43,598 INFO 44821 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js","stat":{"dev":16777222,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":54026311,"size":1122,"blocks":8,"atimeMs":1734331723574.8284,"mtimeMs":1734331723536.4473,"ctimeMs":1734331723536.4473,"birthtimeMs":1733994019081.8857,"atime":"2024-12-16T06:48:43.575Z","mtime":"2024-12-16T06:48:43.536Z","ctime":"2024-12-16T06:48:43.536Z","birthtime":"2024-12-12T09:00:19.082Z"},"remove":false,"isDirectory":false,"isFile":true}
+2024-12-16 14:49:03,094 INFO 44821 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js","stat":{"dev":16777222,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":54026311,"size":1122,"blocks":8,"atimeMs":1734331743061.0815,"mtimeMs":1734331743031.9758,"ctimeMs":1734331743031.9758,"birthtimeMs":1733994019081.8857,"atime":"2024-12-16T06:49:03.061Z","mtime":"2024-12-16T06:49:03.032Z","ctime":"2024-12-16T06:49:03.032Z","birthtime":"2024-12-12T09:00:19.082Z"},"remove":false,"isDirectory":false,"isFile":true}
+2024-12-16 14:49:03,299 WARN 44821 [agent:development] reload worker because /Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js change
+2024-12-16 14:52:26,740 WARN 44821 [agent:development] reload worker because /Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js change
+2024-12-16 14:52:26,535 INFO 44821 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js","stat":{"dev":16777222,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":54026311,"size":1052,"blocks":8,"atimeMs":1734331946504.7676,"mtimeMs":1734331946474.1667,"ctimeMs":1734331946474.1667,"birthtimeMs":1733994019081.8857,"atime":"2024-12-16T06:52:26.505Z","mtime":"2024-12-16T06:52:26.474Z","ctime":"2024-12-16T06:52:26.474Z","birthtime":"2024-12-12T09:00:19.082Z"},"remove":false,"isDirectory":false,"isFile":true}
+2024-12-16 14:52:31,862 WARN 44821 [agent:development] reload worker because /Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js change
+2024-12-16 14:52:31,606 INFO 44821 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js","stat":{"dev":16777222,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":54026311,"size":1055,"blocks":8,"atimeMs":1734331949306.2847,"mtimeMs":1734331951595.546,"ctimeMs":1734331951595.546,"birthtimeMs":1733994019081.8857,"atime":"2024-12-16T06:52:29.306Z","mtime":"2024-12-16T06:52:31.596Z","ctime":"2024-12-16T06:52:31.596Z","birthtime":"2024-12-12T09:00:19.082Z"},"remove":false,"isDirectory":false,"isFile":true}
+2024-12-16 14:52:31,656 INFO 44821 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js","stat":{"dev":16777222,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":54026311,"size":1055,"blocks":8,"atimeMs":1734331951635.3037,"mtimeMs":1734331951595.546,"ctimeMs":1734331951595.546,"birthtimeMs":1733994019081.8857,"atime":"2024-12-16T06:52:31.635Z","mtime":"2024-12-16T06:52:31.596Z","ctime":"2024-12-16T06:52:31.596Z","birthtime":"2024-12-12T09:00:19.082Z"},"remove":false,"isDirectory":false,"isFile":true}
+2024-12-16 14:52:33,888 WARN 44821 [agent:development] reload worker because /Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js change
+2024-12-16 14:52:33,633 INFO 44821 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js","stat":{"dev":16777222,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":54026311,"size":1054,"blocks":8,"atimeMs":1734331952954.3438,"mtimeMs":1734331953621.7268,"ctimeMs":1734331953621.7268,"birthtimeMs":1733994019081.8857,"atime":"2024-12-16T06:52:32.954Z","mtime":"2024-12-16T06:52:33.622Z","ctime":"2024-12-16T06:52:33.622Z","birthtime":"2024-12-12T09:00:19.082Z"},"remove":false,"isDirectory":false,"isFile":true}
+2024-12-16 14:52:33,685 INFO 44821 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js","stat":{"dev":16777222,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":54026311,"size":1054,"blocks":8,"atimeMs":1734331953660.4067,"mtimeMs":1734331953621.7268,"ctimeMs":1734331953621.7268,"birthtimeMs":1733994019081.8857,"atime":"2024-12-16T06:52:33.660Z","mtime":"2024-12-16T06:52:33.622Z","ctime":"2024-12-16T06:52:33.622Z","birthtime":"2024-12-12T09:00:19.082Z"},"remove":false,"isDirectory":false,"isFile":true}
+2024-12-16 14:52:47,085 WARN 44821 [agent:development] reload worker because /Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js change
+2024-12-16 14:52:46,832 INFO 44821 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js","stat":{"dev":16777222,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":54026311,"size":1054,"blocks":8,"atimeMs":1734331955811.418,"mtimeMs":1734331966819.4663,"ctimeMs":1734331966819.4663,"birthtimeMs":1733994019081.8857,"atime":"2024-12-16T06:52:35.811Z","mtime":"2024-12-16T06:52:46.819Z","ctime":"2024-12-16T06:52:46.819Z","birthtime":"2024-12-12T09:00:19.082Z"},"remove":false,"isDirectory":false,"isFile":true}
+2024-12-16 14:52:46,881 INFO 44821 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js","stat":{"dev":16777222,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":54026311,"size":1054,"blocks":8,"atimeMs":1734331966876.9692,"mtimeMs":1734331966819.4663,"ctimeMs":1734331966819.4663,"birthtimeMs":1733994019081.8857,"atime":"2024-12-16T06:52:46.877Z","mtime":"2024-12-16T06:52:46.819Z","ctime":"2024-12-16T06:52:46.819Z","birthtime":"2024-12-12T09:00:19.082Z"},"remove":false,"isDirectory":false,"isFile":true}
+2024-12-16 14:52:56,993 INFO 46259 [egg:logger] init all loggers with options: {"dir":"/Users/huangwei/Desktop/zero-element-boot/auto/logs/mynode","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"mynode-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"enableFastContextLogger":false,"type":"agent","localStorage":{"enabled":false}}
+2024-12-16 14:52:57,001 INFO 46259 [egg:core] dump config after load, 4ms
+2024-12-16 14:52:57,037 INFO 46259 [egg-watcher] Start watching: ["/Users/huangwei/Desktop/zero-element-boot/auto/app","/Users/huangwei/Desktop/zero-element-boot/auto/config","/Users/huangwei/Desktop/zero-element-boot/auto/mocks","/Users/huangwei/Desktop/zero-element-boot/auto/mocks_proxy","/Users/huangwei/Desktop/zero-element-boot/auto/app.js"]
+2024-12-16 14:52:57,037 INFO 46259 [egg-watcher] Start watching: "/Users/huangwei/Desktop/zero-element-boot/auto/app"
+2024-12-16 14:52:57,037 INFO 46259 [egg-watcher] Start watching: "/Users/huangwei/Desktop/zero-element-boot/auto/config"
+2024-12-16 14:52:57,037 INFO 46259 [egg-watcher] Start watching: "/Users/huangwei/Desktop/zero-element-boot/auto/mocks"
+2024-12-16 14:52:57,037 INFO 46259 [egg-watcher] Start watching: "/Users/huangwei/Desktop/zero-element-boot/auto/mocks_proxy"
+2024-12-16 14:52:57,037 INFO 46259 [egg-watcher] Start watching: "/Users/huangwei/Desktop/zero-element-boot/auto/app.js"
+2024-12-16 14:52:57,037 INFO 46259 [egg-watcher:agent] watcher start success
+2024-12-16 14:52:57,053 INFO 46259 egg start timeline:
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [399ms] - #0 Process Start
+                                  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [174ms] - #1 Application Start
+                                   ▇ [7ms] - #2 Load Plugin
+                                   ▇ [12ms] - #3 Load Config
+                                    ▇ [0ms] - #4 Require(0) config/config.default.js
+                                    ▇ [0ms] - #5 Require(1) node_modules/egg-session/config/config.default.js
+                                    ▇ [0ms] - #6 Require(2) node_modules/egg-security/config/config.default.js
+                                    ▇ [0ms] - #7 Require(3) node_modules/egg-jsonp/config/config.default.js
+                                    ▇ [1ms] - #8 Require(4) node_modules/egg-onerror/config/config.default.js
+                                    ▇ [0ms] - #9 Require(5) node_modules/egg-i18n/config/config.default.js
+                                    ▇ [1ms] - #10 Require(6) node_modules/egg-watcher/config/config.default.js
+                                    ▇ [0ms] - #11 Require(7) node_modules/egg-schedule/config/config.default.js
+                                    ▇ [1ms] - #12 Require(8) node_modules/egg-multipart/config/config.default.js
+                                    ▇ [0ms] - #13 Require(9) node_modules/egg-development/config/config.default.js
+                                    ▇ [1ms] - #14 Require(10) node_modules/egg-logrotator/config/config.default.js
+                                    ▇ [0ms] - #15 Require(11) node_modules/egg-static/config/config.default.js
+                                    ▇ [0ms] - #16 Require(12) node_modules/egg-view/config/config.default.js
+                                    ▇ [0ms] - #17 Require(13) node_modules/egg-jwt/config/config.default.js
+                                    ▇ [0ms] - #18 Require(14) node_modules/egg-redis/config/config.default.js
+                                    ▇ [1ms] - #19 Require(15) node_modules/egg/config/config.default.js
+                                    ▇ [0ms] - #20 Require(16) config/config.default.js
+                                    ▇ [0ms] - #21 Require(17) node_modules/egg-security/config/config.local.js
+                                    ▇ [0ms] - #22 Require(18) node_modules/egg-watcher/config/config.local.js
+                                    ▇ [0ms] - #23 Require(19) node_modules/egg-view/config/config.local.js
+                                    ▇ [1ms] - #24 Require(20) node_modules/egg/config/config.local.js
+                                     ▇▇▇▇ [47ms] - #25 Load extend/agent.js
+                                     ▇ [1ms] - #26 Require(21) node_modules/egg-security/app/extend/agent.js
+                                     ▇▇▇ [43ms] - #27 Require(22) node_modules/egg-schedule/app/extend/agent.js
+                                         ▇ [1ms] - #28 Require(23) node_modules/egg-logrotator/app/extend/agent.js
+                                         ▇ [19ms] - #29 Load extend/context.js
+                                         ▇ [7ms] - #30 Require(24) node_modules/egg-security/app/extend/context.js
+                                         ▇ [1ms] - #31 Require(25) node_modules/egg-jsonp/app/extend/context.js
+                                         ▇ [0ms] - #32 Require(26) node_modules/egg-i18n/app/extend/context.js
+                                         ▇ [7ms] - #33 Require(27) node_modules/egg-multipart/app/extend/context.js
+                                          ▇ [1ms] - #34 Require(28) node_modules/egg-view/app/extend/context.js
+                                          ▇ [1ms] - #35 Require(29) node_modules/egg/app/extend/context.js
+                                          ▇ [20ms] - #36 Load agent.js
+                                          ▇ [0ms] - #37 Require(30) node_modules/egg-security/agent.js
+                                          ▇ [0ms] - #38 Require(31) node_modules/egg-onerror/agent.js
+                                          ▇ [4ms] - #39 Require(32) node_modules/egg-watcher/agent.js
+                                           ▇ [1ms] - #40 Require(33) node_modules/egg-schedule/agent.js
+                                           ▇ [11ms] - #41 Require(34) node_modules/egg-development/agent.js
+                                            ▇ [0ms] - #42 Require(35) node_modules/egg-logrotator/agent.js
+                                            ▇ [1ms] - #43 Require(36) node_modules/egg-redis/agent.js
+                                            ▇ [0ms] - #44 Require(37) node_modules/egg/agent.js
+                                            ▇▇▇ [42ms] - #45 Before Start in node_modules/egg-watcher/lib/init.js:15:14
+                                             ▇▇ [27ms] - #46 Before Start in node_modules/egg-schedule/agent.js:12:9
+                                             ▇▇▇▇ [53ms] - #47 Before Start in node_modules/egg-development/agent.js:8:9
+2024-12-16 14:52:57,053 INFO 46259 [egg:core] dump config after ready, 3ms
+2024-12-16 14:53:01,900 INFO 46259 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js","stat":{"dev":16777222,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":54026311,"size":1054,"blocks":8,"atimeMs":1734331980433.2456,"mtimeMs":1734331981888.0176,"ctimeMs":1734331981888.0176,"birthtimeMs":1733994019081.8857,"atime":"2024-12-16T06:53:00.433Z","mtime":"2024-12-16T06:53:01.888Z","ctime":"2024-12-16T06:53:01.888Z","birthtime":"2024-12-12T09:00:19.082Z"},"remove":false,"isDirectory":false,"isFile":true}
+2024-12-16 14:53:01,949 INFO 46259 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js","stat":{"dev":16777222,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":54026311,"size":1054,"blocks":8,"atimeMs":1734331981924.8035,"mtimeMs":1734331981888.0176,"ctimeMs":1734331981888.0176,"birthtimeMs":1733994019081.8857,"atime":"2024-12-16T06:53:01.925Z","mtime":"2024-12-16T06:53:01.888Z","ctime":"2024-12-16T06:53:01.888Z","birthtime":"2024-12-12T09:00:19.082Z"},"remove":false,"isDirectory":false,"isFile":true}
+2024-12-16 14:53:02,154 WARN 46259 [agent:development] reload worker because /Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js change

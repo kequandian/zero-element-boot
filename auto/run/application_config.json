@@ -374,8 +374,8 @@
     "cluster": {
       "listen": {
         "path": "",
-        "port": 7001,
-        "hostname": ""
+        "port": 3001,
+        "hostname": "0.0.0.0"
       }
     },
     "clusterClient": {
@@ -386,10 +386,6 @@
     "middleware": [
       "jwt"
     ],
-    "listen": {
-      "port": 7001,
-      "hostname": "0.0.0.0"
-    },
     "coreMiddlewares": "~config~coreMiddleware",
     "appMiddlewares": "~config~middleware",
     "appMiddleware": "~config~middleware"

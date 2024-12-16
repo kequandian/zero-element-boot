@@ -210,6 +210,7 @@
       },
       "dependencies": {
         "egg": "^3.17.5",
+        "egg-jwt": "^3.1.7",
         "egg-redis": "^2.6.0",
         "egg-scripts": "2",
         "jsonwebtoken": "^9.0.2",
@@ -337,8 +338,8 @@
     "cluster": {
       "listen": {
         "path": "",
-        "port": 7001,
-        "hostname": ""
+        "port": 3002,
+        "hostname": "0.0.0.0"
       }
     },
     "clusterClient": {
@@ -514,7 +515,7 @@
       ],
       "env": [],
       "from": "/Users/huangwei/Desktop/zero-element-boot/auto/config/plugin.js",
-      "path": "/Users/huangwei/Desktop/zero-element-boot/node_modules/egg-jwt",
+      "path": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-jwt",
       "version": "3.1.7"
     },
     "redis": {
@@ -545,6 +546,7 @@
       },
       "dependencies": {
         "egg": "^3.17.5",
+        "egg-jwt": "^3.1.7",
         "egg-redis": "^2.6.0",
         "egg-scripts": "2",
         "jsonwebtoken": "^9.0.2",
