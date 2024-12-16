@@ -1,0 +1,138 @@
+2024-12-12 09:37:23,363 INFO 79139 [Timer] /Users/huangwei/Desktop/othe2/egg-example/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 67956640ms at 2024-12-13 04:30:00.003
+2024-12-12 09:37:23,363 INFO 79139 [Timer] /Users/huangwei/Desktop/othe2/egg-example/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 51756637ms at 2024-12-13 00:00:00.000
+2024-12-12 09:37:23,364 INFO 79139 [Timer] /Users/huangwei/Desktop/othe2/egg-example/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 51757637ms at 2024-12-13 00:00:01.001
+2024-12-12 09:37:23,286 INFO 79142 [egg-schedule]: register schedule /Users/huangwei/Desktop/othe2/egg-example/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 09:37:23,286 INFO 79142 [egg-schedule]: register schedule /Users/huangwei/Desktop/othe2/egg-example/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 09:37:23,286 INFO 79142 [egg-schedule]: register schedule /Users/huangwei/Desktop/othe2/egg-example/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 09:40:33,784 INFO 80482 [Timer] /Users/huangwei/Desktop/othe2/egg-example/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 67766218ms at 2024-12-13 04:30:00.002
+2024-12-12 09:40:33,785 INFO 80482 [Timer] /Users/huangwei/Desktop/othe2/egg-example/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 51566216ms at 2024-12-13 00:00:00.001
+2024-12-12 09:40:33,785 INFO 80482 [Timer] /Users/huangwei/Desktop/othe2/egg-example/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 51567215ms at 2024-12-13 00:00:01.000
+2024-12-12 09:40:33,696 INFO 80489 [egg-schedule]: register schedule /Users/huangwei/Desktop/othe2/egg-example/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 09:40:33,696 INFO 80489 [egg-schedule]: register schedule /Users/huangwei/Desktop/othe2/egg-example/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 09:40:33,696 INFO 80489 [egg-schedule]: register schedule /Users/huangwei/Desktop/othe2/egg-example/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:00:29,206 INFO 93358 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 41370797ms at 2024-12-13 04:30:00.003
+2024-12-12 17:00:29,207 INFO 93358 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 25170793ms at 2024-12-13 00:00:00.000
+2024-12-12 17:00:29,207 INFO 93358 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 25171793ms at 2024-12-13 00:00:01.000
+2024-12-12 17:00:29,118 INFO 93366 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:00:29,118 INFO 93366 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:00:29,118 INFO 93366 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:07:58,333 INFO 94137 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:07:58,333 INFO 94137 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:07:58,333 INFO 94137 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:09:37,618 INFO 94582 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 40822385ms at 2024-12-13 04:30:00.003
+2024-12-12 17:09:37,618 INFO 94582 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 24622382ms at 2024-12-13 00:00:00.000
+2024-12-12 17:09:37,619 INFO 94582 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 24623382ms at 2024-12-13 00:00:01.001
+2024-12-12 17:09:37,445 INFO 94583 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:09:37,445 INFO 94583 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:09:37,445 INFO 94583 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:13:23,150 INFO 94730 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:13:23,150 INFO 94730 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:13:23,150 INFO 94730 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:13:28,429 INFO 94748 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:13:28,429 INFO 94748 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:13:28,429 INFO 94748 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:13:50,446 INFO 94784 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:13:50,446 INFO 94784 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:13:50,446 INFO 94784 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:15:35,144 INFO 94875 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:15:35,144 INFO 94875 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:15:35,144 INFO 94875 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:16:53,043 INFO 94972 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:16:53,044 INFO 94972 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:16:53,044 INFO 94972 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:29:19,554 INFO 95320 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:29:19,554 INFO 95320 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:29:19,554 INFO 95320 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:33:28,601 INFO 95761 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:33:28,601 INFO 95761 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:33:28,601 INFO 95761 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:35:55,390 INFO 96037 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 39244614ms at 2024-12-13 04:30:00.003
+2024-12-12 17:35:55,390 INFO 96037 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 23044610ms at 2024-12-13 00:00:00.000
+2024-12-12 17:35:55,391 INFO 96037 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 23045610ms at 2024-12-13 00:00:01.001
+2024-12-12 17:35:55,256 INFO 96040 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:35:55,256 INFO 96040 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:35:55,256 INFO 96040 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:36:55,807 INFO 96078 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:36:55,807 INFO 96078 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:36:55,807 INFO 96078 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:37:01,513 INFO 96098 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:37:01,513 INFO 96098 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:37:01,513 INFO 96098 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:37:28,724 INFO 96128 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:37:28,724 INFO 96128 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:37:28,724 INFO 96128 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:37:39,004 INFO 96147 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:37:39,004 INFO 96147 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:37:39,004 INFO 96147 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:38:22,336 INFO 96187 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:38:22,336 INFO 96187 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:38:22,336 INFO 96187 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:38:52,456 INFO 96216 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:38:52,456 INFO 96216 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:38:52,456 INFO 96216 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:39:01,013 INFO 96232 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:39:01,013 INFO 96232 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:39:01,013 INFO 96232 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:39:10,346 INFO 96246 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:39:10,346 INFO 96246 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:39:10,346 INFO 96246 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:39:29,104 INFO 96272 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:39:29,104 INFO 96272 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:39:29,104 INFO 96272 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:39:37,353 INFO 96289 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:39:37,353 INFO 96289 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:39:37,353 INFO 96289 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:40:05,466 INFO 96314 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:40:05,466 INFO 96314 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:40:05,466 INFO 96314 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:44:16,735 INFO 96699 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:44:16,735 INFO 96699 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:44:16,735 INFO 96699 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:44:42,944 INFO 96731 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:44:42,944 INFO 96731 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:44:42,944 INFO 96731 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:45:26,511 INFO 96762 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:45:26,511 INFO 96762 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:45:26,511 INFO 96762 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:49:30,838 INFO 96889 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:49:30,838 INFO 96889 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:49:30,838 INFO 96889 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:52:18,997 INFO 97004 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:52:18,998 INFO 97004 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:52:18,998 INFO 97004 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:52:47,444 INFO 97063 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:52:47,444 INFO 97063 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:52:47,444 INFO 97063 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:54:07,388 INFO 97113 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:54:07,388 INFO 97113 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:54:07,388 INFO 97113 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 17:56:04,406 INFO 97238 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 17:56:04,406 INFO 97238 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 17:56:04,406 INFO 97238 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 18:01:09,873 INFO 97396 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 18:01:09,873 INFO 97396 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 18:01:09,873 INFO 97396 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 18:01:11,855 INFO 97409 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 18:01:11,855 INFO 97409 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 18:01:11,855 INFO 97409 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 18:01:13,894 INFO 97423 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 18:01:13,894 INFO 97423 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 18:01:13,894 INFO 97423 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 18:12:38,116 INFO 97717 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 18:12:38,116 INFO 97717 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 18:12:38,116 INFO 97717 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 18:12:51,886 INFO 97752 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 18:12:51,886 INFO 97752 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 18:12:51,886 INFO 97752 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 18:12:54,306 INFO 97764 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 18:12:54,306 INFO 97764 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 18:12:54,306 INFO 97764 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-12 18:13:16,310 INFO 97785 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2024-12-12 18:13:16,310 INFO 97785 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js
+2024-12-12 18:13:16,310 INFO 97785 [egg-schedule]: register schedule /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2024-12-13 01:04:14,589 INFO 97785 [Job#17340230545513164464932737381] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js executing by app
+2024-12-13 01:04:14,622 INFO 97785 [Job#17340230545753164465148083711] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js executing by app
+2024-12-13 01:04:14,634 INFO 97785 [Job#17340230545513164464932737381] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js execute succeed, used 16ms. 
+2024-12-13 01:04:14,637 INFO 97785 [Job#17340230545753164465148083711] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js execute succeed, used 15ms. 
+2024-12-13 01:04:14,573 INFO 96037 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 82545444ms at 2024-12-14 00:00:00.017
+2024-12-13 01:04:14,584 INFO 96037 [Timer] /Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 82546424ms at 2024-12-14 00:00:01.008

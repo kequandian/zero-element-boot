@@ -1,0 +1,112 @@
+2024-12-14 03:32:42,222 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7212233ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-14 05:33:34,194 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7211238ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-14 07:34:26,137 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7211232ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-14 08:23:04,143 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 2878022ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-14 09:00:01,080 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 2114262ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-14 12:00:06,040 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7203121ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-14 14:02:00,011 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7212026ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-14 14:54:23,648 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 3103641ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-14 15:28:47,950 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 2024287ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-14 17:29:40,940 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7212973ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-14 19:30:33,895 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7212980ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-14 21:31:26,869 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7212991ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-14 23:32:19,812 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7212199ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-15 01:33:12,772 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7212971ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+

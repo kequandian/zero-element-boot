@@ -1,0 +1,33 @@
+2024-12-15 01:33:13,551 INFO 96037 [egg-logrotator] agent logger reload: got log-reload message
+2024-12-15 03:34:05,726 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7212216ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-15 05:34:58,689 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7212978ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-15 07:35:51,650 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 7212987ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
+2024-12-15 08:30:53,647 ERROR 96037 nodejs.ClusterClientNoResponseError: client no response in 3262012ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/cluster-client/lib/leader.js:79:25)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+name: "ClusterClientNoResponseError"
+pid: 96037
+hostname: huangweideMacBook-Pro.local
+
