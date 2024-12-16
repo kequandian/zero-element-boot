@@ -87,6 +87,8 @@ import CartsManage from '@/composition/cartsManage'
 // import PresentersListPage from '@/pages/Demo/presentersListPage/Sandbox'
 
 import TestPreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox/TestPreviewAutoLayout';
+import BootPreviewAutoLayout from '@/components/BootPreviewAutoLayout';
+
 
 export default function Index(props) {
 
@@ -111,11 +113,21 @@ export default function Index(props) {
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
 
   // return <TestCRUDList {...props} />
+
+  // @when 2014-12-16 comment out
+  // return (
+  //   <ChakraProvider>
+  //     <TestPreviewAutoLayout {...props} />
+  //   </ChakraProvider>
+  // )
+
+  // @when 2014-12-16 current debug
   return (
     <ChakraProvider>
-      <TestPreviewAutoLayout {...props} />
+      <BootPreviewAutoLayout {...props} />
     </ChakraProvider>
   )
+  
   
 
   // return (
