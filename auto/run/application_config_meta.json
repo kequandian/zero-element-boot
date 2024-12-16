@@ -1,9 +1,13 @@
 {
   "keys": "/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js",
   "middleware": "/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js",
+  "listen": {
+    "port": "/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js",
+    "hostname": "/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js"
+  },
   "jwt": {
     "secret": "/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js",
-    "enable": "/Users/huangwei/Desktop/zero-element-boot/node_modules/egg-jwt/config/config.default.js"
+    "enable": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-jwt/config/config.default.js"
   },
   "security": {
     "csrf": {
@@ -192,6 +196,7 @@
     },
     "dependencies": {
       "egg": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
+      "egg-jwt": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
       "egg-redis": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
       "egg-scripts": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
       "jsonwebtoken": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",

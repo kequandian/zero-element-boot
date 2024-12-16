@@ -126,7 +126,7 @@
         "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-logrotator/config/locales",
         "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-static/config/locales",
         "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-view/config/locales",
-        "/Users/huangwei/Desktop/zero-element-boot/node_modules/egg-jwt/config/locales",
+        "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-jwt/config/locales",
         "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-redis/config/locales",
         "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/locales",
         "/Users/huangwei/Desktop/zero-element-boot/auto/config/locales"
@@ -241,6 +241,7 @@
       },
       "dependencies": {
         "egg": "^3.17.5",
+        "egg-jwt": "^3.1.7",
         "egg-redis": "^2.6.0",
         "egg-scripts": "2",
         "jsonwebtoken": "^9.0.2",
@@ -385,6 +386,10 @@
     "middleware": [
       "jwt"
     ],
+    "listen": {
+      "port": 7001,
+      "hostname": "0.0.0.0"
+    },
     "coreMiddlewares": "~config~coreMiddleware",
     "appMiddlewares": "~config~middleware",
     "appMiddleware": "~config~middleware"
@@ -552,7 +557,7 @@
       ],
       "env": [],
       "from": "/Users/huangwei/Desktop/zero-element-boot/auto/config/plugin.js",
-      "path": "/Users/huangwei/Desktop/zero-element-boot/node_modules/egg-jwt",
+      "path": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg-jwt",
       "version": "3.1.7"
     },
     "redis": {
@@ -583,6 +588,7 @@
       },
       "dependencies": {
         "egg": "^3.17.5",
+        "egg-jwt": "^3.1.7",
         "egg-redis": "^2.6.0",
         "egg-scripts": "2",
         "jsonwebtoken": "^9.0.2",
