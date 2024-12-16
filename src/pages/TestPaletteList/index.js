@@ -4,7 +4,7 @@ import { HCenter } from '@/components/cart'
 import { WxPage, AddNewContainer } from '@/components/container';
 import { DefaultGridLayoutList } from '@/components/list';
 import { PaletteColor } from '@/components/presenter';
-import ColorForm from '@/components/formComponent/colorForm';
+import ColorForm from '@/components/FormComponent/colorForm';
 
 
 export default function TestPaletteList(props) {
