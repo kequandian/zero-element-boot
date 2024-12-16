@@ -45,6 +45,89 @@ class IndexController extends Controller {
     ctx.body = txt;
   }
 
+  // 3. POST /api/auto/boot/todo/centralize 页面居中
+  async centralize() {
+    const { ctx, app } = this;
+
+    ctx.body = {
+      code: 200,
+      data: {
+        "presenter": {
+          "xname": "Avatar",
+          "props": {
+            "url": "/auto/app/public/log.svg"
+          }
+        },
+        "cart": "PageCenter"
+      }
+    }
+  };
+
+  // 4. POST /api/auto/boot/todo/clone 克隆多一个组件
+  async clone() {
+    const { ctx, app } = this;
+
+    ctx.body = {
+      code: 200,
+      data: {
+        "xkey": "c6fe946c-b786-11ef-9639-b3e576acf426",
+        "presenter":
+        {
+          "xname": "Avatar"
+        },
+        "binding": {
+          "imageUrl": "url"
+        },
+        "mock": [{
+          "imageUrl": "http://"
+        },
+        {
+          "imageUrl": "http://",
+        }]
+      }
+    }
+  };
+
+  // 5. POST /api/auto/boot/todo/repeat/{:count} 设置子组件个数
+  async repeat() {
+    const { ctx, app } = this;
+    console.log(ctx.params);
+
+    ctx.body = {
+      code: 200,
+      data: {
+        "xkey": "c6fe946c-b786-11ef-9639-b3e576acf426",
+        "presenter":
+        {
+          "xname": "Avatar"
+        },
+        "binding": {
+          "imageUrl": "url"
+        },
+        "mock": [{
+          "imageUrl": "http://"
+        },
+        {
+          "imageUrl": "http://",
+        }]
+      }
+    }
+  };
+
+
+  // 17. POST /api/auto/boot/load/{:moduleName} 加载已入库组件
+  async load() {
+    const { ctx, app } = this;
+    console.log(ctx.params);
+    ctx.body = {
+      code: 200,
+      data: {
+        moduleName: ctx.params
+      }
+
+    };
+  }
+
   //  16 POST /api/auto/boot/zoomout 执行【zoomin】之后回滚回前一个父组件
   async zoomout() {
     const { ctx, app } = this;
