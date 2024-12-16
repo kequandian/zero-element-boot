@@ -1,9 +1,12 @@
 {
   "keys": "/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js",
   "middleware": "/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js",
-  "listen": {
-    "port": "/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js",
-    "hostname": "/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js"
+  "cluster": {
+    "listen": {
+      "port": "/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js",
+      "hostname": "/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js",
+      "path": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js"
+    }
   },
   "jwt": {
     "secret": "/Users/huangwei/Desktop/zero-element-boot/auto/config/config.default.js",
@@ -313,13 +316,6 @@
   "coreMiddleware": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
   "workerStartTimeout": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
   "serverTimeout": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
-  "cluster": {
-    "listen": {
-      "path": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
-      "port": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
-      "hostname": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js"
-    }
-  },
   "clusterClient": {
     "maxWaitTime": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js",
     "responseTimeout": "/Users/huangwei/Desktop/zero-element-boot/auto/node_modules/egg/config/config.default.js"
