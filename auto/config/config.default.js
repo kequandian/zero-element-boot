@@ -21,10 +21,16 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
-  // app/config/config.default.js
-  config.jwt = {
-    secret: '12345678',
-  };
+  config.listen = {
+    port: 7001,
+    hostname: '0.0.0.0', // 不建议设置为 '0.0.0.0'，可能导致外部连接风险，请了解后使用
+    // path: '/var/run/egg.sock',
+  },
+
+    // app/config/config.default.js
+    config.jwt = {
+      secret: '12345678',
+    };
   config.security = {
     csrf: {
       enable: false,
