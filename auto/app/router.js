@@ -17,18 +17,28 @@ module.exports = app => {
   router.post('/api/auto/boot/todo/centralize', controller.index.centralize);
 
   // 4. POST /api/auto/boot/todo/clone 克隆多一个组件
-  router.post('/api/auto/boot/todo/clone', controller.index.clone);
+  // router.post('/api/auto/boot/todo/clone', controller.index.clone);
 
   // 5. POST /api/auto/boot/todo/repeat/{:count} 设置子组件个数
-  router.post('/api/auto/boot/todo/repeat/:count', controller.index.repeat);
+  // router.post('/api/auto/boot/todo/repeat/:count', controller.index.repeat);
 
   // 16. POST /api/auto/boot/zoomout 执行【zoomin】之后回滚回前一个父组件
-  router.post('/api/auto/boot/zoomout', controller.index.zoomout);
+  // router.post('/api/auto/boot/zoomout', controller.index.zoomout);
 
   // 17. POST /api/auto/boot/load/{:moduleName} 加载已入库组件
-  router.post('/api/auto/boot/load/:moduleName', controller.index.load);
+  // router.post('/api/auto/boot/load/:moduleName', controller.index.load);
 
   // 19. POST /api/auto/boot/init  初始化为一个头像组件
   router.post('/api/auto/boot/init', controller.index.init);
+
+  // 获取所有组件(仅返回 xkey)
+  router.get('/api/auto/boot/list', controller.index.list);
+
+  // POST /api/auto/boot/load/{:moduleKey}  加载指定的组件
+  router.post('/api/auto/boot/load/:moduleKey', controller.index.loadAppoint);
+
+  // POST /api/auto/boot/load/{:moduleKey}  移除指定的组件
+  router.delete('/api/auto/boot/load/:moduleKey', controller.index.loadDel);
+
 
 };
