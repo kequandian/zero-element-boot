@@ -3,6 +3,41 @@ const { v4: uuidv4 } = require('uuid');
 
 class IndexController extends Controller {
 
+  // 辅助方法：切换组件
+  async switchComponent(direction) {
+    const { app } = this;
+
+    try {
+      const componentList = await app.redis.lrange('json_list', 0, -1);
+      if (!componentList || componentList.length === 0) {
+        return null;
+      }
+
+      let currentIndex = parseInt(await app.redis.get('current_index'), 10) || 0;
+
+      switch (direction) {
+        case 'prev':
+          currentIndex = Math.max(currentIndex - 1, 0);
+          break;
+        case 'next':
+          currentIndex = Math.min(currentIndex + 1, componentList.length - 1);
+          break;
+        case 'first':
+          currentIndex = 0;
+          break;
+        case 'last':
+          currentIndex = componentList.length - 1;
+          break;
+      }
+
+      await app.redis.set('current_index', currentIndex);
+      const moduleKey = componentList[currentIndex];
+      return await this.getRedisJson(moduleKey);
+    } catch (error) {
+      console.error('Error switching component:', error);
+      return null;
+    }
+  }
   // 通用方法：获取 Redis 数据并尝试解析为 JSON
   async getRedisJson(key) {
     const { app } = this;
@@ -46,7 +81,7 @@ class IndexController extends Controller {
 
   // 2新建组件，即重置 descritpor 数据,  数据自动缓存至 redis
   async new() {
-    const { ctx } = this;
+    const { ctx, app } = this;
 
     const json = {
       "xkey": uuidv4(),
@@ -56,6 +91,9 @@ class IndexController extends Controller {
     await this.setRedisJson(json.xkey, json);
     // 储存到当前
     await this.setRedisJson('current_json', json);
+
+    // 将新组件的 xkey 添加到 jos n 列表中
+    await app.redis.rpush('json_list', json.xkey);
 
     console.log('new', json);
 
@@ -90,86 +128,79 @@ class IndexController extends Controller {
     };
   }
 
-  // 4. POST /api/auto/boot/todo/clone 克隆多一个组件
-  async clone() {
-    const { ctx } = this;
-
-    ctx.body = {
-      code: 200,
-      data: {
-        "xkey": "c6fe946c-b786-11ef-9639-b3e576acf426",
-        "presenter": {
-          "xname": "Avatar"
-        },
-        "binding": {
-          "imageUrl": "url"
-        },
-        "mock": [{
-          "imageUrl": "http://"
-        },
-        {
-          "imageUrl": "http://",
-        }]
-      }
-    };
-  }
-
-  // 5. POST /api/auto/boot/todo/repeat/{:count} 设置子组件个数
-  async repeat() {
-    const { ctx } = this;
-    console.log(ctx.params);
-
-    ctx.body = {
-      code: 200,
-      data: {
-        "xkey": "c6fe946c-b786-11ef-9639-b3e576acf426",
-        "presenter": {
-          "xname": "Avatar"
-        },
-        "binding": {
-          "imageUrl": "url"
-        },
-        "mock": [{
-          "imageUrl": "http://"
-        },
-        {
-          "imageUrl": "http://",
-        }]
-      }
-    };
-  }
-
-  // 17. POST /api/auto/boot/load/{:moduleName} 加载已入库组件
-  async load() {
-    const { ctx } = this;
-
-    ctx.body = {
-      code: 200,
-      data: {
-        moduleName: ctx.params
-      }
-    };
-  }
-
-  //  16 POST /api/auto/boot/zoomout 执行【zoomin】之后回滚回前一个父组件
-  async zoomout() {
-    const { ctx } = this;
-
-    const json_old = await this.getRedisJson('json_old');
-
-    if (!json_old) {
+  // 17. POST /api/auto/boot/load/{:moduleKey} 获取指定组件
+  async loadAppoint() {
+    const { ctx, app } = this;
+    if (!ctx?.params?.moduleKey) {
       ctx.body = {
-        code: 404,
-        message: 'No data found for key: json_old'
+        code: 400,
+        message: 'moduleKey is required'
       };
       return;
     }
 
-    console.log('json_old', json_old);
+    const moduleKey = ctx?.params?.moduleKey;
+    let json;
+
+    switch (moduleKey) {
+      // 切换至前一个组件
+      case 'back':
+        json = await this.switchComponent('prev');
+        break;
+      // 切换至下一个组件
+      case 'next':
+        json = await this.switchComponent('next');
+        break;
+      // 切换至第一个组件
+      case 'head':
+        json = await this.switchComponent('first');
+        break;
+      // 切换至最后一个组件
+      case 'last':
+        json = await this.switchComponent('last');
+        break;
+
+      default:
+        json = await this.getRedisJson(moduleKey);
+        break;
+    }
+
+    console.log(ctx.params, json);
+    ctx.body = {
+      code: 200,
+      data: json
+    };
+  }
+
+  // 移除指定的组件
+  async loadDel() {
+    const { ctx, app } = this;
+    if (!ctx?.params?.moduleKey) return
+
+    const moduleKey = ctx?.params?.moduleKey;
+
+    const data = await app.redis.get(moduleKey);
+
+    const allKeys = await app.redis.keys('*')
+
+    if (!data) {
+      ctx.body = {
+        code: 404,
+        message: 'Data not found'
+      };
+      return;
+    } else {
+      await app.redis.del(moduleKey);
+      ctx.body = {
+        code: 200,
+        data: allKeys
+      };
+    }
+    // 删除 Redis 中的数据
 
     ctx.body = {
       code: 200,
-      data: json_old
+      data: allKeys
     };
   }
 
@@ -202,6 +233,21 @@ class IndexController extends Controller {
       data: new_json
     };
   }
+  // 获取所有组件(仅返回 xkey)
+  async list() {
+    const { ctx, app } = this;
+
+    // 获取 josn_list 列表中的所有元素
+    const componentList = await app.redis.lrange('josn_list', 0, -1);
+
+    console.log('list', componentList);
+
+    ctx.body = {
+      code: 200,
+      data: componentList
+    };
+  }
+
 
 }
 
