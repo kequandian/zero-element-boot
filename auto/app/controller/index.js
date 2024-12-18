@@ -96,7 +96,8 @@ class IndexController extends Controller {
       "xkey": json.xkey,
     }
     // 将新组件的 xkey 添加到 jos n 列表中
-    await app.redis.rpush('json_list', JSON.stringify(json_obj));
+    // await app.redis.rpush('json_list', JSON.stringify(json_obj));
+    await app.redis.rpush('json_list', json.xkey);
 
     console.log('new', json);
 
@@ -241,15 +242,28 @@ class IndexController extends Controller {
   async list() {
     const { ctx, app } = this;
 
+    // app.redis.flushall().then(() => {
+    //   console.log('All databases have been flushed.');
+    // }).catch(err => {
+    //   console.error('Failed to flush databases:', err);
+    // });
+
     // 获取 json_list 列表中的所有元素
     const componentList = await app.redis.lrange('json_list', 0, -1);
+    // const parsedComponentList = componentList.map(item => JSON.parse(item));
 
 
-    console.log('list', componentList);
+
+    const json_arr = []
+    for (const item of componentList) {
+      console.log(item, '2', await this.getRedisJson(item));
+      let json = await this.getRedisJson(item);
+      json_arr.push(json);
+    }
 
     ctx.body = {
       code: 200,
-      data: componentList
+      data: json_arr
     };
   }
 
@@ -264,7 +278,21 @@ class IndexController extends Controller {
 
     const json = await this.getRedisJson(moduleKey);
 
-    console.log('json', ctx.query);
+    // 给json_list moduleKey对应数据加上moduleName
+    // const componentList = await app.redis.lrange('json_list', 0, -1);
+    // const parsedComponentList = componentList.map(item => {
+    //   const i = JSON.parse(item)
+    //   if (moduleKey == i.xkey) {
+    //     i.moduleName = ctx.query.moduleName;
+    //     i.name = ctx.query.name;
+    //   }
+    //   return i
+    // });
+    // await app.redis.lrem('json_list', 0, JSON.stringify(parsedComponentList));
+    // await app.redis.rpush('json_list', JSON.stringify(parsedComponentList));
+
+
+    console.log(json);
     if (json) {
       json.moduleName = ctx.query.moduleName;
       json.name = ctx.query.name;
