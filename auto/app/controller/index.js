@@ -242,11 +242,6 @@ class IndexController extends Controller {
   async list() {
     const { ctx, app } = this;
 
-    // app.redis.flushall().then(() => {
-    //   console.log('All databases have been flushed.');
-    // }).catch(err => {
-    //   console.error('Failed to flush databases:', err);
-    // });
 
     // 获取 json_list 列表中的所有元素
     const componentList = await app.redis.lrange('json_list', 0, -1);
@@ -270,32 +265,45 @@ class IndexController extends Controller {
   // 编辑指定的组件名称
   async editName() {
     const { ctx, app } = this;
-    console.log(ctx.params);
-
-    if (!ctx?.params?.moduleKey) return
 
     const moduleKey = ctx?.params?.moduleKey;
+    const moduleName = ctx?.query?.moduleName;
+    const name = ctx?.query?.name;
+    console.log('editName', moduleKey, moduleName, name);
+    if (!moduleKey && !moduleName && !name) {
+      ctx.body = {
+        code: 400,
+        message: 'moduleKey/moduleName/name is required'
+      };
+      return;
+    }
+
+    // 获取 json_list 列表中的所有元素 是否重复
+    const componentList = await app.redis.lrange('json_list', 0, -1);
+    let nameExists = false;
+
+    for (const item of componentList) {
+      const json = await this.getRedisJson(item);
+      if (json && json.moduleName === moduleName) {
+        nameExists = true;
+        break;
+      }
+    }
+
+    if (nameExists) {
+      ctx.body = {
+        code: 409,
+        message: `A component with the moduleName "${moduleName}" already exists`
+      };
+      return;
+    }
+
 
     const json = await this.getRedisJson(moduleKey);
 
-    // 给json_list moduleKey对应数据加上moduleName
-    // const componentList = await app.redis.lrange('json_list', 0, -1);
-    // const parsedComponentList = componentList.map(item => {
-    //   const i = JSON.parse(item)
-    //   if (moduleKey == i.xkey) {
-    //     i.moduleName = ctx.query.moduleName;
-    //     i.name = ctx.query.name;
-    //   }
-    //   return i
-    // });
-    // await app.redis.lrem('json_list', 0, JSON.stringify(parsedComponentList));
-    // await app.redis.rpush('json_list', JSON.stringify(parsedComponentList));
-
-
-    console.log(json);
     if (json) {
-      json.moduleName = ctx.query.moduleName;
-      json.name = ctx.query.name;
+      json.moduleName = moduleName;
+      json.name = name;
     }
 
     await this.setRedisJson(json.xkey, json);
@@ -306,6 +314,47 @@ class IndexController extends Controller {
     };
   }
 
+  // 根据名称查询组件
+  async getName() {
+    const { ctx, app } = this;
+    const nameToFind = ctx.params.moduleName;
+
+    if (!nameToFind) {
+      ctx.body = {
+        code: 400,
+        message: 'name query parameter is required'
+      };
+      return;
+    }
+    console.log(nameToFind);
+    try {
+      // 获取 json_list 列表中的所有元素
+      const componentList = await app.redis.lrange('json_list', 0, -1);
+
+      for (const item of componentList) {
+        const json = await this.getRedisJson(item);
+        if (json?.moduleName && json?.moduleName === nameToFind) {
+          ctx.body = {
+            code: 200,
+            data: json
+          };
+          return;
+        }
+      }
+
+      // 如果没有找到匹配的组件
+      ctx.body = {
+        code: 404,
+        message: `No component found with name: ${nameToFind}`
+      };
+    } catch (error) {
+      console.error('Error finding component by name:', error);
+      ctx.body = {
+        code: 500,
+        message: 'Internal server error'
+      };
+    }
+  }
 
 }
 
