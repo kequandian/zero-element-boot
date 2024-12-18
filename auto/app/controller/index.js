@@ -237,8 +237,8 @@ class IndexController extends Controller {
   async list() {
     const { ctx, app } = this;
 
-    // 获取 josn_list 列表中的所有元素
-    const componentList = await app.redis.lrange('josn_list', 0, -1);
+    // 获取 json_list 列表中的所有元素
+    const componentList = await app.redis.lrange('json_list', 0, -1);
 
     console.log('list', componentList);
 
