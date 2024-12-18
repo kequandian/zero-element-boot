@@ -35,13 +35,13 @@ import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/
 import ContentText from '@/pages/PresenterTestDemo/plugins/TodoList/TodoItem/Content_text'
 import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/ItemIconAction'
 
-import {Avatar, DownloadButton, ItemPlaceholder, AddNewButton, Text } from '@/components/presenter';
+import { Avatar, DownloadButton, ItemPlaceholder, AddNewButton, Text } from '@/components/presenter';
 // import {Title, Subtitle, StatisticsList, StatisticalDescription} from '@/presenter/demo';
 
 import JarItem from '@/composition/LogsUi/Sandbox/JarItem';
 import SwaggerItem from '@/composition/ApisUi/SwaggerItem';
 
-import { InputCompx, SelectFetch } from '@/components/FormItemType';
+import { InputCompx, SelectFetch } from '@/components/formItemType';
 const { TableCompx } = require('@/presenter/demo');
 
 // SelectListDemo
@@ -57,10 +57,11 @@ import OutlineSelector from '@/components/selector/OutlineSelector';
 
 //presenter
 import {
-Clean,
-Butter, 
-Pink,
-Clear } from '@/components/presenter'
+  Clean,
+  Butter,
+  Pink,
+  Clear
+} from '@/components/presenter'
 
 import ItemImg from '@/pages/SelectListDemo/presenter/ItemImg'
 import ItemTitle from '@/pages/SelectListDemo/presenter/ItemTitle'
@@ -78,9 +79,9 @@ import testModuleItem from '@/composition/moduleListPage/moduleItem'
 // })
 
 //开发模式设置endpoint, token
-if(process.env.NODE_ENV == 'development'){
-    setEndpoint('http://192.168.3.210:8089')
-    // setToken('eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzAsInVzZXJJZCI6MzE4LCJhY2NvdW50IjoiYjQxYTg2OTRhNjM4NDIyNWJmNWMxOTQyZjdmZjIyNTYiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjoxNDYxLCJpYXQiOjE2NjkxMTMzMTQsImp0aSI6IjMxOCIsInN1YiI6ImI0MWE4Njk0YTYzODQyMjViZjVjMTk0MmY3ZmYyMjU2IiwiZXhwIjoxNjY5MzcyNTE0fQ.HnIuikkC0ugUeZAoqhtVgl4wYiJUgkuL9v8kd46YNIBpdCj-DujDVfHIUgfCqjp0mP23o-3hP697swHrP2qPiQ')
+if (process.env.NODE_ENV == 'development') {
+  setEndpoint('http://192.168.3.210:8089')
+  // setToken('eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzAsInVzZXJJZCI6MzE4LCJhY2NvdW50IjoiYjQxYTg2OTRhNjM4NDIyNWJmNWMxOTQyZjdmZjIyNTYiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjoxNDYxLCJpYXQiOjE2NjkxMTMzMTQsImp0aSI6IjMxOCIsInN1YiI6ImI0MWE4Njk0YTYzODQyMjViZjVjMTk0MmY3ZmYyMjU2IiwiZXhwIjoxNjY5MzcyNTE0fQ.HnIuikkC0ugUeZAoqhtVgl4wYiJUgkuL9v8kd46YNIBpdCj-DujDVfHIUgfCqjp0mP23o-3hP697swHrP2qPiQ')
   const colors = {
     primary: '#037DFF',
     secondary: '#008000',
@@ -110,13 +111,13 @@ NamedIndicatorSet({
   RightIconRadioHoverIndicator,
   RightIconRadioSelectedIndicator,
   RightIconRadioDefault,
- SelectAvatar,
+  SelectAvatar,
   DownloadIndicator,
   ClickIndicator,
   // ManageMenuIndicator,
   TagIndicator,
   BackIndicator,
-  
+
   SelectedCartUpperRightIcon,
   SelectedCartRightIcon,
 })
@@ -149,10 +150,10 @@ NamedPresenterSet({
 
   //SelectList
   //NamedPresenterSet({
-    ItemImg,
-    ItemTitle,
-    RssAutoLayout,
-    Text,
+  ItemImg,
+  ItemTitle,
+  RssAutoLayout,
+  Text,
   //})
 
   testModuleItem
@@ -163,7 +164,7 @@ NamedSelector({
 })
 
 FormItemTypeSet({
-  "input":  InputCompx, 
+  "input": InputCompx,
   "select-fetch": SelectFetch
 })
 

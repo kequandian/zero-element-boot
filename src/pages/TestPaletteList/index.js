@@ -4,7 +4,7 @@ import { HCenter } from '@/components/cart'
 import { WxPage, AddNewContainer } from '@/components/container';
 import { DefaultGridLayoutList } from '@/components/list';
 import { PaletteColor } from '@/components/presenter';
-import ColorForm from '@/components/FormComponent/colorForm';
+import ColorForm from '@/components/formComponent/colorForm';
 
 
 export default function TestPaletteList(props) {
@@ -13,27 +13,27 @@ export default function TestPaletteList(props) {
 
     const { paletteName } = props
 
-    if(!paletteName){
+    if (!paletteName) {
         return <></>
     }
 
-    function TestPaletteList () {
+    function TestPaletteList() {
 
         const config = {
             listApi: `/api/lc/palette?pageNum=1&pageSize=100&paletteName=${paletteName}`,
             addnewApi: '/api/lc/palette',
             saveApi: '/api/lc/palette/(id)',
             action: `/api/lc/palette/(id)`
-        } 
+        }
 
         return (
             <HCenter>
                 <WxPage device="pc">
                     <AddNewContainer {...config}>
                         <DefaultGridLayoutList>
-                            <PaletteColor/>
+                            <PaletteColor />
                         </DefaultGridLayoutList>
-                        <ColorForm/>
+                        <ColorForm />
                     </AddNewContainer>
                 </WxPage>
             </HCenter>
@@ -42,10 +42,10 @@ export default function TestPaletteList(props) {
 
     return (
         <ChakraProvider>
-            <TestPaletteList/>
+            <TestPaletteList />
         </ChakraProvider>
 
     )
 
-    
+
 }

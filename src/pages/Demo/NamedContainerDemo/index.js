@@ -4,9 +4,9 @@ import { HCenter } from '@/components/cart'
 import { DrawerContainer, WxPage, AddNewContainer, ConfirmContainer } from '@/components/container';
 import { APIContainer, NamedLayout, NamedContainer, NamedCart } from '@/components';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
-import { PlainManageList, KeyValueManageList,  DefaultGridLayoutList } from '@/components/list';
+import { PlainManageList, KeyValueManageList, DefaultGridLayoutList } from '@/components/list';
 import { PaletteColor } from '@/components/presenter';
-import ColorForm from '@/components/FormComponent/colorForm';
+import ColorForm from '@/components/formComponent/colorForm';
 import LowCodeDatasetManageList from '@/components/list/LowCodeDatasetManageList';
 
 
@@ -16,15 +16,15 @@ export default function NamedContainerDemo(props) {
 
     function TesttPlainMenegeList() {
         const config = {
-            listApi: '/api/auto/module/parameter/278', 
+            listApi: '/api/auto/module/parameter/278',
             addApi: '/api/auto/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps',
             addApiBody: {
                 moduleId: 278,
             },
             newValueBinding: 'propName',
-            converter: {"propName": "content"}
+            converter: { "propName": "content" }
         }
-    
+
         const _cartConfig = {
             xname: 'Cart',
             props: {
@@ -33,23 +33,23 @@ export default function NamedContainerDemo(props) {
                 linewidth: '1px',
                 corner: '8px',
             },
-            indicator:{
+            indicator: {
                 xname: "DeleteIndicator",
-                props:{
+                props: {
                     isDisabled: true,
                     action: `/api/auto/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps/(id)`
                 },
-                binding: { id:"id" }
+                binding: { id: "id" }
             }
         }
-    
+
         return (
             <PlainManageList {...config}>
                 <NamedCart cart={_cartConfig} >
                     <Text></Text>
                 </NamedCart>
             </PlainManageList>
-    
+
         )
     }
 
@@ -57,9 +57,9 @@ export default function NamedContainerDemo(props) {
 
         // const propsList = '/api/auto/module-props/278'
         const propsList = '/api/auto/module/assembly/KeyValueManageConverter'
-        
+
         const config = {
-            listApi: propsList, 
+            listApi: propsList,
             addApi: '/api/auto/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps',
             addApiBody: {
                 moduleId: 278,
@@ -71,7 +71,7 @@ export default function NamedContainerDemo(props) {
                 propValue: 'Subtitle',
             }
         }
-    
+
         const _cartConfig = {
             xname: 'Cart',
             props: {
@@ -80,20 +80,20 @@ export default function NamedContainerDemo(props) {
                 linewidth: '1px',
                 corner: '8px',
             },
-            indicator:{
+            indicator: {
                 xname: "DeleteIndicator",
-                props:{
+                props: {
                     isDisabled: true,
                     action: `/api/auto/lc_low_auto_module_prop/lowAutoModuleProp/lowAutoModuleProps/(id)`
                 },
-                binding: { id:"id" }
+                binding: { id: "id" }
             }
         }
 
         return (
             <KeyValueManageList {...config}>
                 <NamedCart cart={_cartConfig} >
-                    <NamedLayout xname="Flexbox" props={{align: 'between', direction: 'row'}}>
+                    <NamedLayout xname="Flexbox" props={{ align: 'between', direction: 'row' }}>
                         <Text></Text>
                         <Subtitle></Subtitle>
                     </NamedLayout>
@@ -107,7 +107,7 @@ export default function NamedContainerDemo(props) {
             layoutName: 'ComponentTypeList',
             moduleId: '332',
             converter: {
-                api:'api',
+                api: 'api',
                 layoutApi: 'layoutApi',
                 layoutName: 'layoutName',
             }
@@ -119,43 +119,43 @@ export default function NamedContainerDemo(props) {
         )
     }
 
-    function TestDefaultGridLayoutList () {
-        
-        const items=[
+    function TestDefaultGridLayoutList() {
+
+        const items = [
             {
-                id:'1',
-                color:"#2C88D9",
-                name:"Blue",
+                id: '1',
+                color: "#2C88D9",
+                name: "Blue",
                 dark: "white"
             },
             {
-                id:'2',
-                color:"#6558F5",
-                name:"Indigo",
+                id: '2',
+                color: "#6558F5",
+                name: "Indigo",
                 dark: "white"
             },
             {
-                id:'3',
-                color:"#730FC3",
-                name:"Purple",
+                id: '3',
+                color: "#730FC3",
+                name: "Purple",
                 dark: "white"
             },
             {
-                id:'4',
-                color:"#BD34D1",
-                name:"Pink",
+                id: '4',
+                color: "#BD34D1",
+                name: "Pink",
                 dark: "white"
             },
             {
-                id:'5',
-                color:"#1AAE9F",
-                name:"Mint",
+                id: '5',
+                color: "#1AAE9F",
+                name: "Mint",
                 dark: "white"
             },
             {
-                id:'6',
-                color:"#207868",
-                name:"Green",
+                id: '6',
+                color: "#207868",
+                name: "Green",
                 dark: "white"
             }
         ]
@@ -163,44 +163,44 @@ export default function NamedContainerDemo(props) {
             <HCenter>
                 <WxPage device="pc">
                     <DefaultGridLayoutList items={items}>
-                        <PaletteColor/>
+                        <PaletteColor />
                     </DefaultGridLayoutList>
                 </WxPage>
             </HCenter>
         )
     }
 
-    function TestAddNewContainer () {
+    function TestAddNewContainer() {
 
         const config = {
             listApi: '/api/lc/palette?pageNum=1&pageSize=100&paletteName=palette_1',
             addnewApi: '/api/lc/palette',
             saveApi: '/api/lc/palette/(id)',
             action: `/api/lc/palette/(id)`
-        } 
+        }
 
         return (
             <HCenter>
                 <WxPage device="pc">
                     <AddNewContainer {...config}>
                         <DefaultGridLayoutList>
-                            <PaletteColor/>
+                            <PaletteColor />
                         </DefaultGridLayoutList>
-                        <ColorForm/>
+                        <ColorForm />
                     </AddNewContainer>
                 </WxPage>
             </HCenter>
         )
     }
 
-    function TestConfirmContainer () {
+    function TestConfirmContainer() {
 
         const moduleId = '330'
 
         const config = {
             listApi: '/api/auto/lc_low_auto_module_dataset/module_dataset/dataset-name-list',
             saveApi: '/api/auto/module/add-dataset/(moduleId)',
-            saveApiBody:{
+            saveApiBody: {
                 datasetName: '(datasetName)'
             },
             containerHeight: 880
@@ -208,7 +208,7 @@ export default function NamedContainerDemo(props) {
 
         return (
             <ConfirmContainer {...config} moduleId={moduleId}>
-                <LowCodeDatasetManageList/>
+                <LowCodeDatasetManageList />
             </ConfirmContainer>
         )
     }
@@ -217,7 +217,7 @@ export default function NamedContainerDemo(props) {
         <ChakraProvider>
             {/* <TestPlainMenegeList/> */}
             {/* <TestKeyValueManageList/> */}
-            <TestDrawerContainer/>
+            <TestDrawerContainer />
             {/* <TestDefaultGridLayoutList/> */}
             {/* <TestAddNewContainer/> */}
             {/* <TestConfirmContainer/> */}
@@ -225,5 +225,5 @@ export default function NamedContainerDemo(props) {
 
     )
 
-    
+
 }

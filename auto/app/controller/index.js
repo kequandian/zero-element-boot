@@ -227,7 +227,7 @@ class IndexController extends Controller {
       ...json,
       "xname": "Avatar",
       "props": {
-        "url": "auto/app/public/log.svg"
+        "url": "https://img01.sogoucdn.com/app/a/200797/4c031d4b-3926-4ff5-bb89-07cd97e33d8a"
       }
     };
 

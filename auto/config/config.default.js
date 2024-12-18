@@ -15,11 +15,13 @@ module.exports = appInfo => {
 
   // add your middleware config here
   config.middleware = [];
+  // config.middleware = ['cors'];
 
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
   };
+
 
   config.cluster = {
     listen: {
@@ -40,7 +42,11 @@ module.exports = appInfo => {
     // 配置白名单
     domainWhiteList: ['http://127.0.0.1:8848', 'http://192.168.3.22:3001'],
   };
-
+  // cors 配置
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+  };
   // redis
   config.redis = {
     client: {

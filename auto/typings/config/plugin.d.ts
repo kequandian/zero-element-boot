@@ -17,6 +17,7 @@ import 'egg-jsonp';
 import 'egg-view';
 import 'egg-jwt';
 import 'egg-redis';
+import 'egg-cors';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -34,5 +35,6 @@ declare module 'egg' {
     view?: EggPluginItem;
     jwt?: EggPluginItem;
     redis?: EggPluginItem;
+    cors?: EggPluginItem;
   }
 }
