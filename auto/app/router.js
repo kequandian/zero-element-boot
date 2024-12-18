@@ -40,5 +40,10 @@ module.exports = app => {
   // POST /api/auto/boot/load/{:moduleKey}  移除指定的组件
   router.delete('/api/auto/boot/load/:moduleKey', controller.index.loadDel);
 
+  // PUT /api/auto/boot/{:moduleKey}  编辑指定的组件名称 [仅moduleName, name]
+  router.put('/api/auto/boot/:moduleKey', controller.index.editName);
+
+  // GET /api/auto/boot/load/by/{:moduleName}  加载指定名称的组件
+  router.get('/api/auto/load/by/:moduleName', controller.index.getName);
 
 };
