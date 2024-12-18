@@ -1,0 +1,53 @@
+@endpoint = http://localhost:3001
+# @endpoint = http://192.168.3.105:3001
+
+### 当前预览组件入库至第三方服务
+POST /api/auto/boot/x/save/{{moduleKey}}
+
+### 从第三方服务中加载组件至预览
+POST /api/auto/boot/x/load/{{moduleKey}}
+
+### 查询第三方库的组件
+GET /api/auto/boot/x/modules?type=
+
+
+###### BOOT AUTO ###########
+@moduleKey=3c7ad7cc-ecc3-496a-9e4a-aa515a6a0006
+
+### 预览
+GET {{endpoint}}/api/auto/boot/preview
+
+### 生成新组件
+POST {{endpoint}}/api/auto/boot/new 
+
+### 初始化为一个头像组件
+POST {{endpoint}}/api/auto/boot/init
+
+### 加载已入库组件
+POST /api/auto/boot/load/{{moduleKey}}
+
+### 查询所有组件
+GET {{endpoint}}/api/auto/boot/list
+
+### 删除指定的组件
+DELETE {{endpoint}}/api/auto/boot/{{moduleKey}}
+
+### 前一个组件
+POST {{endpoint}}/api/auto/boot/back
+
+### 下一个组件 
+POST {{endpoint}}/api/auto/boot/next
+
+### 第一个组件 
+POST {{endpoint}}/api/auto/boot/head
+
+### 最后一个组件 
+POST {{endpoint}}/api/auto/boot/last
+
+
+
+####### 组件变换 #######
+
+### 页面居中
+POST /api/auto/boot/action/centralize
+
