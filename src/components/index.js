@@ -15,8 +15,10 @@ import AutoLayout from './AutoLayout';
 // import  { CloneAutoLayout }  from './CloneAutoLayout';
 import AutoComponent from './AutoComponent';
 
-import {APIContainer, Container, TabContainer, WxPage, TitledContainer, 
-  DataFlowContainer, DrawerContainer, AddNewContainer, ConfirmContainer} from './container';
+import {
+  APIContainer, Container, TabContainer, WxPage, TitledContainer,
+  DataFlowContainer, DrawerContainer, AddNewContainer, ConfirmContainer
+} from './container';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -39,8 +41,10 @@ import { set as NameContainerSet } from '@/components/config/NamedContainerConfi
 // import Round from '@/components/layout/Round';
 // import HStack from '@/components/layout/HStack';
 
-import { Flexbox, Itembox, Gridbox, Wrap, Stack, VStack, Round, 
-  HStack, Center, HCenter as HCenterLayout, VCenter, Between } from '@/components/layout'
+import {
+  Flexbox, Itembox, Gridbox, Wrap, Stack, VStack, Round,
+  HStack, Center, HCenter as HCenterLayout, VCenter, Between
+} from '@/components/layout'
 
 //gateway
 import Binding from '@/components/gateway/Binding';
@@ -102,9 +106,10 @@ import { Image, CozeImage } from './presenter'
 // import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
 
 
-import {Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder,AddNewButton, Text, Title, Subtitle,
-  Rectangle, 
-  Circle, Description, PaletteColor, SquareAddNewButton,GoogleAvatar,Delete, Download,
+import {
+  Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder, AddNewButton, Text, Title, Subtitle,
+  Rectangle,
+  Circle, Description, PaletteColor, SquareAddNewButton, GoogleAvatar, Delete, Download,
   ActionButton, SelectAction, ChakraButton,
   NewDatasetAction, PreviewSelectAction, ChangeDatasetAction, DeleteAction, NewParamAction,
   PropsAction, BindingAction, NoPresenterAction, SortPresenterAction, DatasetBindingAction,
@@ -114,7 +119,7 @@ import PreviewAutoLayout from '@/components/PreviewAutoLayout';
 
 // import ImageView from './presenter/image';
 
-import { 
+import {
   AutoLoadList,
   LoadMoreList,
   PlainList,
@@ -133,7 +138,7 @@ import {
 } from './list';
 
 // Form 组件
-import { InputCompx, SelectFetch, CheckboxFetch, CheckboxModalFetch, OneMany, SelectCompx } from '@/components/FormItemType';
+import { InputCompx, SelectFetch, CheckboxFetch, CheckboxModalFetch, OneMany, SelectCompx } from '@/components/formItemType';
 
 NamedLayoutSet({
   Flexbox,
@@ -281,7 +286,7 @@ NamedSelector({
 })
 
 FormItemTypeSet({
-  "input": InputCompx, 
+  "input": InputCompx,
   "select-fetch": SelectFetch,
   "checkbox-fetch": CheckboxFetch,
   "checkbox-modal-fetch": CheckboxModalFetch,
@@ -292,25 +297,25 @@ FormItemTypeSet({
 
 // default to export core components
 export {
-        AutoLayout,
-        // CloneAutoLayout,
-        AutoComponent,
+  AutoLayout,
+  // CloneAutoLayout,
+  AutoComponent,
 
-    NamedLayout,
-    NamedList,
-    NamedCart,
-    NamedContainer,
-    NamedSeperator,
-    NamedGateway,
+  NamedLayout,
+  NamedList,
+  NamedCart,
+  NamedContainer,
+  NamedSeperator,
+  NamedGateway,
 
-    // 
-    NextIndicator,
-    NamedIndicator,
-    
-    //
-    APIContainer,
-    Container,
-    TabContainer,
-    WxPage
+  // 
+  NextIndicator,
+  NamedIndicator,
+
+  //
+  APIContainer,
+  Container,
+  TabContainer,
+  WxPage
 };
 
