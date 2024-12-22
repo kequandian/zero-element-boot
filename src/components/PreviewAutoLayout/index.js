@@ -12,14 +12,14 @@ export default function PreviewAutoLayout (props) {
   // 参数
   const {
     api,                        // 通过API获取数据
-    apiName, mockName,          // 通过API名称获取数据
-    layoutData, layoutApi='',   // 通过layout名称或直接通过 layoutApi 获取layout
-    layoutName, 
+    apiName, mockName,          // 通过apiName获取数据, mockName为数据集名称
+    layoutApi,                  // 通过API获取组件布局描述
+    layoutName, layoutData,     // 通过layoutName获取layoutData, layoutData为完整布局数据
     bindingName,                // 通过数据绑定名称获取绑定
-    layoutId, 
+    layoutId,                   // 是layoutApi的另一种参数，意义同 layoutName
     testLayoutName, testBindingName, 
     onItemClick,
-    ___,                        // 内部值用
+    ___,                        // 内部使用, 是否为 `PreviewAutoLayout` 提供最外层 `Indicator`
     previewAddNew,
     ...rest
   } = props;
@@ -147,7 +147,6 @@ export default function PreviewAutoLayout (props) {
   }
 
   const onAlterNavBack = () => {
-      console.log('返回')
       setDataSource('')
       setAlternativeActive(false)
   }

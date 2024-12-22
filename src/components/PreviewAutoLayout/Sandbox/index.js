@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import qs from 'qs';
-// const promiseAjax = require('@/components/utils/request');
 
 import PreviewAutoLayout from '../index'
 import PreviewItem from './PreviewItem';
-// import { useSetState } from 'ahooks';
-// import testLayout from './testLayout'
 
-export default function (props) {
+export default function Sandbox(props) {
 
   const params = props.location.query ||  qs.parse(props.location.search.split('?')[1])
-
-  // 获取要显示的数据的接口
-  // let api = '/api/crud/fieldModel/fieldModels'
 
   const [ apiPath, setApiPath ] = useState('')
 
@@ -25,54 +19,32 @@ export default function (props) {
     if(params.api){
       setApiPath(params.api)
     }
-    // else if(params.apiName){
-    //   //通过apiName获取API路径
-    //   const api = `/api/lc/apis/${params.apiName}`;
-    //   const queryData = {};
-    //   promiseAjax(api, queryData).then(resp => {
-    //       if (resp && resp.code === 200) {
-    //         setApiPath(resp.data.api)
-    //       } else {
-    //           console.error("获取api path 数据失败")
-    //       }
-    //   }).finally(_ => {
-    //   });
-    // }
-    
   }
 
-  //
+  //从路径中获取数据
   let apiName = params.apiName || ''
   let testLayoutName = params.testLayoutName || ''
   let testBindingName = params.testBindingName || ''
   
-  // 获取layoutJson的本地接口
-  // let layoutJsonApi = '/api/layoutJson'
-
-  // let layoutJsonApi = `/api/auto/module/getAutoLayout/autoLayOut`
-
-  let layoutJsonApi = params.layoutJsonApi || ''
-
-  // if (process.env.NODE_ENV === 'development') {
-  //   layoutJsonApi = 'http://192.168.3.112:8080/api/auto/module/getAutoLayout/autoLayOut'
-  // }
-
-  // 获取layoutJson的api接口，如果本地接口为空，则会使用该接口请求api
-  // let layoutName = 'thisAutoLayout'
+  let layoutApi = params.layoutApi || ''
   let layoutName = params.layoutName || ''
   let bindingName = params.bindingName || ''
   let layoutId = params.layoutId || ''
 
+
+  //组件集
   const allComponents = { PreviewItem }
 
+  //设置为空值，layoutData 从layoutApi 或 layoutName 中获取
   const layoutData = {}
 
+  //数据集名称
   let mockName = params.mockName || ''
 
   return (
     <>
         <PreviewAutoLayout api={apiPath} apiName={apiName} 
-          layoutData={layoutData} layoutApi={layoutJsonApi} 
+          layoutData={layoutData} layoutApi={layoutApi} 
           layoutName={layoutName} 
           bindingName={bindingName}
           layoutId={layoutId} allComponents={allComponents} 
