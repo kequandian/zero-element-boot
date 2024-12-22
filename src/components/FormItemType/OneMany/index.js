@@ -14,7 +14,7 @@ import {
 import { useForceUpdate } from '@/components/hooks/lifeCycle';
 import { useForm } from 'react-hook-form';
 const promiseAjax = require('@/components/utils/request');
-const formItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
+const FormItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
 
 
 export default function OneMany(props) {
@@ -71,7 +71,7 @@ export default function OneMany(props) {
 
         const { label, field, type, rules = { isRequired: false }, defaultValue } = item;
 
-        const C = formItemTypeMap[type]
+        const C = FormItemTypeMap[type]
 
         return <FormControl isRequired={rules.isRequired} isInvalid={rules.isRequired && errors[field]} key={`${index}_i`}>
             <FormLabel htmlFor={field}>{label}</FormLabel>
