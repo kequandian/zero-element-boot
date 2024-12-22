@@ -7,8 +7,8 @@
     "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider umi dev",
     "clean": "rimraf lib/",
     "build": "npm run clean && gulp && node libCtrl",
-    "buildA": "node init.js && umi build && node gen",
-    "buildB": "umi build"
+    "navui": "node init.js && cross-env NODE_OPTIONS=--openssl-legacy-provider umi build && node gen",
+    "dist": "cross-env NODE_OPTIONS=--openssl-legacy-provider umi build"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.16.5",
