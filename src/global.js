@@ -41,7 +41,7 @@ import { Avatar, DownloadButton, ItemPlaceholder, AddNewButton, Text } from '@/c
 import JarItem from '@/composition/LogsUi/Sandbox/JarItem';
 import SwaggerItem from '@/composition/ApisUi/SwaggerItem';
 
-import { InputCompx, SelectFetch } from '@/components/formItemType';
+import { InputCompx, SelectFetch } from '@/components/FormItemType';
 const { TableCompx } = require('@/presenter/demo');
 
 // SelectListDemo

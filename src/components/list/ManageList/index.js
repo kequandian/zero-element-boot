@@ -26,7 +26,7 @@ import {
 import { getEndpoint } from '@/components/config/common';
 
 const promiseAjax = require('@/components/utils/request');
-const formItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
+const FormItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
 
 require('./index.less');
 
@@ -309,7 +309,7 @@ export default forwardRef(function ManageList(props) {
 
       const { label, field, type, rules = { isRequired: false }, defaultValue } = item;
 
-      const C = formItemTypeMap[type]
+      const C = FormItemTypeMap[type]
 
       return <FormControl isRequired={rules.isRequired} isInvalid={rules.isRequired && errors[field]} key={`${index}_i`}>
         <FormLabel htmlFor={field}>{label}</FormLabel>

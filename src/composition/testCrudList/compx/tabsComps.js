@@ -25,7 +25,7 @@ import pluOff from '../icons/plus-off.png';
 import minusOn from '../icons/minus-on.png';
 import minusOff from '../icons/minus-off.png';
 
-const formItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
+const FormItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
 
 export default function Index(props) {
 
@@ -240,7 +240,7 @@ export default function Index(props) {
 
             const { label, field, type, rules = { isRequired:false }  } = item;
 
-            const C = formItemTypeMap[type]
+            const C = FormItemTypeMap[type]
 
             return <FormControl isRequired={rules.isRequired} isInvalid={rules.isRequired && rules.isRequired && errors[field]} key={`${index}_i`}>
                 <FormLabel htmlFor={field}>{label}</FormLabel>
