@@ -2,7 +2,7 @@
 
 
 ### 获取AutoLayout组件布局
-GET {{endpoint}}/api/auto/root/descriptor
+GET {{endpoint}}/api/auto/root/preview
 Content-Type: application/json
 
 

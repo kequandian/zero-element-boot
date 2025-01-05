@@ -1,35 +1,27 @@
 @endpoint = http://localhost:3001
-# @endpoint = http://192.168.3.105:3001
-
-### 当前预览组件入库至第三方服务
-POST /api/auto/boot/x/save/{{moduleKey}}
-
-### 从第三方服务中加载组件至预览
-POST /api/auto/boot/x/load/{{moduleKey}}
-
-### 查询第三方库的组件
-GET /api/auto/boot/x/modules?type=
+@endpoint = http://192.168.3.210:8089
 
 
 ###### BOOT AUTO ###########
-@moduleKey=3c7ad7cc-ecc3-496a-9e4a-aa515a6a0006
+@moduleKey=bbc10616-ae3c-458c-ba26-14d6b1f8e1f9
 
 ### 预览
 GET {{endpoint}}/api/auto/boot/preview
 
 ### 生成新组件
-POST {{endpoint}}/api/auto/boot/new 
+POST {{endpoint}}/api/auto/boot/new
 
 ### 初始化为一个头像组件
 POST {{endpoint}}/api/auto/boot/init
 
-### 加载已入库组件
-POST /api/auto/boot/load/{{moduleKey}}
-
 ### 查询所有组件
 GET {{endpoint}}/api/auto/boot/list
 
-### 删除指定的组件
+### 加载已入库组件
+POST {{endpoint}}/api/auto/boot/load/{{moduleKey}}
+
+
+### [x] 删除指定的组件 
 DELETE {{endpoint}}/api/auto/boot/{{moduleKey}}
 
 ### 前一个组件
@@ -44,10 +36,160 @@ POST {{endpoint}}/api/auto/boot/head
 ### 最后一个组件 
 POST {{endpoint}}/api/auto/boot/last
 
+### 编辑指定的组件名称 [仅moduleName, name]
+PUT {{endpoint}}/api/auto/boot/{:moduleKey} 
+Content-Type: application/json
+
+{
+    "moduleName": "avatar",
+    "name": "头像"
+}
+
+
+### 加载指定名称的组件
+GET {{endpoint}}/api/auto/boot/load/by/{:moduleName}  
+
+### 显示另一个预览组件（用于对预览组件变更）
+GET {{endpoint}}/api/auto/boot/previewx
+
+### 加载指定组件至操作入口
+POST {{endpoint}}/api/auto/boot/loadx/{:moduleKey}
+
+### 加载指定组件名称至操作入口
+POST {{endpoint}}/api/auto/boot/loadx/by/{:moduleName}
+
+### 显示另一个预览组件（用于操作选项）
+GET {{endpoint}}/api/auto/boot/previewxx
+
+### 加载指定组件至选项界面
+POST {{endpoint}}/api/auto/boot/loadxx/{:moduleKey}
+
+### 加载指定组件至选项界面
+POST {{endpoint}}/api/auto/boot/loadxx/by/{:moduleName}
+
 
 
 ####### 组件变换 #######
 
 ### 页面居中
-POST /api/auto/boot/action/centralize
+POST {{endpoint}}/api/auto/boot/do/centralize
 
+### 克隆多一个组件
+POST {{endpoint}}/api/auto/boot/do/clone
+
+### 设置子组件个数
+POST {{endpoint}}/api/auto/boot/do/repeat/{:count}
+
+### 变更layout
+POST {{endpoint}}/api/auto/boot/do/switch/layout/{:moduleName}
+
+### 变更风格
+POST {{endpoint}}/api/auto/boot/do/switch/cart/{:moduleName}
+
+### 变更选中风格
+POST {{endpoint}}/api/auto/boot/do/switch/selector/{:moduleName}
+
+### 变更组件容器
+POST {{endpoint}}/api/auto/boot/do/switch/container/{:moduleName}
+
+### 变更内置组件
+POST {{endpoint}}/api/auto/boot/do/switch/presenter/{:moduleName}
+
+### 数据绑定
+POST {{endpoint}}/api/auto/boot/do/binding/{:bindingName}
+
+### 绑定mock数据源
+POST {{endpoint}}/api/auto/boot/do/mock/{:mockName}
+
+### 追加不同的子组件
+POST {{endpoint}}/api/auto/boot/do/plus/presenter/{:moduleName}
+
+### 外加容器组件
+POST {{endpoint}}/api/auto/boot/do/wrap/{:moduleName}
+
+### 回滚至子组件
+POST {{endpoint}}/api/auto/boot/do/zoomin
+
+### 执行【zoomin】之后回滚回前一个父组件
+POST {{endpoint}}/api/auto/boot/do/zoomout
+
+### 变换为单选组件
+POST {{endpoint}}/api/auto/boot/do/to/select
+
+### 变换为多选组件
+POST {{endpoint}}/api/auto/boot/do/to/multiselect
+
+### 查询元组件[cart]属性
+GET {{endpoint}}/api/auto/boot/do/within/cart/props
+
+### 更新元组件[cart]属性值
+PUT {{endpoint}}/api/auto/boot/do/within/cart
+
+### 查询元组件[selector]属性
+GET {{endpoint}}/api/auto/boot/do/within/selector/props
+
+### 更新元组件[selector]属性值
+PUT {{endpoint}}/api/auto/boot/do/within/selector
+
+### 查询元组件[indicator]属性
+GET {{endpoint}}/api/auto/boot/do/within/indicator/props
+
+### 更新元组件[indicator]属性值
+PUT {{endpoint}}/api/auto/boot/do/within/indicator
+
+### 查询元组件[layout]属性
+GET {{endpoint}}/api/auto/boot/do/within/layout/props
+
+### 更新元组件[layout]属性值
+PUT {{endpoint}}/api/auto/boot/do/within/layout
+
+### 查询元组件[container]属性
+GET {{endpoint}}/api/auto/boot/do/within/container/props
+
+### 更新元组件[container]属性值
+PUT {{endpoint}}/api/auto/boot/do/within/container
+
+### 查询元组件[gateway]属性
+GET {{endpoint}}/api/auto/boot/do/within/gateway/props
+
+### 更新元组件[gateway]属性值
+PUT {{endpoint}}/api/auto/boot/do/within/gateway
+
+
+
+
+# 与第三方组件库交互
+
+### 查询第三方库的组件
+GET {{endpoint}}/api/auto/boot/x/modules?type=cart
+
+### 当前预览组件入库至第三方服务
+POST {{endpoint}}/api/auto/boot/x/save/{{moduleKey}}
+
+### 组件入库至第三方服务
+POST {{endpoint}}/api/auto/boot/x/save/by/{:moduleName} 
+
+### 从第三方服务中加载组件至预览
+POST {{endpoint}}/api/auto/boot/x/load/{{moduleKey}}
+
+### 从第三方服务中加载指定组件
+POST {{endpoint}}/api/auto/boot/x/load/by/{:moduleName}
+
+
+### 查询第三方服务指定组件
+GET {{endpoint}}/api/auto/boot/x/modules/{:moduleName}
+
+### 查询第三方组件属性
+GET {{endpoint}}/api/auto/boot/x/modules/{:moduleName}/props
+
+### 增加第三方组件属性
+POST {{endpoint}}/api/auto/boot/x/modules/{:moduleName}/props
+
+### 移除第三方组件属性
+DELETE {{endpoint}}/api/auto/boot/x/modules/{:moduleName}/props/{:propName}
+
+### 增加通用属性
+POST {{endpoint}}/api/auto/boot/x/props
+
+### 为属性增加选项值
+POST {{endpoint}}/api/auto/boot/x/props/{:propName}/options
