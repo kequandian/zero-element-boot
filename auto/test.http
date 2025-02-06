@@ -3,9 +3,10 @@
 
 
 ###### BOOT AUTO ###########
-@moduleKey=bbc10616-ae3c-458c-ba26-14d6b1f8e1f9
+@moduleKey=15b06fc5-1f15-4f02-be6a-4fa8bd045cd2
 
 ### 预览
+//bug: 自动过期, 需要长期保存
 GET {{endpoint}}/api/auto/boot/preview
 
 ### 生成新组件
@@ -15,35 +16,45 @@ POST {{endpoint}}/api/auto/boot/new
 POST {{endpoint}}/api/auto/boot/init
 
 ### 查询所有组件
+//TODO: 把 moduleName 也一起显示出来
 GET {{endpoint}}/api/auto/boot/list
 
 ### 加载已入库组件
+//bug: 加载成功后，需显示所有数据
 POST {{endpoint}}/api/auto/boot/load/{{moduleKey}}
 
-
-### [x] 删除指定的组件 
+### 删除指定的组件 
+//bug: 未实现  
 DELETE {{endpoint}}/api/auto/boot/{{moduleKey}}
 
-### 前一个组件
-POST {{endpoint}}/api/auto/boot/back
-
-### 下一个组件 
-POST {{endpoint}}/api/auto/boot/next
-
-### 第一个组件 
-POST {{endpoint}}/api/auto/boot/head
-
-### 最后一个组件 
-POST {{endpoint}}/api/auto/boot/last
-
-### 编辑指定的组件名称 [仅moduleName, name]
-PUT {{endpoint}}/api/auto/boot/{:moduleKey} 
+### 更新指定的组件名称 [仅moduleName, name]
+PUT {{endpoint}}/api/auto/boot/{:moduleKey}
+//bug:  "message": "A component with the moduleName \"undefined\" already exists"
 Content-Type: application/json
 
 {
     "moduleName": "avatar",
     "name": "头像"
 }
+
+
+### 前一个组件
+// 未实现
+POST {{endpoint}}/api/auto/boot/back
+
+### 下一个组件 
+// 未实现
+POST {{endpoint}}/api/auto/boot/next
+
+### 第一个组件 
+// 未实现
+POST {{endpoint}}/api/auto/boot/head
+
+### 最后一个组件 
+// 未实现
+POST {{endpoint}}/api/auto/boot/last
+
+
 
 
 ### 加载指定名称的组件
