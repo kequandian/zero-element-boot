@@ -92,9 +92,7 @@ class IndexController extends Controller {
     // 储存到当前
     await this.setRedisJson('current_json', json);
 
-    const json_obj = {
-      "xkey": json.xkey,
-    }
+
     // 将新组件的 xkey 添加到 jos n 列表中
     // await app.redis.rpush('json_list', JSON.stringify(json_obj));
     await app.redis.rpush('json_list', json.xkey);
@@ -267,10 +265,13 @@ class IndexController extends Controller {
     const { ctx, app } = this;
 
     const moduleKey = ctx?.params?.moduleKey;
-    const moduleName = ctx?.query?.moduleName;
-    const name = ctx?.query?.name;
+    // const moduleName = ctx?.query?.moduleName;
+    // const name = ctx?.query?.name;
+
+    const { moduleName, name } = ctx.request.body; // 获取请求体中的数据
+
     console.log('editName', moduleKey, moduleName, name);
-    if (!moduleKey && !moduleName && !name) {
+    if (!moduleKey || !moduleName || !name) {
       ctx.body = {
         code: 400,
         message: 'moduleKey/moduleName/name is required'
