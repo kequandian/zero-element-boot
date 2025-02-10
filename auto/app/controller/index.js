@@ -249,7 +249,6 @@ class IndexController extends Controller {
 
     const json_arr = []
     for (const item of componentList) {
-      console.log(item, '2', await this.getRedisJson(item));
       let json = await this.getRedisJson(item);
       json_arr.push(json);
     }
@@ -279,9 +278,18 @@ class IndexController extends Controller {
       return;
     }
 
-    // 获取 json_list 列表中的所有元素 是否重复
+    // 获取 json_list 列表中的所有元素 名称是否重复
     const componentList = await app.redis.lrange('json_list', 0, -1);
     let nameExists = false;
+
+    //检查 moduleKey 是否有效
+    if (!componentList.includes(moduleKey)) {
+      ctx.body = {
+        code: 500,
+        message: `Component with moduleKey "${moduleKey}" not found`
+      };
+      return;
+    }
 
     for (const item of componentList) {
       const json = await this.getRedisJson(item);
@@ -301,7 +309,9 @@ class IndexController extends Controller {
 
 
     const json = await this.getRedisJson(moduleKey);
-
+    //获取所有redis数据
+    const allKeys = await app.redis.keys('*')
+    console.log('allKeys', allKeys);
     if (json) {
       json.moduleName = moduleName;
       json.name = name;

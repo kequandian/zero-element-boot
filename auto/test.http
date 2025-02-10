@@ -1,9 +1,9 @@
 @endpoint = http://localhost:3001
-@endpoint = http://192.168.3.210:8089
+# @endpoint = http://192.168.3.210:8089
 
 
 ###### BOOT AUTO ###########
-@moduleKey=15b06fc5-1f15-4f02-be6a-4fa8bd045cd2
+@moduleKey=25b8559f-2a4e-42a0-afe6-0f57df1bb595
 
 ### 预览
 //bug: 自动过期, 需要长期保存
@@ -28,31 +28,38 @@ POST {{endpoint}}/api/auto/boot/load/{{moduleKey}}
 DELETE {{endpoint}}/api/auto/boot/{{moduleKey}}
 
 ### 更新指定的组件名称 [仅moduleName, name]
-PUT {{endpoint}}/api/auto/boot/{:moduleKey}
+PUT {{endpoint}}/api/auto/boot/{{moduleKey}}
 //bug:  "message": "A component with the moduleName \"undefined\" already exists"
 Content-Type: application/json
 
 {
-    "moduleName": "avatar",
+    "moduleName": "avatar_3",
     "name": "头像"
 }
 
 
 ### 前一个组件
 // 未实现
-POST {{endpoint}}/api/auto/boot/back
+# POST {{endpoint}}/api/auto/boot/back
+POST {{endpoint}}/api/auto/boot/load/back
 
 ### 下一个组件 
 // 未实现
-POST {{endpoint}}/api/auto/boot/next
+# POST {{endpoint}}/api/auto/boot/next
+POST {{endpoint}}/api/auto/boot/load/next
+
 
 ### 第一个组件 
 // 未实现
-POST {{endpoint}}/api/auto/boot/head
+# POST {{endpoint}}/api/auto/boot/head
+POST {{endpoint}}/api/auto/boot/load/head
+
 
 ### 最后一个组件 
 // 未实现
-POST {{endpoint}}/api/auto/boot/last
+# POST {{endpoint}}/api/auto/boot/last
+POST {{endpoint}}/api/auto/boot/load/last
+
 
 
 
