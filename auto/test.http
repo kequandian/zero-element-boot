@@ -3,7 +3,7 @@
 
 
 ###### BOOT AUTO ###########
-@moduleKey=bba60526-dbb4-4e29-b8b8-0def8d7a0808
+@moduleKey=dba7dc93-96e5-4602-970b-883d704c4bb5
 @moduleName=avatar1
 
 ### 预览
@@ -16,8 +16,20 @@ POST {{endpoint}}/api/auto/boot/new
 ### 查询所有组件
 GET {{endpoint}}/api/auto/boot/list
 
+### 前一个组件
+POST {{endpoint}}/api/auto/boot/load/back
+
+### 下一个组件 
+POST {{endpoint}}/api/auto/boot/load/next
+
+### 第一个组件 
+POST {{endpoint}}/api/auto/boot/load/head
+
+### 最后一个组件 
+POST {{endpoint}}/api/auto/boot/load/last
+
 ### 删除指定的组件 
-//bug: 未实现  
+//未实现  
 DELETE {{endpoint}}/api/auto/boot/{{moduleKey}}
 
 
@@ -39,24 +51,6 @@ Content-Type: application/json
 ### 加载指定名称的组件
 // 未实现
 GET {{endpoint}}/api/auto/boot/load/by/{:moduleName}  
-
-
-### 前一个组件
-// 未实现
-POST {{endpoint}}/api/auto/boot/back
-
-### 下一个组件 
-// 未实现
-POST {{endpoint}}/api/auto/boot/next
-
-### 第一个组件 
-// 未实现
-POST {{endpoint}}/api/auto/boot/head
-
-### 最后一个组件 
-// 未实现
-POST {{endpoint}}/api/auto/boot/last
-
 
 
 
