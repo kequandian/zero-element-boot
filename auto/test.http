@@ -3,7 +3,8 @@
 
 
 ###### BOOT AUTO ###########
-@moduleKey=25b8559f-2a4e-42a0-afe6-0f57df1bb595
+@moduleKey=7e948474-9ef1-42ff-a80f-03fcfe87417a
+@moduleName=avatar_3
 
 ### 预览
 //bug: 自动过期, 需要长期保存
@@ -25,7 +26,7 @@ POST {{endpoint}}/api/auto/boot/load/{{moduleKey}}
 
 ### 删除指定的组件 
 //bug: 未实现  
-DELETE {{endpoint}}/api/auto/boot/{{moduleKey}}
+DELETE {{endpoint}}/api/auto/boot/load/{{moduleKey}}
 
 ### 更新指定的组件名称 [仅moduleName, name]
 PUT {{endpoint}}/api/auto/boot/{{moduleKey}}
@@ -65,7 +66,7 @@ POST {{endpoint}}/api/auto/boot/load/last
 
 
 ### 加载指定名称的组件
-GET {{endpoint}}/api/auto/boot/load/by/{:moduleName}  
+GET {{endpoint}}/api/auto/boot/load/by/{{moduleName}}
 
 ### 显示另一个预览组件（用于对预览组件变更）
 GET {{endpoint}}/api/auto/boot/previewx
