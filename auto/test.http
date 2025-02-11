@@ -4,7 +4,7 @@
 
 ###### BOOT AUTO ###########
 @moduleKey=7e948474-9ef1-42ff-a80f-03fcfe87417a
-@moduleName=avatar_3
+@moduleName=avatar1
 
 ### 预览
 //bug: 自动过期, 需要长期保存
@@ -13,11 +13,7 @@ GET {{endpoint}}/api/auto/boot/preview
 ### 生成新组件
 POST {{endpoint}}/api/auto/boot/new
 
-### 初始化为一个头像组件
-POST {{endpoint}}/api/auto/boot/init
-
 ### 查询所有组件
-//TODO: 把 moduleName 也一起显示出来
 GET {{endpoint}}/api/auto/boot/list
 
 ### 加载已入库组件
@@ -34,57 +30,46 @@ PUT {{endpoint}}/api/auto/boot/{{moduleKey}}
 Content-Type: application/json
 
 {
-    "moduleName": "avatar_3",
+    "moduleName": "avatar_2",
     "name": "头像"
 }
 
 
 ### 前一个组件
-// 未实现
-# POST {{endpoint}}/api/auto/boot/back
 POST {{endpoint}}/api/auto/boot/load/back
 
 ### 下一个组件 
-// 未实现
-# POST {{endpoint}}/api/auto/boot/next
 POST {{endpoint}}/api/auto/boot/load/next
 
-
 ### 第一个组件 
-// 未实现
-# POST {{endpoint}}/api/auto/boot/head
 POST {{endpoint}}/api/auto/boot/load/head
 
-
 ### 最后一个组件 
-// 未实现
-# POST {{endpoint}}/api/auto/boot/last
 POST {{endpoint}}/api/auto/boot/load/last
 
+### 删除指定的组件 
+//未实现  
+DELETE {{endpoint}}/api/auto/boot/load/{{moduleKey}}
 
 
+### 初始化为一个头像组件
+POST {{endpoint}}/api/auto/boot/init
 
+### 加载已入库组件
+POST {{endpoint}}/api/auto/boot/load/{{moduleKey}}
+
+### 更新指定的组件名称 [仅moduleName, name]
+PUT {{endpoint}}/api/auto/boot/{{moduleKey}}
+Content-Type: application/json
+
+{
+    "moduleName": "avatar1",
+    "name": "头像"
+}
 
 ### 加载指定名称的组件
 GET {{endpoint}}/api/auto/boot/load/by/{{moduleName}}
 
-### 显示另一个预览组件（用于对预览组件变更）
-GET {{endpoint}}/api/auto/boot/previewx
-
-### 加载指定组件至操作入口
-POST {{endpoint}}/api/auto/boot/loadx/{:moduleKey}
-
-### 加载指定组件名称至操作入口
-POST {{endpoint}}/api/auto/boot/loadx/by/{:moduleName}
-
-### 显示另一个预览组件（用于操作选项）
-GET {{endpoint}}/api/auto/boot/previewxx
-
-### 加载指定组件至选项界面
-POST {{endpoint}}/api/auto/boot/loadxx/{:moduleKey}
-
-### 加载指定组件至选项界面
-POST {{endpoint}}/api/auto/boot/loadxx/by/{:moduleName}
 
 
 
@@ -173,6 +158,33 @@ GET {{endpoint}}/api/auto/boot/do/within/gateway/props
 
 ### 更新元组件[gateway]属性值
 PUT {{endpoint}}/api/auto/boot/do/within/gateway
+
+
+
+
+### 需要同时维护另外一个页面
+
+### Page1 Operations
+
+### 显示另一个预览组件（用于对预览组件变更）
+GET {{endpoint}}/api/auto/boot/previewx
+
+### 加载指定组件至操作入口
+POST {{endpoint}}/api/auto/boot/loadx/{:moduleKey}
+
+### 加载指定组件名称至操作入口
+POST {{endpoint}}/api/auto/boot/loadx/by/{:moduleName}
+
+### Page2 Options
+
+### 显示另一个预览组件（用于操作选项）
+GET {{endpoint}}/api/auto/boot/previewxx
+
+### 加载指定组件至选项界面
+POST {{endpoint}}/api/auto/boot/loadxx/{:moduleKey}
+
+### 加载指定组件至选项界面
+POST {{endpoint}}/api/auto/boot/loadxx/by/{:moduleName}
 
 
 
