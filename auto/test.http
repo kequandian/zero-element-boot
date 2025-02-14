@@ -3,11 +3,10 @@
 
 
 ###### BOOT AUTO ###########
-@moduleKey=dba7dc93-96e5-4602-970b-883d704c4bb5
+@moduleKey=2d999984-8f29-4fb3-b5e1-e2469e19f7ef
 @moduleName=avatar1
 
 ### 预览
-//bug: 自动过期, 需要长期保存
 GET {{endpoint}}/api/auto/boot/preview
 
 ### 生成新组件
@@ -50,7 +49,7 @@ Content-Type: application/json
 
 ### 加载指定名称的组件
 // 未实现
-GET {{endpoint}}/api/auto/boot/load/by/{:moduleName}  
+GET {{endpoint}}/api/auto/boot/load/by/{{moduleName}}
 
 
 
@@ -61,6 +60,7 @@ GET {{endpoint}}/api/auto/boot/load/by/{:moduleName}
 POST {{endpoint}}/api/auto/boot/do/centralize
 
 ### 克隆多一个组件
+// 默认布局
 POST {{endpoint}}/api/auto/boot/do/clone
 
 ### 设置子组件个数
@@ -152,10 +152,10 @@ PUT {{endpoint}}/api/auto/boot/do/within/gateway
 GET {{endpoint}}/api/auto/boot/previewx
 
 ### 加载指定组件至操作入口
-POST {{endpoint}}/api/auto/boot/loadx/{:moduleKey}
+POST {{endpoint}}/api/auto/boot/loadx/{{moduleKey}}
 
 ### 加载指定组件名称至操作入口
-POST {{endpoint}}/api/auto/boot/loadx/by/{:moduleName}
+POST {{endpoint}}/api/auto/boot/loadx/by/{{moduleName}}
 
 ### Page2 Options
 
@@ -163,46 +163,51 @@ POST {{endpoint}}/api/auto/boot/loadx/by/{:moduleName}
 GET {{endpoint}}/api/auto/boot/previewxx
 
 ### 加载指定组件至选项界面
-POST {{endpoint}}/api/auto/boot/loadxx/{:moduleKey}
+POST {{endpoint}}/api/auto/boot/loadxx/{{moduleKey}}
 
 ### 加载指定组件至选项界面
-POST {{endpoint}}/api/auto/boot/loadxx/by/{:moduleName}
+POST {{endpoint}}/api/auto/boot/loadxx/by/{{moduleName}}
 
 
 
 
 # 与第三方组件库交互
+@propName=
 
 ### 查询第三方库的组件
+//TODO: 转发 GET {{endpoint}}/api/auto/module?componentOption=cart
+//参数名称 componentOption= 改为 type=
 GET {{endpoint}}/api/auto/boot/x/modules?type=cart
+
 
 ### 当前预览组件入库至第三方服务
 POST {{endpoint}}/api/auto/boot/x/save/{{moduleKey}}
 
 ### 组件入库至第三方服务
-POST {{endpoint}}/api/auto/boot/x/save/by/{:moduleName} 
+POST {{endpoint}}/api/auto/boot/x/save/by/{{moduleName}}
 
 ### 从第三方服务中加载组件至预览
 POST {{endpoint}}/api/auto/boot/x/load/{{moduleKey}}
 
 ### 从第三方服务中加载指定组件
-POST {{endpoint}}/api/auto/boot/x/load/by/{:moduleName}
+POST {{endpoint}}/api/auto/boot/x/load/by/{{moduleName}}
 
 
 ### 查询第三方服务指定组件
-GET {{endpoint}}/api/auto/boot/x/modules/{:moduleName}
+GET {{endpoint}}/api/auto/boot/x/modules/{{moduleName}}
 
 ### 查询第三方组件属性
-GET {{endpoint}}/api/auto/boot/x/modules/{:moduleName}/props
+GET {{endpoint}}/api/auto/boot/x/modules/{{moduleName}}/props
 
 ### 增加第三方组件属性
-POST {{endpoint}}/api/auto/boot/x/modules/{:moduleName}/props
+POST {{endpoint}}/api/auto/boot/x/modules/{{moduleName}}/props
 
 ### 移除第三方组件属性
-DELETE {{endpoint}}/api/auto/boot/x/modules/{:moduleName}/props/{:propName}
+DELETE {{endpoint}}/api/auto/boot/x/modules/{{moduleName}}/props/{{propName}}
 
 ### 增加通用属性
 POST {{endpoint}}/api/auto/boot/x/props
 
 ### 为属性增加选项值
-POST {{endpoint}}/api/auto/boot/x/props/{:propName}/options
+POST {{endpoint}}/api/auto/boot/x/props/{{propName}}/options
+

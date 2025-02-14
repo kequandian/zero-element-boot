@@ -32,3 +32,7 @@ GET {{endpoint}}/api/auto/module?componentOption=gateway
 GET {{endpoint}}/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules?moduleName=IndicatorsAutolayout
 
 
+### 查询所有属性选项
+GET {{endpoint}}/api/auto/lc_low_
+
+
