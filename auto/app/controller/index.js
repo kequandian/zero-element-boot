@@ -175,35 +175,20 @@ class IndexController extends Controller {
     };
   }
 
-  // 移除指定的组件
+  // }
   async loadDel() {
     const { ctx, app } = this;
-    if (!ctx?.params?.moduleKey) return
+    if (!ctx?.params?.moduleKey) return;
 
     const moduleKey = ctx?.params?.moduleKey;
 
-    const json = await this.getRedisJson(moduleKey);
-
-    const allKeys = await app.redis.keys('*')
-
-    if (!json) {
-      ctx.body = {
-        code: 404,
-        message: 'Data not found'
-      };
-      return;
-    } else {
-      await app.redis.del(moduleKey);
-      ctx.body = {
-        code: 200,
-        data: allKeys
-      };
-    }
-    // 删除 Redis 中的数据
+    // 从 redis json_list 中移除匹配moduleKey
+    const deletedCount = await app.redis.lrem('json_list', 0, moduleKey);
+    await app.redis.del(moduleKey);
 
     ctx.body = {
       code: 200,
-      data: allKeys
+      message: deletedCount > 0 ? 'Data deleted successfully' : 'Data not found',
     };
   }
 
@@ -245,7 +230,9 @@ class IndexController extends Controller {
     const componentList = await app.redis.lrange('json_list', 0, -1);
     // const parsedComponentList = componentList.map(item => JSON.parse(item));
 
-
+    //获取所有redis数据
+    const allKeys = await app.redis.keys('*')
+    console.log('allKeys', allKeys);
 
     const json_arr = []
     for (const item of componentList) {

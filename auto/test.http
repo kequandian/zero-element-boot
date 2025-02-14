@@ -1,5 +1,5 @@
 @endpoint = http://localhost:3001
-@endpoint = http://192.168.3.210:8089
+# @endpoint = http://192.168.3.210:8089
 
 
 ###### BOOT AUTO ###########
@@ -15,6 +15,25 @@ POST {{endpoint}}/api/auto/boot/new
 ### 查询所有组件
 GET {{endpoint}}/api/auto/boot/list
 
+### 加载已入库组件
+//bug: 加载成功后，需显示所有数据
+POST {{endpoint}}/api/auto/boot/load/{{moduleKey}}
+
+### 删除指定的组件 
+//bug: 未实现  
+DELETE {{endpoint}}/api/auto/boot/load/{{moduleKey}}
+
+### 更新指定的组件名称 [仅moduleName, name]
+PUT {{endpoint}}/api/auto/boot/{{moduleKey}}
+//bug:  "message": "A component with the moduleName \"undefined\" already exists"
+Content-Type: application/json
+
+{
+    "moduleName": "avatar_2",
+    "name": "头像"
+}
+
+
 ### 前一个组件
 POST {{endpoint}}/api/auto/boot/load/back
 
@@ -29,7 +48,7 @@ POST {{endpoint}}/api/auto/boot/load/last
 
 ### 删除指定的组件 
 //未实现  
-DELETE {{endpoint}}/api/auto/boot/{{moduleKey}}
+DELETE {{endpoint}}/api/auto/boot/load/{{moduleKey}}
 
 
 ### 初始化为一个头像组件
@@ -48,9 +67,7 @@ Content-Type: application/json
 }
 
 ### 加载指定名称的组件
-// 未实现
 GET {{endpoint}}/api/auto/boot/load/by/{{moduleName}}
-
 
 
 
