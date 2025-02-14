@@ -44,6 +44,6 @@ module.exports = app => {
   router.put('/api/auto/boot/:moduleKey', controller.index.editName);
 
   // GET /api/auto/boot/load/by/{:moduleName}  加载指定名称的组件
-  router.get('/api/auto/load/by/:moduleName', controller.index.getName);
+  router.get('/api/auto/boot/load/by/:moduleName', controller.index.getName);
 
 };

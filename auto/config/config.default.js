@@ -50,10 +50,10 @@ module.exports = appInfo => {
   // redis
   config.redis = {
     client: {
-      host: '202.63.172.43',
+      host: '202.189.7.191',
       port: 6379,
-      password: '',
-      db: '0',
+      password: 'jfeat.com.24',
+      db: '1',
     },
   }
 
