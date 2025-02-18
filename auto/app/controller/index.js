@@ -207,7 +207,7 @@ class IndexController extends Controller {
     }
 
     const new_json = {
-      ...json,
+      xkey: json?.xkey,
       "xname": "Avatar",
       "props": {
         "url": "https://img01.sogoucdn.com/app/a/200797/4c031d4b-3926-4ff5-bb89-07cd97e33d8a"
@@ -352,6 +352,43 @@ class IndexController extends Controller {
         message: 'Internal server error'
       };
     }
+  }
+  // 保存当前组件（替换preview里组件）
+  async save() {
+    const { ctx } = this;
+    const { xname, props, container } = ctx.request.body;
+
+    if (!xname || !props || !container) {
+      ctx.body = {
+        code: 400,
+        message: 'xname, props, and container are required'
+      };
+      return;
+    }
+
+    const currentJson = await this.getRedisJson('current_json');
+
+    if (!currentJson) {
+      ctx.body = {
+        code: 404,
+        message: 'No data found for key: current_json'
+      };
+      return;
+    }
+
+    const updatedJson = {
+      xkey: currentJson?.xkey,
+      xname,
+      props,
+      container
+    };
+
+    await this.setRedisJson('current_json', updatedJson);
+
+    ctx.body = {
+      code: 200,
+      data: updatedJson
+    };
   }
 
 }
