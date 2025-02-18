@@ -356,12 +356,12 @@ class IndexController extends Controller {
   // 保存当前组件（替换preview里组件）
   async save() {
     const { ctx } = this;
-    const { xname, props, container } = ctx.request.body;
+    const save_obj = ctx.request.body;
 
-    if (!xname || !props || !container) {
+    if (!save_obj) {
       ctx.body = {
         code: 400,
-        message: 'xname, props, and container are required'
+        message: 'Please bring the saved parameters'
       };
       return;
     }
@@ -378,9 +378,7 @@ class IndexController extends Controller {
 
     const updatedJson = {
       xkey: currentJson?.xkey,
-      xname,
-      props,
-      container
+      ...save_obj
     };
 
     await this.setRedisJson('current_json', updatedJson);
