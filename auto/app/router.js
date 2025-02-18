@@ -46,4 +46,6 @@ module.exports = app => {
   // GET /api/auto/boot/load/by/{:moduleName}  加载指定名称的组件
   router.get('/api/auto/boot/load/by/:moduleName', controller.index.getName);
 
+  // POST {{endpoint}}/api/auto/boot/save 保存当前组件（替换preview里组件）
+  router.post('/api/auto/boot/save', controller.index.save);
 };
