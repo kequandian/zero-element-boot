@@ -12,6 +12,7 @@ import ImageAnimationDemo from './TestCases/ImageAnimationDemo'
 
 // TestCart
 import TestPageCart from './TestCart/TestPageCart'
+import PageCenter from '@/components/cart/PageCenter';
 
 // TestComposition
 import AvatarItemDemo from './TestComposition/AvatarItemDemo'
@@ -124,7 +125,9 @@ export default function Index(props) {
   // @when 2014-12-16 current debug
   return (
     <ChakraProvider>
-      <BootPreviewAutoLayout {...props} />
+      {/* <PageCenter> */}
+        <BootPreviewAutoLayout {...props} />
+      {/* </PageCenter> */}
     </ChakraProvider>
   )
   

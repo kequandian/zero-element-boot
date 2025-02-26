@@ -60,7 +60,8 @@ export default function NamedCart(nameCartPropsx) {
   const cartName = (typeof cart === 'string') ? cart : cart.xname ? cart.xname : __cart.xname
   const _Cart = cartName ? (_CartSet[cartName] || tips(cartName)) : NextIndicator;
   const _cart = cart.props || __cart.props || {}
-  
+  // tagged(`${tag}-CART-`, _Cart)
+
   // get indicator
   const _indicator = cart.indicator 
   const indicatorName = _indicator ? ((typeof _indicator === 'string') ? _indicator : (typeof _indicator === 'object') ? _indicator.xname : '') : ''
@@ -111,7 +112,7 @@ export default function NamedCart(nameCartPropsx) {
                        indicatorData={_indicatorData} 
                        selected={selected}
                  isSelected={isSelected} >
-               <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator} /> 
+               <_CartModule tag={`${tag}-selector-unselector`}  children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator} /> 
           </OverlaySelector>
         )
         : 
@@ -129,15 +130,15 @@ export default function NamedCart(nameCartPropsx) {
                         onItemIndicated={onItemIndicated}
                         _isSelected={isSelected}
                 >
-                         <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator}  __selector={__selector}/> 
+                         <_CartModule tag={`${tag}-indicator-selector`} children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator}  __selector={__selector}/> 
                </_NamedIndicator>
                </_NamedSelector>
 
-            )
+          )
             :
-            (
-                <_CartModule children={children} Cart={_Cart} props={_cart} data={rest} /> 
-            )
+          (
+                <_CartModule tag={`${tag}-last`} children={children} Cart={_Cart} props={_cart} data={rest} /> 
+          )
        )
       }
     </_Bounding>
@@ -145,8 +146,8 @@ export default function NamedCart(nameCartPropsx) {
 }
 
 
-function _CartModule({children, Cart, props, data, __indicator,  __selector}){
-  
+function _CartModule({children, tag, Cart, props, data, __indicator,  __selector}){
+  tagged(`${tag}-_CartModule-props:`, props)
   return (<Cart {...props}>
             {React.Children.toArray(children).map(child => {
               return React.cloneElement(child, {

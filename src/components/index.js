@@ -270,6 +270,7 @@ NamedListSet({
 NameContainerSet({
   APIContainer,
   Container,
+  PageCenter,
   TabContainer,
   WxPage,
   TitledContainer,
