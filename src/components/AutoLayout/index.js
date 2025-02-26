@@ -12,7 +12,6 @@ import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConf
 import { get as DefaultIndicatorGet } from '@/components/config/NamedIndicatorConfig';
 
 import LoadingPage from '@/components/loading';
-import OutlineCart from '../cart/OutlineCart';
 const { getEndpoint, getToken } = require('@/components/config/common');
 
 // import { Filter } from '../gateway';

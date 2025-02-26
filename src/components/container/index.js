@@ -1,12 +1,13 @@
-import APIContainer from './APIContainer';
-import Container from './Container';
-import TabContainer from './TabContainer';
-import WxPage from './WxPage';
-import TitledContainer from './TitledContainer';
-import DataFlowContainer from './DataFlowContainer';
-import DrawerContainer from './DrawerContainer';
-import AddNewContainer from './AddNewContainer';
-import ConfirmContainer from './ConfirmContainer';
+import APIContainer from './APIContainer'
+import Container from './Container'
+import PageCenter from './PageCenter'
+import TabContainer from './TabContainer'
+import WxPage from './WxPage'
+import TitledContainer from './TitledContainer'
+import DataFlowContainer from './DataFlowContainer'
+import DrawerContainer from './DrawerContainer'
+import AddNewContainer from './AddNewContainer'
+import ConfirmContainer from './ConfirmContainer'
 
 // import PlainList from '../list/PlainList';
 // import SelectList from '../list/SelectList';
@@ -19,6 +20,7 @@ import ConfirmContainer from './ConfirmContainer';
 export {
     APIContainer,
     Container,
+    PageCenter,
     TabContainer,
     WxPage,
     TitledContainer,

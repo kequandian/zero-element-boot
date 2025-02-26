@@ -2,6 +2,7 @@ import React from 'react';
 
 const useLayout = require('@/components/hooks/useLayout');
 export default function Container({children, ...rest}) {
+
   const [layoutRef, { getClassName }] = useLayout();
 
   // console.log('Default container rest = ', rest)
@@ -11,10 +12,11 @@ export default function Container({children, ...rest}) {
     >
       {React.Children.toArray(children).map(child => {
         return React.cloneElement(child, {
-          ref: layoutRef, 
-          ...rest
+              ref: layoutRef, 
+              ...rest
+          })
         })
-      })}
+      }
   </div>
 }
 

@@ -16,7 +16,6 @@ GET {{endpoint}}/api/auto/boot/preview
 POST {{endpoint}}/api/auto/boot/new
 
 ### 自定义配置
-// TODO
 // 全局更新，除 {xkey, moduleName} 保留
 POST {{endpoint}}/api/auto/boot/save
 Content-Type: application/json
@@ -24,9 +23,11 @@ Content-Type: application/json
 {
     "xname": "Avatar",
     "props": {
-      "url": "https://img01.sogoucdn.com/app/a/200797/4c031d4b-3926-4ff5-bb89-07cd97e33d8a"
-    }, 
-    "container": "PageCenter"
+        "url":"http://local.cdnline.io/master.jpg"
+    },
+    "cart": {
+        "indicator": "ShadowIndicator"
+    }
 }
 
 

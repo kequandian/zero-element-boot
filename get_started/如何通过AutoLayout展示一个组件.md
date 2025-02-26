@@ -22,7 +22,7 @@
 {
     "xname": "Avatar",
     "props": {
-        "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+        "url":"http://local.cdnline.io/master.jpg"
     }
 }
 ```
@@ -33,7 +33,7 @@
 {
     "xname": "Avatar",
     "props": {
-        "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+        "url":"http://local.cdnline.io/master.jpg"
     },
     "cart": "Cart"
 }
@@ -41,11 +41,12 @@
 
 >
 > 同时支持 `indicator`
+>>>>> 没有通过
 ```json
 {
     "xname": "Avatar",
     "props": {
-        "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+        "url":"http://local.cdnline.io/master.jpg"
     },
     "indicator": {
        "xname": "OutlineIndicator",
@@ -70,7 +71,7 @@
     "presenter": {
         "xname": "Avatar",
         "props": {
-            "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+            "url":"http://local.cdnline.io/master.jpg"
         }
     }
 }
@@ -83,14 +84,14 @@
     "presenter":{
         "xname": "Avatar",
         "props": {
-            "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+            "url":"http://local.cdnline.io/master.jpg"
         }
     },
     "cart": {
         "xname": "CssCart",
         "props": {
             "padding":"10px",
-	    "border":"1px #ff000 solid",
+	        "border":"1px #ff000 solid",
             "backgroundColor":"red"
         }
     }
@@ -103,59 +104,16 @@
     "presenter":{
        "xname": "Avatar",
        "props": {
-           "url":"https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
-       }
+           "url":"http://local.cdnline.io/master.jpg"
+       },
        "cart": {
           "xname": "CssCart",
           "props": {
               "padding":"10px",
-	      "border":"1px #ff000 solid",
+	          "border":"1px #ff000 solid",
               "backgroundColor":"red"
           }
        }
-    }
-}
-```
-
-
-### 为`AutoLayout`设置参数
-- 绑定的键即为组件参数 
-- 以下`avatar_url` 为新组件参数
-- `url`为新组件内部子组件`Avatar`的参数，对新组件消费者透明
-
-```json
-{
-    "xname": "Avatar",
-    "cart": {
-        "xname": "CssCart",
-        "props": {
-            "margin":"10px",
-	    "padding":"10px",
-	    "border":"1px #ff000 solid"
-        }
-    },
-    "binding": {
-        "avatarUrl": "url"
-    }
-}
-```
-
-> 或
-```json
-{
-    "presenter": {
-       "xname": "Avatar"
-    },
-    "cart": {
-        "xname": "CssCart",
-        "props": {
-	    "margin":"10px",
-	    "padding":"10px",
-	    "border":"1px #ff000 solid"
-        }
-    },
-    "binding": {
-        "avatarUrl": "url"
     }
 }
 ```
@@ -203,7 +161,7 @@
         {
             "xname": "Avatar",
             "props":{
-                "url": "https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png"
+                "url": "http://local.cdnline.io/master.jpg"
             }
         }
     ]
@@ -470,7 +428,54 @@
 }
 ```
 
+
+### ########################
+### 组件参数化
+### ########################
+
 ## 数据绑定与组件属性部分
+
+### 为`AutoLayout`设置参数
+- 绑定的键即为组件参数 
+- 以下 `avatar_url` 为新组件参数
+- `url`为新组件内部子组件`Avatar`的参数，对新组件消费者透明
+
+```json
+{
+    "xname": "Avatar",
+    "cart": {
+        "xname": "CssCart",
+        "props": {
+            "margin":"10px",
+	    "padding":"10px",
+	    "border":"1px #ff000 solid"
+        }
+    },
+    "binding": {
+        "avatarUrl": "url"
+    }
+}
+```
+
+> 或
+```json
+{
+    "presenter": {
+       "xname": "Avatar"
+    },
+    "cart": {
+        "xname": "CssCart",
+        "props": {
+	    "margin":"10px",
+	    "padding":"10px",
+	    "border":"1px #ff000 solid"
+        }
+    },
+    "binding": {
+        "avatarUrl": "url"
+    }
+}
+```
 
 ### 数据源字段绑定子组件属性
 - `avatarUrl`为数据源字段
