@@ -7,21 +7,23 @@ import { Container } from 'zero-element-boot';
 
 export default function BootPreviewAutoLayout (props) {
   const layoutApi = '/api/auto/boot/preview'
-  const layoutData = {
-    "presenter": {
+  const layoutData = 
+    {
+      "xkey": "b87efc94-f1c4-4610-a051-cea43a874097",
+      "presenter": {
         "presenter": {
-            "xname": "Avatar",
-            "props": {
-                "url":"http://local.cdnline.io/master.jpg"
-            }
+          "xname": "Avatar",
+          "props": {
+            "url": "http://local.cdnline.io/master.jpg"
+          }
         }
-    },
-    "cart": "PageCenter"
+      },
+      "cart": "PageCenter"
     }
 
   return (
-    // <PreviewAutoLayout tag='BOOT' layoutApi={layoutApi} layoutData={layoutData} />
-      <AutoLayout tag='BOOT' layout={layoutData} />
+    <PreviewAutoLayout tag='BOOT' layoutApi={layoutApi}  />
+      // <PreviewAutoLayout tag='BOOT' layout={layoutData} />
   )
 }
 
