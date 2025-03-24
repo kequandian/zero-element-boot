@@ -21,28 +21,28 @@ POST {{endpoint}}/api/auto/boot/save
 Content-Type: application/json
 
 {
+        "xname": "Avatar",
+        "props": {
+            "url":"http://local.cdnline.io/master.jpg"
+        },
+        "cart": "SquareCart"
+}
+
+
+### PageCenter
+{
     "presenter": {
-        "presenter": {
-            "xname": "Avatar",
-            "props": {
-                "url":"http://local.cdnline.io/master.jpg"
-            }
-        }
+        "xname": "Avatar",
+        "props": {
+            "url":"http://local.cdnline.io/master.jpg"
+        },
+        "cart": "Outline"
     },
     "cart": "PageCenter"
 }
 
 
-### 
-{
-    "xname": "Avatar",
-    "props": {
-        "url":"http://local.cdnline.io/master.jpg"
-    },
-    "cart": {
-        "indicator": "ShadowIndicator"
-    }
-}
+
 
 
 ### 查询所有组件

@@ -1,5 +1,3 @@
-// import { Image } from "@chakra-ui/react";
-
 import NamedLayout from './NamedLayout';
 import NamedList from './NamedList';
 import NamedCart from './NamedCart';
@@ -7,18 +5,14 @@ import NamedContainer from './NamedContainer';
 import NamedSeperator from './NamedSeperator';
 import NamedGateway from './NamedGateway';
 import NamedIndicator from './NamedIndicator';
-
+//
 import NextIndicator from './NextIndicator';
 
 // AutoComponent
 import AutoLayout from './AutoLayout';
 // import  { CloneAutoLayout }  from './CloneAutoLayout';
-import AutoComponent from './AutoComponent';
-
-import {
-  APIContainer, Container, TabContainer, WxPage, TitledContainer,
-  DataFlowContainer, DrawerContainer, AddNewContainer, ConfirmContainer
-} from './container';
+// import AutoComponent from './AutoComponent';
+import PreviewAutoLayout from '@/components/PreviewAutoLayout';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -31,94 +25,81 @@ import { set as FormItemTypeSet } from '@/components/config/FormItemTypeConfig';
 import { set as NamedSelector } from '@/components/config/NamedSelectorConfig';
 import { set as NameContainerSet } from '@/components/config/NamedContainerConfig';
 
-//layout
-// import Flexbox from '@/components/layout/Flexbox';
-// import Itembox from '@/components/layout/Itembox';
-// import Gridbox from '@/components/layout/Gridbox';
-// import Wrap from '@/components/layout/Wrap';
-// import Stack from '@/components/layout/Stack';
-// import VStack from '@/components/layout/VStack';
-// import Round from '@/components/layout/Round';
-// import HStack from '@/components/layout/HStack';
 
+//container
+import {
+  APIContainer, Container, TabContainer, WxPage, TitledContainer,
+  DataFlowContainer, DrawerContainer, AddNewContainer, ConfirmContainer
+} from './container';
+
+//layout
 import {
   Flexbox, Itembox, Gridbox, Wrap, Stack, VStack, Round,
   HStack, Center, HCenter as HCenterLayout, VCenter, Between
-} from '@/components/layout'
+} from './layout'
 
 //gateway
-import Binding from '@/components/gateway/Binding';
-import Filter from '@/components/gateway/Filter';
-import Chain from '@/components/gateway/Chain';
+import {
+  Gateway,
+  Binding,
+  Filter,
+  Chain,
+  Indexing,
+  Replacing
+} from './gateway';
 
 //cart 
-import Cart from './cart/Cart';
-import CssCart from './cart/CssCart';
-import HoverShadowCart from './cart/HoverShadowCart';
-import SelectCart from './cart/SelectCart';
-import ItemCart from './cart/ItemCart';
-import SelectIndicatorCart from './indicator/SelectIndicatorCart';
-import CheckBoxIndicatorCart from './indicator/CheckBoxIndicatorCart';
-// import Circle from './cart/deprecated/Circle';
-// import Corner from './cart/deprecated/Corner';
-// import indicator from './cart/indicator';
-import HCenter from './cart/HCenter';
-import PageCenter from './cart/PageCenter';
-// import Rectangle from './cart/deprecated/Rectangle';
-// import RoundCart from './cart/deprecated/Round';
-// import Page from './cart/deprecated/Page';
-import Box from './cart/Box';
-import SquareCart from './cart/SquareCart'
-import LightingCart from './cart/LightingCart';
-import Outline from './cart/OutlineCart';
+import {
+  Cart,
+  CssCart,
+  // Rectangle,
+  // Round,
+  // Corner,
+  // Circle,
+  ItemCart,
+  HCenter,
+  PageCenter,
+  // Page,
+  SquareCart,
+  OutlineCart,
+  MaskBox,
+  Box,
+  //hover
+  HoverShadowCart,
+  HoverLightingCart,
+  //
+  SelectIndicatorCart,
+  CheckBoxIndicatorCart
+} from './cart';
+
 
 //indicator
-import SelectedCartUpperRightIcon from './indicator/SelectedCartUpperRightIcon';
-import SelectedCartRightIcon from './indicator/SelectedCartRightIcon';
-
-import DownloadIndicator from './indicator/DownloadIndicator'
-import ClickIndicator from './indicator/ClickIndicator'
-import ManageMenuIndicator from './indicator/ManageMenuIndicator'
-import ShadowIndicator from './indicator/ShadowIndicator';
-import DeleteIndicator from './indicator/DeleteIndicator';
-import BackIndicator from './indicator/BackIndicator';
-import MaskIndicator from './indicator/MaskIndicator';
-import LabelIndicator from './indicator/LabelIndicator';
-import TipsIndicator from './indicator/TipsIndicator';
-import TitleIndicator from './indicator/TitleIndicator';
-import CircularDeleteIndicator from './indicator/CircularDeleteIndicator';
-import PlacementIndicator from './indicator/PlacementIndicator';
-import MultiActionsIndicator from './indicator/MultiActionsIndicator';
+import {
+  SelectedCartUpperRightIcon,
+  SelectedCartRightIcon,
+  DownloadIndicator,
+  ClickIndicator,
+  ManageMenuIndicator,
+  ShadowIndicator,
+  DeleteIndicator,
+  BackIndicator,
+  MaskIndicator,
+  LabelIndicator,
+  TipsIndicator,
+  TitleIndicator,
+  CircularDeleteIndicator,
+  PlacementIndicator,
+  MultiActionsIndicator
+} from './indicator';
 
 // selector
-import OutlineSelector from './selector/OutlineSelector';
-import CornerCheckboxSelector from './selector/CornerCheckboxSelector';
-import LeftCheckboxSelector from './selector/LeftCheckboxSelector';
-
-import { Image, CozeImage } from './presenter'
-
-// import RightIconCheckboxIndicatorDefauct from './indicator/RightIconCheckboxIndicator/Defauct';
-// import RightIconCheckboxIndicatorSelect from './indicator/RightIconCheckboxIndicator/Select';
-// import RightIconCheckboxIndicatorSelected from './indicator/RightIconCheckboxIndicator/Selected';
-
-// import RightIconIndicatorDefault from '@/components/indicator/RightIconIndicatorDefault';
-// import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
-// import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
-
-
 import {
-  Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder, AddNewButton, Text, Title, Subtitle,
-  Rectangle,
-  Circle, Description, PaletteColor, SquareAddNewButton, GoogleAvatar, Delete, Download,
-  ActionButton, SelectAction, ChakraButton,
-  NewDatasetAction, PreviewSelectAction, ChangeDatasetAction, DeleteAction, NewParamAction,
-  PropsAction, BindingAction, NoPresenterAction, SortPresenterAction, DatasetBindingAction,
-} from '@/components/presenter';
+  OutlineSelector,
+  CornerCheckboxSelector,
+  LeftCheckboxSelector
+} from './selector';
 
-import PreviewAutoLayout from '@/components/PreviewAutoLayout';
-
-// import ImageView from './presenter/image';
-
+//list
 import {
   AutoLoadList,
   LoadMoreList,
@@ -137,8 +118,21 @@ import {
   LowCodeDatasetManageList,
 } from './list';
 
+//presenter
+import {
+  Avatar, DefaultAvatar, Avatars, DownloadButton, ItemPlaceholder, AddNewButton, Text, Title, Subtitle,
+  Rectangle,
+  Circle, Description, PaletteColor, SquareAddNewButton, GoogleAvatar, Delete, Download,
+  ActionButton, SelectAction, ChakraButton,
+  NewDatasetAction, PreviewSelectAction, ChangeDatasetAction, DeleteAction, NewParamAction,
+  PropsAction, BindingAction, NoPresenterAction, SortPresenterAction, DatasetBindingAction,
+  //image
+  Image, CozeImage
+} from '@/components/presenter';
+
 // Form 组件
 import { InputCompx, SelectFetch, CheckboxFetch, CheckboxModalFetch, OneMany, SelectCompx } from '@/components/FormItemType';
+
 
 NamedLayoutSet({
   Flexbox,
@@ -159,33 +153,34 @@ NamedLayoutSet({
 NamedGatewaySet({
   Binding,
   Filter,
-  Chain
+  Chain,
+  //
+  Indexing,
+  Replacing
 })
 
 
 NamedCartSet({
   Cart,
   CssCart,
-  // HightlightCart,
-  HoverShadowCart,
-  SelectCart,
   ItemCart,
-  SelectIndicatorCart,
-  CheckBoxIndicatorCart,
+  OutlineCart,
   // Circle,
   // Corner,
-  // indicator,
   HCenter,
   PageCenter,
-  WxPage,
   // Page,
   // Rectangle,
   // Round: RoundCart,
-  NamedCart,
-  Box,
+  MaskBox,
   SquareCart,
-  LightingCart,
-  Outline
+  Box,
+
+  //
+  CheckBoxIndicatorCart,
+  SelectIndicatorCart,
+  HoverShadowCart,
+  HoverLightingCart
 })
 
 NamedIndicatorSet({
@@ -300,7 +295,7 @@ FormItemTypeSet({
 export {
   AutoLayout,
   // CloneAutoLayout,
-  AutoComponent,
+  // AutoComponent,
 
   NamedLayout,
   NamedList,
@@ -312,11 +307,5 @@ export {
   // 
   NextIndicator,
   NamedIndicator,
-
-  //
-  APIContainer,
-  Container,
-  TabContainer,
-  WxPage
 };
 

@@ -75,7 +75,6 @@ import TestIndicator from './ATestIndicator'
 
 import CssCart from '@/components/cart/CssCart'
 import TestCart from '@/pages/TestCart'
-import SelectCart from '@/pages/SelectCart/Sandbox'
 
 //rss-ui
 import RssRender from '@/components/presenter/rss/RssRender/Sandbox'

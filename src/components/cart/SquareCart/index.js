@@ -13,7 +13,7 @@ require('./index.less');
 export default function SquareCart(props) {
 
   const {
-    children, fill = '#fff', corner = '8px', margin = '0px', ratio=1.0 } = props;
+    children, fill = '#ff0', corner = '8px', margin = '0px', ratio=1.0 } = props;
 
   const parentRef = useRef(null);
   const [parentWidth, setParentWidth] = useState(null);
@@ -43,6 +43,7 @@ export default function SquareCart(props) {
         margin: `${margin}`,
         borderRadius: `${corner}`,
         background: `${fill}`,
+        width: `${parentWidth}px`,
         height: `${parentWidth*ratio}px`
       }}
       >
