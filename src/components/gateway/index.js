@@ -4,12 +4,14 @@ import Binding from './Binding';
 import Indexing from './Indexing';
 import Replacing from './Replacing';
 import Chain from './Chain';
+import Gateway from './Gateway';
 
 export {
-    // Gateway,
+    Gateway,
     Binding,
     Filter,
+    Chain,
+    //
     Indexing,
-    Replacing,
-    Chain
+    Replacing
 }

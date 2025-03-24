@@ -3,6 +3,7 @@ import { Box } from '@chakra-ui/react';
 
 require('./index.less');
 
+// Box 官网地址：https://chakra-ui.com/docs/layout/box
 export default function OutlineCart(props) {
 
   /**
@@ -12,17 +13,17 @@ export default function OutlineCart(props) {
    * dash 控制线框为虚线
    * tag 控制背景为透明 默认透明背景色
    * 
-   * shape （box， round,circle）
+   * shape （box，round, circle）
    * corner 参数只有 shape = box 才生效
    * 
    */
-  const { children, color= '#037DFF', tag , dash,  shape='box', fill, } = props;
+  const { children, color= '#037DFF', tag , dash,  shape='box', fill, corner='6px'} = props;
 
   const parentRef = useRef(null);
-  const [parentWidth, setParentWidth] = useState(0);
+  // const [parentWidth, setParentWidth] = useState(0);
   const [parentHeight, setParentHeight] = useState(0);
   
-  const corner = shape === 'box' ? '6px' : shape === 'round' ? `${parentHeight / 2}px` : shape === 'circle' ? '50%' : '';
+  const _corner = shape === 'box' ? corner : shape === 'round' ? `${parentHeight / 2}px` : shape === 'circle' ? '50%' : '';
 
   useEffect(() => {
     //获取父元素宽高
@@ -74,7 +75,7 @@ export default function OutlineCart(props) {
   const styles = {
     display: 'inline-block',
     border: `1px ${dash ? 'dashed' : 'solid'} ${color}`,
-    borderRadius: corner,
+    borderRadius: _corner,
     background: fill ? color :  tag ? handleTransparentColor(color) : '#ffffff',
     color: handleDynamicColor(color),
     borderStyle: dash ? 'dashed' : 'solid',
