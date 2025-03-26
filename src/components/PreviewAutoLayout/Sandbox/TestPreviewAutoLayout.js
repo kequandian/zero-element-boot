@@ -2,7 +2,8 @@ import React from 'react';
 
 import { ChakraProvider, HStack, Box, Button  } from '@chakra-ui/react';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
-import { AutoLayout, APIContainer, NamedContainer, NamedIndicator } from '@/components';
+import { AutoLayout, NamedContainer, NamedIndicator } from '@/components';
+import APIContainer from '@/components/container/APIContainer';
 import { AddNewContainer } from '@/components/container';
 import { DefaultGridLayoutList } from '@/components/list'
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { ChakraProvider, Box } from '@chakra-ui/react';
 import PageCenter from '@/components/cart/PageCenter';
 import Avatar from '@/components/presenter/Avatar';
-import OutlineCart from '@/components/cart/OutlineCart';
+import Outline from '@/components/cart/Outline';
 
 export default function TestPageCart(props) {
 
@@ -17,11 +17,11 @@ export default function TestPageCart(props) {
         }
 
         return (
-            <OutlineCart {...props}>
+            <Outline {...props}>
                 <Box w={'200px'} h={'100px'} >
                     Box
                 </Box>
-            </OutlineCart>
+            </Outline>
         )
     }
 

@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 require('./index.less');
 
 // Box 官网地址：https://chakra-ui.com/docs/layout/box
-export default function OutlineCart(props) {
+export default function Outline(props) {
 
   /**
    * color 线框颜色和背景
@@ -17,7 +17,7 @@ export default function OutlineCart(props) {
    * corner 参数只有 shape = box 才生效
    * 
    */
-  const { children, color= '#037DFF', tag , dash,  shape='box', fill, corner='6px'} = props;
+  const { children, color= '#037DFF', tag , dash,  shape='box', fill, corner='6px', margin='2px'} = props;
 
   const parentRef = useRef(null);
   // const [parentWidth, setParentWidth] = useState(0);
@@ -29,9 +29,9 @@ export default function OutlineCart(props) {
     //获取父元素宽高
     const resizeHandler = () => {
       if (parentRef.current) {
-        const width = parentRef.current.getBoundingClientRect().width;
+        // const width = parentRef.current.getBoundingClientRect().width;
         const height = parentRef.current.getBoundingClientRect().height;
-        setParentWidth(width);
+        // setParentWidth(width);
         setParentHeight(height);
       }
     };
@@ -80,10 +80,11 @@ export default function OutlineCart(props) {
     color: handleDynamicColor(color),
     borderStyle: dash ? 'dashed' : 'solid',
     overflow: 'hidden',
+    margin: margin,
   }
 
   return (
-    <Box className='c-OutlineCart-item' style={styles} ref={parentRef} >
+    <Box className='c-Outline-item' style={styles} ref={parentRef} >
       {React.Children.map(children, child => (
         child
       ))}

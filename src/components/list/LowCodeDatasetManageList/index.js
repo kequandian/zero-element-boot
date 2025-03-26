@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { AutoLayout, APIContainer } from '@/components';
+import { AutoLayout } from '@/components';
+import APIContainer from '@/components/container/APIContainer';
 
 /**
  * @param {*} props 

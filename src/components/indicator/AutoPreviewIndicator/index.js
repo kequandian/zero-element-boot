@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import AlignmentIndicator from '../AlignmentIndicator';
-import OutlineCart from '@/components/cart/OutlineCart';
+import Outline from '@/components/cart/Outline';
 import IndicatingAction from '@/components/presenter/button/IndicatingAction';
 
 import ContainerContext from '@/components/AutoX/ContainerContext';
@@ -28,7 +28,7 @@ function AutoPreviewComponent (props) {
     const {colors} = useContext(ContainerContext)
 
     const _AlignmentIndicator = hovering ? AlignmentIndicator : NextIndicator
-    const _OutlineCart = hovering ? OutlineCart : NextIndicator
+    const _OutlineCart = hovering ? Outline : NextIndicator
 
     const onAPClick = () => {
         if(onAutoPreview){

@@ -14,7 +14,8 @@ import {
     FormErrorMessage,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
-import { APIContainer, NamedLayout, NamedContainer, NamedCart } from '@/components';
+import { NamedLayout, NamedContainer, NamedCart } from '@/components';
+import APIContainer from '@/components/container/APIContainer';
 import promiseAjax from '@/components/utils/request';
 import PlainList from '@/components/list/PlainList';
 import PlainAddNew from '@/components/presenter/button/PlainAddNew';

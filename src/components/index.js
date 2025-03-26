@@ -52,6 +52,7 @@ import {
 import {
   Cart,
   CssCart,
+  Outline,
   // Rectangle,
   // Round,
   // Corner,
@@ -61,12 +62,11 @@ import {
   PageCenter,
   // Page,
   SquareCart,
-  OutlineCart,
   MaskBox,
   Box,
   //hover
   HoverShadowCart,
-  HoverLightingCart,
+  LightingCart,
   //
   SelectIndicatorCart,
   CheckBoxIndicatorCart
@@ -163,8 +163,8 @@ NamedGatewaySet({
 NamedCartSet({
   Cart,
   CssCart,
+  Outline,
   ItemCart,
-  OutlineCart,
   // Circle,
   // Corner,
   HCenter,
@@ -180,7 +180,7 @@ NamedCartSet({
   CheckBoxIndicatorCart,
   SelectIndicatorCart,
   HoverShadowCart,
-  HoverLightingCart
+  LightingCart
 })
 
 NamedIndicatorSet({

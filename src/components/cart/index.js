@@ -8,13 +8,13 @@ import HCenter from './HCenter';
 import PageCenter from './PageCenter';
 //
 import ItemCart from './ItemCart';
-import OutlineCart from './OutlineCart';
+import Outline from './Outline';
 import SquareCart from './SquareCart';
 import MaskBox from './MaskBox';
 import Box from './Box';
 
 //
-import HoverLightingCart from './HoverLightingCart';
+import LightingCart from './LightingCart';
 import HoverShadowCart from './HoverShadowCart';
 
 //
@@ -24,6 +24,7 @@ import CheckBoxIndicatorCart from './indicator/CheckBoxIndicatorCart';
 export {
     Cart,
     CssCart,
+    Outline,
     //shape
         // Rectangle,
         // Round,
@@ -35,14 +36,13 @@ export {
 
     //box
     ItemCart,
-    OutlineCart,
     SquareCart,
     MaskBox,
     Box,
 
     //hover
     HoverShadowCart,
-    HoverLightingCart,
+    LightingCart,
 
     //indicator (cart for indicator)
     SelectIndicatorCart,

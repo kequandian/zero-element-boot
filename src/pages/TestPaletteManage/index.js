@@ -1,8 +1,8 @@
 import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
-import { HCenter } from '@/components/cart'
 import { WxPage, AddNewContainer } from '@/components/container';
-import { APIContainer, AutoLayout } from '@/components';
+import AutoLayout from '@/components/AutoLayout';
+import APIContainer from '@/components/container/APIContainer';
 import ColorModal from '@/components/modalComponent/colorModal';
 import TestPaletteList from '@/pages/TestPaletteList';
 
