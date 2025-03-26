@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { List, Button } from 'antd';
 import { useMount, useSize } from 'ahooks';
 import useLayout from '@/components/hooks/useLayout';
-import ContainerContext from '@/components/AutoX/ContainerContext';
+import ContainerContext from '@/components/config/ContainerContext';
 
 export default function LoadMoreList(props) {
   const { onQuery, children } = props;

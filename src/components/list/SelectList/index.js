@@ -3,7 +3,7 @@ import { history } from 'umi';
 import { useSize } from 'ahooks';
 import { VStack, Box, Button } from '@chakra-ui/react';
 import useLayout from '@/components/hooks/useLayout';
-import ContainerContext from '@/components/AutoX/ContainerContext';
+import ContainerContext from '@/components/config/ContainerContext';
 const namedPresenterGet = require("@/components/config/NamedPresenterConfig").get();
 import SquareAddNew from '@/components/presenter/button/SquareAddNew';
 

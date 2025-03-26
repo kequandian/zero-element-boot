@@ -3,7 +3,7 @@ import { history } from 'umi';
 import { useSize } from 'ahooks';
 import { useForm } from 'react-hook-form';
 import useLayout from '@/components/hooks/useLayout';
-import ContainerContext from '@/components/AutoX/ContainerContext';
+import ContainerContext from '@/components/config/ContainerContext';
 import { formatParams } from '@/components/utils/tools';
 const namedPresenterGet = require("@/components/config/NamedPresenterConfig").get();
 

@@ -19,7 +19,7 @@ import {
 import { MoreIcon, UpdateIcon, DelIcon } from './icons';
 import { formatParams } from '@/components/utils/tools';
 import { getEndpoint } from '@/components/config/common';
-import ContainerContext from '@/components/AutoX/ContainerContext';
+import ContainerContext from '@/components/config/ContainerContext';
 const promiseAjax = require('@/components/utils/request');
 require('./index.less')
 

@@ -3,7 +3,7 @@ import AlignmentIndicator from '../AlignmentIndicator';
 import Outline from '@/components/cart/Outline';
 import IndicatingAction from '@/components/presenter/button/IndicatingAction';
 
-import ContainerContext from '@/components/AutoX/ContainerContext';
+import ContainerContext from '@/components/config/ContainerContext';
 import { HStack, Box } from '@chakra-ui/react';
 import { useHover } from "@uidotdev/usehooks";
 import NextIndicator from '@/components/NextIndicator';

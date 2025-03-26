@@ -1,6 +1,6 @@
 import StartAutoLayout from '../../StartAutoLayout'
 
-import ContainerContext from '@/components/AutoX/ContainerContext'
+import ContainerContext from '@/components/config/ContainerContext'
 
 export default function Sandbox(props){
 
