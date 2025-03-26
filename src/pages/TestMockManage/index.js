@@ -2,8 +2,7 @@ import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
 import { HCenter } from '@/components/cart'
 import { WxPage, AddNewContainer } from '@/components/container';
-import { APIContainer, AutoLayout } from '@/components';
-import ColorModal from '@/components/modalComponent/colorModal';
+import ColorModal from '@/components/presenter/modal/ColorModal';
 import TestPaletteList from '@/pages/TestPaletteList';
 import LowCodeDatasetManageList from '@/components/list/LowCodeDatasetManageList';
 

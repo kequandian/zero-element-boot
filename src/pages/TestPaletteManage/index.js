@@ -3,7 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { WxPage, AddNewContainer } from '@/components/container';
 import AutoLayout from '@/components/AutoLayout';
 import APIContainer from '@/components/container/APIContainer';
-import ColorModal from '@/components/modalComponent/colorModal';
+import ColorModal from '@/components/presenter/modal/ColorModal';
 import TestPaletteList from '@/pages/TestPaletteList';
 
 
