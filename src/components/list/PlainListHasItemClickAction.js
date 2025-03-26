@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { history } from 'umi';
 import { useSize } from 'ahooks';
 import useLayout from '@/components/hooks/useLayout';
-import ContainerContext from '@/components/AutoX/ContainerContext';
+import ContainerContext from '@/components/config/ContainerContext';
 
 /**
  * 列表属性{template}包括 [布局, Cart, 分隔线, 数据转换 [,子组件] ]

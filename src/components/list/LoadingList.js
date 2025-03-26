@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import { useSize } from 'ahooks';
 import useLayout from '@/components/hooks/useLayout';
-import ContainerContext from '@/components/AutoX/ContainerContext';
+import ContainerContext from '@/components/config/ContainerContext';
 import queryMethod from '@/components/utils/promiseAjax';
 
 /**

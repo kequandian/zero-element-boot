@@ -17,7 +17,6 @@ const { getEndpoint, getToken } = require('@/components/config/common');
 // import { Filter } from '../gateway';
 // import { bind } from 'lodash';
 
-// import requireConfig from '@/components/AutoX/requireConfig';
 // import { Container } from '@/components/container';
 
 // change history

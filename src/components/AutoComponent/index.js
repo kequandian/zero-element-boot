@@ -2,7 +2,6 @@ const React = require('react');
 // const { useState, useEffect } = require('react');
 const { NamedContainer, NamedLayout, NamedGateway, NamedCart, CloneAutoLayout } = require('@/components');
 // const useLayout = require('@/hooks/useLayout');
-const requireConfig = require('@/components/AutoX/requireConfig');
 const namedPresenterGet = require('@/components/config/NamedPresenterConfig').get();
 
 const { Container } = require('@/components/container');
@@ -34,7 +33,7 @@ const { Container } = require('@/components/container');
  * 注释 const parent = module.parents[0];
  */
 
-module.exports = function ({ children, layout = requireConfig(parent), allComponents, onItemClick, ...data }) {
+module.exports = function ({ children, allComponents, onItemClick, ...data }) {
   //const parent = module.parents[0]; //get module name
   // const [layoutRef, { getClassName }] = useLayout();
 
