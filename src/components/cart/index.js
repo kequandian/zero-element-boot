@@ -15,7 +15,7 @@ import Box from './Box';
 
 //
 import LightingCart from './LightingCart';
-import HoverShadowCart from './HoverShadowCart';
+import HoverShadowCart from './hover/HoverShadowCart';
 
 //
 import SelectIndicatorCart from './indicator/SelectIndicatorCart';
