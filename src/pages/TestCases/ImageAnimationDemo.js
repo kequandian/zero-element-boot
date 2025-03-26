@@ -1,6 +1,6 @@
 import React from 'react';
 import Cart  from '@/components/cart/Cart'
-import ImageAnimation from '@/presenter/demo/ImageAnimation';
+import ImageAnimation from '@/components/presenter/ImageAnimation';
 
 export default function Demo(props) {
 

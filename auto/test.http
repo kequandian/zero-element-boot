@@ -21,11 +21,32 @@ POST {{endpoint}}/api/auto/boot/save
 Content-Type: application/json
 
 {
-        "xname": "Avatar",
-        "props": {
-            "url":"http://local.cdnline.io/master.jpg"
+"presenter": {
+
+    "xname": "Wrap",
+    "children": [
+        {
+            "xname": "Avatar",
+            "props": {
+                "url":"http://local.cdnline.io/master.jpg"
+            }
         },
-        "cart": "SquareCart"
+        {
+            "xname": "Avatar",
+            "props": {
+                "url":"http://local.cdnline.io/master.jpg"
+            }
+        },
+        {
+            "xname": "Avatar",
+            "props": {
+                "url":"http://local.cdnline.io/master.jpg"
+            }
+        }
+        ],
+        "cart": "Outline"
+},
+"cart": "PageCenter"
 }
 
 

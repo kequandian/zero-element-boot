@@ -31,10 +31,6 @@ import ManageMenuIndicator from '@/components/indicator/ManageMenuIndicator'
 import BackIndicator from '@/components/indicator/BackIndicator';
 
 //presenter
-import ImageAnimation from '@/pages/PresenterTestDemo/components/presenter/item/ItemAvatar'
-import ContentText from '@/pages/PresenterTestDemo/plugins/TodoList/TodoItem/Content_text'
-import ContentFinish from '@/pages/PresenterTestDemo/components/presenter/item/ItemIconAction'
-
 import { Avatar, DownloadButton, ItemPlaceholder, AddNewButton, Text } from '@/components/presenter';
 // import {Title, Subtitle, StatisticsList, StatisticalDescription} from '@/presenter/demo';
 
@@ -66,6 +62,7 @@ import {
 import ItemImg from '@/pages/SelectListDemo/presenter/ItemImg'
 import ItemTitle from '@/pages/SelectListDemo/presenter/ItemTitle'
 import RssAutoLayout from '@/pages/rssAutoLayout/item'
+import ImageAnimation from '@/components/presenter/ImageAnimation';
 
 import OnDeleteIndicator from '@/components/indicator/OnDeleteIndicator';
 import SelectAvatar from '@/components/indicator/SelectAvatar';
@@ -133,9 +130,6 @@ NamedPresenterSet({
 
   Avatar,
   ImageAnimation,
-
-  ContentText,
-  ContentFinish,
 
   JarItem,
   SwaggerItem,
