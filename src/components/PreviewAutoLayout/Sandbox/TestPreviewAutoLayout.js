@@ -12,7 +12,7 @@ import { HCenter } from '@/components/cart';
 import PreviewActionIndicator from '@/components/indicator/PreviewActionIndicator';
 import PlacementIndicator from '@/components/indicator/PlacementIndicator';
 
-import AddNewModal from '@/components/modalComponent/AddNewModal';
+import AddNewModal from '@/components/presenter/modal/AddNewModal';
 
 export default function TestPreviewAutoLayout(props) {
 

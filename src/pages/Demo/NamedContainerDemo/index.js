@@ -2,10 +2,10 @@ import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
 import { HCenter } from '@/components/cart'
 import { DrawerContainer, WxPage, AddNewContainer, ConfirmContainer } from '@/components/container';
-import { APIContainer, NamedLayout, NamedContainer, NamedCart } from '@/components';
+import { NamedLayout, NamedContainer, NamedCart } from '@/components';
 import { PlainManageList, KeyValueManageList, DefaultGridLayoutList } from '@/components/list';
 import { PaletteColor } from '@/components/presenter';
-import ColorForm from '@/components/FormComponent/colorForm';
+import ColorForm from '@/components/presenter/form/ColorForm';
 import LowCodeDatasetManageList from '@/components/list/LowCodeDatasetManageList';
 
 
