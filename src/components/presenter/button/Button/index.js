@@ -29,17 +29,13 @@ export default function Index(props) {
 
 
     // "/GetPath?id=34&name=34"
-
     // if(navigation && navigation.contains("?")){
-
     // }
-
     // console.log('queryData === ', queryData)
 
     // const path = () => {
     //     history.push(queryData)
     // }
-
     // const onButtonClick = (!onAction && navigation) ? path : (onAction && !navigation) ? onAction : null
 
     function onButtonClick () {

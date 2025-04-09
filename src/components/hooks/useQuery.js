@@ -1,31 +1,24 @@
-
-//用来把传入的路径参数转化为字典格式的工具
+/**
+ * //用来把传入的路径参数转化为字典格式的工具
+ * 返回url的pathname及query参数map对像
+ * @param {*} props 参数可以是location字符串，也可以是location对象, 也可以是封装了location属性的对象
+ * @returns 
+ */
 
 export default function useQuery(props) {
 
-    let value = ''
-    let currtPathName = ''
-
-    if (typeof props == 'string') {
-        value = props
-    } else if (typeof props === 'object') {
-        currtPathName = props.location.pathname
-        value = props.location.search
-    }
-
-    function useQuery(dataString) {
-        if (dataString) {
+    function useQuery(queryStringAfterQuestionMark) {
+        if (queryStringAfterQuestionMark) {
             const res = {}
-            if (dataString.indexOf('&') != -1) {
-                // console.log('dataString ==', dataString)
-                const dsArray = dataString.split('&')
+            if (queryStringAfterQuestionMark.indexOf('&') != -1) {
+                // console.log('queryStringAfterQuestionMark ==', queryStringAfterQuestionMark)
+                const dsArray = queryStringAfterQuestionMark.split('&')
                 dsArray.map(item => {
                     const dsItemArray = item.split('=')
                     res[dsItemArray[0]] = dsItemArray[1]
                 })
             } else {
-                // console.log('dataString 111 ==', dataString)
-                const dString = dataString.split('=')
+                const dString = queryStringAfterQuestionMark.split('=')
                 res[dString[0]] = dString[1]
             }
             return res
@@ -34,19 +27,24 @@ export default function useQuery(props) {
         }
     }
 
+
+    // start main
+    const searching = (typeof props == 'object' ) ? (props.search || props.location.search) : props  //pure location string
+    const pathname = (typeof props === 'object') ?  (props.pathname || props.location.pathname) : undefined
+
     const res = {}
-    if (value) {
-        if (value.indexOf('?') != -1) {
-            const navArray = value.split('?')
-            res.pathname = navArray[0]
-            res.query = useQuery(navArray[1])
+    if (searching) {
+        if (searching.indexOf('?') != -1) {
+            // with/? means pure location string
+            const seps = searching.split('?')
+            res.pathname = seps[0]
+            res.query = useQuery(seps[1])
         } else {
-            res.pathname = currtPathName
-            res.query = useQuery(value)
+            res.pathname = pathname
+            res.query = useQuery(searching)
         }
         return res
     } else {
         return {}
     }
-
 }
