@@ -1,9 +1,6 @@
 import React from 'react';
 const AutoComponent = require('@/components/AutoComponent');
 
-// import from global
-// const { Avatar, Title, Subtitle } = require('@/presenter/demo');
-
 /**
  * 
  * @param {String} avatar 头像

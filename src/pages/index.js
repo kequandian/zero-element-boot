@@ -4,7 +4,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { AutoLayout, NamedLayout } from '@/components';
 
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
-import { Avatar, Title, Subtitle } from '@/presenter/demo'
+import { Avatar } from '@/components/presenter'
 
 // TestCase, Presenter etc.
 import IsValidElementTest from './TestCases/IsValidElementTest'
@@ -17,26 +17,7 @@ import PageCenter from '@/components/cart/PageCenter';
 // TestComposition
 import AvatarItemDemo from './TestComposition/AvatarItemDemo'
 
-// ChakraSample
-import ChakraSample from './chakra'
-
-//Demo
-import PlainListDemo from './Demo/PlainListDemo';
-import AdItemDemo from './Demo/AdItemDemo';
-
-// import UserItemDemo from './Demo/UserItemDemo'
-
-import AdListDemo from '@/composition/AdList/Sandbox';
-// import ComponentListDemo from '@/pages/ComponentListDemo';
-// import TheTest from '@/pages/TheTest'
-// import PresenterTestDemo from '@/pages/PresenterTestDemo/Sandbox';
-// import CheckboxDemo from '@/pages/CheckboxDemo/Sandbox';
-
 import TableContainer from '@/pages/TableDemo/Sandbox';
-import SelectDemo from '@/pages/SelectList/Sandbox';
-import UserCheckboxDemo from '@/pages/UserCheckboxDemo/Sandbox';
-import CheckBoxModalDemo from '@/pages/CheckBoxModalDemo';
-// import RadioModalDemo from '@/pages/RadioModalDemo';
 
 import Standalone from '@/composition/Standalone/Sandbox';
 import Connection from '@/composition/Connection'
@@ -68,10 +49,6 @@ import JsonTreeDemo from '@/components/presenter/tree/JsonTree/Sandbox'
 import ApisUi from '@/composition/ApisUi/Sandbox';
 //logs-ui
 import LogsUi from '@/composition/LogsUi/Sandbox'
-// SelectListDemo
-import SelectListDemo from './SelectListDemo/Sandbox'
-// import AvatarSelectListDemo from './avatarSelectListDemo/Sandbox'
-import TestIndicator from './ATestIndicator'
 
 import CssCart from '@/components/cart/CssCart'
 import TestCart from '@/pages/TestCart'

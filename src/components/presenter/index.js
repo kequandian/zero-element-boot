@@ -17,7 +17,6 @@ import Progress from './chart/Progress';
 // element
 import Avatar from './Avatar';
 import DefaultAvatar from './Avatar/DefaultAvatar';
-import Avatars from './Avatar/Avatars';
 
 // button
 import AddNewButton from './button/AddNewButton'
@@ -30,10 +29,7 @@ import JsonTree from './tree/JsonTree'
 // app
 import TopBar from './app/TopBar'
 
-import Text from './Text'
-import Title from './Title'
-import Subtitle from './Subtitle';
-import Description from './Description'
+import ChakraText from './text/ChakraText'
 import ImageAnimation from './ImageAnimation'
 
 // image
@@ -70,7 +66,6 @@ export {
   // element
   Avatar,
   DefaultAvatar,
-  Avatars,
   
   // tree
   JsonTree,
@@ -108,10 +103,7 @@ export {
   // app
   TopBar,
 
-  Text,
-  Title,
-  Subtitle,
-  Description,
+  ChakraText,
   ImageAnimation,
 
   // image

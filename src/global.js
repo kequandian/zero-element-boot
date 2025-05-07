@@ -31,14 +31,12 @@ import ManageMenuIndicator from '@/components/indicator/ManageMenuIndicator'
 import BackIndicator from '@/components/indicator/BackIndicator';
 
 //presenter
-import { Avatar, DownloadButton, ItemPlaceholder, AddNewButton, Text } from '@/components/presenter';
-// import {Title, Subtitle, StatisticsList, StatisticalDescription} from '@/presenter/demo';
+import { Avatar, DownloadButton, ItemPlaceholder, AddNewButton, ChakraText } from '@/components/presenter';
 
 import JarItem from '@/composition/LogsUi/Sandbox/JarItem';
 import SwaggerItem from '@/composition/ApisUi/SwaggerItem';
 
 import { InputCompx, SelectFetch } from '@/components/FormItemType';
-const { TableCompx } = require('@/presenter/demo');
 
 // SelectListDemo
 //indicator
@@ -133,21 +131,14 @@ NamedPresenterSet({
 
   JarItem,
   SwaggerItem,
-  // Title,
-  // Subtitle, 
-  // StatisticsList, 
-  // StatisticalDescription,
 
   DownloadButton,
-  TableCompx,
   AddNewButton,
 
-  //SelectList
-  //NamedPresenterSet({
   ItemImg,
   ItemTitle,
   RssAutoLayout,
-  Text,
+  ChakraText,
   //})
 
   testModuleItem
