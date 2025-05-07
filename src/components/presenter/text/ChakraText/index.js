@@ -9,13 +9,8 @@ import { Text } from "@chakra-ui/react";
  */
 
 export default function TextIndex(props) {
-    // remove useless
     const { ...data} = props
-
-    // main
     const { content, ...others } = data;
-
-    // console.log('Text others = ',others)
 
     return (
         <Text m={0} {...others}>{content}</Text>

@@ -22,8 +22,8 @@ export default function BootPreviewAutoLayout (props) {
     }
 
   return (
-    <PreviewAutoLayout tag='BOOT' layoutApi={layoutApi}  />
-      // <PreviewAutoLayout tag='BOOT' layout={layoutData} />
+    // <PreviewAutoLayout tag='BOOT' layoutApi={layoutApi}  />
+      <PreviewAutoLayout tag='BOOT' layout={layoutData} />
   )
 }
 

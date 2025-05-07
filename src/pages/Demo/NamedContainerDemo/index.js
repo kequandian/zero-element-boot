@@ -9,7 +9,7 @@ import ColorForm from '@/components/presenter/form/ColorForm';
 import LowCodeDatasetManageList from '@/components/list/LowCodeDatasetManageList';
 
 
-const { Text, Subtitle } = require('@/components/presenter')
+const { ChakraText, Subtitle } = require('@/components/presenter')
 
 export default function NamedContainerDemo(props) {
 
@@ -45,7 +45,7 @@ export default function NamedContainerDemo(props) {
         return (
             <PlainManageList {...config}>
                 <NamedCart cart={_cartConfig} >
-                    <Text></Text>
+                    <ChakraText>hello</ChakraText>
                 </NamedCart>
             </PlainManageList>
 
