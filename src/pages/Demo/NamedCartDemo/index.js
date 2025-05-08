@@ -9,7 +9,7 @@ export default function NamedCartDemo(props) {
 
     const config = {
         __cart: {
-            xname: 'SquareCart',
+            xname: 'SquareBox',
             props: {
                 fill: '#ccc',
                 corner: '10px',

@@ -16,7 +16,6 @@ GET {{endpoint}}/api/auto/boot/preview
 POST {{endpoint}}/api/auto/boot/new
 
 ### 自定义配置
-// 全局更新，除 {xkey, moduleName} 保留
 POST {{endpoint}}/api/auto/boot/save
 Content-Type: application/json
 
@@ -45,10 +44,28 @@ Content-Type: application/json
         }
         ],
         "cart": "Outline"
-},
-"cart": "PageCenter"
+    },
+    "cart": "PageCenter"
 }
 
+
+### 保存为单个头像
+POST {{endpoint}}/api/auto/boot/save
+Content-Type: application/json
+
+{
+    "xkey": "b87efc94-f1c4-4610-a051-cea43a874097",
+    "presenter": {
+    "presenter": {
+        "xname": "Avatar",
+        "props": {
+        "url": "http://local.cdnline.io/master.jpg"
+        }
+    },
+    "cart": "SquareBox"
+    },
+    "cart": "PageCenter"
+}
 
 ### PageCenter
 {

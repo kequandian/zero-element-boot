@@ -33,7 +33,7 @@ module.exports = {
             "title": "文件"
         },
         "cart": {
-            "xname": "SquareCart",
+            "xname": "SquareBox",
             "props": {
                 "margin": "0px",
                 "corner": "8px",

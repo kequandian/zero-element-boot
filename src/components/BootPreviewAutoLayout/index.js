@@ -16,9 +16,10 @@ export default function BootPreviewAutoLayout (props) {
           "props": {
             "url": "http://local.cdnline.io/master.jpg"
           }
-        }
+        },
+        "cart": "SquareBox"
       },
-      "cart": "PageCenter"
+      "xname": "PageCenter"
     }
 
   return (
@@ -26,4 +27,3 @@ export default function BootPreviewAutoLayout (props) {
       <PreviewAutoLayout tag='BOOT' layout={layoutData} />
   )
 }
-

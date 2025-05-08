@@ -39,7 +39,7 @@ export default function DefaultGridLayoutList(props) {
             }
         },
         // "cart": {
-        //     "xname": "SquareCart",
+        //     "xname": "SquareBox",
         //     "props": {
         //         "margin": "5px",
         //         "corner": "8px",
@@ -53,7 +53,7 @@ export default function DefaultGridLayoutList(props) {
 
     if(hasCart){
         layoutJson.cart = {
-            "xname": "SquareCart",
+            "xname": "SquareBox",
             "props": {
                 "margin": "5px",
                 "corner": "8px",

@@ -17,7 +17,7 @@ export default forwardRef(function VCenter(props, ref) {
     }
 
     return (
-        <Center justifyContent={directionMap[direction]} h={'100%'}>
+        <Center justifyContent={directionMap[direction]} h={'100%'}  ref={ref}>
             {children}
         </Center>
     )

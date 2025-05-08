@@ -4,7 +4,7 @@ import React, {useImperativeHandle, forwardRef} from 'react';
 import useSize from '@/components/hooks/useSize';
 
 /**
- * deprecated, move to layout set
+ * 
  * @param {color } backgroundColor 背景颜色
  * 
  */

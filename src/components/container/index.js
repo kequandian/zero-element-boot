@@ -1,6 +1,5 @@
 import APIContainer from './APIContainer'
 import Container from './Container'
-import PageCenter from './PageCenter'
 import TabContainer from './TabContainer'
 import WxPage from './WxPage'
 import TitledContainer from './TitledContainer'
@@ -20,7 +19,6 @@ import ConfirmContainer from './ConfirmContainer'
 export {
     APIContainer,
     Container,
-    PageCenter,
     TabContainer,
     WxPage,
     TitledContainer,

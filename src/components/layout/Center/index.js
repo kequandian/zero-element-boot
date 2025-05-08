@@ -10,7 +10,7 @@ export default forwardRef(function CenterIndex(props, ref) {
 
     const { children  } = props;
     return (
-        <Center h={'100%'}>
+        <Center h={'100%'}  ref={ref}>
             {children}
         </Center>
     )

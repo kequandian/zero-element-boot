@@ -31,7 +31,7 @@ import ManageMenuIndicator from '@/components/indicator/ManageMenuIndicator'
 import BackIndicator from '@/components/indicator/BackIndicator';
 
 //presenter
-import { Avatar, DownloadButton, ItemPlaceholder, AddNewButton, ChakraText } from '@/components/presenter';
+import { Avatar, ItemPlaceholder,Counter,PaletteColor,  DownloadButton, AddNewButton, ChakraText } from '@/components/presenter';
 
 import JarItem from '@/composition/LogsUi/Sandbox/JarItem';
 import SwaggerItem from '@/composition/ApisUi/SwaggerItem';
@@ -119,6 +119,8 @@ NamedIndicatorSet({
 
 NamedPresenterSet({
   ItemPlaceholder,
+  Counter,
+  PaletteColor,
 
   //default
   Clean,
@@ -139,7 +141,6 @@ NamedPresenterSet({
   ItemTitle,
   RssAutoLayout,
   ChakraText,
-  //})
 
   testModuleItem
 })

@@ -34,8 +34,8 @@ import {
 
 //layout
 import {
-  Flexbox, Itembox, Gridbox, Wrap, Stack, VStack, Round,
-  HStack, Center, HCenter as HCenterLayout, VCenter, Between
+  Flexbox, Gridbox, Wrap, Round, Between, Stack, VStack, 
+  Center, HStack, HCenter, VCenter, PageCenter
 } from './layout'
 
 //gateway
@@ -57,19 +57,19 @@ import {
   // Round,
   // Corner,
   // Circle,
-  ItemCart,
-  HCenter,
-  PageCenter,
+  // PageCenter,
+  Viewport,
   // Page,
-  SquareCart,
+  SquareBox,
   MaskBox,
   Box,
+  
   //hover
   HoverShadowCart,
   LightingCart,
   //
   SelectIndicatorCart,
-  CheckBoxIndicatorCart
+  CheckBoxIndicatorCart,
 } from './cart';
 
 
@@ -136,21 +136,27 @@ import { InputCompx, SelectFetch, CheckboxFetch, CheckboxModalFetch, OneMany, Se
 
 NamedLayoutSet({
   Flexbox,
-  Itembox,
+  // Itembox,
   Gridbox,
+  //
   Wrap,
+  Round,
+  Between,
+  //
   Stack,
   VStack,
-  Round,
   HStack,
+
   Center,
-  HCenterLayout,
+  HCenter,
   VCenter,
-  Between
+  PageCenter
 })
 
 
 NamedGatewaySet({
+  Gateway,
+  //
   Binding,
   Filter,
   Chain,
@@ -164,16 +170,17 @@ NamedCartSet({
   Cart,
   CssCart,
   Outline,
-  ItemCart,
+  // ItemCart,
   // Circle,
   // Corner,
   HCenter,
   PageCenter,
+  Viewport,
   // Page,
   // Rectangle,
   // Round: RoundCart,
   MaskBox,
-  SquareCart,
+  SquareBox,
   Box,
 
   //
@@ -210,10 +217,13 @@ NamedIndicatorSet({
 NamedPresenterSet({
   Avatar,
   DefaultAvatar,
+  //
+  ChakraText,
+  ChakraButton,
+  //
   DownloadButton,
   ItemPlaceholder,
   AddNewButton,
-  ChakraText,
   Image,
   Rectangle,
   Circle,
@@ -226,7 +236,6 @@ NamedPresenterSet({
   Download,
   ActionButton,
   SelectAction,
-  ChakraButton,
   NewDatasetAction,
   PreviewSelectAction,
   ChangeDatasetAction,
@@ -261,7 +270,6 @@ NamedListSet({
 NameContainerSet({
   APIContainer,
   Container,
-  PageCenter,
   TabContainer,
   WxPage,
   TitledContainer,
