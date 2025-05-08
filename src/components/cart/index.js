@@ -1,15 +1,16 @@
 import Cart from './Cart';
 import CssCart from './CssCart';
+import Outline from './Outline';
 // import Rectangle from './deprecated/Rectangle';
 // import Corner from './deprecated/Corner';
 // import Round from './deprecated/Round';
 // import Circle from './deprecated/Circle';
-import HCenter from './HCenter';
-import PageCenter from './PageCenter';
+import HCenter from './deprecated/HCenter';
+// import PageCenter from './PageCenter';
+import Viewport from './Viewport';
 //
-import ItemCart from './ItemCart';
-import Outline from './Outline';
-import SquareCart from './SquareCart';
+// import ItemCart from './deprecated/ItemCart';
+import SquareBox from './SquareBox';
 import MaskBox from './MaskBox';
 import Box from './Box';
 
@@ -32,11 +33,12 @@ export {
         // Circle,
     //alignment
     HCenter,
-    PageCenter,   
+    // PageCenter,
+    Viewport,
 
     //box
-    ItemCart,
-    SquareCart,
+    // ItemCart,
+    SquareBox,
     MaskBox,
     Box,
 

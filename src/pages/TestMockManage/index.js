@@ -54,7 +54,7 @@ export default function TestPaletteManage(props) {
                 "justify": "center column"
             },
             "cart": {
-                "xname": "SquareCart",
+                "xname": "SquareBox",
                 "props": {
                     "margin": "0px",
                     "corner": "8px",

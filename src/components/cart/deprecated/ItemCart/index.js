@@ -1,5 +1,5 @@
 import React, { useImperativeHandle, forwardRef } from 'react';
-import Cart from '../Cart'
+import Cart from '../../Cart'
 
 export default forwardRef(function ItemCart(props, ref) {
 
@@ -21,7 +21,7 @@ export default forwardRef(function ItemCart(props, ref) {
   // }));
 
   return React.Children.map(children, child => {
-    return <Cart corner='' {...config} >
+    return <Cart corner='' {...config} ref={ref} >
        {child}
     </Cart>
   })

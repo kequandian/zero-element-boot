@@ -17,7 +17,7 @@ export default forwardRef(function HCenter(props, ref) {
     }
 
     return (
-        <Center alignItems={directionMap[direction]} h={'100%'}>
+        <Center alignItems={directionMap[direction]} h={'100%'}  ref={ref}>
             {children}
         </Center>
     )

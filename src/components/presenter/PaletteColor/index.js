@@ -8,7 +8,7 @@ import { Center } from '@chakra-ui/react'
  */
 export default function PaletteColor (props) {
 
-    const { color, name, dark='white' } = props;
+    const { color='blue', name, dark='white' } = props;
 
     return (
         <Center bg={color} w='100%' h='100%' fontSize={'18px'} color={dark} fontWeight={'bold'}>

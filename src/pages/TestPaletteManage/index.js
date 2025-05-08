@@ -50,7 +50,7 @@ export default function TestPaletteManage(props) {
                 "binding": { "paletteName": "paletteName" },
             },
             "cart": {
-                "xname": "SquareCart",
+                "xname": "SquareBox",
                 "props": {
                     "margin": "0px",
                     "corner": "8px",
