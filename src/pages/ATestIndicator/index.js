@@ -7,7 +7,7 @@ import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicato
 import SelectedCartUpperRightIcon from '@/components/indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from '@/components/indicator/SelectedCartRightIcon';
 import ItemPlaceholder from '@/components/presenter/ItemPlaceholder';
-import CheckBoxIndicatorCart from '@/components/cart/indicator/CheckBoxIndicatorCart';
+import CheckBoxIndicator from '@/components/indicator/CheckBoxIndicator';
 import CircularCheckboxIndicator from '@/components/indicator/CircularCheckboxIndicator';
 import OnDeleteIndicator from '@/components/indicator/OnDeleteIndicator';
 import TagIndicator from '@/components/indicator/TagIndicator';

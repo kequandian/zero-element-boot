@@ -11,7 +11,7 @@ require('./index.less');
    }
  */
 
-export default forwardRef(function SelectIndicatorCart(props, ref) {
+export default forwardRef(function SelectIndicator(props, ref) {
 
   const { children, line = {}, isSelected } = props;
 
@@ -47,7 +47,7 @@ export default forwardRef(function SelectIndicatorCart(props, ref) {
 
     return (
       <>
-        <div className={`i-SelectIndicatorCart`}
+        <div className={`i-SelectIndicator`}
           style={{
             position: 'relative',
             margin: `${margin}`,

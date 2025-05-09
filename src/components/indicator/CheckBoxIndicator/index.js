@@ -11,7 +11,7 @@ require('./index.less');
    }
  */
 
-export default forwardRef(function CheckBoxIndicatorCart(props, ref) {
+export default forwardRef(function CheckBoxIndicator(props, ref) {
 
   const { children, line = {}, checked, } = props;
 
@@ -49,7 +49,7 @@ export default forwardRef(function CheckBoxIndicatorCart(props, ref) {
 
     return (
       <>
-        <div className={`i-CheckBoxIndicatorCart`}
+        <div className={`i-CheckBoxIndicator`}
           style={{
             position: 'relative',
             margin: `${margin}`,

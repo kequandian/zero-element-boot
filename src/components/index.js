@@ -59,7 +59,7 @@ import {
   // Circle,
   // PageCenter,
   Viewport,
-  // Page,
+  // box,
   SquareBox,
   MaskBox,
   Box,
@@ -68,8 +68,8 @@ import {
   HoverShadowCart,
   LightingCart,
   //
-  SelectIndicatorCart,
-  CheckBoxIndicatorCart,
+  // SelectIndicator,
+  // CheckBoxIndicator,
 } from './cart';
 
 
@@ -184,8 +184,8 @@ NamedCartSet({
   Box,
 
   //
-  CheckBoxIndicatorCart,
-  SelectIndicatorCart,
+  // CheckBoxIndicator,
+  // SelectIndicator,
   HoverShadowCart,
   LightingCart
 })
