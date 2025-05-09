@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Box } from '@chakra-ui/react';
 
+import useSizeClient from '../../hooks/useSizeClient';
+
 require('./index.less');
 
 // Box 官网地址：https://chakra-ui.com/docs/layout/box
@@ -13,39 +15,42 @@ export default function Outline(props) {
    * dash 控制线框为虚线
    * tag 控制背景为透明 默认透明背景色
    * 
-   * shape （box，round, circle）
+   * shape （ box, round, circle ）
    * corner 参数只有 shape = box 才生效
    * 
    */
-  const { children, color= '#037DFF', tag , dash,  shape='box', fill, corner='6px', margin='2px'} = props;
+  const { children, color= '#FF037D', tag , dash,  shape='box', fill, corner='6px', margin='2px'} = props;
 
-  const parentRef = useRef(null);
+  const parentRef = useRef();
+
   // const [parentWidth, setParentWidth] = useState(0);
-  const [parentHeight, setParentHeight] = useState(0);
-  
-  const _corner = shape === 'box' ? corner : shape === 'round' ? `${parentHeight / 2}px` : shape === 'circle' ? '50%' : '';
+  // const [parentHeight, setParentHeight] = useState(0);
+  const clientSize=  useSizeClient({ ref: parentRef });
 
-  useEffect(() => {
-    //获取父元素宽高
-    const resizeHandler = () => {
-      if (parentRef.current) {
-        // const width = parentRef.current.getBoundingClientRect().width;
-        const height = parentRef.current.getBoundingClientRect().height;
-        // setParentWidth(width);
-        setParentHeight(height);
-      }
-    };
+  const _corner = shape === 'box' ? corner : shape === 'round' ? `${clientSize.height / 2}px` : shape === 'circle' ? '50%' : '';
+  const _minwidth = shape === 'round' ? clientSize.height*2 : clientSize.height;
 
-    const handleFirstRender = () => {
-      setTimeout(resizeHandler, 0);
-    };
+  // useEffect(() => {
+  //   //获取父元素宽高
+  //   const resizeHandler = () => {
+  //     if (parentRef.current) {
+  //       // const width = parentRef.current.getBoundingClientRect().width;
+  //       const height = parentRef.current.getBoundingClientRect().height;
+  //       // setParentWidth(width);
+  //       setParentHeight(height);
+  //     }
+  //   };
 
-    window.addEventListener('resize', resizeHandler);
-    handleFirstRender(); // Delay the first render
-    return () => {
-      window.removeEventListener('resize', resizeHandler);
-    };
-  }, []);
+  //   const handleFirstRender = () => {
+  //     setTimeout(resizeHandler, 0);
+  //   };
+
+  //   window.addEventListener('resize', resizeHandler);
+  //   handleFirstRender(); // Delay the first render
+  //   return () => {
+  //     window.removeEventListener('resize', resizeHandler);
+  //   };
+  // }, []);
 
   //根据颜色值判断字体用黑色还是白色
   const handleDynamicColor = (colorValue) => {
@@ -73,18 +78,16 @@ export default function Outline(props) {
   };
 
   const styles = {
-    display: 'inline-block',
     border: `1px ${dash ? 'dashed' : 'solid'} ${color}`,
     borderRadius: _corner,
     background: fill ? color :  tag ? handleTransparentColor(color) : '#ffffff',
     color: handleDynamicColor(color),
     borderStyle: dash ? 'dashed' : 'solid',
-    overflow: 'hidden',
     margin: margin,
   }
 
   return (
-    <Box className='c-Outline-item' style={styles} ref={parentRef} >
+    <Box className='c-outline-item' style={styles} ref={parentRef} w={_minwidth}>
       {React.Children.map(children, child => (
         child
       ))}
