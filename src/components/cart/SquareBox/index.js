@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import useSizeClient from '../../hooks/useSizeClient';
 
 require('./index.less');
 
@@ -18,26 +19,28 @@ export default function SquareBox(props) {
     children, fill = 'transparent', stroke='#55a', corner = '8px', margin = '2px', padding='4px', ratio=1.0 } = props;
 
   const parentRef = useRef(null);
-  const [parentWidth, setParentWidth] = useState(null);
+  // const [parentWidth, setParentWidth] = useState(null);
+  const clientSize=  useSizeClient({ ref: parentRef });
+  const parentWidth = clientSize.width;
+  
+  // useEffect(() => {
+  //   const resizeHandler = () => {
+  //     if (parentRef.current) {
+  //       const width = parentRef.current.getBoundingClientRect().width;
+  //       setParentWidth(width);
+  //     }
+  //   };
 
-  useEffect(() => {
-    const resizeHandler = () => {
-      if (parentRef.current) {
-        const width = parentRef.current.getBoundingClientRect().width;
-        setParentWidth(width);
-      }
-    };
+  //   const handleFirstRender = () => {
+  //     setTimeout(resizeHandler, 0);
+  //   };
 
-    const handleFirstRender = () => {
-      setTimeout(resizeHandler, 0);
-    };
-
-    window.addEventListener('resize', resizeHandler);
-    handleFirstRender(); // Delay the first render
-    return () => {
-      window.removeEventListener('resize', resizeHandler);
-    };
-  }, []);
+  //   window.addEventListener('resize', resizeHandler);
+  //   handleFirstRender(); // Delay the first render
+  //   return () => {
+  //     window.removeEventListener('resize', resizeHandler);
+  //   };
+  // }, []);
 
   return React.Children.map(children, child => {
     return (

@@ -9,7 +9,7 @@ import useSize from '@/components/hooks/useSize';
  * 
  */
 // export default forwardRef(function PageCenter(props, ref) {
-export default function PageCenter(props) {
+export default forwardRef(function PageCenter(props,ref) {
   const { children, backgroundColor = '#ffffff' } = props
   const size = useSize()
 
@@ -22,9 +22,8 @@ export default function PageCenter(props) {
       width: '100%',
       height: `${size.height}px`,
       alignItems: 'center',
-    }} >
+    }} ref={ref}>
       {child}
     </div>
   })}
-// )
-
+)

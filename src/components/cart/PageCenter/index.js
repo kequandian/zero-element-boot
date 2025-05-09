@@ -18,13 +18,11 @@ export default function PageCenter(props) {
       backgroundColor: `${backgroundColor}`,
       cursor: 'pointer',
       display: 'flex',
-      justifyContent: "center",
       width: '100%',
       height: `${size.height}px`,
+      justifyContent: "center",
       alignItems: 'center',
-    }} >
+    }}>
       {child}
     </div>
   })}
-// )
-

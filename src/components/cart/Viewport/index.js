@@ -30,17 +30,17 @@ export default function Viewport({ children, background = '#000' }) {
     <div style={{
       width: `${dimensions.width}px`,
       height: `${dimensions.height}px`,
-      background,
+      background: `${background}`,
       overflow: 'hidden'
     }}>
       {React.Children.map(children, child => {
-        return child ? React.cloneElement(child, {
+        return React.cloneElement(child, {
           style: {
             ...child.props.style,
             width: '100%',
             height: '100%'
           }
-        }) : null;
+        })
       })}
     </div>
   );

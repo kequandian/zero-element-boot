@@ -94,15 +94,9 @@ export default function TestPaletteManage(props) {
         )
     }
 
-
     return (
         <ChakraProvider>
             <TestPalettemManage />
-            
-            
         </ChakraProvider>
-
     )
-
-
 }

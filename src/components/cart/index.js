@@ -5,7 +5,7 @@ import Outline from './Outline';
 // import Corner from './deprecated/Corner';
 // import Round from './deprecated/Round';
 // import Circle from './deprecated/Circle';
-import HCenter from './deprecated/HCenter';
+import HCenter from './HCenter';
 // import PageCenter from './PageCenter';
 import Viewport from './Viewport';
 //
