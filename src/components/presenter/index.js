@@ -7,16 +7,19 @@ import Clear from './default/Clear';
 import Rectangle from './shape/Rectangle';
 import Circle from './shape/Circle';
 import Round from './shape/Round';
-// dev
-import ItemPlaceholder from './ItemPlaceholder';
+
+// placeholder
+import DefaultPlaceholder from './placeholder/DefaultPlaceholder';
+import ItemPlaceholder from './placeholder/ItemPlaceholder';
 import Counter from './Counter';
 
 // chart
 import Progress from './chart/Progress';
 
 // element
-import Avatar from './Avatar';
+import Avatar from './Avatar/Avatar';
 import DefaultAvatar from './Avatar/DefaultAvatar';
+import GoogleAvatar from './Avatar/GoogleAvatar';
 
 // button
 import AddNewButton from './button/AddNewButton'
@@ -26,19 +29,15 @@ import SquareAddNewButton from './button/SquareAddNew';
 // tree
 import JsonTree from './tree/JsonTree'
 
-// app
-import TopBar from './app/TopBar'
-
+//text
 import ChakraText from './text/ChakraText'
-import ImageAnimation from './ImageAnimation'
 
 // image
 import Image from './image'
 import CozeImage from './image/CozeImage'
+import ImageAnimation from './image/ImageAnimation'
 
 //
-import PaletteColor from './PaletteColor';
-import GoogleAvatar from './GoogleAvatar';
 import Delete from './button/DeleteBtn';
 import Download from './button/DownloadBtn';
 import ActionButton from './button/ActionButton';
@@ -63,12 +62,13 @@ export {
   Pink,
   Clear,
 
-  // element
+  // avatar
   Avatar,
   DefaultAvatar,
+  GoogleAvatar,
   
-  // tree
-  JsonTree,
+  //text
+  ChakraText,
 
   // shape
   Rectangle,
@@ -77,6 +77,9 @@ export {
 
   // chart
   Progress,
+
+  // tree
+  JsonTree,
 
   // button
   AddNewButton,
@@ -95,24 +98,16 @@ export {
   NoPresenterAction,
   SortPresenterAction,
   DatasetBindingAction,
+  Delete,
+  Download,
 
-  // other
+  // placeholder
   Counter,
+  DefaultPlaceholder,
   ItemPlaceholder,
-
-  // app
-  TopBar,
-
-  ChakraText,
-  ImageAnimation,
 
   // image
   Image,
+  ImageAnimation,
   CozeImage,
-
-  //
-  PaletteColor,
-  GoogleAvatar,
-  Delete,
-  Download
 }

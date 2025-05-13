@@ -31,7 +31,7 @@ import ManageMenuIndicator from '@/components/indicator/ManageMenuIndicator'
 import BackIndicator from '@/components/indicator/BackIndicator';
 
 //presenter
-import { Avatar, ItemPlaceholder,Counter,PaletteColor,  DownloadButton, AddNewButton, ChakraText } from '@/components/presenter';
+import { Avatar, DefaultPlaceholder, ItemPlaceholder, DownloadButton, AddNewButton, ChakraText } from '@/components/presenter';
 
 import JarItem from '@/composition/LogsUi/Sandbox/JarItem';
 import SwaggerItem from '@/composition/ApisUi/SwaggerItem';
@@ -60,7 +60,7 @@ import {
 import ItemImg from '@/pages/SelectListDemo/presenter/ItemImg'
 import ItemTitle from '@/pages/SelectListDemo/presenter/ItemTitle'
 import RssAutoLayout from '@/pages/rssAutoLayout/item'
-import ImageAnimation from '@/components/presenter/ImageAnimation';
+import ImageAnimation from '@/components/presenter/image/ImageAnimation';
 
 import OnDeleteIndicator from '@/components/indicator/OnDeleteIndicator';
 import SelectAvatar from '@/components/indicator/SelectAvatar';
@@ -118,9 +118,8 @@ NamedIndicatorSet({
 })
 
 NamedPresenterSet({
+  DefaultPlaceholder,
   ItemPlaceholder,
-  Counter,
-  PaletteColor,
 
   //default
   Clean,

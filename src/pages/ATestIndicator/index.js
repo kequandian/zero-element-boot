@@ -6,7 +6,7 @@ import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHo
 import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
 import SelectedCartUpperRightIcon from '@/components/indicator/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from '@/components/indicator/SelectedCartRightIcon';
-import ItemPlaceholder from '@/components/presenter/ItemPlaceholder';
+import ItemPlaceholder from '@/components/presenter/placeholder/ItemPlaceholder';
 import CheckBoxIndicator from '@/components/indicator/CheckBoxIndicator';
 import CircularCheckboxIndicator from '@/components/indicator/CircularCheckboxIndicator';
 import OnDeleteIndicator from '@/components/indicator/OnDeleteIndicator';
@@ -16,7 +16,7 @@ import ShadowIndicator from '@/components/indicator/ShadowIndicator'
 import NextIndicator from '@/components/NextIndicator'
 import SelectAvatar from '@/components/indicator/SelectAvatar';
 import { Center, Stack, Text } from '@chakra-ui/layout';
-import Avatar from '@/components/presenter/Avatar';
+import Avatar from '@/components/presenter/Avatar/Avatar';
 
 
 export default function index(props) {

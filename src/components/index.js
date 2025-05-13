@@ -122,7 +122,7 @@ import {
 import {
   Avatar, DefaultAvatar, DownloadButton, ItemPlaceholder, AddNewButton, ChakraText,
   Rectangle,
-  Circle, PaletteColor, SquareAddNewButton, GoogleAvatar, Delete, Download,
+  Circle, DefaultPlaceholder, SquareAddNewButton, GoogleAvatar, Delete, Download,
   ActionButton, SelectAction, ChakraButton,
   NewDatasetAction, PreviewSelectAction, ChangeDatasetAction, DeleteAction, NewParamAction,
   PropsAction, BindingAction, NoPresenterAction, SortPresenterAction, DatasetBindingAction,
@@ -215,23 +215,32 @@ NamedIndicatorSet({
 })
 
 NamedPresenterSet({
+  //avatar
   Avatar,
   DefaultAvatar,
-  //
+  GoogleAvatar,
+
+  //text
   ChakraText,
-  ChakraButton,
-  //
-  DownloadButton,
+  
+  //placeholder
+  DefaultPlaceholder,
   ItemPlaceholder,
-  AddNewButton,
+
+  //image
   Image,
-  Rectangle,
-  Circle,
   CozeImage,
   PreviewAutoLayout,
-  PaletteColor,
+
+  //shape
+  Rectangle,
+  Circle,
+
+  //button
+  ChakraButton,
+  DownloadButton,
+  AddNewButton,
   SquareAddNewButton,
-  GoogleAvatar,
   Delete,
   Download,
   ActionButton,

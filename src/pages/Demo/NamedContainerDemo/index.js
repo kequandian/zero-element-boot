@@ -4,7 +4,7 @@ import { HCenter } from '@/components/cart'
 import { DrawerContainer, WxPage, AddNewContainer, ConfirmContainer } from '@/components/container';
 import { NamedLayout, NamedContainer, NamedCart } from '@/components';
 import { PlainManageList, KeyValueManageList, DefaultGridLayoutList } from '@/components/list';
-import { PaletteColor } from '@/components/presenter';
+import { DefaultPlaceholder } from '@/components/presenter';
 import ColorForm from '@/components/presenter/form/ColorForm';
 import LowCodeDatasetManageList from '@/components/list/LowCodeDatasetManageList';
 
@@ -162,7 +162,7 @@ export default function NamedContainerDemo(props) {
             <HCenter>
                 <WxPage device="pc">
                     <DefaultGridLayoutList items={items}>
-                        <PaletteColor />
+                        <DefaultPlaceholder />
                     </DefaultGridLayoutList>
                 </WxPage>
             </HCenter>
@@ -183,7 +183,7 @@ export default function NamedContainerDemo(props) {
                 <WxPage device="pc">
                     <AddNewContainer {...config}>
                         <DefaultGridLayoutList>
-                            <PaletteColor />
+                            <DefaultPlaceholder />
                         </DefaultGridLayoutList>
                         <ColorForm />
                     </AddNewContainer>
