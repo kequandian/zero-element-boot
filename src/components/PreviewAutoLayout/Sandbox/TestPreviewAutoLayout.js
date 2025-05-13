@@ -8,8 +8,6 @@ import { AddNewContainer } from '@/components/container';
 import { DefaultGridLayoutList } from '@/components/list'
 
 import { WxPage } from '@/components/container';
-import { HCenter } from '@/components/cart';
-import PreviewActionIndicator from '@/components/indicator/PreviewActionIndicator';
 import PlacementIndicator from '@/components/indicator/PlacementIndicator';
 
 import AddNewModal from '@/components/presenter/modal/AddNewModal';
@@ -227,7 +225,6 @@ export default function TestPreviewAutoLayout(props) {
         }
 
         return (
-            <HCenter>
                 <AddNewContainer {...config}>
                     <DefaultGridLayoutList columns={1} hasCart={false} hasIndicator={false}>
                         <PlacementIndicator Indicator={_Indicator} alignment="topright" onPreviewTriggered={onPreviewClick}>
@@ -240,15 +237,12 @@ export default function TestPreviewAutoLayout(props) {
                         <div>add new modal</div>
                     </AddNewModal>
                 </AddNewContainer>
-            </HCenter>
         )
     }
 
     //修改组件属性
     const TestEditComponentProps = () => {
-
         const moduleName="CssCart"
-
         return (
             <PreviewAutoLayout layoutName="PropsListAutolayout"  moduleName={moduleName} />
         )
@@ -267,11 +261,11 @@ export default function TestPreviewAutoLayout(props) {
                 layoutName="ParentParameterListAutoLayout"
                 moduleId="320"
             /> */}
-            {/* <HCenter>
+            {/* 
                 <WxPage title='组件按钮' device="pc">
                     <PreviewAutoLayout layoutName="ComponentTypeList" />
                 </WxPage>
-            </HCenter> */}
+         */}
 
             <TestIndicatorAutoLayout />
             {/* <Box overflow={'hidden'}>

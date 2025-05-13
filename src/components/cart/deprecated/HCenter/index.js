@@ -12,9 +12,7 @@ export default function HCenter(props) {
 
     const { children, align="center", fill='transparent', offset = '0' } = props
 
-    //获取屏幕宽高
     const size = useSize()
-    //获取当前设备
     const userAgent = navigator.userAgent
     
     let getWidth = ''

@@ -1,15 +1,9 @@
 import React from 'react';
 
 import { ChakraProvider, HStack, Box, Button  } from '@chakra-ui/react';
-import PreviewAutoLayout from '@/components/PreviewAutoLayout';
 import { AutoLayout, APIContainer } from '@/components';
 
-import { WxPage } from '@/components/container';
-import { HCenter } from '@/components/cart';
-
 export default function TestAutoLayout(props) {
-
-
 
     const TestAutoLayout = () => {
         const config = {
@@ -96,9 +90,7 @@ export default function TestAutoLayout(props) {
     return (
 
         <ChakraProvider>
-
             <TestAutoLayout />
-            
         </ChakraProvider>
        
     )

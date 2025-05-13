@@ -1,7 +1,6 @@
 import React from 'react';
 
 import useTokenRequest from '@/components/hooks/useTokenRequest';
-import { HCenter } from '@/components/cart';
 import RssRender from './index'
 
 export default function (props) {
@@ -19,9 +18,7 @@ export default function (props) {
 
     return (
         data ? (
-            <HCenter>
-                <RssRender data={data.content} />
-            </HCenter>
+            <RssRender data={data.content} />
         ):<></>
     )
 }

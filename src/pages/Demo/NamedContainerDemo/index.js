@@ -1,6 +1,5 @@
 import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
-import { HCenter } from '@/components/cart'
 import { DrawerContainer, WxPage, AddNewContainer, ConfirmContainer } from '@/components/container';
 import { NamedLayout, NamedContainer, NamedCart } from '@/components';
 import { PlainManageList, KeyValueManageList, DefaultGridLayoutList } from '@/components/list';
@@ -159,13 +158,11 @@ export default function NamedContainerDemo(props) {
             }
         ]
         return (
-            <HCenter>
                 <WxPage device="pc">
                     <DefaultGridLayoutList items={items}>
                         <DefaultPlaceholder />
                     </DefaultGridLayoutList>
                 </WxPage>
-            </HCenter>
         )
     }
 
@@ -179,7 +176,6 @@ export default function NamedContainerDemo(props) {
         }
 
         return (
-            <HCenter>
                 <WxPage device="pc">
                     <AddNewContainer {...config}>
                         <DefaultGridLayoutList>
@@ -188,7 +184,6 @@ export default function NamedContainerDemo(props) {
                         <ColorForm />
                     </AddNewContainer>
                 </WxPage>
-            </HCenter>
         )
     }
 
