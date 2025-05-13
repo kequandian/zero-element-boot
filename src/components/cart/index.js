@@ -15,8 +15,9 @@ import MaskBox from './MaskBox';
 import Box from './Box';
 
 //
-import LightingCart from './LightingCart';
-import HoverShadowCart from './HoverShadowCart';
+import ShadowCart from './ShadowCart'
+import LightingCart from './LightingCart'
+import HoverShadowCart from './HoverShadowCart'
 
 //
 // import SelectIndicator from './indicator/SelectIndicatort';
@@ -44,6 +45,7 @@ export {
     Box,
 
     //effect cart
+    ShadowCart,
     HoverShadowCart,
     LightingCart
 
