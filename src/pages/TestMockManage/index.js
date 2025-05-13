@@ -1,6 +1,5 @@
 import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
-import { HCenter } from '@/components/cart'
 import { WxPage, AddNewContainer } from '@/components/container';
 import ColorModal from '@/components/presenter/modal/ColorModal';
 import TestPaletteList from '@/pages/TestPaletteList';

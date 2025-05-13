@@ -1,11 +1,11 @@
 import Cart from './Cart';
 import CssCart from './CssCart';
 import Outline from './Outline';
+import Border from './Border';
 // import Rectangle from './deprecated/Rectangle';
 // import Corner from './deprecated/Corner';
 // import Round from './deprecated/Round';
 // import Circle from './deprecated/Circle';
-import HCenter from './HCenter';
 // import PageCenter from './PageCenter';
 import Viewport from './Viewport';
 //
@@ -26,14 +26,15 @@ export {
     Cart,
     CssCart,
     Outline,
+    Border, 
     //shape
         // Rectangle,
         // Round,
         // Corner,
         // Circle,
     //alignment to as layout
-    HCenter,
-    // PageCenter,
+    // HCenter,     //move to as layout
+    // PageCenter,  //move to as layout
     Viewport,
 
     //box

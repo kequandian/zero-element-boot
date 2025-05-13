@@ -10,10 +10,6 @@ import { Avatar } from '@/components/presenter'
 import IsValidElementTest from './TestCases/IsValidElementTest'
 import ImageAnimationDemo from './TestCases/ImageAnimationDemo'
 
-// TestCart
-import TestPageCart from './TestCart/TestPageCart'
-import PageCenter from '@/components/cart/PageCenter';
-
 // TestComposition
 import AvatarItemDemo from './TestComposition/AvatarItemDemo'
 
@@ -51,7 +47,6 @@ import ApisUi from '@/composition/ApisUi/Sandbox';
 import LogsUi from '@/composition/LogsUi/Sandbox'
 
 import CssCart from '@/components/cart/CssCart'
-import TestCart from '@/pages/TestCart'
 
 //rss-ui
 import RssRender from '@/components/presenter/rss/RssRender/Sandbox'

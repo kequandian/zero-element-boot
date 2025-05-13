@@ -10,9 +10,6 @@ import { Avatar } from '@/components/presenter'
 import IsValidElementTest from './TestCases/IsValidElementTest'
 import ImageAnimationDemo from './TestCases/ImageAnimationDemo'
 
-// TestCart
-import TestPageCart from './TestCart/TestPageCart'
-
 // TestComposition
 import AvatarItemDemo from './TestComposition/AvatarItemDemo'
 
@@ -51,11 +48,8 @@ import LogsUi from '@/composition/LogsUi/Sandbox'
 // SelectListDemo
 import SelectListDemo from './SelectListDemo/Sandbox'
 // import AvatarSelectListDemo from './avatarSelectListDemo/Sandbox'
-import TestIndicator from './ATestIndicator'
 
 import CssCart from '@/components/cart/CssCart'
-import TestCart from '@/pages/TestCart'
-
 
 export default function Index(props) {
 
@@ -80,31 +74,9 @@ export default function Index(props) {
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
 
   // return <Connection/>
-  // return <AutoComponentSet onItemClick={onItemClickHandle}/>
-  return <TestCart {...props}/> 
+  return <div></div>
 
-  // return (
-  // <CssCart width='300px' margin='40px'>
-  //   <TestIndicator />
-  // </CssCart>
-  // )
-
-  // return <div></div>
-
-  // AutoLayout 组件测试
-  // const layout = {
-  //   children: [ 
-  //     {
-  //       "presenter" : { xname: "ItemPlaceholder", props: {} }
-  //     },
-  //     {
-  //       "presenter" : "ItemPlaceholder"
-  //     }
-  //   ]
-  // }
   // return <TestCRUDList />
-
   // return <AlbumList/>
-
 
 }
