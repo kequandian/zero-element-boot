@@ -36,7 +36,6 @@ export default function useLowCodePalette(paletteName, keysMap) {
     }
 
     const getPalette = () => {
-        
         const api = `/api/lc/palette?paletteName=${paletteName}&pageNum=1&pageSize=100`;
         const reqData = {};
         promiseAjax(api, reqData)

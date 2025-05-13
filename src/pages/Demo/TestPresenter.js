@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ChakraProvider, Box, background } from '@chakra-ui/react'
 
-import PaletteColor from '@/components/presenter/PaletteColor'
+import DefaultPlaceholder from '@/components/presenter/placeholder/DefaultPlaceholder'
 import { ChakraButton } from '@/components/presenter';
 import SortPresenterAction from '@/components/presenter/button/SortPresenterAction'
 import { LS } from 'zero-element/lib/utils/storage';
@@ -37,7 +37,7 @@ export default function TestPresenter(props) {
     return (
         <ChakraProvider>
             {/* <Box w="100px" h="100px">
-                <PaletteColor color="#11A1C6" name="#11A1C6"/>
+                <DefaultPlaceholder color="#11A1C6" name="#11A1C6"/>
             </Box> */}
             {/* <TestChakraButton /> */}
             <TestSortPresenterAction/>

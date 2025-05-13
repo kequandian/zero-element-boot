@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChakraProvider, Box } from '@chakra-ui/react';
 import PageCenter from '@/components/cart/PageCenter';
-import Avatar from '@/components/presenter/Avatar';
+import Avatar from '@/components/presenter/Avatar/Avatar';
 import Outline from '@/components/cart/Outline';
 
 export default function TestPageCart(props) {

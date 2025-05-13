@@ -4,7 +4,7 @@ import { AutoLayout as NamedPresenter } from '@/components';
 
 // import { AutoLayout } from '@/components';
 import useTokenRequest from '@/components/hooks/useTokenRequest';
-import ItemPlaceholder from '@/components/presenter/ItemPlaceholder';
+import ItemPlaceholder from '@/components/presenter/placeholder/ItemPlaceholder';
 // import NamedPresenter from './NamedPresenter'
 
 export default function index(props) {

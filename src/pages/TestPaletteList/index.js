@@ -3,7 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { HCenter } from '@/components/cart'
 import { WxPage, AddNewContainer } from '@/components/container';
 import { DefaultGridLayoutList } from '@/components/list';
-import { PaletteColor } from '@/components/presenter';
+import { DefaultPlaceholder } from '@/components/presenter';
 import ColorForm from '@/components/presenter/form/ColorForm';
 
 
@@ -31,7 +31,7 @@ export default function TestPaletteList(props) {
                 <WxPage device="pc">
                     <AddNewContainer {...config}>
                         <DefaultGridLayoutList>
-                            <PaletteColor />
+                            <DefaultPlaceholder />
                         </DefaultGridLayoutList>
                         <ColorForm />
                     </AddNewContainer>

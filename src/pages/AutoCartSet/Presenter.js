@@ -1,6 +1,6 @@
 import React from 'react';
 import Cart from '@/components/cart/Cart';
-import ItemPlaceholder from '@/components/presenter/ItemPlaceholder'
+import ItemPlaceholder from '@/components/presenter/placeholder/ItemPlaceholder'
 import NamedCart from '@/components/NamedCart'
 import { Flex, Text, Center } from '@chakra-ui/react'
 import TitledContainer from '@/components/container/TitledContainer'
