@@ -309,18 +309,18 @@ FormItemTypeSet({
 // default to export core components
 export {
   AutoLayout,
-  // CloneAutoLayout,
-  // AutoComponent,
 
+  //
   NamedLayout,
   NamedList,
   NamedCart,
   NamedContainer,
-  NamedSeperator,
   NamedGateway,
-
-  // 
   NamedIndicator,
+  NamedSeperator,
+  NamedSelector,
+
+  //
   NextIndicator,
   NextCssIndicator
 };

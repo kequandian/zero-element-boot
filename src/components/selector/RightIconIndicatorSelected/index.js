@@ -24,7 +24,6 @@ export default function Index(props) {
     ...defaultSelectedStyles
   }
 
-
   return (
     <div style={styles}>
       <div className={ 'right_icon_on'} >

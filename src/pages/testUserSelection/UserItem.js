@@ -2,7 +2,7 @@ import React from 'react';
 
 const AutoComponent = require('@/components/AutoComponent');
 
-const presenter = require('@/composition/testUserSelection/presenter');
+const presenter = require('@/pages/testUserSelection/presenter');
 
 export default function UserItem(props) {
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
 import { WxPage, AddNewContainer } from '@/components/container';
 import ColorModal from '@/components/presenter/modal/ColorModal';
-import TestPaletteList from '@/pages/TestPaletteList';
+import TestPaletteList from '@/pages/TestLowCode/TestPaletteList';
 import LowCodeDatasetManageList from '@/components/list/LowCodeDatasetManageList';
 
 

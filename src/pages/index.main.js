@@ -7,13 +7,13 @@ import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConf
 import { Avatar } from '@/components/presenter'
 
 // TestCase, Presenter etc.
-import IsValidElementTest from './TestCases/IsValidElementTest'
-import ImageAnimationDemo from './TestCases/ImageAnimationDemo'
+import IsValidElementTest from '../tests/IsValidElementTest'
+import ImageAnimationDemo from './TestComponents/ImageAnimationDemo'
 
 // TestComposition
 import AvatarItemDemo from './TestComposition/AvatarItemDemo'
 
-import TableContainer from '@/pages/TableDemo/Sandbox';
+import TableContainer from '@/pages/TestLowCode/TableDemo/Sandbox';
 
 import Standalone from '@/composition/Standalone/Sandbox';
 import Connection from '@/composition/Connection'
@@ -26,17 +26,17 @@ import Connection from '@/composition/Connection'
 // import useTokenRequest from '@/components/hooks/useTokenRequest';
 
 import TestDownload from '@/pages/TestDownloadDemo';
-import TestRowIcons from '@/composition/testRowIcons/Sandbox';
-import TestNamedCart from '@/pages/TestNamedCart'
-import AutoCartSet from '@/pages/AutoCartSet/Presenter'
+import TestRowIcons from '@/pages/TestLowCode/TestRowIcons/Sandbox';
+import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
+import AutoCartSet from '@/pages/TestLowCode/AutoCartSet/Presenter'
 
-import AutoComponentSet from './AutoComponentSet'
+import AutoComponentSet from './TestLowCode/AutoComponentSet'
 import RouterParamsDemo from './TestHooks/testUseRouter/demo'
 import RssAutoLayout from '@/composition/RssAutoLayout/Sandbox'
 import AvatarSelected from '@/composition/AvatarSelected/Sandbox'
 import TestGroupedList from './TestGroupedList';
 //nav-ui
-import TestCRUDList from '@/composition/testCrudList';
+import TestCRUDList from '@/pages/testCrudList';
 //preview-ui
 import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
 //jsontree-ui
