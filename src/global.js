@@ -59,12 +59,12 @@ import {
 
 import ItemImg from '@/pages/SelectListDemo/presenter/ItemImg'
 import ItemTitle from '@/pages/SelectListDemo/presenter/ItemTitle'
-import RssAutoLayout from '@/pages/rssAutoLayout/item'
+import RssAutoLayout from '@/composition/RssAutoLayout/item'
 import ImageAnimation from '@/components/presenter/image/ImageAnimation';
 
 import OnDeleteIndicator from '@/components/indicator/OnDeleteIndicator';
 import SelectAvatar from '@/components/selector/SelectAvatar';
-import TagIndicator from '@/components/cart/TagIndicator';
+import TagIndicator from '@/components/cart/Outline/TagIndicator';
 
 import testModuleItem from '@/composition/moduleListPage/moduleItem'
 

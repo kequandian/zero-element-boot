@@ -13,13 +13,4 @@ export default function NextIndicator({ children, ...rest }) {
                     ...rest
                 })
             })
-    // return React.Children.map(children, child => {
-    //     return (
-    //     <>
-    //         return React.cloneElement(child, {
-    //             ...rest
-    //             })
-    //     </>
-    //     )
-    //   })
 }

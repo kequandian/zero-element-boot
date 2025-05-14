@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from "@chakra-ui/react";
 import AutoLayout from '@/components/AutoLayout';
-import useTokenRequest from '@/components/hooks/useTokenRequest';
 import layout from './layout';
 
 
