@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { NamedCart } from '@/components';
-import RightIconIndicatorDefault from '@/components/indicator/RightIconIndicatorDefault';
-import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
-import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
+import RightIconIndicatorDefault from '@/components/selector/RightIconIndicatorDefault';
+import RightIconIndicatorHover from '@/components/selector/RightIconIndicatorHover';
+import RightIconIndicatorSelected from '@/components/selector/RightIconIndicatorSelected';
 
 export default function index(props) {
 

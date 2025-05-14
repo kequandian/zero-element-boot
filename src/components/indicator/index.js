@@ -1,12 +1,12 @@
-import SelectedCartUpperRightIcon from './SelectedCartUpperRightIcon';
-import SelectedCartRightIcon from './SelectedCartRightIcon';
+// import SelectedCartUpperRightIcon from '../selector/SelectedCartUpperRightIcon';
+// import SelectedCartRightIcon from '../selector/SelectedCartRightIcon';
 import DownloadIndicator from './DownloadIndicator'
 import ClickIndicator from './ClickIndicator'
 import ManageMenuIndicator from './ManageMenuIndicator'
 import ShadowIndicator from './ShadowIndicator';
 import DeleteIndicator from './DeleteIndicator';
 import BackIndicator from './BackIndicator';
-import MaskIndicator from './MaskIndicator';
+import MaskIndicator from '../cart/MaskIndicator';
 import LabelIndicator from './LabelIndicator';
 import TipsIndicator from './TipsIndicator';
 import TitleIndicator from './TitleIndicator';
@@ -15,8 +15,8 @@ import PlacementIndicator from './PlacementIndicator';
 import MultiActionsIndicator from './MultiActionsIndicator';
 
 export {
-  SelectedCartUpperRightIcon,
-  SelectedCartRightIcon,
+  // SelectedCartUpperRightIcon,
+  // SelectedCartRightIcon,
   DownloadIndicator,
   ClickIndicator,
   ManageMenuIndicator,

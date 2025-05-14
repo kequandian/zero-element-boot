@@ -17,7 +17,6 @@ import Box from './Box';
 //
 import ShadowCart from './ShadowCart'
 import LightingCart from './LightingCart'
-import HoverShadowCart from './HoverShadowCart'
 
 //
 // import SelectIndicator from './indicator/SelectIndicatort';
@@ -46,7 +45,6 @@ export {
 
     //effect cart
     ShadowCart,
-    HoverShadowCart,
     LightingCart
 
     //indicator (cart for indicator)

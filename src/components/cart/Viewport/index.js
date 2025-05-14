@@ -50,3 +50,26 @@ export default function Viewport({ children, background = '#000', horizontalWeig
     </div>
   );
 }
+
+/**
+ * test
+ * @param {} props 
+ * @returns 
+ */
+function Sandbox (props) {
+  return (
+      <Viewport 
+          horizontalWeights={[2, 2, 1]}
+          verticalWeights={[3, 1]}>
+          <DefaultPlaceholder>Left</DefaultPlaceholder>
+          <DefaultPlaceholder>Top</DefaultPlaceholder>
+          <DefaultPlaceholder>Right</DefaultPlaceholder>
+          <DefaultPlaceholder/>
+          <DefaultPlaceholder/>
+          <DefaultPlaceholder/>
+          <DefaultPlaceholder/>
+          <DefaultPlaceholder/>
+          <DefaultPlaceholder/>
+        </Viewport>
+  )
+}

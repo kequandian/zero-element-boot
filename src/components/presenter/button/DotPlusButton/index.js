@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import TagIndicator from '@/components/indicator/TagIndicator'
+import TagIndicator from '@/components/cart/TagIndicator'
 
 
 /**

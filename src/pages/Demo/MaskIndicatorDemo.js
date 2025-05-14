@@ -1,5 +1,5 @@
 import React from 'react';
-import MaskIndicator from "@/components/indicator/MaskIndicator";
+import MaskIndicator from "@/components/cart/MaskIndicator";
 import { ItemPlaceholder } from '@/components/presenter';
 
 export default function Index(props) {

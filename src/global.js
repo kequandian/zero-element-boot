@@ -17,12 +17,12 @@ import { set as NamedSelector } from '@/components/config/NamedSelectorConfig';
 // import RightIconCheckboxSelected from '@/components/indicator/RightIconCheckboxIndicator/Selected';
 // import RightIconCheckboxDefauct from '@/components/indicator/RightIconCheckboxIndicator/Defauct';
 
-import RightIconIndicatorDefault from '@/components/indicator/RightIconIndicatorDefault';
-import RightIconIndicatorHover from '@/components/indicator/RightIconIndicatorHover';
-import RightIconIndicatorSelected from '@/components/indicator/RightIconIndicatorSelected';
+import RightIconIndicatorDefault from '@/components/selector/RightIconIndicatorDefault';
+import RightIconIndicatorHover from '@/components/selector/RightIconIndicatorHover';
+import RightIconIndicatorSelected from '@/components/selector/RightIconIndicatorSelected';
 
 
-import CircularCheckboxIndicatorDefault from '@/components/indicator/CircularCheckboxIndicator';
+import CircularCheckboxIndicatorDefault from '@/components/selector/CircularCheckboxIndicator';
 import ShadowIndicator from '@/components/indicator/ShadowIndicator';
 // import CircularCheckboxIndicatorSelected from '@/components/indicator/CircularCheckboxIndicator/CircularCheckboxSelected';
 import DownloadIndicator from '@/components/indicator/DownloadIndicator'
@@ -44,8 +44,8 @@ import RightIconRadioHoverIndicator from '@/pages/SelectListDemo/indicator/Right
 import RightIconRadioSelectedIndicator from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Selected';
 import RightIconRadioDefault from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Default';
 
-import SelectedCartUpperRightIcon from '@/components/indicator/SelectedCartUpperRightIcon';
-import SelectedCartRightIcon from '@/components/indicator/SelectedCartRightIcon';
+import SelectedCartUpperRightIcon from '@/components/selector/SelectedCartUpperRightIcon';
+import SelectedCartRightIcon from '@/components/selector/SelectedCartRightIcon';
 // selector
 import OutlineSelector from '@/components/selector/OutlineSelector';
 
@@ -63,8 +63,8 @@ import RssAutoLayout from '@/pages/rssAutoLayout/item'
 import ImageAnimation from '@/components/presenter/image/ImageAnimation';
 
 import OnDeleteIndicator from '@/components/indicator/OnDeleteIndicator';
-import SelectAvatar from '@/components/indicator/SelectAvatar';
-import TagIndicator from '@/components/indicator/TagIndicator';
+import SelectAvatar from '@/components/selector/SelectAvatar';
+import TagIndicator from '@/components/cart/TagIndicator';
 
 import testModuleItem from '@/composition/moduleListPage/moduleItem'
 
