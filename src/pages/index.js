@@ -31,9 +31,9 @@ import TestNamedCart from '@/pages/TestNamedCart'
 import AutoCartSet from '@/pages/AutoCartSet/Presenter'
 
 import AutoComponentSet from './AutoComponentSet'
-import RouterParamsDemo from './GetRouterPath/demo'
-import RssAutoLayout from '@/pages/rssAutoLayout/Sandbox'
-import AvatarSelected from '@/pages/AvatarSelected/Sandbox'
+import RouterParamsDemo from './TestHooks/testUseRouter/demo'
+import RssAutoLayout from '@/composition/RssAutoLayout/Sandbox'
+import AvatarSelected from '@/composition/AvatarSelected/Sandbox'
 import TestGroupedList from './TestGroupedList';
 //nav-ui
 import TestCRUDList from '@/composition/testCrudList';
@@ -50,9 +50,6 @@ import CssCart from '@/components/cart/CssCart'
 
 //rss-ui
 import RssRender from '@/components/presenter/rss/RssRender/Sandbox'
-
-//test
-import NewStandalone from '@/pages/NewStandalone/Sandbox'
 
 //实例组件
 import CartsManage from '@/composition/cartsManage'

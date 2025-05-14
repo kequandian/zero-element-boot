@@ -1,6 +1,5 @@
 import { AutoLayout } from "@/components"
 import layout from "./layout"
-import alternative  from "./alternative"
 import mock from "./mock"
 import binding from "./binding"
 

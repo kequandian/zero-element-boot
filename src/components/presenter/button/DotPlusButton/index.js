@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import TagIndicator from '@/components/cart/TagIndicator'
-
 
 /**
  * 

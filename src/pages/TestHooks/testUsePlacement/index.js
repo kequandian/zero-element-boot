@@ -43,19 +43,6 @@ export default function TestHooks() {
                 alignItems: 'center',
                 flexDirection: 'column',
             }}>
-                {/* <HStack spacing={4}>
-                    {bottonList.map((item, index) => (
-                        <Button
-                            key={index}
-                            onClick={() => {
-                                setAlignment(item)
-                            }}
-                        >
-                            {item}
-                        </Button>
-                    ))}
-                </HStack> */}
-
                 <Grid templateColumns='repeat(4, 1fr)' gap={6}>
                     {bottonList.map((item, index) => (
                         <div ref={targetRef} key={index} style={paramStyle}>
@@ -67,16 +54,6 @@ export default function TestHooks() {
                         </div>
                     ))}
                 </Grid>
-
-                {/* <div style={paramStyle}>
-                    <div style={styles}>
-                    <div style={{ width: '20px', height: '20px', background: 'red' }}></div>
-                    </div>
-                    <div style={{
-                        width: '100px', height: '100px', background: 'black',
-                    }}>
-                    </div>
-                </div> */}
             </div>
         )
     }
