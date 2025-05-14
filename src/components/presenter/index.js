@@ -11,15 +11,14 @@ import Round from './shape/Round';
 // placeholder
 import DefaultPlaceholder from './placeholder/DefaultPlaceholder';
 import ItemPlaceholder from './placeholder/ItemPlaceholder';
-import Counter from './Counter';
 
 // chart
 import Progress from './chart/Progress';
 
 // element
-import Avatar from './Avatar/Avatar';
-import DefaultAvatar from './Avatar/DefaultAvatar';
-import GoogleAvatar from './Avatar/GoogleAvatar';
+import Avatar from './avatar/Avatar';
+import DefaultAvatar from './avatar/DefaultAvatar';
+import GoogleAvatar from './avatar/GoogleAvatar';
 
 // button
 import AddNewButton from './button/AddNewButton'
@@ -102,7 +101,6 @@ export {
   Download,
 
   // placeholder
-  Counter,
   DefaultPlaceholder,
   ItemPlaceholder,
 
