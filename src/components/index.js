@@ -7,6 +7,7 @@ import NamedGateway from './NamedGateway';
 import NamedIndicator from './NamedIndicator';
 //
 import NextIndicator from './NextIndicator';
+import NextCssIndicator from './NextCssIndicator';
 
 // AutoComponent
 import AutoLayout from './AutoLayout';
@@ -319,7 +320,8 @@ export {
   NamedGateway,
 
   // 
-  NextIndicator,
   NamedIndicator,
+  NextIndicator,
+  NextCssIndicator
 };
 
