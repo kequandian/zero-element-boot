@@ -107,27 +107,6 @@ export default function Index(props) {
                         </AutoLayout>
                         
                     </Box>
-                    {/* <Box flex='1'>
-                        <div style={{ width:'100%', marginTop:'8px'}}>
-                            <Flex>
-                                <Box p='4'>
-                                </Box>
-                                <Spacer />
-                                <Box p='4'>
-                                    <Button
-                                        size='md'
-                                        height='48px'
-                                        width='150px'
-                                        border='2px'
-                                        borderColor='green.500'
-                                        onClick={onOpen}
-                                        >
-                                        添加
-                                    </Button>
-                                </Box>
-                            </Flex>
-                        </div>
-                    </Box> */}
                 </VStack>
             </div>
             
@@ -167,15 +146,8 @@ export default function Index(props) {
                         </Stack>
                     </form>
                 </ModalBody>
-
-                {/* <ModalFooter>
-                    <Button colorScheme='blue' mr={3} onClick={onOk}>
-                    Save
-                    </Button>
-                </ModalFooter> */}
                 </ModalContent>
             </Modal>
         </ChakraProvider>
     )
-
 }

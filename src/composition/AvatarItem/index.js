@@ -1,5 +1,5 @@
 import React from 'react';
-const AutoComponent = require('@/components/AutoComponent');
+import AutoLayout from '@/components/AutoLayout';
 
 /**
  * 
@@ -52,7 +52,7 @@ export default function AvatarItem(props) {
 
   return (
     <>
-      <AutoComponent {...config} /*allComponents={allComponents}*/ />
+      <AutoLayout {...config} /*allComponents={allComponents}*/ />
     </>
   )
 

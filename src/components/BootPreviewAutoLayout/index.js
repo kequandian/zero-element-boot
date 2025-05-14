@@ -24,17 +24,7 @@ export default function BootPreviewAutoLayout (props) {
 
   return (
     // <PreviewAutoLayout tag='BOOT' layoutApi={layoutApi}  />
-      // <PreviewAutoLayout tag='BOOT' layout={layoutData} />
-      <Viewport 
-          horizontalWeights={[2, 2, 1]}
-          verticalWeights={[3, 1]}>
-          <DefaultPlaceholder>Left</DefaultPlaceholder>
-          <DefaultPlaceholder>Top</DefaultPlaceholder>
-          <DefaultPlaceholder>Right</DefaultPlaceholder>
-          <DefaultPlaceholder/>
-          <DefaultPlaceholder/>
-          <DefaultPlaceholder/>
-        </Viewport>
+    <PreviewAutoLayout tag='BOOT' layout={layoutData} />
+    
   )
-
 }
