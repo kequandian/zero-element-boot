@@ -2,7 +2,8 @@ import React from 'react';
 import checkOff from '@/assets/check_off.svg';
 import checkXOn from '@/assets/check_on.svg';
 import StyleDate from './index.less';
-import { Flex } from '@chakra-ui/react'
+import { Flex, Wrap } from '@chakra-ui/react'
+// import {Wrap} from '@/components/layout'
 import Cart from '@/components/cart/Cart';
 
 /**
@@ -29,7 +30,7 @@ export default function Index(props) {
     const borderStyle =  (state == "selected")  ? '#1e6fff' : '#ffffff'
 
     return (
-        <Flex>
+        <Wrap>
             <Cart padding='10px' margin='0' lineColor={borderStyle} >
                 {
                     React.Children.map(children, child => (
@@ -46,6 +47,6 @@ export default function Index(props) {
                 }
 
             </div>
-        </Flex >
+        </Wrap >
     )
 }

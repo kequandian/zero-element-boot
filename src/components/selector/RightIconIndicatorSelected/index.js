@@ -8,7 +8,7 @@ import checkOn from '@/assets/check_on.svg';
 
 export default function Index(props) {
 
-  const { children, defaultSelectedStyles={} } = props;
+  const { children } = props;
 
   const styles = {
     position: 'relative',
@@ -21,7 +21,6 @@ export default function Index(props) {
     backgroundColor: '#f1f1f1',
     borderColor: 'transparent',
     boxShadow: '0 0px 6px rgba(255, 255, 255, 1)',
-    ...defaultSelectedStyles
   }
 
   return (
