@@ -34,9 +34,6 @@ export default function BootPreviewAutoLayout (props) {
           <DefaultPlaceholder/>
           <DefaultPlaceholder/>
           <DefaultPlaceholder/>
-          <DefaultPlaceholder/>
-          <DefaultPlaceholder/>
-          <DefaultPlaceholder/>
         </Viewport>
   )
 
