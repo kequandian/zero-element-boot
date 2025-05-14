@@ -11,7 +11,7 @@ import OverlaySelector  from '@/components/OverlaySelector'
 // import Selected  from '@/components/indicator/CircularCheckboxIndicator/Selected'
 // import ShadowIndicator from '@/components/indicator/ShadowIndicator';
 
-import Default  from '../../components/indicator/CircularCheckboxIndicator'
+import Default  from '../../components/selector/CircularCheckboxIndicator'
 import ShadowIndicator from './components/ShadowIndicator';
 
 

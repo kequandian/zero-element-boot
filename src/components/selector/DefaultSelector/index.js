@@ -1,6 +1,6 @@
 import React from 'react';
 import OverlaySelector from '@/components/OverlaySelector'
-import CircularCheckboxIndicator from '@/components/indicator/CircularCheckboxIndicator'
+import CircularCheckboxIndicator from '@/components/selector/CircularCheckboxIndicator'
 
 /**
  * @param {boolean} overlay  hover状态效果是否叠加, 默认为不叠加

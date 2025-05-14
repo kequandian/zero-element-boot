@@ -66,7 +66,7 @@ import {
   Box,
   
   //hover
-  HoverShadowCart,
+  ShadowCart,
   LightingCart,
   //
   // SelectIndicator,
@@ -76,8 +76,6 @@ import {
 
 //indicator
 import {
-  SelectedCartUpperRightIcon,
-  SelectedCartRightIcon,
   DownloadIndicator,
   ClickIndicator,
   ManageMenuIndicator,
@@ -95,6 +93,9 @@ import {
 
 // selector
 import {
+  SelectedCartUpperRightIcon,
+  SelectedCartRightIcon,
+  
   OutlineSelector,
   CornerCheckboxSelector,
   LeftCheckboxSelector
@@ -186,9 +187,7 @@ NamedCartSet({
   Box,
 
   //
-  // CheckBoxIndicator,
-  // SelectIndicator,
-  HoverShadowCart,
+  ShadowCart,
   LightingCart
 })
 
@@ -199,8 +198,8 @@ NamedIndicatorSet({
   // RightIconIndicatorDefault,
   // RightIconIndicatorHover,
   // RightIconIndicatorSelected
-  SelectedCartUpperRightIcon,
-  SelectedCartRightIcon,
+  // SelectedCartUpperRightIcon,
+  // SelectedCartRightIcon,
   DownloadIndicator,
   ClickIndicator,
   ManageMenuIndicator,
