@@ -6,58 +6,44 @@ import { AutoLayout, NamedLayout } from '@/components';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import { Avatar } from '@/components/presenter'
 
-// TestCase, Presenter etc.
-import IsValidElementTest from '../tests/IsValidElementTest'
+// TestComponents
 import ImageAnimationDemo from './TestComponents/ImageAnimationDemo'
+import TestDownload from '@/pages/TestComponents/TestDownloadDemo';
 
 // TestComposition
 import AvatarItemDemo from './TestComposition/AvatarItemDemo'
 import RssAutoLayout from '@/composition/RssAutoLayout/Sandbox'
 import AvatarSelected from '@/composition/AvatarSelected/Sandbox'
-
-import TableContainer from '@/pages/TestLowCode/TableDemo/Sandbox';
-
 import Standalone from '@/composition/Standalone/Sandbox';
 import Connection from '@/composition/Connection'
-// import TestUserSelection from '@/composition/testUserSelection/Sandbox';
-
-// import UserItem from '@/composition/testUserSelection/UserItem'
-
-// import AutoLayout from '@/components/AutoLayout';
-// import userListLayoutJson from './userList/layout';
-// import useTokenRequest from '@/components/hooks/useTokenRequest';
-
-import TestDownload from '@/pages/TestDownloadDemo';
-import TestRowIcons from '@/pages/TestLowCode/TestRowIcons/Sandbox';
-import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
-import TestNamedSelector from '@/pages/TestComponents/TestNamedSelector'
-
-import AutoCartSet from '@/pages/TestLowCode/AutoCartSet/Presenter'
-
-import AutoComponentSet from './TestLowCode/AutoComponentSet'
-import RouterParamsDemo from './TestHooks/testUseRouter/demo'
-
-import TestGroupedList from './TestGroupedList';
-//nav-ui
-import TestCRUDList from '@/pages/testCrudList';
-//preview-ui
-import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
-//jsontree-ui
-import JsonTreeDemo from '@/components/presenter/tree/JsonTree/Sandbox'
 //apis-ui
 import ApisUi from '@/composition/ApisUi/Sandbox';
 //logs-ui
 import LogsUi from '@/composition/LogsUi/Sandbox'
 
-import CssCart from '@/components/cart/CssCart'
+// TestNamed
+import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
+import TestNamedSelector from '@/pages/TestComponents/TestNamedSelector'
 
-//rss-ui
+// TestLowcode
+import TestRowIcons from '@/pages/TestLowCode/TestRowIcons/Sandbox';
+import AutoCartSet from '@/pages/TestLowCode/AutoCartSet/Presenter'
+import AutoComponentSet from './TestLowCode/AutoComponentSet'
+import RouterParamsDemo from './TestHooks/testUseRouter/demo'
+
+// TestList
+import TestGroupedList from './TestLists/TestGroupedList'
+import TestSelectList from './TestLists/TestSelectorList'
+
+//preview-ui
+import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
+//jsontree-ui
+import JsonTreeDemo from '@/components/presenter/tree/JsonTree/Sandbox'
+//rss
 import RssRender from '@/components/presenter/rss/RssRender/Sandbox'
 
 //实例组件
 import CartsManage from '@/composition/cartsManage'
-// import PresentersListPage from '@/pages/Demo/presentersListPage/Sandbox'
-
 import TestPreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox/TestPreviewAutoLayout';
 import BootPreviewAutoLayout from '@/components/BootPreviewAutoLayout';
 
@@ -84,8 +70,6 @@ export default function Index(props) {
 
   // return <AutoLayout {...config} onItemClick={onJarItemClick} />
 
-  // return <TestCRUDList {...props} />
-
   // @when 2014-12-16 comment out
   // return (
   //   <ChakraProvider>
@@ -103,9 +87,13 @@ export default function Index(props) {
   // )
   
   // @when 2015-05-14 preview unit test
+  // return (
+  //   <TestNamedSelector/>
+  // )
   return (
-    <TestNamedSelector/>
+    <TestSelectList/>
   )
+  
 
   // return (
   // <CssCart width='300px' margin='40px'>

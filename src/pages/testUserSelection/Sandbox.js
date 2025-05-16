@@ -19,8 +19,6 @@ export default function (props) {
 
     const [ data ] = useTokenRequest({api});
     
-    // console.log('data111111111 = ', data)
-
     return (
           data ? (
             <TestUserSelection {...props} data={data} newUser={newUser}/>
