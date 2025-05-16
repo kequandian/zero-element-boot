@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ChakraProvider, VStack, Box, Button, HStack } from '@chakra-ui/react';
 import { history } from 'umi';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
-import LocalPreview from '../localPreview';
+import LocalPreview from '../../Demo/localPreview';
 
 const promiseAjax = require('@/components/utils/request');
 const routeMap = {

@@ -30,6 +30,8 @@ import Connection from '@/composition/Connection'
 import TestDownload from '@/pages/TestDownloadDemo';
 import TestRowIcons from '@/pages/TestLowCode/TestRowIcons/Sandbox';
 import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
+import TestNamedSelector from '@/pages/TestComponents/TestNamedSelector'
+
 import AutoCartSet from '@/pages/TestLowCode/AutoCartSet/Presenter'
 
 import AutoComponentSet from './TestLowCode/AutoComponentSet'
@@ -102,7 +104,7 @@ export default function Index(props) {
   
   // @when 2015-05-14 preview unit test
   return (
-    <TestNamedCart/>
+    <TestNamedSelector/>
   )
 
   // return (

@@ -4,15 +4,7 @@ import { NamedCart } from '@/components';
 import { Spacer } from '@chakra-ui/layout';
 import { VStack, Text, Box } from '@chakra-ui/react'
 import PageCenter from '@/components/container/PageCenter';
-
-import RightIconIndicatorDefault from '@/components/selector/RightIconIndicatorDefault';
-import RightIconIndicatorHover from '@/components/selector/RightIconIndicatorHover';
-import RightIconIndicatorSelected from '@/components/selector/RightIconIndicatorSelected';
-
-import LeftCheckboxSelector from '@/components/selector/LeftCheckboxSelector';
-// import DefaultSelector from '@/components/selector/DefaultSelector'
-import CircularCheckboxIndicator from '@/components/selector/CircularCheckboxSelector';
-import NamedSelector from '@/components/NamedSelector'
+import CircularCheckboxSelector from  '@/components/selector/CircularCheckboxSelector';
 
 export default function index(props) {
     return (
@@ -20,19 +12,11 @@ export default function index(props) {
             <Box w='200px' h='100px'>
                 <VStack>
                     <NamedCart xname="Cart">
-                        <RightIconIndicatorDefault>Default</RightIconIndicatorDefault>
+                        <CircularCheckboxSelector>Default</CircularCheckboxSelector>
                     </NamedCart>
                     <Spacer />
                     <NamedCart xname="Cart">
-                        <RightIconIndicatorHover>Hover</RightIconIndicatorHover>
-                    </NamedCart>
-                    <Spacer />
-                    <NamedCart xname="Cart">
-                        <RightIconIndicatorSelected>Selected</RightIconIndicatorSelected>
-                    </NamedCart>
-
-                    <NamedCart xname="Cart">
-                        <LeftCheckboxSelector>LeftCheckboxSelector</LeftCheckboxSelector>
+                        <CircularCheckboxSelector selected>seleected</CircularCheckboxSelector>
                     </NamedCart>
                 </VStack>
             </Box>

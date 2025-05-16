@@ -8,26 +8,10 @@ import { set as FormItemTypeSet } from '@/components/config/FormItemTypeConfig';
 import { set as NamedSelector } from '@/components/config/NamedSelectorConfig';
 
 // //cart
-// import Cart from '@/components/cart/Cart';
-
-//indicator
-// import MyIndicatorSelect from '@/components/indicator/MyIndicatorSelect';
-// import MyIndicatorSelected from '@/components/indicator/MyIndicatorSelected';
-// import RightIconCheckboxSelect from '@/components/indicator/RightIconCheckboxIndicator/Select';
-// import RightIconCheckboxSelected from '@/components/indicator/RightIconCheckboxIndicator/Selected';
-// import RightIconCheckboxDefauct from '@/components/indicator/RightIconCheckboxIndicator/Defauct';
-
-import RightIconIndicatorDefault from '@/components/selector/RightIconIndicatorDefault';
-import RightIconIndicatorHover from '@/components/selector/RightIconIndicatorHover';
-import RightIconIndicatorSelected from '@/components/selector/RightIconIndicatorSelected';
-
-
-import CircularCheckboxIndicatorDefault from '@/components/selector/CircularCheckboxSelector';
 import ShadowIndicator from '@/components/indicator/ShadowIndicator';
 // import CircularCheckboxIndicatorSelected from '@/components/indicator/CircularCheckboxIndicator/CircularCheckboxSelected';
 import DownloadIndicator from '@/components/indicator/DownloadIndicator'
 import ClickIndicator from '@/components/indicator/ClickIndicator'
-import ManageMenuIndicator from '@/components/indicator/ManageMenuIndicator'
 import BackIndicator from '@/components/indicator/BackIndicator';
 
 //presenter
@@ -38,14 +22,7 @@ import SwaggerItem from '@/composition/ApisUi/SwaggerItem';
 
 import { InputCompx, SelectFetch } from '@/components/FormItemType';
 
-// SelectListDemo
-//indicator
-import RightIconRadioHoverIndicator from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Select';
-import RightIconRadioSelectedIndicator from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Selected';
-import RightIconRadioDefault from '@/pages/SelectListDemo/indicator/RightIconRadioHoverIndicator/Default';
-
-import SelectedCartUpperRightIcon from '@/components/selector/SelectedCartUpperRightIcon';
-import SelectedCartRightIcon from '@/components/selector/SelectedCartRightIcon';
+import ManageMenuIndicator from '@/components/indicator/ManageMenuIndicator'
 
 // selector
 import OutlineSelector from '@/components/selector/OutlineSelector';
@@ -88,33 +65,15 @@ if (process.env.NODE_ENV == 'development') {
 }
 
 NamedIndicatorSet({
-  // MyIndicatorSelect,
-  // MyIndicatorSelected,
-  // RightIconCheckboxSelect,
-  // RightIconCheckboxSelected,
-  // RightIconCheckboxDefauct,
-
-  RightIconIndicatorDefault,
-  RightIconIndicatorHover,
-  RightIconIndicatorSelected,
-
-  CircularCheckboxIndicatorDefault,
   ShadowIndicator,
-  // CircularCheckboxIndicatorSelected,
   OnDeleteIndicator,
 
   //SelectList
-  RightIconRadioHoverIndicator,
-  RightIconRadioSelectedIndicator,
-  RightIconRadioDefault,
   DownloadIndicator,
   ClickIndicator,
   // ManageMenuIndicator,
   TagIndicator,
   BackIndicator,
-
-  SelectedCartUpperRightIcon,
-  SelectedCartRightIcon,
 })
 
 NamedPresenterSet({
@@ -146,7 +105,7 @@ NamedPresenterSet({
 
 NamedSelector({
   OutlineSelector,
-  CircularCheckboxSelector
+  CircularCheckboxSelector,
 })
 
 FormItemTypeSet({

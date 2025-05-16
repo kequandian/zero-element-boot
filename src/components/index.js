@@ -292,8 +292,6 @@ NameContainerSet({
 
 NamedSelector({
   OutlineSelector,
-  CornerCheckboxSelector,
-  LeftCheckboxSelector
 })
 
 FormItemTypeSet({
