@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChakraProvider, VStack, HStack, Box, Button, Switch, Text, FormControl, FormLabel } from '@chakra-ui/react';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
-import LocalPreview from '../localPreview';
+import LocalPreview from '../../Demo/localPreview';
 import AddCarts from '@/composition/AddCarts'
 
 

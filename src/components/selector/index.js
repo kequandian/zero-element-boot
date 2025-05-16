@@ -1,10 +1,7 @@
 import OutlineSelector from './OutlineSelector';
-import CornerCheckboxSelector from './CornerCheckboxSelector';
-import LeftCheckboxSelector from './LeftCheckboxSelector';
-
+import CircularCheckboxSelector from './CircularCheckboxSelector'
 
 export {
   OutlineSelector,
-  CornerCheckboxSelector,
-  LeftCheckboxSelector
+  CircularCheckboxSelector
 }

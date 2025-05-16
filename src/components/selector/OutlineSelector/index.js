@@ -9,27 +9,17 @@ import React, { useState } from 'react';
  */
 export default function OutlineSelector(props) {
 
-  const { children, isSelected = false, selected = false, lineWidth = 2, lineColor = '#D9FF00' } = props
-  const [onSelected, setSelected] = useState(false);
-
-  const toggleSelected = () => {
-    if (selected === true || selected === 'true') {
-      const result = !onSelected;
-      setSelected(result)
-    }
-  }
-
-  const _isSelected = (selected === true || selected === 'true') ? onSelected : (isSelected === true || isSelected === 'true' ? true : false)
+  const { children, selected, lineWidth = 2, lineColor = '#D9FF00' } = props
 
   const styles = {
     flex: 1,
-    border: `${lineWidth}px solid ${_isSelected ? lineColor : 'transparent'}`,
+    border: `${lineWidth}px solid ${selected ? lineColor : 'transparent'}`,
     borderRadius: '8px'
   }
 
   return React.Children.map(children, child => {
     return (
-      <div style={{ ...styles }} onClick={(e) => toggleSelected(e)}>
+      <div style={{ ...styles }}>
         {child}
       </div>
     )
