@@ -22,7 +22,7 @@ import RightIconIndicatorHover from '@/components/selector/RightIconIndicatorHov
 import RightIconIndicatorSelected from '@/components/selector/RightIconIndicatorSelected';
 
 
-import CircularCheckboxIndicatorDefault from '@/components/selector/CircularCheckboxIndicator';
+import CircularCheckboxIndicatorDefault from '@/components/selector/CircularCheckboxSelector';
 import ShadowIndicator from '@/components/indicator/ShadowIndicator';
 // import CircularCheckboxIndicatorSelected from '@/components/indicator/CircularCheckboxIndicator/CircularCheckboxSelected';
 import DownloadIndicator from '@/components/indicator/DownloadIndicator'
@@ -46,8 +46,10 @@ import RightIconRadioDefault from '@/pages/SelectListDemo/indicator/RightIconRad
 
 import SelectedCartUpperRightIcon from '@/components/selector/SelectedCartUpperRightIcon';
 import SelectedCartRightIcon from '@/components/selector/SelectedCartRightIcon';
+
 // selector
 import OutlineSelector from '@/components/selector/OutlineSelector';
+import CircularCheckboxSelector from '@/components/selector/CircularCheckboxSelector';
 
 //presenter
 import {
@@ -63,7 +65,6 @@ import RssAutoLayout from '@/composition/RssAutoLayout/item'
 import ImageAnimation from '@/components/presenter/image/ImageAnimation';
 
 import OnDeleteIndicator from '@/components/indicator/OnDeleteIndicator';
-import SelectAvatar from '@/components/selector/SelectAvatar';
 import TagIndicator from '@/components/cart/Outline/TagIndicator';
 
 import testModuleItem from '@/composition/moduleListPage/moduleItem'
@@ -106,7 +107,6 @@ NamedIndicatorSet({
   RightIconRadioHoverIndicator,
   RightIconRadioSelectedIndicator,
   RightIconRadioDefault,
-  SelectAvatar,
   DownloadIndicator,
   ClickIndicator,
   // ManageMenuIndicator,
@@ -145,7 +145,8 @@ NamedPresenterSet({
 })
 
 NamedSelector({
-  OutlineSelector
+  OutlineSelector,
+  CircularCheckboxSelector
 })
 
 FormItemTypeSet({

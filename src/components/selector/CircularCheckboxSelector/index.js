@@ -7,17 +7,14 @@ import { Flex, Wrap } from '@chakra-ui/react'
 import Cart from '@/components/cart/Cart';
 
 /**
- *
+ * 所有selector都有selected属性，用于区分是否选中状态
  *  
  * @param {select} ѡ��״̬
- * 
- * 
- * @returns 
  */
 
 export default function Index(props) {
 
-    const { children, state ='unselected', ...defaultSelectedStyles } = props;
+    const { children, selected, ...defaultSelectedStyles } = props;
 
     const styles = {
         position: 'relative',
@@ -26,8 +23,8 @@ export default function Index(props) {
         ...defaultSelectedStyles
     }
 
-    const imgStyle =  (state == "selected") ? StyleDate.right_icon_on : StyleDate.right_icon_off
-    const borderStyle =  (state == "selected")  ? '#1e6fff' : '#ffffff'
+    const imgStyle =  selected ? StyleDate.right_icon_on : StyleDate.right_icon_off
+    const borderStyle =  selected  ? '#1e6fff' : '#ffffff'
 
     return (
         <Wrap>
@@ -40,7 +37,7 @@ export default function Index(props) {
             </Cart>
             <div style={styles} className={imgStyle}>
                 {
-                    state == "selected" ?
+                    selected ?
                         <img src={checkXOn} />
                         :
                         <img src={checkOff} />

@@ -19,21 +19,11 @@ export default function index(props) {
         <PageCenter>
             <Box w='200px' h='100px'>
                 <VStack>
-                    <NamedCart xname="Cart">
-                        <RightIconIndicatorDefault>Default</RightIconIndicatorDefault>
-                    </NamedCart>
-                    <Spacer />
-                    <NamedCart xname="Cart">
-                        <RightIconIndicatorHover>Hover</RightIconIndicatorHover>
-                    </NamedCart>
-                    <Spacer />
-                    <NamedCart xname="Cart">
-                        <RightIconIndicatorSelected>Selected</RightIconIndicatorSelected>
-                    </NamedCart>
+                    <NamedSelector selector={'CircularCheckboxSelector'} selected>
+                        CircularCheckboxIndicator
+                    </NamedSelector>
 
-                    <NamedCart xname="Cart">
-                        <LeftCheckboxSelector>LeftCheckboxSelector</LeftCheckboxSelector>
-                    </NamedCart>
+
                 </VStack>
             </Box>
         </PageCenter>
