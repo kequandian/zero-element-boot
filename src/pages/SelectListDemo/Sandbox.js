@@ -8,10 +8,8 @@ import bindFiles from './gateway.json'
 
 export default function (props) {
 
-    const api = '/api/selectListData';
-
+    // const api = '/api/selectListData';
     // const [ data ] = useTokenRequest({api, bindFiles});
-
     // if(data){
     //     data.map(item => {
     //         item.checked = false;

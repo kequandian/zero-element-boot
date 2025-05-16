@@ -25,7 +25,7 @@ import Connection from '@/composition/Connection'
 // import userListLayoutJson from './userList/layout';
 // import useTokenRequest from '@/components/hooks/useTokenRequest';
 
-import TestDownload from '@/pages/TestDownloadDemo';
+import TestDownload from '@/pages/TestComponents/TestDownloadDemo';
 import TestRowIcons from '@/pages/TestLowCode/TestRowIcons/Sandbox';
 import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
 import AutoCartSet from '@/pages/TestLowCode/AutoCartSet/Presenter'
@@ -34,9 +34,7 @@ import AutoComponentSet from './TestLowCode/AutoComponentSet'
 import RouterParamsDemo from './TestHooks/testUseRouter/demo'
 import RssAutoLayout from '@/composition/RssAutoLayout/Sandbox'
 import AvatarSelected from '@/composition/AvatarSelected/Sandbox'
-import TestGroupedList from './TestGroupedList';
-//nav-ui
-import TestCRUDList from '@/pages/testCrudList';
+import TestGroupedList from './TestLists/TestGroupedList';
 //preview-ui
 import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
 //jsontree-ui
@@ -47,7 +45,6 @@ import ApisUi from '@/composition/ApisUi/Sandbox';
 import LogsUi from '@/composition/LogsUi/Sandbox'
 // SelectListDemo
 import SelectListDemo from './SelectListDemo/Sandbox'
-// import AvatarSelectListDemo from './avatarSelectListDemo/Sandbox'
 
 import CssCart from '@/components/cart/CssCart'
 

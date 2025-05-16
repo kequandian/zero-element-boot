@@ -2,7 +2,6 @@ import React from 'react';
 
 import { ChakraProvider, Box, background } from '@chakra-ui/react'
 
-import DefaultPlaceholder from '@/components/presenter/placeholder/DefaultPlaceholder'
 import { ChakraButton } from '@/components/presenter';
 import SortPresenterAction from '@/components/presenter/button/SortPresenterAction'
 import { LS } from 'zero-element/lib/utils/storage';
