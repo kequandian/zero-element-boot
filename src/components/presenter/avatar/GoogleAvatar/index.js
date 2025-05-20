@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import useLowCodePalette from '@/components/hooks/useLowCodePalette';
+import usePalette from '@/components/hooks/usePalette';
 
 
 /**
  * 
  * @param {string or number} name 显示的名称 或 通过数字索引获取
- * @param {array} palette 色板数组 
  */
 
 export default function GoogleAvatar(props) {
 
-    const { name, palette=[] } = props;
+    const { name } = props;
 
-    const keysMap = {
-        "name": "color"
-    }
+    // const keysMap = {
+    //     "name": "color"
+    // }
 
     //获取name的第一个字母
     function getFirstLetter(name) {
@@ -34,42 +33,45 @@ export default function GoogleAvatar(props) {
     }
 
     //根据索引获取对应颜色
-    function getColorByIndex(palette, index) {
-        if(palette && palette.length === 0){
-            return ''
-        }
-        if(index >= palette.length) {
-            index = index % palette.length;
-            if(index ===0) {
-                index = palette.length -1;
-            }
-        }
-        let color = ''
-        //获取对应索引的颜色
-        Object.entries(palette[index]).map(([key, value], idx) => (
-            color = value
-        ))
-        return color
-    }
+    // function getColorByIndex(palette, index) {
+    //     if(palette && palette.length === 0){
+    //         return ''
+    //     }
+    //     if(index >= palette.length) {
+    //         index = index % palette.length;
+    //         if(index ===0) {
+    //             index = palette.length -1;
+    //         }
+    //     }
+    //     let color = ''
+    //     //获取对应索引的颜色
+    //     Object.entries(palette[index]).map(([key, value], idx) => (
+    //         color = value
+    //     ))
+    //     return color
+    // }
+    
+    //获取对应索引的颜色
+    // let color = getColorByIndex(paletteList || palette, index);
 
-    const paletteList = useLowCodePalette('palette_1', keysMap)
+
+    // const paletteList = useLowCodePalette('palette_1', keysMap)
+    const paletteColor = usePalette()
 
     let firstLetter = getFirstLetter(name);
+    
     //获取字母在字母表中的索引
-    let index = letterToIndex(firstLetter);
+    // let index = letterToIndex(firstLetter);
 
-    if(!paletteList || !paletteList.length === 0 || !palette || !palette.length === 0 ){
-        return
-    }
-
-    //获取对应索引的颜色
-    let color = getColorByIndex(paletteList || palette, index);
+    // if(!paletteList || !paletteList.length === 0 || !palette || !palette.length === 0 ){
+    //     return
+    // }
 
     return (
         <div style={{ 
                 width: '45px',
                 height: '45px',
-                backgroundColor: color,
+                backgroundColor: paletteColor,
                 borderRadius: '50%',
                 display: 'flex',
                 justifyContent: 'center',
@@ -79,7 +81,7 @@ export default function GoogleAvatar(props) {
                 fontWeight: 'bold',
             }}
         >
-            {firstLetter && typeof firstLetter === 'string'  &&  firstLetter.toUpperCase()}
+            <div>firstLetter</div>
         </div>
     )
 
