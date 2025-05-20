@@ -88,10 +88,8 @@ export default function TestAutoLayout(props) {
     }
 
     return (
-
         <ChakraProvider>
             <TestAutoLayout />
         </ChakraProvider>
-       
     )
 }
