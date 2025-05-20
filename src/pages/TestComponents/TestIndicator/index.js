@@ -14,7 +14,10 @@ import MultiActionsIndicator from "@/components/indicator/MultiActionsIndicator"
 
 import AlignmentIndicator from '@/components/indicator/AlignmentIndicator';
 import AutoPreviewIndicator from '@/components/indicator/AutoPreviewIndicator';
-import { GoogleAvatar } from '@/components/presenter';
+import { Avatar, GoogleAvatar } from '@/components/presenter';
+import HCenter from '@/components/cart/deprecated/HCenter';
+import PageCenter from '@/components/container/PageCenter';
+
 
 
 const bottonList = [
@@ -277,24 +280,24 @@ export default function TestIndicator() {
                     }
                 },
             },
-            // {
-            //     xname: 'Delete',
-            //     props:{
-            //         action: '/api',
-            //     },
-            //     onItemDeleted:()=>{
-            //         console.log('onItemDeleted delete')
-            //     }
-            // },
-            // {
-            //     xname: 'Download',
-            //     props:{
-            //         action: '/api',
-            //     },
-            //     onItemDownloaded:()=>{
-            //         console.log('download')
-            //     }
-            // }
+            {
+                xname: 'Delete',
+                props:{
+                    action: '/api',
+                },
+                onItemDeleted:()=>{
+                    console.log('onItemDeleted delete')
+                }
+            },
+            {
+                xname: 'Download',
+                props:{
+                    action: '/api',
+                },
+                onItemDownloaded:()=>{
+                    console.log('download')
+                }
+            }
         ]
 
         return (
@@ -317,18 +320,18 @@ export default function TestIndicator() {
         }
 
         return (
-            <Grid w={'500px'} margin={'auto'} templateColumns='repeat(4, 1fr)' gap={6} 
-            >
-                { 
-                    alignmentList.map((item, index) => (
-                        <GridItem key={index}>
-                            <AlignmentIndicator Indicator={_indicator} alignment={item}>
-                                <Box w={'100px'} h={'100px'} border={'1px solid #ccc'} background={'white'}></Box>
-                            </AlignmentIndicator>
-                        </GridItem>
-                    ))
-                }
-            </Grid>
+                <Grid w={'500px'} templateColumns='repeat(4, 1fr)' gap={6} 
+                >
+                    { 
+                        alignmentList.map((item, index) => (
+                            <GridItem key={index}>
+                                <AlignmentIndicator Indicator={_indicator} alignment={item} >    
+                                    <Box w={'200px'} h={'100px'} border={'1px solid #ccc'} background={'white'}></Box>
+                                </AlignmentIndicator>
+                            </GridItem>
+                        ))
+                    }
+                </Grid>
             
             // <AlignmentIndicator Indicator={_indicator} alignment={'right'}>
             //     <Box w={'100px'} h={'100px'} border={'1px solid #ccc'} background={'white'}></Box>
@@ -350,12 +353,10 @@ export default function TestIndicator() {
     const TestNamedPreviewIndicator = () => {
         return (
             <NamedIndicator Indicator={AutoPreviewIndicator}>
-                <GoogleAvatar name={'5'} />
+                <Avatar name={'Alice'} />
             </NamedIndicator>
         )
     }
-
-    
 
     return (
         <ChakraProvider>
@@ -363,9 +364,9 @@ export default function TestIndicator() {
             {/* <TestOutsidePosition/> */}
             {/* <TestPlacementIndicator /> */}
             {/* <TestMultiActionIndicator/> */}
-            {/* <TestAlignmentIndicator/> */}
+            <TestAlignmentIndicator/>
             {/* <TestAutoPrevireIndicator/> */}
-            <TestNamedPreviewIndicator/>
         </ChakraProvider>
     )
 }
+

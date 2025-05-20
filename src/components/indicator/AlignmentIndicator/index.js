@@ -1,7 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Box, position } from '@chakra-ui/react'
+import React, { Component, useEffect, useState } from 'react';
 import usePlacement from '@/components/hooks/usePlacement';
 
+/**
+ * 
+ * @param {Component} Indicator indicator component
+ * @param {object} indicator indicator object w/ xname and props
+ * @param {string} alignment alignment of the indicator, default is 'left'
+ * @param {number} offsetx x offset of the indicator
+ * @param {number} offsety y offset of the indicator    
+ * @returns 
+ */
 export default function AlignmentIndicator(props) {
 
     const { children, Indicator, indicator, alignment="left", offsetx, offsety } = props;
@@ -18,15 +26,15 @@ export default function AlignmentIndicator(props) {
     };
 
     return (
-        <Box style={{ ...paramStyle }}>
-            <Box style={styles}>
+        <div style={{ ...paramStyle }}>
+            <div style={styles}>
                 <_Indicator {..._indicatorProps} />
-            </Box>
+            </div>
             {
                 React.Children.map(children, child => (
                     child
                 ))
             }
-        </Box>
+        </div>
     );
 }

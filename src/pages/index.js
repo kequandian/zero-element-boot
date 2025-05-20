@@ -24,6 +24,7 @@ import LogsUi from '@/composition/LogsUi/Sandbox'
 // TestNamed
 import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
 import TestNamedSelector from '@/pages/TestComponents/TestNamedSelector'
+import TestIndicator from '@/pages/TestComponents/TestIndicator'
 
 // TestLowcode
 import TestRowIcons from '@/pages/TestLowCode/TestRowIcons/Sandbox';
@@ -89,11 +90,14 @@ export default function Index(props) {
   // @when 2015-05-14 preview unit test
   // return (
   //   <TestNamedSelector/>
+  // // )
+  // return (
+  //   <TestSelectList/>
   // )
   return (
-    <TestSelectList/>
+    <TestIndicator/>
   )
-  
+
 
   // return (
   // <CssCart width='300px' margin='40px'>
