@@ -36,8 +36,6 @@ import {
   Clear
 } from '@/components/presenter'
 
-import ItemImg from '@/pages/TestLists/SelectListDemo/presenter/ItemImg'
-import ItemTitle from '@/pages/TestLists/SelectListDemo/presenter/ItemTitle'
 import RssAutoLayout from '@/composition/RssAutoLayout/item'
 import ImageAnimation from '@/components/presenter/image/ImageAnimation';
 
@@ -95,8 +93,6 @@ NamedPresenterSet({
   DownloadButton,
   AddNewButton,
 
-  ItemImg,
-  ItemTitle,
   RssAutoLayout,
   ChakraText,
 

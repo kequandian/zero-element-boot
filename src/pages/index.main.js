@@ -43,8 +43,6 @@ import JsonTreeDemo from '@/components/presenter/tree/JsonTree/Sandbox'
 import ApisUi from '@/composition/ApisUi/Sandbox';
 //logs-ui
 import LogsUi from '@/composition/LogsUi/Sandbox'
-// SelectListDemo
-import SelectListDemo from './TestLists/SelectListDemo/Sandbox'
 
 import CssCart from '@/components/cart/CssCart'
 

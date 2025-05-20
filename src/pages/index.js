@@ -16,6 +16,7 @@ import RssAutoLayout from '@/composition/RssAutoLayout/Sandbox'
 import AvatarSelected from '@/composition/AvatarSelected/Sandbox'
 import Standalone from '@/composition/Standalone/Sandbox';
 import Connection from '@/composition/Connection'
+import CartsManage from '@/composition/cartsManage'
 //apis-ui
 import ApisUi from '@/composition/ApisUi/Sandbox';
 //logs-ui
@@ -25,27 +26,24 @@ import LogsUi from '@/composition/LogsUi/Sandbox'
 import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
 import TestNamedSelector from '@/pages/TestComponents/TestNamedSelector'
 import TestIndicator from '@/pages/TestComponents/TestIndicator'
+// TestList
+import TestGroupedList from './TestLists/TestGroupedList'
+import TestSelectList from './TestLists/TestSelectList'
 
 // TestLowcode
 import TestRowIcons from '@/pages/TestLowCode/TestRowIcons/Sandbox';
 import AutoCartSet from '@/pages/TestLowCode/AutoCartSet/Presenter'
 import AutoComponentSet from './TestLowCode/AutoComponentSet'
 import RouterParamsDemo from './TestHooks/testUseRouter/demo'
-
-// TestList
-import TestGroupedList from './TestLists/TestGroupedList'
-import TestSelectList from './TestLists/TestSelectorList'
-
-//preview-ui
-import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
 //jsontree-ui
 import JsonTreeDemo from '@/components/presenter/tree/JsonTree/Sandbox'
 //rss
 import RssRender from '@/components/presenter/rss/RssRender/Sandbox'
-
-//实例组件
-import CartsManage from '@/composition/cartsManage'
 import TestPreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox/TestPreviewAutoLayout';
+
+
+//preview-ui
+// import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
 import BootPreviewAutoLayout from '@/components/BootPreviewAutoLayout';
 
 
@@ -90,13 +88,17 @@ export default function Index(props) {
   // @when 2015-05-14 preview unit test
   // return (
   //   <TestNamedSelector/>
-  // // )
+  // )
   // return (
-  //   <TestSelectList/>
+  //   <TestNamedCart/>
   // )
   return (
-    <TestIndicator/>
+    <TestSelectList/>
   )
+  // return (
+  //   <TestIndicator/>
+  // )
+
 
 
   // return (
@@ -125,6 +127,4 @@ export default function Index(props) {
   // return <TestCRUDList />
 
   // return <AlbumList/>
-
-
 }

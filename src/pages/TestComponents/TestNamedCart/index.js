@@ -6,7 +6,8 @@ import { VStack, Text, Box } from '@chakra-ui/react'
 import PageCenter from '@/components/container/PageCenter';
 import CircularCheckboxSelector from  '@/components/selector/CircularCheckboxSelector';
 
-export default function index(props) {
+// test single cart 
+const TestNamedCart = () => {
     return (
         <PageCenter>
             <Box w='200px' h='100px'>
@@ -21,5 +22,27 @@ export default function index(props) {
                 </VStack>
             </Box>
         </PageCenter>
+    )
+}
+
+//test selector
+const TestNamedSelector = () => {
+    return (
+        <PageCenter>
+            <Box w='200px' h='100px'>
+                <VStack>
+                    <NamedCart selector="CircularCheckboxSelector" selected>
+                        <div>NamedSelector</div>
+                    </NamedCart>
+                </VStack>
+            </Box>
+        </PageCenter>
+    )
+}
+
+export default function index(props) {
+    return (
+        // <TestNamedCart />
+        <TestNamedSelector/>
     )
 }

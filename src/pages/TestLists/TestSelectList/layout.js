@@ -6,19 +6,19 @@ module.exports = {
     binding: {
     },
     cart: {
-      xname: 'Cart',
-      props: {
-        padding: '10px',
-        margin: '1px 0',
-        linewidth: '1px',
-        corner: '8px',
-        isHover: false
-      },
-    //   indicator: {
-    //     xname: 'ShadowIndicator',
-    //     props: {
-    //     }
-    //   }, 
+    // xname: 'Cart',
+    // props: {
+    //   padding: '10px',
+    //   margin: '1px 0',
+    //   linewidth: '1px',
+    //   corner: '8px',
+    //   isHover: false
+    // },
+    // indicator: {
+    //   xname: 'ShadowIndicator',
+    //   props: {
+    //   }
+    // }, 
       selector: {
         xname: 'OutlineSelector',
         props: {

@@ -35,13 +35,13 @@ export default function NamedSelector(NamedSelectorProps) {
     return (
       !selected ? (
         <div style={{ flex: 1 }} >
-          <__Selector {..._selector} isSelected={isSelected} >
+          <__Selector {..._selector} {...rest} selected={isSelected} >
             { child }
           </__Selector>
         </div>
       ):(
         <div style={{ flex: 1 }} onClick={toggleSelected} >
-          <__Selector {..._selector} selected={onSelected}>
+          <__Selector {..._selector} {...rest} selected={onSelected}>
           { child }
           </__Selector>
         </div>
