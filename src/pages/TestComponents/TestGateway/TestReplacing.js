@@ -2,6 +2,11 @@ import React from 'react';
 
 import Replacing from '@/components/gateway/Replacing'
 
+/**
+ * convert moduleId to listApi
+ * @param {} props 
+ * @returns 
+ */
 export default function TextPreviewAutoLayout(props) {
 
     const data = {

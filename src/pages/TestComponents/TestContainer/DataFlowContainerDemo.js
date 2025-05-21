@@ -6,7 +6,7 @@ import DataFlowContainer from '@/components/container/DataFlowContainer';
 
 import PreviewAutoLayout from '@/components/PreviewAutoLayout'
 import MultiActionsIndicator from '@/components/indicator/MultiActionsIndicator';
-import LocalPreview from './localPreview'
+import LocalPreview from '../../Demo/localPreview'
 
 import { LS } from 'zero-element/lib/utils/storage';
 import { method } from 'lodash';

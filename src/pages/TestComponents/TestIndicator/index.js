@@ -15,10 +15,9 @@ import MultiActionsIndicator from "@/components/indicator/MultiActionsIndicator"
 import AlignmentIndicator from '@/components/indicator/AlignmentIndicator';
 import AutoPreviewIndicator from '@/components/indicator/AutoPreviewIndicator';
 import { Avatar, GoogleAvatar, ItemPlaceholder } from '@/components/presenter';
-import HCenter from '@/components/cart/deprecated/HCenter';
 import PageCenter from '@/components/layout/PageCenter';
 import { BackIndicator } from '@/components/indicator';
-import { Outline } from '@/components/cart';
+import MaskIndicator from "@/components/cart/MaskIndicator";
 
 
 
@@ -374,6 +373,21 @@ export default function TestIndicator() {
         )
     }
 
+    
+   const TestMaskIndicator = () => {
+        const maskProps = {
+            color:'#909090', 
+            // opacity:'50%',
+        }
+
+        return (
+            <MaskIndicator {...maskProps} >
+                <ItemPlaceholder/>
+            </MaskIndicator>
+        )
+    }
+
+
     return (
         <ChakraProvider>
             {/* <BuiltOutPosition /> */}
@@ -382,6 +396,7 @@ export default function TestIndicator() {
             {/* <TestMultiActionIndicator/> */}
             {/* <TestAlignmentIndicator/> */}
             <TestBackIndicator/>
+            {/* <TestMaskIndicator/> */}
             {/* <TestAutoPrevireIndicator/> */}
         </ChakraProvider>
     )
