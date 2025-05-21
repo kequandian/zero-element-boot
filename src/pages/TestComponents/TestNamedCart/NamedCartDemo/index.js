@@ -27,21 +27,19 @@ export default function NamedCartDemo(props) {
     }
 
     return (
-        <ChakraProvider>
-        <div style={{ width: '100%' }}>
-            {/* <NamedContainer>
-                <NamedLayout>
-                    <NamedCart {...config}>
-                        <>
-                            <Text content='title1' />
-                            <Text content='title2' />
-                        </>
-                    </NamedCart>
-                </NamedLayout>
-            </NamedContainer> */}
-            <AutoLayout {...autoLayoutConfig} onItemClick={itemClick} />
-        </div>
-        </ChakraProvider>
+        <AutoLayout {...autoLayoutConfig} onItemClick={itemClick} />
+    )
 
+    return (
+        <NamedContainer>
+            <NamedLayout>
+                <NamedCart {...config}>
+                    <>
+                        <Text content='title1' />
+                        <Text content='title2' />
+                    </>
+                </NamedCart>
+            </NamedLayout>
+        </NamedContainer>
     )
 }

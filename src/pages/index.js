@@ -7,8 +7,8 @@ import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConf
 import { Avatar } from '@/components/presenter'
 
 // TestComponents
-import ImageAnimationDemo from './TestComponents/ImageAnimationDemo'
-import TestDownload from '@/pages/TestComponents/TestDownloadDemo';
+import ImageAnimationDemo from './TestComponents/TestPresenter/ImageAnimationDemo'
+import TestDownload from '@/pages/TestComponents/TestPresenter/TestDownloadDemo';
 
 // TestComposition
 import AvatarItemDemo from './TestComposition/AvatarItemDemo'
@@ -26,6 +26,7 @@ import LogsUi from '@/composition/LogsUi/Sandbox'
 import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
 import TestNamedSelector from '@/pages/TestComponents/TestNamedSelector'
 import TestIndicator from '@/pages/TestComponents/TestIndicator'
+
 // TestList
 import TestGroupedList from './TestLists/TestGroupedList'
 import TestSelectList from './TestLists/TestSelectList'
@@ -39,6 +40,9 @@ import RouterParamsDemo from './TestHooks/testUseRouter/demo'
 import JsonTreeDemo from '@/components/presenter/tree/JsonTree/Sandbox'
 //rss
 import RssRender from '@/components/presenter/rss/RssRender/Sandbox'
+
+// TestAutoLayout
+import TestAutoLayout from './TestAutoLayout';
 import TestPreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox/TestPreviewAutoLayout';
 
 
@@ -92,25 +96,18 @@ export default function Index(props) {
   // return (
   //   <TestNamedCart/>
   // )
-  return (
-    <TestIndicator/>
-  )
+  // return (
+  //   <TestIndicator/>
+  // )
   // return (
   //   <TestSelectList/>
   // )
 
-
-  // return (
-  // <CssCart width='300px' margin='40px'>
-  //   <TestIndicator />
-  // </CssCart>
-  // )
-
-  // return (
-  //   <AvatarItemDemo/>
-  // )
-
   // return <div></div>
+
+    return (
+      <TestAutoLayout/>
+    )
 
   // AutoLayout 组件测试
   // const layout = {

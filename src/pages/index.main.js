@@ -8,7 +8,7 @@ import { Avatar } from '@/components/presenter'
 
 // TestCase, Presenter etc.
 import IsValidElementTest from '../tests/IsValidElementTest'
-import ImageAnimationDemo from './TestComponents/ImageAnimationDemo'
+import ImageAnimationDemo from './TestComponents/TestPresenter/ImageAnimationDemo'
 
 // TestComposition
 import AvatarItemDemo from './TestComposition/AvatarItemDemo'
@@ -25,7 +25,7 @@ import Connection from '@/composition/Connection'
 // import userListLayoutJson from './userList/layout';
 // import useTokenRequest from '@/components/hooks/useTokenRequest';
 
-import TestDownload from '@/pages/TestComponents/TestDownloadDemo';
+import TestDownload from '@/pages/TestComponents/TestPresenter/TestDownloadDemo';
 import TestRowIcons from '@/pages/TestLowCode/TestRowIcons/Sandbox';
 import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
 import AutoCartSet from '@/pages/TestLowCode/AutoCartSet/Presenter'

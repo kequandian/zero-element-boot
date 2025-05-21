@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { HStack, Box } from '@chakra-ui/react'
 import { bindingConvert } from '@/components/gateway/Binding'
 import doFilter from '@/components/gateway/doFilter.mjs';
 const useLayout = require('@/components/hooks/useLayout');
@@ -43,7 +42,6 @@ export default function DataFlowContainer(props) {
             } else {
                 setConfigData(item)
             }
-            
         }
     }
 

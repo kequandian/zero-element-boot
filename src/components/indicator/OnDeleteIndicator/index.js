@@ -8,8 +8,6 @@ export default function Index(props) {
 
     const { children } = props;
 
-
-
     return (
         <div style={{width:'100%'}}>
         <Flex>
