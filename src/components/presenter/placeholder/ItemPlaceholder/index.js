@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Flex } from '@chakra-ui/react'
 import Rectangle from '@/components/presenter/shape/Rectangle';
-import Cart from '@/components/cart/Cart';
+import { Wrap } from '@/components/layout'
 
 /**
  * 
@@ -21,25 +21,13 @@ export default function ItemPlaceholder(props) {
    // console.log(size, '===size');
 
    return (
-      <Cart fill={bg} paddin='0' linewidth='0' margin='0'>
-         <Flex>
-            {/* <Rectangle margin={`${0.042 * size}px`} width={`${0.4 * size}px`} height={`${0.4 * size}px`} fill={fill} corner='50%' /> */}
-        
-            <div style={{ margin: `${0.042 * size}px`, width: `${0.4 * size}px`, height: `${0.4 * size}px`, backgroundColor: `${fill}`, backgroundImage: `url(${url})`, borderRadius: '50%', backgroundSize: '100% 100%' }}></div>
-        
-            <Box width={`${size}px`} height={`${0.28 * size}px`}   >
-
-               <Rectangle margin={`${0.05 * size}px`} width={`${0.85 * size}px`} height={`${0.1 * size}px`} fill={fill} />
-
-               <Rectangle margin={`${0.05 * size}px`} width={`${0.4 * size}px`} height={`${0.08 * size}px`} fill={fill} />
-
-               <Rectangle margin={`${0.05 * size}px`} width={`${0.4 * size}px`} height={`${0.08 * size}px`} fill={fill} />
-
-            </Box>
-         </Flex>
-      </Cart>
-
-
-
+      <Wrap>
+         <div style={{ margin: `${0.04 * size}px`, width: `${0.4 * size}px`, height: `${0.4 * size}px`, backgroundColor: `${fill}`, backgroundImage: `url(${url})`, borderRadius: '50%', backgroundSize: '100% 100%' }}></div>
+         <Box width={`${size}px`} height={`${0.28 * size}px`}   >
+            <Rectangle margin={`${0.05 * size}px`} width={`${0.85 * size}px`} height={`${0.1 * size}px`} fill={fill} />
+            <Rectangle margin={`${0.05 * size}px`} width={`${0.4 * size}px`} height={`${0.08 * size}px`} fill={fill} />
+            <Rectangle margin={`${0.05 * size}px`} width={`${0.4 * size}px`} height={`${0.08 * size}px`} fill={fill} />
+         </Box>
+      </Wrap>
    )
 }

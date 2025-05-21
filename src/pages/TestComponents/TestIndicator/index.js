@@ -14,9 +14,11 @@ import MultiActionsIndicator from "@/components/indicator/MultiActionsIndicator"
 
 import AlignmentIndicator from '@/components/indicator/AlignmentIndicator';
 import AutoPreviewIndicator from '@/components/indicator/AutoPreviewIndicator';
-import { Avatar, GoogleAvatar } from '@/components/presenter';
+import { Avatar, GoogleAvatar, ItemPlaceholder } from '@/components/presenter';
 import HCenter from '@/components/cart/deprecated/HCenter';
-import PageCenter from '@/components/container/PageCenter';
+import PageCenter from '@/components/layout/PageCenter';
+import { BackIndicator } from '@/components/indicator';
+import { Outline } from '@/components/cart';
 
 
 
@@ -358,13 +360,28 @@ export default function TestIndicator() {
         )
     }
 
+    const TestBackIndicator = ()    => {
+        const onBack = () => {
+            console.log('TestBackIndicator.onBack is called')
+        }
+
+        return (
+            <PageCenter>
+                <NamedIndicator Indicator={BackIndicator} onIndicatorClick={onBack}>
+                    <ItemPlaceholder/>
+                </NamedIndicator>
+            </PageCenter>
+        )
+    }
+
     return (
         <ChakraProvider>
             {/* <BuiltOutPosition /> */}
             {/* <TestOutsidePosition/> */}
             {/* <TestPlacementIndicator /> */}
             {/* <TestMultiActionIndicator/> */}
-            <TestAlignmentIndicator/>
+            {/* <TestAlignmentIndicator/> */}
+            <TestBackIndicator/>
             {/* <TestAutoPrevireIndicator/> */}
         </ChakraProvider>
     )

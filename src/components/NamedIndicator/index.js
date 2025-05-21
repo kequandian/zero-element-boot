@@ -5,24 +5,27 @@ import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorCo
 
 /**
  * @param {Component} Indicator  Indicator 组件
- * @param {Object} indicator     Indicator 组件参数
- * @param {{'hover','always','none','overlay'}} xtrigger 触发 indicator 的事件, 不配置即默认为 hover， xtrigger='overlay': _isSelected为真时触发，当 xtrigger='hover'，_isSelected=true不触发
+ * @param {Component Object} indicator     Indicator 组件参数
+ * @param {{onhover, overlay}} 触发 indicator 的事件, 不配置即默认为正常; overlay: _isSelected为真时触发; onhover: _isSelected=true不触发
  * @param {boolean} _isSelected  组件内部传递参数，用于selector选中状态下, indicator的状态
  * @returns
  */
-export default function NamedIndicator(namedIndicatorProps) {
-    const { children, Indicator, xname, props, xtrigger='hover',  __indicator = {xname, props, xtrigger}, indicator = __indicator,  
-            _isSelected, 
-            onItemClick, onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, ...rest } = namedIndicatorProps;
+export default function NamedIndicator(NamedIndicatorProps) {
+    const { children, Indicator, xname, props, __indicator = {xname, props}, indicator = __indicator,  
+            _isSelected, onhover, overlay, 
+            onItemClick, onItemDeleted, onItemAdded, onItemChanged, // from cart pass down
+            onIndicatorClick, ...rest } = NamedIndicatorProps;
 
-    const [onHover, setOnHover] = useState(false);
+    const [onHoverState, setOnHoverState] = useState(false);
 
     const toggleHoverEntered = () => {
-      setOnHover(true)
+      setOnHoverState(true)
     }
     const toggleHoverLeaved = () => {
-      setOnHover(false)
+      setOnHoverState(false)
     }
+
+    // console.log('NamedIndicator.onIndicatorClick: ', onIndicatorClick)
 
     //2024-01-24 新增代码
     // const __indicator_ = {...__indicator, ...indicator }
@@ -32,37 +35,39 @@ export default function NamedIndicator(namedIndicatorProps) {
     // 2. only Indicator, none 
     // 3. only indicator, indicator.props
     // const _indicator =  (Indicator && __indicator_) ? __indicator_ : ( Indicator ? {} : (__indicator_ ? ( (typeof __indicator_=='string')?{} : (__indicator_.props?{...__indicator_.props, ...indicatorProps}:{}) ) : {}) )
+    const triggered = !onhover || (onhover && onHoverState && !_isSelected) || (overlay && onHoverState && _isSelected)
 
     const indicatorData = getComponent(indicator)
     const _Indicator = Indicator || indicatorData.Component || NextIndicator
+    const __Indicator = triggered ? _Indicator : NextIndicator
     const _indicator = indicatorData.props
-
-
-    const _trigger = indicator.xtrigger
-    const triggered = (_trigger=='hover' && onHover && !_isSelected) || (_trigger=='overlay' && onHover && _isSelected) || _trigger=='always'
-    const ___Indicator = triggered ? _Indicator : NextIndicator
+    // console.log('NamedIndicator._Indicator: ', _Indicator)
 
     return React.Children.map(children, child => {
-      return (_trigger=='hover')?
+      return (onhover)?
       (
-        <div style={{flex: 1}} onMouseEnter={() => toggleHoverEntered()} onMouseLeave={() => toggleHoverLeaved()}>
-          <___Indicator {..._indicator} 
+        <div onMouseEnter={() => toggleHoverEntered()} onMouseLeave={() => toggleHoverLeaved()}>
+          <__Indicator {..._indicator} {...rest}
             onItemClick={onItemClick}
             onItemDeleted={onItemDeleted}
             onItemAdded={onItemAdded} 
             onItemChanged={onItemChanged} 
-            onItemIndicated={onItemIndicated}
+            __onIndicatorClick={onIndicatorClick}
           >
               {child}
-          </___Indicator>
+          </__Indicator>
         </div>
       ) : 
       (
-        // <div style={{flex: 1}}>
-          <___Indicator {..._indicator}>
+          <_Indicator {..._indicator} {...rest}
+            onItemClick={onItemClick}
+            onItemDeleted={onItemDeleted}
+            onItemAdded={onItemAdded} 
+            onItemChanged={onItemChanged} 
+            __onIndicatorClick={onIndicatorClick}
+          >
               {child}
-          </___Indicator>
-        // </div>
+          </_Indicator>
       )
       })
 }

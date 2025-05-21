@@ -5,8 +5,6 @@ export default function Container({children, ...rest}) {
 
   const [layoutRef, { getClassName }] = useLayout();
 
-  // console.log('Default container rest = ', rest)
-
   return <div
       className={getClassName()}
     >
@@ -19,7 +17,6 @@ export default function Container({children, ...rest}) {
       }
   </div>
 }
-
 
 // export default function Container(props) {
 //   const {children,...data} = props

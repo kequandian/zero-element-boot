@@ -92,12 +92,12 @@ export default function Index(props) {
   // return (
   //   <TestNamedCart/>
   // )
-  // return (
-  //   <TestIndicator/>
-  // )
   return (
-    <TestSelectList/>
+    <TestIndicator/>
   )
+  // return (
+  //   <TestSelectList/>
+  // )
 
 
   // return (
