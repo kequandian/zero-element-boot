@@ -9,7 +9,6 @@ const { Container } = require('@/components/container');
 // const { CloneAutoLayout } = require('@/components/CloneAutoLayout');
 
 //change history
-//CR.2020-12-29  handle AutoComponent, add Container
 
 //CR.2020-12-26 add cart for child
 //  commit: 97c238df65da2381aa2e14ffd31ba2621028402e
@@ -57,8 +56,6 @@ module.exports = function ({ children, allComponents, onItemClick, ...data }) {
   //   className={getClassName()}
   // >
   // <NamedLayout xname={xname} props={props} ref={layoutRef}>
-
-  // console.log('autocomponent onItemClick = ', onItemClick)
 
   /** 
   * 2021-5-13 移除 NamedLayout NamedCart，有需要在 index copy.js 取回

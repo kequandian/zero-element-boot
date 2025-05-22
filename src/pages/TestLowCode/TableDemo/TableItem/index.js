@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutoLayout as AutoComponent } from '@/components';
+import { AutoLayout } from '@/components';
 
 
 export default function TableItem(props) {
@@ -32,7 +32,7 @@ export default function TableItem(props) {
 
   return (
     <>
-      <AutoComponent {...config} />
+      <AutoLayout {...config} />
     </>
   )
 

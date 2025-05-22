@@ -24,9 +24,6 @@ const { getEndpoint, getToken } = require('@/components/config/common');
 
 //CR.2020-12-29 add Container
 
-
-//CR.2021-01-13 merge AutoComponent and AutoLayout
-
 // 2021-3-25 新增通过 fetch 获取 layoutJson 配置信息, 新增 loading 加载效果
 
 // 2022-6-27 gateway simplify

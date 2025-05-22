@@ -9,10 +9,9 @@ import NamedIndicator from './NamedIndicator';
 import NextIndicator from './NextIndicator';
 import NextCssIndicator from './NextCssIndicator';
 
-// AutoComponent
+// AutoLayout
 import AutoLayout from './AutoLayout';
 // import  { CloneAutoLayout }  from './CloneAutoLayout';
-// import AutoComponent from './AutoComponent';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
 
 //set components config
