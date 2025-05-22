@@ -13,6 +13,7 @@ import Viewport from './Viewport';
 import SquareBox from './SquareBox';
 import MaskBox from './MaskBox';
 import Box from './Box';
+import { Box as ChakraBox } from '@chakra-ui/react';
 
 //
 import ShadowCart from './ShadowCart'
@@ -42,6 +43,7 @@ export {
     SquareBox,
     MaskBox,
     Box,
+    ChakraBox,
 
     //effect cart
     ShadowCart,

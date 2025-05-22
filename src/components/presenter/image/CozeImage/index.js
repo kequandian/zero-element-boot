@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar, Box } from '@chakra-ui/react';
-require('./index.less');
+// require('./index.less');
 
 /**
  * 

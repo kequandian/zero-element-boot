@@ -64,6 +64,7 @@ import {
   SquareBox,
   MaskBox,
   Box,
+  ChakraBox,
   
   //hover
   ShadowCart,
@@ -185,6 +186,7 @@ NamedCartSet({
   MaskBox,
   SquareBox,
   Box,
+  ChakraBox,
 
   //
   ShadowCart,

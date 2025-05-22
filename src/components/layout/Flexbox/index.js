@@ -7,12 +7,12 @@ require('./index.less');
 
 /**
  * @param {对齐方式: [start, center, end, around, between, start-with-last-end, align-content-center] } align
- * @param {对齐方向: [row, column, row-reverse, column-reverse, no-wrap] } direction
- * @param {子项对齐方式: start, center, end, [full, half, quad]: for item width } justify
- * @param {不换行 [no-wrap] } flexFlow 默认换行
- * @param spacing 间隔
+ * @param {对齐方向(+子项): [row, column, row-reverse, column-reverse] } direction
+ * @param {子项对齐方式: [start, center, end, auto] } justify   //deprecated: [full, half, quad]: for item width, 
+ * @param {换行方式: [no-wrap, row-wrap] } flexFlow 默认换行
+ * @param {number} spacing 间隔
+ * @param {boolean} auto 是否自动适应子组件大小
  * @param {ReactElement} Seperator 直接转入的分隔线组件（不引入NamedSeperator依赖）
- * @param {弹性宽度 auto-full = [flex:1] } flexWidth 弹性宽度 flex:1
  * Seperator: 'Divider', 组件名
  * {
       name: 'Divider',
@@ -24,14 +24,17 @@ require('./index.less');
  */
 export default forwardRef(function Flexbox(props, ref) {
 
-  const { children, align = 'start', direction = '', flexFlow = 'row-wrap', justify = {}, spacing = 0, Seperator, flexWidth = '' } = props;
+  const { children, Seperator, align = 'start', direction = 'row', justify = 'start', xgap, flexFlow = 'none', ...rest} = props;
 
   const width100 = (align == 'between' || align.indexOf("between") != -1)  ? 'width100' : '';
   const height100 = direction === 'column' ? 'height100' : ''
+
+  console.log('Flexbox justify=', justify)
   
+
   useImperativeHandle(ref, () => ({
     getClassName: () => {
-      return `l-FlexBox ${align} ${direction} ${flexFlow} ${width100} ${height100} ${flexWidth}`;
+      return `l-FlexBox ${align} ${direction} ${flexFlow} ${width100} ${height100}`;
     }
   }));
 
@@ -52,23 +55,21 @@ export default forwardRef(function Flexbox(props, ref) {
   // })
 
   let spacingStyle = {}
-  if(direction == 'row' && spacing > 0 ){
-    spacingStyle = { marginLeft: `${spacing}px` }
-  }else if(direction == 'column' && spacing > 0 ){
-    spacingStyle = { marginBottom: `${spacing}px` }
+  if(direction == 'row' && xgap && xgap != '0px' ){
+    spacingStyle = { marginLeft: `${xgap}` }
+  }else if(direction == 'column' && xgap && xgap != '0px' ){
+    spacingStyle = { marginBottom: `${xgap}` }
   }
 
   return (
-    // <div className={`l-FlexBox ${align} ${direction} ${flexFlow} ${width100}`}>
+    // <div className={`l-FlexBox ${align} ${direction} ${flexFlow} ${width100}`}> // parent component 
     <>
       {
         React.Children.map(children, (child, index) => {
-
           return (
             <>
-
-              {/* <div className={`l-FlexBoxItem ${direction} ${justify}`} style={ index > 0 && spacing > 0 ? spacingStyle : {}} /> */}
-              <div className={`l-FlexBoxItem ${direction} ${justify}`} style={ index >= 0 &&  index <= (children.length -1 ) ? spacingStyle : {}}>
+              {/* <div className={`l-FlexBoxItem ${direction} ${justify}`} style={ index >= 0 &&  index <= (children.length -1 ) ? spacingStyle : {}}> */}
+              <div className={`l-FlexBoxItem ${direction} ${justify}`} style={ index >= 0 && index <= (children.length -1 ) ? spacingStyle : {}}>
                 {child}
               </div>
               {/* {defaultSeperator && (!isLastItem) ? <NamedSeperator name={defaultSeperator} /> : null} */}
@@ -79,5 +80,4 @@ export default forwardRef(function Flexbox(props, ref) {
       }
     </>
   )
-
 })
