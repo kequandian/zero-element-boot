@@ -2,11 +2,19 @@ import React from 'react';
 // import { ChakraProvider, HStack, Box, Button  } from '@chakra-ui/react';
 import { AutoLayout } from '@/components';
 
+import Title  from './presenter/Title'
+import Subtitle from './presenter/Subtitle';
+
+const ComponentSet = {Title, Subtitle}
+
 export default function TestAutoLayout(props) {
     const config = {
         layout: {
             "container": {
                 "xname": "SelectList"
+            },
+            "cart":{
+                "selector": "OutlineSelector"
             },
             "presenter": {
                 "children": [
@@ -78,7 +86,35 @@ export default function TestAutoLayout(props) {
         console.log('previewClick = ', layoutName)
     }
 
+    const child2 = {
+            "children": [
+                {
+                    "binding": {
+                        "title": "content"
+                    },
+                    "xname": "Title"
+                },
+                {
+                    "binding": {
+                        "subtitle": "content"
+                    },
+                    "xname": "Subtitle"
+                }
+            ],
+            "binding": {
+                "address": "subtitle",
+                "name": "title"
+            },
+            "xseq": "child2",
+            "mock": {
+                "address": "广东省深圳南山区0.8km",
+                "name": "混果汁(深圳湾科技生态园2区店)"
+            }
+    }
+
+
     return (
-        <AutoLayout ___ {...config} onPreviewTriggered={previewClick}/>
+        // <AutoLayout ___ {...config} allComponents={ComponentSet} onPreviewTriggered={previewClick}/>
+        <AutoLayout ___ layout={child2} allComponents={ComponentSet}/>
     )
 }
