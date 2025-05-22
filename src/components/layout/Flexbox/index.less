@@ -1,9 +1,9 @@
 .l-FlexBox {
   display  : flex;
-  // flex-flow: row wrap;
-}
-
-.l-FlexBox {
+  
+  // &.auto-full{
+  //   flex: 1
+  // }
 
   &.width100{
     width: 100%;
@@ -13,6 +13,8 @@
     height: 100%;
   }
   
+  // direction 
+
   &.start {
     justify-content: flex-start;
   }
@@ -76,6 +78,8 @@
   //   }
   // }
 
+  //
+
   &.row {
     flex-direction: row;
   }
@@ -104,6 +108,11 @@
     align-content: flex-start;
   }
 
+
+  &.none{
+    flex-flow: '';
+  }
+
   &.no-wrap{
     flex-flow: nowrap;
   }
@@ -111,29 +120,30 @@
   &.row-wrap{
     flex-flow: row wrap;
   }
-
-  &.auto-full{
-    flex: 1
-  }
-
 }
 
+
+// flex item justify
 .l-FlexBoxItem{
-
   display: flex;
-  
-  &.full {
-    width: 100%;
+
+  &.column.auto {
+    width: fit-content !important;
   }
 
-  &.half{
-    width: 50%;
-  }
+  // &.full {
+  //   width: 100%;
+  // }
 
-  &.quad{
-    width: 25%;
-  }
+  // &.half{
+  //   width: 50%;
+  // }
 
+  // &.quad{
+  //   width: 25%;
+  // }
+
+  // 'align direction' for row direction
   &.start.column {
     flex-direction: column;
     justify-content: flex-start;
@@ -149,7 +159,8 @@
     justify-content: flex-end;
   }
 
-  // for column direction
+
+  //  'align direction' for column direction
   &.start.row{
     flex-direction: row;
     align-items: flex-start
@@ -169,5 +180,4 @@
     flex-direction: row;
     align-items: flex-end
   }
-
 }

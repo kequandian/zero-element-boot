@@ -35,7 +35,8 @@ export default forwardRef(function NamedLayout({children, xname, props, navigati
   const Seperator = seperatorName ? NamedSeperator({name: seperatorName}) : null
 
   // just forward ref to the specified layout (e.g. Flexbox)
-  return <Layout {...layout.props} { ...__layout.props} isLastItem={isLastItem} navigation={navigation} Seperator={Seperator} ref={ref}>
+  // @when 2025-0522 add __ below means internal used Layout
+  return <Layout __ {...layout.props} { ...__layout.props} isLastItem={isLastItem} navigation={navigation} Seperator={Seperator} ref={ref}>
     {React.Children.toArray(children).map(child => {
       let element = React.cloneElement(child, {
         dataSource: dataSource,

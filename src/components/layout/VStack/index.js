@@ -1,5 +1,5 @@
 import React, {useImperativeHandle, forwardRef} from 'react';
-import Flexbox from '@/components/layout/Flexbox';
+// import Flexbox from '@/components/layout/Flexbox';
 import Container from '@/components/container/Container';
 import NextIndicator from '@/components/NextIndicator';
 
@@ -8,16 +8,16 @@ import NextIndicator from '@/components/NextIndicator';
  * @param spacing 间隔
  * 
  */
-
 export default forwardRef(function VStack(props, ref) {
-    const { children,  __, direction,  spacing, ...data } = props;
+    const { children,  __} = props;
+
     const _Container = __ ? NextIndicator : Container
 
     return (
          <_Container>
-            <Flexbox align={direction} direction='column' flexFlow=" " spacing={spacing} {...data} ref={ref}>
+            {/* <Flexbox align={direction} direction='column' spacing={spacing} {...data} ref={ref}> */}
                 {children}
-            </Flexbox>
+            {/* </Flexbox> */}
          </_Container>
     )
 })

@@ -110,8 +110,8 @@ function AutoLayout(autoLayoutProps) {
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
   const { xname, props, container, binding: layoutBinding, filter: layoutFilter, chain: layoutChain, gateway: layoutGateway,
     cart, indicator, selector, unselector, bounding,
-    presenter, navigation, children: layoutChildren, mock, tag: layoutTag,
-    alternative: layoutAlternative, xseq
+    presenter, navigation, children: layoutChildren, mock, tag: layoutTag,  xgap, xseq,
+    // alternative: layoutAlternative
   } = sugarLayout(layout) || {};
 
   // show tag for AutoLayout, layoutTag first
@@ -123,27 +123,27 @@ function AutoLayout(autoLayoutProps) {
 
   // @when 2023-03-18 
   // @what no alternative, use container instead.
-  if (undefined && alternativeActive) {
-    const notnull_alternative = (alternative && JSON.stringify(alternative) !== '{}' && alternative) || (layoutAlternative && JSON.stringify(layoutAlternative) !== '{}' && layoutAlternative) || tips('alternative')
-    const alternative_layout = (typeof notnull_alternative === 'string') ? ({ xname: notnull_alternative }) : (notnull_alternative.layout ? notnull_alternative.layout : notnull_alternative)
+  // if (undefined && alternativeActive) {
+  //   const notnull_alternative = (alternative && JSON.stringify(alternative) !== '{}' && alternative) || (layoutAlternative && JSON.stringify(layoutAlternative) !== '{}' && layoutAlternative) || tips('alternative')
+  //   const alternative_layout = (typeof notnull_alternative === 'string') ? ({ xname: notnull_alternative }) : (notnull_alternative.layout ? notnull_alternative.layout : notnull_alternative)
 
-    // exclude layout
-    const { layout, ...alternativeOthers } = notnull_alternative
+  //   // exclude layout
+  //   const { layout, ...alternativeOthers } = notnull_alternative
 
-    // add tag 
-    const alternativeTag = tag ? { tag: `${tag}-alternative` } : {}
-    const config = { ...alternative_layout, ...alternativeTag }
-    const layoutConfig = { layout: config }
+  //   // add tag 
+  //   const alternativeTag = tag ? { tag: `${tag}-alternative` } : {}
+  //   const config = { ...alternative_layout, ...alternativeTag }
+  //   const layoutConfig = { layout: config }
 
-    // alternativeBack
-    const { _Component: _AlternativeBack, _component: _alternativeBack } = getComponent(notnull_alternative.alternativeBack, DefaultIndicatorGet())
+  //   // alternativeBack
+  //   const { _Component: _AlternativeBack, _component: _alternativeBack } = getComponent(notnull_alternative.alternativeBack, DefaultIndicatorGet())
 
-    return (
-      <_AlternativeBack {..._alternativeBack} onBack={onAlternativeBack} >
-        <AutoLayout {...layoutConfig} {..._dataSource} {...rest} {...alternativeOthers} />
-      </_AlternativeBack>
-    )
-  }
+  //   return (
+  //     <_AlternativeBack {..._alternativeBack} onBack={onAlternativeBack} >
+  //       <AutoLayout {...layoutConfig} {..._dataSource} {...rest} {...alternativeOthers} />
+  //     </_AlternativeBack>
+  //   )
+  // }
 
   const PreviewIndicator = ({children}) => {
     return (
@@ -255,7 +255,7 @@ function AutoLayout(autoLayoutProps) {
         tag={`${_tag}-children-container[${_containerName}]`}
       >
 
-        <NamedLayout xname={__xname} props={props}
+        <NamedLayout xname={__xname} props={props} xgap={xgap}
           tag={`${_tag}-children-layout[${__xname}]`}>
 
 
@@ -304,7 +304,7 @@ function AutoLayout(autoLayoutProps) {
       // onItemChanged={onItemChanged}
       // onItemIndicated={onItemIndicated}
       >
-        <NamedLayout xname={__xname} props={props}
+        <NamedLayout xname={__xname} props={props} xgap={xgap}
           tag={`${_tag}-standard-layout[${__xname}]`}>
           <_NamedGateway binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
             tag={`${_tag}-gateway[${_gatewayName}]`}>

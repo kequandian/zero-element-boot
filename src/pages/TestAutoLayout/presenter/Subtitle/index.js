@@ -4,16 +4,8 @@ require("./index.less");
 
 /**
  * @param {string}} content 显示内容
- * @param {string}} minW 最小宽度
- * @param {string}} maxW 最大宽度
  */
-
 export default function Subtitle (props) {
-
     const { content } = props;
-
-    return <div  className="subtitle" 
-        style={{ color: "#787878"}}>
-            {content}
-    </div>
+    return <div  className="subtitle">{content}</div>
 }
