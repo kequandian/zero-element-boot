@@ -4,9 +4,16 @@ import NextIndicator from '@/components/NextIndicator';
 import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 
 
+/**
+ * 用于组件外部的组件位置
+ * @param {ReactComponent} Indicator 位置组件
+ * @param {object} indicator 位置组件数据
+ * @param {string} alignment 位置组件对齐方式，left, right, top, bottom, topleft, topright, bottomleft, bottomright 
+ * @returns 
+ */
 export default function PlacementIndicaor  (props) {
 
-    const { children, Indicator, indicator, alignment="left", offset=0, indicatorData={}, onPreviewTriggered, ...rest } = props
+    const { children, Indicator, indicator, alignment="left", offset=4, onIndicatorClick=(()=>{}), ...rest } = props
 
     const _Indicator = Indicator || (indicator ? DefaultIndicatorSet[indicator.xname] : NextIndicator)
 
@@ -26,14 +33,13 @@ export default function PlacementIndicaor  (props) {
 
     const indicatorClick = (e) => {
         e.stopPropagation();
-        // 触发预览
-        onPreviewTriggered && onPreviewTriggered(rest);
+        onIndicatorClick();
     }
 
     return (
 
         <div style={{ ...paramStyle }}>
-            <div style={boxStyle} onClick={indicatorClick || null}>
+            <div style={boxStyle} onClick={indicatorClick || (()=>{}) }>
                 <_Indicator {..._indicatorProps} />
             </div>
             {

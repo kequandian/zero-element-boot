@@ -9,6 +9,10 @@ import { Avatar } from '@/components/presenter'
 // TestComponents
 import ImageAnimationDemo from './TestComponents/TestPresenter/ImageAnimationDemo'
 import TestDownload from '@/pages/TestComponents/TestPresenter/TestDownloadDemo';
+import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
+import TestNamedSelector from '@/pages/TestComponents/TestNamedSelector'
+import TestIndicator from '@/pages/TestComponents/TestIndicator'
+
 
 // TestComposition
 import AvatarItemDemo from './TestComposition/AvatarItemDemo'
@@ -22,10 +26,6 @@ import ApisUi from '@/composition/ApisUi/Sandbox';
 //logs-ui
 import LogsUi from '@/composition/LogsUi/Sandbox'
 
-// TestNamed
-import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
-import TestNamedSelector from '@/pages/TestComponents/TestNamedSelector'
-import TestIndicator from '@/pages/TestComponents/TestIndicator'
 
 // TestList
 import TestGroupedList from './TestLists/TestGroupedList'
@@ -43,11 +43,10 @@ import RssRender from '@/components/presenter/rss/RssRender/Sandbox'
 
 // TestAutoLayout
 import TestAutoLayout from './TestAutoLayout';
-import TestPreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox/TestPreviewAutoLayout';
-
+import TestContainer from  './TestComponents/TestContainer';
 
 //preview-ui
-// import PreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox'
+import TestPreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox/TestPreviewAutoLayout';
 import BootPreviewAutoLayout from '@/components/BootPreviewAutoLayout';
 
 
@@ -104,10 +103,13 @@ export default function Index(props) {
   // )
 
   // return <div></div>
-
+    // return (
+    //   <TestAutoLayout/>
+    // )
     return (
-      <TestAutoLayout/>
+      <TestContainer/>
     )
+
 
   // AutoLayout 组件测试
   // const layout = {

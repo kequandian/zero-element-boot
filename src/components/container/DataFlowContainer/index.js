@@ -5,18 +5,14 @@ const useLayout = require('@/components/hooks/useLayout');
 import { LS } from 'zero-element/lib/utils/storage';
 
 /**
- * 
- * @param   Children        两个子组件
- * @param   currentside   接收为 AutoLayout   layout参数
- * @param   anotherside  接收别一个 AutoLayout  layout参数
- * @param   converter      item数据转换器，相当于 binding
+ * 用于两个子组件交换数据信息
+ * @param   converter    item数据转换器，相当于 binding
  * 
  */
 export default function DataFlowContainer(props) {
-
     const { 
-        children, 
-        currentside, anotherside, converter, 
+        children, converter,
+        // currentside, anotherside, 
         ...rest 
     } = props;
 
@@ -59,7 +55,6 @@ export default function DataFlowContainer(props) {
     const secondChildItemClick = (item) => {
         console.log('second child item click = ', item)
     }
-
     // console.log('CoupleSideContainer configData= ', configData, rest)
     
     function renderChildren(children) {
@@ -101,19 +96,15 @@ export default function DataFlowContainer(props) {
         >
             {
                 React.Children.toArray(children).map((child, childIndex) => {
-                    if (React.isValidElement(child)) {
+                    // if (React.isValidElement(child)) {
                         return React.cloneElement(child, {
                             ref: layoutRef, 
                             children: renderChildren(child.props.children),
                             ...rest,
                         })
-                    }
-        
+                    // }
                 })
             }
         </div>
-        
-
     )
-
 }

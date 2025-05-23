@@ -65,7 +65,7 @@ export default function Cart(props) {
       boxShadow: `${shadow}`,
       borderWidth: `${linewidth}`,
       borderColor: `${lineColor}`,
-      overflow: 'hidden'
+      overflow: 'hidden',
     }}
       onMouseEnter={() => toggleHover()} onMouseLeave={() => toggleHover()}
     >

@@ -4,15 +4,19 @@ import { HStack, VStack, Box } from '@chakra-ui/react'
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
 
 
+/**
+ * 多按钮排列Indicator 组件
+ * @param {Actions} 直接提供组件
+ *  @param {actions} 提供组件配置
+ * @returns 
+ */
 export default function MultiActionsIndicator(props) {
 
-    const { children, Actions = [], actions = [], alignment, offset = 5, ...rest
+    const { children, Actions = {}, actions = [], alignment, offset = 5, ...rest
     } = props;
 
     const _presenters = NamedPresenterGet();
 
-    const _actions = actions
-    
     const allObject = (list, i=-1) => {
         return (
             <HStack key={i} flexFlow={'wrap'} spacing={0}>
@@ -32,9 +36,7 @@ export default function MultiActionsIndicator(props) {
     }
 
     const allArray = (list) => {
-
         return (
-
             <VStack spacing={0} alignItems={'start'}>
                 {list.map((itemData, i) => {
                     if (Array.isArray(itemData)) {
@@ -58,38 +60,35 @@ export default function MultiActionsIndicator(props) {
 
     const indicatorList = () => {
 
-        if (!_actions || !Array.isArray(_actions) || _actions.length === 0) {
+        if (!actions || !Array.isArray(actions) || actions.length === 0) {
             return <></>
         }
 
-        return checkData(_actions)
-
-    }
-
-    function checkData(data) {
+        // start 
         let hasArrays = false;
         let hasObjects = false;
 
-        for (let i = 0; i < data.length; i++) {
-            if (Array.isArray(data[i])) {
+        for (let i = 0; i < actions.length; i++) {
+            if (Array.isArray(actions[i])) {
                 hasArrays = true;
-            } else if (typeof data[i] === "object" && data[i] !== null) {
+            } else if (typeof actions[i] === "object" && actions[i] !== null) {
                 hasObjects = true;
             }
         }
 
         if (hasArrays && hasObjects) {
-            return allArray(data)
+            return allArray(actions)
         } else if (hasArrays) {
-            return allArray(data)
+            return allArray(actions)
         } else if (hasObjects) {
-            return allObject(data)
+            return allObject(actions)
         } else {
             return <></>
         }
     }
 
     return (
+        // placement indicator: outer position indicator
         <PlacementIndicator Indicator={indicatorList} alignment={alignment} offset={offset} {...rest}>
             {children}
         </PlacementIndicator>
