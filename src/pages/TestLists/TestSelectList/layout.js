@@ -1,5 +1,5 @@
 module.exports = {
-    xname: 'Gridbox',
+    xname: 'VStack',
     props: {
         columns: 8,
     },
