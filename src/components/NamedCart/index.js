@@ -12,12 +12,12 @@ import { get as DefaultCartSet } from '@/components/config/NamedCartConfig';
 import { get as DefaultIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 import { get as DefaultSelectorSet } from '@/components/config/NamedSelectorConfig';
 
-import OverlaySelector from '@/components/OverlaySelector';
+// import OverlaySelector from '@/components/OverlaySelector';
 import NamedIndicator from '@/components/NamedIndicator';
 import NextIndicator from '@/components/NextIndicator';
 import CssCart from '../cart/CssCart';
 import NamedSelector from '../NamedSelector';
-import { formatParams } from '@/components/utils/tools';
+// import { formatParams } from '@/components/utils/tools';
 
 
 /**
@@ -41,12 +41,13 @@ import { formatParams } from '@/components/utils/tools';
  * indicated
  */
 export default function NamedCart(NameCartProps) {
-    const { children, xname, props, indicator, selector, bounding, selected, 
+    const { children,tag, xname, props, indicator, selector, bounding, selected, 
             cartSet, indicatorSet, selectorSet, 
             __cart = { xname, props, indicator, selector, bounding}, cart = __cart,
-            __indicator, indicatorData={}, onItemClick, isSelected, onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, 
-            __selector, selectorData={},
-            tag,
+            __indicator, indicatorData={}, 
+            __selector, selectorData={}, isSelected,
+            onItemClick, onItemDeleted, onItemAdded, onItemChanged, 
+            onItemSelected=((e)=>{console.log('NamedCart:onItemSelected() is not set !', e)}),   //@2025-05-26 added for NamedSelector
             ...rest } = NameCartProps
   
             tagged(tag, rest)
@@ -101,10 +102,16 @@ export default function NamedCart(NameCartProps) {
   // 2024-02-19, no OverlaySelector, NamedSelector instead.
   const _NamedIndicator = _indicator ? NamedIndicator : NextIndicator
   const _NamedSelector = _selector ? NamedSelector : NextIndicator
+  
+
+  function onNamedCartItemSelected (e) {
+    onItemSelected(e)
+  }
 
   return (
     <_Bounding style={_bounding}>
       {
+        // remove OverlaySelector, seperate _NamedSelector & _NamedIndicator
         // (_selector && _unselector) ? 
         // (
         //   //both selector and unselector require OverlaySelector
@@ -120,7 +127,9 @@ export default function NamedCart(NameCartProps) {
         // : 
         ( (_indicator || _selector) ?
           (
-            <_NamedSelector selector={_selector} selected={selected} __selector={__selector} isSelected={isSelected}>  
+            <_NamedSelector selector={_selector} selected={selected} __selector={__selector} isSelected={isSelected} 
+              onItemSelected={onNamedCartItemSelected}
+            >  
 
                 {/* only indicator handle item event */}
                 <_NamedIndicator indicator={_indicator} __indicator={__indicator} indicatorData={_indicatorData} 
@@ -129,7 +138,6 @@ export default function NamedCart(NameCartProps) {
                         onItemDeleted={onItemDeleted}
                         onItemAdded={onItemAdded} 
                         onItemChanged={onItemChanged} 
-                        onItemIndicated={onItemIndicated}
                         _isSelected={isSelected}
                 >
                     <_CartModule tag={`${tag}-indicator-selector`} children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator}  __selector={__selector}/> 

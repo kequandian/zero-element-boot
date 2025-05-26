@@ -9,7 +9,6 @@ import AutoPreviewIndicator from '@/components/indicator/AutoPreviewIndicator'
 import { useReplacing } from '../gateway/Replacing';
 
 import { get as NamedPresenterGet } from '@/components/config/NamedPresenterConfig';
-import { get as DefaultIndicatorGet } from '@/components/config/NamedIndicatorConfig';
 
 import LoadingPage from '@/components/loading';
 const { getEndpoint, getToken } = require('@/components/config/common');
@@ -102,7 +101,9 @@ export default function (props) {
 function AutoLayout(autoLayoutProps) {
 
   const { children,tag, layout, dataSource, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('AutoLayout:onItemClick is not set !') }, 
-  onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, ___, onAutoPreview,
+  onItemDeleted, onItemAdded, onItemChanged, 
+  onItemSelected=(()=>{console.log('AutoLayout:onItemSelected is not set !')}),
+  ___, onAutoPreview,
   // alternative, alternativeActive, onAlternativeBack,   // use container instead. e.g. AlternativeContainer
   ...rest } = autoLayoutProps;
 
@@ -115,7 +116,7 @@ function AutoLayout(autoLayoutProps) {
   } = sugarLayout(layout) || {};
 
   // show tag for AutoLayout, layoutTag first
-  const _tag = layoutTag || tag || 'UNDEFINED-TAG'
+  const _tag = layoutTag || tag || '[AutoLayout]-TAG'
   tagged(_tag, rest)
 
   const _dataSource = (Array.isArray(dataSource) ? { items: dataSource } : dataSource) || (Array.isArray(mock) ? { items: mock } : mock) || {}
@@ -235,7 +236,7 @@ function AutoLayout(autoLayoutProps) {
     // <__Presenter/> 新增onItemClick 
     return (
       <__NamedGateway tag={`${_tag}-__NamedGateway__[${_gatewayName}]`} binding={_data_binding} filter={_data_filter} chain={_data_chain} gateway={_data_gateway} {..._rest}>
-        <__NamedCart tag={`${_tag}-__NamedCart__`} {..._data_cart}>
+        <__NamedCart tag={`${_tag}-__NamedCart__`} {..._data_cart} onItemSelected={onItemClick} >
           <__Presenter tag={`${_tag}-__Presenter__`} {..._t_presenter} allComponents={allComponents} onItemClick={onItemClick} />
         </__NamedCart>
       </__NamedGateway>
@@ -272,17 +273,16 @@ function AutoLayout(autoLayoutProps) {
                 tag={`${itemTag}-gateway[${_gatewayName}]`} >
 
                 <_NamedCart {...__cart}
+                  tag={`${_tag}-cart[${_cartName}]`}
                   onItemDeleted={onItemDeleted}
                   onItemAdded={onItemAdded}
                   onItemChanged={onItemChanged}
-                  onItemIndicated={onItemIndicated}
-                  tag={`${_tag}-cart[${_cartName}]`}
+                  onItemSelected={onItemClick}
                 >
                   <__Presenter ___={___} xseq={xseq} {...__presenter} allComponents={allComponents} key={i}
                     tag={`${itemTag}-presenter[${_presenterName}]`}
                     onItemClick={onItemClick}
                   />
-
                 </_NamedCart>
               </_NamedGateway>
             )
@@ -296,24 +296,23 @@ function AutoLayout(autoLayoutProps) {
       <Container  {..._container}  {..._dataSource} {...rest} navigation={navigation}
         useReplacing={_useReplacing}
         tag={`${_tag}-presenter-container[${_containerName}]`}
-        onItemClick={onItemClick}
+        // onItemClick={onItemClick}
         onAutoPreview={onAutoPreview}
       // onItemClick={onItemClick} 
       // onItemDeleted={onItemDeleted}
       // onItemAdded={onItemAdded}
       // onItemChanged={onItemChanged}
-      // onItemIndicated={onItemIndicated}
       >
         <NamedLayout xname={__xname} props={props} xgap={xgap}
           tag={`${_tag}-standard-layout[${__xname}]`}>
           <_NamedGateway binding={_layoutBinding} filter={_layoutFilter} chain={_layoutChain} gateway={_gateway}
             tag={`${_tag}-gateway[${_gatewayName}]`}>
             <_NamedCart {...__cart}
+              tag={`${_tag}-cart[${_cartName}]`}
               onItemDeleted={onItemDeleted}
               onItemAdded={onItemAdded}
               onItemChanged={onItemChanged}
-              onItemIndicated={onItemIndicated}
-              tag={`${_tag}-cart[${_cartName}]`}
+              onItemSelected={onItemClick}
             >
               {
                 presenter ? <Presenter ___={___} xseq={xseq} {..._presenter} allComponents={allComponents}

@@ -47,7 +47,8 @@ export default forwardRef(function ManageList(props) {
   const { children, layout,
     items, dataSource = items, currentTabItem,
     navigation, addnew, onItemClick, cb, isSwitch = false, 
-    onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
+    onItemDeleted, onItemAdded, onItemChanged, 
+    onItemSelected=((e)=>{console.log('ManageList:onItemSelected() is not set! ')}),
     ...rest } = props;
 
   const {
