@@ -27,7 +27,7 @@ export default function DataFlowContainer(props) {
     },[onRefresh])
 
     const firstChildItemClick = (item) => {
-        console.log('DataFlowContainer: first child item click = ', item)
+        console.log('DataFlowContainer: first child item clicked, item =', item)
         
         setConfigData('')
         if (item.isSelected) {
@@ -43,7 +43,7 @@ export default function DataFlowContainer(props) {
     }
 
     const firstChildActionCompleted = (data) => {
-        console.log('first child item action click = ', data)
+        console.log('DataFlowContainer: first child action click = ', data)
         setConfigData('')
         setTimeout(() => {
             // LS.set('commonData', {layoutName: data.moduleName})
@@ -64,7 +64,7 @@ export default function DataFlowContainer(props) {
                     return (
                         React.cloneElement(child, {
                             ...rest,
-                            onItemClick: firstChildItemClick,
+                            onItemSelected: firstChildItemClick,
                             onActionCompleted: firstChildActionCompleted
                         })
                     )

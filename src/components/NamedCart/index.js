@@ -47,7 +47,7 @@ export default function NamedCart(NameCartProps) {
             __indicator, indicatorData={}, 
             __selector, selectorData={}, isSelected,
             onItemClick, onItemDeleted, onItemAdded, onItemChanged, 
-            onItemSelected=((e)=>{console.log('NamedCart:onItemSelected() is not set !', e)}),   //@2025-05-26 added for NamedSelector
+            // onItemSelected=((e)=>{console.log('NamedCart:onItemSelected() is not set !', e)}),   //work on container instead.
             ...rest } = NameCartProps
   
             tagged(tag, rest)
@@ -103,11 +103,6 @@ export default function NamedCart(NameCartProps) {
   const _NamedIndicator = _indicator ? NamedIndicator : NextIndicator
   const _NamedSelector = _selector ? NamedSelector : NextIndicator
   
-
-  function onNamedCartItemSelected (e) {
-    onItemSelected(e)
-  }
-
   return (
     <_Bounding style={_bounding}>
       {
@@ -128,7 +123,6 @@ export default function NamedCart(NameCartProps) {
         ( (_indicator || _selector) ?
           (
             <_NamedSelector selector={_selector} selected={selected} __selector={__selector} isSelected={isSelected} 
-              onItemSelected={onNamedCartItemSelected}
             >  
 
                 {/* only indicator handle item event */}
