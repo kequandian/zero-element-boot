@@ -21,7 +21,9 @@ require('./index.less');
 export default function SelectList(props) {
   const { 
     children, items, dataSource=items, 
-    navigation,  onItemClick= () => {console.log('SelectList: onItemClick() is not set !')},
+    navigation,  
+    onItemSelected= (item) => {console.log('SelectList: onItemSelected() is not set ! item= ', item)},
+    
     // isSwitch=false,
     // addnew='',
     // containerHeight= '',
@@ -81,10 +83,9 @@ export default function SelectList(props) {
       }
     }
     
-    if(onItemClick){
-      const item = list.find((fItem, findex)=> (findex === index))
-      onItemClick(item)
-    }
+    // selected item
+    const _item = list.find((fItem, findex)=> (findex === index))
+    onItemSelected(_item)
   }
 
   // function addNewButton() {

@@ -15,9 +15,7 @@ const testItems = [
 
 export default function Index(props) {
 
-  const { items = testItems, onItemClick=(()=>{console.log('TestSelectList:onItemClick() is not set !')}), 
-    onItemSelected=(()=>{console.log('TestSelectList:onItemSelected() is not set!')}),
-  ...rest } = props;
+  const { items = testItems, onItemSelected=((item)=>{console.log('TestSelectList:onItemSelected(item) is not set, item = ', item)}), ...rest } = props;
 
   // console.log('props =',props)
   /**
@@ -34,11 +32,11 @@ export default function Index(props) {
   // }
 
   return (
-    <AutoLayout {...config} onItemClick={onItemClick}/>
+    <AutoLayout {...config} onItemSelected={onItemSelected}/>
   )
 
   return (
-    <SelectList {...config} items={testItems} onItemClick={onItemClick} >
+    <SelectList {...config} items={testItems} onItemSelected={onItemSelected} >
       <NamedLayout xname='Gridbox'>
         <NamedSelector selector={{xname: 'OutlineSelector', props: {lineWidth: 2, lineColor: '#D9FF55'}}}>
           <ItemPlaceholder/>

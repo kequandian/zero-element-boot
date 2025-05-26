@@ -100,9 +100,10 @@ export default function (props) {
 
 function AutoLayout(autoLayoutProps) {
 
-  const { children,tag, layout, dataSource, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('AutoLayout:onItemClick is not set !') }, 
+  const { children,tag, layout, dataSource, binding, filter, chain, gateway, allComponents = {}, 
+  onItemClick = () => { console.log('AutoLayout:presenter:onItemClick on  is not set !') }, 
   onItemDeleted, onItemAdded, onItemChanged, 
-  onItemSelected=(()=>{console.log('AutoLayout:onItemSelected is not set !')}),
+  onItemSelected=((item)=>{console.log('AutoLayout:list:onItemSelected is not set, item=', item)}),
   ___, onAutoPreview,
   // alternative, alternativeActive, onAlternativeBack,   // use container instead. e.g. AlternativeContainer
   ...rest } = autoLayoutProps;
@@ -236,7 +237,7 @@ function AutoLayout(autoLayoutProps) {
     // <__Presenter/> 新增onItemClick 
     return (
       <__NamedGateway tag={`${_tag}-__NamedGateway__[${_gatewayName}]`} binding={_data_binding} filter={_data_filter} chain={_data_chain} gateway={_data_gateway} {..._rest}>
-        <__NamedCart tag={`${_tag}-__NamedCart__`} {..._data_cart} onItemSelected={onItemClick} >
+        <__NamedCart tag={`${_tag}-__NamedCart__`} {..._data_cart} >
           <__Presenter tag={`${_tag}-__Presenter__`} {..._t_presenter} allComponents={allComponents} onItemClick={onItemClick} />
         </__NamedCart>
       </__NamedGateway>
@@ -251,9 +252,10 @@ function AutoLayout(autoLayoutProps) {
     
     <___previewIndicator xseq={xseq} onAutoPreview={onAutoPreview}>
       <Container  {..._container}  {..._dataSource} {...rest}
-        navigation={navigation}
-        onAutoPreview={onAutoPreview}
         tag={`${_tag}-children-container[${_containerName}]`}
+        navigation={navigation}
+        onItemSelected={onItemSelected}
+        onAutoPreview={onAutoPreview}
       >
 
         <NamedLayout xname={__xname} props={props} xgap={xgap}
@@ -277,7 +279,6 @@ function AutoLayout(autoLayoutProps) {
                   onItemDeleted={onItemDeleted}
                   onItemAdded={onItemAdded}
                   onItemChanged={onItemChanged}
-                  onItemSelected={onItemClick}
                 >
                   <__Presenter ___={___} xseq={xseq} {...__presenter} allComponents={allComponents} key={i}
                     tag={`${itemTag}-presenter[${_presenterName}]`}
@@ -294,9 +295,9 @@ function AutoLayout(autoLayoutProps) {
   ) : (
     <___previewIndicator xseq={xseq} onAutoPreview={onAutoPreview}>
       <Container  {..._container}  {..._dataSource} {...rest} navigation={navigation}
-        useReplacing={_useReplacing}
         tag={`${_tag}-presenter-container[${_containerName}]`}
-        // onItemClick={onItemClick}
+        useReplacing={_useReplacing}
+        onItemSelected={onItemSelected}
         onAutoPreview={onAutoPreview}
       // onItemClick={onItemClick} 
       // onItemDeleted={onItemDeleted}
@@ -312,7 +313,6 @@ function AutoLayout(autoLayoutProps) {
               onItemDeleted={onItemDeleted}
               onItemAdded={onItemAdded}
               onItemChanged={onItemChanged}
-              onItemSelected={onItemClick}
             >
               {
                 presenter ? <Presenter ___={___} xseq={xseq} {..._presenter} allComponents={allComponents}
