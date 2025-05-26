@@ -3,8 +3,6 @@ import NamedSeperator from '@/components/NamedSeperator';
 
 const DefaultLayoutSet = require('@/components/config/NamedLayoutConfig').get();
 
-// const DefaultLayoutSet = require('../layout');
-
 // change history
 // CR.2020-12-26 custom LayoutSet
 
@@ -15,12 +13,13 @@ const DefaultLayoutSet = require('@/components/config/NamedLayoutConfig').get();
  * @param {命名组件自定义属性} props
  * @param {命名组件的 [name, props] 通过 layout 传递 } layout
  */
-export default forwardRef(function NamedLayout({children, xname, props, navigation, __layout={xname, props}, layout=__layout, isLastItem, layoutSet, dataSource, tag, ...rest}, ref) {
+export default forwardRef(function NamedLayout({children,tag, xname, props, __layout={xname, props}, layout=__layout, 
+   navigation, isLastItem,
+   dataSource,  ...rest}, ref) {
+  tagged(tag, rest)
 
   // custom layoutSet first
-  const LayoutSet = layoutSet || DefaultLayoutSet
-
-  tagged(tag, rest)
+  const LayoutSet = DefaultLayoutSet
 
   // console.log('NamedLayout = = ',  xname, props, layout, __layout, rest)
 
@@ -46,6 +45,8 @@ export default forwardRef(function NamedLayout({children, xname, props, navigati
     })}
   </Layout>
 })
+
+
 
 function tips(name) {
   return _ => `Layout ${name} 未定义`;
