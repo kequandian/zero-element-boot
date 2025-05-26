@@ -10,7 +10,6 @@ import { ChakraBox } from '@/components/cart'
 import PageCenter from '@/components/container/PageCenter';
 
 export default function Index(props) {
-    
     return (
         <PageCenter>
             <ChakraBox w='400px'>

@@ -155,7 +155,7 @@ function _CartModule({children, tag, Cart, props, data, __indicator,  __selector
             {React.Children.toArray(children).map(child => {
               return React.cloneElement(child, {
                 ...data,
-                __indicator:__indicator,
+                __indicator: __indicator,
                 __selector: __selector
               })
             })}

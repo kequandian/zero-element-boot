@@ -6,7 +6,7 @@ const useLayout = require('@/components/hooks/useLayout');
 
 /**
  * 用于两个子组件交换数据信息
- * @param   converter    item数据转换器，相当于 binding
+ * @param converter   item数据转换器，相当于 binding
  * 
  */
 export default function DataFlowContainer(props) {
@@ -29,9 +29,8 @@ export default function DataFlowContainer(props) {
     const firstChildItemClick = (item) => {
         console.log('DataFlowContainer: first child item clicked, item =', item)
         
-        setConfigData('')
+        setConfigData({})
         if (item.isSelected) {
-            setOnRefresh(true)
             if (converter && JSON.stringify(converter) != '{}') {
                 const bindingData = bindingConvert(converter, item)
                 const filterData = doFilter(converter, bindingData)
@@ -39,54 +38,62 @@ export default function DataFlowContainer(props) {
             } else {
                 setConfigData(item)
             }
+
+            setOnRefresh(true)
         }
     }
 
     const firstChildActionCompleted = (data) => {
         console.log('DataFlowContainer: first child action click = ', data)
-        setConfigData('')
-        setTimeout(() => {
+        
+        setConfigData(data)
+        setOnRefresh(true)
+
+        // setConfigData({})
+        // setTimeout(() => {
             // LS.set('commonData', {layoutName: data.moduleName})
-            setConfigData({layoutName: data.moduleName})
-            setOnRefresh(true)
-        }, 100)
+            // setConfigData({layoutName: data.moduleName})
+            // setOnRefresh(true)
+        // }, 100)
     }
 
     const secondChildItemClick = (item) => {
         console.log('second child item click = ', item)
     }
-    // console.log('CoupleSideContainer configData= ', configData, rest)
-    
-    function renderChildren(children) {
-        return React.Children.map(children, (child, childIndex) => {
-            if (React.isValidElement(child)) {
-                if (childIndex === 0) {
-                    return (
-                        React.cloneElement(child, {
-                            ...rest,
-                            onItemSelected: firstChildItemClick,
-                            onActionCompleted: firstChildActionCompleted
-                        })
-                    )
 
-                } else if (childIndex === 1 && !onRefresh) {
-                    return (
-                        React.cloneElement(child, {
-                            ...rest,
-                            ...configData,
-                            onItemClick: secondChildItemClick,
-                        })
-                    )
+    // function renderChildren(children) {
+    //     return React.Children.map(children, (child, childIndex) => {
 
-                } else {
-                    return <div></div>
-                }
+    //         if (React.isValidElement(child)) {
+    //             if (childIndex === 0) {
+    //                 return (
+    //                     React.cloneElement(child, {
+    //                         ...rest,
+    //                         onItemSelected: firstChildItemClick,
+    //                         onActionCompleted: firstChildActionCompleted
+    //                     })
+    //                 )
+    //                 // return <div>first child</div>
 
-            } else {
-                return child;
-            }
-        });
-    }
+    //             } else if (childIndex === 1 && !onRefresh) {
+    //                 return (
+    //                     React.cloneElement(child, {
+    //                         ...rest,
+    //                         ...configData,
+    //                         onItemClick: secondChildItemClick,
+    //                     })
+    //                 )
+    //                 // return <div>second child</div>
+
+    //             } else {
+    //                 return <div></div>
+    //             }
+
+    //         } else {
+    //             return child;
+    //         }
+    //     });
+    // }
 
 
     return (
@@ -94,13 +101,23 @@ export default function DataFlowContainer(props) {
             style={{flex:1}}
             className={getClassName()}
         >
+           {/* { renderChildren(children)} */}
+            
             {
                 React.Children.toArray(children).map((child, childIndex) => {
+                    if (React.isValidElement(child)) {
                         return React.cloneElement(child, {
                             ref: layoutRef, 
-                            children: renderChildren(child.props.children),
+                            onItemSelected: childIndex==0?firstChildItemClick:(()=>{}),
+                            onActionCompleted: childIndex==0?firstChildActionCompleted:(()=>{}),
+                            onItemClick: childIndex==1?secondChildItemClick:(()=>{}),
+                            dataSource: childIndex==1?configData:{},
+                            // children: renderChildren(child.props.children),
                             ...rest,
                         })
+                    }else{
+                       return {child}
+                    }
                 })
             }
         </div>
