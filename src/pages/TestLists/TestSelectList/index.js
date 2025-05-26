@@ -15,7 +15,9 @@ const testItems = [
 
 export default function Index(props) {
 
-  const { items = testItems, onItemClick=((item)=>{}), ...rest } = props;
+  const { items = testItems, onItemClick=(()=>{console.log('TestSelectList:onItemClick() is not set !')}), 
+    onItemSelected=(()=>{console.log('TestSelectList:onItemSelected() is not set!')}),
+  ...rest } = props;
 
   // console.log('props =',props)
   /**

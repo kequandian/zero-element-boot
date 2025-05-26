@@ -15,6 +15,7 @@ import { get as DefaultSelectorSet } from '@/components/config/NamedSelectorConf
 export default function NamedSelector(NamedSelectorProps) {
 
   const { children, Selector, xname, props, __selector = { xname, props }, selector = __selector,
+    onItemSelected=((e)=>{'NamedSelector:onItemSelected() is not set !'}),
     isSelected = false, selected, ...rest } = NamedSelectorProps;
 
   const [onSelected, setSelected] = useState(false);
@@ -33,13 +34,15 @@ export default function NamedSelector(NamedSelectorProps) {
   return (
     React.Children.map(children, child => {
     return (
+      // up to parent component to control the selected status
       !selected ? (
-        <div style={{ flex: 1 }} >
+        <div style={{ flex: 1 }} onClick={onItemSelected}>
           <__Selector {..._selector} {...rest} selected={isSelected} >
             { child }
           </__Selector>
         </div>
       ):(
+        // only for test
         <div style={{ flex: 1 }} onClick={toggleSelected} >
           <__Selector {..._selector} {...rest} selected={onSelected}>
           { child }

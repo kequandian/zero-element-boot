@@ -41,18 +41,17 @@ require('./index.less')
  * @param { function } onItemAdded 新增
  * @param { function } onItemChanged 修改
  * @param { function } onItemDeleted 删除
- * @param { function } onItemIndicated 自定义传参, 例子： onItemIndicated("indicator": 'MangeMenuList', id: 'deleted',  data{})
  * @param { object } action 传访问API 参数为： createAPI, getAPI, updateAPI, deleteAPI
- * 
+ * //param { function } onItemIndicated 自定义传参, 例子： onItemIndicated("indicator": 'MangeMenuList', id: 'deleted',  data{})
  */
 
-export default function Index(props) {
+export default function ManageMenuIndicator(props) {
 
     const { 
         children, 
         action = {},
         indicatorData,
-        onItemDeleted, onItemAdded, onItemChanged, onItemIndicated,
+        onItemDeleted, onItemAdded, onItemChanged,
         ...rest
     } = props;
 

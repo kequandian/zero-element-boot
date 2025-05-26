@@ -14,7 +14,8 @@ export default function NamedIndicator(NamedIndicatorProps) {
     const { children, Indicator, xname, props, __indicator = {xname, props}, indicator = __indicator,  
             _isSelected, onhover, overlay, 
             onItemClick, onItemDeleted, onItemAdded, onItemChanged, // from cart pass down
-            onIndicatorClick, ...rest } = NamedIndicatorProps;
+            onIndicatorClick, 
+            ...rest } = NamedIndicatorProps;
 
     const [onHoverState, setOnHoverState] = useState(false);
 

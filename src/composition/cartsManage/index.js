@@ -183,8 +183,8 @@ export default function Index(props) {
         callback(data)
     }
 
-    function indicatedAction (data) {
-        console.log('indicated action = ', data)
+    function selectedAction (data) {
+        console.log('selected action = ', data)
     }
 
     return (
@@ -242,7 +242,7 @@ export default function Index(props) {
                                         onItemDeleted={delateAction}
                                         onItemAdded={addAction}
                                         onItemChanged={updateAction}
-                                        // onItemIndicated={indicatedAction}
+                                        onItemSelected={selectedAction}
                                         isSwitch={switchStatus} 
                                     />
                                 </Box>
