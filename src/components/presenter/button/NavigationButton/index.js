@@ -4,28 +4,22 @@ import useQuery from '@/components/hooks/useQuery.js'
 
 
 /**
- * 
+ * 跳转至外部路径
  * @param {color} color 背景 + 边框 + 字体颜色
  * @param {height} height 高度, 默认高度 40px
  * @param {solid} solid 深色背景，字体白色
  * @param {outline} outline 有边框，背景半透明
- * @param {onAction} onAction 点击响应内部事件
+ * @param {navigation} navigation  外部路径
  * 
  */
 export default function Index(props) {
 
-    const { children, color='#8e72ff', height='40px', solid, outline, onAction=(()=>{console.log('Button:onAction not set!')})} = props;
+    const { children, color='#8e72ff', height='40px', solid, outline, navigation} = props;
 
+    // style
     const bg = (!outline && solid) ? `${color}` : (outline && !solid) ? `${color}26` : null
-
     const border = (outline && !solid) ? `2px ${color} solid` : null
-
     const colors = (!outline && solid) ? '#ffffff' : `${color}`
-
-    function onButtonClick () {
-        onAction()
-    }
-
     const baseStyle = {
         textAlign: 'center',
         display: 'flex',
@@ -38,6 +32,11 @@ export default function Index(props) {
         borderRadius: '10px',
         margin: '6px',
         height:`${height}`
+    }
+
+    function onButtonClick () {
+        const queryData = useQuery(navigation)
+        history.push(queryData)
     }
 
     return (

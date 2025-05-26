@@ -101,7 +101,7 @@ export default function (props) {
 
 function AutoLayout(autoLayoutProps) {
 
-  const { children, layout, tag, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('AutoLayout-未设置onItemClick点击事件') }, dataSource,
+  const { children,tag, layout, dataSource, binding, filter, chain, gateway, allComponents = {}, onItemClick = () => { console.log('AutoLayout:onItemClick is not set !') }, 
   onItemDeleted, onItemAdded, onItemChanged, onItemIndicated, ___, onAutoPreview,
   // alternative, alternativeActive, onAlternativeBack,   // use container instead. e.g. AlternativeContainer
   ...rest } = autoLayoutProps;

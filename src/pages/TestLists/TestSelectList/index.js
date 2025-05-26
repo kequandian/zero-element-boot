@@ -15,7 +15,7 @@ const testItems = [
 
 export default function Index(props) {
 
-  const { items = testItems, ...rest } = props;
+  const { items = testItems, onItemClick=((item)=>{}), ...rest } = props;
 
   // console.log('props =',props)
   /**
@@ -27,16 +27,16 @@ export default function Index(props) {
     ...rest
   };
 
-  const itemClick = (item) =>{
-    console.log('item == ', item)
-  }
+  // const itemClick = (item) =>{
+  //   console.log('item == ', item)
+  // }
 
   return (
-    <AutoLayout {...config} onItemClick={itemClick}/>
+    <AutoLayout {...config} onItemClick={onItemClick}/>
   )
 
   return (
-    <SelectList {...config} items={testItems} onItemClick={itemClick} >
+    <SelectList {...config} items={testItems} onItemClick={onItemClick} >
       <NamedLayout xname='Gridbox'>
         <NamedSelector selector={{xname: 'OutlineSelector', props: {lineWidth: 2, lineColor: '#D9FF55'}}}>
           <ItemPlaceholder/>

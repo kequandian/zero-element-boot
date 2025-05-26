@@ -35,7 +35,7 @@ import {
 //layout
 import {
   Flexbox, Gridbox, Wrap, Round, Between, Stack, VStack, 
-  Center, HStack, HCenter, VCenter, PageCenter
+  Center, HStack, HCenter, VCenter, PageCenter, 
 } from './layout'
 
 //gateway
@@ -139,7 +139,6 @@ import { InputCompx, SelectFetch, CheckboxFetch, CheckboxModalFetch, OneMany, Se
 
 NamedLayoutSet({
   Flexbox,
-  // Itembox,
   Gridbox,
   //
   Wrap,
@@ -153,7 +152,7 @@ NamedLayoutSet({
   Center,
   HCenter,
   VCenter,
-  PageCenter
+  PageCenter, 
 })
 
 
