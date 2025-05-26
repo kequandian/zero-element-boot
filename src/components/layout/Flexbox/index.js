@@ -29,8 +29,6 @@ export default forwardRef(function Flexbox(props, ref) {
   const width100 = (align == 'between' || align.indexOf("between") != -1)  ? 'width100' : '';
   const height100 = direction === 'column' ? 'height100' : ''
 
-  console.log('Flexbox justify=', justify)
-  
 
   useImperativeHandle(ref, () => ({
     getClassName: () => {

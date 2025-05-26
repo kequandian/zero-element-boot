@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { bindingConvert } from '@/components/gateway/Binding'
 import doFilter from '@/components/gateway/doFilter.mjs';
 const useLayout = require('@/components/hooks/useLayout');
-import { LS } from 'zero-element/lib/utils/storage';
+// import { LS } from 'zero-element/lib/utils/storage';
 
 /**
  * 用于两个子组件交换数据信息
@@ -27,7 +27,8 @@ export default function DataFlowContainer(props) {
     },[onRefresh])
 
     const firstChildItemClick = (item) => {
-        // console.log('first child item click = ', item)
+        console.log('DataFlowContainer: first child item click = ', item)
+        
         setConfigData('')
         if (item.isSelected) {
             setOnRefresh(true)
@@ -45,11 +46,10 @@ export default function DataFlowContainer(props) {
         console.log('first child item action click = ', data)
         setConfigData('')
         setTimeout(() => {
-            LS.set('commonData', {layoutName: data.moduleName})
+            // LS.set('commonData', {layoutName: data.moduleName})
             setConfigData({layoutName: data.moduleName})
             setOnRefresh(true)
         }, 100)
-        
     }
 
     const secondChildItemClick = (item) => {
@@ -68,18 +68,18 @@ export default function DataFlowContainer(props) {
                             onActionCompleted: firstChildActionCompleted
                         })
                     )
+
+                } else if (childIndex === 1 && !onRefresh) {
+                    return (
+                        React.cloneElement(child, {
+                            ...rest,
+                            ...configData,
+                            onItemClick: secondChildItemClick,
+                        })
+                    )
+
                 } else {
-                    if (childIndex === 1 && !onRefresh) {
-                        return (
-                            React.cloneElement(child, {
-                                ...rest,
-                                ...configData,
-                                onItemClick: secondChildItemClick,
-                            })
-                        )
-                    } else {
-                        return <div></div>
-                    }
+                    return <div></div>
                 }
 
             } else {
@@ -96,13 +96,11 @@ export default function DataFlowContainer(props) {
         >
             {
                 React.Children.toArray(children).map((child, childIndex) => {
-                    // if (React.isValidElement(child)) {
                         return React.cloneElement(child, {
                             ref: layoutRef, 
                             children: renderChildren(child.props.children),
                             ...rest,
                         })
-                    // }
                 })
             }
         </div>

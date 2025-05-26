@@ -1,6 +1,7 @@
+import { Box as ChakraBox } from '@chakra-ui/react';
+
 import Flexbox from './Flexbox';
 import Gridbox from './Gridbox';
-// import Itembox from './Itembox';
 
 import Wrap from './Wrap';
 import Round from './Round';
@@ -23,8 +24,9 @@ export {
     VStack,
     HStack,
   Gridbox,
-  // Itembox,
+  ChakraBox,
 
+  // center
   HCenter,
   VCenter,
   Center,
