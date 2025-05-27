@@ -4,9 +4,7 @@ import { Box } from '@chakra-ui/react';
 
 /**
  * 
- * @param {}
  */
-
 export default function Index(props) {
 
   const { children, w, h, bg, p, color, maxW, maxH, minW, minH, borderWidth, borderRadius, overflow, display, alignItems, justifyContent, fontWeight,

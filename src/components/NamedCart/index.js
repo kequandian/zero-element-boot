@@ -47,7 +47,7 @@ export default function NamedCart(NameCartProps) {
             __indicator, indicatorData={}, 
             __selector, selectorData={}, isSelected,
             onItemClick, onItemDeleted, onItemAdded, onItemChanged, 
-            // onItemSelected=((e)=>{console.log('NamedCart:onItemSelected() is not set !', e)}),   //work on container instead.
+            onItemSelected=(()=>{console.log('NamedCart:onItemSelected() is not set !')}),   //work on container instead.
             ...rest } = NameCartProps
   
             tagged(tag, rest)
@@ -134,13 +134,13 @@ export default function NamedCart(NameCartProps) {
                         onItemChanged={onItemChanged} 
                         _isSelected={isSelected}
                 >
-                    <_CartModule tag={`${tag}-indicator-selector`} children={children} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator}  __selector={__selector}/> 
+                    <_CartModule children={children} tag={`${tag}-indicator-selector`} Cart={_Cart} props={_cart} data={rest} onItemDeleted __indicator={__indicator}  __selector={__selector}/> 
                </_NamedIndicator>
             </_NamedSelector>
           )
             :
           (
-              <_CartModule tag={`${tag}-last`} children={children} Cart={_Cart} props={_cart} data={rest} /> 
+              <_CartModule children={children} tag={`${tag}-last`} Cart={_Cart} props={_cart} data={rest} onItemSelected/> 
           )
        )
       }
@@ -149,12 +149,13 @@ export default function NamedCart(NameCartProps) {
 }
 
 
-function _CartModule({children, tag, Cart, props, data, __indicator,  __selector}){
-  tagged(`${tag}-_CartModule-props:`, props)
+function _CartModule({children, tag, Cart, props, data, onSelected, __indicator,  __selector}){
+  // tagged(`${tag}-_CartModule-props:`, props)
   return (<Cart {...props}>
             {React.Children.toArray(children).map(child => {
               return React.cloneElement(child, {
                 ...data,
+                onItemSelected: onSelected,
                 __indicator: __indicator,
                 __selector: __selector
               })
