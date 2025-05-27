@@ -13,12 +13,10 @@ import MultiViewport from './MultiViewport';
 // import ItemCart from './deprecated/ItemCart';
 import SquareBox from './SquareBox';
 import MaskBox from './MaskBox';
-import Box from './Box';
 import { Box as ChakraBox } from '@chakra-ui/react';
 
 //
 import ShadowCart from './ShadowCart'
-import LightingCart from './LightingCart'
 
 //
 // import SelectIndicator from './indicator/SelectIndicatort';
@@ -41,17 +39,10 @@ export {
     MultiViewport,
 
     //box
-    // ItemCart,
+    ChakraBox,
     SquareBox,
     MaskBox,
-    Box,
-    ChakraBox,
 
     //effect cart
-    ShadowCart,
-    LightingCart
-
-    //indicator (cart for indicator)
-    // SelectIndicator,
-    // CheckBoxIndicator
+    ShadowCart
 }

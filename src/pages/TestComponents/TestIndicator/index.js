@@ -18,7 +18,7 @@ import AutoPreviewIndicator from '@/components/indicator/AutoPreviewIndicator';
 import { Avatar, GoogleAvatar, ItemPlaceholder } from '@/components/presenter';
 import PageCenter from '@/components/layout/PageCenter';
 import { BackIndicator } from '@/components/indicator';
-import MaskIndicator from "@/components/cart/MaskIndicator";
+import MaskIndicator from "@/components/indicator/MaskIndicator";
 
 
 

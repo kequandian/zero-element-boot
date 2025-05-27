@@ -6,7 +6,7 @@ import useSizeClient from '../../hooks/useSizeClient';
 require('./index.less');
 
 /**
- * 
+ * 与 Outline区别, Border占满父空器, 而Outline只包裹内容
  * @param {*string} stroke
  * @param {px} corner
  * @param {px} margin

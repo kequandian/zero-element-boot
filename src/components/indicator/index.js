@@ -4,10 +4,11 @@ import DownloadIndicator from './DownloadIndicator'
 import ClickIndicator from './ClickIndicator'
 import ManageMenuIndicator from './ManageMenuIndicator'
 import ShadowIndicator from './ShadowIndicator';
+import LightingIndicator from './LightingIndicator';
 import HighlightIndicator from './HighlightIndicator';
 import DeleteIndicator from './DeleteIndicator';
 import BackIndicator from './BackIndicator';
-import MaskIndicator from '../cart/MaskIndicator';
+import MaskIndicator from './MaskIndicator';
 import LabelIndicator from './LabelIndicator';
 import TipsIndicator from './TipsIndicator';
 import TitleIndicator from './TitleIndicator';
@@ -16,20 +17,22 @@ import PlacementIndicator from './PlacementIndicator';
 import MultiActionsIndicator from './MultiActionsIndicator';
 
 export {
-  // SelectedCartUpperRightIcon,
-  // SelectedCartRightIcon,
+  // effect indicator
+  ShadowIndicator,
+  LightingIndicator,  //opacity 0.7
+  HighlightIndicator,
+  MaskIndicator,
+
+  //action indicator
   DownloadIndicator,
   ClickIndicator,
   ManageMenuIndicator,
-  ShadowIndicator,
-  HighlightIndicator,
   DeleteIndicator,
+  CircularDeleteIndicator,
   BackIndicator,
-  MaskIndicator,
   LabelIndicator,
   TipsIndicator,
   TitleIndicator,
-  CircularDeleteIndicator,
   PlacementIndicator,
   MultiActionsIndicator
 }

@@ -15,22 +15,24 @@ import { ExitSvg } from './svg';
 export default function MaskBox(props){
     const {
         children,
-        otherStyle,
-        show=false,
+        show=true,
         maskOpacity=.5,
         theme,
         bigMargin,
-        onChange //关闭页面时触发
+        onMaskClosed=()=>{console.log('cart:MaskBox:onMaskClosed is not set !')},
+        ...otherStyle
     }=props
-    let alignStyle;
-    const [ isShow,setIsShow ] = useState( show )
+
+    const [ isShow, setIsShow ] = useState( show )
+
     let color = "#fff"
-    alignStyle = {
+    const alignStyle = {
         "alignItems":"center",
         "justifyContent":"center",
         "top":0,
         "left":0,
     }
+    
     let bigStyle = {}
     if(theme==="big"){
         color = "#000"
@@ -45,42 +47,51 @@ export default function MaskBox(props){
     let styles = {
         // width:width,
         // height:height,
-        "border-radius":"15px",
+        "borderRadius":"15px",
         "padding":"15px",
         "margin":"5px",
         "background":"white",
         ...bigStyle,
         ...otherStyle
     }
-    let MaskStyles = {
+    const maskStyles = {
         opacity: maskOpacity
     }
     let containerStyles = {
         "width":"100vw",
         "height":"100vh",
-        "z-index":"10001",
+        "zIndex":"10001",
 
         "position":"fixed",
         "display":!isShow?"none":"flex",
         ...alignStyle
     }
+
     useEffect(_=>{
         setIsShow(show)
     },[show])
+
     function hideMask(){
         setIsShow(!isShow)
         // console.log(isShow)
-        onChange(isShow)
+        onMaskClosed(isShow)
     }
-    return <>{isShow?<>
-    <div className="MaskBox_Mask" style={MaskStyles}></div>
-    <div className="MaskBox_Container" style={containerStyles}>
-        <div className="MaskBox_Body" style={styles}>
-            {Array.isArray(children)?children.map((item,i)=>{
-                return item
-            }):children}
-        </div>
-        <div className="MaskBox_ExitSvg" onClick={()=>hideMask()}><ExitSvg color={color}/></div>
-    </div>
-    </>:null}</>
+
+    return <>{ isShow?
+        <>
+            <div className="MaskBox_Mask" style={maskStyles}></div>
+            <div className="MaskBox_Container" style={containerStyles}>
+                <div className="MaskBox_Body" style={styles}>
+                    {Array.isArray(children)?children.map((item,i)=>{
+                        return item
+                    }):children}
+                </div>
+                <div className="MaskBox_ExitSvg" onClick={()=>hideMask()}><ExitSvg color={color}/></div>
+            </div>
+        </>
+        :
+        React.Children.map((item,i)=>{
+            return item
+        })
+    }</>
 }

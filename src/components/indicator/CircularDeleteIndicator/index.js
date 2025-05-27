@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { formatParams } from '@/components/utils/tools';
 const promiseAjax = require('@/components/utils/request');
-import { LightingCart } from '@/components/cart'
+import { LightingIndicator } from '@/components/indicator'
 require('./index.less')
 
 /**
@@ -108,7 +108,7 @@ export default function CircularDeleteIndicator(props) {
             }
             {
                 isDisabled ? (
-                    <LightingCart>
+                    <LightingIndicator>
                         <div className='circular_del_icon_container' style={{ ...rest }}>
                             <div className='circular_del_icon' onClick={(e) => showDelModel(e)}>
                                 
@@ -119,7 +119,7 @@ export default function CircularDeleteIndicator(props) {
                                 </svg>
                             </div>
                         </div>
-                    </LightingCart>
+                    </LightingIndicator>
                 ) : <></>
             }
 

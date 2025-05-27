@@ -1,5 +1,5 @@
 import React from 'react';
-import { LightingCart } from '@/components/cart'
+import { LightingIndicator } from '@/components/indicator'
 
 const DownloadIcon = ({w = 25,h = 25}) => {
     return (
@@ -11,7 +11,6 @@ const DownloadIcon = ({w = 25,h = 25}) => {
  * 
  * 
  */
-
 export default function DownloadBtn(props) {
 
     const { action, onItemDownloaded, indicatorData  } = props;
@@ -33,10 +32,10 @@ export default function DownloadBtn(props) {
     };
 
     return (
-        <LightingCart color="">
+        <LightingIndicator color="">
             <div onClick={handleDownload}>
                 <DownloadIcon/>
             </div>
-        </LightingCart>
+        </LightingIndicator>
     )
 }

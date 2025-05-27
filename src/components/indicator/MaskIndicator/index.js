@@ -1,12 +1,10 @@
 import React from 'react';
 
 /**
- * 
+ * 遮罩
  * @param { string } color 遮罩层样色
  * @param { string } opcity 遮罩层透明度
- * 
  */
-
 export default function Index(props) {
 
     const { children, color='#909090', opacity='50%' } = props;

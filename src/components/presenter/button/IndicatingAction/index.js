@@ -1,5 +1,5 @@
 import React from 'react';
-import LightingCart from '@/components/cart/LightingCart';
+import LightingIndicator from '@/components/indicator/LightingIndicator';
 import PrevirewIcon from '@/assets/preview-icon.svg'
 
 export default function IndicatingAction(props){
@@ -13,8 +13,8 @@ export default function IndicatingAction(props){
     }
 
     return (
-        <LightingCart>
+        <LightingIndicator>
             <img src={PrevirewIcon} onClick={btnClick} />
-        </LightingCart>
+        </LightingIndicator>
     )
 }
