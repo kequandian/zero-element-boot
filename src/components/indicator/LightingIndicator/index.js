@@ -6,7 +6,7 @@ import React, { useState } from 'react';
  * @param {string} color 背景色
  * 
  */
-export default function LightingCart(props) {
+export default function LightingIndicator(props) {
 
   const { children, opacity='0.7'} = props;
 

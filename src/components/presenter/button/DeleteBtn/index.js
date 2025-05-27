@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LightingCart } from '@/components/cart';
+import { LightingIndicator } from '@/components/indicator';
 import { 
     Stack,
     Button,
@@ -83,7 +83,7 @@ export default function DeleteBtn(props) {
     }
 
     return (
-        <LightingCart color="">
+        <LightingIndicator color="">
             <div onClick={showDelModel}>
                 <DeleteIcon/>
             </div>
@@ -108,6 +108,6 @@ export default function DeleteBtn(props) {
                 </ModalFooter>
             </ModalContent>
             </Modal>
-        </LightingCart>
+        </LightingIndicator>
     )
 }

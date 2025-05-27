@@ -64,31 +64,30 @@ import {
   // box,
   SquareBox,
   MaskBox,
-  Box,
   ChakraBox,
   
-  //hover
-  ShadowCart,
-  LightingCart,
-  //
-  // SelectIndicator,
-  // CheckBoxIndicator,
+  //effect cart
+  ShadowCart
 } from './cart';
 
 
 //indicator
 import {
+  // effect indicator
+  ShadowIndicator,
+  MaskIndicator,
+  LightingIndicator,
+
+  // action indicator
   DownloadIndicator,
   ClickIndicator,
   ManageMenuIndicator,
-  ShadowIndicator,
   DeleteIndicator,
+  CircularDeleteIndicator,
   BackIndicator,
-  MaskIndicator,
   LabelIndicator,
   TipsIndicator,
   TitleIndicator,
-  CircularDeleteIndicator,
   PlacementIndicator,
   MultiActionsIndicator
 } from './indicator';
@@ -170,28 +169,25 @@ NamedGatewaySet({
 
 
 NamedCartSet({
+  //border
   Cart,
   CssCart,
   Outline,
   Border,
-  // ItemCart,
-  // Circle,
-  // Corner,
-  //HCenter,
+
+  //viewport
+  //HCenter,   // move to layout
   //PageCenter,
   Viewport,
   MultiViewport,
-  // Page,
-  // Rectangle,
-  // Round: RoundCart,
-  MaskBox,
-  SquareBox,
-  Box,
-  ChakraBox,
 
-  //
-  ShadowCart,
-  LightingCart
+  //box
+  ChakraBox,
+  SquareBox,
+  MaskBox,
+
+  //effect cart
+  ShadowCart
 })
 
 NamedIndicatorSet({
@@ -203,13 +199,14 @@ NamedIndicatorSet({
   // RightIconIndicatorSelected
   // SelectedCartUpperRightIcon,
   // SelectedCartRightIcon,
+  MaskIndicator,
+
   DownloadIndicator,
   ClickIndicator,
   ManageMenuIndicator,
   ShadowIndicator,
   DeleteIndicator,
   BackIndicator,
-  MaskIndicator,
   LabelIndicator,
   TipsIndicator,
   TitleIndicator,

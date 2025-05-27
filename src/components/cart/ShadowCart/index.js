@@ -1,13 +1,10 @@
 import React from 'react';
 
 /**
- * 
- * @param {style} 支持所有div style属性
- * 
- * 
+ * 阴影效果
+ * @param {*} 支持所有div style属性
  * @returns 
  */
-
 export default  function Index(props) {
 
   const { children, ...defaultHoverStyles } = props;
