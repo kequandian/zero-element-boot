@@ -47,10 +47,13 @@ export default function NamedCart(NameCartProps) {
             __indicator, indicatorData={}, 
             __selector, selectorData={}, isSelected,
             onItemClick, onItemDeleted, onItemAdded, onItemChanged, 
-            onItemSelected=(()=>{console.log('NamedCart:onItemSelected() is not set !')}),   //work on container instead.
+            onItemSelected=((item)=>{console.log('NamedCart:onItemSelected() is not set !, item=', item)}),   //work on container instead.
             ...rest } = NameCartProps
   
             tagged(tag, rest)
+
+        // console.log('NamedCart:onItemSelected= ', onItemSelected)
+
 
   const _CartSet = cartSet ? cartSet : DefaultCartSet()
   //2021-10-28 新增 selector 模块
@@ -134,13 +137,13 @@ export default function NamedCart(NameCartProps) {
                         onItemChanged={onItemChanged} 
                         _isSelected={isSelected}
                 >
-                    <_CartModule children={children} tag={`${tag}-indicator-selector`} Cart={_Cart} props={_cart} data={rest} onItemDeleted __indicator={__indicator}  __selector={__selector}/> 
+                    <_CartModule children={children} tag={`${tag}-indicator-selector`} Cart={_Cart} props={_cart} data={rest} onSelected={onItemSelected} __indicator={__indicator}  __selector={__selector}/> 
                </_NamedIndicator>
             </_NamedSelector>
           )
             :
           (
-              <_CartModule children={children} tag={`${tag}-last`} Cart={_Cart} props={_cart} data={rest} onItemSelected/> 
+              <_CartModule children={children} tag={`${tag}-last`} Cart={_Cart} props={_cart} data={rest} onSelected={onItemSelected}/> 
           )
        )
       }
@@ -151,6 +154,8 @@ export default function NamedCart(NameCartProps) {
 
 function _CartModule({children, tag, Cart, props, data, onSelected, __indicator,  __selector}){
   // tagged(`${tag}-_CartModule-props:`, props)
+  // console.log('NamedCart:onSelected= ', onSelected)
+
   return (<Cart {...props}>
             {React.Children.toArray(children).map(child => {
               return React.cloneElement(child, {

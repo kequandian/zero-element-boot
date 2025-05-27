@@ -22,7 +22,7 @@ export default function SelectList(props) {
   const { 
     children, items, dataSource=items, 
     navigation,  
-    onItemSelected= (item) => {console.log('SelectList: onItemSelected() is not set ! item= ', item)},
+    onItemSelected= ((item) => {console.log('SelectList: onItemSelected() is not set ! item= ', item)}),
     
     // isSwitch=false,
     // addnew='',
@@ -84,7 +84,7 @@ export default function SelectList(props) {
     }
     
     // selected item
-    const _item = list.find((fItem, findex)=> (findex === index))
+    const _item = list.find((fitem, findex)=> (findex === index))
     onItemSelected(_item)
   }
 

@@ -57,7 +57,8 @@ export default function doFilter(filter, dataSource){
         }
 
     }else{
-      console.log('do filter key  = ',  filteredKey, dataSource, 'key = ', key)
+        console.log('do filter key  = ',  filteredKey, dataSource, 'key = ', key)
+        
         // just convert the data field if normal value
         // 如果使用doFilter前调用了binding, 则 dataSource[key] 会为空，
         // 因为binding会将dataSource里的这个key删除掉
