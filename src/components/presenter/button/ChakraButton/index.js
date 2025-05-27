@@ -9,10 +9,10 @@ import { Button } from '@chakra-ui/react';
 
 export default function ChakraButton(props) {
 
-    const { children, content, ...rest } = props;
+    const { children, content, width = 'auto', height = '40px', ...rest } = props;
 
     return (
-        <Button {...rest}>
+        <Button width={width} height={height} {...rest}>
             {children || content}
         </Button>
     )

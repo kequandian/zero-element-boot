@@ -4,6 +4,7 @@ import DownloadIndicator from './DownloadIndicator'
 import ClickIndicator from './ClickIndicator'
 import ManageMenuIndicator from './ManageMenuIndicator'
 import ShadowIndicator from './ShadowIndicator';
+import HighlightIndicator from './HighlightIndicator';
 import DeleteIndicator from './DeleteIndicator';
 import BackIndicator from './BackIndicator';
 import MaskIndicator from '../cart/MaskIndicator';
@@ -21,6 +22,7 @@ export {
   ClickIndicator,
   ManageMenuIndicator,
   ShadowIndicator,
+  HighlightIndicator,
   DeleteIndicator,
   BackIndicator,
   MaskIndicator,
