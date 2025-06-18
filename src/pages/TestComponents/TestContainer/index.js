@@ -3,8 +3,8 @@ import React from 'react';
 import { ChakraProvider, VStack } from '@chakra-ui/react';
 import { AutoLayout, NamedCart } from '@/components'
 import DataFlowContainer from '@/components/container/DataFlowContainer';
+import TestSelectList from '../TestLists/TestSelectList';
 
-import TestSelectList from '../../TestLists/TestSelectList'
 import { Button, ChakraButton } from '@/components/presenter';
 import { ChakraBox, Viewport, MaskBox } from '@/components/cart'
 import PageCenter from '@/components/container/PageCenter';

@@ -6,12 +6,16 @@ import { AutoLayout, NamedLayout } from '@/components';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import { Avatar } from '@/components/presenter'
 
+// TestAutoLayout
+import TestPreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox/TestPreviewAutoLayout';
+import BootPreviewAutoLayout from '@/components/BootPreviewAutoLayout';
+import TestAutoLayout from './TestAutoLayout';
 // TestComponents
-import ImageAnimationDemo from './TestComponents/TestPresenter/ImageAnimationDemo'
-import TestDownload from '@/pages/TestComponents/TestPresenter/TestDownloadDemo';
 import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
 import TestNamedSelector from '@/pages/TestComponents/TestNamedSelector'
 import TestIndicator from '@/pages/TestComponents/TestIndicator'
+import TestContainer from  './TestComponents/TestContainer';
+import TestLayout from './TestComponents/TestLayout';
 
 
 // TestComposition
@@ -21,15 +25,12 @@ import AvatarSelected from '@/composition/AvatarSelected/Sandbox'
 import Standalone from '@/composition/Standalone/Sandbox';
 import Connection from '@/composition/Connection'
 import CartsManage from '@/composition/cartsManage'
+
 //apis-ui
 import ApisUi from '@/composition/ApisUi/Sandbox';
 //logs-ui
 import LogsUi from '@/composition/LogsUi/Sandbox'
 
-
-// TestList
-import TestGroupedList from './TestLists/TestGroupedList'
-import TestSelectList from './TestLists/TestSelectList'
 
 // TestLowcode
 import TestRowIcons from '@/pages/TestLowCode/TestRowIcons/Sandbox';
@@ -41,13 +42,6 @@ import JsonTreeDemo from '@/components/presenter/tree/JsonTree/Sandbox'
 //rss
 import RssRender from '@/components/presenter/rss/RssRender/Sandbox'
 
-// TestAutoLayout
-import TestAutoLayout from './TestAutoLayout';
-import TestContainer from  './TestComponents/TestContainer';
-
-//preview-ui
-import TestPreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox/TestPreviewAutoLayout';
-import BootPreviewAutoLayout from '@/components/BootPreviewAutoLayout';
 
 
 export default function Index(props) {
@@ -98,16 +92,17 @@ export default function Index(props) {
   // return (
   //   <TestIndicator/>
   // )
-  // return (
-  //   <TestSelectList/>
-  // )
+
 
   // return <div></div>
     // return (
     //   <TestAutoLayout/>
     // )
+    // return (
+    //   <TestContainer/>
+    // )
     return (
-      <TestContainer/>
+      <TestLayout/>
     )
 
 

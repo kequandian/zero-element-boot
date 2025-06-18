@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PreviewAutoLayout from '../PreviewAutoLayout';
-import Viewport from '../cart/MultiViewport';
+import Viewport from '../layout/GridViewport';
 import DefaultPlaceholder from '../presenter/placeholder/DefaultPlaceholder';
 
 export default function BootPreviewAutoLayout (props) {

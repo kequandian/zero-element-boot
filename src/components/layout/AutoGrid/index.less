@@ -1,0 +1,46 @@
+.l-AutoGrid
+{ 
+    /* 将元素定义为 grid 容器 */
+  display: grid; 
+    /* 子元素宽度在不小于 210px 的情况下，在一行中尽量多的展示 */
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); 
+    /* 元素之间的间距 */
+  // grid-gap: 32px;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+
+    /* 自动填充，如果内容块不足，则自动填充 */
+  grid-auto-flow: dense; 
+
+}
+
+/**
+ *  列表中的第 3 个内容块占两列宽
+ *  autofit: 网格优先考虑响应性而不是跨度请求
+ */
+//.article:nth-child(3) {
+//  grid-column: span 2; autofit;
+//}
+// .article:nth-child(31n + 1) 
+// { 
+//   grid-column: 1 / -1; 
+// } 
+// .article:nth-child(16n + 2) 
+// { 
+//   grid-column: -3 / -1; 
+// } 
+// .article:nth-child(16n + 10) 
+// { 
+//   grid-column: 1 / -2; 
+// } 
+
+
+/* 手机单列显示 */
+@media (max-width:459px) 
+{ 
+.archive { 
+  display: flex; 
+      flex-direction: column; 
+  } 
+}
+

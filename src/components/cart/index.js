@@ -8,7 +8,6 @@ import Border from './Border';
 // import Circle from './deprecated/Circle';
 // import PageCenter from './PageCenter';
 import Viewport from './Viewport';
-import MultiViewport from './MultiViewport';
 //
 // import ItemCart from './deprecated/ItemCart';
 import SquareBox from './SquareBox';
@@ -36,7 +35,6 @@ export {
     // HCenter,     //move to as layout
     // PageCenter,  //move to as layout
     Viewport,
-    MultiViewport,
 
     //box
     ChakraBox,
