@@ -11,7 +11,6 @@ import NextCssIndicator from './NextCssIndicator';
 
 // AutoLayout
 import AutoLayout from './AutoLayout';
-// import  { CloneAutoLayout }  from './CloneAutoLayout';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
 
 //set components config
@@ -21,9 +20,9 @@ import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
 import { set as NamedIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
 import { set as NamedListSet } from '@/components/config/NamedListConfig';
-import { set as FormItemTypeSet } from '@/components/config/FormItemTypeConfig';
 import { set as NamedSelector } from '@/components/config/NamedSelectorConfig';
 import { set as NameContainerSet } from '@/components/config/NamedContainerConfig';
+// import { set as FormItemTypeSet } from '@/components/config/FormItemTypeConfig';
 
 
 //container
@@ -34,7 +33,8 @@ import {
 
 //layout
 import {
-  Flexbox, Gridbox, Wrap, Round, Between, Stack, VStack, 
+  Flexbox, Gridbox, AutoGrid, GridViewport,
+  /*Flexbox*/ Wrap, Round, Between, Stack, VStack,
   Center, HStack, HCenter, VCenter, PageCenter, 
 } from './layout'
 
@@ -60,7 +60,7 @@ import {
   // Circle,
   // PageCenter,
   Viewport,
-  MultiViewport,
+
   // box,
   SquareBox,
   MaskBox,
@@ -134,12 +134,15 @@ import {
 } from '@/components/presenter';
 
 // Form 组件
-import { InputCompx, SelectFetch, CheckboxFetch, CheckboxModalFetch, OneMany, SelectCompx } from '@/components/FormItemType';
+// import { InputCompx, SelectFetch, CheckboxFetch, CheckboxModalFetch, OneMany, SelectCompx } from '@/components/FormItemType';
 
 
 NamedLayoutSet({
   Flexbox,
   Gridbox,
+  AutoGrid,
+  GridViewport,
+
   //
   Wrap,
   Round,
@@ -179,7 +182,6 @@ NamedCartSet({
   //HCenter,   // move to layout
   //PageCenter,
   Viewport,
-  MultiViewport,
 
   //box
   ChakraBox,
@@ -293,14 +295,15 @@ NamedSelector({
   OutlineSelector,
 })
 
-FormItemTypeSet({
-  "input": InputCompx,
-  "select-fetch": SelectFetch,
-  "checkbox-fetch": CheckboxFetch,
-  "checkbox-modal-fetch": CheckboxModalFetch,
-  "one-many": OneMany,
-  "select": SelectCompx
-})
+
+// FormItemTypeSet({
+//   "input": InputCompx,
+//   "select-fetch": SelectFetch,
+//   "checkbox-fetch": CheckboxFetch,
+//   "checkbox-modal-fetch": CheckboxModalFetch,
+//   "one-many": OneMany,
+//   "select": SelectCompx
+// })
 
 
 // default to export core components

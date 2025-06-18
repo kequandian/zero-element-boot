@@ -4,7 +4,7 @@ import { setEndpoint, setToken } from '@/components/config/common';
 // import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
 import { set as NamedIndicatorSet } from '@/components/config/NamedIndicatorConfig';
 import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConfig';
-import { set as FormItemTypeSet } from '@/components/config/FormItemTypeConfig';
+// import { set as FormItemTypeSet } from '@/components/config/FormItemTypeConfig';
 import { set as NamedSelector } from '@/components/config/NamedSelectorConfig';
 
 // //cart
@@ -20,7 +20,7 @@ import { Avatar, DefaultPlaceholder, ItemPlaceholder, DownloadButton, AddNewButt
 import JarItem from '@/composition/LogsUi/Sandbox/JarItem';
 import SwaggerItem from '@/composition/ApisUi/SwaggerItem';
 
-import { InputCompx, SelectFetch } from '@/components/FormItemType';
+// import { InputCompx, SelectFetch } from '@/components/FormItemType';
 
 import ManageMenuIndicator from '@/components/indicator/ManageMenuIndicator'
 
@@ -104,9 +104,9 @@ NamedSelector({
   CircularCheckboxSelector,
 })
 
-FormItemTypeSet({
-  "input": InputCompx,
-  "select-fetch": SelectFetch
-})
+// FormItemTypeSet({
+//   "input": InputCompx,
+//   "select-fetch": SelectFetch
+// })
 
 

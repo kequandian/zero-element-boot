@@ -1,7 +1,8 @@
 import React from 'react';
 import { Text } from '@chakra-ui/react';
-import { Center, HCenter, VCenter, HStack, VStack, Round, Between } from '@/components/layout';
-import { GoogleAvatar } from '@/components/presenter'
+import { Flexbox, Gridbox, GridViewport, AutoGrid, 
+         Center, HCenter, VCenter, HStack, VStack, Round, Between } from '@/components/layout';
+import { GoogleAvatar, DefaultPlaceholder } from '@/components/presenter'
 
 export default function TextLayout() {
 
@@ -157,6 +158,29 @@ export default function TextLayout() {
         )
     }
 
+    const TestAutoGrid = () => {
+        return (
+            <VStack alignItems={'flex-start'}>
+                <Text fontWeight={'bold'} fontSize={'20px'} margin={'10px'}>AutoGrid</Text>
+            </VStack>
+        )
+    }
+
+    const TestGridViewport = ()=>{
+        return (
+            <GridViewport 
+            horizontalWeights={[2, 2, 1]}
+            verticalWeights={[3, 1]}>
+            <DefaultPlaceholder>Left</DefaultPlaceholder>
+            <DefaultPlaceholder>Top</DefaultPlaceholder>
+            <DefaultPlaceholder>Right</DefaultPlaceholder>
+            <DefaultPlaceholder/>
+            <DefaultPlaceholder/>
+            <DefaultPlaceholder/>
+          </GridViewport>
+        ) 
+    }
+
     return (
         <>
             <VStack spacing={10} padding={'0 0 10px 0'}>
@@ -164,9 +188,11 @@ export default function TextLayout() {
                 <TestHCenter />
                 <TestVCenter />
                 <TestHStack/>
-                <TestVStack/> */}
+                <TestVStack/> 
                 <TestRound/>
                 <TestBetween/>
+                <TestAutoGrid/>*/}
+                <TestGridViewport/>
             </VStack>
         </>
     )
