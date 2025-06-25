@@ -246,21 +246,85 @@ const TestPreviewMulitViewport = ()=>{
     )
 }
 
-const TestMultiViewport = ()=>{
-    return (
-        <MultiViewport 
-            horizontalWeights={[2, 2, 1]}
-            verticalWeights={[3, 1]}>
-        <DefaultPlaceholder/>
-        <DefaultPlaceholder/>
-        <DefaultPlaceholder/>
-        <DefaultPlaceholder/>
-        <DefaultPlaceholder/>
-        <DefaultPlaceholder/>
-      </MultiViewport>
-    )
-}
+const TestNestedMultiViewport = () => {
+  const gridConfig = {
+    horizontalWeights: [3, 2],
+    verticalWeights: [4, 1],
+    children: [
+      {
+        horizontalWeights: [3, 1],
+        verticalWeights: [1],
+        children: [
+          {            
+            horizontalWeights: [1],
+            verticalWeights: [1]
+          },
+          {
+            horizontalWeights: [1],
+            verticalWeights: [1,2],
+          }
+        ]
+      },
+      {
+        horizontalWeights: [2, 2],
+        verticalWeights: [2, 1],
+        children: []
+      }
+    ]
+  };
 
+
+  const generateChildren = (config, parentPath = 'root', depth = 0) => {
+    return config.children.flatMap((child, i) => {
+      const currentPath = `${parentPath}-${i}`;
+      
+      if (child.children) {
+        return React.cloneElement(
+          <DefaultPlaceholder 
+            key={currentPath}
+            horizontalWeights={child.horizontalWeights}
+            verticalWeights={child.verticalWeights}
+          >
+            层级{depth+1}-{i}
+          </DefaultPlaceholder>,
+          {
+            children: generateChildren(child, currentPath, depth + 1)
+          }
+        );
+      }
+      
+      return Array.isArray(child)
+        ? child.map((_, j) => (
+            <DefaultPlaceholder 
+              key={`${currentPath}-${j}`}
+              horizontalWeights={child.horizontalWeights}
+              verticalWeights={child.verticalWeights}
+            >
+              单元{depth+1}-{j+1}
+            </DefaultPlaceholder>
+          ))
+        : null;
+    });
+  };
+
+  return (
+    <MultiViewport gridConfig={gridConfig}>
+      {/* {generateChildren(gridConfig)} */}
+      <DefaultPlaceholder content='root-0'/>
+      <DefaultPlaceholder content='root-1'/>
+      <DefaultPlaceholder content='root-2'/>
+      <DefaultPlaceholder content='root-3'/>
+      <DefaultPlaceholder content='root-4'/>
+      <DefaultPlaceholder content='root-5'/>
+      <DefaultPlaceholder content='root-6'/>
+      <DefaultPlaceholder content='root-7'/>
+      <DefaultPlaceholder content='root-8'/>
+      <DefaultPlaceholder content='root-9'/>
+      <DefaultPlaceholder content='root-10'/>
+      <DefaultPlaceholder content='root-11'/>
+    </MultiViewport>
+  );
+};
 
 export default function TestPreviewAutoLayout (props) {
   
@@ -272,7 +336,7 @@ export default function TestPreviewAutoLayout (props) {
       {/* <TesViewPort /> */}
       {/* <TestGridViewport/> */}
       {/* <TestPreviewGridViewport/> */}
-       <TestMultiViewport/>
+       <TestNestedMultiViewport/>
     </>
   )
 }
