@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import qs from 'qs';
 
-import PreviewAutoLayout from '../index'
+import PreviewAutoLayout from '@/components/PreviewAutoLayout/index'
 import PreviewItem from './PreviewItem';
+import useQuery from '@/components/hooks/useQuery';
+
 
 export default function Sandbox(props) {
 
-  const params = props.location.query ||  qs.parse(props.location.search.split('?')[1])
+  // const params = props.location.query ||  qs.parse(props.location.search.split('?')[1])
+  const params = useQuery()
 
   const [ apiPath, setApiPath ] = useState('')
 

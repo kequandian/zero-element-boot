@@ -8,14 +8,12 @@ import usePalette from '@/components/hooks/usePalette';
  * @param {String} color 文字颜色
  */
 export default function DefaultPlaceholder (props) {
-    const { children: content,  color, bg='#232330' } = props;
+    const { children, content, color} = props;
     const pal = usePalette()
-
-    const bgcolor = pal.color || bg
     
     return (
-        <Center bg={bgcolor} color={color}  w='100%' h='100%' fontSize={'18px'} fontWeight={'bold'}>
-         {content || pal.name}
+        <Center bg={pal.color} color={color}  w='100%' h='100%' fontSize={'18px'} fontWeight={'bold'}>
+         {children || content || pal.name}
         </Center>
     )
 }
