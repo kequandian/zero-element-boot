@@ -24,7 +24,7 @@ export default function PreviewAutoLayout (props) {
     ...rest
   } = props;
   
-  console.log('=== PreviewAutoLayout props == ', props)
+  // console.log('=== PreviewAutoLayout props == ', props)
 
   const [ _layoutName, setLayoutName ] = useState(layoutName || LS.get('commonData').layoutName)
   const [ mockData, setMockData ] = useState('')

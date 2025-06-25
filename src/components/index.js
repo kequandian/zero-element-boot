@@ -12,6 +12,7 @@ import NextCssIndicator from './NextCssIndicator';
 // AutoLayout
 import AutoLayout from './AutoLayout';
 import PreviewAutoLayout from '@/components/PreviewAutoLayout';
+import BootPreviewAutoLayout from '@/components/BootPreviewAutoLayout';
 
 //set components config
 import { set as NamedLayoutSet } from '@/components/config/NamedLayoutConfig';
@@ -309,6 +310,8 @@ NamedSelector({
 // default to export core components
 export {
   AutoLayout,
+  PreviewAutoLayout,
+  BootPreviewAutoLayout,
 
   //
   NamedLayout,

@@ -2,6 +2,7 @@ import Flexbox from './Flexbox';
 import Gridbox from './Gridbox';
 import AutoGrid from './AutoGrid';
 import GridViewport from './GridViewport';
+import MultiViewport from './MultiViewport';
 
 import Wrap from './Wrap';
 import Round from './Round';
@@ -26,6 +27,7 @@ export {
   Gridbox,
   AutoGrid,
   GridViewport,
+  MultiViewport,
 
   // center
   HCenter,

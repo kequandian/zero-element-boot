@@ -20,8 +20,7 @@ POST {{endpoint}}/api/auto/boot/save
 Content-Type: application/json
 
 {
-"presenter": {
-
+    "presenter": {
     "xname": "Wrap",
     "children": [
         {
@@ -45,7 +44,7 @@ Content-Type: application/json
         ],
         "cart": "Outline"
     },
-    "cart": "PageCenter"
+    "cart": "Viewport"
 }
 
 

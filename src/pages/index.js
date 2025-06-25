@@ -7,9 +7,8 @@ import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConf
 import { Avatar } from '@/components/presenter'
 
 // TestAutoLayout
-import TestPreviewAutoLayout from '@/components/PreviewAutoLayout/Sandbox/TestPreviewAutoLayout';
-import BootPreviewAutoLayout from '@/components/BootPreviewAutoLayout';
 import TestAutoLayout from './TestAutoLayout';
+import TestPreviewAutoLayout from './TestPreviewAutoLayout';
 // TestComponents
 import TestNamedCart from '@/pages/TestComponents/TestNamedCart'
 import TestNamedSelector from '@/pages/TestComponents/TestNamedSelector'
@@ -98,12 +97,15 @@ export default function Index(props) {
     // return (
     //   <TestAutoLayout/>
     // )
+    return (
+      <TestPreviewAutoLayout/>
+    )
     // return (
     //   <TestContainer/>
     // )
-    return (
-      <TestLayout/>
-    )
+    // return (
+    //   <TestLayout/>
+    // )
 
 
   // AutoLayout 组件测试

@@ -456,15 +456,12 @@ export default function ClickDemo(props) {
   
   return (
     <ChakraProvider>
-        <div style={{marginTop: "10px"}}>
         <AutoLayout {...config}  onItemClick={itemClick} />
-        </div>
         {/* <SelectList items={testItems} onItemClick={selectItemClick}>
             <NamedSelector xname="OutlineSelector" selected={false}>
                 <ItemPlaceholder/>
             </NamedSelector>
         </SelectList> */}
-         
     </ChakraProvider>
   )
 
