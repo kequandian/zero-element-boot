@@ -250,6 +250,7 @@ const TestNestedMultiViewport = () => {
   const gridConfig = {
     horizontalWeights: [3, 2],
     verticalWeights: [4, 1],
+    gap: '5px',
     children: [
       {
         horizontalWeights: [3, 1],
@@ -310,18 +311,18 @@ const TestNestedMultiViewport = () => {
   return (
     <MultiViewport gridConfig={gridConfig}>
       {/* {generateChildren(gridConfig)} */}
-      <DefaultPlaceholder content='root-0'/>
-      <DefaultPlaceholder content='root-1'/>
-      <DefaultPlaceholder content='root-2'/>
-      <DefaultPlaceholder content='root-3'/>
-      <DefaultPlaceholder content='root-4'/>
-      <DefaultPlaceholder content='root-5'/>
-      <DefaultPlaceholder content='root-6'/>
-      <DefaultPlaceholder content='root-7'/>
-      <DefaultPlaceholder content='root-8'/>
-      <DefaultPlaceholder content='root-9'/>
-      <DefaultPlaceholder content='root-10'/>
-      <DefaultPlaceholder content='root-11'/>
+      <DefaultPlaceholder/>
+      <DefaultPlaceholder/>
+      <DefaultPlaceholder/>
+      <DefaultPlaceholder/>
+      <DefaultPlaceholder/>
+      <DefaultPlaceholder/>
+      <DefaultPlaceholder/>
+      <DefaultPlaceholder/>
+      <DefaultPlaceholder/>
+      <DefaultPlaceholder/>
+      <DefaultPlaceholder/>
+      <DefaultPlaceholder/>
     </MultiViewport>
   );
 };
