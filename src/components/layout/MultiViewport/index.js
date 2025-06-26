@@ -6,12 +6,14 @@ import useSize from '@/components/hooks/useSize';
  * @param {Object} gridConfig - 网格布局配置对象
  * @param {number[]} gridConfig.horizontalWeights - 水平方向权重数组（必须为数值数组且总和>0）
  * @param {number[]} gridConfig.verticalWeights - 垂直方向权重数组（必须为数值数组且总和>0）
+ * @param {string} [gridConfig.gap] - 网格间距, e.g., '10px' or '10px 20px'. 此属性会向下继承。
  * @param {Object[]} [gridConfig.children] - 嵌套子容器配置（支持递归结构）
  * @example
  * // 基本配置示例
  * {
  *   horizontalWeights: [2, 3, 1],
  *   verticalWeights: [4, 1],
+ *   gap: '16px',
  *   children: [
  *     {
  *       horizontalWeights: [1, 2],
@@ -29,7 +31,7 @@ export default function MultiViewport({ children, background = '#000', gridConfi
     return true;
   };
 
-  const traverseGrid = (config, cellCount={value:0}, parentPath = 'root', depth = 0, index = 0) => {
+  const traverseGrid = (config, cellCount={value:0}, parentPath = 'root', depth = 0, index = 0, inheritedGap) => {
     // const dimensions = useSize();
 
     const currentPath = depth==0? `${parentPath}` : `${parentPath}-${depth}_${index}`;
@@ -54,8 +56,13 @@ export default function MultiViewport({ children, background = '#000', gridConfi
     // 更新单元格计数（减去有效子配置数量）
     cellCount.value -= validChildren.length;
 
+    // --- 新增：处理gap的继承逻辑 ---
+    // 如果当前配置明确定义了gap，则使用它。否则，使用从父级继承而来的gap。
+    const effectiveGap = config.gap !== undefined ? config.gap : inheritedGap;
+
     return {
       ...config,
+      gap: effectiveGap, // 在处理后的配置中设置最终生效的gap值
       gridPath: currentPath,
       children: validChildren.map((child, i) => {
         // // 空对象配置继承父级权重
@@ -65,7 +72,7 @@ export default function MultiViewport({ children, background = '#000', gridConfi
         //     verticalWeights: config.verticalWeights,
         //   };
         // }
-        return traverseGrid(child, cellCount, currentPath, depth + 1, i);
+        return traverseGrid(child, cellCount, currentPath, depth + 1, i, effectiveGap);
       })
     };
   };
@@ -92,15 +99,19 @@ export default function MultiViewport({ children, background = '#000', gridConfi
   // const verticalSizes = calculateVerticalLayout();
 
   const renderNestedGrid = (config, parentPath, currentIndex = {value:0}, parentIndex = 0) => {
-    const { horizontalWeights, verticalWeights, children : configChildren = [],  gridPath } = config;
+    const { horizontalWeights, verticalWeights, children : configChildren = [],  gridPath, gap } = config;
     
-    const totalWeight = horizontalWeights.reduce((a, b) => a + b, 0);
-    const gridTemplateColumns = `${horizontalWeights.map(w => (w / totalWeight) * 100 + '%').join(' ')}`;
-    // const gridTemplateColumnsFr = `${horizontalWeights.join('fr ')}fr`;
+    // --- 主要修改点在这里 ---
+    // 使用fr单位直接根据权重生成模板字符串
+    const gridTemplateColumns = horizontalWeights.map(w => `${w}fr`).join(' ');
+    const gridTemplateRows = verticalWeights.map(h => `${h}fr`).join(' ');
 
-    const totalVerticalWeight = verticalWeights.reduce((a, b) => a + b, 0);
-    const gridTemplateRows = `${verticalWeights.map(h => (h / totalVerticalWeight) * 100 + '%').join(' ')}`;
-    // const gridTemplateRowsFr = `${verticalWeights.join('fr ')}fr`;
+    // const totalWeight = horizontalWeights.reduce((a, b) => a + b, 0);
+    // const gridTemplateColumns = `${horizontalWeights.map(w => (w / totalWeight) * 100 + '%').join(' ')}`;
+
+    // const totalVerticalWeight = verticalWeights.reduce((a, b) => a + b, 0);
+    // const gridTemplateRows = `${verticalWeights.map(h => (h / totalVerticalWeight) * 100 + '%').join(' ')}`;
+    // --- 修改结束 ---
 
     // bugfix: skip the component to be rendered.
     // const cellCount = horizontalWeights.length * verticalWeights.length;
@@ -111,10 +122,14 @@ export default function MultiViewport({ children, background = '#000', gridConfi
         key={gridPath}
         style={{
           display: 'grid',
-          gridTemplateColumns: 'var(--grid-cols, ' + gridTemplateColumns + ')',
-          gridTemplateRows: 'var(--grid-rows, ' + gridTemplateRows + ')',
-          // '--grid-cols-fr': gridTemplateColumnsFr,
-          // '--grid-rows-fr': gridTemplateRowsFr,
+          // --- 主要修改点在这里 ---
+          // gridTemplateColumns: 'var(--grid-cols, ' + gridTemplateColumns + ')',
+          // gridTemplateRows: 'var(--grid-rows, ' + gridTemplateRows + ')',
+          // 应用fr单位模板和gap属性
+          gridTemplateColumns: gridTemplateColumns,
+          gridTemplateRows: gridTemplateRows,
+          gap: gap || 0, // 直接使用gap属性
+          // --- 修改结束 ---
           height: '100%',
           width: '100%'
         }}
@@ -133,8 +148,8 @@ export default function MultiViewport({ children, background = '#000', gridConfi
 
           return (componentIndex < React.Children.count(children)?
             React.cloneElement(children[componentIndex], {
-              key: `${gridPath}-cell-${index}`,
-              gridPath: `${gridPath}-cell-${index}`,
+              key: `${gridPath}-cell-${componentIndex}`,
+              gridPath: `${gridPath}-cell-${componentIndex}`,
               style: {
                 ...children[componentIndex].props.style,
                 width: '100%',
