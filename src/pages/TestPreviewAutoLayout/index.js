@@ -251,6 +251,7 @@ const TestNestedMultiViewport = () => {
     horizontalWeights: [3, 2],
     verticalWeights: [4, 1],
     gap: '5px',
+    cellBorderRadius: '10px',
     children: [
       {
         horizontalWeights: [3, 1],
@@ -309,7 +310,7 @@ const TestNestedMultiViewport = () => {
   };
 
   return (
-    <MultiViewport gridConfig={gridConfig}>
+    <MultiViewport gridConfig={gridConfig} padding='5px'>
       {/* {generateChildren(gridConfig)} */}
       <DefaultPlaceholder/>
       <DefaultPlaceholder/>

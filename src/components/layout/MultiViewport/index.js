@@ -7,6 +7,7 @@ import useSize from '@/components/hooks/useSize';
  * @param {number[]} gridConfig.horizontalWeights - 水平方向权重数组（必须为数值数组且总和>0）
  * @param {number[]} gridConfig.verticalWeights - 垂直方向权重数组（必须为数值数组且总和>0）
  * @param {string} [gridConfig.gap] - 网格间距, e.g., '10px' or '10px 20px'. 此属性会向下继承。
+ * @param {string} [gridConfig.cellBorderRadius] - 单元格的圆角, e.g., '12px'. 此属性会向下继承。
  * @param {Object[]} [gridConfig.children] - 嵌套子容器配置（支持递归结构）
  * @example
  * // 基本配置示例
@@ -14,6 +15,7 @@ import useSize from '@/components/hooks/useSize';
  *   horizontalWeights: [2, 3, 1],
  *   verticalWeights: [4, 1],
  *   gap: '16px',
+ *   cellBorderRadius: '10px',
  *   children: [
  *     {
  *       horizontalWeights: [1, 2],
@@ -22,7 +24,7 @@ import useSize from '@/components/hooks/useSize';
  *   ]
  * }
  */
-export default function MultiViewport({ children, background = '#000', gridConfig }) {
+export default function MultiViewport({ children, background = '#000', padding, gridConfig }) {
   const validateWeights = (weights) => {
     if (!weights || !Array.isArray(weights) || weights.length==0 || weights.some(w => typeof w !== 'number') || weights.reduce((a, b) => a + b, 0) <= 0) {
       console.error('Invalid weights array');
@@ -31,7 +33,7 @@ export default function MultiViewport({ children, background = '#000', gridConfi
     return true;
   };
 
-  const traverseGrid = (config, cellCount={value:0}, parentPath = 'root', depth = 0, index = 0, inheritedGap) => {
+  const traverseGrid = (config, cellCount={value:0}, parentPath = 'root', depth = 0, index = 0, inheritedGap, inheritedBorderRadius) => {
     // const dimensions = useSize();
 
     const currentPath = depth==0? `${parentPath}` : `${parentPath}-${depth}_${index}`;
@@ -60,9 +62,14 @@ export default function MultiViewport({ children, background = '#000', gridConfi
     // 如果当前配置明确定义了gap，则使用它。否则，使用从父级继承而来的gap。
     const effectiveGap = config.gap !== undefined ? config.gap : inheritedGap;
 
+    // 优先使用当前配置自身的 cellBorderRadius，否则使用从父级继承的值。
+    const effectiveBorderRadius = config.cellBorderRadius !== undefined ? config.cellBorderRadius : inheritedBorderRadius;
+
+
     return {
       ...config,
       gap: effectiveGap, // 在处理后的配置中设置最终生效的gap值
+      cellBorderRadius: effectiveBorderRadius, // 在处理后的配置中设置最终生效的圆角值
       gridPath: currentPath,
       children: validChildren.map((child, i) => {
         // // 空对象配置继承父级权重
@@ -72,7 +79,7 @@ export default function MultiViewport({ children, background = '#000', gridConfi
         //     verticalWeights: config.verticalWeights,
         //   };
         // }
-        return traverseGrid(child, cellCount, currentPath, depth + 1, i, effectiveGap);
+        return traverseGrid(child, cellCount, currentPath, depth + 1, i, effectiveGap, effectiveBorderRadius);
       })
     };
   };
@@ -99,7 +106,7 @@ export default function MultiViewport({ children, background = '#000', gridConfi
   // const verticalSizes = calculateVerticalLayout();
 
   const renderNestedGrid = (config, parentPath, currentIndex = {value:0}, parentIndex = 0) => {
-    const { horizontalWeights, verticalWeights, children : configChildren = [],  gridPath, gap } = config;
+    const { horizontalWeights, verticalWeights, children : configChildren = [],  gridPath, gap, cellBorderRadius} = config;
     
     // --- 主要修改点在这里 ---
     // 使用fr单位直接根据权重生成模板字符串
@@ -122,7 +129,7 @@ export default function MultiViewport({ children, background = '#000', gridConfi
         key={gridPath}
         style={{
           display: 'grid',
-          // --- 主要修改点在这里 ---
+          // ---grap 主要修改点在这里 ---
           // gridTemplateColumns: 'var(--grid-cols, ' + gridTemplateColumns + ')',
           // gridTemplateRows: 'var(--grid-rows, ' + gridTemplateRows + ')',
           // 应用fr单位模板和gap属性
@@ -146,17 +153,42 @@ export default function MultiViewport({ children, background = '#000', gridConfi
           const componentIndex = currentIndex.value++
           // console.log('renderNestedGrid.componentIndex=', componentIndex, ', gridPath=', `${gridPath}-cell-${index}`)
 
-          return (componentIndex < React.Children.count(children)?
-            React.cloneElement(children[componentIndex], {
-              key: `${gridPath}-cell-${componentIndex}`,
-              gridPath: `${gridPath}-cell-${componentIndex}`,
-              style: {
-                ...children[componentIndex].props.style,
-                width: '100%',
-                height: '100%'
-              }
-            }):(<></>)
-          )
+          // ---cellBorderRadius 主要修改点在这里, 为网络增加子容器 ---
+          // return (componentIndex < React.Children.count(children)?
+          //   React.cloneElement(children[componentIndex], {
+          //     key: `${gridPath}-cell-${componentIndex}`,
+          //     gridPath: `${gridPath}-cell-${componentIndex}`,
+          //     style: {
+          //       ...children[componentIndex].props.style,
+          //       width: '100%',
+          //       height: '100%'
+          //     }
+          //   }):(<></>)
+          // )
+
+          if (componentIndex < React.Children.count(children)) {
+            const child = React.Children.toArray(children)[componentIndex];
+            
+            // --- 新增修改：使用包装器(Wrapper) div 来应用单元格样式 ---
+            // 这种方式不会侵入或修改用户传入的子组件，而是将其包裹起来。
+            // 包装器负责圆角和内容裁剪，保证了样式的独立性和组件的健壮性。
+            return (
+              <div
+                key={`${gridPath}-cell-wrapper-${index}`}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: cellBorderRadius || 0,
+                  overflow: 'hidden', // 关键：确保子组件内容被父级包装器的圆角正确裁剪
+                }}
+              >
+                {child}
+              </div>
+            );
+          }
+          return <React.Fragment key={`${gridPath}-cell-empty-${index}`}></React.Fragment>;
+          //--cellBorderRadius需求 修改结束
+
         })}
       </div>
     );
@@ -169,6 +201,7 @@ export default function MultiViewport({ children, background = '#000', gridConfi
       width: "100vw",
       height: "100vh",
       background: `${background}`,
+      padding: padding || 0,
       overflow: 'hidden'
     }}>
       {renderNestedGrid(processedConfig, 'root')}
