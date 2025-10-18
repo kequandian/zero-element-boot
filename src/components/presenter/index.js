@@ -51,7 +51,7 @@ import NewParamAction from './button/NewParamAction';
 import PropsAction from './button/PropsAction';
 import BindingAction from './button/BindingAction';
 import NoPresenterAction from './button/NoPresenterAction';
-import SortPresenterAction from './button/SortPresenterAction';
+// import SortPresenterAction from './button/SortPresenterAction';
 import DatasetBindingAction from './button/DatasetBindingAction';
 
 
@@ -101,7 +101,7 @@ export {
   PropsAction,
   BindingAction,
   NoPresenterAction,
-  SortPresenterAction,
+  // SortPresenterAction,
   DatasetBindingAction,
 
   // placeholder

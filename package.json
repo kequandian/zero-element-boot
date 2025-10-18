@@ -1,6 +1,6 @@
 {
   "name": "zero-element-boot",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "",
   "license": "MIT",
   "main": "lib/components/index.js",
@@ -26,12 +26,15 @@
     "@chakra-ui/react": "^1.6.3",
     "@chakra-ui/system": "^1.6.7",
     "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.14.1",
     "@loadable/component": "^5.10.1",
+    "@uidotdev/usehooks": "^2.4.1",
     "ahooks": "^2.4.0",
-    "framer-motion": "^12.23.24",
+    "framer-motion": "4.1.17",
     "lodash": "^4.17.19",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-hook-form": "7.45.3",
     "zero-element": "^1.0.0"
   },
   "devDependencies": {

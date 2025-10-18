@@ -27,15 +27,28 @@ function writeTempNpmrc(token, registry) {
   return npmrcPublishPath;
 }
 
+function checkLogin(registry, userNpmrc) {
+  const env = { ...process.env };
+  if (userNpmrc) env.NPM_CONFIG_USERCONFIG = userNpmrc;
+  const res = spawnSync('npm', ['whoami', '--registry', registry], { stdio: 'pipe', shell: true, env });
+  return res.status === 0;
+}
+
+function cleanupTempNpmrc(userNpmrc) {
+  if (userNpmrc && fs.existsSync(userNpmrc)) {
+    try { fs.unlinkSync(userNpmrc); } catch (e) {}
+  }
+}
+
 function main() {
   const argv = process.argv.slice(2);
   const dryRun = argv.includes('--dry-run');
   const tagArg = argv.find((a) => a.startsWith('--tag='));
   const accessArg = argv.find((a) => a.startsWith('--access='));
   const registryArg = argv.find((a) => a.startsWith('--registry='));
+  const otpArg = argv.find((a) => a.startsWith('--otp='));
   const registry = registryArg ? registryArg.split('=')[1] : 'https://registry.npmjs.org';
 
-  // Prevent infinite recursion: when invoked as npm publish lifecycle
   if (process.env.ZEB_PUBLISH_CHILD === '1') {
     console.log('[publish] Detected npm publish lifecycle, skipping nested invocation.');
     return;
@@ -50,16 +63,22 @@ function main() {
   console.log('[publish] Step 3: Preview package contents (dry-run pack)');
   run('npm', ['pack', '--dry-run']);
 
-  // Setup auth only when not dry-run
   let userNpmrc = undefined;
   if (!dryRun) {
     const token = process.env.NPM_TOKEN;
-    if (!token) {
-      console.error('[publish] Missing NPM_TOKEN env var. Set NPM_TOKEN before publishing.');
+    if (token) {
+      userNpmrc = writeTempNpmrc(token, registry);
+      console.log(`[publish] Using temp npmrc: ${userNpmrc}`);
+    }
+
+    const loggedIn = checkLogin(registry, userNpmrc);
+    if (!loggedIn) {
+      console.error('[publish] 未登录 npm 或凭证无效。请先执行:');
+      console.error(`  npm login --registry ${registry}`);
+      console.error('或设置环境变量 NPM_TOKEN 再尝试发布。');
+      cleanupTempNpmrc(userNpmrc);
       process.exit(1);
     }
-    userNpmrc = writeTempNpmrc(token, registry);
-    console.log(`[publish] Using temp npmrc: ${userNpmrc}`);
   }
 
   console.log('[publish] Step 4: Publish to npm');
@@ -68,18 +87,25 @@ function main() {
   if (tagArg) publishArgs.push(tagArg);
   if (accessArg) publishArgs.push(accessArg);
   if (registryArg) publishArgs.push(registryArg);
+  const otpEnv = process.env.NPM_OTP;
+  if (otpArg) publishArgs.push(otpArg);
+  else if (otpEnv) publishArgs.push(`--otp=${otpEnv}`);
 
   const env = { ...process.env, ZEB_PUBLISH_CHILD: '1' };
-  if (userNpmrc) {
-    env.NPM_CONFIG_USERCONFIG = userNpmrc; // use temp npmrc for this publish only
-  }
+  if (userNpmrc) env.NPM_CONFIG_USERCONFIG = userNpmrc;
 
   const res = spawnSync('npm', publishArgs, { stdio: 'inherit', shell: true, env });
   if (res.status !== 0) {
     console.error('[publish] npm publish failed');
+    console.error('常见原因：');
+    console.error('1) 未登录或凭证无效（执行 npm login 或设置 NPM_TOKEN）');
+    console.error('2) 账号启用 2FA，需要提供 OTP（使用 --otp=<code> 或设置 NPM_OTP）');
+    console.error('3) 版本号已存在（修改 package.json version）');
+    cleanupTempNpmrc(userNpmrc);
     process.exit(res.status || 1);
   }
 
+  cleanupTempNpmrc(userNpmrc);
   console.log('[publish] Completed successfully');
 }
 
