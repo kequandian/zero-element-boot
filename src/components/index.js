@@ -129,7 +129,8 @@ import {
   Circle, DefaultPlaceholder, SquareAddNewButton, GoogleAvatar, Delete, Download,
   ActionButton, SelectAction, ChakraButton,
   NewDatasetAction, PreviewSelectAction, ChangeDatasetAction, DeleteAction, NewParamAction,
-  PropsAction, BindingAction, NoPresenterAction, SortPresenterAction, DatasetBindingAction,
+  PropsAction, BindingAction, NoPresenterAction, DatasetBindingAction,
+  //SortPresenterAction,
   //image
   Image, CozeImage
 } from '@/components/presenter';
@@ -257,7 +258,7 @@ NamedPresenterSet({
   PropsAction,
   BindingAction,
   NoPresenterAction,
-  SortPresenterAction,
+  // SortPresenterAction,
   DatasetBindingAction
 })
 
