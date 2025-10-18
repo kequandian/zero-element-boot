@@ -28,11 +28,14 @@ gulp.task('copy-less', function () {
 gulp.task('copy-png', function () {
   return gulp.src('./src/components/**/*.png').pipe(gulp.dest('./lib/components'));
 });
+gulp.task('copy-mjs', function () {
+  return gulp.src('./src/components/**/*.mjs').pipe(gulp.dest('./lib/components'));
+});
 gulp.task('copy-assets', function () {
   return gulp.src('./src/assets/').pipe(gulp.dest('./lib'));
 });
 
-const copyResources = gulp.parallel('copy-css', 'copy-less', 'copy-png');
+const copyResources = gulp.parallel('copy-css', 'copy-less', 'copy-png', 'copy-mjs');
 
 gulp.task('concat-css', () => {
   return gulp.src('./src/components/**/*.css')
