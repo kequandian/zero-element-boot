@@ -42,6 +42,7 @@ function cleanupTempNpmrc(userNpmrc) {
 
 function main() {
   const argv = process.argv.slice(2);
+  const commit = argv.includes('commit') || argv.includes('--commit');
   const dryRun = argv.includes('--dry-run');
   const tagArg = argv.find((a) => a.startsWith('--tag='));
   const accessArg = argv.find((a) => a.startsWith('--access='));
@@ -49,12 +50,30 @@ function main() {
   const otpArg = argv.find((a) => a.startsWith('--otp='));
   const registry = registryArg ? registryArg.split('=')[1] : 'https://registry.npmjs.org';
 
+  if (!commit) {
+    console.log('[publish] 未提供 commit 参数，当前不会执行 npm publish。');
+    console.log('[publish] 可随时执行：\n  npm run publish commit\n或直接执行：\n  npm publish');
+    return;
+  }
+
   if (process.env.ZEB_PUBLISH_CHILD === '1') {
     console.log('[publish] Detected npm publish lifecycle, skipping nested invocation.');
     return;
   }
 
-  console.log('[publish] Step 1: Build project');
+  console.log('[publish] Pre-clean: yarn clean')
+  try {
+    run('yarn', ['clean']);
+  } catch (e) {
+    console.warn('[publish] yarn clean failed, fallback to npm run clean');
+    try {
+      run('npm', ['run', 'clean']);
+    } catch (e2) {
+      console.warn('[publish] npm run clean failed; continue to build');
+    }
+  }
+
+  console.log('[publish] Step 1: Build project')
   run('npm', ['run', 'build']);
 
   console.log('[publish] Step 2: Verify gateway .mjs exist');
