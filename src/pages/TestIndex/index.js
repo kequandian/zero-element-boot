@@ -10,6 +10,7 @@ import { NamedIndicator } from '@/components';
 import TestAutoLayout from '../TestAutoLayout';
 import TestPreviewAutoLayout from '../TestPreviewAutoLayout';
 import VideoCardLayoutDemo from '../VideoCardLayoutDemo';
+import YouTubeGridLayoutDemo from '../YouTubeGridLayoutDemo';
 import TestNamedCart from '../TestComponents/TestNamedCart';
 import TestNamedSelector from '../TestComponents/TestNamedSelector';
 import TestIndicator from '../TestComponents/TestIndicator';
@@ -34,6 +35,7 @@ const allComponents = {
   TestAutoLayout,
   TestPreviewAutoLayout,
   VideoCardLayoutDemo,
+  YouTubeGridLayoutDemo,
   TestNamedCart,
   TestNamedSelector,
   TestIndicator,
@@ -77,11 +79,11 @@ const testComponents = [
     category: 'AutoLayout'
   },
   {
-    id: 'video-card-layout-demo',
-    name: 'VideoCardLayoutDemo',
-    description: '视频卡片布局演示',
-    navigation: 'VideoCardLayoutDemo',
-    route: '/VideoCardLayoutDemo',
+    id: 'youtube-grid-layout-demo',
+    name: 'YouTubeGridLayoutDemo',
+    description: 'YouTube 风格网格布局演示',
+    navigation: 'YouTubeGridLayoutDemo',
+    route: '/YouTubeGridLayoutDemo',
     category: 'Layout'
   },
   {
