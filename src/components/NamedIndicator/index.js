@@ -80,7 +80,7 @@ function getComponent(data) {
     return {}
   }
   const props = (data && typeof data == 'object') ? data.props : undefined
-  const Component = xname ? (DefaultSelectorSet()[xname] || tips(xname)) : undefined
+  const Component = xname ? (DefaultIndicatorSet()[xname] || tips(xname)) : undefined
   if(!Component){
     return {}
   }
