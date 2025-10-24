@@ -146,18 +146,140 @@ export default function Index() {
 ---
 
 ## 标准组件模型（zero-element-boot）
-`AutoLayout` 通过以下基础组件组合：
-- `presenter` 基础展示组件
-- `cart` 修饰容器组件
-- `children` 多子组件列表（与单个 `presenter` 二选一）
-- `layout` 布局组件（对多个子组件布局）
-- `container` 顶层容器组件（管理逻辑）
-- `gateway` 数据网关（转换数据并绑定到组件属性）
+`AutoLayout` 通过以下**7个核心组件类型**组合，实现完整的界面搭建：
 
-派生概念：
-- `indicator` 悬浮、菜单等交互反馈（风格/状态叠加）
-- `selector` 选择态的风格与状态控制（与 `indicator` 叠加使用）
-- `binding`/`filter`/`chain` 数据绑定的不同形态
+### 🏗️ 七大核心组件类型
+
+#### 1. **presenter** - 基础展示组件
+**作用**: 最基础的UI展示单元，负责具体内容展示
+**示例**: Avatar、Text、Button、Image、ChakraText、ChakraButton
+**层次**: 最内层
+**配置方式**:
+```json
+{ "xname": "Avatar", "props": { "url": "http://example.com/avatar.jpg" } }
+```
+
+#### 2. **cart** - 修饰容器组件  
+**作用**: 为组件添加样式、边框、阴影等视觉效果
+**示例**: Cart、CssCart、ShadowCart、Outline、Border
+**层次**: 内层（包装presenter）
+**配置方式**:
+```json
+{ "cart": "Cart" }
+// 或
+{ "cart": { "xname": "CssCart", "props": { "padding": "10px", "border": "1px solid #ccc" } } }
+```
+
+#### 3. **layout** - 布局组件
+**作用**: 控制多个子组件的排列方式和空间分布
+**示例**: Flexbox、Gridbox、HStack、VStack、Wrap、MultiViewport
+**层次**: 中层（控制cart和presenter的布局）
+**配置方式**:
+```json
+{
+  "xname": "Flexbox",
+  "props": { "direction": "row", "spacing": "8px" },
+  "children": ["Component1", "Component2"]
+}
+```
+
+#### 4. **container** - 顶层容器组件
+**作用**: 管理列表逻辑、选择状态、CRUD操作、数据流控制
+**示例**: PlainList、SelectList、MultiSelectList、ManageList、Container
+**层次**: 外层（管理整体逻辑）
+**配置方式**:
+```json
+{ "container": "SelectList" }
+```
+
+#### 5. **gateway** - 数据网关
+**作用**: 数据转换、绑定和过滤，连接数据源与组件
+**类型**: Binding、Filter、Chain、自定义Gateway
+**层次**: 数据层（贯穿所有层次）
+**配置方式**:
+```json
+{
+  "binding": { "avatarUrl": "url" },
+  "filter": { "profile": {} },
+  "chain": [
+    { "|": { "users": [] } },
+    { "[]": 1 },
+    { "avatarUrl": "url" }
+  ]
+}
+```
+
+#### 6. **indicator** - 交互反馈组件
+**作用**: 悬浮、菜单等交互反馈（风格/状态叠加）
+**示例**: ShadowIndicator、LabelIndicator、ClickIndicator
+**层次**: 交互层（叠加在其他组件上）
+**配置方式**:
+```json
+{
+  "indicator": {
+    "xname": "ShadowIndicator",
+    "props": {},
+    "binding": { "title": "content" }
+  }
+}
+```
+
+#### 7. **selector** - 选择态控制组件
+**作用**: 选择态的风格与状态控制（与indicator叠加使用）
+**示例**: OutlineSelector、CircularCheckboxSelector
+**层次**: 状态层（与indicator配合）
+**配置方式**:
+```json
+{
+  "selector": { "xname": "OutlineSelector", "props": { "selected": true } },
+  "unselector": { "xname": "OutlineSelector", "props": { "selected": false } }
+}
+```
+
+### 🔄 完整组件层次结构（从外到内）
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ indicator (交互反馈层) - 悬浮、菜单等交互效果                │
+├─────────────────────────────────────────────────────────────┤
+│ selector (选择态层) - 选中/未选中状态控制                   │
+├─────────────────────────────────────────────────────────────┤
+│ container (逻辑控制层) - 列表管理、选择状态、CRUD操作        │
+├─────────────────────────────────────────────────────────────┤
+│ layout (布局层) - 空间分布和排列控制                        │
+├─────────────────────────────────────────────────────────────┤
+│ cart (样式装饰层) - 视觉效果和装饰                          │
+├─────────────────────────────────────────────────────────────┤
+│ presenter (内容展示层) - 具体UI内容展示                     │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 📊 层次关系说明
+
+#### 1. **垂直层次关系**
+- **外层组件**控制**内层组件**的行为和样式
+- **内层组件**专注于自己的核心职责
+- **数据流**从外层向内层传递
+
+#### 2. **水平协作关系**
+- **gateway** 贯穿所有层次，负责数据转换
+- **indicator** 和 **selector** 可以叠加在任何层次上
+- **children** 与 **presenter** 二选一，用于多组件场景
+
+#### 3. **实际渲染顺序**
+```
+AutoLayout → Container → Layout → Gateway → Cart → Presenter
+                ↑           ↑        ↑       ↑        ↑
+            indicator   selector   gateway  cart   presenter
+```
+
+### 🎯 重要原则
+
+1. **层次顺序不可颠倒**: `container` → `layout` → `cart` → `presenter`
+2. **数据流单向传递**: 外层数据向内层传递
+3. **职责分离明确**: 每层组件专注自己的核心功能
+4. **叠加式交互**: `indicator`和`selector`可以叠加在任何层次上
+5. **数据绑定灵活**: `gateway`提供多种数据转换方式
 
 术语对齐：
 - 布局统一为 `Flexbox`（避免使用 `Flex`）
