@@ -5,7 +5,7 @@ import NamedCart from '@/components/NamedCart'
 import { Flex, Text, Center } from '@chakra-ui/react'
 import TitledContainer from '@/components/container/TitledContainer'
 
-import OverlaySelector  from '@/components/OverlaySelector'
+import OverlaySelector  from '@/components/overlay/OverlaySelector'
 
 // import Default  from '@/components/indicator/CircularCheckboxIndicator'
 // import Selected  from '@/components/indicator/CircularCheckboxIndicator/Selected'
