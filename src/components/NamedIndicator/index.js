@@ -110,8 +110,7 @@ export default function NamedIndicator(NamedIndicatorProps) {
       (
         // 配置了 onhover：包装鼠标事件监听器
         <div onMouseEnter={() => toggleHoverEntered()} onMouseLeave={() => toggleHoverLeaved()}>
-          <__Indicator {...filteredIndicatorData} {...indicatorData}
-          //  {...rest} // 无需传递 rest 参数，rest 直接由 NamedCart 传递至 Presenter 
+          <__Indicator {...filteredIndicatorData} {...indicatorData} {...rest}
             onItemClick={onItemClick}
             onItemDeleted={onItemDeleted}
             onItemAdded={onItemAdded} 
@@ -124,8 +123,7 @@ export default function NamedIndicator(NamedIndicatorProps) {
       ) : 
       (
           // 没有配置 onhover：直接渲染指示器
-          <_Indicator {...filteredIndicatorData} {...indicatorData}
-            // {...rest} // 无需传递 rest 参数，rest 直接由 NamedCart 传递至 Presenter
+          <_Indicator {...filteredIndicatorData} {...indicatorData} {...rest}
             onItemClick={onItemClick}
             onItemDeleted={onItemDeleted}
             onItemAdded={onItemAdded} 

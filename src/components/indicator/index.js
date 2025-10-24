@@ -15,6 +15,7 @@ import TitleIndicator from './TitleIndicator';
 import CircularDeleteIndicator from './CircularDeleteIndicator';
 import PlacementIndicator from './PlacementIndicator';
 import MultiActionsIndicator from './MultiActionsIndicator';
+import NavigationIndicator from './NavigationIndicator';
 
 export {
   // effect indicator
@@ -34,5 +35,6 @@ export {
   TipsIndicator,
   TitleIndicator,
   PlacementIndicator,
-  MultiActionsIndicator
+  MultiActionsIndicator,
+  NavigationIndicator
 }

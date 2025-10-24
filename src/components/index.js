@@ -90,7 +90,8 @@ import {
   TipsIndicator,
   TitleIndicator,
   PlacementIndicator,
-  MultiActionsIndicator
+  MultiActionsIndicator,
+  NavigationIndicator
 } from './indicator';
 
 // selector
@@ -217,6 +218,7 @@ NamedIndicatorSet({
   CircularDeleteIndicator,
   PlacementIndicator,
   MultiActionsIndicator,
+  NavigationIndicator,
 })
 
 NamedPresenterSet({
