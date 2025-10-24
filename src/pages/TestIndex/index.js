@@ -28,6 +28,7 @@ import RouterParamsDemo from '../TestHooks/testUseRouter/demo';
 import JsonTreeDemo from '../../components/presenter/tree/JsonTree/Sandbox';
 import RssRender from '../../components/presenter/rss/RssRender/Sandbox';
 
+
 // 测试组件配置
 const testComponents = [
   {
@@ -186,14 +187,52 @@ export default function TestIndex(props) {
   const [currentPath, setCurrentPath] = React.useState([]);
 
   // 导航到指定组件
-  const navigateToComponent = (component) => {
-    setCurrentComponent(component);
-    setCurrentPath(prev => [...prev, component]);
+  const navigateToComponent = (componentItemData) => {
+    setCurrentComponent(componentItemData);
+    setCurrentPath(prev => [...prev, componentItemData]);
   };
 
   // 处理组件卡片点击事件
-  const handleComponentClick = (component) => {
-    navigateToComponent(component);
+  const handleComponentClick = (componentItemData) => {
+    console.log('🔍 点击事件数据:', componentItemData);
+    console.log('🔍 数据类型检查:', {
+      hasNotes: !!componentItemData?.notes,
+      hasComponent: !!componentItemData?.component,
+      componentType: typeof componentItemData?.component,
+      isFunction: typeof componentItemData?.component === 'function'
+    });
+    
+    // 验证数据过滤是否正确
+    if (componentItemData && componentItemData.notes) {
+      console.log('✅ 数据过滤成功！notes 字段:', componentItemData.notes);
+      
+      // 如果包含 component 字段，直接使用它
+      if (componentItemData.component && typeof componentItemData.component === 'function') {
+        console.log('✅ 找到 component 字段，直接使用:', componentItemData.component);
+        // 构造完整的组件对象
+        const fullComponent = {
+          id: componentItemData.notes + '-from-filter',
+          name: componentItemData.notes,
+          description: componentItemData.notes,
+          component: componentItemData.component,
+          category: 'Filtered'
+        };
+        navigateToComponent(fullComponent);
+        return;
+      }
+      
+      // 否则使用 notes 字段查找原始组件
+      const component = testComponents.find(comp => comp.description === componentItemData.notes);
+      if (component) {
+        console.log('✅ 通过 notes 找到组件:', component);
+        navigateToComponent(component);
+        return;
+      }
+    }
+    
+    // 如果没有预期的字段，尝试直接使用传入的数据
+    console.log('⚠️ 数据过滤可能有问题，使用原始数据:', componentItemData);
+    navigateToComponent(componentItemData);
   };
 
   // 返回上一级
@@ -211,15 +250,17 @@ export default function TestIndex(props) {
     }
   };
 
-  // 返回首页
-  const goHome = () => {
-    setCurrentComponent(null);
-    setCurrentPath([]);
-  };
-
   // 如果当前有选中的组件，渲染该组件
   if (currentComponent) {
+    console.log('🎯 当前组件:', currentComponent);
     const ComponentToRender = currentComponent.component;
+    console.log('🎯 要渲染的组件:', ComponentToRender);
+    
+    if (!ComponentToRender) {
+      console.error('❌ 组件未定义:', currentComponent);
+      return <div>组件未定义</div>;
+    }
+    
     return (
       <ChakraProvider>
         <MultiViewport
@@ -264,12 +305,6 @@ export default function TestIndex(props) {
                   fontWeight="bold"
                   style={{ flex: 1, textAlign: 'center' }}
                 />
-                <ChakraButton
-                  content="🏠 首页"
-                  variant="ghost"
-                  size="sm"
-                  onClick={goHome}
-                />
               </Flexbox>
             </Cart>
             
@@ -304,12 +339,13 @@ export default function TestIndex(props) {
             key={component.id}
             indicator={{
               xname: 'ClickIndicator',
-              binding: {
-                "value": component
+              filter: {
+                "description": "notes",
+                "component": "component"
               }
             }}
             dataSource={component}
-            onItemClick={(indicator) => handleComponentClick(indicator.props.value)}
+            onItemClick={(data) => handleComponentClick(data)}
           >
             <ShadowCart>
               <Flexbox

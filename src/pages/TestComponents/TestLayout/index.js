@@ -80,11 +80,11 @@ export default function TextLayout() {
                     </div>
                     <div style={{ width: '200px', height: '200px', backgroundColor: '#ECEFF7' }}>
                         <VCenter>
-                            <HStackLayout direction={"end"}>
+                            <HStack direction={"end"}>
                                 <GoogleAvatar name={'5'} />
                                 <GoogleAvatar name={'6'} />
                                 <GoogleAvatar name={'7'} />
-                            </HStackLayout>
+                            </HStack>
                         </VCenter>
                     </div>
                 </HStack>
@@ -100,11 +100,11 @@ export default function TextLayout() {
                 <HStack spacing={10}>
                     <div style={{ width: '200px', height: '200px', backgroundColor: '#ECEFF7' }}>
                         <HCenter>
-                            <VStackLayout direction={"start"}>
+                            <VStack direction={"start"}>
                                 <GoogleAvatar name={'5'} />
                                 <GoogleAvatar name={'6'} />
                                 <GoogleAvatar name={'7'} />
-                            </VStackLayout>
+                            </VStack>
                         </HCenter>
                     </div>
                     <div style={{ width: '200px', height: '200px', backgroundColor: '#ECEFF7' }}>
