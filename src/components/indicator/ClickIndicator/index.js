@@ -14,17 +14,17 @@ import React from 'react';
         },
     }]
  * 
- * @param { object } indicatorData 为上述 binding 处理的参数
+ * @param { {xname:'', binding:{}, props:{}} } indicator 为上述 binding 处理的参数
  * 
  */
 
-export default function Index(props) {
+export default function ClickIndicator(props) {
 
-    const { children, onItemClick, indicatorData, ...rest } = props;
+    const { children, onItemClick, indicator, ...rest } = props;
 
     function itemClick(){
         if(onItemClick){
-            onItemClick(indicatorData)
+            onItemClick(indicator)
         }
     }
 

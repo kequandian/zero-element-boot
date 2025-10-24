@@ -5,7 +5,7 @@ import React from 'react';
  * @param {*} 支持所有div style属性
  * @returns 
  */
-export default  function Index(props) {
+export default  function ShadowCart(props) {
 
   const { children, ...defaultHoverStyles } = props;
 

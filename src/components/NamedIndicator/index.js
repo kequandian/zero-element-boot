@@ -41,8 +41,16 @@ export default function NamedIndicator(NamedIndicatorProps) {
     const indicatorData = getComponent(indicator)
     const _Indicator = Indicator || indicatorData.Component || NextIndicator
     const __Indicator = triggered ? _Indicator : NextIndicator
-    const _indicator = indicatorData.props
-    // console.log('NamedIndicator._Indicator: ', _Indicator)
+    const _indicator = { ...indicatorData.props, ...indicator.props }
+    
+    // 处理 binding 数据，传递给 ClickIndicator
+    const processedIndicatorData = processIndicatorData(indicator, rest)
+    
+    // 构造 indicator 参数结构 {xname:'', props:{}}
+    const indicatorParam = {
+      xname: indicator.xname || 'ClickIndicator',
+      props: processedIndicatorData
+    }
 
     return React.Children.map(children, child => {
       return (onhover)?
@@ -54,6 +62,7 @@ export default function NamedIndicator(NamedIndicatorProps) {
             onItemAdded={onItemAdded} 
             onItemChanged={onItemChanged} 
             __onIndicatorClick={onIndicatorClick}
+            indicator={indicatorParam}
           >
               {child}
           </__Indicator>
@@ -66,6 +75,7 @@ export default function NamedIndicator(NamedIndicatorProps) {
             onItemAdded={onItemAdded} 
             onItemChanged={onItemChanged} 
             __onIndicatorClick={onIndicatorClick}
+            indicator={indicatorParam}
           >
               {child}
           </_Indicator>
@@ -85,6 +95,35 @@ function getComponent(data) {
     return {}
   }
   return { Component, props }
+}
+
+function processIndicatorData(indicator, rest) {
+  // 处理 binding 数据
+  if (indicator && indicator.binding) {
+    const binding = indicator.binding;
+    const processedData = {};
+    
+    // 从 rest 中获取数据源
+    const dataSource = rest.dataSource || rest;
+    
+    // 应用 binding 映射
+    Object.keys(binding).forEach(key => {
+      const sourceValue = binding[key];
+      
+      // 如果 sourceValue 是对象（直接传递），则直接使用
+      if (typeof sourceValue === 'object' && sourceValue !== null) {
+        processedData[key] = sourceValue;
+      }
+      // 如果 sourceValue 是字符串（字段名），则从数据源中获取
+      else if (typeof sourceValue === 'string' && dataSource && dataSource[sourceValue] !== undefined) {
+        processedData[key] = dataSource[sourceValue];
+      }
+    });
+    
+    return processedData;
+  }
+  
+  return {};
 }
 
 function tips(name) {
