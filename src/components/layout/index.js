@@ -3,6 +3,7 @@ import Gridbox from './Gridbox';
 import AutoGrid from './AutoGrid';
 import GridViewport from './GridViewport';
 import MultiViewport from './MultiViewport';
+import VideoCardLayout from './VideoCardLayout';
 
 import Wrap from './Wrap';
 import Round from './Round';
@@ -28,6 +29,7 @@ export {
   AutoGrid,
   GridViewport,
   MultiViewport,
+  VideoCardLayout,
 
   // center
   HCenter,

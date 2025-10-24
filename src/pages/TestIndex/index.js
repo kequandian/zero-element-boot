@@ -9,6 +9,7 @@ import { NamedIndicator } from '@/components';
 // 导入所有测试组件，用于 navigation.allComponents
 import TestAutoLayout from '../TestAutoLayout';
 import TestPreviewAutoLayout from '../TestPreviewAutoLayout';
+import VideoCardLayoutDemo from '../VideoCardLayoutDemo';
 import TestNamedCart from '../TestComponents/TestNamedCart';
 import TestNamedSelector from '../TestComponents/TestNamedSelector';
 import TestIndicator from '../TestComponents/TestIndicator';
@@ -32,6 +33,7 @@ import RssRender from '../../components/presenter/rss/RssRender/Sandbox';
 const allComponents = {
   TestAutoLayout,
   TestPreviewAutoLayout,
+  VideoCardLayoutDemo,
   TestNamedCart,
   TestNamedSelector,
   TestIndicator,
@@ -73,6 +75,14 @@ const testComponents = [
     navigation: 'TestPreviewAutoLayout',
     route: '/TestPreviewAutoLayout',
     category: 'AutoLayout'
+  },
+  {
+    id: 'video-card-layout-demo',
+    name: 'VideoCardLayoutDemo',
+    description: '视频卡片布局演示',
+    navigation: 'VideoCardLayoutDemo',
+    route: '/VideoCardLayoutDemo',
+    category: 'Layout'
   },
   {
     id: 'test-named-cart',
