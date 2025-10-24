@@ -6,7 +6,7 @@ import { Cart, ShadowCart } from '@/components/cart';
 import { ChakraText, ChakraButton } from '@/components/presenter';
 import { NamedIndicator } from '@/components';
 
-// 测试组件导入
+// 导入所有测试组件，用于 navigation.allComponents
 import TestAutoLayout from '../TestAutoLayout';
 import TestPreviewAutoLayout from '../TestPreviewAutoLayout';
 import TestNamedCart from '../TestComponents/TestNamedCart';
@@ -28,301 +28,199 @@ import RouterParamsDemo from '../TestHooks/testUseRouter/demo';
 import JsonTreeDemo from '../../components/presenter/tree/JsonTree/Sandbox';
 import RssRender from '../../components/presenter/rss/RssRender/Sandbox';
 
+// 外部组件集合
+const allComponents = {
+  TestAutoLayout,
+  TestPreviewAutoLayout,
+  TestNamedCart,
+  TestNamedSelector,
+  TestIndicator,
+  TestContainer,
+  TestLayout,
+  AvatarItemDemo,
+  RssAutoLayout,
+  AvatarSelected,
+  Standalone,
+  Connection,
+  ApisUi,
+  LogsUi,
+  TestRowIcons,
+  AutoCartSet,
+  AutoComponentSet,
+  RouterParamsDemo,
+  JsonTreeDemo,
+  RssRender
+};
 
-// 测试组件配置
+// 测试组件路由配置 - 不再导入组件，而是使用路由路径
+
+// 测试组件配置 - 支持两种导航方式
 const testComponents = [
   {
     id: 'test-auto-layout',
     name: 'TestAutoLayout',
     description: 'AutoLayout 基础测试',
-    component: TestAutoLayout,
+    // 方式1: 使用 navigation 字符串（优先）
+    navigation: 'TestAutoLayout',
+    // 方式2: 使用 route 字符串（备用）
+    route: '/TestAutoLayout',
     category: 'AutoLayout'
   },
   {
     id: 'test-preview-auto-layout',
     name: 'TestPreviewAutoLayout',
     description: 'AutoLayout 预览测试',
-    component: TestPreviewAutoLayout,
+    navigation: 'TestPreviewAutoLayout',
+    route: '/TestPreviewAutoLayout',
     category: 'AutoLayout'
   },
   {
     id: 'test-named-cart',
     name: 'TestNamedCart',
     description: 'NamedCart 组件测试',
-    component: TestNamedCart,
+    navigation: 'TestNamedCart',
+    route: '/TestComponents/TestNamedCart',
     category: 'Components'
   },
   {
     id: 'test-named-selector',
     name: 'TestNamedSelector',
     description: 'NamedSelector 组件测试',
-    component: TestNamedSelector,
+    navigation: 'TestNamedSelector',
+    route: '/TestComponents/TestNamedSelector',
     category: 'Components'
   },
   {
     id: 'test-indicator',
     name: 'TestIndicator',
     description: 'Indicator 组件测试',
-    component: TestIndicator,
+    navigation: 'TestIndicator',
+    route: '/TestComponents/TestIndicator',
     category: 'Components'
   },
   {
     id: 'test-container',
     name: 'TestContainer',
-    component: TestContainer,
     description: 'Container 组件测试',
+    navigation: 'TestContainer',
+    route: '/TestComponents/TestContainer',
     category: 'Components'
   },
   {
     id: 'test-layout',
     name: 'TestLayout',
     description: 'Layout 组件测试',
-    component: TestLayout,
+    navigation: 'TestLayout',
+    route: '/TestComponents/TestLayout',
     category: 'Components'
   },
   {
     id: 'avatar-item-demo',
     name: 'AvatarItemDemo',
     description: '头像项目演示',
-    component: AvatarItemDemo,
+    navigation: 'AvatarItemDemo',
+    route: '/TestComposition/AvatarItemDemo',
     category: 'Composition'
   },
   {
     id: 'rss-auto-layout',
     name: 'RssAutoLayout',
     description: 'RSS AutoLayout 演示',
-    component: RssAutoLayout,
+    navigation: 'RssAutoLayout',
+    route: '/composition/RssAutoLayout/Sandbox',
     category: 'Composition'
   },
   {
     id: 'avatar-selected',
     name: 'AvatarSelected',
     description: '头像选择演示',
-    component: AvatarSelected,
+    navigation: 'AvatarSelected',
+    route: '/composition/AvatarSelected/Sandbox',
     category: 'Composition'
   },
   {
     id: 'standalone',
     name: 'Standalone',
     description: '独立组件演示',
-    component: Standalone,
+    navigation: 'Standalone',
+    route: '/composition/Standalone/Sandbox',
     category: 'Composition'
   },
   {
     id: 'connection',
     name: 'Connection',
     description: '连接组件演示',
-    component: Connection,
+    navigation: 'Connection',
+    route: '/composition/Connection',
     category: 'Composition'
   },
   {
     id: 'apis-ui',
     name: 'ApisUi',
     description: 'API UI 演示',
-    component: ApisUi,
+    navigation: 'ApisUi',
+    route: '/composition/ApisUi/Sandbox',
     category: 'UI'
   },
   {
     id: 'logs-ui',
     name: 'LogsUi',
     description: '日志 UI 演示',
-    component: LogsUi,
+    navigation: 'LogsUi',
+    route: '/composition/LogsUi/Sandbox',
     category: 'UI'
   },
   {
     id: 'test-row-icons',
     name: 'TestRowIcons',
     description: '行图标测试',
-    component: TestRowIcons,
+    navigation: 'TestRowIcons',
+    route: '/TestLowCode/TestRowIcons/Sandbox',
     category: 'LowCode'
   },
   {
     id: 'auto-cart-set',
     name: 'AutoCartSet',
     description: '自动购物车设置',
-    component: AutoCartSet,
+    navigation: 'AutoCartSet',
+    route: '/TestLowCode/AutoCartSet/Presenter',
     category: 'LowCode'
   },
   {
     id: 'auto-component-set',
     name: 'AutoComponentSet',
     description: '自动组件设置',
-    component: AutoComponentSet,
+    navigation: 'AutoComponentSet',
+    route: '/TestLowCode/AutoComponentSet',
     category: 'LowCode'
   },
   {
     id: 'router-params-demo',
     name: 'RouterParamsDemo',
     description: '路由参数演示',
-    component: RouterParamsDemo,
+    navigation: 'RouterParamsDemo',
+    route: '/TestHooks/testUseRouter/demo',
     category: 'Hooks'
   },
   {
     id: 'json-tree-demo',
     name: 'JsonTreeDemo',
     description: 'JSON 树演示',
-    component: JsonTreeDemo,
+    navigation: 'JsonTreeDemo',
+    route: '/components/presenter/tree/JsonTree/Sandbox',
     category: 'Presenter'
   },
   {
     id: 'rss-render',
     name: 'RssRender',
     description: 'RSS 渲染演示',
-    component: RssRender,
+    navigation: 'RssRender',
+    route: '/components/presenter/rss/RssRender/Sandbox',
     category: 'Presenter'
-  },
+  }
 ];
 
-// 按分类组织组件
-const categorizedComponents = testComponents.reduce((acc, component) => {
-  if (!acc[component.category]) {
-    acc[component.category] = [];
-  }
-  acc[component.category].push(component);
-  return acc;
-}, {});
-
 export default function TestIndex(props) {
-  const [currentComponent, setCurrentComponent] = React.useState(null);
-  const [currentPath, setCurrentPath] = React.useState([]);
-
-  // 导航到指定组件
-  const navigateToComponent = (componentItemData) => {
-    setCurrentComponent(componentItemData);
-    setCurrentPath(prev => [...prev, componentItemData]);
-  };
-
-  // 处理组件卡片点击事件
-  const handleComponentClick = (componentItemData) => {
-    console.log('🔍 点击事件数据:', componentItemData);
-    console.log('🔍 数据类型检查:', {
-      hasNotes: !!componentItemData?.notes,
-      hasComponent: !!componentItemData?.component,
-      componentType: typeof componentItemData?.component,
-      isFunction: typeof componentItemData?.component === 'function'
-    });
-    
-    // 验证数据过滤是否正确
-    if (componentItemData && componentItemData.notes) {
-      console.log('✅ 数据过滤成功！notes 字段:', componentItemData.notes);
-      
-      // 如果包含 component 字段，直接使用它
-      if (componentItemData.component && typeof componentItemData.component === 'function') {
-        console.log('✅ 找到 component 字段，直接使用:', componentItemData.component);
-        // 构造完整的组件对象
-        const fullComponent = {
-          id: componentItemData.notes + '-from-filter',
-          name: componentItemData.notes,
-          description: componentItemData.notes,
-          component: componentItemData.component,
-          category: 'Filtered'
-        };
-        navigateToComponent(fullComponent);
-        return;
-      }
-      
-      // 否则使用 notes 字段查找原始组件
-      const component = testComponents.find(comp => comp.description === componentItemData.notes);
-      if (component) {
-        console.log('✅ 通过 notes 找到组件:', component);
-        navigateToComponent(component);
-        return;
-      }
-    }
-    
-    // 如果没有预期的字段，尝试直接使用传入的数据
-    console.log('⚠️ 数据过滤可能有问题，使用原始数据:', componentItemData);
-    navigateToComponent(componentItemData);
-  };
-
-  // 返回上一级
-  const goBack = () => {
-    if (currentPath.length > 0) {
-      const newPath = [...currentPath];
-      newPath.pop();
-      setCurrentPath(newPath);
-      
-      if (newPath.length === 0) {
-        setCurrentComponent(null);
-      } else {
-        setCurrentComponent(newPath[newPath.length - 1]);
-      }
-    }
-  };
-
-  // 如果当前有选中的组件，渲染该组件
-  if (currentComponent) {
-    console.log('🎯 当前组件:', currentComponent);
-    const ComponentToRender = currentComponent.component;
-    console.log('🎯 要渲染的组件:', ComponentToRender);
-    
-    if (!ComponentToRender) {
-      console.error('❌ 组件未定义:', currentComponent);
-      return <div>组件未定义</div>;
-    }
-    
-    return (
-      <ChakraProvider>
-        <MultiViewport
-          gridConfig={{
-            horizontalWeights: [1],
-            verticalWeights: [1],
-            gap: '0px',
-            cellBorderRadius: '0px'
-          }}
-        >
-          <Flexbox
-            direction="column"
-            align="start"
-            justify="start"
-            style={{ height: '100vh' }}
-          >
-            {/* 头部导航栏 */}
-            <Cart
-              fill="#f7fafc"
-              corner="0px"
-              stroke="none"
-              linewidth="0px"
-              margin="0px"
-              padding="16px"
-              style={{ width: '100%', borderBottom: '1px solid #e2e8f0' }}
-            >
-              <Flexbox
-                direction="row"
-                align="between"
-                justify="start"
-                style={{ width: '100%' }}
-              >
-                <ChakraButton
-                  content="← 返回"
-                  variant="outline"
-                  size="sm"
-                  onClick={goBack}
-                />
-                <ChakraText
-                  content={currentComponent.name}
-                  fontSize="lg"
-                  fontWeight="bold"
-                  style={{ flex: 1, textAlign: 'center' }}
-                />
-              </Flexbox>
-            </Cart>
-            
-            {/* 组件内容区域 */}
-            <Flexbox
-              direction="column"
-              align="start"
-              justify="start"
-              style={{ flex: 1, overflow: 'auto', padding: '16px', width: '100%' }}
-            >
-              <ComponentToRender {...props} />
-            </Flexbox>
-          </Flexbox>
-        </MultiViewport>
-      </ChakraProvider>
-    );
-  }
-
   // 渲染组件列表
   return (
     <ChakraProvider>
@@ -338,14 +236,14 @@ export default function TestIndex(props) {
           <NamedIndicator
             key={component.id}
             indicator={{
-              xname: 'ClickIndicator',
+              xname: 'NavigationIndicator',
               filter: {
-                "description": "notes",
-                "component": "component"
-              }
+                "navigation": "navigation",
+                "route": "route"
+              },
+              allComponents: allComponents
             }}
             dataSource={component}
-            onItemClick={(data) => handleComponentClick(data)}
           >
             <ShadowCart>
               <Flexbox
@@ -378,9 +276,4 @@ export default function TestIndex(props) {
       </MultiViewport>
     </ChakraProvider>
   );
-}
-
-// 组件包装器 - 用于渲染动态组件
-function ComponentWrapper({ component: Component, ...props }) {
-  return <Component {...props} />;
 }
