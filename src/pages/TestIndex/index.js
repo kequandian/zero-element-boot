@@ -306,22 +306,12 @@ export default function TestIndex(props) {
               xname: 'ClickIndicator',
               binding: {
                 "value": component
-              },
-              props: {
-                onItemClick: (indicatorData) => handleComponentClick(indicatorData.value)
               }
             }}
+            dataSource={component}
+            onItemClick={(indicator) => handleComponentClick(indicator.props.value)}
           >
-            <ShadowCart
-              style={{
-                height: '100%',
-                borderRadius: '12px',
-                border: '1px solid #e2e8f0',
-                backgroundColor: '#ffffff',
-                cursor: 'pointer',
-                transition: 'all 0.2s'
-              }}
-            >
+            <ShadowCart>
               <Flexbox
                 direction="column"
                 align="center"
