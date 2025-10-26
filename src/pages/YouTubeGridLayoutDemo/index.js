@@ -2,7 +2,6 @@ import React from 'react';
 import { ChakraProvider } from "@chakra-ui/react";
 import { YouTubeGridLayout } from '@/components/layout';
 import DefaultPlaceholder from '@/components/presenter/placeholder/DefaultPlaceholder';
-import { Cart, ShadowCart } from '@/components/cart';
 import { Flexbox } from '@/components/layout';
 import { ChakraText, ChakraButton } from '@/components/presenter';
 
@@ -34,9 +33,7 @@ export default function YouTubeGridLayoutDemo() {
           centerContent={false}
         >
           {Array.from({ length: 50 }, (_, index) => (
-            <ShadowCart key={index}>
-              <DefaultPlaceholder content={`YouTube 视频 ${index + 1}`} />
-            </ShadowCart>
+            <DefaultPlaceholder key={index} content={`YouTube 视频 ${index + 1}`} />
           ))}
         </YouTubeGridLayout>
       </Flexbox>
