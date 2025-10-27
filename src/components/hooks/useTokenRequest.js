@@ -22,12 +22,10 @@ module.exports = function useTokenRequest({ api, bindFiles, requestData = {}}, c
             options.method = 'POST';
         }
 
-        if (api) {
-            query(mApi || api, reqData, options)
-        } else {
-            console.warn('API为空, 访问被拒绝');
+        const targetApi = mApi || api;
+        if (targetApi) {
+            query(targetApi, reqData, options);
         }
-
 
     }, [api, useId, postData]);
 
