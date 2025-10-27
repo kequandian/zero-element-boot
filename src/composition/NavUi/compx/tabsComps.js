@@ -6,7 +6,6 @@ import {
     ModalOverlay,
     ModalContent,
     ModalHeader,
-    ModalFooter,
     ModalBody,
     ModalCloseButton,
     FormErrorMessage,
@@ -17,88 +16,178 @@ import { useForm } from 'react-hook-form';
 
 const promiseAjax = require('@/components/utils/request');
 
-import useLayout from '@/components/hooks/useLayout';
-import tabFormConfig from './config/tabsformConfig';
+import tabFormConfig from './tabsformConfig';
 require('./index.less')
-import pluOn from './icons/plus-on.png';
-import pluOff from './icons/plus-off.png';
-import minusOn from './icons/minus-on.png';
-import minusOff from './icons/minus-off.png';
+import pluOn from '../icons/plus-on.png';
+import pluOff from '../icons/plus-off.png';
+import minusOn from '../icons/minus-on.png';
+import minusOff from '../icons/minus-off.png';
 
-const FormItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
+const formItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
 
 export default function Index(props) {
 
-    const { children, items = [], onSwitchTab, tabIndex = 0, isSwitch = false, onItemDeleted: cb } = props
+    const { items = [], currentTabIndex = 0, onSwitchTab, isSwitch, cb } = props;
+    const {
+        api: { createAPI, getAPI, updateAPI, deleteAPI }
+    } = tabFormConfig;
+
+    // const [navCateListData, setNavCateListData] = useState(items)
     const [isLoading, setLoading] = useState(false)
+    const [currentId, setCurrentId] = useState('')
+    const [currentData, setCurrentData] = useState({})
+    const [tabIndex, setTabIndex] = useState(currentTabIndex)
     const [isOpenEditTabModel, setIsOpenEditModel] = useState(false)
     const [isDelOpen, setIsDelOpen] = useState(false)
-    const [currentData, setCurrentData] = useState({})
-    const [modelTitle, setModelTitle] = useState('')
-    const [currentId, setCurrentId] = useState('')
-    const [delValue, setDelValue] = useState('')
+    const [modelTitle, setModelTitle] = useState('Title');
+    const [formData, setFormData] = useState({})
 
-    const initialRef = useRef(null)
-    const finalRef = useRef(null)
+    const [delValue, setDelValue] = useState('')
+    const initialRef = useRef()
+    const finalRef = useRef()
     const toast = useToast()
 
-    const [layoutRef, { getClassName }] = useLayout();
+    const {
+        handleSubmit,
+        register,
+        reset,
+        formState: { errors, isSubmitting },
+    } = useForm()
 
-    const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm()
+    // useEffect(() => {
+    //     console.log('加载')
+    //     setTabIndex(0)
+    // }, [items]);
 
-    useEffect(() => {
-        setDelValue(items && items.length > 0 ? items[0].componentOption : '')
-    }, [])
+    //tab切换
+    const switchTab = (item, index) => {
+        if (index != tabIndex) {
+            setTabIndex(index)
+            const queryData = {
+                typeId: item.id
+            }
+            // fetchData(navListApi, queryData)
+        }
+    }
 
+    //添加tab按钮
+    const CustomAddTab = React.forwardRef((props, ref) => {
+        // 1. Reuse the `useTab` hook
+        const tabProps = useTab({ ...props, ref })
+        const isSelected = !!tabProps['aria-selected']
+
+        // 2. Hook into the Tabs `size`, `variant`, props
+        const styles = useMultiStyleConfig('Tabs', tabProps)
+
+        return (
+            <Button __css={styles.tab} {...tabProps}>
+                <Box as='span' mr='0' display='flex' alignItems='center'>
+                    {isSelected ? <Image src={pluOn} /> : <Image src={pluOff} />}
+                </Box>
+                {/* {tabProps.children} */}
+            </Button>
+        )
+    })
+
+    //添加tab按钮
+    const CustomDelTab = React.forwardRef((props, ref) => {
+        // 1. Reuse the `useTab` hook
+        const tabProps = useTab({ ...props, ref })
+        const isSelected = !!tabProps['aria-selected']
+
+        // 2. Hook into the Tabs `size`, `variant`, props
+        const styles = useMultiStyleConfig('Tabs', tabProps)
+
+        return (
+            <Button __css={styles.tab} {...tabProps}>
+                <Box as='span' mr='0' display='flex' alignItems='center'>
+                    {isSelected ? <Image src={minusOn} /> : <Image src={minusOff} />}
+                </Box>
+                {/* {tabProps.children} */}
+            </Button>
+        )
+    })
+
+
+    //获取详情数据
     function getData(id) {
-        setLoading(true)
-        const api = `${tabFormConfig.api.getAPI.replace('(id)', id)}`;
+        const api = `${getAPI.replace('(id)', id)}`;
         const queryData = {};
+        setLoading(true)
         promiseAjax(api, queryData).then(resp => {
             if (resp && resp.code === 200) {
                 setCurrentData(resp.data)
             } else {
-                console.error("查询失败 == ", resp)
-                toastTips('查询失败', 'error')
+                console.error("获取数据失败")
             }
         }).finally(_ => {
             setLoading(false)
-        })
+        });
     }
 
+    //新增数据
     function postData(values) {
-        setLoading(true)
-        const api = tabFormConfig.api.createAPI;
-        const queryData = { ...values };
+
+        // let rtValue;
+        // let formatApi = `${createAPI}`;
+        // if(createAPI.indexOf('(') != -1){
+        //   rtValue = handleChangeApiParam(createAPI)
+        //   formatApi = createAPI.replace(`(${rtValue})`, currentTabItem[rtValue]);
+        // }
+        // const api = `${formatApi}`;
+        const api = `${createAPI}`;
+        const queryData = { ...values, ...formData };
         promiseAjax(api, queryData, { method: 'POST' }).then(resp => {
             if (resp && resp.code === 200) {
                 toastTips('新增成功')
-                setIsOpenEditModel(false)
+                cb(true)
             } else {
-                console.error("新增失败 == ", resp)
+                console.error("新增失败 === ", resp)
                 toastTips('新增失败', 'error')
             }
         }).finally(_ => {
-            setLoading(false)
-        })
+            setIsOpenEditModel(false)
+        });
     }
 
+    //修改数据
     function putData(values, id) {
-        const api = `${tabFormConfig.api.updateAPI.replace('(id)', id)}`;
-        const queryData = { ...values };
+
+        // let rtValue;
+        // let formatApi = `${updateAPI}`;
+        // if(updateAPI.indexOf('(') != -1){
+        //   rtValue = handleChangeApiParam(updateAPI)
+        //   formatApi = updateAPI.replace(`(${rtValue})`, currentTabItem[rtValue]);
+        // }
+        // const api = `${formatApi}`;
+        const api = `${updateAPI.replace('(id)', id)}`;
+        const queryData = { ...values, ...formData };
         promiseAjax(api, queryData, { method: 'PUT' }).then(resp => {
             if (resp && resp.code === 200) {
                 toastTips('修改成功')
-                setIsOpenEditModel(false)
+                cb(true)
             } else {
                 console.error("修改失败 == ", resp)
                 toastTips('修改失败', 'error')
             }
-        })
+        }).finally(_ => {
+            setIsOpenEditModel(false)
+        });
     }
 
+    //删除确认提示
+    function showDelModel(item) {
+        if (deleteAPI && item && item.id) {
+            setCurrentId(item.id)
+            setIsDelOpen(true)
+        } else {
+            console.log('未设置 deleteAPI 或 item 数据异常')
+        }
+    }
+
+    //删除数据
     function delData(values) {
-        const { deleteAPI } = tabFormConfig.api;
+
         const api = `${deleteAPI.replace('(id)', delValue)}`;
         const queryData = { };
         promiseAjax(api, queryData, { method: 'DELETE' }).then(resp => {
@@ -114,6 +203,7 @@ export default function Index(props) {
         });
     }
 
+    //处理额外提交的字段和值
     function handleFormData(data) {
         const newFormData = {
             ...formData,
@@ -122,21 +212,25 @@ export default function Index(props) {
         setFormData(newFormData)
     }
 
+    //添加导航
     function addNavItem() {
         setModelTitle('添加类别')
         setIsOpenEditModel(true)
     }
 
+    //删除导航
     function delNavItem() {
         setModelTitle('删除类别')
         setIsDelOpen(true)
     }
 
+    //关闭模态框
     function onCloseEditTabModel() {
         reset()
         setIsOpenEditModel(false)
     }
 
+    //根据type 加载表单组件
     function handleFormItem(list) {
         const fieldList = list;
 
@@ -144,7 +238,7 @@ export default function Index(props) {
 
             const { label, field, type, rules = { isRequired:false }  } = item;
 
-            const C = FormItemTypeMap[type]
+            const C = formItemTypeMap[type]
 
             return <FormControl isRequired={rules.isRequired} isInvalid={rules.isRequired && rules.isRequired && errors[field]} key={`${index}_i`}>
                 <FormLabel htmlFor={field}>{label}</FormLabel>
@@ -156,8 +250,8 @@ export default function Index(props) {
         })
     }
 
+    //验证数据
     function validateData(values) {
-
         return new Promise((resolve) => {
             setTimeout(() => {
                 if (currentId) {
@@ -181,6 +275,7 @@ export default function Index(props) {
         }
     }
 
+    // tips
     function toastTips(text, status = 'success') {
         toast({
             title: text,
@@ -196,7 +291,7 @@ export default function Index(props) {
         <>
 
             {items && items.length > 0 ? (
-                <Tabs variant='enclosed' style={{ width: '1000px' }} defaultIndex={tabIndex}>
+                <Tabs variant='enclosed' defaultIndex={tabIndex}>
                     <TabList>
                         {items.map((item, index) => {
                             if (item.id === '-1' && isSwitch) {
@@ -208,32 +303,6 @@ export default function Index(props) {
                             return <Tab key={`${index}_tab`} onClick={() => handleSwitchTab(item, index)}>{item.name}</Tab>
                         })}
                     </TabList>
-                    <TabPanels>
-                        {items.map((item, index) => (
-                            <TabPanel key={`${index}_tabPanel`} >
-                                {isLoading ? (
-                                    <Spinner />
-                                ) : (
-                                    <Box>
-                                        {
-                                            React.Children.map(children, child => {
-                                                return (
-                                                    React.isValidElement(Child) ?
-                                                        React.cloneElement(Child, {
-                                                            key:i,
-                                                            index:i
-                                                        })
-                                                    : <Child key={i} index={i} />
-                                                )
-                                            })
-                                        }
-                                    </Box>
-                                )}
-                                
-                            </TabPanel>
-                        ))}
-
-                    </TabPanels>
                 </Tabs>
             ) : null}
 
@@ -279,13 +348,12 @@ export default function Index(props) {
                     <ModalHeader>{modelTitle}</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-
                         <form onSubmit={handleSubmit(delData)}>
                             <Stack spacing="5">
                                 <FormControl>
                                     <FormLabel>类别</FormLabel>
                                     <RadioGroup onChange={setDelValue} value={delValue}>
-                                        <Stack>
+                                        <Stack direction='row'>
                                             {items && items.map((item, index) => {
                                                 if(item.id != '-1' && item.id != '-2'){
                                                    return <Radio value={item.id} key={`${index}_radio`}>{item.name}</Radio>

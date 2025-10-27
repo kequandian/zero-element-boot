@@ -42,7 +42,7 @@ require('./index.less');
  * @param { string } addnew 自定义新增按钮样式
  * 
  */
-export default forwardRef(function ManageList(props) {
+export default forwardRef(function ManageList(props, ref) {
 
   const { children, layout,
     items, dataSource = items, currentTabItem,
@@ -348,7 +348,14 @@ export default forwardRef(function ManageList(props) {
       minHeight: '200px'
     }}
     className={getClassName()}
-    ref={containerRef}
+    ref={(node) => {
+      containerRef.current = node;
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    }}
   >
     <ContainerContext.Provider value={{ clickAction, showEditModal }}>
       {dataSource.map((item, i) => {

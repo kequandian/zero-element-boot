@@ -1,5 +1,4 @@
 import React from 'react';
-import { ChakraProvider } from "@chakra-ui/react";
 import MultiViewport from '@/components/layout/MultiViewport';
 import { Flexbox } from '@/components/layout';
 import { Cart, ShadowCart } from '@/components/cart';
@@ -235,7 +234,6 @@ const testComponents = [
 export default function TestIndex(props) {
   // 渲染组件列表
   return (
-    <ChakraProvider>
       <MultiViewport
         gridConfig={{
           horizontalWeights: [1,1,1,1,1], // 5列
@@ -286,6 +284,5 @@ export default function TestIndex(props) {
           </NamedIndicator>
         ))}
       </MultiViewport>
-    </ChakraProvider>
   );
 }

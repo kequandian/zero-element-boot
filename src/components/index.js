@@ -24,7 +24,7 @@ import { set as NamedPresenterSet } from '@/components/config/NamedPresenterConf
 import { set as NamedListSet } from '@/components/config/NamedListConfig';
 import { set as NamedSelector } from '@/components/config/NamedSelectorConfig';
 import { set as NameContainerSet } from '@/components/config/NamedContainerConfig';
-// import { set as FormItemTypeSet } from '@/components/config/FormItemTypeConfig';
+import { set as FormItemTypeSet } from '@/components/config/FormItemTypeConfig';
 
 
 //container
@@ -138,7 +138,7 @@ import {
 } from '@/components/presenter';
 
 // Form 组件
-// import { InputCompx, SelectFetch, CheckboxFetch, CheckboxModalFetch, OneMany, SelectCompx } from '@/components/FormItemType';
+import { InputCompx, SelectFetch } from '@/components/FormItemType';
 
 
 NamedLayoutSet({
@@ -301,14 +301,10 @@ NamedSelector({
 })
 
 
-// FormItemTypeSet({
-//   "input": InputCompx,
-//   "select-fetch": SelectFetch,
-//   "checkbox-fetch": CheckboxFetch,
-//   "checkbox-modal-fetch": CheckboxModalFetch,
-//   "one-many": OneMany,
-//   "select": SelectCompx
-// })
+FormItemTypeSet({
+  "input": InputCompx,
+  "select-fetch": SelectFetch
+});
 
 
 // default to export core components
