@@ -27,14 +27,6 @@ export default function Index(props) {
     let navListApi = '/api/pub/data/services/navigation';
     let navApi = '/api/pub/data/services/navCategory?sort=sortNum&orderBy=ASC';
 
-    useEffect(() => {
-        console.log('首次加载')
-        console.log('navApi:', navApi)
-        console.log('window.ZEle:', window.ZEle)
-        // 分类数据由 Tabs 组件内部获取
-        // fetchNavCategoryData(navApi, {})
-    }, []);
-
     let layoutData = '';
     const layoutJsonPath = '';
     const localLayoutJson = layout;
@@ -158,13 +150,10 @@ export default function Index(props) {
             </Box>
 
             <Box>
-                <>
                     <TabsCompox currentTabIndex={tabIndex} onSwitchTab={switchTab} isSwitch={switchStatus} cb={tabscallback} navApi={navApi} />
-                    <div style={{marginTop:'10px'}}>
                         {isLoading ? (
                             <Spinner />
                         ) : (
-                            <Box>
                                 <AutoLayout {...config} 
                                     cb={callback}
                                     onItemClick={onNavItemClick}
@@ -174,10 +163,7 @@ export default function Index(props) {
                                     onItemIndicated={indicatedAction}
                                     isSwitch={switchStatus} 
                                 />
-                            </Box>
                         )}
-                    </div>
-                </>
             </Box>
 
         </VStack>
