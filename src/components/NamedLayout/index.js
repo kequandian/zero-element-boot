@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import NamedSeperator from '@/components/NamedSeperator';
+import { useTag, tagged } from '../provider/useTag';
 
 const DefaultLayoutSet = require('@/components/config/NamedLayoutConfig').get();
 
@@ -17,7 +18,9 @@ export default forwardRef(function NamedLayout({children,tag, xname, props, __la
    navigation, isLastItem,
    onItemSelected=(()=>{console.log('NamedLayout:onItemSelected() is not set !')}),   //work on container instead.
    dataSource,  ...rest}, ref) {
-  tagged(tag, rest)
+  const { usedTag } = useTag()
+  
+  tagged(usedTag, 'NamedLayout', tag, rest)
 
   // custom layoutSet first
   const LayoutSet = DefaultLayoutSet
@@ -52,14 +55,4 @@ export default forwardRef(function NamedLayout({children,tag, xname, props, __la
 
 function tips(name) {
   return _ => `Layout ${name} 未定义`;
-}
-
-function tagged(tag, data) {
-  if(tag) { 
-    console.log(`TAG-NamedLayout-${tag}`) 
-  }
-  
-  if(data) {
-    console.log('userdata=', data.userdata ? data.userdata : data) 
-  }
 }

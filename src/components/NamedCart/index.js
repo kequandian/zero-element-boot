@@ -4,6 +4,7 @@ import React from 'react';
 // import { forwardRef } from 'react';
 // const useLayout = require('@/components/hooks/useLayout');
 // import useLayout from 'lib/components/hooks/useLayout';
+import { useTag, tagged } from '../provider/useTag';
 
 // const DefaultCartSet = require('../cart');
 import { get as DefaultCartSet } from '@/components/config/NamedCartConfig';
@@ -49,10 +50,9 @@ export default function NamedCart(NameCartProps) {
             onItemClick, onItemDeleted, onItemAdded, onItemChanged, 
             onItemSelected=((item)=>{console.log('NamedCart:onItemSelected() is not set !, item=', item)}),   //work on container instead.
             ...rest } = NameCartProps
-  
-            tagged(tag, rest)
+  const { usedTag } = useTag()
 
-        // console.log('NamedCart:onItemSelected= ', onItemSelected)
+  tagged(usedTag, 'NamedCart', tag, rest)
 
 
   const _CartSet = cartSet ? cartSet : DefaultCartSet()
@@ -181,14 +181,4 @@ function doBind(binding, data={}) {
 
 function tips(name) {
   return _ => `NamedCart ${name} 未定义`;
-}
-
-function tagged(tag, data) {
-  if(tag) { 
-    console.log(`TAG-NamedCart-${tag}`) 
-  }
-  
-  if(data) {
-    console.log('userdata=', data.userdata ? data.userdata : data) 
-  }
 }

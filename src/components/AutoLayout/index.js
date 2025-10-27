@@ -1,6 +1,7 @@
 import { useSize } from 'ahooks';
 
 import React from 'react';
+import { useTag, tagged } from '@/components/provider/useTag';
 import { useState, useEffect } from 'react';
 import { NamedContainer, NamedLayout, NamedGateway, NamedCart, NextIndicator, NamedIndicator } from '@/components';
 
@@ -108,6 +109,8 @@ function AutoLayout(autoLayoutProps) {
   // alternative, alternativeActive, onAlternativeBack,   // use container instead. e.g. AlternativeContainer
   ...rest } = autoLayoutProps;
 
+  const { usedTag } = useTag()
+  
   // handle layout, container, gateway, cart, presenter, navigation, children
   // xpresenter 子项组件数据多层传递问题，意义同 presenter
   const { xname, props, container, binding: layoutBinding, filter: layoutFilter, chain: layoutChain, gateway: layoutGateway,
@@ -118,7 +121,7 @@ function AutoLayout(autoLayoutProps) {
 
   // show tag for AutoLayout, layoutTag first
   const _tag = layoutTag || tag || '[AutoLayout]-TAG'
-  tagged(_tag, rest)
+  tagged(usedTag, 'AutoLayout', _tag, rest)
 
   const _dataSource = (Array.isArray(dataSource) ? { items: dataSource } : dataSource) || (Array.isArray(mock) ? { items: mock } : mock) || {}
   //const data = dataSource || rest || {}
@@ -335,15 +338,6 @@ function tips(name) {
   return _ => `${name} 未定义`;
 }
 
-function tagged(tag, data) {
-  if (tag) {
-    console.log(`TAG-AutoLayout-${tag}`)
-  }
-
-  if (data) {
-    console.log('userdata=', data.userdata ? data.userdata : data)
-  }
-}
 
 
 function isJsonObject(obj) {

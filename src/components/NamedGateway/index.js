@@ -2,6 +2,7 @@ const { bind } = require('lodash');
 const React = require('react');
 const DefaultGatewaySet = require('../gateway');
 const { default: NextIndicator } = require('../NextIndicator');
+const { useTag, tagged } = require('../provider/useTag');
 
 /**
  * @param {可能是一个字符串名称} gateway
@@ -10,7 +11,8 @@ const { default: NextIndicator } = require('../NextIndicator');
 module.exports = function NamedGateway({children, xname, props, binding={}, filter={}, chain=[], gateway={xname, props}, gatewaySet, dataSource, tag, ...rest }) {
   const GatewaySet = gatewaySet || DefaultGatewaySet
   
-  tagged(tag, rest)
+  const { usedTag } = useTag()
+  tagged(usedTag, 'NamedGateway', tag, rest)
 
   const t_binding = Object.keys(binding).length==0? undefined : binding
   const t_filter = Object.keys(filter).length==0? undefined : filter
@@ -33,14 +35,4 @@ module.exports = function NamedGateway({children, xname, props, binding={}, filt
 
 function tips(name) {
   return _ => `NamedGateway ${name} 未定义`;
-}
-
-function tagged(tag, data) {
-  if(tag) { 
-    console.log(`TAG-NamedGateway-${tag}`) 
-  }
-  
-  if(data) {
-    console.log('userdata=', data.userdata ? data.userdata : data) 
-  }
 }
