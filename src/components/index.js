@@ -8,6 +8,7 @@ import NamedIndicator from './NamedIndicator';
 //
 import NextIndicator from './NextIndicator';
 import NextCssIndicator from './NextCssIndicator';
+import BootChakraProvider from './provider/BootChakraProvider';
 
 // AutoLayout
 import AutoLayout from './AutoLayout';
@@ -326,6 +327,9 @@ export {
 
   //
   NextIndicator,
-  NextCssIndicator
+  NextCssIndicator,
+
+  // provider
+  BootChakraProvider
 };
 
