@@ -301,6 +301,14 @@ NamedSelector({
 })
 
 
+// FormItemTypeSet({
+//   "input": InputCompx,
+//   "select-fetch": SelectFetch,
+//   "checkbox-fetch": CheckboxFetch,
+//   "checkbox-modal-fetch": CheckboxModalFetch,
+//   "one-many": OneMany,
+//   "select": SelectCompx
+// })
 FormItemTypeSet({
   "input": InputCompx,
   "select-fetch": SelectFetch
