@@ -110,7 +110,7 @@ export default function NamedIndicator(NamedIndicatorProps) {
       (
         // 配置了 onhover：包装鼠标事件监听器
         <div onMouseEnter={() => toggleHoverEntered()} onMouseLeave={() => toggleHoverLeaved()}>
-          <__Indicator {...filteredIndicatorData} {...indicatorData} {...rest}
+          <__Indicator {...filteredIndicatorData} {...indicatorData.props} {...rest}
             onItemClick={onItemClick}
             onItemDeleted={onItemDeleted}
             onItemAdded={onItemAdded} 
@@ -123,7 +123,7 @@ export default function NamedIndicator(NamedIndicatorProps) {
       ) : 
       (
           // 没有配置 onhover：直接渲染指示器
-          <_Indicator {...filteredIndicatorData} {...indicatorData} {...rest}
+          <_Indicator {...filteredIndicatorData} {...indicatorData.props} {...rest}
             onItemClick={onItemClick}
             onItemDeleted={onItemDeleted}
             onItemAdded={onItemAdded} 
