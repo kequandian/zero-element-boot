@@ -25,6 +25,8 @@ import pluOff from './icons/plus-off.png';
 import minusOn from './icons/minus-on.png';
 import minusOff from './icons/minus-off.png';
 
+import { Wrap } from '@/components/layout';
+
 const FormItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
 
 export default function Index(props) {
@@ -281,27 +283,27 @@ export default function Index(props) {
                     <ModalBody>
 
                         <form onSubmit={handleSubmit(delData)}>
-                            <Stack spacing="5">
+                            <Wrap direction='column' xgap='8px'>
                                 <FormControl>
                                     <FormLabel>类别</FormLabel>
                                     <RadioGroup onChange={setDelValue} value={delValue}>
-                                        <Stack>
+                                        <Wrap flexFlow='row-wrap' xgap='8px'>
                                             {items && items.map((item, index) => {
                                                 if(item.id != '-1' && item.id != '-2'){
                                                    return <Radio value={item.id} key={`${index}_radio`}>{item.name}</Radio>
                                                 }
                                             })}
-                                        </Stack>
+                                        </Wrap>
                                     </RadioGroup>
                                 </FormControl>
-                                <Stack direction='row' spacing={4} align='center'>
+                                <Wrap align='center' xgap='12px'>
                                     <Button width='100px' colorScheme='teal' variant='solid' isLoading={isSubmitting} type='submit'>
                                         保存
                                     </Button>
                                     <Button width='100px' colorScheme='teal' variant='outline' onClick={()=>setIsDelOpen(false)}>取消</Button>
-                                </Stack>
-                            </Stack>
-                        </form>
+                                </Wrap>
+                            </Wrap>
+                         </form>
                     </ModalBody>
                 </ModalContent>
             </Modal>
