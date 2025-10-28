@@ -18,7 +18,8 @@ export default function PreviewAutoLayout (props) {
       layoutId,                   // 是layoutApi的另一种参数，意义同 layoutName
     bindingName,                // 通过数据绑定名称获取绑定
     testLayoutName, testBindingName, 
-    onItemClick,
+    onPreviewItemClick=(_)=>{console.log('PreviewAutoLayout:onPreviewItemClick click w/ data=', _)},
+    onPreviewItemSelected=(item)=>{console.log('PreviewAutoLayout:onPreviewItemSelected click w/ item=', item)},
     ___,                        // 内部使用, 是否为 `PreviewAutoLayout` 提供最外层 `Indicator`
     previewAddNew,
     ...rest
@@ -116,23 +117,11 @@ export default function PreviewAutoLayout (props) {
       ...rest           //others
   }
 
-
-
   // start preview
-
-  const onPreviewItemClick = (item) => {
-    //TODO
-    // console.log(item, ' === item')
-    if(onItemClick){
-      onItemClick(item)
-    }
-
-    //@when 2025-02-23 remove alternattive
-    // if(alternative && JSON.stringify(alternative) !== '{}' || __layoutData.alternative && JSON.stringify(__layoutData.alternative) !== '{}'){
-    //   setDataSource(item)
-    //   setAlternativeActive(true)
-    // }
-  }
+  // const onPreviewItemClick = (item) => {
+  //   //强制打印点击项，便于调试
+  //   console.log('PreviewAutoLayout onPreviewItemClick 被触发，item = ', item)
+  // }
 
   //@when 2025-02-23 remove alternattive
   // const alternative = {
@@ -163,7 +152,8 @@ export default function PreviewAutoLayout (props) {
                   // dataSource={dataSource}
                   // onAlternativeBack={onAlterNavBack}
                   ___={___}
-                  onItemClick={onPreviewItemClick} 
+                  onItemClick={onPreviewItemClick}
+                  onItemSelected={onPreviewItemSelected}
                   onAutoPreview={previewClick}/>
           <SquareAddNew onAddNew={addNewAction} ratio={0.2}/>
         </VStack>
@@ -174,7 +164,8 @@ export default function PreviewAutoLayout (props) {
           // alternative={alternative}
           // onAlternativeBack={onAlterNavBack}
           ___={___}
-          onItemClick={onPreviewItemClick} 
+          onItemClick={onPreviewItemClick}
+          onItemSelected={onPreviewItemSelected}
           onAutoPreview={previewClick}
       />
     )

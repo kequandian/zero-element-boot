@@ -27,13 +27,12 @@ module.exports = {
     ],
   },
   cart: {
-    xname: 'Cart',
+    xname: 'ClickIndicator',
     props: {
-      // fill:'#ccc',
-      // fillHover:'#FFFBE5',
+    },
+    binding: {
       padding: '5px 10px',
       margin: '5px',
-      linewidth: 0
     }
   },
   indicator:{

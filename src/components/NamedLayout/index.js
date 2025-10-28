@@ -16,7 +16,7 @@ const DefaultLayoutSet = require('@/components/config/NamedLayoutConfig').get();
  */
 export default forwardRef(function NamedLayout({children,tag, xname, props, __layout={xname, props}, layout=__layout, 
    navigation, isLastItem,
-   onItemSelected=(()=>{console.log('NamedLayout:onItemSelected() is not set !')}),   //work on container instead.
+  //  onItemSelected=(()=>{console.log('NamedLayout:onItemSelected() is not set !')}),   //work on container instead.
    dataSource,  ...rest}, ref) {
   const { usedTag } = useTag()
   
@@ -43,7 +43,7 @@ export default forwardRef(function NamedLayout({children,tag, xname, props, __la
     {React.Children.toArray(children).map(child => {
       let element = React.cloneElement(child, {
         dataSource: dataSource,
-        onItemSelected: onItemSelected,
+        // onItemSelected: onItemSelected,
         ...rest,
       })
       return element;

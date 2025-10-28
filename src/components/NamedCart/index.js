@@ -19,7 +19,9 @@ import NextIndicator from '@/components/NextIndicator';
 import CssCart from '../cart/CssCart';
 import NamedSelector from '../NamedSelector';
 // import { formatParams } from '@/components/utils/tools';
-
+//  * @param {ComponentSet} CartSet  cart 组件集
+//  * @param {ComponentSet} IndicatorSet  indicator 组件集
+//  * @param {ComponentSet} SelectorSet  indicator 组件集
 
 /**
  * NamedCart [,NamedLayout] 负责处理数据传递，具体的Cart[ItemCart, ...] 不负责处理数据传递
@@ -29,9 +31,6 @@ import NamedSelector from '../NamedSelector';
  * @param {xname:'', props:{}} cart 参数格式 car={xname:'Cart', props: {}}
  * @param {xname:'', props:{}} indicator 响应鼠标hover时的Cart的属性
  * @param {xname:'', props:{}} selector  选中的状态的Cart的属性
- * @param {ComponentSet} CartSet  cart 组件集
- * @param {ComponentSet} IndicatorSet  indicator 组件集
- * @param {ComponentSet} SelectorSet  indicator 组件集
  * @param {boolean} isSelected  由父组件传递是否选中状态
  * @param {boolean} selected 代表 OverlaySelector 的 selected 参数, 仅用于单组件测试，由AutoLayout的配置决定
  * @param {object} __cart 用于接收由api传递过来的数据
@@ -43,23 +42,28 @@ import NamedSelector from '../NamedSelector';
  */
 export default function NamedCart(NameCartProps) {
     const { children,tag, xname, props, indicator, selector, bounding, selected, 
-            cartSet, indicatorSet, selectorSet, 
+            // cartSet, indicatorSet, selectorSet, 
             __cart = { xname, props, indicator, selector, bounding}, cart = __cart,
-            __indicator, indicatorData={}, 
-            __selector, selectorData={}, isSelected,
-            onItemClick, onItemDeleted, onItemAdded, onItemChanged, 
-            onItemSelected=((item)=>{console.log('NamedCart:onItemSelected() is not set !, item=', item)}),   //work on container instead.
+            __indicator, 
+            indicatorData={}, 
+            __selector,
+            // selectorData={}, 
+            isSelected,
+            onItemClick = (data)=>{ console.log('NamedCart:onItemClick() w/ data=', data)},
+            onItemDeleted, onItemChanged, onItemUpdated,
             ...rest } = NameCartProps
   const { usedTag } = useTag()
 
   tagged(usedTag, 'NamedCart', tag, rest)
 
 
-  const _CartSet = cartSet ? cartSet : DefaultCartSet()
-  //2021-10-28 新增 selector 模块
-  const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
-  //2024-02-19 增加 selectorSet
-  const _SelectorSet = selectorSet ? selectorSet : DefaultSelectorSet()
+  // const _CartSet = cartSet ? cartSet : DefaultCartSet()
+  const _CartSet = DefaultCartSet()
+
+  // //2021-10-28 新增 selector 模块
+  // const _IndicatorSet = indicatorSet ? indicatorSet : DefaultIndicatorSet()
+  // //2024-02-19 增加 selectorSet
+  // const _SelectorSet = selectorSet ? selectorSet : DefaultSelectorSet()
 
   const cartName = (typeof cart === 'string') ? cart : cart.xname ? cart.xname : __cart.xname
   const _Cart = cartName ? (_CartSet[cartName] || tips(cartName)) : NextIndicator;
@@ -69,16 +73,16 @@ export default function NamedCart(NameCartProps) {
 
   // get indicator
   const _indicator = cart.indicator 
-  const indicatorName = _indicator ? ((typeof _indicator === 'string') ? _indicator : (typeof _indicator === 'object') ? _indicator.xname : '') : ''
-  const _Indicator  = indicatorName ? (_IndicatorSet[indicatorName] || tips(indicatorName) ) : undefined  
-  const indicatorProps = (_indicator && typeof _indicator === 'object') ? {...rest, ..._indicator.props} : {}
+  // const indicatorName = _indicator ? ((typeof _indicator === 'string') ? _indicator : (typeof _indicator === 'object') ? _indicator.xname : '') : ''
+  // const _Indicator  = indicatorName ? (_IndicatorSet[indicatorName] || tips(indicatorName) ) : undefined  
+  // const indicatorProps = (_indicator && typeof _indicator === 'object') ? {...rest, ..._indicator.props} : {}
   const _indicatorData = (_indicator && _indicator.binding) ? doBind(_indicator.binding, rest) : {}
   
   // get selector
   const _selector = cart.selector
-  const selectorName =  _selector ? ((typeof _selector === 'string') ? _selector : (typeof _selector === 'object') ? _selector.xname : '') : ''
-  const _Selector  = selectorName ? (_SelectorSet[selectorName] || tips(selectorName) ) : undefined
-  const selectorProps = (_selector && typeof _selector === 'object') ? _selector.props : {}
+  // const selectorName =  _selector ? ((typeof _selector === 'string') ? _selector : (typeof _selector === 'object') ? _selector.xname : '') : ''
+  // const _Selector  = selectorName ? (_SelectorSet[selectorName] || tips(selectorName) ) : undefined
+  // const selectorProps = (_selector && typeof _selector === 'object') ? _selector.props : {}
 
   //@when 2024-01-30
   //@what add bounding
@@ -127,23 +131,22 @@ export default function NamedCart(NameCartProps) {
           (
             <_NamedSelector selector={_selector} selected={selected} __selector={__selector} isSelected={isSelected} 
             >  
-
                 {/* only indicator handle item event */}
-                <_NamedIndicator indicator={_indicator} __indicator={__indicator} indicatorData={_indicatorData} 
-                        indicatorProps={indicatorProps}
-                        onItemClick={onItemClick}
+                <_NamedIndicator indicator={_indicator} __indicator={__indicator} 
+                        indicatorData={_indicatorData} 
+                        // indicatorProps={indicatorProps}
                         onItemDeleted={onItemDeleted}
-                        onItemAdded={onItemAdded} 
                         onItemChanged={onItemChanged} 
+                        onItemUpdated={onItemUpdated}
                         _isSelected={isSelected}
                 >
-                    <_CartModule children={children} tag={`${tag}-indicator-selector`} Cart={_Cart} props={_cart} data={rest} onSelected={onItemSelected} __indicator={__indicator}  __selector={__selector}/> 
+                    <_CartModule children={children} tag={`${tag}-indicator-selector`} Cart={_Cart} props={_cart} data={rest} __indicator={__indicator}  __selector={__selector} onItemClick={onItemClick}/> 
                </_NamedIndicator>
             </_NamedSelector>
           )
             :
           (
-              <_CartModule children={children} tag={`${tag}-last`} Cart={_Cart} props={_cart} data={rest} onSelected={onItemSelected}/> 
+              <_CartModule children={children} tag={`${tag}-last`} Cart={_Cart} props={_cart} data={rest} onItemClick={onItemClick}/>
           )
        )
       }
@@ -152,15 +155,14 @@ export default function NamedCart(NameCartProps) {
 }
 
 
-function _CartModule({children, tag, Cart, props, data, onSelected, __indicator,  __selector}){
-  // tagged(`${tag}-_CartModule-props:`, props)
-  // console.log('NamedCart:onSelected= ', onSelected)
-
+// function _CartModule({children, tag, Cart, props, data, onItemClick, __indicator, __selector}){
+function _CartModule({children, tag, Cart, props, data, __indicator, __selector}, onItemClick){
   return (<Cart {...props}>
             {React.Children.toArray(children).map(child => {
               return React.cloneElement(child, {
                 ...data,
-                onItemSelected: onSelected,
+                tag: `${tag}`,
+                onItemClick: onItemClick,
                 __indicator: __indicator,
                 __selector: __selector
               })

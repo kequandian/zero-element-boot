@@ -1,5 +1,5 @@
 import React, { useState, useEffect, forwardRef } from 'react';
-import doBind from '@/components/gateway/doBind.mjs';
+// import doBind from '@/components/gateway/doBind.mjs';
 import doFilter from '@/components/gateway/doFilter.mjs';
 const useLayout = require('@/components/hooks/useLayout');
 // import { LS } from 'zero-element/lib/utils/storage';
@@ -138,7 +138,6 @@ export default function DataFlowContainer(props) {
                             onCancelled: index==1?secondChildItemClick:(()=>{}),
                             onConfirmed: index==1?secondChildItemClick:(()=>{}),
                             onCompleted: index==1?secondChildItemClick:(()=>{}),
-                            onChanged: index==1?secondChildItemClick:(()=>{}),
                             ...rest,
                         })
                     }else{

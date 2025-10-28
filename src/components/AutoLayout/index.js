@@ -102,9 +102,9 @@ export default function (props) {
 function AutoLayout(autoLayoutProps) {
 
   const { children,tag, layout, dataSource, binding, filter, chain, gateway, allComponents = {}, 
-  onItemClick = () => { console.log('AutoLayout:presenter:onItemClick on  is not set !') }, 
-  onItemDeleted, onItemAdded, onItemChanged, 
-  onItemSelected=((item)=>{console.log('AutoLayout:list:onItemSelected is not set, item=', item)}),
+  onItemSelected=((item)=>{console.log('AutoLayout:list:onItemSelected w/ item=', item)}),
+  onItemClick = (data)=>{ console.log('AutoLayout:presenter:onItemClick w/ data=', data) }, 
+  onItemDeleted, onItemChanged, onItemUpdated,
   ___, onAutoPreview,
   // alternative, alternativeActive, onAlternativeBack,   // use container instead. e.g. AlternativeContainer
   ...rest } = autoLayoutProps;
@@ -279,9 +279,10 @@ function AutoLayout(autoLayoutProps) {
 
                 <_NamedCart {...__cart}
                   tag={`${_tag}-cart[${_cartName}]`}
+                  onIteClick={onItemClick}
                   onItemDeleted={onItemDeleted}
-                  onItemAdded={onItemAdded}
                   onItemChanged={onItemChanged}
+                  onItemUpdated={onItemUpdated}
                 >
                   <__Presenter ___={___} xseq={xseq} {...__presenter} allComponents={allComponents} key={i}
                     tag={`${itemTag}-presenter[${_presenterName}]`}
@@ -302,10 +303,6 @@ function AutoLayout(autoLayoutProps) {
         useReplacing={_useReplacing}
         onItemSelected={onItemSelected}
         onAutoPreview={onAutoPreview}
-      // onItemClick={onItemClick} 
-      // onItemDeleted={onItemDeleted}
-      // onItemAdded={onItemAdded}
-      // onItemChanged={onItemChanged}
       >
         <NamedLayout xname={__xname} props={props} xgap={xgap}
           tag={`${_tag}-standard-layout[${__xname}]`}>
@@ -313,9 +310,10 @@ function AutoLayout(autoLayoutProps) {
             tag={`${_tag}-gateway[${_gatewayName}]`}>
             <_NamedCart {...__cart}
               tag={`${_tag}-cart[${_cartName}]`}
+              onItemClick={onItemClick}
               onItemDeleted={onItemDeleted}
-              onItemAdded={onItemAdded}
               onItemChanged={onItemChanged}
+              onItemUpdated={onItemUpdated}
             >
               {
                 presenter ? <Presenter ___={___} xseq={xseq} {..._presenter} allComponents={allComponents}

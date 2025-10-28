@@ -42,7 +42,6 @@ require('./index.less')
  * @param { function } onItemChanged 修改
  * @param { function } onItemDeleted 删除
  * @param { object } action 传访问API 参数为： createAPI, getAPI, updateAPI, deleteAPI
- * //param { function } onItemIndicated 自定义传参, 例子： onItemIndicated("indicator": 'MangeMenuList', id: 'deleted',  data{})
  */
 
 export default function ManageMenuIndicator(props) {
@@ -60,7 +59,7 @@ export default function ManageMenuIndicator(props) {
     } = action;
 
     const toast = useToast()
-    const endpoint = getEndpoint()
+    // const endpoint = getEndpoint()
     const [isDelOpen, setIsDelOpen] = useState(false)
     const [isLoading, setLoading] = useState(false)
 

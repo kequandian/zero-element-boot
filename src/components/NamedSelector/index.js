@@ -15,7 +15,7 @@ import { get as DefaultSelectorSet } from '@/components/config/NamedSelectorConf
 export default function NamedSelector(NamedSelectorProps) {
 
   const { children, Selector, xname, props, __selector = { xname, props }, selector = __selector,
-    // onItemSelected=((e)=>{'NamedSelector:onItemSelected() is not set !'}),
+    // onItemSelected=((e)=>{'NamedSelector:onItemSelected() is not set !'}),  // 由父组件ListContainer响应
     isSelected = false, selected, ...rest } = NamedSelectorProps;
 
   const [onSelected, setSelected] = useState(false);

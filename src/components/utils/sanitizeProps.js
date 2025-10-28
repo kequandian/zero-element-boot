@@ -6,11 +6,11 @@
  */
 export function omitItemEventProps(props = {}) {
   const forbidden = new Set([
-    'onItemAdded',
+    'onItemSelected',
+    `onItemClick`,
     'onItemDeleted',
     'onItemChanged',
-    'onItemSelected',
-    'onItemIndicated',
+    'onItemUpdated',
     'onAutoPreview',
     '__onIndicatorClick',
   ]);

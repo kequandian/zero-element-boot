@@ -12,7 +12,14 @@ import layout from './layout';
 
 require('./index.less')
 
-export default function Index(props) {
+
+import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
+import { ClickIndicator } from '@/components/indicator';
+NamedCartSet({
+    ClickIndicator
+})
+
+export default function NavUI(props) {
 
     const { } = props;
 
@@ -36,11 +43,24 @@ export default function Index(props) {
     }
     //列表item点击事件
     const onNavItemClick = (item) => {
+        console.log('NavItem clicked:', item);
         const raw = item.path || item.url || ''
-        if (!raw) return
+        if (!raw) {
+            console.log('No path or url found in item:', item);
+            return;
+        }
         const href = raw.startsWith('http') ? raw : `${location.origin}${raw}`
-        const w = window.open('about:blank')
-        if (w) w.location.href = href
+        console.log('Opening URL:', href);
+        // 优先在新标签打开；如被拦截则当前页跳转
+        try {
+            const win = window.open(href, '_blank')
+            if (!win) {
+                console.log('Popup blocked, redirecting current page');
+                window.location.href = href
+            }
+        } catch (error) {
+            console.error('Error opening URL:', error);
+        }
     }
 
     //列表item回调函数
@@ -100,7 +120,7 @@ export default function Index(props) {
                     <PreviewAutoLayout
                         api={listApi}
                         layoutData={layoutData}
-                        onItemClick={onNavItemClick}
+                        onPreviewItemClick={onNavItemClick}
                         isSwitch={switchStatus}
                     />
                 </DataFlowContainer>

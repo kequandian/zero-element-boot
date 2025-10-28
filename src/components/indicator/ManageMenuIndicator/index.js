@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { MoreIcon, UpdateIcon, DelIcon } from './icons';
 import { formatParams } from '@/components/utils/tools';
-import { getEndpoint } from '@/components/config/common';
+// import { getEndpoint } from '@/components/config/common';
 import ContainerContext from '@/components/config/ContainerContext';
 const promiseAjax = require('@/components/utils/request');
 require('./index.less')
@@ -38,11 +38,9 @@ require('./index.less')
    container:{}
  * 
  * @param { object } indicatorData 为上述 binding 处理的参数
- * @param { function } onItemAdded 新增
  * @param { function } onItemChanged 修改
  * @param { function } onItemDeleted 删除
  * @param { object } action 传访问API 参数为： createAPI, getAPI, updateAPI, deleteAPI
- * //param { function } onItemIndicated 自定义传参, 例子： onItemIndicated("indicator": 'MangeMenuList', id: 'deleted',  data{})
  */
 export default function ManageMenuIndicator(props) {
 
@@ -50,8 +48,7 @@ export default function ManageMenuIndicator(props) {
         children, 
         action = {},
         indicatorData,
-        onItemDeleted, onItemAdded, onItemChanged, 
-        onItemSelected=((e)=>{console.log('ManageMenuIndicator: onItemSelected is not set !')}),
+        onItemDeleted, onItemChanged,
         ...rest
     } = props;
 
@@ -59,7 +56,7 @@ export default function ManageMenuIndicator(props) {
         createAPI, getAPI, updateAPI, deleteAPI,
     } = action;
     const toast = useToast()
-    const endpoint = getEndpoint()
+    // const endpoint = getEndpoint()
     const [isDelOpen, setIsDelOpen] = useState(false)
     const [isLoading, setLoading] = useState(false)
 
@@ -67,7 +64,11 @@ export default function ManageMenuIndicator(props) {
 
     function updateAction(){
         if(showEditModal){
-            showEditModal()
+            showEditModal(indicatorData)
+        }
+
+        if(onItemChanged){
+            onItemChanged(true)
         }
     }
 
@@ -114,18 +115,15 @@ export default function ManageMenuIndicator(props) {
 
     return (
         <div className='menu_indicator_container' style={{width:'100%'}}>
-
-            <div onClick={()=>clickAction(indicatorData, 'itemClick')}>
-                {
-                    React.Children.map(children, child => (
-                        child
-                    ))
-                }
-            </div>
+            {
+                React.Children.map(children, child => (
+                    child
+                ))
+            }
             
             <div className='menu_icon_container' style={{...rest}}>
                 <Menu offset={[1,1]}>
-                    <MenuButton onClick={()=>clickAction(indicatorData, 'menuClick')}>
+                    <MenuButton>
                         <div className='menu_icon'>
                             <MoreIcon />
                         </div>

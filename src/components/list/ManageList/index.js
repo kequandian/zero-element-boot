@@ -37,7 +37,7 @@ require('./index.less');
  * 
  * @param { object } navigation path: 跳转页面, model: 弹出模态框
  * @param { object } model delConfirmTips: 是否显示删除确认提示框
- * @param { function } cb 回调方法
+ * @param { function } cb 新增成功的回调方法
  * @param { boolean } isSwitch 切换CRUD开关
  * @param { string } addnew 自定义新增按钮样式
  * 
@@ -46,9 +46,10 @@ export default forwardRef(function ManageList(props, ref) {
 
   const { children, layout,
     items, dataSource = items, currentTabItem,
-    navigation, addnew, onItemClick, cb, isSwitch = false, 
-    onItemDeleted, onItemAdded, onItemChanged, 
+    navigation, addnew, cb, isSwitch = false, 
     onItemSelected=((e)=>{console.log('ManageList:onItemSelected() is not set! ')}),
+    onItemClick,
+    onItemDeleted, onItemChanged, onItemUpdated,
     ...rest } = props;
 
   const {
@@ -68,7 +69,7 @@ export default forwardRef(function ManageList(props, ref) {
   const [modelTitle, setModelTitle] = useState('Title');
   const [formData, setFormData] = useState({})
   //item click state
-  const [clickState, setClickState] = useState('listItemClick')
+  // const [clickState, setClickState] = useState('listItemClick')
 
   const containerRef = useRef();
   //list 容器 宽，高
@@ -149,12 +150,25 @@ export default forwardRef(function ManageList(props, ref) {
 
   }
 
-  function showEditModal () {
-    const data = currentItemData
-    getData(data)
-    setModelTitle('编辑')
-    setCurrentId(data.id)
-    setIsOpen(true)
+  function showEditModal (itemData) {
+    // 优先使用传入的数据，如果没有则使用当前选中的数据
+    const data = itemData || currentItemData
+    // 检查 data 和 data.id 是否存在
+    if (data && data.id) {
+      getData(data)
+      setModelTitle('编辑')
+      setCurrentId(data.id)
+      setIsOpen(true)
+    } else {
+      toast({
+        title: '编辑失败',
+        description: '无法获取数据ID',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+        position: 'top'
+      })
+    }
   }
 
   //关闭模态框
