@@ -206,7 +206,10 @@ export default forwardRef(function ManageList(props, ref) {
     setLoading(true)
     promiseAjax(api, queryData).then(resp => {
       if (resp && resp.code === 200) {
-        setCurrentData(resp.data || {})
+        const formData = resp.data || {};
+        setCurrentData(formData);
+        // 重置表单并设置初始值
+        reset(formData);
       } else {
         console.error("获取数据失败")
       }
