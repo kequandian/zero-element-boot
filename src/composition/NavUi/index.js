@@ -43,14 +43,11 @@ export default function NavUI(props) {
     }
     //列表item点击事件
     const onNavItemClick = (item) => {
-        console.log('NavItem clicked:', item);
         const raw = item.path || item.url || ''
         if (!raw) {
-            console.log('No path or url found in item:', item);
             return;
         }
         const href = raw.startsWith('http') ? raw : `${location.origin}${raw}`
-        console.log('Opening URL:', href);
         // 优先在新标签打开；如被拦截则当前页跳转
         try {
             const win = window.open(href, '_blank')
@@ -96,8 +93,8 @@ export default function NavUI(props) {
     }
 
     return (
-        <VStack align='stretch' spacing='-2'>
-            <Box style={{ margin: '10px 10px 30px 10px', paddingLeft: '8px' }}>
+        <VStack align='stretch' spacing='2'>
+            <Box style={{ margin: '10px 10px 20px 10px', paddingLeft: '8px' }}>
                 <FormControl display='flex' alignItems='center'>
                     <FormLabel htmlFor='email-alerts' mb='0'>
                         编辑开关：

@@ -105,7 +105,8 @@ function AutoLayout(autoLayoutProps) {
   onItemSelected=((item)=>{console.log('AutoLayout:list:onItemSelected w/ item=', item)}),
   onItemClick = (data)=>{ console.log('AutoLayout:presenter:onItemClick w/ data=', data) }, 
   onItemDeleted, onItemChanged, onItemUpdated,
-  ___, onAutoPreview,
+  ___, 
+  onAutoPreview=(item)=>{console.log('AutoLayout:onAutoPreview w/ item=', item)},
   // alternative, alternativeActive, onAlternativeBack,   // use container instead. e.g. AlternativeContainer
   ...rest } = autoLayoutProps;
 
@@ -166,8 +167,31 @@ function AutoLayout(autoLayoutProps) {
   // Cart
   const _align_cart = ((cart && typeof cart === 'string') ? { xname: cart } : cart) || undefined
   const __cart = sugarCart({ cart: _align_cart, indicator: indicator, selector: selector, unselector: unselector, bounding: bounding })
-  const _NamedCart = cart ? NamedCart : NextIndicator;
+
   const _cartName = cart ? 'NamedCart' : 'NextIndicator'
+
+  //@bugfix: 修复NamedCart 点击事件传递原始数据问题
+  //@when 2025-10-29
+  // const _NamedCart = cart ? NamedCart : NextIndicator;
+    const _NamedCart = (props) => {
+    const { children, tag, __cart, __indicator, __selector, onItemClick, ...rest } = props
+    return (
+      <NamedCart {...__cart} {...rest}
+        tag={tag}
+        __indicator={__indicator}
+        __selector={__selector}
+        onItemClick={(item) => {
+          console.log('_NamedCart - onItemClick called', item);
+          // 将原始数据传递给回调函数
+          onItemClick && onItemClick(props.data || rest);
+        }}
+      >
+        {children}
+      </NamedCart>
+    )
+  }
+  //@end bugfix
+  
 
   // Gateway
   const _layoutBinding = layoutBinding || binding
@@ -279,7 +303,7 @@ function AutoLayout(autoLayoutProps) {
 
                 <_NamedCart {...__cart}
                   tag={`${_tag}-cart[${_cartName}]`}
-                  onIteClick={onItemClick}
+                  onItemClick={onItemClick}
                   onItemDeleted={onItemDeleted}
                   onItemChanged={onItemChanged}
                   onItemUpdated={onItemUpdated}

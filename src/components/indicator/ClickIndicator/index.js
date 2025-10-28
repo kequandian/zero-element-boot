@@ -7,11 +7,11 @@ import React from 'react';
  */
 export default function ClickIndicator(props) {
 
-    const { children, onItemClick, ...rest } = props;
+    const { children, onItemClick, indicatorData, ...rest } = props;
 
     function itemClick(){
         if(onItemClick){
-            onItemClick(rest)
+            onItemClick(indicatorData)
         }
     }
 
