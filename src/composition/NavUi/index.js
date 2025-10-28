@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-    Box, VStack, Spinner, Switch, FormControl, FormLabel
+    Box, VStack, Switch, FormControl, FormLabel
 } from "@chakra-ui/react";
 // import { useForm } from 'react-hook-form';
 
-import { AutoLayout } from '@/components';
-import { getEndpoint } from '@/components/config/common';
+import PreviewAutoLayout from '@/components/PreviewAutoLayout';
+import DataFlowContainer from '@/components/container/DataFlowContainer';
 import TabsCompox from './compx/tabsComps';
-const promiseAjax = require('@/components/utils/request');
 
 import layout from './layout';
 
@@ -17,15 +16,14 @@ export default function Index(props) {
 
     const { } = props;
 
-    // const [navCateListData, setNavCateListData] = useState([])
-    const [listData, setListData] = useState([])
-    const [isLoading, setLoading] = useState(false)
     const [switchStatus, setSwitchStatus] = useState(false)
-    const [categoryId, setCategoryId] = useState('')
     const [tabIndex, setTabIndex] = useState(0)
+    const [typeId, setTypeId] = useState('')
 
+    let navCategoryApi = '/api/pub/data/services/navCategory?sort=sortNum&orderBy=ASC';
     let navListApi = '/api/pub/data/services/navigation';
-    let navApi = '/api/pub/data/services/navCategory?sort=sortNum&orderBy=ASC';
+    const baseListApi = `${navListApi}?sort=sortNum&orderBy=ASC`;
+    const [listApi, setListApi] = useState(baseListApi)
 
     let layoutData = '';
     const layoutJsonPath = '';
@@ -36,65 +34,22 @@ export default function Index(props) {
     } else {
         layoutData = localLayoutJson;
     }
-    const config = {
-        items: listData,
-        layout: layoutData
-    };
-
-    //获取分类列表信息
-    // const fetchNavCategoryData = (api, queryData) => { /* moved to tabsComps */ }
-
-    //获取列表信息
-    const fetchData = (api, queryData) => {
-        setLoading(true)
-        const query = {
-            ...queryData,
-            sort: 'sortNum',
-            orderBy: 'ASC'
-        }
-        return promiseAjax(api, query).then(resp => {
-            if (resp && resp.code === 200) {
-                const list = resp.data && Array.isArray(resp.data) ? resp.data : resp.data.records;;
-                setListData(list);
-                setLoading(false)
-            } else {
-                console.error('获取列表数据失败 ==', resp)
-            }
-        }).finally(_ => {
-            setLoading(false)
-        });
-    }
-
     //列表item点击事件
     const onNavItemClick = (item) => {
-        // const id = item.id;
-        //点击跳转页面
-        if (item.url.indexOf('http') != -1) {
-          const w = window.open('about:blank');
-          w.location.href = item.url
-        } else {
-          const w = window.open('about:blank');
-          const host = getEndpoint() || location.host
-          w.location.href = host + item.url
-        }
-    }
-
-    //列表item回调函数
-    const callback = (value) => {
-        if (value) {
-            const queryData = {
-                typeId: categoryId
-            }
-            fetchData(navListApi, queryData)
-        }
+        const raw = item.path || item.url || ''
+        if (!raw) return
+        const href = raw.startsWith('http') ? raw : `${location.origin}${raw}`
+        const w = window.open('about:blank')
+        if (w) w.location.href = href
     }
 
     //列表item回调函数
     const tabscallback = (value) => {
         if (value) {
-            // 分类数据刷新由 Tabs 组件内部处理
-            setListData([])
-            setCategoryId('')
+            // 分类数据刷新后重置选中状态
+            setTypeId('')
+            setTabIndex(0)
+            setListApi(baseListApi)
         }
     }
 
@@ -104,38 +59,20 @@ export default function Index(props) {
         setSwitchStatus(status)
         setTabIndex(0)
         if(!status){
-            // 分类数据刷新由 Tabs 组件内部处理
-            setListData([])
-            setCategoryId('')
+            // 重置选中状态
+            setTypeId('')
+            setListApi(baseListApi)
         }
     }
 
-    //tab切换
+    //tab切换（保留本地状态便于开关展示）
     const switchTab = (item, index) => {
         if (index != tabIndex) {
             setTabIndex(index)
-            setCategoryId(item.id)
-            const queryData = {
-                typeId: item.id
-            }
-            fetchData(navListApi, queryData)
+            setTypeId(item.id)
+            const nextApi = baseListApi + `&typeId=${item.id}`
+            setListApi(nextApi)
         }
-    }
-
-    function delateAction (data) {
-        callback(data)
-    }
-
-    function addAction (data) {
-        console.log('add action = ', data)
-    }
-
-    function updateAction (data) {
-        callback(data)
-    }
-
-    function indicatedAction (data) {
-        console.log('indicated action = ', data)
     }
 
     return (
@@ -150,20 +87,23 @@ export default function Index(props) {
             </Box>
 
             <Box>
-                    <TabsCompox currentTabIndex={tabIndex} onSwitchTab={switchTab} isSwitch={switchStatus} cb={tabscallback} navApi={navApi} />
-                        {isLoading ? (
-                            <Spinner />
-                        ) : (
-                                <AutoLayout {...config} 
-                                    cb={callback}
-                                    onItemClick={onNavItemClick}
-                                    onItemDeleted={delateAction}
-                                    onItemAdded={addAction}
-                                    onItemChanged={updateAction}
-                                    onItemIndicated={indicatedAction}
-                                    isSwitch={switchStatus} 
-                                />
-                        )}
+                <DataFlowContainer
+                    // 将第一个子组件输出的数据（tab item）转为第二个子组件所需 props
+                    converter={{ id: 'typeId' }}
+                >
+                    <TabsCompox 
+                        currentTabIndex={tabIndex} 
+                        onSwitchTab={switchTab} 
+                        isSwitch={switchStatus} 
+                        cb={tabscallback}
+                        navApi={navCategoryApi} />
+                    <PreviewAutoLayout
+                        api={listApi}
+                        layoutData={layoutData}
+                        onItemClick={onNavItemClick}
+                        isSwitch={switchStatus}
+                    />
+                </DataFlowContainer>
             </Box>
 
         </VStack>

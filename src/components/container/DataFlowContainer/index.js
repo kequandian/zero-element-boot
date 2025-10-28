@@ -6,14 +6,16 @@ const useLayout = require('@/components/hooks/useLayout');
 
 /**
  * 用于两个子组件交换数据信息
- * @param converter   item数据转换器，相当于 binding
+ * @param converter     item数据转换器，相当于 binding
+ * @param onFlowResult  数据流转至第二个子组件处理后获取的数据
  */
 export default function DataFlowContainer(props) {
     const { 
         children, 
         converter,  // convert selected item to second data
-        // currentside, anotherside, 
-        onResult=(()=>{console.log('DataFlowContainer:onResult() is not set!')}),
+        
+        // final result of data flow
+        onFlowResult=((data)=>{console.log('DataFlowContainer:onResult() is not set!')}),
         ...rest 
     } = props;
 
@@ -29,14 +31,16 @@ export default function DataFlowContainer(props) {
 
     const firstChildItemClick = (item) => {
         console.log('DataFlowContainer: first child item clicked, item =', item)
-        setConfigData(item)
         
         if (converter && Object.keys(converter).length > 0) {
-            const bindingData = doBind(converter, item)
-            const filterData = doFilter(converter, bindingData)
+            // const bindingData = doBind(converter, item)
+            // const filterData = doFilter(converter, bindingData)
+            const filterData = doFilter(converter, item)  // 直接转换数据
             console.log('DataFlowContainer: first child item clicked, filterData =', filterData)
 
+            // 转换后的数据
             setConfigData(filterData)
+
         } else {
             setConfigData(item)
         }
@@ -44,24 +48,25 @@ export default function DataFlowContainer(props) {
         // setOnRefresh(true)
     }
 
-    const firstChildActionCompleted = (data) => {
-        console.log('DataFlowContainer: first child action click = ', data)
+    // const firstChildActionCompleted = (data) => {
+    //     console.log('DataFlowContainer: first child action click = ', data)
         
-        setConfigData(data)
-        setOnRefresh(true)
+    //     setConfigData(data)
+    //     setOnRefresh(true)
 
-        // setConfigData({})
-        // setTimeout(() => {
-            // LS.set('commonData', {layoutName: data.moduleName})
-            // setConfigData({layoutName: data.moduleName})
-            // setOnRefresh(true)
-        // }, 100)
-    }
+    //     // setConfigData({})
+    //     // setTimeout(() => {
+    //         // LS.set('commonData', {layoutName: data.moduleName})
+    //         // setConfigData({layoutName: data.moduleName})
+    //         // setOnRefresh(true)
+    //     // }, 100)
+    // }
 
     const secondChildItemClick = () => {
         console.log('DataFlowContainer: second child item click, result= ', configData)
-        
-        onResult(configData)
+
+        // 由第二个子组件处理后回调
+        onFlowResult(configData)
     }
 
     // function renderChildren(children) {
@@ -111,11 +116,29 @@ export default function DataFlowContainer(props) {
 
                     if (React.isValidElement(child)) {
                         return React.cloneElement(child, {
-                            ref: layoutRef, 
+                            ref: layoutRef,
+                            // 兼容 Tab 类组件的 onSwitchTab，同时保留通用 onItemSelected
+                            // index==0, 表示第一个子组件，index==1, 表示第二个子组件
                             onItemSelected: index==0?firstChildItemClick:(()=>{}),
-                            onAction: index==1?secondChildItemClick:(()=>{}),
-                            // dataSource: childIndex==1?configData:{},
-                            // children: renderChildren(child.props.children),
+                            onSwitchTab: index==0?firstChildItemClick:(()=>{}),
+
+                            // 第二个子组件可获得由第一个子组件选择转换后的数据
+                            ...(index==1 ? configData : {}),
+                            // 如果第二个子组件需要动态 api，根据 configData 传入 api
+                            ...(index==1 && configData.typeId ? {
+                                api: (() => {
+                                    const baseApi = child.props.api || '';
+                                    if (!baseApi || typeof baseApi !== 'string') return baseApi;
+                                    const id = configData.typeId;
+                                    return baseApi.includes('?') 
+                                        ? `${baseApi}&typeId=${id}` 
+                                        : `${baseApi}?typeId=${id}`;
+                                })()
+                            } : {}),
+                            onCancelled: index==1?secondChildItemClick:(()=>{}),
+                            onConfirmed: index==1?secondChildItemClick:(()=>{}),
+                            onCompleted: index==1?secondChildItemClick:(()=>{}),
+                            onChanged: index==1?secondChildItemClick:(()=>{}),
                             ...rest,
                         })
                     }else{

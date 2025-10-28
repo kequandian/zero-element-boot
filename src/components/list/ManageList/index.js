@@ -89,10 +89,8 @@ export default forwardRef(function ManageList(props, ref) {
 
   // }, [currentId]);
 
-  // 检查数据是否有效
-  if (!(dataSource && Array.isArray(dataSource))) {
-    return tips(dataSource)
-  }
+  // 检查数据是否有效（不要在 hooks 之后早退，以免打乱 hooks 次序）
+  const isDataValid = (dataSource && Array.isArray(dataSource));
 
   // 列表 item 点击事件
   function clickAction(item, state) {
@@ -358,10 +356,10 @@ export default forwardRef(function ManageList(props, ref) {
     }}
   >
     <ContainerContext.Provider value={{ clickAction, showEditModal }}>
-      {dataSource.map((item, i) => {
-        return (
-          <div style={{ position: 'relative' }} key={i}>
-            {/* <div onClick={() => clickAction(item, 'item')}> */}
+      {isDataValid ? (
+        dataSource.map((item, i) => {
+          return (
+            <div style={{ position: 'relative' }} key={i}>
               {
                 React.isValidElement(Child) ?
                   React.cloneElement(Child, {
@@ -375,28 +373,12 @@ export default forwardRef(function ManageList(props, ref) {
                   })
                   : <Child {... rest ? rest : {}} {...item} layout={layout} ref={layoutRef} onItemClick={onItemClick} index={i} />
               }
-              {/* {
-              isSwitch ? (
-
-                <div style={{
-                  position: 'absolute',
-                  top: '0',
-                  right: '0',
-                  width: '26px',
-                  height: '26px',
-                  background: '#c3c3c3',
-                  borderRadius: '50%',
-                  textAlign: 'center',
-                }} onClick={() => showDelModel(item)} >
-                  <div className={`del-btn`} ></div>
-                </div>
-              ) : null
-            } */}
-            {/* </div> */}
-          </div>
-
-        )
-      })}
+            </div>
+          )
+        })
+      ) : (
+        tips(dataSource)
+      )}
       {
         navigation && isSwitch ? (
           <div className='footerContent' >

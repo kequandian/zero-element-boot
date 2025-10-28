@@ -7,7 +7,7 @@ import NavUi from '@/composition/NavUi'
 export default function index (props) {
 
   return (
-    <BootChakraProvider value={{ usedTag: true }}>
+    <BootChakraProvider value={{ usedTag: false }}>
       {/* <TestIndex {...props} />; */}
       <NavUi {...props} />
     </BootChakraProvider>

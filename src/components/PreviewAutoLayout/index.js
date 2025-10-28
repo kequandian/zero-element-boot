@@ -62,7 +62,7 @@ export default function PreviewAutoLayout (props) {
   const _layoutApi =  layoutApi || (_layoutName ? '/api/auto/module/autolayout/' + _layoutName : (layoutId ? `/api/auto/lc_low_auto_module/lowAutoModule/lowAutoModules/${layoutId}`: undefined))
   const layoutApiResp = _layoutApi ? useTokenRequest({ api: _layoutApi }) : undefined;
   const layoutApiData = layoutApiResp ? (Array.isArray(layoutApiResp) ? layoutApiResp[0] : layoutApiResp) : undefined;
-  console.log('=== PreviewAutoLayout layoutApiResp == ',typeof layoutApiResp)
+  // console.log('=== PreviewAutoLayout layoutApiResp == ',typeof layoutApiResp)
 
 
   //testLayoutData: get layoutData from testLayoutName
@@ -73,7 +73,7 @@ export default function PreviewAutoLayout (props) {
   //final layoutData => __layoutData
   const __layoutData = _layoutData || layoutApiData || testLayoutData
   // ::END handle layoutData
-  console.log('=== PreviewAutoLayout layoutData == ',__layoutData)
+  // console.log('=== PreviewAutoLayout layoutData == ',__layoutData)
 
 
   //bindingData: get bindingData from bindingApi
@@ -90,7 +90,7 @@ export default function PreviewAutoLayout (props) {
   const bindingData = (respBindingData && JSON.stringify(respBindingData) !== '{}' && respBindingData) ||
         (testBindingData && JSON.stringify(testBindingData) !== '{}' && testBindingData) || {}
   // ::end handle binding
-  console.log('=== PreviewAutoLayout bindingData == ',bindingData)
+  // console.log('=== PreviewAutoLayout bindingData == ',bindingData)
 
 
   // apiData :get api data
@@ -104,7 +104,7 @@ export default function PreviewAutoLayout (props) {
   const records = data ? (data.records ? data.records : (data.items ? data.items : (data || mockData || []))) : []
   const items = ( records && records.length > 0) ? {items: records} : {}
 
-  console.log('=== PreviewAutoLayout data == ', items)
+  // console.log('=== PreviewAutoLayout data == ', items)
 
 
   //config
@@ -115,7 +115,6 @@ export default function PreviewAutoLayout (props) {
       ...items,         //data
       ...rest           //others
   }
-  console.log('=== PreviewAutoLayout config == ', config)
 
 
 
