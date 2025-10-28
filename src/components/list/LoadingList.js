@@ -2,7 +2,7 @@ import React, { useRef,useEffect,useState } from 'react';
 import { useSize } from 'ahooks';
 import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/config/ContainerContext';
-import queryMethod from '@/components/utils/promiseAjax';
+import promiseAjax from '@/components/utils/request';
 
 /**
  * 列表属性{template}包括 [布局, Cart, 分隔线, 数据转换 [,子组件] ]
@@ -21,7 +21,7 @@ export default function LoadingList(props) {
   // ensure only child [NamedLayout, Presenter ...]
   const Child = React.Children.only(children);
   useEffect(_ => {
-    queryMethod(API, queryData)
+    promiseAjax(API, queryData)
       .then(responseData => {
         if (responseData && responseData.code === 200) {
           setData(responseData.data);
@@ -59,7 +59,6 @@ export default function LoadingList(props) {
 function tips(dataSource) {
   return <div>PlainList 数据无效</div>;
 }
-
 
 
 

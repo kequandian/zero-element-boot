@@ -15,13 +15,14 @@ import {
 import { useForm } from 'react-hook-form';
 
 const promiseAjax = require('@/components/utils/request');
+const useTokenRequest = require('@/components/hooks/useTokenRequest');
 
 import tabFormConfig from './tabsformConfig';
 require('./index.less')
-import pluOn from '../icons/plus-on.png';
-import pluOff from '../icons/plus-off.png';
-import minusOn from '../icons/minus-on.png';
-import minusOff from '../icons/minus-off.png';
+import pluOn from './icons/plus-on.png';
+import pluOff from './icons/plus-off.png';
+import minusOn from './icons/minus-on.png';
+import minusOff from './icons/minus-off.png';
 
 import { Wrap } from '@/components/layout';
 
@@ -29,7 +30,7 @@ const formItemTypeMap = require('@/components/config/FormItemTypeConfig').get();
 
 export default function Index(props) {
 
-    const { items = [], currentTabIndex = 0, onSwitchTab, isSwitch, cb } = props;
+    const { items = [], currentTabIndex = 0, onSwitchTab, isSwitch, cb, navApi } = props;
     const {
         api: { createAPI, getAPI, updateAPI, deleteAPI }
     } = tabFormConfig;
@@ -266,14 +267,59 @@ export default function Index(props) {
         })
     }
 
+    // 内部维护的导航分类数据
+    const [navItems, setNavItems] = useState([])
+    // 通过 useTokenRequest 获取导航分类
+    const [navData] = useTokenRequest({ api: navApi });
+    useEffect(() => {
+        if (navData !== '') {
+            const list = Array.isArray(navData) ? navData : (navData && Array.isArray(navData.records) ? navData.records : []);
+            const newList = [...list];
+            if (isSwitch) {
+                newList.push({ id: '-1' });
+                newList.push({ id: '-2' });
+            }
+            setNavItems(newList);
+            if (newList.length > 0 && onSwitchTab) {
+                onSwitchTab(newList[0], 0);
+            }
+        }
+    }, [navData, isSwitch])
+
+    // 通过 useTokenRequest 封装详情数据获取
+    const [detailData, , changeHookData] = useTokenRequest({ api: '' }, (data) => {
+    setCurrentData(data);
+    setLoading(false);
+    });
+    
+    useEffect(() => {
+    if (detailData !== '') {
+    setLoading(false);
+    }
+    }, [detailData]);
+
+    // 获取详情数据（改为通过 hook）
+    function getDataByHook(id) {
+        if (!getAPI) return;
+        const api = `${getAPI.replace('(id)', id)}`;
+        setLoading(true);
+        changeHookData({ id, api });
+    }
+
+    // Tab 点击逻辑（编辑模式打开详情，普通模式回调父组件）
     function handleSwitchTab(item, index) {
+        setTabIndex(index);
         if (isSwitch) {
-            getData(item.id)
-            setCurrentId(item.id)
-            setModelTitle('编辑导航类别')
-            setIsOpenEditModel(true)
+            setModelTitle('编辑类别');
+            setIsOpenEditModel(true);
+            setCurrentId(item.id);
+            if (item && item.id) {
+                getDataByHook(item.id);
+            }
         } else {
-            onSwitchTab(item, index)
+            if (onSwitchTab) {
+                onSwitchTab(item, index);
+            }
         }
     }
 
@@ -289,13 +335,16 @@ export default function Index(props) {
         })
     }
 
+    // 优先使用外部传入的 items，否则使用内部拉取的 navItems
+    const displayItems = (items && items.length > 0) ? items : navItems
+
     return (
         <>
 
-            {items && items.length > 0 ? (
+            {displayItems && displayItems.length > 0 ? (
                 <Tabs variant='enclosed' defaultIndex={tabIndex}>
                     <TabList>
-                        {items.map((item, index) => {
+                        {displayItems.map((item, index) => {
                             if (item.id === '-1' && isSwitch) {
                                 return <CustomAddTab key={`${index}_tab`} onClick={() => addNavItem()}></CustomAddTab>
                             }
@@ -356,7 +405,7 @@ export default function Index(props) {
                                     <FormLabel>类别</FormLabel>
                                     <RadioGroup onChange={setDelValue} value={delValue}>
                                         <Wrap flexFlow='row-wrap' xgap='8px'>
-                                            {items && items.map((item, index) => {
+                                            {displayItems && displayItems.map((item, index) => {
                                                 if(item.id != '-1' && item.id != '-2'){
                                                    return <Radio value={item.id} key={`${index}_radio`}>{item.name}</Radio>
                                                 }

@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-    Box, VStack, Spinner, Switch, FormControl, FormLabel
+    Box, VStack, Switch, FormControl, FormLabel
 } from "@chakra-ui/react";
 // import { useForm } from 'react-hook-form';
 
-import { AutoLayout } from '@/components';
+import PreviewAutoLayout from '@/components/PreviewAutoLayout';
 import { getEndpoint } from '@/components/config/common';
 import TabsCompox from './compx/tabsComps';
-const promiseAjax = require('@/components/utils/request');
 
 import layout from './layout';
 
@@ -17,22 +16,13 @@ export default function Index(props) {
 
     const { } = props;
 
-    const [navCateListData, setNavCateListData] = useState([])
-    const [listData, setListData] = useState([])
-    const [isLoading, setLoading] = useState(false)
     const [switchStatus, setSwitchStatus] = useState(false)
     const [categoryId, setCategoryId] = useState('')
     const [tabIndex, setTabIndex] = useState(0)
+    const [apiUrl, setApiUrl] = useState('/api/pub/data/services/navigation')
 
     let navListApi = '/api/pub/data/services/navigation';
     let navApi = '/api/pub/data/services/navCategory?sort=sortNum&orderBy=ASC';
-
-    useEffect(() => {
-        console.log('首次加载')
-        console.log('navApi:', navApi)
-        console.log('window.ZEle:', window.ZEle)
-        fetchNavCategoryData(navApi, {})
-    }, []);
 
     let layoutData = '';
     const layoutJsonPath = '';
@@ -42,62 +32,6 @@ export default function Index(props) {
         layoutData = { path: layoutJsonPath };
     } else {
         layoutData = localLayoutJson;
-    }
-    const config = {
-        items: listData,
-        layout: layoutData
-    };
-
-    //获取分类列表信息
-    const fetchNavCategoryData = (api, queryData) => {
-        console.log('fetchNavCategoryData called with:', api, queryData)
-        setLoading(true)
-        let newNavCateList = []
-        return promiseAjax(api, queryData).then(resp => {
-            console.log('API response:', resp)
-            if (resp && resp.code === 200) {
-                newNavCateList = resp.data && Array.isArray(resp.data) ? resp.data : resp.data.records;
-                console.log('newNavCateList:', newNavCateList)
-
-                //-1:新增  -2删除
-                newNavCateList.push({id:'-1'})
-                newNavCateList.push({id:'-2'})
-                setNavCateListData(newNavCateList);
-                setLoading(false)
-            } else {
-                console.error('获取列表数据失败 ==', resp)
-            }
-        }).catch(error => {
-            console.error('API request failed:', error)
-            setLoading(false)
-        }).finally(_ => {
-            setLoading(false)
-            if(newNavCateList.length > 0){
-                setCategoryId(newNavCateList[0].id)
-                fetchData(navListApi, { typeId: newNavCateList[0].id })
-            }
-        });
-    }
-
-    //获取列表信息
-    const fetchData = (api, queryData) => {
-        setLoading(true)
-        const query = {
-            ...queryData,
-            sort: 'sortNum',
-            orderBy: 'ASC'
-        }
-        return promiseAjax(api, query).then(resp => {
-            if (resp && resp.code === 200) {
-                const list = resp.data && Array.isArray(resp.data) ? resp.data : resp.data.records;;
-                setListData(list);
-                setLoading(false)
-            } else {
-                console.error('获取列表数据失败 ==', resp)
-            }
-        }).finally(_ => {
-            setLoading(false)
-        });
     }
 
     //列表item点击事件
@@ -117,19 +51,21 @@ export default function Index(props) {
     //列表item回调函数
     const callback = (value) => {
         if (value) {
-            const queryData = {
-                typeId: categoryId
-            }
-            fetchData(navListApi, queryData)
+            // 通过更新 apiUrl 来触发数据重新加载
+            const newApiUrl = categoryId 
+                ? `${navListApi}?typeId=${categoryId}&sort=sortNum&orderBy=ASC`
+                : `${navListApi}?sort=sortNum&orderBy=ASC`
+            setApiUrl(newApiUrl)
         }
     }
 
     //列表item回调函数
     const tabscallback = (value) => {
         if (value) {
-            setNavCateListData([])
-            setListData([])
-            fetchNavCategoryData(navApi, {})
+            // 分类数据刷新由 Tabs 组件内部处理
+            setCategoryId('')
+            // 重置 API URL
+            setApiUrl(`${navListApi}?sort=sortNum&orderBy=ASC`)
         }
     }
 
@@ -139,9 +75,9 @@ export default function Index(props) {
         setSwitchStatus(status)
         setTabIndex(0)
         if(!status){
-            setNavCateListData([])
-            setListData([])
-            fetchNavCategoryData(navApi, {})
+            // 重置 API URL 和 categoryId
+            setCategoryId('')
+            setApiUrl(`${navListApi}?sort=sortNum&orderBy=ASC`)
         }
     }
 
@@ -150,10 +86,9 @@ export default function Index(props) {
         if (index != tabIndex) {
             setTabIndex(index)
             setCategoryId(item.id)
-            const queryData = {
-                typeId: item.id
-            }
-            fetchData(navListApi, queryData)
+            // 更新 API URL 以加载对应分类的数据
+            const newApiUrl = `${navListApi}?typeId=${item.id}&sort=sortNum&orderBy=ASC`
+            setApiUrl(newApiUrl)
         }
     }
 
@@ -185,30 +120,18 @@ export default function Index(props) {
             </Box>
 
             <Box>
-                {navCateListData && navCateListData.length > 0 ? (
-                    <>
-                        <TabsCompox items={navCateListData} currentTabIndex={tabIndex} onSwitchTab={switchTab} isSwitch={switchStatus} cb={tabscallback}/>
-                        
-                        <div style={{marginTop:'10px'}}>
-                            {isLoading ? (
-                                <Spinner />
-                            ) : (
-                                <Box>
-                                    <AutoLayout {...config} 
-                                        cb={callback}
-                                        onItemClick={onNavItemClick}
-                                        onItemDeleted={delateAction}
-                                        onItemAdded={addAction}
-                                        onItemChanged={updateAction}
-                                        onItemIndicated={indicatedAction}
-                                        isSwitch={switchStatus} 
-                                    />
-                                </Box>
-                            )}
-                        </div>
-                    </>
-                ) : null}
-
+                    <TabsCompox currentTabIndex={tabIndex} onSwitchTab={switchTab} isSwitch={switchStatus} cb={tabscallback} navApi={navApi} />
+                    <PreviewAutoLayout
+                        api={apiUrl}
+                        layoutData={layoutData}
+                        onItemClick={onNavItemClick}
+                        cb={callback}
+                        onItemDeleted={delateAction}
+                        onItemAdded={addAction}
+                        onItemChanged={updateAction}
+                        onItemIndicated={indicatedAction}
+                        isSwitch={switchStatus} 
+                    />
             </Box>
 
         </VStack>
