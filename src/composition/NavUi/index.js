@@ -16,6 +16,7 @@ require('./index.less')
 
 import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
 import { RouteIndicator } from '@/components/indicator';
+import { HStack } from '@/components/layout';
 NamedCartSet({
     RouteIndicator
 })
@@ -72,13 +73,12 @@ export default function NavUI(props) {
                 </FormControl>
             </Box>
 
-            <Box>
-                <DataFlowContainer
-                    // 将第一个子组件输出的数据（tab item）转为第二个子组件所需 props
-                    // converter={{ id: 'typeId' }}
-                    converterFormat={{dataset: baseListApi + '&typeId={id}'}}
-                >
-                    {/* TODO: 增加两个组件的布局，如左右布局 */}
+            <DataFlowContainer
+                // 将第一个子组件输出的数据（tab item）转为第二个子组件所需 props
+                // converter={{ id: 'typeId' }}
+                converterFormat={{dataset: baseListApi + '&typeId={id}'}}
+            >   
+                {/* TODO: 增加两个组件的布局，如左右布局 */}
                     <TabsCompox 
                         currentTabIndex={tabIndex} 
                         // onSwitchTab={switchTab} 
@@ -88,10 +88,8 @@ export default function NavUI(props) {
                     <AutoLayout
                         dataset={baseListApi}
                         layout={layout}
-                        isSwitch={switchStatus}
-                    />
-                </DataFlowContainer>
-            </Box>
+                        isSwitch={switchStatus} />
+            </DataFlowContainer>
 
         </VStack>
     )

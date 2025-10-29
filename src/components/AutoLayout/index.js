@@ -213,8 +213,6 @@ function AutoLayout(autoLayoutProps) {
         __indicator={__indicator}
         __selector={__selector}
         onItemClick={(item) => {
-          console.log('_NamedCart - onItemClick called', item);
-          // 将原始数据传递给回调函数
           onItemClick && onItemClick(props.data || rest);
         }}
       >
