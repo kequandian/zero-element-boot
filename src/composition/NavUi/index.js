@@ -14,9 +14,9 @@ require('./index.less')
 
 
 import { set as NamedCartSet } from '@/components/config/NamedCartConfig';
-import { ClickIndicator } from '@/components/indicator';
+import { RouteIndicator } from '@/components/indicator';
 NamedCartSet({
-    ClickIndicator
+    RouteIndicator
 })
 
 export default function NavUI(props) {
@@ -40,24 +40,6 @@ export default function NavUI(props) {
         layoutData = { path: layoutJsonPath };
     } else {
         layoutData = localLayoutJson;
-    }
-    //列表item点击事件
-    const onNavItemClick = (item) => {
-        const raw = item.path || item.url || ''
-        if (!raw) {
-            return;
-        }
-        const href = raw.startsWith('http') ? raw : `${location.origin}${raw}`
-        // 优先在新标签打开；如被拦截则当前页跳转
-        try {
-            const win = window.open(href, '_blank')
-            if (!win) {
-                console.log('Popup blocked, redirecting current page');
-                window.location.href = href
-            }
-        } catch (error) {
-            console.error('Error opening URL:', error);
-        }
     }
 
     //列表item回调函数
@@ -117,7 +99,6 @@ export default function NavUI(props) {
                     <PreviewAutoLayout
                         api={listApi}
                         layoutData={layoutData}
-                        onPreviewItemClick={onNavItemClick}
                         isSwitch={switchStatus}
                     />
                 </DataFlowContainer>

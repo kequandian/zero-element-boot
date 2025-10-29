@@ -2,6 +2,7 @@
 // import SelectedCartRightIcon from '../selector/SelectedCartRightIcon';
 import DownloadIndicator from './DownloadIndicator'
 import ClickIndicator from './ClickIndicator'
+import RouteIndicator from './RouteIndicator'
 import ManageMenuIndicator from './ManageMenuIndicator'
 import ShadowIndicator from './ShadowIndicator';
 import LightingIndicator from './LightingIndicator';
@@ -27,6 +28,7 @@ export {
   //action indicator
   DownloadIndicator,
   ClickIndicator,
+  RouteIndicator,
   ManageMenuIndicator,
   DeleteIndicator,
   CircularDeleteIndicator,

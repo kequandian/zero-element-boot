@@ -27,7 +27,7 @@ module.exports = {
     ],
   },
   cart: {
-    xname: 'ClickIndicator',
+    xname: 'RouteIndicator',
     props: {
     },
     binding: {

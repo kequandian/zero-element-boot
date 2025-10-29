@@ -140,13 +140,21 @@ export default function NamedCart(NameCartProps) {
                         onItemUpdated={onItemUpdated}
                         _isSelected={isSelected}
                 >
-                    <_CartModule children={children} tag={`${tag}-indicator-selector`} Cart={_Cart} props={_cart} data={rest} onItemClick={onItemClick} __indicator={__indicator}  __selector={__selector} /> 
+                    <_CartModule children={children} 
+                    tag={`${tag}-indicator-selector`} 
+                    Cart={_Cart} 
+                    props={_cart} 
+                    data={rest} 
+                    onItemClick={onItemClick} 
+                    __indicator={__indicator}  
+                    __selector={__selector} /> 
                </_NamedIndicator>
             </_NamedSelector>
           )
             :
           (
-              <_CartModule children={children} tag={`${tag}-last`} Cart={_Cart} props={_cart} data={rest} onItemClick={onItemClick}/>
+              <_CartModule children={children} tag={`${tag}-last`} Cart={_Cart} props={_cart} 
+              data={rest} onItemClick={onItemClick}/>
           )
        )
       }
@@ -156,14 +164,14 @@ export default function NamedCart(NameCartProps) {
 
 
 function _CartModule({children, tag, Cart, props, data, onItemClick, __indicator, __selector}){
-  return (<Cart {...props} onItemClick={onItemClick}>
+  return (<Cart {...props} onItemClick={onItemClick} indicatorData={data}>
             {React.Children.toArray(children).map(child => {
               return React.cloneElement(child, {
-                ...data,
                 tag: `${tag}`,
                 onItemClick: onItemClick,
                 __indicator: __indicator,
-                __selector: __selector
+                __selector: __selector,
+                ...data
               })
             })}
         </Cart>)
