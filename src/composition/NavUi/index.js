@@ -30,17 +30,7 @@ export default function NavUI(props) {
     let navCategoryApi = '/api/pub/data/services/navCategory?sort=sortNum&orderBy=ASC';
     let navListApi = '/api/pub/data/services/navigation';
     const baseListApi = `${navListApi}?sort=sortNum&orderBy=ASC`;
-    const [listApi, setListApi] = useState(baseListApi)
-
-    let layoutData = '';
-    const layoutJsonPath = '';
-    const localLayoutJson = layout;
-
-    if (layoutJsonPath) {
-        layoutData = { path: layoutJsonPath };
-    } else {
-        layoutData = localLayoutJson;
-    }
+    // const [listApi, setListApi] = useState(baseListApi)
 
     //列表item回调函数
     // const tabscallback = (value) => {
@@ -86,7 +76,7 @@ export default function NavUI(props) {
                 <DataFlowContainer
                     // 将第一个子组件输出的数据（tab item）转为第二个子组件所需 props
                     // converter={{ id: 'typeId' }}
-                    converterFormat={{api: baseListApi + '&typeId={id}'}}
+                    converterFormat={{dataset: baseListApi + '&typeId={id}'}}
                 >
                     {/* TODO: 增加两个组件的布局，如左右布局 */}
                     <TabsCompox 
@@ -95,10 +85,9 @@ export default function NavUI(props) {
                         isSwitch={switchStatus} 
                         // cb={tabscallback}
                         navApi={navCategoryApi} />
-                    <PreviewAutoLayout
-                        api={listApi}
-                        // dataset={listApi}
-                        layout={layoutData}
+                    <AutoLayout
+                        dataset={baseListApi}
+                        layout={layout}
                         isSwitch={switchStatus}
                     />
                 </DataFlowContainer>

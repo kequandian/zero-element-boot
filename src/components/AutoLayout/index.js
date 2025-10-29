@@ -39,16 +39,19 @@ const { getEndpoint, getToken } = require('@/components/config/common');
 
 
 export default function (props) {
-  const { layout } = props;
-  const { dataset } = layout ? layout : {};
+  const { layout, dataset : API } = props;  /// 从 props 中获取 layout 配置
+  const { dataset : api } = layout ? layout : {};  /// 从 layout 配置中获取 dataset
   const [dataSource, setDataSource] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const dataset = api || API;  // 同时接收直接传入以及通过layout配置传入
+
   useEffect(() => {
     if (typeof dataset === 'string') {
+      setLoading(true);
       fetchData();
     }
-  }, [])
+  }, [dataset])
 
   //根据 dataset 异步获取列表数据
   const fetchData = async () => {
@@ -65,11 +68,40 @@ export default function (props) {
       .then(function (data) {
         return data;
       });
-    //保存列表数据
-    const datasource = result.data ? (result.data.records || result.data) : []
+    //保存列表数据，兼容多种返回结构
+    const datasource = parseDataset(result)
     setDataSource(datasource);
     //更改loading状态
     setLoading(false);
+  }
+
+  function parseDataset(result){
+    // 支持：数组 | {records} | {items} | {data: 数组} | {data: {records}} | {data: {items}}
+    if (Array.isArray(result)) {
+      return result
+    }
+    if (!result || typeof result !== 'object') {
+      return []
+    }
+    if (Array.isArray(result.records)) {
+      return result.records
+    }
+    if (Array.isArray(result.items)) {
+      return result.items
+    }
+    const data = result.data
+    if (Array.isArray(data)) {
+      return data
+    }
+    if (data && typeof data === 'object') {
+      if (Array.isArray(data.records)) {
+        return data.records
+      }
+      if (Array.isArray(data.items)) {
+        return data.items
+      }
+    }
+    return []
   }
 
   if (typeof dataset === 'string') {

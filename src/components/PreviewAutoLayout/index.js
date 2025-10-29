@@ -101,9 +101,37 @@ export default function PreviewAutoLayout (props) {
 
   const [ data ] = (api || apiNameData.api) ? useTokenRequest({ api: (api || apiNameData.api) }) : [];
 
-  //const records = data && data.records ? data.records : data && data.items ? data.items : (data || mockData || []);
-  const records = data ? (data.records ? data.records : (data.items ? data.items : (data || mockData || []))) : []
-  const items = ( records && records.length > 0) ? {items: records} : {}
+  function parseDataset(result){
+    // 支持：数组 | {records} | {items} | {data: 数组} | {data: {records}} | {data: {items}}
+    if (Array.isArray(result)) {
+      return result
+    }
+    if (!result || typeof result !== 'object') {
+      return []
+    }
+    if (Array.isArray(result.records)) {
+      return result.records
+    }
+    if (Array.isArray(result.items)) {
+      return result.items
+    }
+    const data = result.data
+    if (Array.isArray(data)) {
+      return data
+    }
+    if (data && typeof data === 'object') {
+      if (Array.isArray(data.records)) {
+        return data.records
+      }
+      if (Array.isArray(data.items)) {
+        return data.items
+      }
+    }
+    return []
+  }
+
+  const datasource = parseDataset(data || mockData || [])
+  const items = (datasource && datasource.length > 0) ? { items: datasource } : {}
 
   // console.log('=== PreviewAutoLayout data == ', items)
 
