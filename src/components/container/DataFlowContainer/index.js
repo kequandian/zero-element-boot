@@ -13,6 +13,7 @@ export default function DataFlowContainer(props) {
     const { 
         children, 
         converter,  // convert selected item to second data
+        converterFormat = {},
         
         // final result of data flow
         onFlowResult=((data)=>{console.log('DataFlowContainer:onResult() is not set!')}),
@@ -38,11 +39,65 @@ export default function DataFlowContainer(props) {
             const filterData = doFilter(converter, item)  // 直接转换数据
             console.log('DataFlowContainer: first child item clicked, filterData =', filterData)
 
-            // 转换后的数据
-            setConfigData(filterData)
+            // 基于 converter 的结果, 应用 converterFormat 的占位替换
+            const formattedByConverter = (() => {
+                if (!converterFormat || typeof converterFormat !== 'object') return {};
+                const result = {};
+                const valueMap = filterData || {};
+                Object.keys(converterFormat).forEach((key) => {
+                    const rawVal = converterFormat[key];
+                    if (typeof rawVal === 'string') {
+                        let out = rawVal;
+                        Object.keys(valueMap).forEach((vk) => {
+                            const placeholder = `{${vk}}`;
+                            if (out.includes(placeholder)) {
+                                const v = valueMap[vk];
+                                out = out.split(placeholder).join(v == null ? '' : String(v));
+                            }
+                        });
+                        result[key] = out;
+                    } else {
+                        result[key] = rawVal;
+                    }
+                });
+                return result;
+            })();
+
+            // 转换后的数据 + 替换后的格式数据
+            setConfigData({
+                ...filterData,
+                ...formattedByConverter,
+            })
 
         } else {
-            setConfigData(item)
+            // 未设置 converter 时, 可直接尝试在原始 item 上应用 converterFormat
+            const formattedByItem = (() => {
+                if (!converterFormat || typeof converterFormat !== 'object') return {};
+                const result = {};
+                const valueMap = item || {};
+                Object.keys(converterFormat).forEach((key) => {
+                    const rawVal = converterFormat[key];
+                    if (typeof rawVal === 'string') {
+                        let out = rawVal;
+                        Object.keys(valueMap).forEach((vk) => {
+                            const placeholder = `{${vk}}`;
+                            if (out.includes(placeholder)) {
+                                const v = valueMap[vk];
+                                out = out.split(placeholder).join(v == null ? '' : String(v));
+                            }
+                        });
+                        result[key] = out;
+                    } else {
+                        result[key] = rawVal;
+                    }
+                });
+                return result;
+            })();
+
+            setConfigData({
+                ...item,
+                ...formattedByItem,
+            })
         }
 
         // setOnRefresh(true)
@@ -124,17 +179,7 @@ export default function DataFlowContainer(props) {
 
                             // 第二个子组件可获得由第一个子组件选择转换后的数据
                             ...(index==1 ? configData : {}),
-                            // 如果第二个子组件需要动态 api，根据 configData 传入 api
-                            ...(index==1 && configData.typeId ? {
-                                api: (() => {
-                                    const baseApi = child.props.api || '';
-                                    if (!baseApi || typeof baseApi !== 'string') return baseApi;
-                                    const id = configData.typeId;
-                                    return baseApi.includes('?') 
-                                        ? `${baseApi}&typeId=${id}` 
-                                        : `${baseApi}?typeId=${id}`;
-                                })()
-                            } : {}),
+                            // 参数的命名与用途不固定，统一通过 converter/converterFormat 产出的 configData 透传
                             onCancelled: index==1?secondChildItemClick:(()=>{}),
                             onConfirmed: index==1?secondChildItemClick:(()=>{}),
                             onCompleted: index==1?secondChildItemClick:(()=>{}),
