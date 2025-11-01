@@ -1,0 +1,18 @@
+.l-ResponsiveGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--minCardWidth, 210px), var(--minCardWidth, 210px)));
+  gap: var(--gap, 10px);
+  grid-auto-flow: dense;
+  justify-content: var(--justifyContent, start);
+}
+
+/* 直接子项作为网格项，无需特定类名 */
+.l-ResponsiveGrid > * {
+  width: var(--minCardWidth, 210px);
+  min-width: var(--minCardWidth, 210px);
+}
+
+/* 可选：居中最后一行内容 */
+.l-ResponsiveGrid.centerContent {
+  justify-content: center;
+}

@@ -5,6 +5,7 @@ import GridViewport from './GridViewport';
 import MultiViewport from './MultiViewport';
 import VideoCardLayout from './VideoCardLayout';
 import YouTubeGridLayout from './YouTubeGridLayout';
+import ResponsiveGrid from './ResponsiveGrid';
 
 import Wrap from './Wrap';
 import Round from './Round';
@@ -32,6 +33,7 @@ export {
   MultiViewport,
   VideoCardLayout,
   YouTubeGridLayout,
+  ResponsiveGrid,
 
   // center
   HCenter,
