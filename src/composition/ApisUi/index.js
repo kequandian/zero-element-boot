@@ -10,8 +10,6 @@ const promiseAjax = require('@/components/utils/request');
 import layout from './layout';
 import JsonTree from '@/components/presenter/tree/JsonTree/Sandbox'
 
-import Pagintion from 'rc-pagination'
-
 export default function Index(props) {
 
     const { data=[], method='', op, onDelAction } = props;

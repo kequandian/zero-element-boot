@@ -97,12 +97,8 @@ import {
 
 // selector
 import {
-  SelectedCartUpperRightIcon,
-  SelectedCartRightIcon,
-  
   OutlineSelector,
-  CornerCheckboxSelector,
-  LeftCheckboxSelector
+  CircularCheckboxSelector
 } from './selector';
 
 //list
@@ -334,6 +330,17 @@ export {
   //
   NextIndicator,
   NextCssIndicator,
+
+  // container
+  APIContainer,
+  Container,
+  TabContainer,
+  WxPage,
+  TitledContainer,
+  DataFlowContainer,
+  DrawerContainer,
+  AddNewContainer,
+  ConfirmContainer,
 
   // provider
   BootChakraProvider

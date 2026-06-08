@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './index.less'
+import styles from './index.module.less'
 
 const itemStyleMap = {
     get: { methodBg: '#61AFFE', itemBg: '#EBF3FB', itemBorder: '1px solid #61AFFE', hover: '#007fff'},

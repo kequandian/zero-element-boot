@@ -5,8 +5,14 @@
  */
 
 import React from 'react';
-import { Skeleton, Card } from 'antd';
+import { Skeleton, Stack } from '@chakra-ui/react';
 
 const AltPlaceholder = () => {
-    return <Skeleton active />;
+    return (
+        <Stack spacing={2} p={2}>
+            <Skeleton height="16px" />
+            <Skeleton height="12px" width="80%" />
+            <Skeleton height="12px" width="60%" />
+        </Stack>
+    );
 };

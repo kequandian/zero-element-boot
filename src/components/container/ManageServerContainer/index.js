@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { bindingConvert } from '@/components/gateway/Binding'
 import { handleFilter } from '@/components/gateway/doFilter.mjs';
-import queryMethod from '@/components/utils/request';
+import requestFunc from '@/components/utils/request';
+let queryMethod = requestFunc;
 const useLayout = require('@/components/hooks/useLayout');
 
 /**

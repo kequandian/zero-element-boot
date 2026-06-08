@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { List, Button } from 'antd';
+import { Button, Spinner, Center, VStack } from '@chakra-ui/react';
 import { useMount, useSize } from 'ahooks';
 import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/config/ContainerContext';
@@ -28,27 +28,24 @@ export default function LoadMoreList(props) {
 
   const Child = React.Children.only(children);
 
-  return <div ref={containerRef}>
+  return <div ref={containerRef} className={getClassName()}>
     <ContainerContext.Provider value={size}>
-      <List
-        loading={loading}
-        className={getClassName()}
-        loadMore={<>
-          {loading ? null : <div style={{
-            textAlign: 'center',
-            margin: 12,
-            height: 32,
-          }}><Button onClick={handleQuery}>加载更多</Button></div>}
-        </>}
-        dataSource={data}
-        renderItem={item => React.isValidElement(Child) ?
+      <VStack spacing={0} align="stretch">
+        {loading && <Center py={4}><Spinner /></Center>}
+        {data.map((item, index) => React.isValidElement(Child) ?
           React.cloneElement(Child, {
+            key: index,
             ...item,
             ref: layoutRef,
           })
-          : <Child {...item} ref={layoutRef} />
-        }
-      />
+          : <Child key={index} {...item} ref={layoutRef} />
+        )}
+        {!loading && (
+          <Center py={3}>
+            <Button onClick={handleQuery}>加载更多</Button>
+          </Center>
+        )}
+      </VStack>
     </ContainerContext.Provider>
   </div>
 }

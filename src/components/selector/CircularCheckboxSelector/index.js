@@ -1,7 +1,7 @@
 import React from 'react';
 import checkOff from '@/assets/check_off.svg';
 import checkXOn from '@/assets/check_on.svg';
-import StyleDate from './index.less';
+import StyleDate from './index.module.less';
 import { Flex, Wrap } from '@chakra-ui/react'
 // import {Wrap} from '@/components/layout'
 import Cart from '@/components/cart/Cart';

@@ -3,7 +3,7 @@ import { useSize } from 'ahooks';
 import { VStack, HStack, Button } from '@chakra-ui/react';
 import useLayout from '@/components/hooks/useLayout';
 import ContainerContext from '@/components/config/ContainerContext';
-import checkBoxTool from '@/components/utils/checkBoxTool';
+import { checkBoxTool } from '@/components/utils/checkBoxTool';
 
 export default function SelectCheckboxList(props) {
   const { children, items, layout, cart, onItemClick, 

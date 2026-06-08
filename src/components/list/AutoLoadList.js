@@ -15,7 +15,7 @@ export default function AutoLoadList(props) {
   const probeRef = useRef(null);
   const inViewPort = useInViewport(probeRef);
 
-  //antd spin 组件
+  // 自定义加载指示器（由调用方传入）
   const Spin = spin;
 
   useEffect(_ => {
