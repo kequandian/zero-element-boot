@@ -1,5 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import useSize from '@/components/hooks/useSize';
+
+// Import parser and converter modules
+import { detectFormat } from './parsers/formatDetector';
+import { StandardFormatParser } from './parsers/standardFormatParser';
+import { GridTemplateParser } from './parsers/gridTemplateParser';
+import { GridConfigConverter } from './converters/gridConfigConverter';
+import { StyleApplier } from './utils/styleApplier';
 
 /**
  * 视窗容器组件
@@ -24,7 +31,63 @@ import useSize from '@/components/hooks/useSize';
  *   ]
  * }
  */
-export default function MultiViewport({ children, background = '#000', padding, gridConfig }) {
+export default function MultiViewport({
+  children,
+  background = '#000',
+  padding,
+  gridConfig,      // EXISTING: backward compatible
+  layoutSpec       // NEW: accepts layout specification (Standard or Grid Template format)
+}) {
+  // --- NEW: Parse layout spec if provided ---
+  const [effectiveGridConfig, setEffectiveGridConfig] = useState(null);
+  const [cellIds, setCellIds] = useState([]);
+
+  // Parse and convert layoutSpec to gridConfig
+  useEffect(() => {
+    if (gridConfig) {
+      // Use provided gridConfig directly (existing behavior)
+      setEffectiveGridConfig(gridConfig);
+      setCellIds([]);
+      return;
+    }
+
+    if (layoutSpec) {
+      try {
+        // Detect format
+        const format = detectFormat(layoutSpec);
+
+        if (format === 'UNKNOWN') {
+          console.error('Unknown layout specification format:', layoutSpec);
+          return;
+        }
+
+        // Parse based on format
+        let parsed;
+        if (format === 'STANDARD') {
+          const parser = new StandardFormatParser();
+          parsed = parser.parse(layoutSpec);
+        } else if (format === 'GRID_TEMPLATE') {
+          const parser = new GridTemplateParser();
+          parsed = parser.parse(layoutSpec);
+        }
+
+        // Convert to gridConfig
+        const converted = GridConfigConverter.convert(parsed);
+
+        // Extract cell IDs for style application
+        const extractedIds = StyleApplier.extractCellIds(parsed);
+
+        setEffectiveGridConfig(converted);
+        setCellIds(extractedIds);
+      } catch (error) {
+        console.error('Error parsing layout specification:', error);
+      }
+    }
+  }, [layoutSpec, gridConfig]);
+
+  // Memoize the layoutSpec for style application
+  const memoizedLayoutSpec = useMemo(() => layoutSpec, [JSON.stringify(layoutSpec)]);
+
   const validateWeights = (weights) => {
     if (!weights || !Array.isArray(weights) || weights.length==0 || weights.some(w => typeof w !== 'number') || weights.reduce((a, b) => a + b, 0) <= 0) {
       console.error('Invalid weights array');
@@ -85,7 +148,7 @@ export default function MultiViewport({ children, background = '#000', padding, 
   };
 
   const gridCellCount = {value:0}  // 全于递归全局counter,计算grid可容纳的children数量
-  const processedConfig = traverseGrid(gridConfig, gridCellCount);
+  const processedConfig = effectiveGridConfig ? traverseGrid(effectiveGridConfig, gridCellCount) : null;
   // console.log('processedConfig=', processedConfig)
 
   // // 计算水平方向划分
@@ -105,7 +168,7 @@ export default function MultiViewport({ children, background = '#000', padding, 
   // const horizontalSizes = calculateHorizontalLayout();
   // const verticalSizes = calculateVerticalLayout();
 
-  const renderNestedGrid = (config, parentPath, currentIndex = {value:0}, parentIndex = 0) => {
+  const renderNestedGrid = (config, parentPath, currentIndex = {value:0}, parentIndex = 0, layoutSpec = null, cellIds = []) => {
     const { horizontalWeights, verticalWeights, children : configChildren = [],  gridPath, gap, cellBorderRadius} = config;
     
     // --- 主要修改点在这里 ---
@@ -144,7 +207,7 @@ export default function MultiViewport({ children, background = '#000', padding, 
         {
             configChildren.map((childConfig, index) => {
               const childPath = `${parentPath}-${parentIndex}_${index}`;
-              return renderNestedGrid(childConfig, childPath, currentIndex, index);
+              return renderNestedGrid(childConfig, childPath, currentIndex, index, layoutSpec, cellIds);
           })
         }
         
@@ -168,7 +231,13 @@ export default function MultiViewport({ children, background = '#000', padding, 
 
           if (componentIndex < React.Children.count(children)) {
             const child = React.Children.toArray(children)[componentIndex];
-            
+
+            // Get cell style from layoutSpec if available
+            const cellId = cellIds[componentIndex];
+            const cellStyle = layoutSpec && cellId
+              ? StyleApplier.getCellStyle(cellId, layoutSpec)
+              : {};
+
             // --- 新增修改：使用包装器(Wrapper) div 来应用单元格样式 ---
             // 这种方式不会侵入或修改用户传入的子组件，而是将其包裹起来。
             // 包装器负责圆角和内容裁剪，保证了样式的独立性和组件的健壮性。
@@ -180,6 +249,7 @@ export default function MultiViewport({ children, background = '#000', padding, 
                   height: '100%',
                   borderRadius: cellBorderRadius || 0,
                   overflow: 'hidden', // 关键：确保子组件内容被父级包装器的圆角正确裁剪
+                  ...cellStyle, // Apply layout specification styles
                 }}
               >
                 {child}
@@ -204,7 +274,7 @@ export default function MultiViewport({ children, background = '#000', padding, 
       padding: padding || 0,
       overflow: 'hidden'
     }}>
-      {renderNestedGrid(processedConfig, 'root')}
+      {processedConfig && renderNestedGrid(processedConfig, 'root', { value: 0 }, 0, memoizedLayoutSpec, cellIds)}
     </div>
   );
 }
