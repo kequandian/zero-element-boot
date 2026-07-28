@@ -1,10 +1,9 @@
 /**
  * Weight Calculator for Layout Specifications
- * Handles weight calculation following LayoutDescriptionSpec rules
- * - weight >= 20: fixed pixel value
- * - weight < 0: fixed pixel value (absolute value)
- * - 0 < weight < 20: proportional allocation
- * - weight == 0: invalid
+ * Handles weight calculation following LayoutDescriptionSpec rules (2026-07-27 修订):
+ * - w < 0: fixed pixel value (absolute value)
+ * - 0 < w <= 24: proportional allocation
+ * - w == 0 or w > 24: invalid (旧的 w >= 20 正数固定像素规则已废弃)
  */
 
 /**
@@ -34,10 +33,15 @@ export class WeightCalculator {
         return;
       }
 
-      if (w >= 20 || w < 0) {
+      if (w < 0) {
         fixed.push({ index: i, value: Math.abs(w) });
-      } else {
+      } else if (w >= 1 && w <= 24) {
         proportional.push(w);
+        proportionalIndices.push(i);
+      } else {
+        // w === 0 or w > 24：非法，回退为 1 比例
+        console.warn(`Invalid weight ${w} (spec §2.3: 1-24 比例 / <0 负数固定)；按 1fr 处理`);
+        proportional.push(1);
         proportionalIndices.push(i);
       }
     });
@@ -107,13 +111,17 @@ export class WeightCalculator {
         console.warn('Invalid weight: 0, treating as 1fr');
         return 1;
       }
-      if (w >= 20 || w < 0) {
-        // Fixed sizes - return as pixel value
-        // Will need special handling in CSS grid template
+      if (w < 0) {
+        // 固定像素（绝对值）
         return Math.abs(w);
       }
-      // Proportional weights become fr values
-      return w;
+      if (w >= 1 && w <= 24) {
+        // 比例 → fr 值
+        return w;
+      }
+      // w > 24：非法，回退 1
+      console.warn(`Invalid weight ${w} (>24)；按 1fr 处理`);
+      return 1;
     });
   }
 
@@ -123,7 +131,7 @@ export class WeightCalculator {
    * @returns {boolean} true if fixed size
    */
   static isFixedWeight(weight) {
-    return weight >= 20 || weight < 0;
+    return weight < 0;
   }
 
   /**
@@ -132,14 +140,16 @@ export class WeightCalculator {
    * @returns {number} Pixel value
    */
   static getFixedValue(weight) {
-    if (weight >= 20) return weight;
     if (weight < 0) return Math.abs(weight);
     return 0;
   }
 
   /**
    * Generate CSS grid template string from weights
-   * Handles both fixed and proportional weights
+   * 规范 §2.3（2026-07-27 修订）：
+   *   - 1-24 → 比例（Nfr）
+   *   - <0   → 固定像素（绝对值 + px）
+   *   - 0 / >24 → 非法（提示 + 回退 1fr）
    * @param {number[]} weights - Weight values
    * @returns {string} CSS grid template string
    */
@@ -147,14 +157,16 @@ export class WeightCalculator {
     if (!weights || weights.length === 0) return '';
 
     return weights.map(w => {
-      if (w === 0) {
-        return '1fr';
-      }
-      if (w >= 20 || w < 0) {
-        // Fixed size in pixels
+      if (w < 0) {
+        // 固定像素（绝对值）— 必须最先判断
         return `${Math.abs(w)}px`;
       }
-      // Proportional
+      if (w === 0 || w > 24) {
+        // 非法 → 提示 + 回退 1fr
+        console.warn(`Invalid weight ${w} (spec §2.3: 比例 1-24 / 固定 <0)；按 1fr 处理`);
+        return '1fr';
+      }
+      // 1-24 比例
       return `${w}fr`;
     }).join(' ');
   }
@@ -168,11 +180,14 @@ export class WeightCalculator {
   static normalizeForFr(weights) {
     if (!weights) return [];
     return weights.map(w => {
-      if (w === 0) return 1; // Treat as 1fr
-      if (w >= 20 || w < 0) {
-        // For fixed sizes in CSS Grid with fr, we need to use minmax or calc
-        // For now, return as-is and handle in grid template
+      if (w === 0) return 1; // 非法 → 1fr
+      if (w < 0) {
+        // 固定像素保留（grid template 中处理为 Npx）
         return w;
+      }
+      if (w > 24) {
+        console.warn(`Invalid weight ${w} (>24)；按 1fr 处理`);
+        return 1;
       }
       return w;
     });

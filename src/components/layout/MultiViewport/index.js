@@ -1,35 +1,30 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import useSize from '@/components/hooks/useSize';
 
 // Import parser and converter modules
 import { detectFormat } from './parsers/formatDetector';
 import { StandardFormatParser } from './parsers/standardFormatParser';
 import { GridTemplateParser } from './parsers/gridTemplateParser';
 import { GridConfigConverter } from './converters/gridConfigConverter';
+import { WeightCalculator } from './converters/weightCalculator';
 import { StyleApplier } from './utils/styleApplier';
 
 /**
  * 视窗容器组件
- * @param {Object} gridConfig - 网格布局配置对象
- * @param {number[]} gridConfig.horizontalWeights - 水平方向权重数组（必须为数值数组且总和>0）
- * @param {number[]} gridConfig.verticalWeights - 垂直方向权重数组（必须为数值数组且总和>0）
- * @param {string} [gridConfig.gap] - 网格间距, e.g., '10px' or '10px 20px'. 此属性会向下继承。
- * @param {string} [gridConfig.cellBorderRadius] - 单元格的圆角, e.g., '12px'. 此属性会向下继承。
- * @param {Object[]} [gridConfig.children] - 嵌套子容器配置（支持递归结构）
- * @example
- * // 基本配置示例
- * {
- *   horizontalWeights: [2, 3, 1],
- *   verticalWeights: [4, 1],
- *   gap: '16px',
- *   cellBorderRadius: '10px',
- *   children: [
- *     {
- *       horizontalWeights: [1, 2],
- *       verticalWeights: [3]
- *     }
- *   ]
- * }
+ * @param {Object} [gridConfig] - 网格布局配置对象（向后兼容）
+ * @param {number[]} [gridConfig.horizontalWeights] - 水平方向权重数组
+ * @param {number[]} [gridConfig.verticalWeights] - 垂直方向权重数组
+ * @param {string} [gridConfig.gap] - 网格间距, e.g., '10px' or '10px 20px'.
+ * @param {string} [gridConfig.cellBorderRadius] - 单元格的圆角, e.g., '12px'.
+ * @param {Object[]} [gridConfig.children] - 嵌套子容器配置（递归结构）
+ * @param {Object} [layoutSpec] - LayoutDescription 规范形态（推荐用法）
+ * @param {('landscape'|'portrait')} [layoutSpec.orientation] - 屏幕方向
+ * @param {Object} [layoutSpec.layout] - GridRegion（cells/grid/weights/gap/padding）
+ * @param {Object} [layoutSpec.params] - 标准格式 params（bounds + cells）
+ * @param {Object} [layoutSpec.defaultStyle] - 默认 StyleObject
+ * @param {Object} [layoutSpec.cellStyles] - 按 cellId 覆盖样式
+ * @param {React.ReactNode} [children] - 渲染到每个叶子 cell 的子元素
+ * @param {string} [background='#000'] - 容器背景色
+ * @param {string} [padding] - 容器 padding
  */
 export default function MultiViewport({
   children,
@@ -134,6 +129,14 @@ export default function MultiViewport({
       gap: effectiveGap, // 在处理后的配置中设置最终生效的gap值
       cellBorderRadius: effectiveBorderRadius, // 在处理后的配置中设置最终生效的圆角值
       gridPath: currentPath,
+      // 修复：nestedGridsByName 也需递归处理 gap/cellBorderRadius 继承
+      // （新 span-aware 渲染路径会读 nestedGridsByName，不读 children）
+      nestedGridsByName: Object.fromEntries(
+        Object.entries(config.nestedGridsByName || {}).map(([name, sub]) => [
+          name,
+          traverseGrid(sub, cellCount, currentPath, depth + 1, 0, effectiveGap, effectiveBorderRadius),
+        ])
+      ),
       children: validChildren.map((child, i) => {
         // // 空对象配置继承父级权重
         // if (Object.keys(child).length === 0) {
@@ -169,12 +172,20 @@ export default function MultiViewport({
   // const verticalSizes = calculateVerticalLayout();
 
   const renderNestedGrid = (config, parentPath, currentIndex = {value:0}, parentIndex = 0, layoutSpec = null, cellIds = []) => {
-    const { horizontalWeights, verticalWeights, children : configChildren = [],  gridPath, gap, cellBorderRadius} = config;
+    const {
+      horizontalWeights,
+      verticalWeights,
+      children: configChildren = [],
+      gridPath,
+      gap,
+      cellBorderRadius,
+      cellsLayout,           // 新增：2D 名字数组（spec cells）
+      nestedGridsByName = {},// 新增：name → 嵌套 grid 配置
+    } = config;
     
-    // --- 主要修改点在这里 ---
-    // 使用fr单位直接根据权重生成模板字符串
-    const gridTemplateColumns = horizontalWeights.map(w => `${w}fr`).join(' ');
-    const gridTemplateRows = verticalWeights.map(h => `${h}fr`).join(' ');
+    // 用 WeightCalculator 处理：1-24 → Nfr，<0 → Npx，0/>24 → 1fr fallback
+    const gridTemplateColumns = WeightCalculator.toGridTemplate(horizontalWeights);
+    const gridTemplateRows = WeightCalculator.toGridTemplate(verticalWeights);
 
     // const totalWeight = horizontalWeights.reduce((a, b) => a + b, 0);
     // const gridTemplateColumns = `${horizontalWeights.map(w => (w / totalWeight) * 100 + '%').join(' ')}`;
@@ -183,83 +194,117 @@ export default function MultiViewport({
     // const gridTemplateRows = `${verticalWeights.map(h => (h / totalVerticalWeight) * 100 + '%').join(' ')}`;
     // --- 修改结束 ---
 
-    // bugfix: skip the component to be rendered.
-    // const cellCount = horizontalWeights.length * verticalWeights.length;
+    // 修复：当 cellsLayout 存在时，用 gridTemplateAreas + gridArea 显式 span
+    // 解决 colSpan>1 的 cell 被当成多个独立 slot 的 bug（右下角缺失）
+    const hasTemplateAreas = cellsLayout && cellsLayout.length > 0;
+    const gridTemplateAreas = hasTemplateAreas
+      ? cellsLayout.map(row => `"${row.join(' ')}"`).join(' ')
+      : null;
+
+    // 收集按渲染顺序的唯一名字（保持首次出现顺序）
+    const uniqueNames = hasTemplateAreas
+      ? Array.from(new Set(cellsLayout.flat().filter(n => n !== '.')))
+      : [];
+
+    // 向后兼容：无 cellsLayout 时走旧路径
     const cellCount = horizontalWeights.length * verticalWeights.length - configChildren.length;
 
     return (
-      <div 
+      <div
         key={gridPath}
         style={{
           display: 'grid',
-          // ---grap 主要修改点在这里 ---
-          // gridTemplateColumns: 'var(--grid-cols, ' + gridTemplateColumns + ')',
-          // gridTemplateRows: 'var(--grid-rows, ' + gridTemplateRows + ')',
-          // 应用fr单位模板和gap属性
           gridTemplateColumns: gridTemplateColumns,
           gridTemplateRows: gridTemplateRows,
-          gap: gap || 0, // 直接使用gap属性
-          // --- 修改结束 ---
+          ...(gridTemplateAreas ? { gridTemplateAreas } : {}),
+          gap: gap || 0,
           height: '100%',
           width: '100%'
         }}
       >
-        {
-            configChildren.map((childConfig, index) => {
-              const childPath = `${parentPath}-${parentIndex}_${index}`;
-              return renderNestedGrid(childConfig, childPath, currentIndex, index, layoutSpec, cellIds);
-          })
-        }
-        
-        {/**for each cellCount */}
-        {Array.from({length: cellCount}).map((_, index) => {
-          const componentIndex = currentIndex.value++
-          // console.log('renderNestedGrid.componentIndex=', componentIndex, ', gridPath=', `${gridPath}-cell-${index}`)
-
-          // ---cellBorderRadius 主要修改点在这里, 为网络增加子容器 ---
-          // return (componentIndex < React.Children.count(children)?
-          //   React.cloneElement(children[componentIndex], {
-          //     key: `${gridPath}-cell-${componentIndex}`,
-          //     gridPath: `${gridPath}-cell-${componentIndex}`,
-          //     style: {
-          //       ...children[componentIndex].props.style,
-          //       width: '100%',
-          //       height: '100%'
-          //     }
-          //   }):(<></>)
-          // )
-
-          if (componentIndex < React.Children.count(children)) {
+        {hasTemplateAreas ? (
+          // ─── span-aware 渲染路径 ───
+          uniqueNames.map((name) => {
+            // 嵌套 grid：用 gridArea 占位，内部递归
+            if (nestedGridsByName[name]) {
+              return (
+                <div
+                  key={`${gridPath}-${name}-wrapper`}
+                  style={{
+                    gridArea: name,
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: cellBorderRadius || 0,
+                    overflow: 'hidden',
+                  }}
+                >
+                  {renderNestedGrid(
+                    { ...nestedGridsByName[name], gridPath: `${gridPath}-${name}` },
+                    `${gridPath}-${name}`,
+                    currentIndex,
+                    0,
+                    layoutSpec,
+                    cellIds,
+                  )}
+                </div>
+              );
+            }
+            // 叶子 cell：从 children 队列按顺序消费
+            const componentIndex = currentIndex.value++;
             const child = React.Children.toArray(children)[componentIndex];
-
-            // Get cell style from layoutSpec if available
-            const cellId = cellIds[componentIndex];
-            const cellStyle = layoutSpec && cellId
-              ? StyleApplier.getCellStyle(cellId, layoutSpec)
+            const cellStyle = layoutSpec && name
+              ? StyleApplier.getCellStyle(name, layoutSpec)
               : {};
-
-            // --- 新增修改：使用包装器(Wrapper) div 来应用单元格样式 ---
-            // 这种方式不会侵入或修改用户传入的子组件，而是将其包裹起来。
-            // 包装器负责圆角和内容裁剪，保证了样式的独立性和组件的健壮性。
             return (
               <div
-                key={`${gridPath}-cell-wrapper-${index}`}
+                key={`${gridPath}-${name}-wrapper`}
                 style={{
+                  gridArea: name,
                   width: '100%',
                   height: '100%',
                   borderRadius: cellBorderRadius || 0,
-                  overflow: 'hidden', // 关键：确保子组件内容被父级包装器的圆角正确裁剪
-                  ...cellStyle, // Apply layout specification styles
+                  overflow: 'hidden',
+                  ...cellStyle,
                 }}
               >
-                {child}
+                {child || <></>}
               </div>
             );
-          }
-          return <React.Fragment key={`${gridPath}-cell-empty-${index}`}></React.Fragment>;
-          //--cellBorderRadius需求 修改结束
-
-        })}
+          })
+        ) : (
+          // ─── 向后兼容路径（无 cellsLayout）───
+          <>
+            {configChildren.map((childConfig, index) => {
+              const childPath = `${parentPath}-${parentIndex}_${index}`;
+              return renderNestedGrid(childConfig, childPath, currentIndex, index, layoutSpec, cellIds);
+            })}
+            {Array.from({length: cellCount}).map((_, index) => {
+              const componentIndex = currentIndex.value++;
+              if (componentIndex < React.Children.count(children)) {
+                const child = React.Children.toArray(children)[componentIndex];
+                const cellId = cellIds[componentIndex];
+                const cellStyle = layoutSpec && cellId
+                  ? StyleApplier.getCellStyle(cellId, layoutSpec)
+                  : {};
+                return (
+                  <div
+                    key={`${gridPath}-cell-wrapper-${index}`}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: cellBorderRadius || 0,
+                      overflow: 'hidden',
+                      ...cellStyle,
+                    }}
+                  >
+                    {child}
+                  </div>
+                );
+              }
+              return <React.Fragment key={`${gridPath}-cell-empty-${index}`}></React.Fragment>;
+            })}
+          </>
+        )}
       </div>
     );
   };
@@ -268,8 +313,8 @@ export default function MultiViewport({
     <div style={{
       // width: `${dimensions.width}px`,
       // height: `${dimensions.height}px`,
-      width: "100vw",
-      height: "100vh",
+      width: "100%",
+      height: "100%",
       background: `${background}`,
       padding: padding || 0,
       overflow: 'hidden'

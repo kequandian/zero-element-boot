@@ -121,6 +121,8 @@ export class GridReferenceResolver {
     // Separate nested grids for children array
     // We need to find which grid positions contain nested grids
     const nestedGridConfigs = [];
+    /** 名称 → 嵌套 grid 配置；供 MultiViewport 用 gridArea 命名放置 */
+    const nestedGridsByName = {};
 
     // Sort cells by position (row then col) to ensure correct order
     const sortedCells = [...cells].sort((a, b) => {
@@ -143,6 +145,8 @@ export class GridReferenceResolver {
           dimensions.cols / dimensions.rows
         );
         nestedGridConfigs.push({ positionIndex, config: childConfig });
+        // 同时按名字建索引（spec §3.4 cellsLayout 里此名字占多格 → 一个 name 对应一个嵌套）
+        nestedGridsByName[cell.id] = childConfig;
       }
     });
 
@@ -159,22 +163,48 @@ export class GridReferenceResolver {
       }
     }
 
+    // 修复：构造 cellsLayout（2D 名字数组），让 MultiViewport 用 gridTemplateAreas 显式 span
+    // 解决 bug：cells = [["ticker","ticker"]] 的 colSpan=2 之前被当成 2 个 slot，
+    // 第 2 个 slot 留空导致右下角缺失
+    const cellsLayout = [];
+    for (let r = 0; r < dimensions.rows; r++) {
+      const row = [];
+      for (let c = 0; c < dimensions.cols; c++) {
+        const cell = sortedCells.find(cell =>
+          r >= cell.row && r < cell.row + cell.rowSpan &&
+          c >= cell.col && c < cell.col + cell.colSpan
+        );
+        row.push(cell ? cell.id : '.');
+      }
+      cellsLayout.push(row);
+    }
+
     // Format gap for MultiViewport
+    // 修复：当源 gap 为默认 {row:0, col:0}（即 _parseGap 的 fallback）时，
+    // 不写入 gridConfig.gap —— 让 MultiViewport.traverseGrid 的 inheritedGap 机制生效。
+    // 否则 '0px' 会被当成"显式指定 0 间距"而阻断继承。
     let formattedGap;
     if (gap && typeof gap === 'object') {
-      if (gap.row === gap.col) {
+      const isDefault = gap.row === 0 && gap.col === 0;
+      if (isDefault) {
+        formattedGap = undefined;  // 让子级继承父级
+      } else if (gap.row === gap.col) {
         formattedGap = `${gap.row}px`;
       } else {
         formattedGap = `${gap.row}px ${gap.col}px`;
       }
+    } else if (typeof gap === 'number' && gap > 0) {
+      formattedGap = `${gap}px`;
     } else {
-      formattedGap = gap ? `${gap}px` : '0px';
+      formattedGap = undefined;  // 没指定 → 让 MultiViewport 继承
     }
 
     return {
       horizontalWeights: colWeights,
       verticalWeights: rowWeights,
       gap: formattedGap,
+      cellsLayout,                // 新增：2D 名字数组，供 MultiViewport 显式 span
+      nestedGridsByName,          // 新增：嵌套 grid 按名字索引
       children: children
     };
   }

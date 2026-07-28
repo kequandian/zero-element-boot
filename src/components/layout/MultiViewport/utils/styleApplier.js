@@ -184,14 +184,19 @@ export class StyleApplier {
    * @private
    */
   static _extractLeafCellIdsFromRegion(region) {
-    const { cells, grids, dimensions } = region;
+    // 修复：region.cells 是 { dimensions, cells: [...] } 形态（见 gridTemplateParser._parseCellsArray）
+    // 原 bug：`const { cells, grids, dimensions } = region` 解构错——dimensions 在 cells.dimensions
+    const cellsField = region.cells;
+    const grids = region.grids;
+    const dimensions = cellsField?.dimensions;
+    if (!dimensions) return [];
+
+    const cellList = cellsField.cells || [];
     const leafIds = [];
 
-    // Traverse grid positions in reading order
     for (let r = 0; r < dimensions.rows; r++) {
       for (let c = 0; c < dimensions.cols; c++) {
-        // Find cell at this position
-        const cell = cells.cells.find(cell =>
+        const cell = cellList.find(cell =>
           r >= cell.row && r < cell.row + cell.rowSpan &&
           c >= cell.col && c < cell.col + cell.colSpan
         );
@@ -200,11 +205,9 @@ export class StyleApplier {
           const isNestedGrid = grids && grids[cell.id];
 
           if (isNestedGrid) {
-            // Recursively extract from nested grid
             const nestedIds = this._extractLeafCellIdsFromRegion(grids[cell.id]);
             leafIds.push(...nestedIds);
           } else {
-            // Leaf cell
             leafIds.push(cell.id);
           }
         }
