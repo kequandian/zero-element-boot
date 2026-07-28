@@ -209,6 +209,10 @@ export default function MultiViewport({
     // 向后兼容：无 cellsLayout 时走旧路径
     const cellCount = horizontalWeights.length * verticalWeights.length - configChildren.length;
 
+    // 修复：padding 没显式指定时，自动用 gap 值——统一视觉效果
+    // 用户只需写 gap: 8 就能获得内外一致的 8px 间距，不必再写 padding: 8
+    const effectivePadding = config.padding !== undefined ? config.padding : (gap || 0);
+
     return (
       <div
         key={gridPath}
@@ -218,6 +222,8 @@ export default function MultiViewport({
           gridTemplateRows: gridTemplateRows,
           ...(gridTemplateAreas ? { gridTemplateAreas } : {}),
           gap: gap || 0,
+          padding: effectivePadding,
+          boxSizing: 'border-box',  // padding 不撑大容器，从内部空间扣
           height: '100%',
           width: '100%'
         }}
@@ -227,6 +233,10 @@ export default function MultiViewport({
           uniqueNames.map((name) => {
             // 嵌套 grid：用 gridArea 占位，内部递归
             if (nestedGridsByName[name]) {
+              // 嵌套 grid 容器作为父网格里的一个 cell，应用 defaultStyle + cellStyles[name]
+              const nestedCellStyle = layoutSpec && name
+                ? StyleApplier.getCellStyle(name, layoutSpec)
+                : {};
               return (
                 <div
                   key={`${gridPath}-${name}-wrapper`}
@@ -236,6 +246,7 @@ export default function MultiViewport({
                     height: '100%',
                     borderRadius: cellBorderRadius || 0,
                     overflow: 'hidden',
+                    ...nestedCellStyle,
                   }}
                 >
                   {renderNestedGrid(
