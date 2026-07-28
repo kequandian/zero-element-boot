@@ -209,9 +209,12 @@ export default function MultiViewport({
     // 向后兼容：无 cellsLayout 时走旧路径
     const cellCount = horizontalWeights.length * verticalWeights.length - configChildren.length;
 
-    // 修复：padding 没显式指定时，自动用 gap 值——统一视觉效果
-    // 用户只需写 gap: 8 就能获得内外一致的 8px 间距，不必再写 padding: 8
-    const effectivePadding = config.padding !== undefined ? config.padding : (gap || 0);
+    // 注意：grid 容器自身不加 padding。
+    // 外层间距由 MultiViewport 根 div 用 padding=rootGap 兜底（见 return 末尾）；
+    // 嵌套子网格的"外间距"由父级 grid 的 gap 提供，这里再加 padding 会与父级叠加，
+    // 导致越深的层级 gap 累积越大。
+    // 若用户显式在 spec.padding 写了值，则尊重（仅该层生效，不继承）。
+    const effectivePadding = config.padding;
 
     return (
       <div
@@ -223,7 +226,7 @@ export default function MultiViewport({
           ...(gridTemplateAreas ? { gridTemplateAreas } : {}),
           gap: gap || 0,
           padding: effectivePadding,
-          boxSizing: 'border-box',  // padding 不撑大容器，从内部空间扣
+          boxSizing: 'border-box',
           height: '100%',
           width: '100%'
         }}
@@ -327,7 +330,11 @@ export default function MultiViewport({
       width: "100%",
       height: "100%",
       background: `${background}`,
-      padding: padding || 0,
+      // 外边距：用户未显式传 padding prop 时，用根 grid 的 gap 兜底
+      // 这样用户只需写 gap: 8 就能获得 8px 内间距 + 8px 外边距的统一视觉，
+      // 不必再单独写 padding: 8。嵌套子网格不再叠加 padding（避免越深 gap 越大）。
+      padding: padding || (processedConfig?.gap ?? 0),
+      boxSizing: 'border-box',
       overflow: 'hidden'
     }}>
       {processedConfig && renderNestedGrid(processedConfig, 'root', { value: 0 }, 0, memoizedLayoutSpec, cellIds)}
