@@ -10,6 +10,7 @@ import TestAutoLayout from '../TestAutoLayout';
 import TestPreviewAutoLayout from '../TestPreviewAutoLayout';
 import VideoCardLayoutDemo from '../VideoCardLayoutDemo';
 import YouTubeGridLayoutDemo from '../YouTubeGridLayoutDemo';
+import DockViewportDemo from '../DockViewportDemo';
 import TestNamedCart from '../TestComponents/TestNamedCart';
 import TestNamedSelector from '../TestComponents/TestNamedSelector';
 import TestIndicator from '../TestComponents/TestIndicator';
@@ -35,6 +36,7 @@ const allComponents = {
   TestPreviewAutoLayout,
   VideoCardLayoutDemo,
   YouTubeGridLayoutDemo,
+  DockViewportDemo,
   TestNamedCart,
   TestNamedSelector,
   TestIndicator,
@@ -83,6 +85,14 @@ const testComponents = [
     description: 'YouTube 风格网格布局演示',
     navigation: 'YouTubeGridLayoutDemo',
     route: '/YouTubeGridLayoutDemo',
+    category: 'Layout'
+  },
+  {
+    id: 'dock-viewport-demo',
+    name: 'DockViewportDemo',
+    description: 'DockViewport 停靠布局演示',
+    navigation: 'DockViewportDemo',
+    route: '/DockViewportDemo',
     category: 'Layout'
   },
   {
